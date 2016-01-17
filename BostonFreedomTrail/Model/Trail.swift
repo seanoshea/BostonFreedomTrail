@@ -30,14 +30,25 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-public class Point {
-    let lat = 0.0
-    let long = 0.0
+public class Point: NSObject {
+    var latitude = 0.0
+    var longitude = 0.0
+    
+    override public var debugDescription : String {
+        return "---- PageContentViewController\npageIndex equals"
+    }
 }
 
 public class Placemark {
-    let point:Point = Point()
-    let placemarkDescription:String = ""
+    var identifier:String = ""
+    var point:Point = Point()
+    var placemarkDescription:String = ""
+    
+    init(identifier:String, point:Point, placemarkDescription:String) {
+        self.identifier = identifier
+        self.point = point
+        self.placemarkDescription = placemarkDescription
+    }
 }
 
 public class Trail {

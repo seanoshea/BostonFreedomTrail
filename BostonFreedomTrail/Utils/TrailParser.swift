@@ -30,12 +30,104 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
+enum TrailParserConstants : String {
+    case folder = "Folder"
+    case placemark = "Placemark"
+    case name = "name"
+    case styleUrl = "styleUrl"
+    case description = "description"
+    case multiGeometry = "MultiGeometry"
+    case point = "Point"
+    case coordinates = "coordinates"
+}
+
 public class TrailParser : NSObject, NSXMLParserDelegate {
  
+    var trail = Trail()
+    var currentPoint:Point?
+
+    var startFolder = false
+    var startPlacemark = false
+    var startName = false
+    var startDescription = false
+    var startPoint = false
+    var startCoordinates = false
+    
+    var currentName:String?
+    var currentDescription:String?
+
     public func parseTrail() -> Trail {
-        let parser = NSXMLParser()
+        let path = NSBundle.mainBundle().pathForResource("trail", ofType: "kml")
+        let parser = NSXMLParser(contentsOfURL: NSURL.fileURLWithPath(path!))!
         parser.delegate = self
         parser.parse()
-        return Trail()
+        return trail
+    }
+    
+    public func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        switch (elementName) {
+        case TrailParserConstants.folder.rawValue:
+            startFolder = true
+            break
+        case TrailParserConstants.placemark.rawValue:
+            startPlacemark = true
+        case TrailParserConstants.name.rawValue:
+            startName = true
+            break
+        case TrailParserConstants.description.rawValue:
+            startDescription = true
+            break
+        case TrailParserConstants.coordinates.rawValue:
+            startCoordinates = true
+            break
+        case TrailParserConstants.point.rawValue:
+            startPoint = true
+            currentPoint = Point()
+            break
+        default:
+            break
+        }
+    }
+    
+    public func parser(parser: NSXMLParser, foundCharacters string: String) {
+        if (startFolder) {
+            if startName {
+                currentName = string
+            } else if startDescription {
+                currentDescription = string
+            } else if startCoordinates && currentPoint != nil {
+                let coordinates = string.componentsSeparatedByString(",")
+                currentPoint?.latitude = Double(coordinates[0])!
+                currentPoint?.longitude = Double(coordinates[1])!
+            }
+        }
+    }
+    
+    public func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        switch (elementName) {
+        case TrailParserConstants.folder.rawValue:
+            startFolder = false
+            break
+        case TrailParserConstants.name.rawValue:
+            startName = false
+            break
+        case TrailParserConstants.description.rawValue:
+            startDescription = false
+            break
+        case TrailParserConstants.coordinates.rawValue:
+            startCoordinates = false
+            break
+        case TrailParserConstants.point.rawValue:
+            startPoint = false
+            let pm = Placemark(identifier: "", point: currentPoint!, placemarkDescription: currentDescription!)
+            trail.placemarks.append(pm)
+            currentPoint = nil
+            break
+        case TrailParserConstants.placemark.rawValue:
+            startPlacemark = false
+            break
+        default:
+            break
+        }
     }
 }
