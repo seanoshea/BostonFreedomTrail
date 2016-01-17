@@ -33,10 +33,6 @@ import Foundation
 public class Point: NSObject {
     var latitude = 0.0
     var longitude = 0.0
-    
-    override public var debugDescription : String {
-        return "---- PageContentViewController\npageIndex equals"
-    }
 }
 
 public class Placemark {
