@@ -28,8 +28,30 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import Foundation
+import Quick
+import Nimble
+import OHHTTPStubs
 
-class PlacemarksParser {
+class TrailParserTest: QuickSpec {
     
+    override func spec() {
+        
+        describe("TrailParser") {
+            
+            beforeEach({ () -> () in
+
+            })
+            
+            afterEach({ () -> () in
+                
+            })
+            
+            context("Testing Parsing of Placemarks") {
+                
+                it("should parse out eighteen placemarks from the trail xml file") {
+                    
+                }
+            }
+        }
+    }
 }

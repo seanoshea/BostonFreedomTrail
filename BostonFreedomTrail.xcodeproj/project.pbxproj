@@ -19,9 +19,9 @@
 		41237C161C4921550007F76B /* WikipediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C151C4921550007F76B /* WikipediaViewController.swift */; };
 		41237C181C4921690007F76B /* StreetViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C171C4921690007F76B /* StreetViewViewController.swift */; };
 		41237C1A1C4921E50007F76B /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C191C4921E50007F76B /* MapModel.swift */; };
-		41237C1C1C4923D20007F76B /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Placemark.swift */; };
-		41237C211C49244D0007F76B /* PlacemarksParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* PlacemarksParser.swift */; };
-		41B21BF81C4BF6690016C82E /* BostonHistoricalLandmarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B21BF71C4BF6690016C82E /* BostonHistoricalLandmarksTests.swift */; };
+		41237C1C1C4923D20007F76B /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
+		41237C211C49244D0007F76B /* TrailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* TrailParser.swift */; };
+		41691D221C4C0034009A03B3 /* TrailParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41691D211C4C0034009A03B3 /* TrailParserSpec.swift */; };
 		CF369AA8CC8EC25E478A4126 /* Pods_BostonFreedomTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,9 +51,9 @@
 		41237C151C4921550007F76B /* WikipediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikipediaViewController.swift; sourceTree = "<group>"; };
 		41237C171C4921690007F76B /* StreetViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetViewViewController.swift; sourceTree = "<group>"; };
 		41237C191C4921E50007F76B /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
-		41237C1B1C4923D20007F76B /* Placemark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placemark.swift; sourceTree = "<group>"; };
-		41237C201C49244D0007F76B /* PlacemarksParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarksParser.swift; sourceTree = "<group>"; };
-		41B21BF71C4BF6690016C82E /* BostonHistoricalLandmarksTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BostonHistoricalLandmarksTests.swift; sourceTree = "<group>"; };
+		41237C1B1C4923D20007F76B /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
+		41237C201C49244D0007F76B /* TrailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParser.swift; sourceTree = "<group>"; };
+		41691D211C4C0034009A03B3 /* TrailParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParserSpec.swift; sourceTree = "<group>"; };
 		46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BostonFreedomTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F7E77009F744B3C6A681368 /* Pods-BostonFreedomTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrailTests/Pods-BostonFreedomTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF363DE63FB716C518554FBA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		41237BFD1C486CDF0007F76B /* BostonFreedomTrailTests */ = {
 			isa = PBXGroup;
 			children = (
-				41B21BF71C4BF6690016C82E /* BostonHistoricalLandmarksTests.swift */,
+				41691D201C4C000C009A03B3 /* Utils */,
 				41237C001C486CDF0007F76B /* Info.plist */,
 			);
 			path = BostonFreedomTrailTests;
@@ -140,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				41237C191C4921E50007F76B /* MapModel.swift */,
-				41237C1B1C4923D20007F76B /* Placemark.swift */,
+				41237C1B1C4923D20007F76B /* Trail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,7 +167,15 @@
 		41237C1D1C4923E60007F76B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				41237C201C49244D0007F76B /* PlacemarksParser.swift */,
+				41237C201C49244D0007F76B /* TrailParser.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		41691D201C4C000C009A03B3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				41691D211C4C0034009A03B3 /* TrailParserSpec.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -395,8 +403,8 @@
 			files = (
 				41237C1A1C4921E50007F76B /* MapModel.swift in Sources */,
 				41237C141C49213F0007F76B /* PlacemarkViewController.swift in Sources */,
-				41237C1C1C4923D20007F76B /* Placemark.swift in Sources */,
-				41237C211C49244D0007F76B /* PlacemarksParser.swift in Sources */,
+				41237C1C1C4923D20007F76B /* Trail.swift in Sources */,
+				41237C211C49244D0007F76B /* TrailParser.swift in Sources */,
 				41237C181C4921690007F76B /* StreetViewViewController.swift in Sources */,
 				41237C161C4921550007F76B /* WikipediaViewController.swift in Sources */,
 				41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */,
@@ -409,7 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41B21BF81C4BF6690016C82E /* BostonHistoricalLandmarksTests.swift in Sources */,
+				41691D221C4C0034009A03B3 /* TrailParserSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
