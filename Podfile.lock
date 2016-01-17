@@ -1,0 +1,34 @@
+PODS:
+  - GoogleAnalytics (3.14.0)
+  - GoogleMaps (1.11.1)
+  - Nimble (3.0.0)
+  - OHHTTPStubs (4.6.0):
+    - OHHTTPStubs/Default (= 4.6.0)
+  - OHHTTPStubs/Core (4.6.0)
+  - OHHTTPStubs/Default (4.6.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (4.6.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (4.6.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (4.6.0)
+  - Quick (0.8.0)
+
+DEPENDENCIES:
+  - GoogleAnalytics (= 3.14.0)
+  - GoogleMaps (= 1.11.1)
+  - Nimble (~> 3.0.0)
+  - OHHTTPStubs (~> 4.6.0)
+  - Quick (~> 0.8.0)
+
+SPEC CHECKSUMS:
+  GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
+  GoogleMaps: c947160008f414c66707a5ea60f35e92055c7670
+  Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
+  OHHTTPStubs: cb1aefbbeb4de4e741644455d4b945538e5248a2
+  Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
+
+COCOAPODS: 0.39.0
