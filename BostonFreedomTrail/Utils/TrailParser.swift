@@ -30,6 +30,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-class TrailParser {
-    
+public class TrailParser : NSObject, NSXMLParserDelegate {
+ 
+    public func parseTrail() -> Trail {
+        let parser = NSXMLParser()
+        parser.delegate = self
+        parser.parse()
+        return Trail()
+    }
 }

@@ -30,6 +30,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-class Placemark {
-    
+public class Point {
+    let lat = 0.0
+    let long = 0.0
+}
+
+public class Placemark {
+    let point:Point = Point()
+    let placemarkDescription:String = ""
+}
+
+public class Trail {
+    var points = [Point]()
+    var placemarks = [Placemark]()
 }
