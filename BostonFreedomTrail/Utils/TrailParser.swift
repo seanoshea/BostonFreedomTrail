@@ -39,6 +39,7 @@ enum TrailParserConstants : String {
     case multiGeometry = "MultiGeometry"
     case point = "Point"
     case coordinates = "coordinates"
+    case identifier = "id"
 }
 
 public class TrailParser : NSObject, NSXMLParserDelegate {
@@ -53,6 +54,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
     var startPoint = false
     var startCoordinates = false
     
+    var currentIdentifier:String?
     var currentName:String?
     var currentDescription:String?
 
@@ -70,7 +72,11 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             startFolder = true
             break
         case TrailParserConstants.placemark.rawValue:
+            if let identifier = attributeDict[TrailParserConstants.identifier.rawValue] {
+                currentIdentifier = identifier
+            }
             startPlacemark = true
+            break
         case TrailParserConstants.name.rawValue:
             startName = true
             break
@@ -119,8 +125,8 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             break
         case TrailParserConstants.point.rawValue:
             startPoint = false
-            let pm = Placemark(identifier: "", point: currentPoint!, placemarkDescription: currentDescription!)
-            trail.placemarks.append(pm)
+            let placemark = Placemark(identifier: currentIdentifier!, point: currentPoint!, placemarkDescription: currentDescription!)
+            trail.placemarks.append(placemark)
             currentPoint = nil
             break
         case TrailParserConstants.placemark.rawValue:
