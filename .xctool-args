@@ -1,0 +1,7 @@
+[
+  "-workspace", "BostonFreedomTrail.xcworkspace",
+  "-scheme", "BostonFreedomTrail",
+  "-configuration", "Debug",
+  "-sdk", "iphonesimulator9.1",
+  "-arch", "i386"
+]

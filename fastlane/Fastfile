@@ -1,0 +1,7 @@
+before_all do
+  xctool :test
+end
+
+lane :test do
+
+end
