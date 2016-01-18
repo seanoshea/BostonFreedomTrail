@@ -37,11 +37,13 @@ public class Point: NSObject {
 
 public class Placemark {
     var identifier:String = ""
+    var name:String = ""
     var point:Point = Point()
     var placemarkDescription:String = ""
     
-    init(identifier:String, point:Point, placemarkDescription:String) {
+    init(identifier:String, name:String, point:Point, placemarkDescription:String) {
         self.identifier = identifier
+        self.name = name
         self.point = point
         self.placemarkDescription = placemarkDescription
     }

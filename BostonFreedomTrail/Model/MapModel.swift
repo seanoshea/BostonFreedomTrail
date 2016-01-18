@@ -32,4 +32,10 @@ import Foundation
 
 class MapModel {
     
+    var trail:Trail
+    
+    init() {
+        let parser = TrailParser()
+        self.trail = parser.parseTrail()
+    }
 }

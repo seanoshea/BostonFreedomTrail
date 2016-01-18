@@ -29,7 +29,32 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 import UIKit
+import GoogleMaps
 
 class MapViewController : UIViewController {
     
+    var mapModel:MapModel = MapModel()
+    var mapView:GMSMapView?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createMapView()
+        createPlacemarks()
+    }
+    
+    func createMapView() {
+        let camera = GMSCameraPosition.cameraWithLatitude(42.355721486582, longitude:-71.063303947449, zoom:14.0)
+        self.mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
+        self.view = self.mapView
+    }
+    
+    func createPlacemarks() {
+        for placemark:Placemark in self.mapModel.trail.placemarks {
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2DMake(placemark.point.latitude, placemark.point.longitude)
+            marker.snippet = placemark.name
+            marker.appearAnimation = kGMSMarkerAnimationPop
+            marker.map = self.mapView
+        }
+    }
 }

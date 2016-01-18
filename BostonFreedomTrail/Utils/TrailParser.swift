@@ -103,8 +103,8 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
                 currentDescription = string
             } else if startCoordinates && currentPoint != nil {
                 let coordinates = string.componentsSeparatedByString(",")
-                currentPoint?.latitude = Double(coordinates[0])!
-                currentPoint?.longitude = Double(coordinates[1])!
+                currentPoint?.longitude = Double(coordinates[0])!
+                currentPoint?.latitude = Double(coordinates[1])!
             }
         }
     }
@@ -125,7 +125,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             break
         case TrailParserConstants.point.rawValue:
             startPoint = false
-            let placemark = Placemark(identifier: currentIdentifier!, point: currentPoint!, placemarkDescription: currentDescription!)
+            let placemark = Placemark(identifier: currentIdentifier!, name: currentName!, point: currentPoint!, placemarkDescription: currentDescription!)
             trail.placemarks.append(placemark)
             currentPoint = nil
             break
