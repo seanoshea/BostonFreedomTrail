@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		02C99F49ED538590AF59B9D4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C2543599204AB4B2D5CCB5 /* Pods.framework */; };
+		410AFEE21C4D980F007DF354 /* MapModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE11C4D980F007DF354 /* MapModelSpec.swift */; };
+		410AFEE51C4D9930007DF354 /* MapViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */; };
 		41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237BE71C486CDF0007F76B /* AppDelegate.swift */; };
 		41237BEF1C486CDF0007F76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41237BED1C486CDF0007F76B /* Main.storyboard */; };
 		41237BF11C486CDF0007F76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41237BF01C486CDF0007F76B /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		410AFEE11C4D980F007DF354 /* MapModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModelSpec.swift; sourceTree = "<group>"; };
+		410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerSpec.swift; sourceTree = "<group>"; };
 		41237BE41C486CDF0007F76B /* BostonFreedomTrail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BostonFreedomTrail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41237BE71C486CDF0007F76B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41237BEE1C486CDF0007F76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +90,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		410AFEE01C4D97F4007DF354 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				410AFEE11C4D980F007DF354 /* MapModelSpec.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		410AFEE31C4D991A007DF354 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		41237BDB1C486CDF0007F76B = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +146,8 @@
 		41237BFD1C486CDF0007F76B /* BostonFreedomTrailTests */ = {
 			isa = PBXGroup;
 			children = (
+				410AFEE31C4D991A007DF354 /* Controller */,
+				410AFEE01C4D97F4007DF354 /* Model */,
 				41691D201C4C000C009A03B3 /* Utils */,
 				41237C001C486CDF0007F76B /* Info.plist */,
 			);
@@ -421,11 +443,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				410AFEE51C4D9930007DF354 /* MapViewControllerSpec.swift in Sources */,
 				41691D251C4C0379009A03B3 /* AppDelegate.swift in Sources */,
 				41691D261C4C0379009A03B3 /* MapModel.swift in Sources */,
 				41691D231C4C036B009A03B3 /* Trail.swift in Sources */,
 				41691D241C4C036B009A03B3 /* TrailParser.swift in Sources */,
 				41691D221C4C0034009A03B3 /* TrailParserSpec.swift in Sources */,
+				410AFEE21C4D980F007DF354 /* MapModelSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

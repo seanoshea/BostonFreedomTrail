@@ -28,24 +28,22 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
-import GoogleMaps
+import Quick
+import Nimble
+import OHHTTPStubs
 
-class MapViewController : UIViewController {
+class MapModelTest: QuickSpec {
     
-    var model:MapModel = MapModel()
-    var mapView:GMSMapView?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        createMapView()
-        self.mapView?.delegate = self.model
-        self.model.createPlacemarksForMap(self.mapView!)
-    }
-    
-    func createMapView() {
-        let camera = GMSCameraPosition.cameraWithLatitude(42.355721486582, longitude:-71.063303947449, zoom:14.0)
-        self.mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
-        self.view = self.mapView
+    override func spec() {
+        
+        describe("MapModel") {
+            
+            context("Adding the placemarks") {
+                
+                it("should add all the placemarks to the map") {
+
+                }
+            }
+        }
     }
 }
