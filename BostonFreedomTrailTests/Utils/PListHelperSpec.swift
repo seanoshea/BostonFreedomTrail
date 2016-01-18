@@ -30,7 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Quick
 import Nimble
-import OHHTTPStubs
 
 class PListHelperTest: QuickSpec {
     
@@ -41,7 +40,8 @@ class PListHelperTest: QuickSpec {
             context("Testing Retrieving Values from a the plist file") {
                 
                 it("should be able to get string values from the plist file") {
-                    
+
+                    PListHelper.googleMapsApiKey()
                 }
                 
                 it("should be able to get float values from the plist file") {

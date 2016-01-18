@@ -30,7 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Quick
 import Nimble
-import OHHTTPStubs
 
 class MapModelTest: QuickSpec {
     
