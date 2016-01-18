@@ -30,6 +30,24 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-class PlacemarksParser {
+public class Point: NSObject {
+    var latitude = 0.0
+    var longitude = 0.0
+}
+
+public class Placemark {
+    var identifier:String = ""
+    var point:Point = Point()
+    var placemarkDescription:String = ""
     
+    init(identifier:String, point:Point, placemarkDescription:String) {
+        self.identifier = identifier
+        self.point = point
+        self.placemarkDescription = placemarkDescription
+    }
+}
+
+public class Trail {
+    var points = [Point]()
+    var placemarks = [Placemark]()
 }
