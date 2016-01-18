@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeGoogleMapsApi() {
-        GMSServices.provideAPIKey("AIzaSyAboFJaMbnKvTdFoxB4X3n5oG2n43Kaxkk")
+        GMSServices.provideAPIKey(PListHelper.googleMapsApiKey())
     }
     
     func initializeStyling() {

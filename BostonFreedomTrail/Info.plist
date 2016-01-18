@@ -51,5 +51,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>BostonFreedomTrailGoogleMapAPIKey</key>
+    <string>AIzaSyAboFJaMbnKvTdFoxB4X3n5oG2n43Kaxkk</string>
+    <key>BostonFreedomTrailDefaultLatitude</key>
+    <string>42.355721486582</string>
+    <key>BostonFreedomTrailDefaultLongitude</key>
+    <string>-71.063303947449</string>
+    <key>BostonFreedomTrailDefaultCameraZoom</key>
+    <string>14.0</string>
 </dict>
 </plist>

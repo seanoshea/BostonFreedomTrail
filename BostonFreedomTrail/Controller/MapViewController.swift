@@ -39,13 +39,17 @@ class MapViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createMapView()
-        self.mapView?.delegate = self.model
-        self.model.createPlacemarksForMap(self.mapView!)
+        setupPlacemarks()
     }
     
     func createMapView() {
-        let camera = GMSCameraPosition.cameraWithLatitude(42.355721486582, longitude:-71.063303947449, zoom:14.0)
+        let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:PListHelper.defaultCameraZoom())
         self.mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
         self.view = self.mapView
+    }
+    
+    func setupPlacemarks() {
+        self.mapView?.delegate = self.model
+        self.model.createPlacemarksForMap(self.mapView!)
     }
 }

@@ -10,6 +10,8 @@
 		02C99F49ED538590AF59B9D4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C2543599204AB4B2D5CCB5 /* Pods.framework */; };
 		410AFEE21C4D980F007DF354 /* MapModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE11C4D980F007DF354 /* MapModelSpec.swift */; };
 		410AFEE51C4D9930007DF354 /* MapViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */; };
+		410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE61C4D9B0F007DF354 /* PListHelper.swift */; };
+		410AFEE81C4D9E0C007DF354 /* PListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE61C4D9B0F007DF354 /* PListHelper.swift */; };
 		41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237BE71C486CDF0007F76B /* AppDelegate.swift */; };
 		41237BEF1C486CDF0007F76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41237BED1C486CDF0007F76B /* Main.storyboard */; };
 		41237BF11C486CDF0007F76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41237BF01C486CDF0007F76B /* Assets.xcassets */; };
@@ -44,6 +46,7 @@
 /* Begin PBXFileReference section */
 		410AFEE11C4D980F007DF354 /* MapModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModelSpec.swift; sourceTree = "<group>"; };
 		410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerSpec.swift; sourceTree = "<group>"; };
+		410AFEE61C4D9B0F007DF354 /* PListHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListHelper.swift; sourceTree = "<group>"; };
 		41237BE41C486CDF0007F76B /* BostonFreedomTrail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BostonFreedomTrail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41237BE71C486CDF0007F76B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41237BEE1C486CDF0007F76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				41237C201C49244D0007F76B /* TrailParser.swift */,
+				410AFEE61C4D9B0F007DF354 /* PListHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -435,6 +439,7 @@
 				41237C161C4921550007F76B /* WikipediaViewController.swift in Sources */,
 				41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */,
 				41237C101C4921070007F76B /* AboutViewController.swift in Sources */,
+				410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */,
 				41237C121C4921210007F76B /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				410AFEE81C4D9E0C007DF354 /* PListHelper.swift in Sources */,
 				410AFEE51C4D9930007DF354 /* MapViewControllerSpec.swift in Sources */,
 				41691D251C4C0379009A03B3 /* AppDelegate.swift in Sources */,
 				41691D261C4C0379009A03B3 /* MapModel.swift in Sources */,
@@ -575,6 +581,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrail;
 				PRODUCT_NAME = BostonFreedomTrail;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -587,6 +594,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrail;
 				PRODUCT_NAME = BostonFreedomTrail;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
