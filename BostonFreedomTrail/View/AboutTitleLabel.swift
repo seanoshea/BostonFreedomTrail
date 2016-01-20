@@ -12,7 +12,7 @@ documentation and/or other materials provided with the distribution.
 3. All advertising materials mentioning features or use of this software
 must display the following acknowledgement:
 This product includes software developed by Upwards Northwards Software Limited.
-4. Neither the name of Upwards Northwards Software Limited nor the
+4. Neither th e name of Upwards Northwards Software Limited nor the
 names of its contributors may be used to endorse or promote products
 derived from this software without specific prior written permission.
 
@@ -30,28 +30,33 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
-class AboutViewController : UIViewController {
-  
-    @IBOutlet weak var developerLabel: AboutTitleLabel?
-    @IBOutlet weak var developerDetailsLabel: AboutDetailsLabel?
-    @IBOutlet weak var designerLabel: AboutTitleLabel?
-    @IBOutlet weak var designerDetailsLabel: AboutDetailsLabel?
-    @IBOutlet weak var nounProjectLabel: AboutTitleLabel?
-    @IBOutlet weak var nounProjectDetailsLabel: AboutDetailsLabel?
-    @IBOutlet weak var googleMapsLabel: AboutTitleLabel?
+enum AboutFontSizes : CGFloat {
+    case AboutTitle = 17.0
+    case AboutDetails = 12.0
+}
+
+class AboutTitleLabel : UILabel {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.localizeLabels()
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.applyStyles()
     }
     
-    func localizeLabels() {
-        self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
-        self.developerDetailsLabel!.text = NSLocalizedString("Developed by Sean O'Shea", comment: "")
-        self.designerLabel!.text = NSLocalizedString("Designer Details", comment: "")
-        self.designerDetailsLabel!.text = NSLocalizedString("TBD", comment: "")
-        self.nounProjectLabel!.text = NSLocalizedString("Noun Project", comment: "")
-        self.nounProjectDetailsLabel!.text = NSLocalizedString("Some of the icons in this application are freely downloadable from The Noun Project. Information Icon by Creatorid'immagine & Map Icon by Stefan Zoll", comment: "")
-        self.googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
+    func applyStyles() {
+        // TODO - font, kerning and color
+        self.font = UIFont.systemFontOfSize(AboutFontSizes.AboutTitle.rawValue)
+    }
+}
+
+class AboutDetailsLabel : AboutTitleLabel {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.applyStyles()
+    }
+    
+    override func applyStyles() {
+        // TODO - font, kerning and color
+        self.font = UIFont.systemFontOfSize(AboutFontSizes.AboutDetails.rawValue)
     }
 }

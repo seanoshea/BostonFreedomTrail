@@ -3,12 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Map View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" userLabel="Map View Controller" customClass="MapViewController" customModule="BostonFreedomTrail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9pv-A4-QxB" userLabel="Map View Controller" customClass="MapViewController" customModule="BostonFreedomTrail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -27,7 +28,7 @@
         <!--About View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" userLabel="About View Controller" customClass="AboutViewController" customModule="BostonFreedomTrail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" userLabel="About View Controller" customClass="AboutViewController" customModule="BostonFreedomTrail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -35,9 +36,85 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d03-Jp-YyK" userLabel="Developer Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                <rect key="frame" x="30" y="30" width="560" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer Details Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8g-Yg-P2X" userLabel="Developer Details Label" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                <rect key="frame" x="30" y="55.5" width="560" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designer Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QQ-t9-mKx" userLabel="Designer Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                <rect key="frame" x="30" y="81.5" width="560" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designer Details Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p45-Wg-sve" userLabel="Designer Details Label" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                <rect key="frame" x="30" y="107" width="560" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noun Project Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKV-a6-zco" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                <rect key="frame" x="30" y="133" width="560" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noun Project Details Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGx-2x-sVz" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                <rect key="frame" x="30" y="158.5" width="560" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Maps Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcV-ww-lhg" userLabel="Google Maps Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                <rect key="frame" x="30" y="184.5" width="560" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CGx-2x-sVz" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" constant="10" id="8ql-UK-EmK"/>
+                            <constraint firstItem="CGx-2x-sVz" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="10" id="Bl8-9q-yQg"/>
+                            <constraint firstItem="p45-Wg-sve" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="10" id="DXB-T8-ler"/>
+                            <constraint firstItem="q8g-Yg-P2X" firstAttribute="top" secondItem="d03-Jp-YyK" secondAttribute="bottom" constant="5" id="Drd-Mp-oIm"/>
+                            <constraint firstItem="d03-Jp-YyK" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" constant="10" id="HLW-Hh-lfM"/>
+                            <constraint firstItem="CGx-2x-sVz" firstAttribute="top" secondItem="IKV-a6-zco" secondAttribute="bottom" constant="5" id="JUL-KI-aEM"/>
+                            <constraint firstItem="4QQ-t9-mKx" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="10" id="Jn8-Go-UIf"/>
+                            <constraint firstItem="q8g-Yg-P2X" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="10" id="W5e-iO-fbJ"/>
+                            <constraint firstItem="q8g-Yg-P2X" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" constant="10" id="YUn-SU-SOb"/>
+                            <constraint firstItem="d03-Jp-YyK" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="10" id="ctO-Ov-kqE"/>
+                            <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="CGx-2x-sVz" secondAttribute="bottom" constant="10" id="d7A-70-VSo"/>
+                            <constraint firstItem="jcV-ww-lhg" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="10" id="haZ-Be-zN9"/>
+                            <constraint firstItem="p45-Wg-sve" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" constant="10" id="iYS-5D-Khv"/>
+                            <constraint firstItem="4QQ-t9-mKx" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" constant="10" id="kT7-HQ-YKq"/>
+                            <constraint firstItem="d03-Jp-YyK" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="10" id="mYK-RI-gxq"/>
+                            <constraint firstItem="IKV-a6-zco" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" constant="10" id="nX1-Ys-agy"/>
+                            <constraint firstItem="p45-Wg-sve" firstAttribute="top" secondItem="4QQ-t9-mKx" secondAttribute="bottom" constant="5" id="nbH-kF-wHI"/>
+                            <constraint firstItem="IKV-a6-zco" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="10" id="nhl-hY-KcO"/>
+                            <constraint firstItem="IKV-a6-zco" firstAttribute="top" secondItem="p45-Wg-sve" secondAttribute="bottom" constant="10" id="pPy-15-buX"/>
+                            <constraint firstItem="jcV-ww-lhg" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" constant="10" id="rua-dO-26C"/>
+                            <constraint firstItem="4QQ-t9-mKx" firstAttribute="top" secondItem="q8g-Yg-P2X" secondAttribute="bottom" constant="10" id="x6M-mC-bh5"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="designerDetailsLabel" destination="p45-Wg-sve" id="GAH-Gi-gKF"/>
+                        <outlet property="designerLabel" destination="4QQ-t9-mKx" id="lga-dA-0dD"/>
+                        <outlet property="developerDetailsLabel" destination="q8g-Yg-P2X" id="fxk-3w-F56"/>
+                        <outlet property="developerLabel" destination="d03-Jp-YyK" id="uPk-c5-ycK"/>
+                        <outlet property="googleMapsLabel" destination="jcV-ww-lhg" id="PMF-de-gOO"/>
+                        <outlet property="nounProjectDetailsLabel" destination="CGx-2x-sVz" id="POQ-aV-0pU"/>
+                        <outlet property="nounProjectLabel" destination="IKV-a6-zco" id="yJ8-ns-Lvc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>

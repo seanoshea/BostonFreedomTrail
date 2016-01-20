@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		02C99F49ED538590AF59B9D4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C2543599204AB4B2D5CCB5 /* Pods.framework */; };
+		41079D5F1C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */; };
+		41079D601C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */; };
+		41079D631C4FBAC300BF2CFF /* AboutViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */; };
+		41079D661C4FBBA000BF2CFF /* StoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D651C4FBBA000BF2CFF /* StoryboardExtensions.swift */; };
+		41079D671C4FBCC300BF2CFF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C0F1C4921070007F76B /* AboutViewController.swift */; };
+		41079D681C4FBE6700BF2CFF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C111C4921210007F76B /* MapViewController.swift */; };
 		410AFEE21C4D980F007DF354 /* MapModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE11C4D980F007DF354 /* MapModelSpec.swift */; };
 		410AFEE51C4D9930007DF354 /* MapViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */; };
 		410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE61C4D9B0F007DF354 /* PListHelper.swift */; };
@@ -48,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTitleLabel.swift; sourceTree = "<group>"; };
+		41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewControllerSpec.swift; sourceTree = "<group>"; };
+		41079D651C4FBBA000BF2CFF /* StoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardExtensions.swift; sourceTree = "<group>"; };
 		410AFEE11C4D980F007DF354 /* MapModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModelSpec.swift; sourceTree = "<group>"; };
 		410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerSpec.swift; sourceTree = "<group>"; };
 		410AFEE61C4D9B0F007DF354 /* PListHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListHelper.swift; sourceTree = "<group>"; };
@@ -101,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41079D641C4FBB7300BF2CFF /* TestUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				41079D651C4FBBA000BF2CFF /* StoryboardExtensions.swift */,
+			);
+			path = TestUtilities;
+			sourceTree = "<group>";
+		};
 		410AFEE01C4D97F4007DF354 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */,
+				41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -158,9 +176,10 @@
 			isa = PBXGroup;
 			children = (
 				410AFEE31C4D991A007DF354 /* Controller */,
-				410AFEE01C4D97F4007DF354 /* Model */,
-				41691D201C4C000C009A03B3 /* Utils */,
 				41237C001C486CDF0007F76B /* Info.plist */,
+				410AFEE01C4D97F4007DF354 /* Model */,
+				41079D641C4FBB7300BF2CFF /* TestUtilities */,
+				41691D201C4C000C009A03B3 /* Utils */,
 			);
 			path = BostonFreedomTrailTests;
 			sourceTree = "<group>";
@@ -185,6 +204,7 @@
 		41237C0D1C4920A60007F76B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -444,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41237C1A1C4921E50007F76B /* MapModel.swift in Sources */,
+				41079D5F1C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */,
 				41237C141C49213F0007F76B /* PlacemarkViewController.swift in Sources */,
 				41237C1C1C4923D20007F76B /* Trail.swift in Sources */,
 				41237C211C49244D0007F76B /* TrailParser.swift in Sources */,
@@ -462,6 +483,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				41CB50E31C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift in Sources */,
+				41079D631C4FBAC300BF2CFF /* AboutViewControllerSpec.swift in Sources */,
+				41079D601C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */,
+				41079D671C4FBCC300BF2CFF /* AboutViewController.swift in Sources */,
 				415095441C4DA11C00681F82 /* PListHelperSpec.swift in Sources */,
 				410AFEE81C4D9E0C007DF354 /* PListHelper.swift in Sources */,
 				410AFEE51C4D9930007DF354 /* MapViewControllerSpec.swift in Sources */,
@@ -469,9 +493,11 @@
 				41691D251C4C0379009A03B3 /* AppDelegate.swift in Sources */,
 				41691D261C4C0379009A03B3 /* MapModel.swift in Sources */,
 				41691D231C4C036B009A03B3 /* Trail.swift in Sources */,
+				41079D661C4FBBA000BF2CFF /* StoryboardExtensions.swift in Sources */,
 				41691D241C4C036B009A03B3 /* TrailParser.swift in Sources */,
 				41691D221C4C0034009A03B3 /* TrailParserSpec.swift in Sources */,
 				410AFEE21C4D980F007DF354 /* MapModelSpec.swift in Sources */,
+				41079D681C4FBE6700BF2CFF /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
