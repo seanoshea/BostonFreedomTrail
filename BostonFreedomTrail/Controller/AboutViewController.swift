@@ -30,6 +30,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
+import GoogleMaps
+
 class AboutViewController : UIViewController {
   
     @IBOutlet weak var developerLabel: AboutTitleLabel?
@@ -39,6 +41,7 @@ class AboutViewController : UIViewController {
     @IBOutlet weak var nounProjectLabel: AboutTitleLabel?
     @IBOutlet weak var nounProjectDetailsLabel: AboutDetailsLabel?
     @IBOutlet weak var googleMapsLabel: AboutTitleLabel?
+    @IBOutlet weak var googleMapsDetailsLabel: AboutDetailsLabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,5 +56,6 @@ class AboutViewController : UIViewController {
         self.nounProjectLabel!.text = NSLocalizedString("Noun Project", comment: "")
         self.nounProjectDetailsLabel!.text = NSLocalizedString("Some of the icons in this application are freely downloadable from The Noun Project. Information Icon by Creatorid'immagine & Map Icon by Stefan Zoll", comment: "")
         self.googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
+        self.googleMapsDetailsLabel!.text = GMSServices.openSourceLicenseInfo()
     }
 }
