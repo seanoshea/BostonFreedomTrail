@@ -30,6 +30,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
+import GoogleMaps
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -47,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeGoogleMapsApi() {
-        
+        GMSServices.provideAPIKey(PListHelper.googleMapsApiKey())
     }
     
     func initializeStyling() {

@@ -31,6 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import Foundation
 
 enum TrailParserConstants : String {
+    case trail = "trail"
+    case kml = "kml"
     case folder = "Folder"
     case placemark = "Placemark"
     case name = "name"
@@ -59,7 +61,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
     var currentDescription:String?
 
     public func parseTrail() -> Trail {
-        let path = NSBundle.mainBundle().pathForResource("trail", ofType: "kml")
+        let path = NSBundle.mainBundle().pathForResource(TrailParserConstants.trail.rawValue, ofType: TrailParserConstants.kml.rawValue)
         let parser = NSXMLParser(contentsOfURL: NSURL.fileURLWithPath(path!))!
         parser.delegate = self
         parser.parse()
@@ -96,15 +98,15 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
     }
     
     public func parser(parser: NSXMLParser, foundCharacters string: String) {
-        if (startFolder) {
+        if startFolder {
             if startName {
                 currentName = string
             } else if startDescription {
                 currentDescription = string
             } else if startCoordinates && currentPoint != nil {
                 let coordinates = string.componentsSeparatedByString(",")
-                currentPoint?.latitude = Double(coordinates[0])!
-                currentPoint?.longitude = Double(coordinates[1])!
+                currentPoint?.longitude = Double(coordinates[0])!
+                currentPoint?.latitude = Double(coordinates[1])!
             }
         }
     }
@@ -125,7 +127,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             break
         case TrailParserConstants.point.rawValue:
             startPoint = false
-            let placemark = Placemark(identifier: currentIdentifier!, point: currentPoint!, placemarkDescription: currentDescription!)
+            let placemark = Placemark(identifier: currentIdentifier!, name: currentName!, point: currentPoint!, placemarkDescription: currentDescription!)
             trail.placemarks.append(placemark)
             currentPoint = nil
             break

@@ -28,28 +28,21 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import Foundation
+import Quick
+import Nimble
 
-public class Point: NSObject {
-    var latitude = 0.0
-    var longitude = 0.0
-}
-
-public class Placemark {
-    var identifier:String = ""
-    var name:String = ""
-    var point:Point = Point()
-    var placemarkDescription:String = ""
+class MapViewControllerTest: QuickSpec {
     
-    init(identifier:String, name:String, point:Point, placemarkDescription:String) {
-        self.identifier = identifier
-        self.name = name
-        self.point = point
-        self.placemarkDescription = placemarkDescription
+    override func spec() {
+        
+        describe("MapViewController") {
+            
+            context("Initialization of the MapViewController") {
+                
+                it("should ensure that the view is set to a GMSMapView when it is loaded") {
+                    
+                }
+            }
+        }
     }
-}
-
-public class Trail {
-    var points = [Point]()
-    var placemarks = [Placemark]()
 }

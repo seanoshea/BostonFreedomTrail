@@ -30,6 +30,31 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-class MapModel {
+import GoogleMaps
+
+class MapModel : NSObject, GMSMapViewDelegate {
     
+    var trail:Trail
+    
+    override init() {
+        self.trail = TrailParser().parseTrail()
+    }
+    
+    func createPlacemarksForMap(mapView:GMSMapView) {
+        for placemark:Placemark in self.trail.placemarks {
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2DMake(placemark.point.latitude, placemark.point.longitude)
+            marker.snippet = placemark.name
+            marker.appearAnimation = kGMSMarkerAnimationPop
+            marker.map = mapView
+        }
+    }
+    
+// MARK: GMSMapViewDelegate
+    
+    func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
+        if position.zoom > 0.0 {
+            ApplicationSharedState.sharedState.cameraZoom = position.zoom
+        }
+    }
 }

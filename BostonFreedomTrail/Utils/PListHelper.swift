@@ -30,26 +30,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-public class Point: NSObject {
-    var latitude = 0.0
-    var longitude = 0.0
+enum PListHelperConstants : String {
+    case BostonFreedomTrailGoogleMapAPIKey = "BostonFreedomTrailGoogleMapAPIKey"
+    case BostonFreedomTrailDefaultLatitude = "BostonFreedomTrailDefaultLatitude"
+    case BostonFreedomTrailDefaultLongitude = "BostonFreedomTrailDefaultLongitude"
+    case BostonFreedomTrailDefaultCameraZoom = "BostonFreedomTrailDefaultCameraZoom"
 }
 
-public class Placemark {
-    var identifier:String = ""
-    var name:String = ""
-    var point:Point = Point()
-    var placemarkDescription:String = ""
+class PListHelper {
     
-    init(identifier:String, name:String, point:Point, placemarkDescription:String) {
-        self.identifier = identifier
-        self.name = name
-        self.point = point
-        self.placemarkDescription = placemarkDescription
+    static func googleMapsApiKey() -> String {
+        return (self.plistDictionary()[PListHelperConstants.BostonFreedomTrailGoogleMapAPIKey.rawValue] as? String)!
     }
-}
+    
+    static func defaultLatitude() -> Double {
+        return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLatitude.rawValue]!.doubleValue
+    }
 
-public class Trail {
-    var points = [Point]()
-    var placemarks = [Placemark]()
+    static func defaultLongitude() -> Double {
+        return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLongitude.rawValue]!.doubleValue
+    }
+    
+    static func defaultCameraZoom() -> Float {
+        return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultCameraZoom.rawValue]!.floatValue
+    }
+    
+    static func plistDictionary() -> [String: AnyObject] {
+        let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist")
+        let pListContents = NSDictionary(contentsOfFile: path!) as? [String: AnyObject]
+        return pListContents!
+    }
 }

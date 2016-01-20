@@ -29,7 +29,37 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 import UIKit
+import GoogleMaps
 
 class MapViewController : UIViewController {
     
+    var model:MapModel = MapModel()
+    var mapView:GMSMapView?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createMapView()
+        setupPlacemarks()
+        zoomToMostRecentPosition()
+    }
+    
+    func createMapView() {
+        let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:PListHelper.defaultCameraZoom())
+        let mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
+        mapView.indoorEnabled = false
+        mapView.myLocationEnabled = true
+        mapView.settings.myLocationButton = true
+        mapView.settings.compassButton = false
+        self.mapView = mapView
+        self.view = self.mapView
+    }
+    
+    func setupPlacemarks() {
+        self.mapView?.delegate = self.model
+        self.model.createPlacemarksForMap(self.mapView!)
+    }
+    
+    func zoomToMostRecentPosition() {
+        
+    }
 }

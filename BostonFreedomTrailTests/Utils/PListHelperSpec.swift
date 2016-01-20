@@ -28,28 +28,30 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import Foundation
+import Quick
+import Nimble
 
-public class Point: NSObject {
-    var latitude = 0.0
-    var longitude = 0.0
-}
-
-public class Placemark {
-    var identifier:String = ""
-    var name:String = ""
-    var point:Point = Point()
-    var placemarkDescription:String = ""
+class PListHelperTest: QuickSpec {
     
-    init(identifier:String, name:String, point:Point, placemarkDescription:String) {
-        self.identifier = identifier
-        self.name = name
-        self.point = point
-        self.placemarkDescription = placemarkDescription
-    }
-}
+    override func spec() {
+        
+        describe("PListHelper") {
+            
+            context("Testing Retrieving Values from a the plist file") {
+                
+                it("should be able to get string values from the plist file") {
 
-public class Trail {
-    var points = [Point]()
-    var placemarks = [Placemark]()
+                    PListHelper.googleMapsApiKey()
+                }
+                
+                it("should be able to get float values from the plist file") {
+                    
+                }
+                
+                it("should be able to get double values from the plist file") {
+                    
+                }
+            }
+        }
+    }
 }

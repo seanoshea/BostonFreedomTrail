@@ -30,26 +30,26 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-public class Point: NSObject {
-    var latitude = 0.0
-    var longitude = 0.0
+enum DefaultsKeys : String {
+    case ApplicationSharedStateCameraZoom = "ApplicationSharedStateCameraZoom"
+    case ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude"
 }
 
-public class Placemark {
-    var identifier:String = ""
-    var name:String = ""
-    var point:Point = Point()
-    var placemarkDescription:String = ""
+public class ApplicationSharedState {
     
-    init(identifier:String, name:String, point:Point, placemarkDescription:String) {
-        self.identifier = identifier
-        self.name = name
-        self.point = point
-        self.placemarkDescription = placemarkDescription
+    public var cameraZoom:Float {
+        set {
+            NSUserDefaults.standardUserDefaults().setFloat(newValue, forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
+        }
+        get {
+            return NSUserDefaults.standardUserDefaults().floatForKey(DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue) ?? PListHelper.defaultCameraZoom()
+        }
     }
-}
-
-public class Trail {
-    var points = [Point]()
-    var placemarks = [Placemark]()
+        
+    public class var sharedState : ApplicationSharedState {
+        struct Static {
+            static let instance = ApplicationSharedState()
+        }
+        return Static.instance
+    }
 }
