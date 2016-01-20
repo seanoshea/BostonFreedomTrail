@@ -31,6 +31,9 @@
 		41691D241C4C036B009A03B3 /* TrailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* TrailParser.swift */; };
 		41691D251C4C0379009A03B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237BE71C486CDF0007F76B /* AppDelegate.swift */; };
 		41691D261C4C0379009A03B3 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C191C4921E50007F76B /* MapModel.swift */; };
+		41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
+		41CB50E11C4EFF9400FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
+		41CB50E31C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */; };
 		CF369AA8CC8EC25E478A4126 /* Pods_BostonFreedomTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,9 @@
 		41237C201C49244D0007F76B /* TrailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParser.swift; sourceTree = "<group>"; };
 		415095431C4DA11C00681F82 /* PListHelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListHelperSpec.swift; sourceTree = "<group>"; };
 		41691D211C4C0034009A03B3 /* TrailParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParserSpec.swift; sourceTree = "<group>"; };
+		41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedState.swift; sourceTree = "<group>"; };
+		41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedStateSpec.swift; sourceTree = "<group>"; };
+		41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BostonFreedomTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F7E77009F744B3C6A681368 /* Pods-BostonFreedomTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrailTests/Pods-BostonFreedomTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF363DE63FB716C518554FBA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 		41237C1D1C4923E60007F76B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */,
 				410AFEE61C4D9B0F007DF354 /* PListHelper.swift */,
 				41237C201C49244D0007F76B /* TrailParser.swift */,
 			);
@@ -207,6 +214,7 @@
 		41691D201C4C000C009A03B3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */,
 				415095431C4DA11C00681F82 /* PListHelperSpec.swift */,
 				41691D211C4C0034009A03B3 /* TrailParserSpec.swift */,
 			);
@@ -216,6 +224,7 @@
 		C0497F188083798A2930EFE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */,
 				C2C2543599204AB4B2D5CCB5 /* Pods.framework */,
 				46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */,
 			);
@@ -441,6 +450,7 @@
 				41237C181C4921690007F76B /* StreetViewViewController.swift in Sources */,
 				41237C161C4921550007F76B /* WikipediaViewController.swift in Sources */,
 				41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */,
+				41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */,
 				41237C101C4921070007F76B /* AboutViewController.swift in Sources */,
 				410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */,
 				41237C121C4921210007F76B /* MapViewController.swift in Sources */,
@@ -451,9 +461,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41CB50E31C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift in Sources */,
 				415095441C4DA11C00681F82 /* PListHelperSpec.swift in Sources */,
 				410AFEE81C4D9E0C007DF354 /* PListHelper.swift in Sources */,
 				410AFEE51C4D9930007DF354 /* MapViewControllerSpec.swift in Sources */,
+				41CB50E11C4EFF9400FFBD9E /* ApplicationSharedState.swift in Sources */,
 				41691D251C4C0379009A03B3 /* AppDelegate.swift in Sources */,
 				41691D261C4C0379009A03B3 /* MapModel.swift in Sources */,
 				41691D231C4C036B009A03B3 /* Trail.swift in Sources */,

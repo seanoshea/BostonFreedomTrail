@@ -28,33 +28,31 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import Foundation
+import Quick
+import Nimble
 
-import GoogleMaps
-
-class MapModel : NSObject, GMSMapViewDelegate {
+class ApplicationSharedStateTest: QuickSpec {
     
-    var trail:Trail
-    
-    override init() {
-        self.trail = TrailParser().parseTrail()
-    }
-    
-    func createPlacemarksForMap(mapView:GMSMapView) {
-        for placemark:Placemark in self.trail.placemarks {
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2DMake(placemark.point.latitude, placemark.point.longitude)
-            marker.snippet = placemark.name
-            marker.appearAnimation = kGMSMarkerAnimationPop
-            marker.map = mapView
-        }
-    }
-    
-// MARK: GMSMapViewDelegate
-    
-    func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
-        if position.zoom > 0.0 {
-            ApplicationSharedState.sharedState.cameraZoom = position.zoom
+    override func spec() {
+        
+        describe("ApplicationSharedState") {
+            
+            context("Storing the camera zoom") {
+                
+                it("should know the current camera zoom") {
+                    
+                    NSUserDefaults.standardUserDefaults().setFloat(12.0, forKey: "ApplicationSharedStateCameraZoom")
+                    
+                    expect(ApplicationSharedState.sharedState.cameraZoom).to(equal(12.0))
+                }
+                
+                it("should be able to set the current camera zoom") {
+                    
+                    ApplicationSharedState.sharedState.cameraZoom = 8.0
+                    
+                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateCameraZoom")).to(equal(8.0))
+                }
+            }
         }
     }
 }

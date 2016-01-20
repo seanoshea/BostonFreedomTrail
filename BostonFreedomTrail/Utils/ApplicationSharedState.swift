@@ -30,31 +30,26 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-import GoogleMaps
+enum DefaultsKeys : String {
+    case ApplicationSharedStateCameraZoom = "ApplicationSharedStateCameraZoom"
+    case ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude"
+}
 
-class MapModel : NSObject, GMSMapViewDelegate {
+public class ApplicationSharedState {
     
-    var trail:Trail
-    
-    override init() {
-        self.trail = TrailParser().parseTrail()
-    }
-    
-    func createPlacemarksForMap(mapView:GMSMapView) {
-        for placemark:Placemark in self.trail.placemarks {
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2DMake(placemark.point.latitude, placemark.point.longitude)
-            marker.snippet = placemark.name
-            marker.appearAnimation = kGMSMarkerAnimationPop
-            marker.map = mapView
+    public var cameraZoom:Float {
+        set {
+            NSUserDefaults.standardUserDefaults().setFloat(newValue, forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
+        }
+        get {
+            return NSUserDefaults.standardUserDefaults().floatForKey(DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue) ?? PListHelper.defaultCameraZoom()
         }
     }
-    
-// MARK: GMSMapViewDelegate
-    
-    func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
-        if position.zoom > 0.0 {
-            ApplicationSharedState.sharedState.cameraZoom = position.zoom
+        
+    public class var sharedState : ApplicationSharedState {
+        struct Static {
+            static let instance = ApplicationSharedState()
         }
+        return Static.instance
     }
 }

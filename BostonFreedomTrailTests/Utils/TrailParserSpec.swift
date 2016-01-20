@@ -37,20 +37,23 @@ class TrailParserTest: QuickSpec {
         
         describe("TrailParser") {
             
-            beforeEach({ () -> () in
-
-            })
+            var trail:Trail?
             
-            afterEach({ () -> () in
-                
+            beforeEach({ () -> () in
+                trail = TrailParser().parseTrail()
             })
             
             context("Testing Parsing of Placemarks") {
                 
                 it("should parse out seventeen placemarks from the trail xml file") {
-                    let trailParser = TrailParser()
-                    let trail = trailParser.parseTrail()
-                    expect(trail.placemarks.count).to(equal(17))
+                    expect(trail!.placemarks.count).to(equal(17))
+                }
+                
+                it("should order the placemarks correctly after parsing") {
+                    for (index, placemark) in trail!.placemarks.enumerate() {
+                        let identifier = "placemark\(index + 1)"
+                        expect(placemark.identifier).to(equal(identifier))
+                    }
                 }
             }
         }

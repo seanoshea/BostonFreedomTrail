@@ -40,16 +40,26 @@ class MapViewController : UIViewController {
         super.viewDidLoad()
         createMapView()
         setupPlacemarks()
+        zoomToMostRecentPosition()
     }
     
     func createMapView() {
         let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:PListHelper.defaultCameraZoom())
-        self.mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
+        let mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
+        mapView.indoorEnabled = false
+        mapView.myLocationEnabled = true
+        mapView.settings.myLocationButton = true
+        mapView.settings.compassButton = false
+        self.mapView = mapView
         self.view = self.mapView
     }
     
     func setupPlacemarks() {
         self.mapView?.delegate = self.model
         self.model.createPlacemarksForMap(self.mapView!)
+    }
+    
+    func zoomToMostRecentPosition() {
+        
     }
 }
