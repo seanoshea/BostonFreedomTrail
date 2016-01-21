@@ -40,7 +40,7 @@ class MapModel : NSObject, GMSMapViewDelegate {
         self.trail = TrailParser().parseTrail()
     }
     
-    func createPlacemarksForMap(mapView:GMSMapView) {
+    func addPlacemarksToMap(mapView:GMSMapView) {
         for placemark:Placemark in self.trail.placemarks {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2DMake(placemark.point.latitude, placemark.point.longitude)

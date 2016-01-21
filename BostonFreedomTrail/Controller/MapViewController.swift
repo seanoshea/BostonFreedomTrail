@@ -46,6 +46,8 @@ class MapViewController : UIViewController {
     func createMapView() {
         let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:PListHelper.defaultCameraZoom())
         let mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
+        let mapInsets = UIEdgeInsetsMake(0.0, 5.0, 48.0, 0.0)
+        mapView.padding = mapInsets;
         mapView.indoorEnabled = false
         mapView.myLocationEnabled = true
         mapView.settings.myLocationButton = true
@@ -56,7 +58,7 @@ class MapViewController : UIViewController {
     
     func setupPlacemarks() {
         self.mapView?.delegate = self.model
-        self.model.createPlacemarksForMap(self.mapView!)
+        self.model.addPlacemarksToMap(self.mapView!)
     }
     
     func zoomToMostRecentPosition() {
