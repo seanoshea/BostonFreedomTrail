@@ -31,13 +31,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import Quick
 import Nimble
 
+import GoogleMaps
+
 class ApplicationSharedStateTest: QuickSpec {
     
     override func spec() {
         
         describe("ApplicationSharedState") {
             
-            context("Storing the camera zoom") {
+            context("the camera zoom") {
                 
                 it("should know the current camera zoom") {
                     
@@ -51,6 +53,39 @@ class ApplicationSharedStateTest: QuickSpec {
                     ApplicationSharedState.sharedState.cameraZoom = 8.0
                     
                     expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateCameraZoom")).to(equal(8.0))
+                }
+                
+                it("should not allow a camera zoom level that is too small") {
+
+                    ApplicationSharedState.sharedState.cameraZoom = 12.0
+                    
+                    ApplicationSharedState.sharedState.cameraZoom = 1.0
+                    
+                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateCameraZoom")).to(equal(12.0))
+                }
+            }
+            
+            context("the last placemark pressed") {
+                
+                let latitude:Double = -71.063303
+                let longitude:Double = 42.35769
+                
+                it("should be able to retrieve the lat and long of a recently pressed placemark") {
+                    
+                    NSUserDefaults.standardUserDefaults().setFloat(12.0, forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude")
+                    NSUserDefaults.standardUserDefaults().setFloat(11.0, forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude")
+                    
+                    let coordinate = ApplicationSharedState.sharedState.lastKnownPlacemarkCoordinate
+                    
+                    expect(coordinate.latitude).to(equal(12.0))
+                    expect(coordinate.longitude).to(equal(11.0))
+                }
+                
+                it("should be able to store the lat and long of a recently pressed placemark") {
+                    
+                    ApplicationSharedState.sharedState.lastKnownPlacemarkCoordinate = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
+                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude")).to(equal(-71.063303))
+                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude")).to(equal(42.35769))
                 }
             }
         }
