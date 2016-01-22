@@ -30,19 +30,37 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
+import GoogleMaps
+
 enum DefaultsKeys : String {
     case ApplicationSharedStateCameraZoom = "ApplicationSharedStateCameraZoom"
     case ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude"
+    case ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude"
 }
 
 public class ApplicationSharedState {
     
     public var cameraZoom:Float {
         set {
+            guard newValue > kGMSMinZoomLevel && newValue < kGMSMaxZoomLevel else {
+                return
+            }
             NSUserDefaults.standardUserDefaults().setFloat(newValue, forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
         }
         get {
             return NSUserDefaults.standardUserDefaults().floatForKey(DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue) ?? PListHelper.defaultCameraZoom()
+        }
+    }
+    
+    public var lastKnownPlacemarkCoordinate:CLLocationCoordinate2D {
+        set {
+            NSUserDefaults.standardUserDefaults().setDouble(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
+            NSUserDefaults.standardUserDefaults().setDouble(newValue.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
+        }
+        get {
+            let latitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
+            let longitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
+            return CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
         }
     }
         
