@@ -30,32 +30,25 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
-import GoogleMaps
+enum StoryboardExtensionConstants : String {
+    case StoryboardName = "Main"
+    case MapViewControllerIdentifier = "MapViewControllerIdentifier"
+    case AboutViewControllerIdentifier = "AboutViewControllerIdentifier"
+}
 
-class AboutViewController : UIViewController {
-  
-    @IBOutlet weak var developerLabel: AboutTitleLabel?
-    @IBOutlet weak var developerDetailsLabel: AboutDetailsLabel?
-    @IBOutlet weak var designerLabel: AboutTitleLabel?
-    @IBOutlet weak var designerDetailsLabel: AboutDetailsLabel?
-    @IBOutlet weak var nounProjectLabel: AboutTitleLabel?
-    @IBOutlet weak var nounProjectDetailsLabel: AboutDetailsLabel?
-    @IBOutlet weak var googleMapsLabel: AboutTitleLabel?
-    @IBOutlet weak var googleMapsDetailsLabel: AboutDetailsLabel?
+extension UIStoryboard {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.localizeLabels()
+    static func mapViewController() -> MapViewController {
+        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.MapViewControllerIdentifier.rawValue)
+        return vc as! MapViewController
     }
     
-    func localizeLabels() {
-        self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
-        self.developerDetailsLabel!.text = NSLocalizedString("Developed by Sean O'Shea", comment: "")
-        self.designerLabel!.text = NSLocalizedString("Designer Details", comment: "")
-        self.designerDetailsLabel!.text = NSLocalizedString("TBD", comment: "")
-        self.nounProjectLabel!.text = NSLocalizedString("Noun Project", comment: "")
-        self.nounProjectDetailsLabel!.text = NSLocalizedString("Some of the icons in this application are freely downloadable from The Noun Project. Information Icon by Creatorid'immagine & Map Icon by Stefan Zoll", comment: "")
-        self.googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
-        self.googleMapsDetailsLabel!.text = GMSServices.openSourceLicenseInfo()
+    static func aboutViewController() -> AboutViewController {
+        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.AboutViewControllerIdentifier.rawValue)
+        return vc as! AboutViewController
+    }
+    
+    static func mainStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: StoryboardExtensionConstants.StoryboardName.rawValue, bundle: nil)
     }
 }
