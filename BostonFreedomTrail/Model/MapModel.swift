@@ -57,4 +57,10 @@ class MapModel : NSObject, GMSMapViewDelegate {
             ApplicationSharedState.sharedState.cameraZoom = position.zoom
         }
     }
+    
+    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        ApplicationSharedState.sharedState.lastKnownPlacemarkCoordinate = marker.position
+        // TODO: Analytics
+        return true
+    }
 }
