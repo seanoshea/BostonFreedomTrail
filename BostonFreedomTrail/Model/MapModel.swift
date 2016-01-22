@@ -32,7 +32,7 @@ import Foundation
 
 import GoogleMaps
 
-class MapModel : NSObject, GMSMapViewDelegate {
+class MapModel : NSObject {
     
     var trail:Trail
     
@@ -43,24 +43,12 @@ class MapModel : NSObject, GMSMapViewDelegate {
     func addPlacemarksToMap(mapView:GMSMapView) {
         for placemark:Placemark in self.trail.placemarks {
             let marker = GMSMarker()
+            marker.userData = placemark;
             marker.position = CLLocationCoordinate2DMake(placemark.point.latitude, placemark.point.longitude)
-            marker.snippet = placemark.name
+            marker.title = placemark.name
+            marker.snippet = placemark.identifier
             marker.appearAnimation = kGMSMarkerAnimationPop
             marker.map = mapView
         }
-    }
-    
-// MARK: GMSMapViewDelegate
-    
-    func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
-        if position.zoom > 0.0 {
-            ApplicationSharedState.sharedState.cameraZoom = position.zoom
-        }
-    }
-    
-    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        ApplicationSharedState.sharedState.lastKnownPlacemarkCoordinate = marker.position
-        // TODO: Analytics
-        return true
     }
 }

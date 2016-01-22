@@ -28,11 +28,13 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
+import Foundation
 
-class PlacemarkViewController : UIViewController {
+class PlacemarkModel : NSObject {
     
-    var model:PlacemarkModel?
+    var placemark:Placemark?
     
+    init(placemark:Placemark) {
+        self.placemark = placemark
+    }
 }
-
