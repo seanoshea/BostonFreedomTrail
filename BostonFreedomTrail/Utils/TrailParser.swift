@@ -42,6 +42,7 @@ enum TrailParserConstants : String {
     case point = "Point"
     case coordinates = "coordinates"
     case identifier = "id"
+    case lineString = "LineString"
 }
 
 public class TrailParser : NSObject, NSXMLParserDelegate {
@@ -55,9 +56,12 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
     var startDescription = false
     var startPoint = false
     var startCoordinates = false
+    var startLine = false
+    var startLineCoordinates = false
     
     var currentIdentifier:String?
     var currentName:String?
+    var currentLineCoordinates:String?
     var currentDescription:String?
 
     public func parseTrail() -> Trail {
@@ -85,8 +89,15 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
         case TrailParserConstants.description.rawValue:
             startDescription = true
             break
+        case TrailParserConstants.lineString.rawValue:
+            startLine = true
+            break
         case TrailParserConstants.coordinates.rawValue:
-            startCoordinates = true
+            if startLine {
+                startLineCoordinates = true
+            } else {
+                startCoordinates = true
+            }
             break
         case TrailParserConstants.point.rawValue:
             startPoint = true
@@ -103,10 +114,12 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
                 currentName = string
             } else if startDescription {
                 currentDescription = string
-            } else if startCoordinates && currentPoint != nil {
+            } else if startCoordinates && !startLineCoordinates {
                 let coordinates = string.componentsSeparatedByString(",")
                 currentPoint?.longitude = Double(coordinates[0])!
                 currentPoint?.latitude = Double(coordinates[1])!
+            } else if startLineCoordinates {
+                currentLineCoordinates = string
             }
         }
     }
@@ -123,19 +136,40 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             startDescription = false
             break
         case TrailParserConstants.coordinates.rawValue:
-            startCoordinates = false
+            if startLine {
+                startLineCoordinates = false
+            } else {
+                startCoordinates = false
+            }
             break
         case TrailParserConstants.point.rawValue:
             startPoint = false
-            let placemark = Placemark(identifier: currentIdentifier!, name: currentName!, point: currentPoint!, placemarkDescription: currentDescription!)
-            trail.placemarks.append(placemark)
-            currentPoint = nil
             break
         case TrailParserConstants.placemark.rawValue:
             startPlacemark = false
             break
+        case TrailParserConstants.lineString.rawValue:
+            startLine = false
+            let placemark = Placemark(identifier: currentIdentifier!, name: currentName!, point: currentPoint!, coordinates: self.parseLineCoordinates(), placemarkDescription: currentDescription!)
+            trail.placemarks.append(placemark)
+            break
         default:
             break
         }
+    }
+    
+    func parseLineCoordinates() -> [Point] {
+        var path = [Point]()
+        guard currentLineCoordinates != nil else { return path }
+        currentLineCoordinates = currentLineCoordinates?.stringByReplacingOccurrencesOfString("0.0 ", withString: "")
+        var coordinatesArray = currentLineCoordinates!.componentsSeparatedByString(",")
+        coordinatesArray.removeLast()
+        for index in 0.stride(to: coordinatesArray.count - 1, by: 2) {
+            let point:Point = Point.init()
+            point.longitude = Double(coordinatesArray[index])!
+            point.latitude = Double(coordinatesArray[index + 1])!
+            path.append(point)
+        }
+        return path
     }
 }

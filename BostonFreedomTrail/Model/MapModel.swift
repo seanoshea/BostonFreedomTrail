@@ -54,4 +54,19 @@ class MapModel : NSObject {
         }
         return markers
     }
+    
+    func addPathToMap(mapView:GMSMapView) {
+        let path = GMSMutablePath()
+        for placemark:Placemark in self.trail.placemarks {
+            for point:Point in placemark.coordinates {
+                path.addLatitude(point.latitude, longitude: point.longitude)
+            }
+        }
+
+        let polyline = GMSPolyline(path: path)
+        polyline.strokeColor = UIColor.lightGrayColor()
+        polyline.strokeWidth = 5.0
+        
+        polyline.map = mapView
+    }
 }
