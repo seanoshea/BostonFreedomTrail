@@ -33,6 +33,8 @@ import Nimble
 
 @testable import BostonFreedomTrail
 
+import GoogleMaps
+
 class MapModelTest: QuickSpec {
     
     override func spec() {
@@ -41,8 +43,21 @@ class MapModelTest: QuickSpec {
             
             context("Adding the placemarks") {
                 
+                var subject:MapModel?
+                var mapViewController:MapViewController
+                
+                beforeEach({ () -> () in
+                    subject = MapModel.init()
+                    mapViewController = UIStoryboard.mapViewController()
+                    mapViewController?.view
+                })
+                
                 it("should add all the placemarks to the map") {
-
+                    let mapView:GMSMapView = mapViewController.mapView
+                    let placemarks = subject?.addPlacemarksToMap(mapView)
+                    let marker:GMSMarker = placemarks![0]
+                    
+                    expect(marker.map).toNot(beNil())
                 }
             }
         }

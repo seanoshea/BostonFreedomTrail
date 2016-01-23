@@ -40,7 +40,8 @@ class MapModel : NSObject {
         self.trail = TrailParser().parseTrail()
     }
     
-    func addPlacemarksToMap(mapView:GMSMapView) {
+    func addPlacemarksToMap(mapView:GMSMapView) -> [GMSMarker] {
+        var markers = [GMSMarker]()
         for placemark:Placemark in self.trail.placemarks {
             let marker = GMSMarker()
             marker.userData = placemark;
@@ -49,6 +50,8 @@ class MapModel : NSObject {
             marker.snippet = placemark.identifier
             marker.appearAnimation = kGMSMarkerAnimationPop
             marker.map = mapView
+            markers.append(marker)
         }
+        return markers
     }
 }
