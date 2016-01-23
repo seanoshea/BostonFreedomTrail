@@ -32,6 +32,7 @@ import Quick
 import Nimble
 
 import GoogleMaps
+@testable import BostonFreedomTrail
 
 class ApplicationSharedStateTest: QuickSpec {
     

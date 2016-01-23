@@ -30,6 +30,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
+@testable import BostonFreedomTrail
+
 enum StoryboardExtensionConstants : String {
     case StoryboardName = "Main"
     case MapViewControllerIdentifier = "MapViewControllerIdentifier"

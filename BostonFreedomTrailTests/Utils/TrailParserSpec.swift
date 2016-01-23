@@ -31,6 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import Quick
 import Nimble
 
+@testable import BostonFreedomTrail
+
 class TrailParserTest: QuickSpec {
     
     override func spec() {
