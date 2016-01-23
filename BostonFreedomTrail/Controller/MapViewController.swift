@@ -69,6 +69,7 @@ class MapViewController : UIViewController, GMSMapViewDelegate {
     
     func setupPlacemarks() {
         self.model.addPlacemarksToMap(self.mapView!)
+        self.model.addPathToMap(self.mapView!)
     }
     
     func zoomToMostRecentPosition() {
