@@ -31,6 +31,7 @@
 		41237C1A1C4921E50007F76B /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C191C4921E50007F76B /* MapModel.swift */; };
 		41237C1C1C4923D20007F76B /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
 		41237C211C49244D0007F76B /* TrailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* TrailParser.swift */; };
+		41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */; };
 		415095441C4DA11C00681F82 /* PListHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415095431C4DA11C00681F82 /* PListHelperSpec.swift */; };
 		41691D221C4C0034009A03B3 /* TrailParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41691D211C4C0034009A03B3 /* TrailParserSpec.swift */; };
 		41691D231C4C036B009A03B3 /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
@@ -82,6 +83,7 @@
 		41237C191C4921E50007F76B /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		41237C1B1C4923D20007F76B /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
 		41237C201C49244D0007F76B /* TrailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParser.swift; sourceTree = "<group>"; };
+		41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkViewButton.swift; sourceTree = "<group>"; };
 		415095431C4DA11C00681F82 /* PListHelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListHelperSpec.swift; sourceTree = "<group>"; };
 		41691D211C4C0034009A03B3 /* TrailParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParserSpec.swift; sourceTree = "<group>"; };
 		41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedState.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */,
+				41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				41237C1C1C4923D20007F76B /* Trail.swift in Sources */,
 				41237C211C49244D0007F76B /* TrailParser.swift in Sources */,
 				41237C181C4921690007F76B /* StreetViewViewController.swift in Sources */,
+				41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */,
 				41237C161C4921550007F76B /* WikipediaViewController.swift in Sources */,
 				41E1C3711C525B670009570C /* Constants.swift in Sources */,
 				41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */,

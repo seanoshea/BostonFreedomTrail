@@ -12,7 +12,7 @@ documentation and/or other materials provided with the distribution.
 3. All advertising materials mentioning features or use of this software
 must display the following acknowledgement:
 This product includes software developed by Upwards Northwards Software Limited.
-4. Neither the name of Upwards Northwards Software Limited nor the
+4. Neither th e name of Upwards Northwards Software Limited nor the
 names of its contributors may be used to endorse or promote products
 derived from this software without specific prior written permission.
 
@@ -30,20 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
-class PlacemarkViewController : UIViewController {
+class PlacemarkViewButton : UIButton {
     
-    @IBOutlet weak var webView: UIWebView?
-    @IBOutlet weak var wikipediaButton: UIButton?
-    @IBOutlet weak var streetViewButton: UIButton?
-    
-    var model:PlacemarkModel?
-    
-    @IBAction func streetViewButtonPressed() {
-    
-    }
-
-    @IBAction func wikipediaButtonPressed() {
-        
-    }
 }
-
