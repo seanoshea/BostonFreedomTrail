@@ -44,7 +44,7 @@ class MapModelTest: QuickSpec {
             context("Adding the placemarks") {
                 
                 var subject:MapModel?
-                var mapViewController:MapViewController
+                var mapViewController:MapViewController?
                 
                 beforeEach({ () -> () in
                     subject = MapModel.init()
@@ -53,7 +53,7 @@ class MapModelTest: QuickSpec {
                 })
                 
                 it("should add all the placemarks to the map") {
-                    let mapView:GMSMapView = mapViewController.mapView
+                    let mapView:GMSMapView = (mapViewController?.mapView)!
                     let placemarks = subject?.addPlacemarksToMap(mapView)
                     let marker:GMSMarker = placemarks![0]
                     
