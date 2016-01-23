@@ -31,6 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import Quick
 import Nimble
 
+@testable import BostonFreedomTrail
+
 class AboutViewControllerTest: QuickSpec {
     
     override func spec() {
@@ -39,32 +41,32 @@ class AboutViewControllerTest: QuickSpec {
             
             context("Initialization of the AboutViewController") {
                 
-//                var aboutViewController:AboutViewController?
-//                
-//                beforeEach({ () -> () in
-//                    aboutViewController = UIStoryboard.aboutViewController()
-//                    aboutViewController?.view
-//                })
-//                
-//                it("should have labels set via IBOutlets") {
-//                    expect(aboutViewController?.developerLabel).toNot(equal(nil))
-//                    expect(aboutViewController?.developerDetailsLabel).toNot(equal(nil))
-//                    expect(aboutViewController?.designerLabel).toNot(equal(nil))
-//                    expect(aboutViewController?.designerDetailsLabel).toNot(equal(nil))
-//                    expect(aboutViewController?.nounProjectLabel).toNot(equal(nil))
-//                    expect(aboutViewController?.nounProjectDetailsLabel).toNot(equal(nil))
-//                    expect(aboutViewController?.googleMapsLabel).toNot(equal(nil))
-//                }
-//                
-//                it("should have text on each of its labels") {
-//                    expect(aboutViewController?.developerLabel?.text).toNot(equal(""))
-//                    expect(aboutViewController?.developerDetailsLabel?.text).toNot(equal(""))
-//                    expect(aboutViewController?.designerLabel?.text).toNot(equal(""))
-//                    expect(aboutViewController?.designerDetailsLabel?.text).toNot(equal(""))
-//                    expect(aboutViewController?.nounProjectLabel?.text).toNot(equal(""))
-//                    expect(aboutViewController?.nounProjectDetailsLabel?.text).toNot(equal(""))
-//                    expect(aboutViewController?.googleMapsLabel?.text).toNot(equal(""))
-//                }
+                var aboutViewController:AboutViewController?
+                
+                beforeEach({ () -> () in
+                    aboutViewController = UIStoryboard.aboutViewController()
+                    aboutViewController?.view
+                })
+                
+                it("should have labels set via IBOutlets") {
+                    expect(aboutViewController?.developerLabel).toNot(equal(nil))
+                    expect(aboutViewController?.developerDetailsLabel).toNot(equal(nil))
+                    expect(aboutViewController?.designerLabel).toNot(equal(nil))
+                    expect(aboutViewController?.designerDetailsLabel).toNot(equal(nil))
+                    expect(aboutViewController?.nounProjectLabel).toNot(equal(nil))
+                    expect(aboutViewController?.nounProjectDetailsLabel).toNot(equal(nil))
+                    expect(aboutViewController?.googleMapsLabel).toNot(equal(nil))
+                }
+                
+                it("should have text on each of its labels") {
+                    expect(aboutViewController?.developerLabel?.text).toNot(equal(""))
+                    expect(aboutViewController?.developerDetailsLabel?.text).toNot(equal(""))
+                    expect(aboutViewController?.designerLabel?.text).toNot(equal(""))
+                    expect(aboutViewController?.designerDetailsLabel?.text).toNot(equal(""))
+                    expect(aboutViewController?.nounProjectLabel?.text).toNot(equal(""))
+                    expect(aboutViewController?.nounProjectDetailsLabel?.text).toNot(equal(""))
+                    expect(aboutViewController?.googleMapsLabel?.text).toNot(equal(""))
+                }
             }
         }
     }

@@ -9,15 +9,7 @@
 /* Begin PBXBuildFile section */
 		02C99F49ED538590AF59B9D4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C2543599204AB4B2D5CCB5 /* Pods.framework */; };
 		41079D5F1C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */; };
-		41079D601C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */; };
-		41079D631C4FBAC300BF2CFF /* AboutViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */; };
-		41079D661C4FBBA000BF2CFF /* StoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D651C4FBBA000BF2CFF /* StoryboardExtensions.swift */; };
-		41079D671C4FBCC300BF2CFF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C0F1C4921070007F76B /* AboutViewController.swift */; };
-		41079D681C4FBE6700BF2CFF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C111C4921210007F76B /* MapViewController.swift */; };
-		410AFEE21C4D980F007DF354 /* MapModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE11C4D980F007DF354 /* MapModelSpec.swift */; };
-		410AFEE51C4D9930007DF354 /* MapViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */; };
 		410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE61C4D9B0F007DF354 /* PListHelper.swift */; };
-		410AFEE81C4D9E0C007DF354 /* PListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE61C4D9B0F007DF354 /* PListHelper.swift */; };
 		41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237BE71C486CDF0007F76B /* AppDelegate.swift */; };
 		41237BEF1C486CDF0007F76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41237BED1C486CDF0007F76B /* Main.storyboard */; };
 		41237BF11C486CDF0007F76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41237BF01C486CDF0007F76B /* Assets.xcassets */; };
@@ -31,15 +23,17 @@
 		41237C1A1C4921E50007F76B /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C191C4921E50007F76B /* MapModel.swift */; };
 		41237C1C1C4923D20007F76B /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
 		41237C211C49244D0007F76B /* TrailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* TrailParser.swift */; };
-		415095441C4DA11C00681F82 /* PListHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415095431C4DA11C00681F82 /* PListHelperSpec.swift */; };
-		41691D221C4C0034009A03B3 /* TrailParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41691D211C4C0034009A03B3 /* TrailParserSpec.swift */; };
-		41691D231C4C036B009A03B3 /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
-		41691D241C4C036B009A03B3 /* TrailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* TrailParser.swift */; };
-		41691D251C4C0379009A03B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237BE71C486CDF0007F76B /* AppDelegate.swift */; };
-		41691D261C4C0379009A03B3 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C191C4921E50007F76B /* MapModel.swift */; };
+		41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */; };
 		41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
-		41CB50E11C4EFF9400FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
-		41CB50E31C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */; };
+		41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */; };
+		41D0F4EB1C53E64A00FCAB17 /* AboutViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */; };
+		41D0F4EC1C53E64A00FCAB17 /* MapModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE11C4D980F007DF354 /* MapModelSpec.swift */; };
+		41D0F4ED1C53E64A00FCAB17 /* StoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D651C4FBBA000BF2CFF /* StoryboardExtensions.swift */; };
+		41D0F4EE1C53E64A00FCAB17 /* ApplicationSharedStateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */; };
+		41D0F4EF1C53E64A00FCAB17 /* PListHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415095431C4DA11C00681F82 /* PListHelperSpec.swift */; };
+		41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41691D211C4C0034009A03B3 /* TrailParserSpec.swift */; };
+		41E1C3711C525B670009570C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E1C3701C525B670009570C /* Constants.swift */; };
+		41E1C3751C525F420009570C /* PlacemarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E1C3741C525F420009570C /* PlacemarkModel.swift */; };
 		CF369AA8CC8EC25E478A4126 /* Pods_BostonFreedomTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,11 +71,14 @@
 		41237C191C4921E50007F76B /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		41237C1B1C4923D20007F76B /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
 		41237C201C49244D0007F76B /* TrailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParser.swift; sourceTree = "<group>"; };
+		41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkViewButton.swift; sourceTree = "<group>"; };
 		415095431C4DA11C00681F82 /* PListHelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListHelperSpec.swift; sourceTree = "<group>"; };
 		41691D211C4C0034009A03B3 /* TrailParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParserSpec.swift; sourceTree = "<group>"; };
 		41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedState.swift; sourceTree = "<group>"; };
 		41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedStateSpec.swift; sourceTree = "<group>"; };
 		41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		41E1C3701C525B670009570C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		41E1C3741C525F420009570C /* PlacemarkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkModel.swift; sourceTree = "<group>"; };
 		46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BostonFreedomTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F7E77009F744B3C6A681368 /* Pods-BostonFreedomTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrailTests/Pods-BostonFreedomTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF363DE63FB716C518554FBA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				41237C191C4921E50007F76B /* MapModel.swift */,
+				41E1C3741C525F420009570C /* PlacemarkModel.swift */,
 				41237C1B1C4923D20007F76B /* Trail.swift */,
 			);
 			path = Model;
@@ -205,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */,
+				41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */,
+				41E1C3701C525B670009570C /* Constants.swift */,
 				410AFEE61C4D9B0F007DF354 /* PListHelper.swift */,
 				41237C201C49244D0007F76B /* TrailParser.swift */,
 			);
@@ -469,11 +469,14 @@
 				41237C1C1C4923D20007F76B /* Trail.swift in Sources */,
 				41237C211C49244D0007F76B /* TrailParser.swift in Sources */,
 				41237C181C4921690007F76B /* StreetViewViewController.swift in Sources */,
+				41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */,
 				41237C161C4921550007F76B /* WikipediaViewController.swift in Sources */,
+				41E1C3711C525B670009570C /* Constants.swift in Sources */,
 				41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */,
 				41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */,
 				41237C101C4921070007F76B /* AboutViewController.swift in Sources */,
 				410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */,
+				41E1C3751C525F420009570C /* PlacemarkModel.swift in Sources */,
 				41237C121C4921210007F76B /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,22 +485,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41CB50E31C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift in Sources */,
-				41079D631C4FBAC300BF2CFF /* AboutViewControllerSpec.swift in Sources */,
-				41079D601C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */,
-				41079D671C4FBCC300BF2CFF /* AboutViewController.swift in Sources */,
-				415095441C4DA11C00681F82 /* PListHelperSpec.swift in Sources */,
-				410AFEE81C4D9E0C007DF354 /* PListHelper.swift in Sources */,
-				410AFEE51C4D9930007DF354 /* MapViewControllerSpec.swift in Sources */,
-				41CB50E11C4EFF9400FFBD9E /* ApplicationSharedState.swift in Sources */,
-				41691D251C4C0379009A03B3 /* AppDelegate.swift in Sources */,
-				41691D261C4C0379009A03B3 /* MapModel.swift in Sources */,
-				41691D231C4C036B009A03B3 /* Trail.swift in Sources */,
-				41079D661C4FBBA000BF2CFF /* StoryboardExtensions.swift in Sources */,
-				41691D241C4C036B009A03B3 /* TrailParser.swift in Sources */,
-				41691D221C4C0034009A03B3 /* TrailParserSpec.swift in Sources */,
-				410AFEE21C4D980F007DF354 /* MapModelSpec.swift in Sources */,
-				41079D681C4FBE6700BF2CFF /* MapViewController.swift in Sources */,
+				41D0F4EE1C53E64A00FCAB17 /* ApplicationSharedStateSpec.swift in Sources */,
+				41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */,
+				41D0F4EB1C53E64A00FCAB17 /* AboutViewControllerSpec.swift in Sources */,
+				41D0F4EF1C53E64A00FCAB17 /* PListHelperSpec.swift in Sources */,
+				41D0F4ED1C53E64A00FCAB17 /* StoryboardExtensions.swift in Sources */,
+				41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */,
+				41D0F4EC1C53E64A00FCAB17 /* MapModelSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +545,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -596,6 +591,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -619,6 +615,7 @@
 			baseConfigurationReference = AF363DE63FB716C518554FBA /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = NO;
 				INFOPLIST_FILE = BostonFreedomTrail/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrail;
@@ -632,6 +629,7 @@
 			baseConfigurationReference = EFD3B8AB5645EDE10FDEEAA7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = NO;
 				INFOPLIST_FILE = BostonFreedomTrail/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrail;
@@ -648,6 +646,7 @@
 				INFOPLIST_FILE = BostonFreedomTrailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrailTests;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)Tests";
 				PRODUCT_NAME = BostonFreedomTrail;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BostonFreedomTrail.app/BostonFreedomTrail";
 			};
@@ -661,6 +660,7 @@
 				INFOPLIST_FILE = BostonFreedomTrailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrailTests;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)Tests";
 				PRODUCT_NAME = BostonFreedomTrail;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BostonFreedomTrail.app/BostonFreedomTrail";
 			};

@@ -32,5 +32,18 @@ import UIKit
 
 class PlacemarkViewController : UIViewController {
     
+    @IBOutlet weak var webView: UIWebView?
+    @IBOutlet weak var wikipediaButton: UIButton?
+    @IBOutlet weak var streetViewButton: UIButton?
+    
+    var model:PlacemarkModel?
+    
+    @IBAction func streetViewButtonPressed() {
+    
+    }
+
+    @IBAction func wikipediaButtonPressed() {
+        
+    }
 }
 

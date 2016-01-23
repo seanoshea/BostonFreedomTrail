@@ -63,6 +63,12 @@ public class ApplicationSharedState {
             return CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
         }
     }
+    
+    public func clear() {
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
+    }
         
     public class var sharedState : ApplicationSharedState {
         struct Static {

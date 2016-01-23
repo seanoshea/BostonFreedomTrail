@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 import GoogleMaps
 
-class MapViewController : UIViewController {
+class MapViewController : UIViewController, GMSMapViewDelegate {
     
     var model:MapModel = MapModel()
     var mapView:GMSMapView?
@@ -43,6 +43,16 @@ class MapViewController : UIViewController {
         zoomToMostRecentPosition()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == NSComparisonResult.OrderedSame {
+                let placemarkViewController = segue.destinationViewController as! PlacemarkViewController
+                let placemark = self.mapView?.selectedMarker.userData as! Placemark
+                placemarkViewController.model = PlacemarkModel.init(placemark: placemark)
+            }
+        }
+    }
+    
     func createMapView() {
         let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:PListHelper.defaultCameraZoom())
         let mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
@@ -52,16 +62,36 @@ class MapViewController : UIViewController {
         mapView.myLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.settings.compassButton = false
+        mapView.delegate = self
         self.mapView = mapView
         self.view = self.mapView
     }
     
     func setupPlacemarks() {
-        self.mapView?.delegate = self.model
         self.model.addPlacemarksToMap(self.mapView!)
     }
     
     func zoomToMostRecentPosition() {
         
+    }
+    
+// MARK: GMSMapViewDelegate
+    
+    func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
+        if position.zoom > 0.0 {
+            ApplicationSharedState.sharedState.cameraZoom = position.zoom
+        }
+    }
+    
+    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        ApplicationSharedState.sharedState.lastKnownPlacemarkCoordinate = marker.position
+        // TODO: Analytics
+        return false
+    }
+    
+    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
+        ApplicationSharedState.sharedState.lastKnownPlacemarkCoordinate = marker.position
+        // TODO: Analytics
+        self.performSegueWithIdentifier(SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
     }
 }

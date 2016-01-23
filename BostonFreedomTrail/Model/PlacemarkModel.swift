@@ -30,28 +30,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-import GoogleMaps
-
-class MapModel : NSObject {
+class PlacemarkModel : NSObject {
     
-    var trail:Trail
+    var placemark:Placemark?
     
-    override init() {
-        self.trail = TrailParser().parseTrail()
-    }
-    
-    func addPlacemarksToMap(mapView:GMSMapView) -> [GMSMarker] {
-        var markers = [GMSMarker]()
-        for placemark:Placemark in self.trail.placemarks {
-            let marker = GMSMarker()
-            marker.userData = placemark;
-            marker.position = CLLocationCoordinate2DMake(placemark.point.latitude, placemark.point.longitude)
-            marker.title = placemark.name
-            marker.snippet = placemark.identifier
-            marker.appearAnimation = kGMSMarkerAnimationPop
-            marker.map = mapView
-            markers.append(marker)
-        }
-        return markers
+    init(placemark:Placemark) {
+        self.placemark = placemark
     }
 }

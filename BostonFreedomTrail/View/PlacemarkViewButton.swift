@@ -12,7 +12,7 @@ documentation and/or other materials provided with the distribution.
 3. All advertising materials mentioning features or use of this software
 must display the following acknowledgement:
 This product includes software developed by Upwards Northwards Software Limited.
-4. Neither the name of Upwards Northwards Software Limited nor the
+4. Neither th e name of Upwards Northwards Software Limited nor the
 names of its contributors may be used to endorse or promote products
 derived from this software without specific prior written permission.
 
@@ -28,30 +28,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import Foundation
+import UIKit
 
-import GoogleMaps
-
-class MapModel : NSObject {
+class PlacemarkViewButton : UIButton {
     
-    var trail:Trail
-    
-    override init() {
-        self.trail = TrailParser().parseTrail()
-    }
-    
-    func addPlacemarksToMap(mapView:GMSMapView) -> [GMSMarker] {
-        var markers = [GMSMarker]()
-        for placemark:Placemark in self.trail.placemarks {
-            let marker = GMSMarker()
-            marker.userData = placemark;
-            marker.position = CLLocationCoordinate2DMake(placemark.point.latitude, placemark.point.longitude)
-            marker.title = placemark.name
-            marker.snippet = placemark.identifier
-            marker.appearAnimation = kGMSMarkerAnimationPop
-            marker.map = mapView
-            markers.append(marker)
-        }
-        return markers
-    }
 }

@@ -31,16 +31,73 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import Quick
 import Nimble
 
+@testable import BostonFreedomTrail
+
+import GoogleMaps
+
 class MapViewControllerTest: QuickSpec {
     
     override func spec() {
         
         describe("MapViewController") {
+
+            var subject:MapViewController?
+            
+            beforeEach({ () -> () in
+                subject = UIStoryboard.mapViewController()
+                subject?.view
+                ApplicationSharedState.sharedState.clear()
+            })
             
             context("Initialization of the MapViewController") {
                 
+                it("should have a model set by default") {
+                    expect(subject?.model).toNot(beNil())
+                }
+                
                 it("should ensure that the view is set to a GMSMapView when it is loaded") {
+                    expect(subject?.mapView).toNot(beNil())
+                }
+                
+                it("should set up the map to allow a location button and disallow a compass button") {
+                    let mapView:GMSMapView = (subject?.mapView)!
+                    expect(mapView.settings.compassButton).to(beFalse())
+                    expect(mapView.myLocationEnabled).to(beTrue())
+                    expect(mapView.settings.myLocationButton).to(beTrue())
+                }
+                
+                it("should disable the indoor capabilities of the map view") {
+                    let mapView:GMSMapView = (subject?.mapView)!
+                    expect(mapView.indoorEnabled).to(beFalse())
+                }
+                
+                it("should set the delegate of the map view to be the MapViewController") {
+                    let mapView:GMSMapView = (subject?.mapView)!
+                    expect(mapView.delegate).toNot(beNil())
+                }
+            }
+            
+            context("GMSMapViewDelegate") {
+                
+                it("should set the zoom level in the application state when the user zooms with the camera") {
+                    let zoom:Float = 14
+                    let position:GMSCameraPosition = GMSCameraPosition.init(target: CLLocationCoordinate2D.init(latitude: 45, longitude: 45), zoom: zoom, bearing: 14.0, viewingAngle: 1.2)
                     
+                    subject?.mapView(subject?.mapView, didChangeCameraPosition: position)
+                    
+                    expect(ApplicationSharedState.sharedState.cameraZoom).to(equal(zoom))
+                }
+                
+                it("should set the last known placemark in the application state when the user taps on a marker") {
+                    
+                    let marker = GMSMarker.init(position: CLLocationCoordinate2D.init(latitude: 45, longitude: 45))
+                    
+                    subject?.mapView(subject?.mapView, didTapMarker: marker)
+                    
+                    let lastKnownPlacemark = ApplicationSharedState.sharedState.lastKnownPlacemarkCoordinate
+                    
+                    expect(lastKnownPlacemark.latitude).to(equal(45))
+                    expect(lastKnownPlacemark.longitude).to(equal(45))
                 }
             }
         }
