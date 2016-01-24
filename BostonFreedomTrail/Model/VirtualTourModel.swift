@@ -28,35 +28,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
+import Foundation
 
-@testable import BostonFreedomTrail
-
-enum StoryboardExtensionConstants : String {
-    case StoryboardName = "Main"
-    case MapViewControllerIdentifier = "MapViewControllerIdentifier"
-    case AboutViewControllerIdentifier = "AboutViewControllerIdentifier"
-    case VirtualTourControllerIdentifier = "VirtualTourControllerIdentifier"
-}
-
-extension UIStoryboard {
+class VirtialTourModel : NSObject {
     
-    static func mapViewController() -> MapViewController {
-        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.MapViewControllerIdentifier.rawValue)
-        return vc as! MapViewController
-    }
-    
-    static func aboutViewController() -> AboutViewController {
-        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.AboutViewControllerIdentifier.rawValue)
-        return vc as! AboutViewController
-    }
-    
-    static func virtualTourController() -> VirtualTourViewController {
-        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.VirtualTourControllerIdentifier.rawValue)
-        return vc as! VirtualTourViewController
-    }
-    
-    static func mainStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: StoryboardExtensionConstants.StoryboardName.rawValue, bundle: nil)
-    }
 }

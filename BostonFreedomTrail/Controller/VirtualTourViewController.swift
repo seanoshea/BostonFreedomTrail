@@ -12,7 +12,7 @@ documentation and/or other materials provided with the distribution.
 3. All advertising materials mentioning features or use of this software
 must display the following acknowledgement:
 This product includes software developed by Upwards Northwards Software Limited.
-4. Neither the name of Upwards Northwards Software Limited nor the
+4. Neither th e name of Upwards Northwards Software Limited nor the
 names of its contributors may be used to endorse or promote products
 derived from this software without specific prior written permission.
 
@@ -30,33 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
-@testable import BostonFreedomTrail
-
-enum StoryboardExtensionConstants : String {
-    case StoryboardName = "Main"
-    case MapViewControllerIdentifier = "MapViewControllerIdentifier"
-    case AboutViewControllerIdentifier = "AboutViewControllerIdentifier"
-    case VirtualTourControllerIdentifier = "VirtualTourControllerIdentifier"
-}
-
-extension UIStoryboard {
+class VirtualTourViewController : UIViewController {
     
-    static func mapViewController() -> MapViewController {
-        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.MapViewControllerIdentifier.rawValue)
-        return vc as! MapViewController
-    }
-    
-    static func aboutViewController() -> AboutViewController {
-        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.AboutViewControllerIdentifier.rawValue)
-        return vc as! AboutViewController
-    }
-    
-    static func virtualTourController() -> VirtualTourViewController {
-        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.VirtualTourControllerIdentifier.rawValue)
-        return vc as! VirtualTourViewController
-    }
-    
-    static func mainStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: StoryboardExtensionConstants.StoryboardName.rawValue, bundle: nil)
-    }
+    var model:VirtialTourModel?
 }
