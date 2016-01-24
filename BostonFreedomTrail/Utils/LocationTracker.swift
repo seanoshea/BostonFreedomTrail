@@ -51,6 +51,8 @@ public class LocationTracker : NSObject, CLLocationManagerDelegate {
         self.locationManager.startUpdatingLocation()
     }
     
+// MARK: CLLocationManagerDelegate
+    
     public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         LocationTracker.sharedInstance.currentLocation = locations.last
         if let lastKnownLocation = LocationTracker.sharedInstance.currentLocation {

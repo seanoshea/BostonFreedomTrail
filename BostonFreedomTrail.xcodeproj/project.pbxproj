@@ -33,6 +33,7 @@
 		41D0F4EF1C53E64A00FCAB17 /* PListHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415095431C4DA11C00681F82 /* PListHelperSpec.swift */; };
 		41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41691D211C4C0034009A03B3 /* TrailParserSpec.swift */; };
 		41DE05E21C5515B0008AFCA5 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */; };
+		41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */; };
 		41E1C3711C525B670009570C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E1C3701C525B670009570C /* Constants.swift */; };
 		41E1C3751C525F420009570C /* PlacemarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E1C3741C525F420009570C /* PlacemarkModel.swift */; };
 		CF369AA8CC8EC25E478A4126 /* Pods_BostonFreedomTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */; };
@@ -79,6 +80,7 @@
 		41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedStateSpec.swift; sourceTree = "<group>"; };
 		41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracker.swift; sourceTree = "<group>"; };
+		41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackerSpec.swift; sourceTree = "<group>"; };
 		41E1C3701C525B670009570C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		41E1C3741C525F420009570C /* PlacemarkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkModel.swift; sourceTree = "<group>"; };
 		46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BostonFreedomTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */,
+				41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */,
 				415095431C4DA11C00681F82 /* PListHelperSpec.swift */,
 				41691D211C4C0034009A03B3 /* TrailParserSpec.swift */,
 			);
@@ -493,6 +496,7 @@
 				41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */,
 				41D0F4EB1C53E64A00FCAB17 /* AboutViewControllerSpec.swift in Sources */,
 				41D0F4EF1C53E64A00FCAB17 /* PListHelperSpec.swift in Sources */,
+				41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */,
 				41D0F4ED1C53E64A00FCAB17 /* StoryboardExtensions.swift in Sources */,
 				41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */,
 				41D0F4EC1C53E64A00FCAB17 /* MapModelSpec.swift in Sources */,
