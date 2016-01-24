@@ -30,7 +30,40 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
+import GoogleMaps
+
 class VirtualTourViewController : UIViewController {
     
-    var model:VirtialTourModel?
+    var model:MapModel = MapModel()
+    var panoView:GMSPanoramaView?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let firstPlacemark = self.model.trail.placemarks[0]
+        let panoramaNear = CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude)
+        let panoView = GMSPanoramaView.panoramaWithFrame(CGRectZero,
+            nearCoordinate:panoramaNear)
+        self.panoView = panoView
+        self.view = panoView
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let delay = 1
+        var positionOffset:Int = 0
+        
+        for (placemarkIndex, placemark) in self.model.trail.placemarks.enumerate() {
+            for (index, location) in placemark.coordinates.enumerate() {
+                let offset = (index + placemarkIndex) * delay
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(offset + positionOffset) * Double(NSEC_PER_SEC)))
+                if index == placemark.coordinates.count - 1 {
+                    positionOffset = positionOffset + Int(offset) - 1
+                }
+                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude))
+                }
+            }
+        }
+    }
 }
