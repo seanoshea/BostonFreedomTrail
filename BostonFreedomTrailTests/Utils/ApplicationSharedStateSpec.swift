@@ -89,6 +89,31 @@ class ApplicationSharedStateTest: QuickSpec {
                     expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude")).to(equal(42.35769))
                 }
             }
+            
+            context("the last coordinate the user was found at") {
+                
+                let latitude:Double = -71.063303
+                let longitude:Double = 42.35769
+                
+                it("should be able to retrieve the lat and long of where the user was most recently seen") {
+                    
+                    NSUserDefaults.standardUserDefaults().setDouble(latitude, forKey: "ApplicationSharedStateLastKnownLocationLatitude")
+                    NSUserDefaults.standardUserDefaults().setDouble(longitude, forKey: "ApplicationSharedStateLastKnownLocationLongitude")
+                    
+                    let location:CLLocation = ApplicationSharedState.sharedInstance.lastKnownLocation
+                    
+                    expect(location.coordinate.latitude).to(equal(-71.063303))
+                    expect(location.coordinate.longitude).to(equal(42.35769))
+                }
+                
+                it("should be able to store the lat and long of a where the user was most recently seen") {
+                    
+                    ApplicationSharedState.sharedInstance.lastKnownLocation = CLLocation.init(latitude: latitude, longitude: longitude)
+                    
+                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownLocationLatitude")).to(equal(-71.063303))
+                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownLocationLongitude")).to(equal(42.35769))
+                }
+            }
         }
     }
 }
