@@ -28,52 +28,33 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
+import Foundation
 
-import GoogleMaps
 import CoreLocation
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.initializeGoogleMapsApi()
-        self.initializeStyling()
-        self.initializeReachability()
-        self.initializeLocalization()
-        self.initializeAnalytics()
-        self.initializeRating()
-        return true
+public class LocationTracker : NSObject, CLLocationManagerDelegate {
+    
+    static let sharedInstance = LocationTracker()
+    var currentLocation:CLLocation?
+    
+    lazy var locationManager: CLLocationManager = {
+        var manager = CLLocationManager.init()
+        manager.delegate = LocationTracker.sharedInstance
+        manager.requestAlwaysAuthorization()
+        manager.requestWhenInUseAuthorization()
+        manager.distanceFilter = kCLDistanceFilterNone
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        return manager
+    }()
+    
+    public func startUpdatingLocation() {
+        self.locationManager.startUpdatingLocation()
     }
     
-    func initializeGoogleMapsApi() {
-        GMSServices.provideAPIKey(PListHelper.googleMapsApiKey())
-    }
-    
-    func applicationDidBecomeActive(application: UIApplication) {
-        LocationTracker.sharedInstance.startUpdatingLocation()
-    }
-    
-    func initializeStyling() {
-        
-    }
-    
-    func initializeReachability() {
-        
-    }
-    
-    func initializeLocalization() {
-        
-    }
-    
-    func initializeAnalytics() {
-        
-    }
-    
-    func initializeRating() {
-        
+    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        LocationTracker.sharedInstance.currentLocation = locations.last
+        if let lastKnownLocation = LocationTracker.sharedInstance.currentLocation {
+            ApplicationSharedState.sharedInstance.lastKnownLocation = lastKnownLocation
+        }
     }
 }
-
