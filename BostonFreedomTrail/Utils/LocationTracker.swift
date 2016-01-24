@@ -32,22 +32,31 @@ import Foundation
 
 import CoreLocation
 
-public class Placemark {
-    var identifier:String = ""
-    var name:String = ""
-    var location:CLLocation = CLLocation()
-    var coordinates = [CLLocation]()
-    var placemarkDescription:String = ""
+public class LocationTracker : NSObject, CLLocationManagerDelegate {
     
-    init(identifier:String, name:String, location:CLLocation, coordinates:[CLLocation], placemarkDescription:String) {
-        self.identifier = identifier
-        self.name = name
-        self.location = location
-        self.coordinates = coordinates
-        self.placemarkDescription = placemarkDescription
+    static let sharedInstance = LocationTracker()
+    var currentLocation:CLLocation?
+    
+    lazy var locationManager: CLLocationManager = {
+        var manager = CLLocationManager.init()
+        manager.delegate = LocationTracker.sharedInstance
+        manager.requestAlwaysAuthorization()
+        manager.requestWhenInUseAuthorization()
+        manager.distanceFilter = kCLDistanceFilterNone
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        return manager
+    }()
+    
+    public func startUpdatingLocation() {
+        self.locationManager.startUpdatingLocation()
     }
-}
-
-public class Trail {
-    var placemarks = [Placemark]()
+    
+// MARK: CLLocationManagerDelegate
+    
+    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        LocationTracker.sharedInstance.currentLocation = locations.last
+        if let lastKnownLocation = LocationTracker.sharedInstance.currentLocation {
+            ApplicationSharedState.sharedInstance.lastKnownLocation = lastKnownLocation
+        }
+    }
 }

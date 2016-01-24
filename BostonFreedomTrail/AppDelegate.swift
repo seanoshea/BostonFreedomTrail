@@ -31,6 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 
 import GoogleMaps
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -43,13 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initializeReachability()
         self.initializeLocalization()
         self.initializeAnalytics()
-        self.initializeCrashReporting()
         self.initializeRating()
         return true
     }
     
     func initializeGoogleMapsApi() {
         GMSServices.provideAPIKey(PListHelper.googleMapsApiKey())
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        LocationTracker.sharedInstance.startUpdatingLocation()
     }
     
     func initializeStyling() {
@@ -65,10 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeAnalytics() {
-        
-    }
-    
-    func initializeCrashReporting() {
         
     }
     

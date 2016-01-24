@@ -46,7 +46,7 @@ class MapViewControllerTest: QuickSpec {
             beforeEach({ () -> () in
                 subject = UIStoryboard.mapViewController()
                 subject?.view
-                ApplicationSharedState.sharedState.clear()
+                ApplicationSharedState.sharedInstance.clear()
             })
             
             context("Initialization of the MapViewController") {
@@ -85,7 +85,7 @@ class MapViewControllerTest: QuickSpec {
                     
                     subject?.mapView(subject?.mapView, didChangeCameraPosition: position)
                     
-                    expect(ApplicationSharedState.sharedState.cameraZoom).to(equal(zoom))
+                    expect(ApplicationSharedState.sharedInstance.cameraZoom).to(equal(zoom))
                 }
                 
                 it("should set the last known placemark in the application state when the user taps on a marker") {
@@ -94,7 +94,7 @@ class MapViewControllerTest: QuickSpec {
                     
                     subject?.mapView(subject?.mapView, didTapMarker: marker)
                     
-                    let lastKnownPlacemark = ApplicationSharedState.sharedState.lastKnownPlacemarkCoordinate
+                    let lastKnownPlacemark = ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate
                     
                     expect(lastKnownPlacemark.latitude).to(equal(45))
                     expect(lastKnownPlacemark.longitude).to(equal(45))

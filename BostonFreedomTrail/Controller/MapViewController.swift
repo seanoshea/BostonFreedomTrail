@@ -40,7 +40,6 @@ class MapViewController : UIViewController, GMSMapViewDelegate {
         super.viewDidLoad()
         createMapView()
         setupPlacemarks()
-        zoomToMostRecentPosition()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -56,8 +55,7 @@ class MapViewController : UIViewController, GMSMapViewDelegate {
     func createMapView() {
         let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:PListHelper.defaultCameraZoom())
         let mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
-        let mapInsets = UIEdgeInsetsMake(0.0, 5.0, 48.0, 0.0)
-        mapView.padding = mapInsets;
+        mapView.padding = UIEdgeInsetsMake(0.0, 5.0, 48.0, 0.0)
         mapView.indoorEnabled = false
         mapView.myLocationEnabled = true
         mapView.settings.myLocationButton = true
@@ -72,26 +70,22 @@ class MapViewController : UIViewController, GMSMapViewDelegate {
         self.model.addPathToMap(self.mapView!)
     }
     
-    func zoomToMostRecentPosition() {
-        
-    }
-    
 // MARK: GMSMapViewDelegate
     
     func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
         if position.zoom > 0.0 {
-            ApplicationSharedState.sharedState.cameraZoom = position.zoom
+            ApplicationSharedState.sharedInstance.cameraZoom = position.zoom
         }
     }
     
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        ApplicationSharedState.sharedState.lastKnownPlacemarkCoordinate = marker.position
+        ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
         // TODO: Analytics
         return false
     }
     
     func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-        ApplicationSharedState.sharedState.lastKnownPlacemarkCoordinate = marker.position
+        ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
         // TODO: Analytics
         self.performSegueWithIdentifier(SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
     }

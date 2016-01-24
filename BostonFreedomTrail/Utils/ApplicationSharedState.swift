@@ -36,9 +36,13 @@ enum DefaultsKeys : String {
     case ApplicationSharedStateCameraZoom = "ApplicationSharedStateCameraZoom"
     case ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude"
     case ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude"
+    case ApplicationSharedStateLastKnownLocationLatitude = "ApplicationSharedStateLastKnownLocationLatitude"
+    case ApplicationSharedStateLastKnownLocationLongitude = "ApplicationSharedStateLastKnownLocationLongitude"
 }
 
 public class ApplicationSharedState {
+    
+    static let sharedInstance = ApplicationSharedState()
     
     public var cameraZoom:Float {
         set {
@@ -64,16 +68,23 @@ public class ApplicationSharedState {
         }
     }
     
+    public var lastKnownLocation:CLLocation {
+        set {
+            NSUserDefaults.standardUserDefaults().setDouble(newValue.coordinate.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
+            NSUserDefaults.standardUserDefaults().setDouble(newValue.coordinate.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
+        }
+        get {
+            let latitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
+            let longitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
+            return CLLocation.init(latitude: latitude, longitude: longitude)
+        }
+    }
+    
     public func clear() {
         NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
         NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
         NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
-    }
-        
-    public class var sharedState : ApplicationSharedState {
-        struct Static {
-            static let instance = ApplicationSharedState()
-        }
-        return Static.instance
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
     }
 }
