@@ -45,7 +45,7 @@ class MapModel : NSObject {
         for placemark:Placemark in self.trail.placemarks {
             let marker = GMSMarker()
             marker.userData = placemark;
-            marker.position = CLLocationCoordinate2DMake(placemark.point.latitude, placemark.point.longitude)
+            marker.position = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude)
             marker.title = placemark.name
             marker.snippet = placemark.identifier
             marker.appearAnimation = kGMSMarkerAnimationPop
@@ -58,13 +58,13 @@ class MapModel : NSObject {
     func addPathToMap(mapView:GMSMapView) {
         let path = GMSMutablePath()
         for placemark:Placemark in self.trail.placemarks {
-            for point:Point in placemark.coordinates {
-                path.addLatitude(point.latitude, longitude: point.longitude)
+            for location:CLLocation in placemark.coordinates {
+                path.addLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
             }
         }
 
         let polyline = GMSPolyline(path: path)
-        polyline.strokeColor = UIColor.lightGrayColor()
+        polyline.strokeColor = UIColor.blueColor()
         polyline.strokeWidth = 5.0
         
         polyline.map = mapView

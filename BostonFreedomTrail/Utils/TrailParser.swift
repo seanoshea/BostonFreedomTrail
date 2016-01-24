@@ -30,6 +30,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
+import CoreLocation
+
 enum TrailParserConstants : String {
     case trail = "trail"
     case kml = "kml"
@@ -48,7 +50,7 @@ enum TrailParserConstants : String {
 public class TrailParser : NSObject, NSXMLParserDelegate {
  
     var trail = Trail()
-    var currentPoint:Point?
+    var currentLocation:CLLocation?
 
     var startFolder = false
     var startPlacemark = false
@@ -101,7 +103,6 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             break
         case TrailParserConstants.point.rawValue:
             startPoint = true
-            currentPoint = Point()
             break
         default:
             break
@@ -116,8 +117,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
                 currentDescription = string
             } else if startCoordinates && !startLineCoordinates {
                 let coordinates = string.componentsSeparatedByString(",")
-                currentPoint?.longitude = Double(coordinates[0])!
-                currentPoint?.latitude = Double(coordinates[1])!
+                self.currentLocation = CLLocation.init(latitude: Double(coordinates[1])!, longitude: Double(coordinates[0])!)
             } else if startLineCoordinates {
                 currentLineCoordinates = string
             }
@@ -150,7 +150,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             break
         case TrailParserConstants.lineString.rawValue:
             startLine = false
-            let placemark = Placemark(identifier: currentIdentifier!, name: currentName!, point: currentPoint!, coordinates: self.parseLineCoordinates(), placemarkDescription: currentDescription!)
+            let placemark = Placemark(identifier: currentIdentifier!, name: currentName!, location: currentLocation!, coordinates: self.parseLineCoordinates(), placemarkDescription: currentDescription!)
             trail.placemarks.append(placemark)
             break
         default:
@@ -158,17 +158,14 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
         }
     }
     
-    func parseLineCoordinates() -> [Point] {
-        var path = [Point]()
+    func parseLineCoordinates() -> [CLLocation] {
+        var path = [CLLocation]()
         guard currentLineCoordinates != nil else { return path }
         currentLineCoordinates = currentLineCoordinates?.stringByReplacingOccurrencesOfString("0.0 ", withString: "")
         var coordinatesArray = currentLineCoordinates!.componentsSeparatedByString(",")
         coordinatesArray.removeLast()
         for index in 0.stride(to: coordinatesArray.count - 1, by: 2) {
-            let point:Point = Point.init()
-            point.longitude = Double(coordinatesArray[index])!
-            point.latitude = Double(coordinatesArray[index + 1])!
-            path.append(point)
+            path.append(CLLocation.init(latitude: Double(coordinatesArray[index + 1])!, longitude: Double(coordinatesArray[index])!))
         }
         return path
     }

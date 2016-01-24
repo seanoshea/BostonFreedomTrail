@@ -30,28 +30,24 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-public class Point: NSObject {
-    var latitude = 0.0
-    var longitude = 0.0
-}
+import CoreLocation
 
 public class Placemark {
     var identifier:String = ""
     var name:String = ""
-    var point:Point = Point()
-    var coordinates = [Point]()
+    var location:CLLocation = CLLocation()
+    var coordinates = [CLLocation]()
     var placemarkDescription:String = ""
     
-    init(identifier:String, name:String, point:Point, coordinates:[Point], placemarkDescription:String) {
+    init(identifier:String, name:String, location:CLLocation, coordinates:[CLLocation], placemarkDescription:String) {
         self.identifier = identifier
         self.name = name
-        self.point = point
+        self.location = location
         self.coordinates = coordinates
         self.placemarkDescription = placemarkDescription
     }
 }
 
 public class Trail {
-    var points = [Point]()
     var placemarks = [Placemark]()
 }
