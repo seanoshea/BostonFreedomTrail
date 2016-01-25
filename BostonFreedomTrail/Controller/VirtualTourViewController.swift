@@ -32,36 +32,75 @@ import UIKit
 
 import GoogleMaps
 
-class VirtualTourViewController : UIViewController {
+enum VirtualTourLocationState : Int {
+    case BeforeStart = 0
+    case InProgress = 1
+    case Paused = 2
+    case Finished = 3
+}
+
+class VirtualTourViewController : UIViewController, GMSPanoramaViewDelegate {
     
     var model:MapModel = MapModel()
+    var tour:[CLLocation] = []
+    var currentTourLocation:Int = 0
+    var currentTourState:VirtualTourLocationState = VirtualTourLocationState.BeforeStart
     var panoView:GMSPanoramaView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let firstPlacemark = self.model.trail.placemarks[0]
         let panoramaNear = CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude)
-        let panoView = GMSPanoramaView.panoramaWithFrame(CGRectZero,
-            nearCoordinate:panoramaNear)
+        let panoView = GMSPanoramaView.panoramaWithFrame(CGRectZero, nearCoordinate:panoramaNear)
         self.panoView = panoView
+        self.panoView?.delegate = self
         self.view = panoView
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.setupTour()
+        self.startTour()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.pauseTour()
+    }
+    
+    func setupTour() {
+        for placemark in self.model.trail.placemarks {
+            for location in placemark.coordinates {
+                tour.append(location)
+            }
+        }
+    }
+    
+    func startTour() {
+        self.currentTourLocation = 0
+        let firstTourLocation = self.tour[self.currentTourLocation]
+        self.currentTourState = VirtualTourLocationState.InProgress
+        self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(firstTourLocation.coordinate.latitude, firstTourLocation.coordinate.longitude))
+    }
+    
+    func pauseTour() {
         
-        let delay = 1
-        var positionOffset:Int = 0
-        
-        for (placemarkIndex, placemark) in self.model.trail.placemarks.enumerate() {
-            for (index, location) in placemark.coordinates.enumerate() {
-                let offset = (index + placemarkIndex) * delay
-                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(offset + positionOffset) * Double(NSEC_PER_SEC)))
-                if index == placemark.coordinates.count - 1 {
-                    positionOffset = positionOffset + Int(offset) - 1
-                }
+    }
+    
+    func enqueueNextTourStop() -> CLLocation {
+        self.currentTourLocation = self.currentTourLocation + 1
+        return self.tour[self.currentTourLocation]
+    }
+    
+// MARK: GMSPanoramaViewDelegate
+    
+    func panoramaView(view: GMSPanoramaView!, didMoveToPanorama panorama: GMSPanorama!) {
+        if panorama.panoramaID != nil {
+            if currentTourLocation < self.tour.count - 1 {
+                let nextTourStop = self.enqueueNextTourStop()
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
                 dispatch_after(delayTime, dispatch_get_main_queue()) {
-                    self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude))
+                    self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextTourStop.coordinate.latitude, nextTourStop.coordinate.longitude))
                 }
             }
         }
