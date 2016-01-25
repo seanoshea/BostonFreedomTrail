@@ -35,6 +35,8 @@ class MapViewController : UIViewController, GMSMapViewDelegate {
     
     var model:MapModel = MapModel()
     var mapView:GMSMapView?
+
+// MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +53,8 @@ class MapViewController : UIViewController, GMSMapViewDelegate {
             }
         }
     }
+
+// MARK: Private Functions
     
     func createMapView() {
         let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:PListHelper.defaultCameraZoom())

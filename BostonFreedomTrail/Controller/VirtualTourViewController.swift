@@ -32,9 +32,10 @@ import UIKit
 
 import GoogleMaps
 
-enum VirtualTourStopDelays : Double {
+enum VirtualTourStopStopDuration : Double {
+    case CameraRepositionAnimation = 0.5
     case DefaultDelay = 1.0
-    case DelayForCamera = 2.0
+    case DelayForCameraRepositioning = 2.0
     case DelayForPlacemark = 5.0
 }
 
@@ -42,6 +43,8 @@ class VirtualTourViewController : UIViewController, GMSPanoramaViewDelegate {
     
     var model:VirtualTourModel = VirtualTourModel()
     var panoView:GMSPanoramaView?
+
+// MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +58,6 @@ class VirtualTourViewController : UIViewController, GMSPanoramaViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.model.setupTour()
         self.startTour()
     }
     
@@ -64,40 +66,57 @@ class VirtualTourViewController : UIViewController, GMSPanoramaViewDelegate {
         self.model.pauseTour()
     }
     
+// MARK: Private Functions
+    
     func startTour() {
+        self.model.setupTour()
         let firstTourLocation = self.model.startTour()
         self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(firstTourLocation.coordinate.latitude, firstTourLocation.coordinate.longitude))
+    }
+    
+    func cameraPositionForNextLocation(nextTourStop:CLLocation) -> GMSPanoramaCamera {
+        let currentCameraPosition = (self.panoView?.camera)!
+        let from = self.model.tour[self.model.currentTourLocation - 1]
+        let to = CLLocation.init(latitude: nextTourStop.coordinate.latitude, longitude: nextTourStop.coordinate.longitude)
+        let heading = self.model.locationDirection(from, to:to)
+        return GMSPanoramaCamera.init(heading: heading, pitch: currentCameraPosition.orientation.pitch, zoom: currentCameraPosition.zoom)
+    }
+    
+    func delayTime() -> dispatch_time_t {
+        let delay = self.model.currentTourLocation > 0 ? VirtualTourStopStopDuration.DelayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.DefaultDelay.rawValue
+        return dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+    }
+    
+    func shouldEnqueueNextTourStopForPanorama(panorama:GMSPanorama) -> Bool {
+        return panorama.panoramaID != nil && self.model.tourIsRunning()
+    }
+    
+    func postDispatchAction(nextTourStop:CLLocation) {
+        if self.model.tourIsRunning() {
+            self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextTourStop.coordinate.latitude, nextTourStop.coordinate.longitude))
+        } else {
+            // back up
+            self.model.currentTourLocation = self.model.currentTourLocation - 1
+        }
+    }
+    
+    func repositionPanoViewForNextLocation(nextLocation:CLLocation) {
+        if self.model.currentTourLocation > 0 {
+            let newCamera = self.cameraPositionForNextLocation(nextLocation)
+            self.panoView?.animateToCamera(newCamera, animationDuration: VirtualTourStopStopDuration.CameraRepositionAnimation.rawValue)
+        }
     }
     
 // MARK: GMSPanoramaViewDelegate
     
     func panoramaView(view: GMSPanoramaView!, didMoveToPanorama panorama: GMSPanorama!) {
-        if panorama.panoramaID != nil && self.model.tourIsRunning() {
+        if self.shouldEnqueueNextTourStopForPanorama(panorama) {
             let nextTourStop = self.model.enqueueNextTourStop()
-            var delay = VirtualTourStopDelays.DefaultDelay.rawValue
-            if self.model.currentTourLocation > 0 {
-                delay = VirtualTourStopDelays.DelayForCamera.rawValue
-                self.repositionCamera(nextTourStop)
-            }
-            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+            self.repositionPanoViewForNextLocation(nextTourStop)
             unowned let unownedSelf: VirtualTourViewController = self
-            dispatch_after(delayTime, dispatch_get_main_queue()) {
-                if unownedSelf.model.tourIsRunning() {
-                    unownedSelf.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextTourStop.coordinate.latitude, nextTourStop.coordinate.longitude))
-                } else {
-                    // back up
-                    unownedSelf.model.currentTourLocation = unownedSelf.model.currentTourLocation - 1
-                }
+            dispatch_after(self.delayTime(), dispatch_get_main_queue()) {
+                unownedSelf.postDispatchAction(nextTourStop)
             }
         }
-    }
-    
-    func repositionCamera(nextTourStop:CLLocation) {
-        let currentCameraPosition = (self.panoView?.camera)!
-        let from = self.model.tour[self.model.currentTourLocation - 1]
-        let to = CLLocation.init(latitude: nextTourStop.coordinate.latitude, longitude: nextTourStop.coordinate.longitude)
-        let heading = self.model.locationDirection(from, to:to)
-        let newCamera = GMSPanoramaCamera.init(heading: heading, pitch: currentCameraPosition.orientation.pitch, zoom: currentCameraPosition.zoom)
-        self.panoView?.animateToCamera(newCamera, animationDuration: 0.75)
     }
 }

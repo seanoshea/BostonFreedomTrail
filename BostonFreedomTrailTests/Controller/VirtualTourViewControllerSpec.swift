@@ -33,6 +33,8 @@ import Nimble
 
 @testable import BostonFreedomTrail
 
+import GoogleMaps
+
 class VirtualTourViewControllerTest: QuickSpec {
     
     override func spec() {
@@ -59,6 +61,22 @@ class VirtualTourViewControllerTest: QuickSpec {
                 
                 it("should be initialized to having a state of BeforeStart") {
                     expect(subject?.model.currentTourState).to(equal(VirtualTourLocationState.BeforeStart))
+                }
+            }
+            
+            context("Repositioning the camera") {
+                
+                it("should return a camera with the correct bearing zoom and pitch for the next location when repositionCamera is invoked") {
+                    
+                    subject?.model.setupTour()
+                    subject?.model.startTour()
+                    let nextStop = (subject?.model.enqueueNextTourStop())!
+                    
+                    let newCamera:GMSPanoramaCamera = (subject?.cameraPositionForNextLocation(nextStop))!
+                    
+                    expect(newCamera.zoom).to(equal(1.0))
+                    expect(newCamera.orientation.heading).to(beCloseTo(118.426040649414))
+                    expect(newCamera.orientation.pitch).to(equal(0.0))
                 }
             }
         }

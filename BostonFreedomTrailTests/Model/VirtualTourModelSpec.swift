@@ -47,10 +47,18 @@ class VirtualTourModelTest: QuickSpec {
             
             beforeEach({ () -> () in
                 subject = VirtualTourModel.init()
+                subject?.setupTour()
                 ApplicationSharedState.sharedInstance.clear()
             })
             
             context("Tour Controls") {
+                
+                it("should start the tour when startTour is invoked") {
+                    subject?.startTour()
+                    
+                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.InProgress))
+                    expect(subject?.currentTourLocation).to(equal(0))
+                }
                 
                 it("should pause the tour when pauseTour is invoked") {
                     subject?.pauseTour()
@@ -65,6 +73,27 @@ class VirtualTourModelTest: QuickSpec {
                 it("should mark the tour as not running if it has been paused") {
                     subject?.currentTourState = VirtualTourLocationState.Paused
                     expect(subject?.tourIsRunning()).to(beFalse())
+                }
+                
+                it("should advance the tour when enqueueNextTourStop is invoked") {
+                    subject?.currentTourLocation = 1
+                    
+                    let location:CLLocation = (subject?.enqueueNextTourStop())!
+                    
+                    expect(location).toNot(beNil())
+                    expect(subject?.currentTourLocation).to(equal(2))
+                }
+            }
+            
+            context("Calculating the camera position for locations in the trail") {
+                
+                it("should be able to calculate the correct direction of the camera to naviagte between two points") {
+                    let from:CLLocation = CLLocation.init(latitude: 42.355393, longitude: -71.063756)
+                    let to:CLLocation = CLLocation.init(latitude: 42.355357, longitude: -71.063666)
+                    
+                    let direction:CLLocationDirection = (subject?.locationDirection(from, to: to))!
+                    
+                    expect(direction).to(beCloseTo(118.426051240986))
                 }
             }
         }
