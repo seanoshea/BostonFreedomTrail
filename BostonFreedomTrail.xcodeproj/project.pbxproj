@@ -36,6 +36,7 @@
 		41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */; };
 		41DE05E61C553694008AFCA5 /* VirtualTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E51C553694008AFCA5 /* VirtualTourViewController.swift */; };
 		41DE05E81C5536E5008AFCA5 /* VirtualTourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E71C5536E5008AFCA5 /* VirtualTourModel.swift */; };
+		41DE05EA1C55B480008AFCA5 /* VirtualTourViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E91C55B480008AFCA5 /* VirtualTourViewControllerSpec.swift */; };
 		41E1C3711C525B670009570C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E1C3701C525B670009570C /* Constants.swift */; };
 		41E1C3751C525F420009570C /* PlacemarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E1C3741C525F420009570C /* PlacemarkModel.swift */; };
 		CF369AA8CC8EC25E478A4126 /* Pods_BostonFreedomTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */; };
@@ -85,6 +86,7 @@
 		41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackerSpec.swift; sourceTree = "<group>"; };
 		41DE05E51C553694008AFCA5 /* VirtualTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourViewController.swift; sourceTree = "<group>"; };
 		41DE05E71C5536E5008AFCA5 /* VirtualTourModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourModel.swift; sourceTree = "<group>"; };
+		41DE05E91C55B480008AFCA5 /* VirtualTourViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourViewControllerSpec.swift; sourceTree = "<group>"; };
 		41E1C3701C525B670009570C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		41E1C3741C525F420009570C /* PlacemarkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkModel.swift; sourceTree = "<group>"; };
 		46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BostonFreedomTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,8 +136,9 @@
 		410AFEE31C4D991A007DF354 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */,
 				41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */,
+				410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */,
+				41DE05E91C55B480008AFCA5 /* VirtualTourViewControllerSpec.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				41D0F4ED1C53E64A00FCAB17 /* StoryboardExtensions.swift in Sources */,
 				41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */,
 				41D0F4EC1C53E64A00FCAB17 /* MapModelSpec.swift in Sources */,
+				41DE05EA1C55B480008AFCA5 /* VirtualTourViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

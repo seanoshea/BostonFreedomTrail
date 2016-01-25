@@ -28,35 +28,39 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
+import Quick
+import Nimble
 
 @testable import BostonFreedomTrail
 
-enum StoryboardExtensionConstants : String {
-    case StoryboardName = "Main"
-    case MapViewControllerIdentifier = "MapViewControllerIdentifier"
-    case AboutViewControllerIdentifier = "AboutViewControllerIdentifier"
-    case VirtualTourControllerIdentifier = "VirtualTourControllerIdentifier"
-}
-
-extension UIStoryboard {
+class VirtualTourViewControllerTest: QuickSpec {
     
-    static func mapViewController() -> MapViewController {
-        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.MapViewControllerIdentifier.rawValue)
-        return vc as! MapViewController
-    }
-    
-    static func aboutViewController() -> AboutViewController {
-        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.AboutViewControllerIdentifier.rawValue)
-        return vc as! AboutViewController
-    }
-    
-    static func virtualTourViewController() -> VirtualTourViewController {
-        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.VirtualTourControllerIdentifier.rawValue)
-        return vc as! VirtualTourViewController
-    }
-    
-    static func mainStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: StoryboardExtensionConstants.StoryboardName.rawValue, bundle: nil)
+    override func spec() {
+        
+        describe("VirtualTourViewController") {
+            
+            var subject:VirtualTourViewController?
+            
+            beforeEach({ () -> () in
+                subject = UIStoryboard.virtualTourViewController()
+                subject?.view
+                ApplicationSharedState.sharedInstance.clear()
+            })
+            
+            context("Initialization of the VirtualTourViewController") {
+                
+                it("should start with a tour location of zero") {
+                    expect(subject?.currentTourLocation).to(equal(0))
+                }
+                
+                it("should have a panoView set by default") {
+                    expect(subject?.panoView).toNot(beNil())
+                }
+                
+                it("should be initialized to having a state of BeforeStart") {
+                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.BeforeStart))
+                }
+            }
+        }
     }
 }
