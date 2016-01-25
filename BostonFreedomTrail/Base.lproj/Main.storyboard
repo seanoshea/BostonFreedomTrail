@@ -25,7 +25,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-328"/>
+            <point key="canvasLocation" x="730" y="-716"/>
         </scene>
         <!--Placemark View Controller-->
         <scene sceneID="bOh-nJ-ncS">
@@ -69,7 +69,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0P-4p-o5O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1439" y="-328"/>
+            <point key="canvasLocation" x="1419" y="-716"/>
+        </scene>
+        <!--Virtual Tour View Controller-->
+        <scene sceneID="d8J-BA-lzr">
+            <objects>
+                <viewController storyboardIdentifier="VirtualTourControllerIdentifier" title="Virtual Tour" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5ee-gd-RMW" userLabel="Virtual Tour View Controller" customClass="VirtualTourViewController" customModule="BostonFreedomTrail" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IOb-q9-j2k"/>
+                        <viewControllerLayoutGuide type="bottom" id="vAw-iQ-CEP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PYW-Gj-rDv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="1" title="Virtual Tour" id="xG8-KH-aqc" userLabel="Virtual Tour"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gZ8-by-twt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="736" y="0.0"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -173,7 +192,7 @@
                             <constraint firstItem="XNB-OL-chl" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="m7s-08-WKs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="About" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="About" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="designerDetailsLabel" destination="p45-Wg-sve" id="GAH-Gi-gKF"/>
                         <outlet property="designerLabel" destination="4QQ-t9-mKx" id="lga-dA-0dD"/>
@@ -187,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="730" y="776"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -201,12 +220,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="5ee-gd-RMW" kind="relationship" relationship="viewControllers" id="x5w-bY-XzM"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="16" y="0.0"/>
         </scene>
     </scenes>
 </document>

@@ -36,6 +36,7 @@ enum StoryboardExtensionConstants : String {
     case StoryboardName = "Main"
     case MapViewControllerIdentifier = "MapViewControllerIdentifier"
     case AboutViewControllerIdentifier = "AboutViewControllerIdentifier"
+    case VirtualTourControllerIdentifier = "VirtualTourControllerIdentifier"
 }
 
 extension UIStoryboard {
@@ -48,6 +49,11 @@ extension UIStoryboard {
     static func aboutViewController() -> AboutViewController {
         let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.AboutViewControllerIdentifier.rawValue)
         return vc as! AboutViewController
+    }
+    
+    static func virtualTourViewController() -> VirtualTourViewController {
+        let vc:UIViewController = self.mainStoryboard().instantiateViewControllerWithIdentifier(StoryboardExtensionConstants.VirtualTourControllerIdentifier.rawValue)
+        return vc as! VirtualTourViewController
     }
     
     static func mainStoryboard() -> UIStoryboard {

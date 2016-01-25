@@ -30,12 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-enum SegueConstants : String {
-    case MapToPlacemarkSegueIdentifier = "MapToPlacemarkSegueIdentifier"
-}
-
-enum TabBarControllerTags : NSInteger {
-    case MapViewTag = 0
-    case VirtualTourViewTag = 1
-    case AboutViewTag = 2
+class VirtialTourModel : NSObject {
+    
 }
