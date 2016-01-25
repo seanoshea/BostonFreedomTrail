@@ -30,6 +30,63 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-class VirtialTourModel : NSObject {
+import CoreLocation
+
+enum VirtualTourLocationState : Int {
+    case BeforeStart = 0
+    case InProgress = 1
+    case Paused = 2
+    case Finished = 3
+}
+
+class VirtualTourModel : MapModel {
+    var tour:[CLLocation] = []
+    var currentTourLocation:Int = 0
+    var currentTourState:VirtualTourLocationState = VirtualTourLocationState.BeforeStart
     
+    func setupTour() {
+        for placemark in self.trail.placemarks {
+            for location in placemark.coordinates {
+                tour.append(location)
+            }
+        }
+    }
+    
+    func startTour() -> CLLocation {
+        self.currentTourLocation = 0
+        self.currentTourState = VirtualTourLocationState.InProgress
+        return self.tour[self.currentTourLocation]
+    }
+    
+    func enqueueNextTourStop() -> CLLocation {
+        self.currentTourLocation = self.currentTourLocation + 1
+        return self.tour[self.currentTourLocation]
+    }
+    
+    func pauseTour() {
+        self.currentTourState = VirtualTourLocationState.Paused
+    }
+    
+    func tourIsRunning() -> Bool {
+        return self.currentTourState != VirtualTourLocationState.Finished && self.currentTourState != VirtualTourLocationState.Paused
+    }
+
+// MARK: Calculating Camera Directions
+    
+    func locationDirection(from:CLLocation, to:CLLocation) -> CLLocationDirection {
+        let fromLatitude = self.degreesToRadians(from.coordinate.latitude)
+        let fromLongitude = self.degreesToRadians(from.coordinate.longitude)
+        let toLatitude = self.degreesToRadians(to.coordinate.latitude)
+        let toLongitude = self.degreesToRadians(to.coordinate.longitude)
+        let degree = radiansToDegrees(atan2(sin(toLongitude - fromLongitude) * cos(toLatitude), cos(fromLatitude) * sin(toLatitude)-sin(fromLatitude) * cos(toLatitude) * cos(toLongitude - fromLongitude)))
+        return degree >= 0.0 ? degree : 360.0 + degree
+    }
+    
+    func degreesToRadians(value:CLLocationDegrees) -> CLLocationDegrees {
+        return value * M_PI / 180.0
+    }
+    
+    func radiansToDegrees(value:Double) -> Double {
+        return (value * 180.0 / M_PI)
+    }
 }

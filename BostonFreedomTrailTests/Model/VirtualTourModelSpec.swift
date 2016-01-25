@@ -28,37 +28,43 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+import Foundation
+
 import Quick
 import Nimble
 
 @testable import BostonFreedomTrail
 
-class VirtualTourViewControllerTest: QuickSpec {
+import GoogleMaps
+
+class VirtualTourModelTest: QuickSpec {
     
     override func spec() {
         
-        describe("VirtualTourViewController") {
+        describe("VirtualTourModel") {
             
-            var subject:VirtualTourViewController?
+            var subject:VirtualTourModel?
             
             beforeEach({ () -> () in
-                subject = UIStoryboard.virtualTourViewController()
-                subject?.view
+                subject = VirtualTourModel.init()
                 ApplicationSharedState.sharedInstance.clear()
             })
             
-            context("Initialization of the VirtualTourViewController") {
+            context("Tour Controls") {
                 
-                it("should start with a tour location of zero") {
-                    expect(subject?.model.currentTourLocation).to(equal(0))
+                it("should pause the tour when pauseTour is invoked") {
+                    subject?.pauseTour()
+                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.Paused))
                 }
                 
-                it("should have a panoView set by default") {
-                    expect(subject?.panoView).toNot(beNil())
+                it("should mark the tour as not running if it has finished") {
+                    subject?.currentTourState = VirtualTourLocationState.Finished
+                    expect(subject?.tourIsRunning()).to(beFalse())
                 }
                 
-                it("should be initialized to having a state of BeforeStart") {
-                    expect(subject?.model.currentTourState).to(equal(VirtualTourLocationState.BeforeStart))
+                it("should mark the tour as not running if it has been paused") {
+                    subject?.currentTourState = VirtualTourLocationState.Paused
+                    expect(subject?.tourIsRunning()).to(beFalse())
                 }
             }
         }
