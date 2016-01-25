@@ -61,6 +61,33 @@ class VirtualTourViewControllerTest: QuickSpec {
                     expect(subject?.currentTourState).to(equal(VirtualTourLocationState.BeforeStart))
                 }
             }
+            
+            context("View Controller Lifecycle") {
+                
+                it("should automatically start the tour when the view appears") {
+                    subject?.viewDidAppear(true)
+                    expect(subject?.tour.count).toNot(equal(0))
+                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.InProgress))
+                }
+            }
+            
+            context("Tour Controls") {
+                
+                it("should pause the tour when pauseTour is invoked") {
+                    subject?.pauseTour()
+                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.Paused))
+                }
+                
+                it("should mark the tour as not running if it has finished") {
+                    subject?.currentTourState = VirtualTourLocationState.Finished
+                    expect(subject?.tourIsRunning()).to(beFalse())
+                }
+                
+                it("should mark the tour as not running if it has been paused") {
+                    subject?.currentTourState = VirtualTourLocationState.Paused
+                    expect(subject?.tourIsRunning()).to(beFalse())
+                }
+            }
         }
     }
 }

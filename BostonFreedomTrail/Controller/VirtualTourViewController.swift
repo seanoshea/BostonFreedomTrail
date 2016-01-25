@@ -93,7 +93,7 @@ class VirtualTourViewController : UIViewController, GMSPanoramaViewDelegate {
     }
     
     func tourIsRunning() -> Bool {
-        return self.currentTourState != VirtualTourLocationState.Finished || self.currentTourState != VirtualTourLocationState.Paused
+        return self.currentTourState != VirtualTourLocationState.Finished && self.currentTourState != VirtualTourLocationState.Paused
     }
     
 // MARK: GMSPanoramaViewDelegate
@@ -102,10 +102,14 @@ class VirtualTourViewController : UIViewController, GMSPanoramaViewDelegate {
         if panorama.panoramaID != nil && self.tourIsRunning() && currentTourLocation < self.tour.count - 1 {
             let nextTourStop = self.enqueueNextTourStop()
             let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+            unowned let unownedSelf: VirtualTourViewController = self
             dispatch_after(delayTime, dispatch_get_main_queue()) {
-                // would I be better off using NSTimer here or a performSelector?
-                if self.tourIsRunning() {
-                    self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextTourStop.coordinate.latitude, nextTourStop.coordinate.longitude))
+                // would I be better off using NSTimer here or a performSelector hack?
+                if unownedSelf.tourIsRunning() {
+                    unownedSelf.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextTourStop.coordinate.latitude, nextTourStop.coordinate.longitude))
+                } else {
+                    // back up
+                    unownedSelf.currentTourLocation = unownedSelf.currentTourLocation - 1
                 }
             }
         }
