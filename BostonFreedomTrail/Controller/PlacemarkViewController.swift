@@ -36,7 +36,7 @@ class PlacemarkViewController : UIViewController {
     @IBOutlet weak var wikipediaButton: UIButton?
     @IBOutlet weak var streetViewButton: UIButton?
     
-    var model:PlacemarkModel?
+    var placemark:Placemark?
     
     @IBAction func streetViewButtonPressed() {
     

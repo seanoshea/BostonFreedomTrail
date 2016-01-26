@@ -62,11 +62,9 @@ class MapModel : NSObject {
                 path.addLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
             }
         }
-
         let polyline = GMSPolyline(path: path)
         polyline.strokeColor = UIColor.blueColor()
         polyline.strokeWidth = 5.0
-        
         polyline.map = mapView
     }
 }
