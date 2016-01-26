@@ -48,7 +48,7 @@ class VirtualTourViewController : UIViewController, GMSPanoramaViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let firstPlacemark = self.model.trail.placemarks[0]
+        let firstPlacemark = self.model.firstPlacemark()
         let panoramaNear = CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude)
         let panoView = GMSPanoramaView.panoramaWithFrame(CGRectZero, nearCoordinate:panoramaNear)
         self.panoView = panoView

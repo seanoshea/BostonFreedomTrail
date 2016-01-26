@@ -39,13 +39,13 @@ enum VirtualTourLocationState : Int {
     case Finished = 3
 }
 
-class VirtualTourModel : MapModel {
+class VirtualTourModel : NSObject {
     var tour:[CLLocation] = []
     var currentTourLocation:Int = 0
     var currentTourState:VirtualTourLocationState = VirtualTourLocationState.BeforeStart
     
     func setupTour() {
-        for placemark in self.trail.placemarks {
+        for placemark in Trail.instance.placemarks {
             for location in placemark.coordinates {
                 tour.append(location)
             }
@@ -69,6 +69,10 @@ class VirtualTourModel : MapModel {
     
     func tourIsRunning() -> Bool {
         return self.currentTourState != VirtualTourLocationState.Finished && self.currentTourState != VirtualTourLocationState.Paused
+    }
+    
+    func firstPlacemark() -> Placemark {
+        return Trail.instance.placemarks[0]
     }
 
 // MARK: Calculating Camera Directions
