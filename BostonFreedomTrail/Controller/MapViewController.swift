@@ -35,6 +35,8 @@ class MapViewController : UIViewController, GMSMapViewDelegate {
     
     var model:MapModel = MapModel()
     var mapView:GMSMapView?
+
+// MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +49,12 @@ class MapViewController : UIViewController, GMSMapViewDelegate {
             if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == NSComparisonResult.OrderedSame {
                 let placemarkViewController = segue.destinationViewController as! PlacemarkViewController
                 let placemark = self.mapView?.selectedMarker.userData as! Placemark
-                placemarkViewController.model = PlacemarkModel.init(placemark: placemark)
+                placemarkViewController.placemark = placemark
             }
         }
     }
+
+// MARK: Private Functions
     
     func createMapView() {
         let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:PListHelper.defaultCameraZoom())

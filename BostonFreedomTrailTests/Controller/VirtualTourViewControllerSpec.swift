@@ -33,6 +33,8 @@ import Nimble
 
 @testable import BostonFreedomTrail
 
+import GoogleMaps
+
 class VirtualTourViewControllerTest: QuickSpec {
     
     override func spec() {
@@ -50,7 +52,7 @@ class VirtualTourViewControllerTest: QuickSpec {
             context("Initialization of the VirtualTourViewController") {
                 
                 it("should start with a tour location of zero") {
-                    expect(subject?.currentTourLocation).to(equal(0))
+                    expect(subject?.model.currentTourLocation).to(equal(0))
                 }
                 
                 it("should have a panoView set by default") {
@@ -58,34 +60,23 @@ class VirtualTourViewControllerTest: QuickSpec {
                 }
                 
                 it("should be initialized to having a state of BeforeStart") {
-                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.BeforeStart))
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourLocationState.BeforeStart))
                 }
             }
             
-            context("View Controller Lifecycle") {
+            context("Repositioning the camera") {
                 
-                it("should automatically start the tour when the view appears") {
-                    subject?.viewDidAppear(true)
-                    expect(subject?.tour.count).toNot(equal(0))
-                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.InProgress))
-                }
-            }
-            
-            context("Tour Controls") {
-                
-                it("should pause the tour when pauseTour is invoked") {
-                    subject?.pauseTour()
-                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.Paused))
-                }
-                
-                it("should mark the tour as not running if it has finished") {
-                    subject?.currentTourState = VirtualTourLocationState.Finished
-                    expect(subject?.tourIsRunning()).to(beFalse())
-                }
-                
-                it("should mark the tour as not running if it has been paused") {
-                    subject?.currentTourState = VirtualTourLocationState.Paused
-                    expect(subject?.tourIsRunning()).to(beFalse())
+                it("should return a camera with the correct bearing zoom and pitch for the next location when repositionCamera is invoked") {
+                    
+                    subject?.model.setupTour()
+                    subject?.model.startTour()
+                    let nextStop = (subject?.model.enqueueNextTourStop())!
+                    
+                    let newCamera:GMSPanoramaCamera = (subject?.cameraPositionForNextLocation(nextStop))!
+                    
+                    expect(newCamera.zoom).to(equal(1.0))
+                    expect(newCamera.orientation.heading).to(beCloseTo(118.426040649414))
+                    expect(newCamera.orientation.pitch).to(equal(0.0))
                 }
             }
         }

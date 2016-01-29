@@ -49,5 +49,6 @@ public class Placemark {
 }
 
 public class Trail {
+    static let instance = TrailParser().parseTrail()
     var placemarks = [Placemark]()
 }
