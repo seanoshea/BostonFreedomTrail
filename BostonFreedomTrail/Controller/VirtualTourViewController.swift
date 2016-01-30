@@ -94,6 +94,7 @@ class VirtualTourViewController : UIViewController {
     
     func postDispatchAction(nextLocation:CLLocation) {
         if self.model.tourIsRunning() {
+            self.repositionPanoViewForNextLocation(nextLocation)
             self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
         } else {
             // back up
@@ -109,10 +110,9 @@ class VirtualTourViewController : UIViewController {
     }
     
     func advanceToNextLocation(delayTime:dispatch_time_t) {
-        let nextLocation = self.model.enqueueNextLocation()
-        self.repositionPanoViewForNextLocation(nextLocation)
         unowned let unownedSelf: VirtualTourViewController = self
         dispatch_after(delayTime, dispatch_get_main_queue()) {
+            let nextLocation = unownedSelf.model.enqueueNextLocation()
             unownedSelf.postDispatchAction(nextLocation)
         }
     }
