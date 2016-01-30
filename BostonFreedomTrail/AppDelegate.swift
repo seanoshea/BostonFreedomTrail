@@ -44,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initializeReachability()
         self.initializeLocalization()
         self.initializeAnalytics()
-        self.initializeRating()
         return true
     }
     
@@ -69,10 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeAnalytics() {
-        
-    }
-    
-    func initializeRating() {
         
     }
 }
