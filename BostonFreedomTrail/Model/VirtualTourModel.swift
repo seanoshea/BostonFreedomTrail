@@ -32,7 +32,7 @@ import Foundation
 
 import CoreLocation
 
-enum VirtualTourLocationState : Int {
+enum VirtualTourState : Int {
     case BeforeStart = 0
     case InProgress = 1
     case Paused = 2
@@ -42,7 +42,7 @@ enum VirtualTourLocationState : Int {
 class VirtualTourModel : NSObject {
     var tour:[CLLocation] = []
     var currentTourLocation:Int = 0
-    var currentTourState:VirtualTourLocationState = VirtualTourLocationState.BeforeStart
+    var currentTourState:VirtualTourState = VirtualTourState.BeforeStart
     
     func setupTour() {
         for placemark in Trail.instance.placemarks {
@@ -54,7 +54,7 @@ class VirtualTourModel : NSObject {
     
     func startTour() -> CLLocation {
         self.currentTourLocation = 0
-        self.currentTourState = VirtualTourLocationState.InProgress
+        self.currentTourState = VirtualTourState.InProgress
         return self.tour[self.currentTourLocation]
     }
     
@@ -64,15 +64,15 @@ class VirtualTourModel : NSObject {
     }
     
     func pauseTour() {
-        self.currentTourState = VirtualTourLocationState.Paused
+        self.currentTourState = VirtualTourState.Paused
     }
     
     func resumeTour() {
-        self.currentTourState = VirtualTourLocationState.InProgress
+        self.currentTourState = VirtualTourState.InProgress
     }
     
     func tourIsRunning() -> Bool {
-        return self.currentTourState != VirtualTourLocationState.Finished && self.currentTourState != VirtualTourLocationState.Paused
+        return self.currentTourState != VirtualTourState.Finished && self.currentTourState != VirtualTourState.Paused
     }
     
     func firstPlacemark() -> Placemark {

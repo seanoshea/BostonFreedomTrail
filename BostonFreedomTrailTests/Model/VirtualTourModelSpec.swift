@@ -56,22 +56,22 @@ class VirtualTourModelTest: QuickSpec {
                 it("should start the tour when startTour is invoked") {
                     subject?.startTour()
                     
-                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.InProgress))
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.InProgress))
                     expect(subject?.currentTourLocation).to(equal(0))
                 }
                 
                 it("should pause the tour when pauseTour is invoked") {
                     subject?.pauseTour()
-                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.Paused))
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.Paused))
                 }
                 
                 it("should mark the tour as not running if it has finished") {
-                    subject?.currentTourState = VirtualTourLocationState.Finished
+                    subject?.currentTourState = VirtualTourState.Finished
                     expect(subject?.tourIsRunning()).to(beFalse())
                 }
                 
                 it("should mark the tour as not running if it has been paused") {
-                    subject?.currentTourState = VirtualTourLocationState.Paused
+                    subject?.currentTourState = VirtualTourState.Paused
                     expect(subject?.tourIsRunning()).to(beFalse())
                 }
                 
@@ -87,7 +87,7 @@ class VirtualTourModelTest: QuickSpec {
                 it("should mark the tour as in progress when the model is asked to resume the tour") {
                     subject?.resumeTour()
                     
-                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.InProgress))
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.InProgress))
                 }
             }
             

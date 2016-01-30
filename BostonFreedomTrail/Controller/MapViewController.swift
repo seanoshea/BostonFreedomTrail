@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 import GoogleMaps
 
-class MapViewController : UIViewController, GMSMapViewDelegate {
+class MapViewController : UIViewController {
     
     var model:MapModel = MapModel()
     var mapView:GMSMapView?
@@ -73,8 +73,9 @@ class MapViewController : UIViewController, GMSMapViewDelegate {
         self.model.addPlacemarksToMap(self.mapView!)
         self.model.addPathToMap(self.mapView!)
     }
-    
-// MARK: GMSMapViewDelegate
+}
+
+extension MapViewController : GMSMapViewDelegate {
     
     func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
         if position.zoom > 0.0 {

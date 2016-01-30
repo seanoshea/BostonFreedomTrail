@@ -60,7 +60,20 @@ class VirtualTourViewControllerTest: QuickSpec {
                 }
                 
                 it("should be initialized to having a state of BeforeStart") {
-                    expect(subject?.model.currentTourState).to(equal(VirtualTourLocationState.BeforeStart))
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.BeforeStart))
+                }
+            }
+            
+            context("View Controller Lifecycle") {
+                
+                it("should automatically start the tour when the view appears") {
+                    subject?.viewDidAppear(true)
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.InProgress))
+                }
+                
+                it("should automatically stop the tour when the view disappears") {
+                    subject?.viewDidDisappear(true)
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
                 }
             }
             
@@ -87,19 +100,19 @@ class VirtualTourViewControllerTest: QuickSpec {
                 })
                 
                 it("should pause the tour if it is in progress and the user taps on the pano view") {
-                    subject?.model.currentTourState = VirtualTourLocationState.InProgress
+                    subject?.model.currentTourState = VirtualTourState.InProgress
                     
                     subject?.panoramaView(subject?.panoView, didTap: CGPointMake(0.0, 0.1))
                     
-                    expect(subject?.model.currentTourState).to(equal(VirtualTourLocationState.Paused))
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
                 }
                 
                 it("should resume the tour if it is paused and the user taps on the pano view") {
-                    subject?.model.currentTourState = VirtualTourLocationState.Paused
+                    subject?.model.currentTourState = VirtualTourState.Paused
                     
                     subject?.panoramaView(subject?.panoView, didTap: CGPointMake(0.0, 0.1))
                     
-                    expect(subject?.model.currentTourState).to(equal(VirtualTourLocationState.InProgress))
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.InProgress))
                 }
             }
         }
