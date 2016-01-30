@@ -70,13 +70,36 @@ class VirtualTourViewControllerTest: QuickSpec {
                     
                     subject?.model.setupTour()
                     subject?.model.startTour()
-                    let nextStop = (subject?.model.enqueueNextTourStop())!
+                    let nextStop = (subject?.model.enqueueNextLocation())!
                     
                     let newCamera:GMSPanoramaCamera = (subject?.cameraPositionForNextLocation(nextStop))!
                     
                     expect(newCamera.zoom).to(equal(1.0))
                     expect(newCamera.orientation.heading).to(beCloseTo(118.426040649414))
                     expect(newCamera.orientation.pitch).to(equal(0.0))
+                }
+            }
+            
+            context("GMSPanoramaViewDelegate methods") {
+                
+                beforeEach({
+                    subject?.model.setupTour()
+                })
+                
+                it("should pause the tour if it is in progress and the user taps on the pano view") {
+                    subject?.model.currentTourState = VirtualTourLocationState.InProgress
+                    
+                    subject?.panoramaView(subject?.panoView, didTap: CGPointMake(0.0, 0.1))
+                    
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourLocationState.Paused))
+                }
+                
+                it("should resume the tour if it is paused and the user taps on the pano view") {
+                    subject?.model.currentTourState = VirtualTourLocationState.Paused
+                    
+                    subject?.panoramaView(subject?.panoView, didTap: CGPointMake(0.0, 0.1))
+                    
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourLocationState.InProgress))
                 }
             }
         }

@@ -75,13 +75,19 @@ class VirtualTourModelTest: QuickSpec {
                     expect(subject?.tourIsRunning()).to(beFalse())
                 }
                 
-                it("should advance the tour when enqueueNextTourStop is invoked") {
+                it("should advance the tour when enqueueNextLocation is invoked") {
                     subject?.currentTourLocation = 1
                     
-                    let location:CLLocation = (subject?.enqueueNextTourStop())!
+                    let location:CLLocation = (subject?.enqueueNextLocation())!
                     
                     expect(location).toNot(beNil())
                     expect(subject?.currentTourLocation).to(equal(2))
+                }
+                
+                it("should mark the tour as in progress when the model is asked to resume the tour") {
+                    subject?.resumeTour()
+                    
+                    expect(subject?.currentTourState).to(equal(VirtualTourLocationState.InProgress))
                 }
             }
             

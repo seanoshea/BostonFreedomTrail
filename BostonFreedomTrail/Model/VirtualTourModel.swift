@@ -58,13 +58,17 @@ class VirtualTourModel : NSObject {
         return self.tour[self.currentTourLocation]
     }
     
-    func enqueueNextTourStop() -> CLLocation {
+    func enqueueNextLocation() -> CLLocation {
         self.currentTourLocation = self.currentTourLocation + 1
         return self.tour[self.currentTourLocation]
     }
     
     func pauseTour() {
         self.currentTourState = VirtualTourLocationState.Paused
+    }
+    
+    func resumeTour() {
+        self.currentTourState = VirtualTourLocationState.InProgress
     }
     
     func tourIsRunning() -> Bool {
