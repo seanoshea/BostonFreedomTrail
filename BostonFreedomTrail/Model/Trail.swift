@@ -48,7 +48,22 @@ public class Placemark {
     }
 }
 
+public class LookAt {
+    var latitude:Double = 0.0
+    var longitude:Double = 0.0
+    var tilt:Double = 0.0
+    var heading:Double = 0.0
+    
+    init(latitude:Double, longitude:Double, tilt:Double, heading:Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.tilt = tilt
+        self.heading = heading
+    }
+}
+
 public class Trail {
     static let instance = TrailParser().parseTrail()
     var placemarks = [Placemark]()
+    var lookAts = [Int: LookAt]()
 }

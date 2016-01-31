@@ -76,15 +76,17 @@ class VirtualTourViewController : UIViewController {
     }
     
     func cameraPositionForNextLocation(nextLocation:CLLocation) -> GMSPanoramaCamera {
-        let currentCameraPosition = (self.panoView?.camera)!
         let from = self.model.tour[self.model.currentTourLocation - 1]
         let to = CLLocation.init(latitude: nextLocation.coordinate.latitude, longitude: nextLocation.coordinate.longitude)
         let heading = self.model.locationDirection(from, to:to)
-        return GMSPanoramaCamera.init(heading: heading, pitch: currentCameraPosition.orientation.pitch, zoom: currentCameraPosition.zoom)
+        return GMSPanoramaCamera.init(heading:heading, pitch:0, zoom:1)
     }
     
     func delayTime() -> dispatch_time_t {
-        let delay = self.model.currentTourLocation > 0 ? VirtualTourStopStopDuration.DelayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.DefaultDelay.rawValue
+        var delay = self.model.currentTourLocation > 0 ? VirtualTourStopStopDuration.DelayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.DefaultDelay.rawValue
+        if (self.model.isAtLocation()) {
+            delay = delay * 5
+        }
         return dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
     }
     
@@ -123,6 +125,15 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
     func panoramaView(view: GMSPanoramaView!, didMoveToPanorama panorama: GMSPanorama!) {
         if self.shouldEnqueueNextLocationForPanorama(panorama) {
             self.advanceToNextLocation(self.delayTime())
+        }
+    }
+    
+    func panoramaView(panoramaView: GMSPanoramaView!, didMoveCamera camera: GMSPanoramaCamera!) {
+        if let unwrapped = panoramaView.panorama {
+            if self.model.isAtLocation() {
+                let s = NSString(format: "Coordinate %.6f %.6f Zoom %.2f Pitch %.6f Heading %.6f", unwrapped.coordinate.latitude, unwrapped.coordinate.longitude, camera.zoom, camera.orientation.pitch, camera.orientation.heading)
+                NSLog(s as String)
+            }
         }
     }
     

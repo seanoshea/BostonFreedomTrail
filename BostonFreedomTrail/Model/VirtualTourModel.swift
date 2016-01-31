@@ -41,12 +41,18 @@ enum VirtualTourState : Int {
 
 class VirtualTourModel : NSObject {
     var tour:[CLLocation] = []
+    var markers = [Int:Int]()
     var currentTourLocation:Int = 0
     var currentTourState:VirtualTourState = VirtualTourState.BeforeStart
     
     func setupTour() {
+        var index = 0
         for placemark in Trail.instance.placemarks {
-            for location in placemark.coordinates {
+            for (locationIndex, location) in placemark.coordinates.enumerate() {
+                if locationIndex == placemark.coordinates.count - 1 {
+                    self.markers[index] = locationIndex
+                }
+                index = index + 1
                 tour.append(location)
             }
         }
@@ -56,6 +62,10 @@ class VirtualTourModel : NSObject {
         self.currentTourLocation = 0
         self.currentTourState = VirtualTourState.InProgress
         return self.tour[self.currentTourLocation]
+    }
+    
+    func isAtLocation() -> Bool {
+        return self.currentTourLocation > 0 && self.markers[self.currentTourLocation] != nil
     }
     
     func enqueueNextLocation() -> CLLocation {
