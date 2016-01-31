@@ -39,9 +39,16 @@ enum VirtualTourState : Int {
     case Finished = 3
 }
 
+enum VirtualTourStopStopDuration : Double {
+    case CameraRepositionAnimation = 0.5
+    case DefaultDelay = 1.0
+    case DelayForCameraRepositioning = 2.0
+    case DelayForLookAt = 10.0
+}
+
 class VirtualTourModel : NSObject {
     var tour:[CLLocation] = []
-    var markers = [Int:Int]()
+    var lookAts = [Int:LookAt]()
     var currentTourLocation:Int = 0
     var currentTourState:VirtualTourState = VirtualTourState.BeforeStart
     
@@ -50,7 +57,9 @@ class VirtualTourModel : NSObject {
         for placemark in Trail.instance.placemarks {
             for (locationIndex, location) in placemark.coordinates.enumerate() {
                 if locationIndex == placemark.coordinates.count - 1 {
-                    self.markers[index] = locationIndex
+                    if placemark.lookAt != nil {
+                        self.lookAts[index] = placemark.lookAt
+                    }
                 }
                 index = index + 1
                 tour.append(location)
@@ -65,13 +74,12 @@ class VirtualTourModel : NSObject {
     }
     
     func atLookAtLocation() -> Bool {
-        return self.currentTourLocation > 0 && self.markers[self.currentTourLocation] != nil
+        return self.currentTourLocation > 0 && self.lookAts[self.currentTourLocation] != nil
     }
     
     func lookAtForCurrentLocation() -> LookAt? {
         guard self.currentTourLocation > 0 else { return nil}
-        let currentPlacemark = Trail.instance.placemarks[self.currentTourLocation]
-        return currentPlacemark.lookAt
+        return self.lookAts[self.currentTourLocation]
     }
     
     func enqueueNextLocation() -> CLLocation {
@@ -88,16 +96,50 @@ class VirtualTourModel : NSObject {
     }
     
     func tourIsRunning() -> Bool {
-        return self.currentTourState != VirtualTourState.Finished && self.currentTourState != VirtualTourState.Paused
+        return self.currentTourState == VirtualTourState.InProgress
     }
     
     func firstPlacemark() -> Placemark {
         return Trail.instance.placemarks[0]
     }
+    
+    func advanceLocation() {
+        self.currentTourLocation = self.currentTourLocation + 1
+    }
+    
+    func reverseLocation() {
+        self.currentTourLocation = self.currentTourLocation - 1
+    }
+    
+    func isPastFirstLocation() -> Bool {
+        return self.currentTourLocation > 0
+    }
+    
+    func nextLocation() -> CLLocation {
+        var nextLocation:CLLocation
+        if self.atLookAtLocation() {
+            let lookAt = self.lookAtForCurrentLocation()!
+            nextLocation = CLLocation.init(latitude:lookAt.latitude, longitude:lookAt.longitude)
+            self.advanceLocation()
+        } else {
+            nextLocation = self.enqueueNextLocation()
+        }
+        return nextLocation
+    }
+    
+    func delayTime() -> dispatch_time_t {
+        var delay = self.isPastFirstLocation() ? VirtualTourStopStopDuration.DelayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.DefaultDelay.rawValue
+        if self.atLookAtLocation() {
+            delay = VirtualTourStopStopDuration.DelayForLookAt.rawValue
+        }
+        return dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+    }
 
 // MARK: Calculating Camera Directions
     
-    func locationDirection(from:CLLocation, to:CLLocation) -> CLLocationDirection {
+    func locationDirectionForNextLocation(nextLocation:CLLocation) -> CLLocationDirection {
+        let from = self.tour[self.currentTourLocation - 1]
+        let to = CLLocation.init(latitude:nextLocation.coordinate.latitude, longitude:nextLocation.coordinate.longitude)
         let fromLatitude = self.degreesToRadians(from.coordinate.latitude)
         let fromLongitude = self.degreesToRadians(from.coordinate.longitude)
         let toLatitude = self.degreesToRadians(to.coordinate.latitude)
