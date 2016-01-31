@@ -118,15 +118,6 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
         }
     }
     
-    func panoramaView(panoramaView: GMSPanoramaView!, didMoveCamera camera: GMSPanoramaCamera!) {
-        if let unwrapped = panoramaView.panorama {
-//            if self.model.atLookAtLocation() {
-                let s = NSString(format: "Coordinate %.6f %.6f Zoom %.2f Pitch %.6f Heading %.6f", unwrapped.coordinate.latitude, unwrapped.coordinate.longitude, camera.zoom, camera.orientation.pitch, camera.orientation.heading)
-                NSLog(s as String)
-//            }
-        }
-    }
-    
     func panoramaView(panoramaView: GMSPanoramaView!, didTap point: CGPoint) {
         if self.model.tourIsRunning() {
             self.model.pauseTour()
