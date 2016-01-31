@@ -626,6 +626,12 @@
 		<name><![CDATA[State House]]></name>
 		<styleUrl>#icon2</styleUrl>
 		<description><![CDATA[<table><tr><td>The Massachusetts State House is the state capitol and seat of government of the Commonwealth of Massachusetts. It is located at Boston in the Beacon Hill neighborhood. The building houses the Massachusetts General Court (state legislature) and the offices of the Governor of Massachusetts.<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5229/5610879095_c7ca60b972.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5229/5610879095_c7ca60b972_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5149/5611790938_ddd58c7257.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5149/5611790938_ddd58c7257_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+        <LookAt>
+            <longitude>-71.063463</longitude>
+            <latitude>42.357625</latitude>
+            <tilt>3.452207</tilt>
+            <heading>343.284271</heading>
+        </LookAt>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.063303,42.35769,0</coordinates>
@@ -636,12 +642,6 @@
 				<coordinates>-71.063756,42.355393,0.0 -71.063666,42.355357,0.0 -71.063639,42.355378,0.0 -71.063599,42.355394,0.0 -71.06354400000001,42.355403,0.0 -71.063486,42.355389,0.0 -71.063399,42.355341,0.0 -71.063199,42.355536,0.0 -71.063115,42.355631,0.0 -71.06316,42.355776,0.0 -71.063328,42.356185,0.0 -71.063446,42.356631,0.0 -71.063591,42.357105,0.0 -71.063679,42.357436,0.0 -71.063688,42.357482,0.0 -71.063401,42.357561,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
-        <LookAt>
-            <longitude>-71.063463</longitude>
-            <latitude>42.357625</latitude>
-            <tilt>3.452207</tilt>
-            <heading>343.284271</heading>
-        </LookAt>
 	</Placemark>
 	<Style id="icon3">
 		<IconStyle id="i3">
@@ -658,6 +658,12 @@
 		<name><![CDATA[Park Street Church]]></name>
 		<styleUrl>#icon3</styleUrl>
 		<description><![CDATA[<table><tr><td>The Park Street Church (built 1810) in Boston, Massachusetts is an active Conservative Congregational Church at the corner of Tremont Street and Park Street. The church is currently pastored by Gordon P. Hugenberger.<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5060/5562447121_c0967094c5.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5060/5562447121_c0967094c5_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5294/5561604425_83f11499b0.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5294/5561604425_83f11499b0_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+        <LookAt>
+            <longitude>-71.061833</longitude>
+            <latitude>42.356623</latitude>
+            <tilt>9.974019</tilt>
+            <heading>320.124847</heading>
+        </LookAt>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.061996,42.357042,0</coordinates>

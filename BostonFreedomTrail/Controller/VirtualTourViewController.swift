@@ -36,7 +36,7 @@ enum VirtualTourStopStopDuration : Double {
     case CameraRepositionAnimation = 0.5
     case DefaultDelay = 1.0
     case DelayForCameraRepositioning = 2.0
-    case DelayForPlacemark = 5.0
+    case DelayForLookAt = 5.0
 }
 
 class VirtualTourViewController : UIViewController {
@@ -84,8 +84,11 @@ class VirtualTourViewController : UIViewController {
     
     func delayTime() -> dispatch_time_t {
         var delay = self.model.currentTourLocation > 0 ? VirtualTourStopStopDuration.DelayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.DefaultDelay.rawValue
-        if (self.model.isAtLocation()) {
-            delay = delay * 5
+        if (self.model.atLookAtLocation()) {
+            let lookAt = self.model.lookAtForCurrentLocation()
+            if lookAt != nil {
+                delay = delay * 5
+            }
         }
         return dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
     }
@@ -130,7 +133,7 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
     
     func panoramaView(panoramaView: GMSPanoramaView!, didMoveCamera camera: GMSPanoramaCamera!) {
         if let unwrapped = panoramaView.panorama {
-            if self.model.isAtLocation() {
+            if self.model.atLookAtLocation() {
                 let s = NSString(format: "Coordinate %.6f %.6f Zoom %.2f Pitch %.6f Heading %.6f", unwrapped.coordinate.latitude, unwrapped.coordinate.longitude, camera.zoom, camera.orientation.pitch, camera.orientation.heading)
                 NSLog(s as String)
             }

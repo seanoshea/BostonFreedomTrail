@@ -64,8 +64,14 @@ class VirtualTourModel : NSObject {
         return self.tour[self.currentTourLocation]
     }
     
-    func isAtLocation() -> Bool {
+    func atLookAtLocation() -> Bool {
         return self.currentTourLocation > 0 && self.markers[self.currentTourLocation] != nil
+    }
+    
+    func lookAtForCurrentLocation() -> LookAt? {
+        guard self.currentTourLocation > 0 else { return nil}
+        let currentPlacemark = Trail.instance.placemarks[self.currentTourLocation]
+        return currentPlacemark.lookAt
     }
     
     func enqueueNextLocation() -> CLLocation {

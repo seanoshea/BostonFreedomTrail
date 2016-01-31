@@ -65,6 +65,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
     var startCoordinates = false
     var startLine = false
     var startLineCoordinates = false
+    var hasLookAt = false
     var startLookAt = false
     var startLatitude = false
     var startLongitude = false
@@ -152,6 +153,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             }
         }
         if startLookAt {
+            hasLookAt = true
             if startLatitude {
                 currentLatitude = string
             } else if startLongitude {
@@ -190,12 +192,13 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             break
         case TrailParserConstants.lineString.rawValue:
             startLine = false
-            let placemark = Placemark(identifier: currentIdentifier!, name: currentName!, location: currentLocation!, coordinates: self.parseLineCoordinates(), placemarkDescription: currentDescription!)
+            let lookAt = self.parseLookAt()
+            let placemark = Placemark(identifier:currentIdentifier!, name:currentName!, location:currentLocation!, coordinates:self.parseLineCoordinates(), placemarkDescription:currentDescription!, lookAt:lookAt)
             trail.placemarks.append(placemark)
+            hasLookAt = false
             break
         case TrailParserConstants.lookAt.rawValue:
             startLookAt = false
-            trail.lookAts[trail.placemarks.count - 1] = self.parseLookAt()
             break
         case TrailParserConstants.latitude.rawValue:
             startLatitude = false
@@ -223,7 +226,8 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
         return path
     }
     
-    func parseLookAt() -> LookAt {
+    func parseLookAt() -> LookAt? {
+        guard hasLookAt else { return nil }
         let latitude:Double = Double(currentLatitude!)!
         let longitude:Double = Double(currentLongitude!)!
         let tilt = Double(currentTilt!)!

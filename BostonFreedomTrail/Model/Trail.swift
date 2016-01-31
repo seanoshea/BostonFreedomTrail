@@ -38,13 +38,15 @@ public class Placemark {
     var location:CLLocation = CLLocation()
     var coordinates = [CLLocation]()
     var placemarkDescription:String = ""
+    var lookAt:LookAt?
     
-    init(identifier:String, name:String, location:CLLocation, coordinates:[CLLocation], placemarkDescription:String) {
+    init(identifier:String, name:String, location:CLLocation, coordinates:[CLLocation], placemarkDescription:String, lookAt:LookAt?) {
         self.identifier = identifier
         self.name = name
         self.location = location
         self.coordinates = coordinates
         self.placemarkDescription = placemarkDescription
+        self.lookAt = lookAt
     }
 }
 
@@ -65,5 +67,4 @@ public class LookAt {
 public class Trail {
     static let instance = TrailParser().parseTrail()
     var placemarks = [Placemark]()
-    var lookAts = [Int: LookAt]()
 }
