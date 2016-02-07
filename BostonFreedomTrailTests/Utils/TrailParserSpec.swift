@@ -47,8 +47,8 @@ class TrailParserTest: QuickSpec {
             
             context("Testing Parsing of Placemarks") {
                 
-                it("should parse out seventeen placemarks from the trail xml file") {
-                    expect(trail!.placemarks.count).to(equal(17))
+                it("should parse out sixteen placemarks from the trail xml file") {
+                    expect(trail!.placemarks.count).to(equal(16))
                 }
                 
                 it("should order the placemarks correctly after parsing") {
