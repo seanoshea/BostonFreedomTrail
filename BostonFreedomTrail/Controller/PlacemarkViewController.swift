@@ -30,6 +30,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
+enum PlacemarkViewConstants : String {
+    case PlacemarkHTMLResource = "placemark"
+}
+
 class PlacemarkViewController : UIViewController {
     
     @IBOutlet weak var webView: UIWebView?
@@ -40,7 +44,8 @@ class PlacemarkViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.webView?.loadHTMLString((self.placemark?.placemarkDescription)!, baseURL: nil)
+        self.webView?.delegate = self;
+        self.webView?.loadHTMLString(self.stringForWebView(), baseURL: nil)
     }
     
     @IBAction func streetViewButtonPressed() {
@@ -50,5 +55,22 @@ class PlacemarkViewController : UIViewController {
     @IBAction func wikipediaButtonPressed() {
         
     }
+    
+    func stringForWebView() -> String {
+        var returnString = ""
+        if let htmlString = NSBundle.mainBundle().pathForResource(PlacemarkViewConstants.PlacemarkHTMLResource.rawValue, ofType: "html") {
+            if let description = self.placemark?.placemarkDescription {
+                do {
+                    returnString = try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: 0), description) as String
+                } catch (_) {
+                    
+                }
+            }
+        }
+        return returnString
+    }
 }
 
+extension PlacemarkViewController : UIWebViewDelegate {
+    
+}
