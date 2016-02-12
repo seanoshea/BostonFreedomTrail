@@ -37,6 +37,11 @@ class PlacemarkViewController : UIViewController {
     @IBOutlet weak var streetViewButton: UIButton?
     
     var placemark:Placemark?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.webView?.loadHTMLString((self.placemark?.placemarkDescription)!, baseURL: nil)
+    }
     
     @IBAction func streetViewButtonPressed() {
     
