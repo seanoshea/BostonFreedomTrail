@@ -28,36 +28,24 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
+import Foundation
 
-class PlacemarkViewController : UIViewController {
+class PlacemarkModel {
     
-    @IBOutlet weak var webView: UIWebView?
-    @IBOutlet weak var wikipediaButton: UIButton?
-    @IBOutlet weak var streetViewButton: UIButton?
-
-    var model:PlacemarkModel?
+    var placemark:Placemark?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.model = PlacemarkModel.init()
+    func stringForWebView() -> String {
+        var returnString = ""
+        if let htmlString = NSBundle.mainBundle().pathForResource("placemark", ofType: "html") {
+            if let description = self.placemark?.placemarkDescription {
+                do {
+                    returnString = try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: 0), description) as String
+                } catch (_) {
+                    
+                }
+            }
+        }
+        return returnString
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.webView?.delegate = self
-        self.webView?.loadHTMLString((self.model?.stringForWebView())!, baseURL: nil)
-    }
-    
-    @IBAction func streetViewButtonPressed() {
-    
-    }
-
-    @IBAction func wikipediaButtonPressed() {
-        
-    }
-}
-
-extension PlacemarkViewController : UIWebViewDelegate {
     
 }

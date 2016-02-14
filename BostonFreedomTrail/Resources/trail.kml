@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+<kml xmlns="https://www.opengis.net/kml/2.2" xmlns:gx="https://www.google.com/kml/ext/2.2">
 <Document>
-<atom:link href="http://www.tripline.net/trip/Boston_Freedom_Trail_-7372323165121003A5DAFE17B4532314"/>
+<atom:link href="https://www.tripline.net/trip/Boston_Freedom_Trail_-7372323165121003A5DAFE17B4532314"/>
 <name>Boston Freedom Trail  (created on Tripline)</name>
-<description><![CDATA[The Freedom Trail is a red (mostly brick) path through downtown Boston, Massachusetts that leads to many significant historic sites. It is a 2.5-mile walk from Boston Common to Bunker Hill Monument in Charlestown with simple ground markers, graveyards, notable churches and other buildings, and a historic naval frigate along the way.<br><br><a href="http://www.tripline.net/trip/Boston_Freedom_Trail_-7372323165121003A5DAFE17B4532314">view on Tripline</a><br><br>]]></description>
+<description><![CDATA[The Freedom Trail is a red (mostly brick) path through downtown Boston, Massachusetts that leads to many significant historic sites. It is a 2.5-mile walk from Boston Common to Bunker Hill Monument in Charlestown with simple ground markers, graveyards, notable churches and other buildings, and a historic naval frigate along the way.<br><br><a href="https://www.tripline.net/trip/Boston_Freedom_Trail_-7372323165121003A5DAFE17B4532314">view on Tripline</a><br><br>]]></description>
 <open>1</open>
 <gx:Tour>
 	<name>Play</name>
@@ -588,7 +588,7 @@
 	<Style id="icon1">
 		<IconStyle id="i1">
 			<Icon>
-				<href>http://www.tripline.net/api/icon1.png</href>
+				<href>https://www.tripline.net/api/icon1.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls1">
@@ -599,7 +599,7 @@
 	<Placemark id="placemark1">
 		<name><![CDATA[Boston Common]]></name>
 		<styleUrl>#icon1</styleUrl>
-		<description><![CDATA[<table><tr><td>Boston Common is a central public park in Boston, Massachusetts. Dating from 1634, it is one of the oldest city parks in the United States.<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5309/5610861575_d3c14f572d.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5309/5610861575_d3c14f572d_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5029/5606595252_56898baab4.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5029/5606595252_56898baab4_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5061/5599641594_1c80ea5c87.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5061/5599641594_1c80ea5c87_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5188/5596057451_9419d087e8.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5188/5596057451_9419d087e8_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>Boston Common is a central public park in Boston, Massachusetts. Dating from 1634, it is one of the oldest city parks in the United States.<br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5309/5610861575_d3c14f572d.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5309/5610861575_d3c14f572d_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5029/5606595252_56898baab4.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5029/5606595252_56898baab4_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5061/5599641594_1c80ea5c87.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5061/5599641594_1c80ea5c87_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.063303947449,42.355721486582,0</coordinates>
@@ -614,7 +614,7 @@
 	<Style id="icon2">
 		<IconStyle id="i2">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon2.png</href>
+				<href>https://www.tripline.net/api/icon2.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls2">
@@ -625,7 +625,7 @@
 	<Placemark id="placemark2">
 		<name><![CDATA[State House]]></name>
 		<styleUrl>#icon2</styleUrl>
-		<description><![CDATA[<table><tr><td>The Massachusetts State House is the state capitol and seat of government of the Commonwealth of Massachusetts. It is located at Boston in the Beacon Hill neighborhood. The building houses the Massachusetts General Court (state legislature) and the offices of the Governor of Massachusetts.<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5229/5610879095_c7ca60b972.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5229/5610879095_c7ca60b972_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5149/5611790938_ddd58c7257.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5149/5611790938_ddd58c7257_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>The Massachusetts State House is the state capitol and seat of government of the Commonwealth of Massachusetts. It is located at Boston in the Beacon Hill neighborhood. The building houses the Massachusetts General Court (state legislature) and the offices of the Governor of Massachusetts.<br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5229/5610879095_c7ca60b972.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5229/5610879095_c7ca60b972_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5149/5611790938_ddd58c7257.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5149/5611790938_ddd58c7257_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.063303,42.35769,0</coordinates>
@@ -640,7 +640,7 @@
 	<Style id="icon3">
 		<IconStyle id="i3">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon3.png</href>
+				<href>https://www.tripline.net/api/icon3.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls3">
@@ -651,7 +651,7 @@
 	<Placemark id="placemark3">
 		<name><![CDATA[Park Street Church]]></name>
 		<styleUrl>#icon3</styleUrl>
-		<description><![CDATA[<table><tr><td>The Park Street Church (built 1810) in Boston, Massachusetts is an active Conservative Congregational Church at the corner of Tremont Street and Park Street. The church is currently pastored by Gordon P. Hugenberger.<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5060/5562447121_c0967094c5.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5060/5562447121_c0967094c5_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5294/5561604425_83f11499b0.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5294/5561604425_83f11499b0_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>The Park Street Church (built 1810) in Boston, Massachusetts is an active Conservative Congregational Church at the corner of Tremont Street and Park Street. The church is currently pastored by Gordon P. Hugenberger.<br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5060/5562447121_c0967094c5.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5060/5562447121_c0967094c5_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5294/5561604425_83f11499b0.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5294/5561604425_83f11499b0_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.061996,42.357042,0</coordinates>
@@ -666,7 +666,7 @@
 	<Style id="icon4">
 		<IconStyle id="i4">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon4.png</href>
+				<href>https://www.tripline.net/api/icon4.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls4">
@@ -677,7 +677,7 @@
 	<Placemark id="placemark4">
 		<name><![CDATA[Granary Burying Ground]]></name>
 		<styleUrl>#icon4</styleUrl>
-		<description><![CDATA[<table><tr><td>Founded in 1660, the Granary Burying Ground in Massachusetts is the city of Boston's third-oldest cemetery. Located on Tremont Street, it is the final resting place for many notable Revolutionary War-era patriots, including three signers of the Declaration of Independence, Paul Revere and the five victims of the Boston Massacre.<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5301/5617293877_f8da9f762f.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5301/5617293877_f8da9f762f_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5184/5577528132_886361ddfd.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5184/5577528132_886361ddfd_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5256/5562163786_fef238f245.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5256/5562163786_fef238f245_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5051/5460888563_a2952a5295.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5051/5460888563_a2952a5295_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>Founded in 1660, the Granary Burying Ground in Massachusetts is the city of Boston's third-oldest cemetery. Located on Tremont Street, it is the final resting place for many notable Revolutionary War-era patriots, including three signers of the Declaration of Independence, Paul Revere and the five victims of the Boston Massacre.<br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5301/5617293877_f8da9f762f.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5301/5617293877_f8da9f762f_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5184/5577528132_886361ddfd.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5184/5577528132_886361ddfd_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5256/5562163786_fef238f245.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5256/5562163786_fef238f245_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5051/5460888563_a2952a5295.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5051/5460888563_a2952a5295_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.061994,42.357136,0</coordinates>
@@ -692,7 +692,7 @@
 	<Style id="icon5">
 		<IconStyle id="i5">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon5.png</href>
+				<href>https://www.tripline.net/api/icon5.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls5">
@@ -703,7 +703,7 @@
 	<Placemark id="placemark5">
 		<name><![CDATA[Kings Chapel and Burying Ground]]></name>
 		<styleUrl>#icon5</styleUrl>
-		<description><![CDATA[<table><tr><td>King's Chapel Burying Ground is a historic cemetery at King's Chapel on Tremont Street in Boston, Massachusetts. It is the oldest cemetery in the city and is a site on the Freedom Trail. King's Chapel Burying Ground was founded in 1630 as the first cemetery in the city of Boston. It was Boston's only burial site for 30 years (1630-1660).<br/></td></tr><tr><td><a href="http://lh5.ggpht.com/_5ZNuyhFz8CA/S3Dvl3pNLLI/AAAAAAAAfDc/J9CNSb8L8-U/boss9010.jpg" target="_blank"><img src="http://lh5.ggpht.com/_5ZNuyhFz8CA/S3Dvl3pNLLI/AAAAAAAAfDc/J9CNSb8L8-U/s104/boss9010.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://lh4.ggpht.com/_RPyLhniGAZM/SZEFWDz6i9I/AAAAAAABRME/Z5Yf3hBajcA/DSC06072b.JPG" target="_blank"><img src="http://lh4.ggpht.com/_RPyLhniGAZM/SZEFWDz6i9I/AAAAAAABRME/Z5Yf3hBajcA/s104/DSC06072b.JPG" style="padding:5px 5px 5px 0px;" /></a><a href="http://lh5.ggpht.com/_5ZNuyhFz8CA/S3Dvkt4Om5I/AAAAAAAAfDU/ViHEkNhaNxA/bos9020.jpg" target="_blank"><img src="http://lh5.ggpht.com/_5ZNuyhFz8CA/S3Dvkt4Om5I/AAAAAAAAfDU/ViHEkNhaNxA/s104/bos9020.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>King's Chapel Burying Ground is a historic cemetery at King's Chapel on Tremont Street in Boston, Massachusetts. It is the oldest cemetery in the city and is a site on the Freedom Trail. King's Chapel Burying Ground was founded in 1630 as the first cemetery in the city of Boston. It was Boston's only burial site for 30 years (1630-1660).<br/></td></tr><tr><td><a href="https://lh5.ggpht.com/_5ZNuyhFz8CA/S3Dvl3pNLLI/AAAAAAAAfDc/J9CNSb8L8-U/boss9010.jpg" target="_blank"><img src="https://lh5.ggpht.com/_5ZNuyhFz8CA/S3Dvl3pNLLI/AAAAAAAAfDc/J9CNSb8L8-U/s104/boss9010.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://lh4.ggpht.com/_RPyLhniGAZM/SZEFWDz6i9I/AAAAAAABRME/Z5Yf3hBajcA/DSC06072b.JPG" target="_blank"><img src="https://lh4.ggpht.com/_RPyLhniGAZM/SZEFWDz6i9I/AAAAAAABRME/Z5Yf3hBajcA/s104/DSC06072b.JPG" style="padding:5px 5px 5px 0px;" /></a><a href="https://lh5.ggpht.com/_5ZNuyhFz8CA/S3Dvkt4Om5I/AAAAAAAAfDU/ViHEkNhaNxA/bos9020.jpg" target="_blank"><img src="https://lh5.ggpht.com/_5ZNuyhFz8CA/S3Dvkt4Om5I/AAAAAAAAfDU/ViHEkNhaNxA/s104/bos9020.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.059943,42.358095,0</coordinates>
@@ -718,7 +718,7 @@
 	<Style id="icon6">
 		<IconStyle id="i6">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon6.png</href>
+				<href>https://www.tripline.net/api/icon6.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls6">
@@ -729,7 +729,7 @@
 	<Placemark id="placemark6">
 		<name><![CDATA[Benjamin Franklin Statue]]></name>
 		<styleUrl>#icon6</styleUrl>
-		<description><![CDATA[<table><tr><td>Benjamin Franklin (January 17, 1706 - April 17, 1790) was one of the Founding Fathers of the United States. A noted polymath, Franklin was a leading author and printer, satirist, political theorist, politician, postmaster, scientist, inventor, civic activist, statesman, and diplomat.<br/></td></tr><tr><td><a href="http://farm2.static.flickr.com/1198/5151005694_08c76654e0.jpg" target="_blank"><img src="http://farm2.static.flickr.com/1198/5151005694_08c76654e0_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm5.static.flickr.com/4126/5098817604_fdbd5d0291.jpg" target="_blank"><img src="http://farm5.static.flickr.com/4126/5098817604_fdbd5d0291_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm2.static.flickr.com/1200/5112254985_713c0d8c73.jpg" target="_blank"><img src="http://farm2.static.flickr.com/1200/5112254985_713c0d8c73_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>Benjamin Franklin (January 17, 1706 - April 17, 1790) was one of the Founding Fathers of the United States. A noted polymath, Franklin was a leading author and printer, satirist, political theorist, politician, postmaster, scientist, inventor, civic activist, statesman, and diplomat.<br/></td></tr><tr><td><a href="https://farm2.static.flickr.com/1198/5151005694_08c76654e0.jpg" target="_blank"><img src="https://farm2.static.flickr.com/1198/5151005694_08c76654e0_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm5.static.flickr.com/4126/5098817604_fdbd5d0291.jpg" target="_blank"><img src="https://farm5.static.flickr.com/4126/5098817604_fdbd5d0291_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm2.static.flickr.com/1200/5112254985_713c0d8c73.jpg" target="_blank"><img src="https://farm2.static.flickr.com/1200/5112254985_713c0d8c73_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.059404,42.35782,0</coordinates>
@@ -744,7 +744,7 @@
 	<Style id="icon7">
 		<IconStyle id="i7">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon7.png</href>
+				<href>https://www.tripline.net/api/icon7.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls7">
@@ -755,7 +755,7 @@
 	<Placemark id="placemark7">
 		<name><![CDATA[Old South Meeting House]]></name>
 		<styleUrl>#icon7</styleUrl>
-		<description><![CDATA[<table><tr><td>The Old South Meeting House (built 1729), in the Downtown Crossing area of Boston, Massachusetts, gained fame as the organizing point for the Boston Tea Party on December 16, 1773. 5,000 colonists gathered at the Meeting House, the largest building in Boston at the time.<br/></td></tr><tr><td><a href="http://farm5.static.flickr.com/4111/5603246485_48dcb097a5.jpg" target="_blank"><img src="http://farm5.static.flickr.com/4111/5603246485_48dcb097a5_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5185/5596065463_61a4b870d0.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5185/5596065463_61a4b870d0_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5229/5596028679_cf8bd67bda.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5229/5596028679_cf8bd67bda_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>The Old South Meeting House (built 1729), in the Downtown Crossing area of Boston, Massachusetts, gained fame as the organizing point for the Boston Tea Party on December 16, 1773. 5,000 colonists gathered at the Meeting House, the largest building in Boston at the time.<br/></td></tr><tr><td><a href="https://farm5.static.flickr.com/4111/5603246485_48dcb097a5.jpg" target="_blank"><img src="https://farm5.static.flickr.com/4111/5603246485_48dcb097a5_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.058669,42.357089,0</coordinates>
@@ -770,7 +770,7 @@
 	<Style id="icon8">
 		<IconStyle id="i8">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon8.png</href>
+				<href>https://www.tripline.net/api/icon8.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls8">
@@ -781,7 +781,7 @@
 	<Placemark id="placemark8">
 		<name><![CDATA[Old Corner Book Store]]></name>
 		<styleUrl>#icon8</styleUrl>
-		<description><![CDATA[<table><tr><td>The Old Corner Bookstore is a historic building in the center of Boston, Massachusetts. It is located at the corner of Washington and School Streets, along the Freedom Trail of revolutionary and early American historic sites.<br/></td></tr><tr><td><a href="http://farm5.static.flickr.com/4024/4584915524_da52e7cdaa.jpg" target="_blank"><img src="http://farm5.static.flickr.com/4024/4584915524_da52e7cdaa_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm5.static.flickr.com/4055/4418054768_715634b962.jpg" target="_blank"><img src="http://farm5.static.flickr.com/4055/4418054768_715634b962_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>The Old Corner Bookstore is a historic building in the center of Boston, Massachusetts. It is located at the corner of Washington and School Streets, along the Freedom Trail of revolutionary and early American historic sites.<br/></td></tr><tr><td><a href="https://farm5.static.flickr.com/4024/4584915524_da52e7cdaa.jpg" target="_blank"><img src="https://farm5.static.flickr.com/4024/4584915524_da52e7cdaa_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm5.static.flickr.com/4055/4418054768_715634b962.jpg" target="_blank"><img src="https://farm5.static.flickr.com/4055/4418054768_715634b962_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.05829,42.35741,0</coordinates>
@@ -796,7 +796,7 @@
 	<Style id="icon9">
 		<IconStyle id="i9">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon9.png</href>
+				<href>https://www.tripline.net/api/icon9.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls9">
@@ -807,7 +807,7 @@
 	<Placemark id="placemark9">
 		<name><![CDATA[Old State House]]></name>
 		<styleUrl>#icon9</styleUrl>
-		<description><![CDATA[<table><tr><td>The Old State House is a historic government building located at the intersection of Washington and State Streets in Boston, Massachusetts, USA. Built in 1713, it is the oldest surviving public building in Boston, and the seat of the first elected legislature in the New World. It is now a history museum operated by the Bostonian Society, a nonprofit whose primary focus is the museum.<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5268/5565689291_1e471c44ca.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5268/5565689291_1e471c44ca_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5226/5562147028_48c733844a.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5226/5562147028_48c733844a_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5022/5549032672_3fa41e6d6b.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5022/5549032672_3fa41e6d6b_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>The Old State House is a historic government building located at the intersection of Washington and State Streets in Boston, Massachusetts, USA. Built in 1713, it is the oldest surviving public building in Boston, and the seat of the first elected legislature in the New World. It is now a history museum operated by the Bostonian Society, a nonprofit whose primary focus is the museum.<br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5268/5565689291_1e471c44ca.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5268/5565689291_1e471c44ca_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5226/5562147028_48c733844a.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5226/5562147028_48c733844a_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5022/5549032672_3fa41e6d6b.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5022/5549032672_3fa41e6d6b_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.057381,42.358765,0</coordinates>
@@ -822,7 +822,7 @@
 	<Style id="icon10">
 		<IconStyle id="i10">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon10.png</href>
+				<href>https://www.tripline.net/api/icon10.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls10">
@@ -833,7 +833,7 @@
 	<Placemark id="placemark10">
 		<name><![CDATA[Boston Massacre Marker]]></name>
 		<styleUrl>#icon10</styleUrl>
-		<description><![CDATA[<table><tr><td>The Boston Massacre, also known as the Boston riot, was an incident that led to the deaths of five civilians at the hands of British redcoats on March 5, 1770, the legal aftermath of which helped spark the rebellion in some of the British American colonies, which culminated in the American Revolutionary War. A heavy British military presence in Boston led to a tense situation that boiled over into incitement of brawls between soldiers and civilians and eventually led to troops discharging their muskets after being threatened by a rioting crowd. Three civilians were killed at the scene of the shooting, eleven were injured, and two died after the incident.<br/></td></tr><tr><td><a href="http://lh5.ggpht.com/_Kj-foU7ftlk/SDv-RTdMx-I/AAAAAAAACoQ/F4jJVXHpR3s/IMG_1762.JPG" target="_blank"><img src="http://lh5.ggpht.com/_Kj-foU7ftlk/SDv-RTdMx-I/AAAAAAAACoQ/F4jJVXHpR3s/s104/IMG_1762.JPG" style="padding:5px 5px 5px 0px;" /></a><a href="http://lh3.ggpht.com/_ZXQTuitNKLM/TDfBK5M4RhI/AAAAAAAAANY/6WwzGdBAImI/2010-07-02%2016.08.08.jpg" target="_blank"><img src="http://lh3.ggpht.com/_ZXQTuitNKLM/TDfBK5M4RhI/AAAAAAAAANY/6WwzGdBAImI/s104/2010-07-02%2016.08.08.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://lh4.ggpht.com/_97ol1INoJT8/SOF9o413_tI/AAAAAAAAAks/BwqYg9XWuSY/Old%20State%20House.jpg" target="_blank"><img src="http://lh4.ggpht.com/_97ol1INoJT8/SOF9o413_tI/AAAAAAAAAks/BwqYg9XWuSY/s104/Old%20State%20House.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm5.static.flickr.com/4076/4880175116_a8c58c13db.jpg" target="_blank"><img src="http://farm5.static.flickr.com/4076/4880175116_a8c58c13db_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>The Boston Massacre, also known as the Boston riot, was an incident that led to the deaths of five civilians at the hands of British redcoats on March 5, 1770, the legal aftermath of which helped spark the rebellion in some of the British American colonies, which culminated in the American Revolutionary War. A heavy British military presence in Boston led to a tense situation that boiled over into incitement of brawls between soldiers and civilians and eventually led to troops discharging their muskets after being threatened by a rioting crowd. Three civilians were killed at the scene of the shooting, eleven were injured, and two died after the incident.<br/></td></tr><tr><td><a href="https://lh5.ggpht.com/_Kj-foU7ftlk/SDv-RTdMx-I/AAAAAAAACoQ/F4jJVXHpR3s/IMG_1762.JPG" target="_blank"><img src="https://lh5.ggpht.com/_Kj-foU7ftlk/SDv-RTdMx-I/AAAAAAAACoQ/F4jJVXHpR3s/s104/IMG_1762.JPG" style="padding:5px 5px 5px 0px;" /></a><a href="https://lh3.ggpht.com/_ZXQTuitNKLM/TDfBK5M4RhI/AAAAAAAAANY/6WwzGdBAImI/2010-07-02%2016.08.08.jpg" target="_blank"><img src="https://lh3.ggpht.com/_ZXQTuitNKLM/TDfBK5M4RhI/AAAAAAAAANY/6WwzGdBAImI/s104/2010-07-02%2016.08.08.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://lh4.ggpht.com/_97ol1INoJT8/SOF9o413_tI/AAAAAAAAAks/BwqYg9XWuSY/Old%20State%20House.jpg" target="_blank"><img src="https://lh4.ggpht.com/_97ol1INoJT8/SOF9o413_tI/AAAAAAAAAks/BwqYg9XWuSY/s104/Old%20State%20House.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm5.static.flickr.com/4076/4880175116_a8c58c13db.jpg" target="_blank"><img src="https://farm5.static.flickr.com/4076/4880175116_a8c58c13db_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.057044,42.358802,0</coordinates>
@@ -848,7 +848,7 @@
 	<Style id="icon11">
 		<IconStyle id="i11">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon11.png</href>
+				<href>https://www.tripline.net/api/icon11.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls11">
@@ -859,7 +859,7 @@
 	<Placemark id="placemark11">
 		<name><![CDATA[Faneuil Hall Marketplace]]></name>
 		<styleUrl>#icon11</styleUrl>
-		<description><![CDATA[<table><tr><td>Faneuil Hall (phonetic: fanyul), located near the waterfront and today's Government Center, in Boston, Massachusetts, has been a marketplace and a meeting hall since 1742. It was the site of several speeches by Samuel Adams, James Otis, and others encouraging independence from Great Britain, and is now part of Boston National Historical Park and a well known stop on the Freedom Trail. It is sometimes referred to as *the Cradle of Liberty*.<br/></td></tr><tr><td><a href="http://farm2.static.flickr.com/1329/5179031220_d072f1da2b.jpg" target="_blank"><img src="http://farm2.static.flickr.com/1329/5179031220_d072f1da2b_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5082/5206396476_1223681c2c.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5082/5206396476_1223681c2c_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>Faneuil Hall (phonetic: fanyul), located near the waterfront and today's Government Center, in Boston, Massachusetts, has been a marketplace and a meeting hall since 1742. It was the site of several speeches by Samuel Adams, James Otis, and others encouraging independence from Great Britain, and is now part of Boston National Historical Park and a well known stop on the Freedom Trail. It is sometimes referred to as *the Cradle of Liberty*.<br/></td></tr><tr><td><a href="https://farm2.static.flickr.com/1329/5179031220_d072f1da2b.jpg" target="_blank"><img src="https://farm2.static.flickr.com/1329/5179031220_d072f1da2b_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5082/5206396476_1223681c2c.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5082/5206396476_1223681c2c_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.05579,42.35996,0</coordinates>
@@ -874,7 +874,7 @@
 	<Style id="icon12">
 		<IconStyle id="i12">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon12.png</href>
+				<href>https://www.tripline.net/api/icon12.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls12">
@@ -885,7 +885,7 @@
 	<Placemark id="placemark12">
 		<name><![CDATA[Paul Revere House]]></name>
 		<styleUrl>#icon12</styleUrl>
-		<description><![CDATA[<table><tr><td>The Paul Revere House (1680) is the colonial home of American patriot Paul Revere during the time of the American Revolution. It is located at 19 North Square, Boston, Massachusetts, in the city's North End, and is now operated as a nonprofit museum by the Paul Revere Memorial Association. A small admission fee is charged.<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5187/5620964938_d6b5056d38.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5187/5620964938_d6b5056d38_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5176/5596614266_35d44a79f2.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5176/5596614266_35d44a79f2_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5104/5607232165_929af90228.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5104/5607232165_929af90228_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>The Paul Revere House (1680) is the colonial home of American patriot Paul Revere during the time of the American Revolution. It is located at 19 North Square, Boston, Massachusetts, in the city's North End, and is now operated as a nonprofit museum by the Paul Revere Memorial Association. A small admission fee is charged.<br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5187/5620964938_d6b5056d38.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5187/5620964938_d6b5056d38_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5176/5596614266_35d44a79f2.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5176/5596614266_35d44a79f2_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5104/5607232165_929af90228.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5104/5607232165_929af90228_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.053693,42.363623,0</coordinates>
@@ -900,7 +900,7 @@
 	<Style id="icon13">
 		<IconStyle id="i13">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon13.png</href>
+				<href>https://www.tripline.net/api/icon13.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls13">
@@ -911,7 +911,7 @@
 	<Placemark id="placemark13">
 		<name><![CDATA[Old North Church]]></name>
 		<styleUrl>#icon13</styleUrl>
-		<description><![CDATA[<table><tr><td>Old North Church (officially, Christ Church in the City of Boston), at 193 Salem Street, in the North End of Boston, is the location from which the famous *One if by land, and two if by sea* signal is said to have been sent. This phrase is related to Paul Revere's midnight ride, of April 18, 1775, which preceded the Battles of Lexington and Concord during the American Revolution.<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5101/5621701144_ac78998606.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5101/5621701144_ac78998606_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5181/5621113299_59cccaf6be.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5181/5621113299_59cccaf6be_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5023/5621701132_251698d228.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5023/5621701132_251698d228_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>Old North Church (officially, Christ Church in the City of Boston), at 193 Salem Street, in the North End of Boston, is the location from which the famous *One if by land, and two if by sea* signal is said to have been sent. This phrase is related to Paul Revere's midnight ride, of April 18, 1775, which preceded the Battles of Lexington and Concord during the American Revolution.<br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5101/5621701144_ac78998606.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5101/5621701144_ac78998606_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5181/5621113299_59cccaf6be.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5181/5621113299_59cccaf6be_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5023/5621701132_251698d228.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5023/5621701132_251698d228_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.0545,42.3665,0</coordinates>
@@ -926,7 +926,7 @@
 	<Style id="icon14">
 		<IconStyle id="i14">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon14.png</href>
+				<href>https://www.tripline.net/api/icon14.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls14">
@@ -937,7 +937,7 @@
 	<Placemark id="placemark14">
 		<name><![CDATA[Copp's Hill Burying Ground]]></name>
 		<styleUrl>#icon14</styleUrl>
-		<description><![CDATA[<table><tr><td>Copp's Hill Burying Ground is a Boston cemetery founded on February 20, 1659, when the town bought land on Copp's Hill from John Baker and Daniel Turell. It is the second oldest cemetery in Boston (second only to the King's Chapel founded in 1630) and contains the remains of various notable Bostonians from the colonial era<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5131/5427117090_75c086a71c.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5131/5427117090_75c086a71c_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5308/5559490702_44a7b999ef.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5308/5559490702_44a7b999ef_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5135/5495345953_14001d7450.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5135/5495345953_14001d7450_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>Copp's Hill Burying Ground is a Boston cemetery founded on February 20, 1659, when the town bought land on Copp's Hill from John Baker and Daniel Turell. It is the second oldest cemetery in Boston (second only to the King's Chapel founded in 1630) and contains the remains of various notable Bostonians from the colonial era<br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5131/5427117090_75c086a71c.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5131/5427117090_75c086a71c_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5308/5559490702_44a7b999ef.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5308/5559490702_44a7b999ef_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5135/5495345953_14001d7450.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5135/5495345953_14001d7450_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.055896,42.366922,0</coordinates>
@@ -952,7 +952,7 @@
 	<Style id="icon15">
 		<IconStyle id="i15">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon15.png</href>
+				<href>https://www.tripline.net/api/icon15.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls15">
@@ -963,7 +963,7 @@
 	<Placemark id="placemark15">
 		<name><![CDATA[USS Constitution (Old Ironsides)]]></name>
 		<styleUrl>#icon15</styleUrl>
-		<description><![CDATA[<table><tr><td>USS Constitution is a wooden-hulled, three-masted heavy frigate of the United States Navy. Named by President George Washington after the Constitution of the United States of America, she is the world's oldest floating commissioned naval vessel. Launched in 1797, Constitution was one of six original frigates authorized for construction by the Naval Act of 1794. Constitution is most famous for her actions during the War of 1812 against Great Britain, when she captured numerous merchant ships and defeated five British warships: HMS Guerriere, Java, Pictou, Cyane and Levant. The battle with Guerriere earned her the nickname of *Old Ironsides* and public adoration that has repeatedly saved her from scrapping. <br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5162/5277529167_a57ffba6ba.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5162/5277529167_a57ffba6ba_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5246/5364964811_0c157a179d.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5246/5364964811_0c157a179d_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5001/5277528419_8efc65fb10.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5001/5277528419_8efc65fb10_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>USS Constitution is a wooden-hulled, three-masted heavy frigate of the United States Navy. Named by President George Washington after the Constitution of the United States of America, she is the world's oldest floating commissioned naval vessel. Launched in 1797, Constitution was one of six original frigates authorized for construction by the Naval Act of 1794. Constitution is most famous for her actions during the War of 1812 against Great Britain, when she captured numerous merchant ships and defeated five British warships: HMS Guerriere, Java, Pictou, Cyane and Levant. The battle with Guerriere earned her the nickname of *Old Ironsides* and public adoration that has repeatedly saved her from scrapping. <br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5162/5277529167_a57ffba6ba.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5162/5277529167_a57ffba6ba_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5246/5364964811_0c157a179d.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5246/5364964811_0c157a179d_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5001/5277528419_8efc65fb10.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5001/5277528419_8efc65fb10_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.05657,42.372474,0</coordinates>
@@ -978,7 +978,7 @@
 	<Style id="icon16">
 		<IconStyle id="i16">
 			<color>ffffffff</color>			<Icon>
-				<href>http://www.tripline.net/api/icon16.png</href>
+				<href>https://www.tripline.net/api/icon16.png</href>
 			</Icon>
 		</IconStyle>
 		<LineStyle id="ls16">
@@ -989,7 +989,7 @@
 	<Placemark id="placemark16">
 		<name><![CDATA[Bunker Hill Monument]]></name>
 		<styleUrl>#icon16</styleUrl>
-		<description><![CDATA[<table><tr><td>The Bunker Hill Monument was built to commemorate the Battle of Bunker Hill. The 221 foot (67 m) granite obelisk was erected between 1827 and 1843 in Charlestown, Massachusetts with granite from Quincy, Massachusetts. There are 294 steps to the top. The Bunker Hill Monument is not actually on on Bunker Hill but instead on Breed's Hill, where most of the fighting in the misnamed Battle of Bunker Hill actually took place.<br/></td></tr><tr><td><a href="http://farm6.static.flickr.com/5030/5617214592_51cb8381df.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5030/5617214592_51cb8381df_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5265/5617207248_e7ea6180c9.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5265/5617207248_e7ea6180c9_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="http://farm6.static.flickr.com/5109/5617202954_c5c315fa77.jpg" target="_blank"><img src="http://farm6.static.flickr.com/5109/5617202954_c5c315fa77_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>The Bunker Hill Monument was built to commemorate the Battle of Bunker Hill. The 221 foot (67 m) granite obelisk was erected between 1827 and 1843 in Charlestown, Massachusetts with granite from Quincy, Massachusetts. There are 294 steps to the top. The Bunker Hill Monument is not actually on on Bunker Hill but instead on Breed's Hill, where most of the fighting in the misnamed Battle of Bunker Hill actually took place.<br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5030/5617214592_51cb8381df.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5030/5617214592_51cb8381df_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5265/5617207248_e7ea6180c9.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5265/5617207248_e7ea6180c9_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5109/5617202954_c5c315fa77.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5109/5617202954_c5c315fa77_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
 		<MultiGeometry>
 			<Point>
 				<coordinates>-71.060858,42.376379,0</coordinates>

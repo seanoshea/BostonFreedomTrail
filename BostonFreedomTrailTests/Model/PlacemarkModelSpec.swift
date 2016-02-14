@@ -28,36 +28,34 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
+import Foundation
 
-class PlacemarkViewController : UIViewController {
-    
-    @IBOutlet weak var webView: UIWebView?
-    @IBOutlet weak var wikipediaButton: UIButton?
-    @IBOutlet weak var streetViewButton: UIButton?
+import Quick
+import Nimble
 
-    var model:PlacemarkModel?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.model = PlacemarkModel.init()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.webView?.delegate = self
-        self.webView?.loadHTMLString((self.model?.stringForWebView())!, baseURL: nil)
-    }
-    
-    @IBAction func streetViewButtonPressed() {
-    
-    }
+@testable import BostonFreedomTrail
 
-    @IBAction func wikipediaButtonPressed() {
+import GoogleMaps
+
+class PlacemarkModelTest: QuickSpec {
+    
+    override func spec() {
         
+        describe("PlacemarkModel") {
+            
+            var subject:PlacemarkModel?
+            
+            beforeEach({ () -> () in
+                subject = PlacemarkModel.init()
+                subject?.placemark = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description")
+            })
+            
+            context("Creating the HTML for the placemark") {
+                
+                it("should use the placemark description when creating the ") {
+                    expect(subject?.stringForWebView().rangeOfString("placemark description")).toNot(beNil())
+                }
+            }
+        }
     }
-}
-
-extension PlacemarkViewController : UIWebViewDelegate {
-    
 }

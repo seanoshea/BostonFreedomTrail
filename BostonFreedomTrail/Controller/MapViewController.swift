@@ -49,7 +49,7 @@ class MapViewController : UIViewController {
             if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == NSComparisonResult.OrderedSame {
                 let placemarkViewController = segue.destinationViewController as! PlacemarkViewController
                 let placemark = self.mapView?.selectedMarker.userData as! Placemark
-                placemarkViewController.placemark = placemark
+                placemarkViewController.model!.placemark = placemark
             }
         }
     }
