@@ -45,6 +45,11 @@ enum TrailParserConstants : String {
     case coordinates = "coordinates"
     case identifier = "id"
     case lineString = "LineString"
+    case lookAt = "LookAt"
+    case latitude = "latitude"
+    case longitude = "longitude"
+    case tilt = "tilt"
+    case heading = "heading"
 }
 
 public class TrailParser : NSObject, NSXMLParserDelegate {
@@ -60,11 +65,21 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
     var startCoordinates = false
     var startLine = false
     var startLineCoordinates = false
+    var hasLookAt = false
+    var startLookAt = false
+    var startLatitude = false
+    var startLongitude = false
+    var startTilt = false
+    var startHeading = false
     
     var currentIdentifier:String?
     var currentName:String?
     var currentLineCoordinates:String?
     var currentDescription:String?
+    var currentLatitude:String?
+    var currentLongitude:String?
+    var currentTilt:String?
+    var currentHeading:String?
 
     public func parseTrail() -> Trail {
         let path = NSBundle.mainBundle().pathForResource(TrailParserConstants.trail.rawValue, ofType: TrailParserConstants.kml.rawValue)
@@ -104,6 +119,21 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
         case TrailParserConstants.point.rawValue:
             startPoint = true
             break
+        case TrailParserConstants.lookAt.rawValue:
+            startLookAt = true
+            break
+        case TrailParserConstants.latitude.rawValue:
+            startLatitude = true
+            break
+        case TrailParserConstants.longitude.rawValue:
+            startLongitude = true
+            break
+        case TrailParserConstants.tilt.rawValue:
+            startTilt = true
+            break
+        case TrailParserConstants.heading.rawValue:
+            startHeading = true
+            break
         default:
             break
         }
@@ -120,6 +150,18 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
                 self.currentLocation = CLLocation.init(latitude: Double(coordinates[1])!, longitude: Double(coordinates[0])!)
             } else if startLineCoordinates {
                 currentLineCoordinates = string
+            }
+        }
+        if startLookAt {
+            hasLookAt = true
+            if startLatitude {
+                currentLatitude = string
+            } else if startLongitude {
+                currentLongitude = string
+            } else if startTilt {
+                currentTilt = string
+            } else if startHeading {
+                currentHeading = string
             }
         }
     }
@@ -150,9 +192,23 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             break
         case TrailParserConstants.lineString.rawValue:
             startLine = false
-            let placemark = Placemark(identifier: currentIdentifier!, name: currentName!, location: currentLocation!, coordinates: self.parseLineCoordinates(), placemarkDescription: currentDescription!)
+            let lookAt = self.parseLookAt()
+            let placemark = Placemark(identifier:currentIdentifier!, name:currentName!, location:currentLocation!, coordinates:self.parseLineCoordinates(), placemarkDescription:currentDescription!, lookAt:lookAt)
             trail.placemarks.append(placemark)
+            hasLookAt = false
             break
+        case TrailParserConstants.lookAt.rawValue:
+            startLookAt = false
+            break
+        case TrailParserConstants.latitude.rawValue:
+            startLatitude = false
+            break
+        case TrailParserConstants.longitude.rawValue:
+            startLongitude = false
+        case TrailParserConstants.tilt.rawValue:
+            startTilt = false
+        case TrailParserConstants.heading.rawValue:
+            startHeading = false
         default:
             break
         }
@@ -168,5 +224,14 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
             path.append(CLLocation.init(latitude: Double(coordinatesArray[index + 1])!, longitude: Double(coordinatesArray[index])!))
         }
         return path
+    }
+    
+    func parseLookAt() -> LookAt? {
+        guard hasLookAt else { return nil }
+        let latitude:Double = Double(currentLatitude!)!
+        let longitude:Double = Double(currentLongitude!)!
+        let tilt = Double(currentTilt!)!
+        let heading = Double(currentHeading!)!
+        return LookAt.init(latitude:latitude, longitude:longitude, tilt:tilt, heading:heading)
     }
 }
