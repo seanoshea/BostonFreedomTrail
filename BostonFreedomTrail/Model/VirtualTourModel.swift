@@ -49,12 +49,13 @@ enum VirtualTourStopStopDuration : Double {
 class VirtualTourModel : NSObject {
     var tour:[CLLocation] = []
     var lookAts = [Int:LookAt]()
+    var placemarkDemarkations = [Int:Int]()
     var currentTourLocation:Int = 0
     var currentTourState:VirtualTourState = VirtualTourState.BeforeStart
     
     func setupTour() {
         var index = 0
-        for placemark in Trail.instance.placemarks {
+        for (placemarkIndex, placemark) in Trail.instance.placemarks.enumerate() {
             for (locationIndex, location) in placemark.coordinates.enumerate() {
                 if locationIndex == placemark.coordinates.count - 1 {
                     if placemark.lookAt != nil {
@@ -64,6 +65,7 @@ class VirtualTourModel : NSObject {
                 index = index + 1
                 tour.append(location)
             }
+            self.placemarkDemarkations[index] = placemarkIndex
         }
     }
     
@@ -80,6 +82,11 @@ class VirtualTourModel : NSObject {
     func lookAtForCurrentLocation() -> LookAt? {
         guard self.currentTourLocation > 0 else { return nil}
         return self.lookAts[self.currentTourLocation]
+    }
+    
+    func placemarkForCurrentLookAt() -> Placemark {
+        let index = self.placemarkDemarkations[self.currentTourLocation + 1]
+        return Trail.instance.placemarks[index!]
     }
     
     func enqueueNextLocation() -> CLLocation {

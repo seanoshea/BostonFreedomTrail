@@ -101,7 +101,8 @@ class VirtualTourViewController : UIViewController {
             let newCamera = self.cameraPositionForNextLocation(nextLocation)
             self.panoView?.animateToCamera(newCamera, animationDuration: VirtualTourStopStopDuration.CameraRepositionAnimation.rawValue)
             if self.model.atLookAtLocation() {
-                JLToast.makeText("Some text").show()
+                let pm = self.model.placemarkForCurrentLookAt()
+                JLToast.makeText(pm.name).show()
             }
         }
     }
