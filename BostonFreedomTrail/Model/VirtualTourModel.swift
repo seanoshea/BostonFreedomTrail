@@ -99,10 +99,6 @@ class VirtualTourModel : NSObject {
         return self.currentTourLocation > 0
     }
     
-    func backUp() {
-        self.currentTourLocation = self.currentTourLocation - 1
-    }
-    
     func tourIsRunning() -> Bool {
         return self.currentTourState == VirtualTourState.InProgress
     }
