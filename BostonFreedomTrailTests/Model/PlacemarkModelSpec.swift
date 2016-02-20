@@ -47,7 +47,7 @@ class PlacemarkModelTest: QuickSpec {
             
             beforeEach({ () -> () in
                 subject = PlacemarkModel.init()
-                subject?.placemark = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description")
+                subject?.placemark = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description", lookAt:nil)
             })
             
             context("Creating the HTML for the placemark") {

@@ -57,6 +57,13 @@ class TrailParserTest: QuickSpec {
                         expect(placemark.identifier).to(equal(identifier))
                     }
                 }
+                
+                it("should parse out a LookAt value for each placemark except for the first one") {
+                    for (index, placemark) in trail!.placemarks.enumerate() {
+                        guard index > 0 else { continue }
+                        expect(placemark.lookAt).toNot(beNil())
+                    }
+                }
             }
         }
     }

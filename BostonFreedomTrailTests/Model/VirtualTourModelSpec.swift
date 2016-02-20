@@ -90,32 +90,72 @@ class VirtualTourModelTest: QuickSpec {
                     expect(subject?.currentTourState).to(equal(VirtualTourState.InProgress))
                 }
                 
-                it("should be able to reverse the tour by one stop") {
-                    subject?.currentTourLocation = 10
-                    
-                    subject?.backUp()
-                    
-                    expect(subject?.currentTourLocation).to(equal(9))
+                it("should bump the currentTourLocation when advance is invoked") {
+                    let before = subject?.currentTourLocation
+                    subject?.advanceLocation()
+                    expect(subject?.currentTourLocation).to(equal(before! + 1))
                 }
                 
-                it("should be able to understand if the tour has gone past the first location") {
+                it("should decrement the currentTourLocation when reverseLocation is invoked") {
+                    subject?.advanceLocation()
+                    subject?.advanceLocation()
+                    let before = subject?.currentTourLocation
+                    subject?.reverseLocation()
+                    expect(subject?.currentTourLocation).to(equal(before! - 1))
+                }
+            }
+            
+            context("LookAts") {
+                
+                it("should not return a look at for an invalid tour location") {
                     subject?.currentTourLocation = 0
+                    expect(subject?.lookAtForCurrentLocation()).to(beNil())
+                }
+                
+                it("should return a LookAt for a valid tour location") {
+                    subject?.currentTourLocation = 15
+                    expect(subject?.lookAtForCurrentLocation()).toNot(beNil())
+                }
+            }
+            
+            context("Understanding the next location to go to") {
+                
+                it("should use the next location in the queue if the current location does not represent a LookAt") {
+                    subject?.currentTourLocation = 14
+                    let location:CLLocation = (subject?.nextLocation())!
                     
-                    expect(subject?.hasAdvancedPastFirstLocation()).to(beFalse())
+                    expect(location.coordinate.latitude).to(equal(42.357560999999997))
+                    expect(location.coordinate.longitude).to(equal(-71.063400999999999))
+                }
+                
+                it("should use the LookAt location if the current location represents a LookAt") {
+                    subject?.currentTourLocation = 15
+                    let location:CLLocation = (subject?.nextLocation())!
+                    let lookAt = subject?.lookAts[15]!
                     
-                    subject?.currentTourLocation = 1
-                    
-                    expect(subject?.hasAdvancedPastFirstLocation()).to(beTrue())
+                    expect(location.coordinate.latitude).to(equal(lookAt?.latitude))
+                    expect(location.coordinate.longitude).to(equal(lookAt?.longitude))
+                }
+            }
+            
+            context("Calculating the delayTime for a location") {
+                
+                it("should wait longer at a LookAt location than it does at a regular location") {
+                    subject?.currentTourLocation = 15
+                    let firstDelay = (subject?.delayTime())!
+                    subject?.currentTourLocation = 16
+                    let secondDelay = (subject?.delayTime())!
+                    expect(firstDelay) > secondDelay
                 }
             }
             
             context("Calculating the camera position for locations in the trail") {
                 
                 it("should be able to calculate the correct direction of the camera to naviagte between two points") {
-                    let from:CLLocation = CLLocation.init(latitude: 42.355393, longitude: -71.063756)
+                    subject?.advanceLocation()
                     let to:CLLocation = CLLocation.init(latitude: 42.355357, longitude: -71.063666)
                     
-                    let direction:CLLocationDirection = (subject?.locationDirection(from, to: to))!
+                    let direction:CLLocationDirection = (subject?.locationDirectionForNextLocation(to))!
                     
                     expect(direction).to(beCloseTo(118.426051240986))
                 }

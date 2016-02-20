@@ -38,13 +38,29 @@ public class Placemark {
     var location:CLLocation = CLLocation()
     var coordinates = [CLLocation]()
     var placemarkDescription:String = ""
+    var lookAt:LookAt?
     
-    init(identifier:String, name:String, location:CLLocation, coordinates:[CLLocation], placemarkDescription:String) {
+    init(identifier:String, name:String, location:CLLocation, coordinates:[CLLocation], placemarkDescription:String, lookAt:LookAt?) {
         self.identifier = identifier
         self.name = name
         self.location = location
         self.coordinates = coordinates
         self.placemarkDescription = placemarkDescription
+        self.lookAt = lookAt
+    }
+}
+
+public class LookAt {
+    var latitude:Double = 0.0
+    var longitude:Double = 0.0
+    var tilt:Double = 0.0
+    var heading:Double = 0.0
+    
+    init(latitude:Double, longitude:Double, tilt:Double, heading:Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.tilt = tilt
+        self.heading = heading
     }
 }
 
