@@ -31,6 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 
 import GoogleMaps
+import JLToast
 
 enum VirtualTourStopStopDuration : Double {
     case CameraRepositionAnimation = 0.5
@@ -84,7 +85,7 @@ class VirtualTourViewController : UIViewController {
     }
     
     func delayTime() -> dispatch_time_t {
-        let delay = self.model.currentTourLocation > 0 ? VirtualTourStopStopDuration.DelayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.DefaultDelay.rawValue
+        let delay = self.model.hasAdvancedPastFirstLocation() ? VirtualTourStopStopDuration.DelayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.DefaultDelay.rawValue
         return dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
     }
     
@@ -97,13 +98,12 @@ class VirtualTourViewController : UIViewController {
             self.repositionPanoViewForNextLocation(nextLocation)
             self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
         } else {
-            // back up
-            self.model.currentTourLocation = self.model.currentTourLocation - 1
+            self.model.backUp()
         }
     }
     
     func repositionPanoViewForNextLocation(nextLocation:CLLocation) {
-        if self.model.currentTourLocation > 0 {
+        if self.model.hasAdvancedPastFirstLocation() {
             let newCamera = self.cameraPositionForNextLocation(nextLocation)
             self.panoView?.animateToCamera(newCamera, animationDuration: VirtualTourStopStopDuration.CameraRepositionAnimation.rawValue)
         }

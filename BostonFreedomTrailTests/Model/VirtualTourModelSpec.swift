@@ -89,6 +89,24 @@ class VirtualTourModelTest: QuickSpec {
                     
                     expect(subject?.currentTourState).to(equal(VirtualTourState.InProgress))
                 }
+                
+                it("should be able to reverse the tour by one stop") {
+                    subject?.currentTourLocation = 10
+                    
+                    subject?.backUp()
+                    
+                    expect(subject?.currentTourLocation).to(equal(9))
+                }
+                
+                it("should be able to understand if the tour has gone past the first location") {
+                    subject?.currentTourLocation = 0
+                    
+                    expect(subject?.hasAdvancedPastFirstLocation()).to(beFalse())
+                    
+                    subject?.currentTourLocation = 1
+                    
+                    expect(subject?.hasAdvancedPastFirstLocation()).to(beTrue())
+                }
             }
             
             context("Calculating the camera position for locations in the trail") {

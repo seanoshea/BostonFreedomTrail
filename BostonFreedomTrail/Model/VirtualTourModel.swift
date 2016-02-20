@@ -71,6 +71,14 @@ class VirtualTourModel : NSObject {
         self.currentTourState = VirtualTourState.InProgress
     }
     
+    func hasAdvancedPastFirstLocation() -> Bool {
+        return self.currentTourLocation > 0
+    }
+    
+    func backUp() {
+        self.currentTourLocation = self.currentTourLocation - 1
+    }
+    
     func tourIsRunning() -> Bool {
         return self.currentTourState != VirtualTourState.Finished && self.currentTourState != VirtualTourState.Paused
     }
