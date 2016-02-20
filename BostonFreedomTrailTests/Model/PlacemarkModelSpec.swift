@@ -28,41 +28,32 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+import Foundation
+
 import Quick
 import Nimble
 
 @testable import BostonFreedomTrail
 
-class TrailParserTest: QuickSpec {
+import GoogleMaps
+
+class PlacemarkModelTest: QuickSpec {
     
     override func spec() {
         
-        describe("TrailParser") {
+        describe("PlacemarkModel") {
             
-            var trail:Trail?
+            var subject:PlacemarkModel?
             
             beforeEach({ () -> () in
-                trail = TrailParser().parseTrail()
+                subject = PlacemarkModel.init()
+                subject?.placemark = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description")
             })
             
-            context("Testing Parsing of Placemarks") {
+            context("Creating the HTML for the placemark") {
                 
-                it("should parse out sixteen placemarks from the trail xml file") {
-                    expect(trail!.placemarks.count).to(equal(16))
-                }
-                
-                it("should order the placemarks correctly after parsing") {
-                    for (index, placemark) in trail!.placemarks.enumerate() {
-                        let identifier = "placemark\(index + 1)"
-                        expect(placemark.identifier).to(equal(identifier))
-                    }
-                }
-                
-                it("should parse out a LookAt value for each placemark except for the first one") {
-                    for (index, placemark) in trail!.placemarks.enumerate() {
-                        guard index > 0 else { continue }
-                        expect(placemark.lookAt).toNot(beNil())
-                    }
+                it("should use the placemark description when creating the ") {
+                    expect(subject?.stringForWebView().rangeOfString("placemark description")).toNot(beNil())
                 }
             }
         }

@@ -28,43 +28,24 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import Quick
-import Nimble
+import Foundation
 
-@testable import BostonFreedomTrail
-
-class TrailParserTest: QuickSpec {
+class PlacemarkModel {
     
-    override func spec() {
-        
-        describe("TrailParser") {
-            
-            var trail:Trail?
-            
-            beforeEach({ () -> () in
-                trail = TrailParser().parseTrail()
-            })
-            
-            context("Testing Parsing of Placemarks") {
-                
-                it("should parse out sixteen placemarks from the trail xml file") {
-                    expect(trail!.placemarks.count).to(equal(16))
-                }
-                
-                it("should order the placemarks correctly after parsing") {
-                    for (index, placemark) in trail!.placemarks.enumerate() {
-                        let identifier = "placemark\(index + 1)"
-                        expect(placemark.identifier).to(equal(identifier))
-                    }
-                }
-                
-                it("should parse out a LookAt value for each placemark except for the first one") {
-                    for (index, placemark) in trail!.placemarks.enumerate() {
-                        guard index > 0 else { continue }
-                        expect(placemark.lookAt).toNot(beNil())
-                    }
+    var placemark:Placemark?
+    
+    func stringForWebView() -> String {
+        var returnString = ""
+        if let htmlString = NSBundle.mainBundle().pathForResource("placemark", ofType: "html") {
+            if let description = self.placemark?.placemarkDescription {
+                do {
+                    returnString = try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: 0), description) as String
+                } catch (_) {
+                    
                 }
             }
         }
+        return returnString
     }
+    
 }

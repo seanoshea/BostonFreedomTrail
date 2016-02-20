@@ -35,8 +35,19 @@ class PlacemarkViewController : UIViewController {
     @IBOutlet weak var webView: UIWebView?
     @IBOutlet weak var wikipediaButton: UIButton?
     @IBOutlet weak var streetViewButton: UIButton?
+
+    var model:PlacemarkModel?
     
-    var placemark:Placemark?
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.model = PlacemarkModel.init()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.webView?.delegate = self
+        self.webView?.loadHTMLString((self.model?.stringForWebView())!, baseURL: nil)
+    }
     
     @IBAction func streetViewButtonPressed() {
     
@@ -47,3 +58,6 @@ class PlacemarkViewController : UIViewController {
     }
 }
 
+extension PlacemarkViewController : UIWebViewDelegate {
+    
+}
