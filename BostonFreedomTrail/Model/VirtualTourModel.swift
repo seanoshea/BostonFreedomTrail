@@ -119,10 +119,6 @@ class VirtualTourModel : NSObject {
         self.currentTourLocation = self.currentTourLocation - 1
     }
     
-    func isPastFirstLocation() -> Bool {
-        return self.currentTourLocation > 0
-    }
-    
     func nextLocation() -> CLLocation {
         var nextLocation:CLLocation
         if self.atLookAtLocation() {
@@ -136,7 +132,7 @@ class VirtualTourModel : NSObject {
     }
     
     func delayTime() -> dispatch_time_t {
-        var delay = self.isPastFirstLocation() ? VirtualTourStopStopDuration.DelayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.DefaultDelay.rawValue
+        var delay = self.hasAdvancedPastFirstLocation() ? VirtualTourStopStopDuration.DelayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.DefaultDelay.rawValue
         if self.atLookAtLocation() {
             delay = VirtualTourStopStopDuration.DelayForLookAt.rawValue
         }

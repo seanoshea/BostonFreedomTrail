@@ -31,6 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 
 import GoogleMaps
+import JLToast
 
 class VirtualTourViewController : UIViewController {
     
@@ -96,9 +97,12 @@ class VirtualTourViewController : UIViewController {
     }
     
     func repositionPanoViewForNextLocation(nextLocation:CLLocation) {
-        if self.model.isPastFirstLocation() {
+        if self.model.hasAdvancedPastFirstLocation() {
             let newCamera = self.cameraPositionForNextLocation(nextLocation)
             self.panoView?.animateToCamera(newCamera, animationDuration: VirtualTourStopStopDuration.CameraRepositionAnimation.rawValue)
+            if self.model.atLookAtLocation() {
+                JLToast.makeText("Some text").show()
+            }
         }
     }
     
