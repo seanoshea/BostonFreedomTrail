@@ -526,7 +526,7 @@
 			<Update>
 				<targetHref/>
 				<Change>
-					<Placemark targetId="placemark16">
+					<Placemark targetId="placemark15">
 						<gx:balloonVisibility>1</gx:balloonVisibility>
 					</Placemark>
 				</Change>
@@ -539,7 +539,7 @@
 			<Update>
 				<targetHref/>
 				<Change>
-					<Placemark targetId="placemark16">
+					<Placemark targetId="placemark15">
 						<gx:balloonVisibility>0</gx:balloonVisibility>
 					</Placemark>
 				</Change>
@@ -561,7 +561,7 @@
 			<Update>
 				<targetHref/>
 				<Change>
-					<Placemark targetId="placemark17">
+					<Placemark targetId="placemark16">
 						<gx:balloonVisibility>1</gx:balloonVisibility>
 					</Placemark>
 				</Change>
@@ -574,7 +574,7 @@
 			<Update>
 				<targetHref/>
 				<Change>
-					<Placemark targetId="placemark17">
+					<Placemark targetId="placemark16">
 						<gx:balloonVisibility>0</gx:balloonVisibility>
 					</Placemark>
 				</Change>
@@ -1039,23 +1039,23 @@
 		</LineStyle>
 	</Style>
 	<Placemark id="placemark15">
-		<name><![CDATA[City Square Park]]></name>
+		<name><![CDATA[USS Constitution (Old Ironsides)]]></name>
 		<styleUrl>#icon15</styleUrl>
-		<description><![CDATA[<table><tr><td></td></tr></table>]]></description>
+		<description><![CDATA[<table><tr><td>USS Constitution is a wooden-hulled, three-masted heavy frigate of the United States Navy. Named by President George Washington after the Constitution of the United States of America, she is the world's oldest floating commissioned naval vessel. Launched in 1797, Constitution was one of six original frigates authorized for construction by the Naval Act of 1794. Constitution is most famous for her actions during the War of 1812 against Great Britain, when she captured numerous merchant ships and defeated five British warships: HMS Guerriere, Java, Pictou, Cyane and Levant. The battle with Guerriere earned her the nickname of *Old Ironsides* and public adoration that has repeatedly saved her from scrapping. <br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5162/5277529167_a57ffba6ba.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5162/5277529167_a57ffba6ba_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5246/5364964811_0c157a179d.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5246/5364964811_0c157a179d_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5001/5277528419_8efc65fb10.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5001/5277528419_8efc65fb10_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
         <LookAt>
-            <longitude>-71.061682</longitude>
-            <latitude>42.372095</latitude>
-            <tilt>4.600825</tilt>
-            <heading>218.915359</heading>
+            <longitude>-71.052553</longitude>
+            <latitude>42.373025</latitude>
+            <tilt>4.387481</tilt>
+            <heading>261.369843</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
-				<coordinates>-71.061917,42.371684,0</coordinates>
+				<coordinates>-71.05657,42.372474,0</coordinates>
 			</Point>
 			<LineString id="line15">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-				<coordinates>-71.054748,42.366356,0.0 -71.054691,42.366463,0.0 -71.055432,42.366707,0.0 -71.056266,42.36703000000001,0.0 -71.056204,42.367149,0.0</coordinates>
+				<coordinates>-71.056218,42.367127,0.0 -71.056269,42.36703000000001,0.0 -71.056529,42.367147,0.0 -71.05669000000002,42.367217,0.0 -71.057167,42.367631,0.0 -71.057274,42.367714,0.0 -71.05738200000002,42.367656,0.0 -71.05802,42.367147,0.0 -71.058345,42.366903,0.0 -71.058379,42.367024,0.0 -71.05843,42.367113,0.0 -71.058412,42.367222,0.0 -71.058591,42.36728,0.0 -71.058674,42.367385,0.0 -71.058961,42.367787,0.0 -71.059307,42.368275,0.0 -71.059662,42.368768,0.0 -71.060034,42.369303,0.0 -71.060472,42.369926,0.0 -71.06078,42.370381,0.0 -71.060992,42.370655,0.0 -71.061172,42.370849,0.0 -71.061418,42.371009,0.0 -71.061531,42.371089,0.0 -71.06158700000002,42.371158,0.0 -71.061582,42.371243,0.0 -71.06148,42.37135,0.0 -71.061201,42.371531,0.0 -71.060557,42.37198,0.0 -71.06046300000001,42.371963,0.0 -71.060303,42.371707,0.0 -71.06016000000001,42.37157,0.0 -71.060005,42.371445,0.0 -71.059895,42.371402,0.0 -71.05972600000001,42.37140600000001,0.0 -71.059423,42.371501,0.0 -71.059066,42.371655,0.0 -71.058127,42.372192,0.0 -71.057395,42.372529,0.0 -71.05708700000001,42.372704,0.0 -71.056867,42.372737,0.0 -71.056534,42.37268,0.0 -71.056134,42.37251,0.0 -71.055633,42.37228,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
@@ -1071,40 +1071,8 @@
 		</LineStyle>
 	</Style>
 	<Placemark id="placemark16">
-		<name><![CDATA[USS Constitution (Old Ironsides)]]></name>
-		<styleUrl>#icon16</styleUrl>
-		<description><![CDATA[<table><tr><td>USS Constitution is a wooden-hulled, three-masted heavy frigate of the United States Navy. Named by President George Washington after the Constitution of the United States of America, she is the world's oldest floating commissioned naval vessel. Launched in 1797, Constitution was one of six original frigates authorized for construction by the Naval Act of 1794. Constitution is most famous for her actions during the War of 1812 against Great Britain, when she captured numerous merchant ships and defeated five British warships: HMS Guerriere, Java, Pictou, Cyane and Levant. The battle with Guerriere earned her the nickname of *Old Ironsides* and public adoration that has repeatedly saved her from scrapping. <br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5162/5277529167_a57ffba6ba.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5162/5277529167_a57ffba6ba_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5246/5364964811_0c157a179d.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5246/5364964811_0c157a179d_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5001/5277528419_8efc65fb10.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5001/5277528419_8efc65fb10_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
-        <LookAt>
-            <longitude>-71.052553</longitude>
-            <latitude>42.373025</latitude>
-            <tilt>4.387481</tilt>
-            <heading>261.369843</heading>
-        </LookAt>
-		<MultiGeometry>
-			<Point>
-				<coordinates>-71.05657,42.372474,0</coordinates>
-			</Point>
-			<LineString id="line16">
-				<extrude>1</extrude>
-				<tessellate>1</tessellate>
-				<coordinates>-71.056218,42.367127,0.0 -71.056269,42.36703000000001,0.0 -71.056529,42.367147,0.0 -71.05669000000002,42.367217,0.0 -71.057167,42.367631,0.0 -71.057274,42.367714,0.0 -71.05738200000002,42.367656,0.0 -71.05802,42.367147,0.0 -71.058345,42.366903,0.0 -71.058379,42.367024,0.0 -71.05843,42.367113,0.0 -71.058412,42.367222,0.0 -71.058591,42.36728,0.0 -71.058674,42.367385,0.0 -71.058961,42.367787,0.0 -71.059307,42.368275,0.0 -71.059662,42.368768,0.0 -71.060034,42.369303,0.0 -71.060472,42.369926,0.0 -71.06078,42.370381,0.0 -71.060992,42.370655,0.0 -71.061172,42.370849,0.0 -71.061418,42.371009,0.0 -71.061531,42.371089,0.0 -71.06158700000002,42.371158,0.0 -71.061582,42.371243,0.0 -71.06148,42.37135,0.0 -71.061201,42.371531,0.0 -71.060557,42.37198,0.0 -71.06046300000001,42.371963,0.0 -71.060303,42.371707,0.0 -71.06016000000001,42.37157,0.0 -71.060005,42.371445,0.0 -71.059895,42.371402,0.0 -71.05972600000001,42.37140600000001,0.0 -71.059423,42.371501,0.0 -71.059066,42.371655,0.0 -71.058127,42.372192,0.0 -71.057395,42.372529,0.0 -71.05708700000001,42.372704,0.0 -71.056867,42.372737,0.0 -71.056534,42.37268,0.0 -71.056134,42.37251,0.0 -71.055633,42.37228,0.0</coordinates>
-			</LineString>
-		</MultiGeometry>
-	</Placemark>
-	<Style id="icon17">
-		<IconStyle id="i17">
-			<color>ffffffff</color>			<Icon>
-				<href>https://www.tripline.net/api/icon17.png</href>
-			</Icon>
-		</IconStyle>
-		<LineStyle id="ls17">
-			<color>fc0000ff</color>
-			<width>8</width>
-		</LineStyle>
-	</Style>
-	<Placemark id="placemark17">
 		<name><![CDATA[Bunker Hill Monument]]></name>
-		<styleUrl>#icon17</styleUrl>
+		<styleUrl>#icon16</styleUrl>
 		<description><![CDATA[<table><tr><td>The Bunker Hill Monument was built to commemorate the Battle of Bunker Hill. The 221 foot (67 m) granite obelisk was erected between 1827 and 1843 in Charlestown, Massachusetts with granite from Quincy, Massachusetts. There are 294 steps to the top. The Bunker Hill Monument is not actually on on Bunker Hill but instead on Breed's Hill, where most of the fighting in the misnamed Battle of Bunker Hill actually took place.<br/></td></tr><tr><td><a href="https://farm6.static.flickr.com/5030/5617214592_51cb8381df.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5030/5617214592_51cb8381df_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5265/5617207248_e7ea6180c9.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5265/5617207248_e7ea6180c9_m.jpg" style="padding:5px 5px 5px 0px;" /></a><a href="https://farm6.static.flickr.com/5109/5617202954_c5c315fa77.jpg" target="_blank"><img src="https://farm6.static.flickr.com/5109/5617202954_c5c315fa77_m.jpg" style="padding:5px 5px 5px 0px;" /></a></td></tr></table>]]></description>
         <LookAt>
             <longitude>-71.061145</longitude>
@@ -1116,7 +1084,7 @@
 			<Point>
 				<coordinates>-71.060858,42.376379,0</coordinates>
 			</Point>
-			<LineString id="line17">
+			<LineString id="line16">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
 				<coordinates>-71.055627,42.372294,0.0 -71.056534,42.372682,0.0 -71.056869,42.372745,0.0 -71.057116,42.372702,0.0 -71.057441,42.372523,0.0 -71.057757,42.372373,0.0 -71.058004,42.37225,0.0 -71.058202,42.372511,0.0 -71.05795,42.37271,0.0 -71.057822,42.372999,0.0 -71.057773,42.373209,0.0 -71.057848,42.373467,0.0 -71.058009,42.373633,0.0 -71.058653,42.37391,0.0 -71.058733,42.373847,0.0 -71.058857,42.373899,0.0 -71.058862,42.374327,0.0 -71.059184,42.374346,0.0 -71.059586,42.374501,0.0 -71.060187,42.374818,0.0 -71.060166,42.375028,0.0 -71.060257,42.375262000000006,0.0 -71.060472,42.37544,0.0 -71.060761,42.375599,0.0 -71.061164,42.375733,0.0 -71.060804,42.376217000000004,0.0</coordinates>
