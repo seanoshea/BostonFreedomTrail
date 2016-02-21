@@ -61,4 +61,12 @@ class MapModel : NSObject {
         polyline.strokeWidth = 5.0
         polyline.map = mapView
     }
+    
+    func zoomForMap() -> Float {
+        var zoom = ApplicationSharedState.sharedInstance.cameraZoom
+        if zoom <= 0 {
+            zoom = PListHelper.defaultCameraZoom()
+        }
+        return zoom
+    }
 }
