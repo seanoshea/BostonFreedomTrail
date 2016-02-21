@@ -666,7 +666,7 @@
         </LookAt>
 		<MultiGeometry>
 			<Point>
-				<coordinates>-71.061996,42.357042,0</coordinates>
+				<coordinates>-71.0620070994,42.3568475506,0</coordinates>
 			</Point>
 			<LineString id="line3">
 				<extrude>1</extrude>
