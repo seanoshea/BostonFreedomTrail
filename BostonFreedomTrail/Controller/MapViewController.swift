@@ -94,4 +94,15 @@ extension MapViewController : GMSMapViewDelegate {
         // TODO: Analytics
         self.performSegueWithIdentifier(SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
     }
+    
+    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+        coordinate.logCoordinate()
+    }
+}
+
+extension CLLocationCoordinate2D {
+    
+    func logCoordinate() {
+        NSLog("Lat: %.10f, Long: %.10f", self.latitude, self.longitude)
+    }
 }
