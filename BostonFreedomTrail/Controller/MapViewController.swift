@@ -57,7 +57,7 @@ class MapViewController : UIViewController {
 // MARK: Private Functions
     
     func createMapView() {
-        let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:PListHelper.defaultCameraZoom())
+        let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:self.model.zoomForMap())
         let mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
         mapView.padding = UIEdgeInsetsMake(0.0, 5.0, 48.0, 0.0)
         mapView.indoorEnabled = false
