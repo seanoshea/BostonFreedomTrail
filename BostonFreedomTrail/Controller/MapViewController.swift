@@ -57,7 +57,8 @@ class MapViewController : UIViewController {
 // MARK: Private Functions
     
     func createMapView() {
-        let camera = GMSCameraPosition.cameraWithLatitude(PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude(), zoom:self.model.zoomForMap())
+        let lastKnownCoordinate = self.model.lastKnownCoordinate()
+        let camera = GMSCameraPosition.cameraWithLatitude(lastKnownCoordinate.latitude, longitude:lastKnownCoordinate.longitude, zoom:self.model.zoomForMap())
         let mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
         mapView.padding = UIEdgeInsetsMake(0.0, 5.0, 48.0, 0.0)
         mapView.indoorEnabled = false
@@ -81,6 +82,7 @@ extension MapViewController : GMSMapViewDelegate {
         if position.zoom > 0.0 {
             ApplicationSharedState.sharedInstance.cameraZoom = position.zoom
         }
+        ApplicationSharedState.sharedInstance.lastKnownCoordinate = position.target
     }
     
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
