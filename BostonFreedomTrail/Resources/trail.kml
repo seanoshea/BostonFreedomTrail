@@ -767,7 +767,7 @@
 			<LineString id="line6">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-        <coordinates>-71.060292,42.358066,0.0 -71.060101,42.358302,0.0 -71.059973,42.358247,0.0</coordinates>
+        <coordinates>-71.060292,42.358066,0.0 -71.060101,42.358302,0.0 -71.059973,42.358247,0.0 -71.0603340715,42.3579998562,0.0 -71.0597547144,42.3578041318,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
