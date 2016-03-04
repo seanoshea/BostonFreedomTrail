@@ -24,6 +24,8 @@
 		41237C1C1C4923D20007F76B /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
 		41237C211C49244D0007F76B /* TrailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* TrailParser.swift */; };
 		41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */; };
+		41443EB81C894DBE0096EE06 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41443EB61C894DBE0096EE06 /* Fabric.framework */; };
+		41443EB91C894DBE0096EE06 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41443EB71C894DBE0096EE06 /* Crashlytics.framework */; };
 		414A7AA71C6D728800385442 /* placemark.html in Resources */ = {isa = PBXBuildFile; fileRef = 414A7AA61C6D728800385442 /* placemark.html */; };
 		414A7AA91C6D80E000385442 /* PlacemarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414A7AA81C6D80E000385442 /* PlacemarkModel.swift */; };
 		41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
@@ -80,6 +82,8 @@
 		41237C1B1C4923D20007F76B /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
 		41237C201C49244D0007F76B /* TrailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParser.swift; sourceTree = "<group>"; };
 		41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkViewButton.swift; sourceTree = "<group>"; };
+		41443EB61C894DBE0096EE06 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		41443EB71C894DBE0096EE06 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		414A7AA61C6D728800385442 /* placemark.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = placemark.html; sourceTree = "<group>"; };
 		414A7AA81C6D80E000385442 /* PlacemarkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkModel.swift; sourceTree = "<group>"; };
 		415095431C4DA11C00681F82 /* PListHelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListHelperSpec.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C99F49ED538590AF59B9D4 /* Pods.framework in Frameworks */,
+				41443EB91C894DBE0096EE06 /* Crashlytics.framework in Frameworks */,
+				41443EB81C894DBE0096EE06 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +180,8 @@
 		41237BE61C486CDF0007F76B /* BostonFreedomTrail */ = {
 			isa = PBXGroup;
 			children = (
+				41443EB61C894DBE0096EE06 /* Fabric.framework */,
+				41443EB71C894DBE0096EE06 /* Crashlytics.framework */,
 				41237BE71C486CDF0007F76B /* AppDelegate.swift */,
 				41237BF01C486CDF0007F76B /* Assets.xcassets */,
 				41237C0E1C4920AF0007F76B /* Controller */,
@@ -299,6 +307,7 @@
 				41237BE21C486CDF0007F76B /* Resources */,
 				7D2131569E6BC6A2947B2434 /* Embed Pods Frameworks */,
 				AE2B572869515091D3992489 /* Copy Pods Resources */,
+				41443EB51C894D940096EE06 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -391,6 +400,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		41443EB51C894D940096EE06 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 8aa2986353e21d6181e23a9360cd528dca68aafb 5769576e5978757dbd9058df640a5f116b6c94ab6e35b7321786486fc8bff94f";
+		};
 		63F1C7785DE69CAC30AB88B4 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -648,6 +670,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = BostonFreedomTrail/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -663,6 +689,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BostonFreedomTrail/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrail;

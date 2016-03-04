@@ -32,6 +32,8 @@ import UIKit
 
 import GoogleMaps
 import CoreLocation
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        self.initializeCrashReporting()
         self.initializeGoogleMapsApi()
         self.initializeStyling()
         self.initializeReachability()
@@ -69,6 +72,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initializeAnalytics() {
         
+    }
+    
+    func initializeCrashReporting() {
+        Fabric.with([Crashlytics.self])
     }
 }
 
