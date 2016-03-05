@@ -596,7 +596,6 @@
 			<width>8</width>
 		</LineStyle>
 	</Style>
-    <!--
 	<Placemark id="placemark1">
 		<name><![CDATA[Boston Common]]></name>
 		<styleUrl>#icon1</styleUrl>
@@ -719,7 +718,6 @@
 			<width>8</width>
 		</LineStyle>
 	</Style>
-    -->
 	<Placemark id="placemark5">
 		<name><![CDATA[Kings Chapel and Burying Ground]]></name>
 		<styleUrl>#icon5</styleUrl>
@@ -1093,7 +1091,6 @@
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
-     -->
 </Folder>
 </Document>
 </kml>
