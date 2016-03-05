@@ -959,7 +959,7 @@
 			<LineString id="line12">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-				<coordinates>-71.0564643145,42.3599957155,0.0 -71.0565930605,42.3603955734,0.0 -71.0568837449,42.3608127707,0.0 -71.0569896922,42.3611472201,0.0 -71.0570584238,42.3612876884,0.0 -71.0569326952,42.3616119781,0.0 -71.0568797216,42.3619134743,0.0 -71.0566832498,42.3620222306,0.0 -71.0554195940,42.3628409936,0.0 -71.0550055280,42.3632457880,0.0 -71.0546380654,42.3636324956,0.0 -71.0542347282,42.3632249786,0.0 -71.0540446267,42.3630820374,0.0 -71.0537522659,42.3633461192,0.0 -71.0535588115,42.3636884825,0.0</coordinates>
+				<coordinates>-71.0564643145,42.3599957155,0.0 -71.0565930605,42.3603955734,0.0 -71.0568837449,42.3608127707,0.0 -71.0569896922,42.3611472201,0.0 -71.0570584238,42.3612876884,0.0 -71.0569326952,42.3616119781,0.0 -71.0568797216,42.3619134743,0.0 -71.0566832498,42.3620222306,0.0 -71.0554195940,42.3628409936,0.0 -71.0550055280,42.3632457880,0.0 -71.0546380654,42.3636324956,0.0 -71.0543312877,42.3633191165,0.0 -71.0540630668,42.3630800555,0.0 -71.0537432134,42.3633629649,0.0 -71.0536020622,42.3636389366,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
@@ -1043,10 +1043,10 @@
 		<styleUrl>#icon15</styleUrl>
 		<description><![CDATA[<table><tr><td>USS Constitution is a wooden-hulled, three-masted heavy frigate of the United States Navy. Named by President George Washington after the Constitution of the United States of America, she is the world's oldest floating commissioned naval vessel. Launched in 1797, Constitution was one of six original frigates authorized for construction by the Naval Act of 1794. Constitution is most famous for her actions during the War of 1812 against Great Britain, when she captured numerous merchant ships and defeated five British warships: HMS Guerriere, Java, Pictou, Cyane and Levant. The battle with Guerriere earned her the nickname of *Old Ironsides* and public adoration that has repeatedly saved her from scrapping. <br/></td></tr><tr><td><img src="https://farm6.static.flickr.com/5162/5277529167_a57ffba6ba_m.jpg" style="padding:5px 5px 5px 0px;" /><img src="https://farm6.static.flickr.com/5246/5364964811_0c157a179d_m.jpg" style="padding:5px 5px 5px 0px;" /><img src="https://farm6.static.flickr.com/5001/5277528419_8efc65fb10_m.jpg" style="padding:5px 5px 5px 0px;" /></td></tr></table>]]></description>
         <LookAt>
-            <longitude>-71.052553</longitude>
-            <latitude>42.373025</latitude>
-            <tilt>4.387481</tilt>
-            <heading>261.369843</heading>
+            <longitude>-71.0580060000</longitude>
+            <latitude>42.3727910000</latitude>
+            <tilt>8.8593893051</tilt>
+            <heading>96.0377120972</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
@@ -1055,7 +1055,7 @@
 			<LineString id="line15">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-                <coordinates>-71.0564700142,42.3670580112,0.0 -71.0573997349,42.3677451727,0.0 -71.0580434650,42.3673116723,0.0 -71.0587016121,42.3673433798,0.0 -71.0607327148,42.3702710583,0.0 -71.0612078011,42.3707966834,0.0 -71.0619232804,42.3711033373,0.0 -71.0604353249,42.3721072591,0.0 -71.0600779206,42.3717057418,0.0 -71.0586798191,42.3723898802,0.0 -71.0579646751,42.3728337487,0.0</coordinates>
+                <coordinates>-71.0564700142,42.3670580112,0.0 -71.0573997349,42.3677451727,0.0 -71.0580434650,42.3673116723,0.0 -71.0587016121,42.3673433798,0.0 -71.0591391474,42.3680372265,0.0 -71.0598472506,42.3690677021,0.0 -71.0604195669,42.3698710155,0.0 -71.0616429895,42.3712447741,0.0 -71.0605416074,42.3719950525,0.0 -71.0604098439,42.3721097361,0.0 -71.0601164773,42.3717082188,0.0 -71.0586647317,42.3723789816,0.0 -71.0580069199,42.3727539913,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
