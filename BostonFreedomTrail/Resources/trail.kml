@@ -853,12 +853,12 @@
         <LookAt>
             <longitude>-71.056954</longitude>
             <latitude>42.358871</latitude>
-            <tilt>1.181915</tilt>
-            <heading>243.087097</heading>
+            <tilt>2.1646618843</tilt>
+            <heading>100.8098297119</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
-				<coordinates>-71.057381,42.358765,0</coordinates>
+				<coordinates>-71.0575610027,42.3587336937,0</coordinates>
 			</Point>
 			<LineString id="line9">
 				<extrude>1</extrude>
@@ -883,19 +883,19 @@
 		<styleUrl>#icon10</styleUrl>
 		<description><![CDATA[<table><tr><td>The Boston Massacre, also known as the Boston riot, was an incident that led to the deaths of five civilians at the hands of British redcoats on March 5, 1770, the legal aftermath of which helped spark the rebellion in some of the British American colonies, which culminated in the American Revolutionary War. A heavy British military presence in Boston led to a tense situation that boiled over into incitement of brawls between soldiers and civilians and eventually led to troops discharging their muskets after being threatened by a rioting crowd. Three civilians were killed at the scene of the shooting, eleven were injured, and two died after the incident.<br/></td></tr><tr><td><img src="https://lh5.ggpht.com/_Kj-foU7ftlk/SDv-RTdMx-I/AAAAAAAACoQ/F4jJVXHpR3s/s104/IMG_1762.JPG" style="padding:5px 5px 5px 0px;" /><img src="https://lh3.ggpht.com/_ZXQTuitNKLM/TDfBK5M4RhI/AAAAAAAAANY/6WwzGdBAImI/s104/2010-07-02%2016.08.08.jpg" style="padding:5px 5px 5px 0px;" /><img src="https://lh4.ggpht.com/_97ol1INoJT8/SOF9o413_tI/AAAAAAAAAks/BwqYg9XWuSY/s104/Old%20State%20House.jpg" style="padding:5px 5px 5px 0px;" /><img src="https://farm5.static.flickr.com/4076/4880175116_a8c58c13db_m.jpg" style="padding:5px 5px 5px 0px;" /></td></tr></table>]]></description>
         <LookAt>
-            <longitude>-71.057137</longitude>
-            <latitude>42.358725</latitude>
-            <tilt>-4.212881</tilt>
-            <heading>325.139862</heading>
+            <longitude>-71.0571390</longitude>
+            <latitude>42.3588581</latitude>
+            <tilt>-21.0303573608</tilt>
+            <heading>174.9428863525</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
-				<coordinates>-71.057044,42.358802,0</coordinates>
+				<coordinates>-71.0572103038,42.3587550001,0</coordinates>
 			</Point>
 			<LineString id="line10">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-				<coordinates>-71.0567824915,42.3588890322,0.0 -71.0568539053,42.3591454515,0.0 -71.0569129139,42.3593634690,0.0 -71.0569917038,42.3596845480,0.0 -71.0570202023,42.3598007405,0.0</coordinates>
+				<coordinates>-71.0578184947,42.3588446852,0.0 -71.0574677959,42.3588446852,0.0 -71.0572176799,42.3588553384,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
@@ -917,17 +917,17 @@
         <LookAt>
             <longitude>-71.055799</longitude>
             <latitude>42.359949</latitude>
-            <tilt>8.877192</tilt>
-            <heading>296.187012</heading>
+            <tilt>10.5076417923</tilt>
+            <heading>84.4247741699</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
-				<coordinates>-71.05579,42.35996,0</coordinates>
+				<coordinates>-71.0562316328,42.3600256925,0</coordinates>
 			</Point>
 			<LineString id="line11">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-				<coordinates>-71.0570684820,42.3599488918,0.0 -71.0564643145,42.3599957155,0.0 -71.0565930605,42.3603955734,0.0 -71.0568837449,42.3608127707,0.0 -71.0569896922,42.3611472201,0.0 -71.0570584238,42.3612876884,0.0 -71.0569326952,42.3616119781,0.0 -71.0568797216,42.3619134743,0.0 -71.0566832498,42.3620222306,0.0 -71.0554195940,42.3628409936,0.0 -71.0550055280,42.3632457880,0.0 -71.0546380654,42.3636324956,0.0 -71.0542347282,42.3632249786,0.0 -71.0540446267,42.3630820374,0.0 -71.0537522659,42.3633461192,0.0 -71.0535588115,42.3636884825,0.0</coordinates>
+				<coordinates>-71.0567895323,42.3588838295,0.0 -71.0569256544,42.3594283786,0.0 -71.0570614412,42.3599461666,0.0 -71.0570684820,42.3599488918,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
@@ -949,8 +949,8 @@
         <LookAt>
             <longitude>-71.053563</longitude>
             <latitude>42.363669</latitude>
-            <tilt>6.003492</tilt>
-            <heading>295.194489</heading>
+            <tilt>9.4274053574</tilt>
+            <heading>324.3158569336</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
@@ -959,7 +959,7 @@
 			<LineString id="line12">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-				<coordinates>-71.0534062609,42.3640682510,0.0 -71.0539068282,42.3643219241,0.0 -71.0534347594,42.3647869063,0.0 -71.0530344397,42.3653048979,0.0 -71.0529771075,42.3655162055,0.0 -71.0540929064,42.3660976074,0.0</coordinates>
+				<coordinates>-71.0564643145,42.3599957155,0.0 -71.0565930605,42.3603955734,0.0 -71.0568837449,42.3608127707,0.0 -71.0569896922,42.3611472201,0.0 -71.0570584238,42.3612876884,0.0 -71.0569326952,42.3616119781,0.0 -71.0568797216,42.3619134743,0.0 -71.0566832498,42.3620222306,0.0 -71.0554195940,42.3628409936,0.0 -71.0550055280,42.3632457880,0.0 -71.0546380654,42.3636324956,0.0 -71.0542347282,42.3632249786,0.0 -71.0540446267,42.3630820374,0.0 -71.0537522659,42.3633461192,0.0 -71.0535588115,42.3636884825,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
@@ -986,12 +986,12 @@
         </LookAt>
 		<MultiGeometry>
 			<Point>
-				<coordinates>-71.0545,42.3665,0</coordinates>
+				<coordinates>-71.0544151068,42.3663148576,0</coordinates>
 			</Point>
 			<LineString id="line13">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-				<coordinates>-71.0547936335,42.3664511031,0.0 -71.0559667647,42.3669160696,0.0</coordinates>
+				<coordinates>-71.0534052551,42.3640410009,0.0 -71.0539202392,42.3643211809,0.0 -71.0535698757,42.3646434732,0.0 -71.0531263053,42.3651087007,0.0 -71.0529476032,42.3654785517,0.0 -71.0540989414,42.3660916621,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
@@ -1023,7 +1023,7 @@
 			<LineString id="line14">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-				<coordinates>-71.0564700142,42.3670580112,0.0 -71.0573997349,42.3677451727,0.0 -71.0580434650,42.3673116723,0.0 -71.0587016121,42.3673433798,0.0 -71.0607327148,42.3702710583,0.0 -71.0612078011,42.3707966834,0.0 -71.0619232804,42.3711033373,0.0 -71.0604353249,42.3721072591,0.0 -71.0600779206,42.3717057418,0.0 -71.0586798191,42.3723898802,0.0 -71.0579646751,42.3728337487,0.0</coordinates>
+				<coordinates>-71.0547081381,42.3664047797,0.0 -71.0555020720,42.3667112073,0.0 -71.0559526831,42.3668910501,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
@@ -1055,7 +1055,7 @@
 			<LineString id="line15">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-				<coordinates>-71.0578607395,42.3731384111,0.0 -71.0580424592,42.3735275347,0.0 -71.0582419485,42.3737690328,0.0 -71.0588048771,42.3739300310,0.0 -71.0588957369,42.3742787766,0.0 -71.0601489991,42.3747751412,0.0 -71.0602696985,42.3752212220,0.0 -71.0605986044,42.3755172039,0.0 -71.0612138361,42.3757391275,0.0</coordinates>
+                <coordinates>-71.0564700142,42.3670580112,0.0 -71.0573997349,42.3677451727,0.0 -71.0580434650,42.3673116723,0.0 -71.0587016121,42.3673433798,0.0 -71.0607327148,42.3702710583,0.0 -71.0612078011,42.3707966834,0.0 -71.0619232804,42.3711033373,0.0 -71.0604353249,42.3721072591,0.0 -71.0600779206,42.3717057418,0.0 -71.0586798191,42.3723898802,0.0 -71.0579646751,42.3728337487,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
@@ -1087,10 +1087,11 @@
 			<LineString id="line16">
 				<extrude>1</extrude>
 				<tessellate>1</tessellate>
-				<coordinates>-71.060858,42.376379,0.0</coordinates>
+				<coordinates>-71.0578607395,42.3731384111,0.0 -71.0580424592,42.3735275347,0.0 -71.0582419485,42.3737690328,0.0 -71.0588048771,42.3739300310,0.0 -71.0588957369,42.3742787766,0.0 -71.0601489991,42.3747751412,0.0 -71.0602696985,42.3752212220,0.0 -71.0605986044,42.3755172039,0.0 -71.0612138361,42.3757391275,0.0 -71.060858,42.376379,0.0</coordinates>
 			</LineString>
 		</MultiGeometry>
 	</Placemark>
+     -->
 </Folder>
 </Document>
 </kml>

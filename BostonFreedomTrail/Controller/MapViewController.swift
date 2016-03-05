@@ -105,6 +105,6 @@ extension MapViewController : GMSMapViewDelegate {
 extension CLLocationCoordinate2D {
     
     func logCoordinate() {
-        NSLog("Lat: %.10f, Long: %.10f", self.latitude, self.longitude)
+        NSLog("%.10f,%.10f,0.0", self.longitude, self.latitude)
     }
 }

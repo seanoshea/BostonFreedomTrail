@@ -131,4 +131,25 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
             self.advanceToNextLocation(1)
         }
     }
+    
+    func panoramaView(panoramaView: GMSPanoramaView!, didMoveCamera camera: GMSPanoramaCamera!) {
+        if let panoView = panoramaView {
+            panoView.logLocation()
+            camera.logLocation()
+        }
+    }
+}
+
+extension GMSPanoramaView {
+    func logLocation() {
+        if let pano = self.panorama {
+            pano.coordinate.logCoordinate()
+        }
+    }
+}
+
+extension GMSPanoramaCamera {
+    func logLocation() {
+        NSLog("Heading: %.10f, Pitch: %.10f", self.orientation.heading, self.orientation.pitch)
+    }
 }
