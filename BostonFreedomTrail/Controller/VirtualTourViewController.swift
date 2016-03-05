@@ -82,8 +82,8 @@ class VirtualTourViewController : UIViewController {
         return GMSPanoramaCamera.init(heading:heading!, pitch:pitch, zoom:1)
     }
     
-    func shouldEnqueueNextLocationForPanorama(panorama:GMSPanorama) -> Bool {
-        return panorama.panoramaID != nil && self.model.tourIsRunning()
+    func shouldEnqueueNextLocationForPanorama(panorama:GMSPanorama?) -> Bool {
+        return self.model.tourIsRunning()
     }
     
     func postDispatchAction(nextLocation:CLLocation) {
@@ -117,13 +117,13 @@ class VirtualTourViewController : UIViewController {
 
 extension VirtualTourViewController : GMSPanoramaViewDelegate {
     
-    func panoramaView(view: GMSPanoramaView!, didMoveToPanorama panorama: GMSPanorama!) {
+    func panoramaView(view: GMSPanoramaView, didMoveToPanorama panorama: GMSPanorama?) {
         if self.shouldEnqueueNextLocationForPanorama(panorama) {
             self.advanceToNextLocation(self.model.delayTime())
         }
     }
     
-    func panoramaView(panoramaView: GMSPanoramaView!, didTap point: CGPoint) {
+    func panoramaView(panoramaView: GMSPanoramaView, didTap point: CGPoint) {
         if self.model.tourIsRunning() {
             self.model.pauseTour()
         } else {
@@ -132,11 +132,9 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
         }
     }
     
-    func panoramaView(panoramaView: GMSPanoramaView!, didMoveCamera camera: GMSPanoramaCamera!) {
-        if let panoView = panoramaView {
-            panoView.logLocation()
-            camera.logLocation()
-        }
+    func panoramaView(panoramaView: GMSPanoramaView, didMoveCamera camera: GMSPanoramaCamera) {
+        panoramaView.logLocation()
+        camera.logLocation()
     }
 }
 

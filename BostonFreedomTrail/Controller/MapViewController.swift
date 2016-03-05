@@ -48,7 +48,7 @@ class MapViewController : UIViewController {
         if let identifier = segue.identifier {
             if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == NSComparisonResult.OrderedSame {
                 let placemarkViewController = segue.destinationViewController as! PlacemarkViewController
-                let placemark = self.mapView?.selectedMarker.userData as! Placemark
+                let placemark = self.mapView?.selectedMarker!.userData as! Placemark
                 placemarkViewController.model!.placemark = placemark
             }
         }
@@ -78,26 +78,26 @@ class MapViewController : UIViewController {
 
 extension MapViewController : GMSMapViewDelegate {
     
-    func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
+    func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
         if position.zoom > 0.0 {
             ApplicationSharedState.sharedInstance.cameraZoom = position.zoom
         }
         ApplicationSharedState.sharedInstance.lastKnownCoordinate = position.target
     }
     
-    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+    func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
         // TODO: Analytics
         return false
     }
     
-    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
+    func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
         // TODO: Analytics
         self.performSegueWithIdentifier(SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
     }
     
-    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+    func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
         coordinate.logCoordinate()
     }
 }

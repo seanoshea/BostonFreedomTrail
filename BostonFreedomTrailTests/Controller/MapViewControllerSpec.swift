@@ -83,7 +83,7 @@ class MapViewControllerTest: QuickSpec {
                     let zoom:Float = 14
                     let position:GMSCameraPosition = GMSCameraPosition.init(target: CLLocationCoordinate2D.init(latitude: 45, longitude: 45), zoom: zoom, bearing: 14.0, viewingAngle: 1.2)
                     
-                    subject?.mapView(subject?.mapView, didChangeCameraPosition: position)
+                    subject?.mapView((subject?.mapView)!, didChangeCameraPosition: position)
                     
                     expect(ApplicationSharedState.sharedInstance.cameraZoom).to(equal(zoom))
                 }
@@ -92,7 +92,7 @@ class MapViewControllerTest: QuickSpec {
                     
                     let marker = GMSMarker.init(position: CLLocationCoordinate2D.init(latitude: 45, longitude: 45))
                     
-                    subject?.mapView(subject?.mapView, didTapMarker: marker)
+                    subject?.mapView((subject?.mapView)!, didTapMarker: marker)
                     
                     let lastKnownPlacemark = ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate
                     
