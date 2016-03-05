@@ -69,4 +69,12 @@ class MapModel : NSObject {
         }
         return zoom
     }
+    
+    func lastKnownCoordinate() -> CLLocationCoordinate2D {
+        var lastKnownCoordinate = ApplicationSharedState.sharedInstance.lastKnownCoordinate
+        if lastKnownCoordinate.latitude == 0.0 && lastKnownCoordinate.longitude == 0.0 {
+            lastKnownCoordinate = CLLocationCoordinate2D.init(latitude:PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude())
+        }
+        return lastKnownCoordinate
+    }
 }

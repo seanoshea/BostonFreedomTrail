@@ -38,6 +38,8 @@ enum DefaultsKeys : String {
     case ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude"
     case ApplicationSharedStateLastKnownLocationLatitude = "ApplicationSharedStateLastKnownLocationLatitude"
     case ApplicationSharedStateLastKnownLocationLongitude = "ApplicationSharedStateLastKnownLocationLongitude"
+    case ApplicationSharedStateLastKnownCoordinateLatitude = "ApplicationSharedStateLastKnownCoordinateLatitude"
+    case ApplicationSharedStateLastKnownCoordinateLongitude = "ApplicationSharedStateLastKnownCoordinateLongitude"
 }
 
 public class ApplicationSharedState {
@@ -64,7 +66,19 @@ public class ApplicationSharedState {
         get {
             let latitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
             let longitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
-            return CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
+            return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
+        }
+    }
+    
+    public var lastKnownCoordinate:CLLocationCoordinate2D {
+        set {
+            NSUserDefaults.standardUserDefaults().setDouble(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
+            NSUserDefaults.standardUserDefaults().setDouble(newValue.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
+        }
+        get {
+            let latitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
+            let longitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
+            return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
         }
     }
     
@@ -76,7 +90,7 @@ public class ApplicationSharedState {
         get {
             let latitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
             let longitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
-            return CLLocation.init(latitude: latitude, longitude: longitude)
+            return CLLocation.init(latitude:latitude, longitude:longitude)
         }
     }
     

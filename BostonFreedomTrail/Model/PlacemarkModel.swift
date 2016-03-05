@@ -39,7 +39,7 @@ class PlacemarkModel {
         if let htmlString = NSBundle.mainBundle().pathForResource("placemark", ofType: "html") {
             if let description = self.placemark?.placemarkDescription {
                 do {
-                    returnString = try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: 0), description) as String
+                    returnString = try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: NSUTF8StringEncoding), description) as String
                 } catch (_) {
                     
                 }
