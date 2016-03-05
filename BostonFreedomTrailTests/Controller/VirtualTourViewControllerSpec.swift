@@ -102,7 +102,7 @@ class VirtualTourViewControllerTest: QuickSpec {
                 it("should pause the tour if it is in progress and the user taps on the pano view") {
                     subject?.model.currentTourState = VirtualTourState.InProgress
                     
-                    subject?.panoramaView(subject?.panoView, didTap: CGPointMake(0.0, 0.1))
+                    subject?.panoramaView((subject?.panoView)!, didTap: CGPointMake(0.0, 0.1))
                     
                     expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
                 }
@@ -110,7 +110,7 @@ class VirtualTourViewControllerTest: QuickSpec {
                 it("should resume the tour if it is paused and the user taps on the pano view") {
                     subject?.model.currentTourState = VirtualTourState.Paused
                     
-                    subject?.panoramaView(subject?.panoView, didTap: CGPointMake(0.0, 0.1))
+                    subject?.panoramaView((subject?.panoView)!, didTap: CGPointMake(0.0, 0.1))
                     
                     expect(subject?.model.currentTourState).to(equal(VirtualTourState.InProgress))
                 }
