@@ -30,7 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
-class PlacemarkViewController : UIViewController {
+class PlacemarkViewController : BaseViewController {
     
     @IBOutlet weak var webView: UIWebView?
     @IBOutlet weak var wikipediaButton: UIButton?
