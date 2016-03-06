@@ -57,8 +57,8 @@ class MapModel : NSObject {
             }
         }
         let polyline = GMSPolyline(path: path)
-        polyline.strokeColor = UIColor.blueColor()
-        polyline.strokeWidth = 5.0
+        polyline.strokeColor = UIColor.init(red:221/255, green:164/255, blue:147/255, alpha: 1)
+        polyline.strokeWidth = 3.0
         polyline.map = mapView
     }
     
