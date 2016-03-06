@@ -17,6 +17,7 @@ PODS:
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (4.7.1)
   - Quick (0.9.1)
+  - ReachabilitySwift (2.3.3)
 
 DEPENDENCIES:
   - GoogleAnalytics (= 3.14.0)
@@ -25,6 +26,16 @@ DEPENDENCIES:
   - Nimble (~> 3.0.0)
   - OHHTTPStubs (~> 4.7.1)
   - Quick (~> 0.9.1)
+  - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift`)
+
+EXTERNAL SOURCES:
+  ReachabilitySwift:
+    :git: https://github.com/ashleymills/Reachability.swift
+
+CHECKOUT OPTIONS:
+  ReachabilitySwift:
+    :commit: cf126c0584a209143c75bf1d0f23fd904891e26e
+    :git: https://github.com/ashleymills/Reachability.swift
 
 SPEC CHECKSUMS:
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
@@ -33,5 +44,6 @@ SPEC CHECKSUMS:
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   OHHTTPStubs: f7d1604d04d37d055460c0ef9af01bb249ded0fa
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
+  ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
 
 COCOAPODS: 0.39.0

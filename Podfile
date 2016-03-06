@@ -10,6 +10,7 @@ xcodeproj 'BostonFreedomTrail.xcodeproj'
 pod 'GoogleAnalytics', '3.14.0'
 pod 'GoogleMaps', '1.12.3'
 pod 'JLToast', '1.3.5'
+pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift'
 
 target :BostonFreedomTrailTests do
   pod 'Quick', '~> 0.9.1'
