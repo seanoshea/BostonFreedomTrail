@@ -70,10 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 try reachability.startNotifier()
             } catch {
-                print("could not start reachability notifier")
+                NSLog("Failed to start the reachability notifier")
             }
         } catch {
-            print("Unable to create Reachability")
+            NSLog("Failed to start Reachability")
         }
     }
     
