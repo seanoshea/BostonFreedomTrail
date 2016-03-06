@@ -6,4 +6,3 @@ install:
   - bundle install --without=documentation --path ../travis_bundle_dir
   - bundle exec pod install
 script: bundle exec fastlane test
-after_success: bundle exec slather
