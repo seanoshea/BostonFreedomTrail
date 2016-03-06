@@ -34,6 +34,7 @@ import GoogleMaps
 import CoreLocation
 import Fabric
 import Crashlytics
+import ReachabilitySwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -63,7 +64,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeReachability() {
-        
+        let reachability: Reachability
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+            do {
+                try reachability.startNotifier()
+            } catch {
+                print("could not start reachability notifier")
+            }
+        } catch {
+            print("Unable to create Reachability")
+        }
     }
     
     func initializeLocalization() {
