@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 import ReachabilitySwift
+import TSMessages
 
 protocol ReachabilityListener {
     func registerListener()
@@ -58,10 +59,10 @@ extension ReachabilityListener where Self : UIViewController {
     }
     
     func isOffline() {
-        NSLog("This is where I should be presenting the offine error view")
+        TSMessage.showNotificationWithTitle("Check your network settings to get back online", type: TSMessageNotificationType.Warning)
     }
     
     func isOnline() {
-        NSLog("This is where I should be hiding the offine error view")
+        TSMessage.showNotificationWithTitle("Back Online", type: TSMessageNotificationType.Success)
     }
 }
