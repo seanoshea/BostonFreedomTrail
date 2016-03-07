@@ -33,7 +33,7 @@ import UIKit
 import GoogleMaps
 import JLToast
 
-class VirtualTourViewController : UIViewController {
+class VirtualTourViewController : BaseViewController {
     
     var model:VirtualTourModel = VirtualTourModel()
     var panoView:GMSPanoramaView?

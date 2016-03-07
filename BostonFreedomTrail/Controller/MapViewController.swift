@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 import GoogleMaps
 
-class MapViewController : UIViewController {
+class MapViewController : BaseViewController {
     
     var model:MapModel = MapModel()
     var mapView:GMSMapView?

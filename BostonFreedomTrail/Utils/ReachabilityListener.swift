@@ -29,7 +29,40 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 import UIKit
+import ReachabilitySwift
+import TSMessages
 
-class WikipediaViewController : BaseViewController {
+protocol ReachabilityListener {
+    func registerListener()
+    func deregisterListener()
+    func isOffline()
+    func isOnline()
+}
+
+extension ReachabilityListener where Self : UIViewController {
     
+    func registerListener() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"reachabilityChanged:", name:ReachabilityChangedNotification, object: nil)
+    }
+    
+    func deregisterListener() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:ReachabilityChangedNotification, object:nil)
+    }
+    
+    func reachabilityChanged(note: NSNotification) {
+        let reachability = note.object as! Reachability
+        if reachability.isReachable() {
+            self.isOnline()
+        } else {
+            self.isOffline()
+        }
+    }
+    
+    func isOffline() {
+        TSMessage.showNotificationWithTitle("Check your network settings to get back online", type: TSMessageNotificationType.Warning)
+    }
+    
+    func isOnline() {
+        TSMessage.showNotificationWithTitle("Back Online", type: TSMessageNotificationType.Success)
+    }
 }
