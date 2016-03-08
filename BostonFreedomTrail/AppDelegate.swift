@@ -40,6 +40,7 @@ import ReachabilitySwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var reachability: Reachability?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.initializeCrashReporting()
@@ -49,6 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initializeLocalization()
         self.initializeAnalytics()
         return true
+    }
+    
+    func isOnline() -> Bool {
+        var isOnline = false
+        if let unwrappedReachability = self.reachability {
+            isOnline = unwrappedReachability.isReachable()
+        }
+        return isOnline
     }
     
     func initializeGoogleMapsApi() {
@@ -64,11 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeReachability() {
-        let reachability: Reachability
         do {
-            reachability = try Reachability.reachabilityForInternetConnection()
+            self.reachability = try Reachability.reachabilityForInternetConnection()
             do {
-                try reachability.startNotifier()
+                try self.reachability!.startNotifier()
             } catch {
                 NSLog("Failed to start the reachability notifier")
             }
