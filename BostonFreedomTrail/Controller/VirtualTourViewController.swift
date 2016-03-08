@@ -53,7 +53,9 @@ class VirtualTourViewController : BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.startTour()
+        if self.isOnline() {
+            self.startTour()
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
