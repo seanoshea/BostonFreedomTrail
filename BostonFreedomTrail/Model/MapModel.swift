@@ -41,7 +41,6 @@ class MapModel : NSObject {
             marker.userData = placemark;
             marker.position = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude)
             marker.title = placemark.name
-            marker.snippet = placemark.identifier
             marker.appearAnimation = kGMSMarkerAnimationPop
             marker.map = mapView
             markers.append(marker)
