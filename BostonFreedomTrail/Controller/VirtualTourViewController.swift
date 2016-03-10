@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 
 import GoogleMaps
-import JLToast
+import TSMessages
 
 class VirtualTourViewController : BaseViewController {
     
@@ -104,7 +104,7 @@ class VirtualTourViewController : BaseViewController {
             self.panoView?.animateToCamera(newCamera, animationDuration: VirtualTourStopStopDuration.CameraRepositionAnimation.rawValue)
             if self.model.atLookAtLocation() {
                 let pm = self.model.placemarkForCurrentLookAt()
-                JLToast.makeText(pm.name).show()
+                TSMessage.showNotificationWithTitle(pm.name, type: TSMessageNotificationType.Message)
             }
         }
     }
