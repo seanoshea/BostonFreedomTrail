@@ -2,7 +2,6 @@ PODS:
   - GoogleAnalytics (3.14.0)
   - GoogleMaps (1.12.3)
   - HexColors (2.3.0)
-  - JLToast (1.3.5)
   - Nimble (3.0.0)
   - OHHTTPStubs (4.7.1):
     - OHHTTPStubs/Default (= 4.7.1)
@@ -25,7 +24,6 @@ PODS:
 DEPENDENCIES:
   - GoogleAnalytics (= 3.14.0)
   - GoogleMaps (= 1.12.3)
-  - JLToast (= 1.3.5)
   - Nimble (~> 3.0.0)
   - OHHTTPStubs (~> 4.7.1)
   - Quick (~> 0.9.1)
@@ -50,7 +48,6 @@ SPEC CHECKSUMS:
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   GoogleMaps: a4ac67918d0b5ba5f6b9893ac80487e357779e6c
   HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
-  JLToast: 08024c173a36e4d747607593d59cc17f3c3b09f1
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   OHHTTPStubs: f7d1604d04d37d055460c0ef9af01bb249ded0fa
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
