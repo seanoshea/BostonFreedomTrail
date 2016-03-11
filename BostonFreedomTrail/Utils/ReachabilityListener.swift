@@ -42,11 +42,21 @@ protocol ReachabilityListener {
 extension ReachabilityListener where Self : UIViewController {
     
     func registerListener() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"reachabilityChanged:", name:ReachabilityChangedNotification, object: nil)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.reachability?.whenReachable = { reachability in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.reachabilityStatusChanged(true)
+            }
+        }
+        appDelegate.reachability?.whenUnreachable = { reachability in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.reachabilityStatusChanged(false)
+            }
+        }
     }
     
     func deregisterListener() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name:ReachabilityChangedNotification, object:nil)
+        
     }
     
     func reachabilityChanged(note: NSNotification) {
