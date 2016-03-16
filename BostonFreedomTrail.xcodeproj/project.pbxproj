@@ -30,6 +30,7 @@
 		414A7AA91C6D80E000385442 /* PlacemarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414A7AA81C6D80E000385442 /* PlacemarkModel.swift */; };
 		4157BFE11C8C72E2009CDF0F /* ReachabilityListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157BFE01C8C72E2009CDF0F /* ReachabilityListener.swift */; };
 		4157BFE31C8C7AFE009CDF0F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157BFE21C8C7AFE009CDF0F /* BaseViewController.swift */; };
+		4199CD7F1C98F5E60017919E /* TrailSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199CD7E1C98F5E60017919E /* TrailSpec.swift */; };
 		41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
 		41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */; };
 		41D0F4EB1C53E64A00FCAB17 /* AboutViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */; };
@@ -92,6 +93,7 @@
 		4157BFE01C8C72E2009CDF0F /* ReachabilityListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityListener.swift; sourceTree = "<group>"; };
 		4157BFE21C8C7AFE009CDF0F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		41691D211C4C0034009A03B3 /* TrailParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParserSpec.swift; sourceTree = "<group>"; };
+		4199CD7E1C98F5E60017919E /* TrailSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailSpec.swift; sourceTree = "<group>"; };
 		41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedState.swift; sourceTree = "<group>"; };
 		41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedStateSpec.swift; sourceTree = "<group>"; };
 		41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -146,6 +148,7 @@
 			children = (
 				410AFEE11C4D980F007DF354 /* MapModelSpec.swift */,
 				41DE95041C701D89004ACD7A /* PlacemarkModelSpec.swift */,
+				4199CD7E1C98F5E60017919E /* TrailSpec.swift */,
 				41DE05EB1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift */,
 			);
 			path = Model;
@@ -544,6 +547,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41D0F4EE1C53E64A00FCAB17 /* ApplicationSharedStateSpec.swift in Sources */,
+				4199CD7F1C98F5E60017919E /* TrailSpec.swift in Sources */,
 				41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */,
 				41D0F4EB1C53E64A00FCAB17 /* AboutViewControllerSpec.swift in Sources */,
 				41D0F4EF1C53E64A00FCAB17 /* PListHelperSpec.swift in Sources */,

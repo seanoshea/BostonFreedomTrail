@@ -30,52 +30,32 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-import CoreLocation
+import Quick
+import Nimble
 
-public class Placemark {
-    var identifier:String = ""
-    var name:String = ""
-    var location:CLLocation = CLLocation()
-    var coordinates = [CLLocation]()
-    var placemarkDescription:String = ""
-    var lookAt:LookAt?
+@testable import BostonFreedomTrail
+
+class TrailTest: QuickSpec {
     
-    init(identifier:String, name:String, location:CLLocation, coordinates:[CLLocation], placemarkDescription:String, lookAt:LookAt?) {
-        self.identifier = identifier
-        self.name = name
-        self.location = location
-        self.coordinates = coordinates
-        self.placemarkDescription = placemarkDescription
-        self.lookAt = lookAt
-    }
-}
-
-public class LookAt {
-    var latitude:Double = 0.0
-    var longitude:Double = 0.0
-    var tilt:Double = 0.0
-    var heading:Double = 0.0
-    
-    init(latitude:Double, longitude:Double, tilt:Double, heading:Double) {
-        self.latitude = latitude
-        self.longitude = longitude
-        self.tilt = tilt
-        self.heading = heading
-    }
-}
-
-public class Trail {
-    static let instance = TrailParser().parseTrail()
-    var placemarks = [Placemark]()
-}
-
-extension Int {
-    func placemarkIndexFromIdentifier(placemarkIdentifier:String) -> Int {
-        let stringRepresentation = placemarkIdentifier.stringByReplacingOccurrencesOfString("placemark", withString:"")
-        if let integerRepresentation = Int(stringRepresentation) {
-            return integerRepresentation - 1
-        } else {
-            return 0
+    override func spec() {
+        
+        describe("Trail") {
+            
+            context("Integer Extensions") {
+                
+                it("should be able to figure out the correct placemark index for a placemark identifier") {
+                    let i = 16
+                    expect(i.placemarkIndexFromIdentifier("placemark9")).to(equal(8))
+                }
+                
+                context("a poorly formed placemark identifier") {
+                    
+                    it("should be able to fail gracefully and return 0") {
+                        let i = 16
+                        expect(i.placemarkIndexFromIdentifier("placeak9")).to(equal(0))
+                    }
+                }
+            }
         }
     }
 }
