@@ -46,12 +46,17 @@ enum VirtualTourStopStopDuration : Double {
     case DelayForLookAt = 5.0
 }
 
+protocol VirtualTourModelDelegate {
+    func navigateToCurrentPosition(model:VirtualTourModel)
+}
+
 class VirtualTourModel : NSObject {
     var tour:[CLLocation] = []
     var lookAts = [Int:Int]()
     var placemarkDemarkations = [Int:Int]()
     var currentTourLocation:Int = 0
     var currentTourState:VirtualTourState = VirtualTourState.BeforeStart
+    var delegate:VirtualTourModelDelegate?
     
     func setupTour() {
         var index = 0
@@ -148,8 +153,10 @@ class VirtualTourModel : NSObject {
         let lookAtPosition = self.lookAtPositionInTourForPlacementIndex(placemarkIndex)
         if let position = lookAtPosition {
             self.currentTourLocation = position
+            if let delegate = self.delegate {
+                delegate.navigateToCurrentPosition(self)
+            }
         }
-        self.pauseTour()
     }
     
     func lookAtPositionInTourForPlacementIndex(placemarkIndex:Int) -> Int? {
