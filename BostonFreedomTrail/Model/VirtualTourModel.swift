@@ -144,16 +144,24 @@ class VirtualTourModel : NSObject {
         return dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
     }
     
-    func lookAtForPlacemarkIndex(placemarkIndex:Int) -> LookAt? {
-        var placemark:Placemark?
-        for (_, value) in self.lookAts {
+    func navigateToLookAt(placemarkIndex:Int) {
+        let lookAtPosition = self.lookAtPositionInTourForPlacementIndex(placemarkIndex)
+        if let position = lookAtPosition {
+            self.currentTourLocation = position
+        }
+        self.pauseTour()
+    }
+    
+    func lookAtPositionInTourForPlacementIndex(placemarkIndex:Int) -> Int? {
+        var foundKey:Int?
+        for (key, value) in self.lookAts {
             if value == placemarkIndex {
-                placemark = Trail.instance.placemarks[value]
+                foundKey = key
                 break
             }
         }
-        if let foundPlacemark = placemark {
-            return foundPlacemark.lookAt!
+        if let positionInTour = foundKey {
+            return positionInTour
         } else {
             return nil
         }

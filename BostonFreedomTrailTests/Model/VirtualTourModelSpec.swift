@@ -118,19 +118,19 @@ class VirtualTourModelTest: QuickSpec {
                 }
 
                 it("should not be able to find a LookAt for the 1st placemark") {
-                    expect(subject?.lookAtForPlacemarkIndex(0)).to(beNil())
+                    expect(subject?.lookAtPositionInTourForPlacementIndex(0)).to(beNil())
                 }
                 
                 it("should not be able to find a LookAt if a placemark is requested which is out of bounds on the lower end") {
-                    expect(subject?.lookAtForPlacemarkIndex(-1)).to(beNil())
+                    expect(subject?.lookAtPositionInTourForPlacementIndex(-1)).to(beNil())
                 }
                 
                 it("should not be able to find a LookAt if a placemark is requested which is out of bounds on the upper end") {
-                    expect(subject?.lookAtForPlacemarkIndex(51)).to(beNil())
+                    expect(subject?.lookAtPositionInTourForPlacementIndex(51)).to(beNil())
                 }
                 
                 it("should be able to find a LookAt for the 4th placemark") {
-                    expect(subject?.lookAtForPlacemarkIndex(3)).toNot(beNil())
+                    expect(subject?.lookAtPositionInTourForPlacementIndex(3)).to(equal(26))
                 }
             }
             
