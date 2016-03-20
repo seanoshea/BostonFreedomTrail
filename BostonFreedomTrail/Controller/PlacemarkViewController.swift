@@ -45,8 +45,8 @@ class PlacemarkViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.webView?.delegate = self
-        self.webView?.loadHTMLString((self.model?.stringForWebView())!, baseURL: nil)
+        self.configureView()
+        self.loadPlacemarkInformation()
     }
     
     @IBAction func streetViewButtonPressed() {
@@ -55,6 +55,18 @@ class PlacemarkViewController : BaseViewController {
 
     @IBAction func wikipediaButtonPressed() {
         
+    }
+    
+// MARK: Private Functions
+    
+    func configureView() {
+        // only bother showing the street view button if there is a LookAt associated with this placemark.
+        self.streetViewButton?.hidden = self.model?.placemark?.lookAt == nil
+    }
+    
+    func loadPlacemarkInformation() {
+        self.webView?.delegate = self
+        self.webView?.loadHTMLString((self.model?.stringForWebView())!, baseURL: nil)
     }
 }
 

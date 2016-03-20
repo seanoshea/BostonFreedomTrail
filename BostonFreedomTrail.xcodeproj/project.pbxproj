@@ -10,6 +10,7 @@
 		02C99F49ED538590AF59B9D4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C2543599204AB4B2D5CCB5 /* Pods.framework */; };
 		41079D5F1C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */; };
 		410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE61C4D9B0F007DF354 /* PListHelper.swift */; };
+		410C23771C9EEF83001EF660 /* PlacemarkViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C23761C9EEF83001EF660 /* PlacemarkViewControllerSpec.swift */; };
 		41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237BE71C486CDF0007F76B /* AppDelegate.swift */; };
 		41237BEF1C486CDF0007F76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41237BED1C486CDF0007F76B /* Main.storyboard */; };
 		41237BF11C486CDF0007F76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41237BF01C486CDF0007F76B /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		410AFEE11C4D980F007DF354 /* MapModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModelSpec.swift; sourceTree = "<group>"; };
 		410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerSpec.swift; sourceTree = "<group>"; };
 		410AFEE61C4D9B0F007DF354 /* PListHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListHelper.swift; sourceTree = "<group>"; };
+		410C23761C9EEF83001EF660 /* PlacemarkViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkViewControllerSpec.swift; sourceTree = "<group>"; };
 		41237BE41C486CDF0007F76B /* BostonFreedomTrail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BostonFreedomTrail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41237BE71C486CDF0007F76B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41237BEE1C486CDF0007F76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			children = (
 				41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */,
 				410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */,
+				410C23761C9EEF83001EF660 /* PlacemarkViewControllerSpec.swift */,
 				41DE05E91C55B480008AFCA5 /* VirtualTourViewControllerSpec.swift */,
 			);
 			path = Controller;
@@ -555,6 +558,7 @@
 				41D0F4ED1C53E64A00FCAB17 /* StoryboardExtensions.swift in Sources */,
 				41DE05EC1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift in Sources */,
 				41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */,
+				410C23771C9EEF83001EF660 /* PlacemarkViewControllerSpec.swift in Sources */,
 				41D0F4EC1C53E64A00FCAB17 /* MapModelSpec.swift in Sources */,
 				41DE05EA1C55B480008AFCA5 /* VirtualTourViewControllerSpec.swift in Sources */,
 				41DE95051C701D89004ACD7A /* PlacemarkModelSpec.swift in Sources */,
