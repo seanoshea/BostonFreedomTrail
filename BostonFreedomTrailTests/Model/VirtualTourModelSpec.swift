@@ -130,7 +130,7 @@ class VirtualTourModelTest: QuickSpec {
                 }
                 
                 it("should be able to find a LookAt for the 4th placemark") {
-                    expect(subject?.lookAtPositionInTourForPlacementIndex(3)).to(equal(26))
+                    expect(subject?.lookAtPositionInTourForPlacementIndex(3)).to(equal(25))
                 }
             }
             

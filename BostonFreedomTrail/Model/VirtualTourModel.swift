@@ -168,7 +168,7 @@ class VirtualTourModel : NSObject {
             }
         }
         if let positionInTour = foundKey {
-            return positionInTour
+            return positionInTour - 1
         } else {
             return nil
         }
