@@ -19,7 +19,6 @@
 		41237C101C4921070007F76B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C0F1C4921070007F76B /* AboutViewController.swift */; };
 		41237C121C4921210007F76B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C111C4921210007F76B /* MapViewController.swift */; };
 		41237C141C49213F0007F76B /* PlacemarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C131C49213F0007F76B /* PlacemarkViewController.swift */; };
-		41237C161C4921550007F76B /* WikipediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C151C4921550007F76B /* WikipediaViewController.swift */; };
 		41237C181C4921690007F76B /* StreetViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C171C4921690007F76B /* StreetViewViewController.swift */; };
 		41237C1A1C4921E50007F76B /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C191C4921E50007F76B /* MapModel.swift */; };
 		41237C1C1C4923D20007F76B /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
@@ -81,7 +80,6 @@
 		41237C0F1C4921070007F76B /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		41237C111C4921210007F76B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		41237C131C49213F0007F76B /* PlacemarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkViewController.swift; sourceTree = "<group>"; };
-		41237C151C4921550007F76B /* WikipediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikipediaViewController.swift; sourceTree = "<group>"; };
 		41237C171C4921690007F76B /* StreetViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetViewViewController.swift; sourceTree = "<group>"; };
 		41237C191C4921E50007F76B /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		41237C1B1C4923D20007F76B /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 				41237C131C49213F0007F76B /* PlacemarkViewController.swift */,
 				41237C171C4921690007F76B /* StreetViewViewController.swift */,
 				41DE05E51C553694008AFCA5 /* VirtualTourViewController.swift */,
-				41237C151C4921550007F76B /* WikipediaViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -534,7 +531,6 @@
 				41DE05E61C553694008AFCA5 /* VirtualTourViewController.swift in Sources */,
 				41237C181C4921690007F76B /* StreetViewViewController.swift in Sources */,
 				41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */,
-				41237C161C4921550007F76B /* WikipediaViewController.swift in Sources */,
 				41E1C3711C525B670009570C /* Constants.swift in Sources */,
 				41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */,
 				41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */,
