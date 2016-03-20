@@ -42,6 +42,7 @@ class VirtualTourViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.model.delegate = self
         let firstPlacemark = self.model.firstPlacemark()
         let panoramaNear = CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude)
         let panoView = GMSPanoramaView.panoramaWithFrame(CGRectZero, nearCoordinate:panoramaNear)
@@ -137,6 +138,14 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
     func panoramaView(panoramaView: GMSPanoramaView, didMoveCamera camera: GMSPanoramaCamera) {
         panoramaView.logLocation()
         camera.logLocation()
+    }
+}
+
+extension VirtualTourViewController : VirtualTourModelDelegate {
+    
+    func navigateToCurrentPosition(model: VirtualTourModel) {
+        self.postDispatchAction(self.model.nextLocation())
+        self.model.pauseTour()
     }
 }
 

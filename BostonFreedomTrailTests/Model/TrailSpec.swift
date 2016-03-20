@@ -28,48 +28,34 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
+import Foundation
 
-class PlacemarkViewController : BaseViewController {
-    
-    @IBOutlet weak var webView: UIWebView?
-    @IBOutlet weak var wikipediaButton: UIButton?
-    @IBOutlet weak var streetViewButton: UIButton?
+import Quick
+import Nimble
 
-    var model:PlacemarkModel?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.model = PlacemarkModel.init()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.configureView()
-        self.loadPlacemarkInformation()
-    }
-    
-    @IBAction func streetViewButtonPressed() {
-    
-    }
+@testable import BostonFreedomTrail
 
-    @IBAction func wikipediaButtonPressed() {
+class TrailTest: QuickSpec {
+    
+    override func spec() {
         
+        describe("Trail") {
+            
+            context("Integer Extensions") {
+                
+                it("should be able to figure out the correct placemark index for a placemark identifier") {
+                    let i = 16
+                    expect(i.placemarkIndexFromIdentifier("placemark9")).to(equal(8))
+                }
+                
+                context("a poorly formed placemark identifier") {
+                    
+                    it("should be able to fail gracefully and return 0") {
+                        let i = 16
+                        expect(i.placemarkIndexFromIdentifier("placeak9")).to(equal(0))
+                    }
+                }
+            }
+        }
     }
-    
-// MARK: Private Functions
-    
-    func configureView() {
-        // only bother showing the street view button if there is a LookAt associated with this placemark.
-        self.streetViewButton?.hidden = self.model?.placemark?.lookAt == nil
-    }
-    
-    func loadPlacemarkInformation() {
-        self.webView?.delegate = self
-        self.webView?.loadHTMLString((self.model?.stringForWebView())!, baseURL: nil)
-    }
-}
-
-extension PlacemarkViewController : UIWebViewDelegate {
-    
 }

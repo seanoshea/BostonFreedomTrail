@@ -116,6 +116,22 @@ class VirtualTourModelTest: QuickSpec {
                     subject?.currentTourLocation = 15
                     expect(subject?.lookAtForCurrentLocation()).toNot(beNil())
                 }
+
+                it("should not be able to find a LookAt for the 1st placemark") {
+                    expect(subject?.lookAtPositionInTourForPlacementIndex(0)).to(beNil())
+                }
+                
+                it("should not be able to find a LookAt if a placemark is requested which is out of bounds on the lower end") {
+                    expect(subject?.lookAtPositionInTourForPlacementIndex(-1)).to(beNil())
+                }
+                
+                it("should not be able to find a LookAt if a placemark is requested which is out of bounds on the upper end") {
+                    expect(subject?.lookAtPositionInTourForPlacementIndex(51)).to(beNil())
+                }
+                
+                it("should be able to find a LookAt for the 4th placemark") {
+                    expect(subject?.lookAtPositionInTourForPlacementIndex(3)).to(equal(25))
+                }
             }
             
             context("Understanding the next location to go to") {
@@ -131,7 +147,9 @@ class VirtualTourModelTest: QuickSpec {
                 it("should use the LookAt location if the current location represents a LookAt") {
                     subject?.currentTourLocation = 15
                     let location:CLLocation = (subject?.nextLocation())!
-                    let lookAt = subject?.lookAts[15]!
+                    let lookAtIndex = subject?.lookAts[15]!
+                    let lookAt = Trail.instance.placemarks[lookAtIndex!].lookAt
+                    
                     
                     expect(location.coordinate.latitude).to(equal(lookAt?.latitude))
                     expect(location.coordinate.longitude).to(equal(lookAt?.longitude))

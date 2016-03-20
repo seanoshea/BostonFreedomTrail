@@ -43,15 +43,20 @@ enum VirtualTourStopStopDuration : Double {
     case CameraRepositionAnimation = 0.5
     case DefaultDelay = 1.0
     case DelayForCameraRepositioning = 2.0
-    case DelayForLookAt = 10.0
+    case DelayForLookAt = 5.0
+}
+
+protocol VirtualTourModelDelegate {
+    func navigateToCurrentPosition(model:VirtualTourModel)
 }
 
 class VirtualTourModel : NSObject {
     var tour:[CLLocation] = []
-    var lookAts = [Int:LookAt]()
+    var lookAts = [Int:Int]()
     var placemarkDemarkations = [Int:Int]()
     var currentTourLocation:Int = 0
     var currentTourState:VirtualTourState = VirtualTourState.BeforeStart
+    var delegate:VirtualTourModelDelegate?
     
     func setupTour() {
         var index = 0
@@ -59,7 +64,7 @@ class VirtualTourModel : NSObject {
             for (locationIndex, location) in placemark.coordinates.enumerate() {
                 if locationIndex == placemark.coordinates.count - 1 {
                     if placemark.lookAt != nil {
-                        self.lookAts[index] = placemark.lookAt
+                        self.lookAts[index] = placemarkIndex
                     }
                 }
                 index = index + 1
@@ -81,7 +86,9 @@ class VirtualTourModel : NSObject {
     
     func lookAtForCurrentLocation() -> LookAt? {
         guard self.currentTourLocation > 0 else { return nil}
-        return self.lookAts[self.currentTourLocation]
+        let placemarkIndex = self.lookAts[self.currentTourLocation]
+        let placemark = Trail.instance.placemarks[placemarkIndex!]
+        return placemark.lookAt
     }
     
     func placemarkForCurrentLookAt() -> Placemark {
@@ -140,6 +147,31 @@ class VirtualTourModel : NSObject {
             delay = VirtualTourStopStopDuration.DelayForLookAt.rawValue
         }
         return dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+    }
+    
+    func navigateToLookAt(placemarkIndex:Int) {
+        let lookAtPosition = self.lookAtPositionInTourForPlacementIndex(placemarkIndex)
+        if let position = lookAtPosition {
+            self.currentTourLocation = position
+            if let delegate = self.delegate {
+                delegate.navigateToCurrentPosition(self)
+            }
+        }
+    }
+    
+    func lookAtPositionInTourForPlacementIndex(placemarkIndex:Int) -> Int? {
+        var foundKey:Int?
+        for (key, value) in self.lookAts {
+            if value == placemarkIndex {
+                foundKey = key
+                break
+            }
+        }
+        if let positionInTour = foundKey {
+            return positionInTour - 1
+        } else {
+            return nil
+        }
     }
 
 // MARK: Calculating Camera Directions

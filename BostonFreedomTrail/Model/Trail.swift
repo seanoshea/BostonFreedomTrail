@@ -68,3 +68,14 @@ public class Trail {
     static let instance = TrailParser().parseTrail()
     var placemarks = [Placemark]()
 }
+
+extension Int {
+    func placemarkIndexFromIdentifier(placemarkIdentifier:String) -> Int {
+        let stringRepresentation = placemarkIdentifier.stringByReplacingOccurrencesOfString("placemark", withString:"")
+        if let integerRepresentation = Int(stringRepresentation) {
+            return integerRepresentation - 1
+        } else {
+            return 0
+        }
+    }
+}
