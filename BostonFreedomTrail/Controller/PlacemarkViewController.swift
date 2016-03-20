@@ -33,7 +33,6 @@ import UIKit
 class PlacemarkViewController : BaseViewController {
     
     @IBOutlet weak var webView: UIWebView?
-    @IBOutlet weak var wikipediaButton: UIButton?
     @IBOutlet weak var streetViewButton: UIButton?
 
     var model:PlacemarkModel?
@@ -51,10 +50,6 @@ class PlacemarkViewController : BaseViewController {
     
     @IBAction func streetViewButtonPressed() {
     
-    }
-
-    @IBAction func wikipediaButtonPressed() {
-        
     }
     
 // MARK: Private Functions
