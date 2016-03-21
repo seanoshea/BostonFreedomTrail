@@ -67,6 +67,17 @@ public class LookAt {
 public class Trail {
     static let instance = TrailParser().parseTrail()
     var placemarks = [Placemark]()
+    
+    func placemarkIndex(placemark:Placemark) -> Int {
+        var placemarkIndex = 0
+        for (index, pm) in self.placemarks.enumerate() {
+            if pm.identifier.caseInsensitiveCompare(placemark.identifier) == NSComparisonResult.OrderedSame {
+                placemarkIndex = index
+                break
+            }
+        }
+        return placemarkIndex
+    }
 }
 
 extension Int {

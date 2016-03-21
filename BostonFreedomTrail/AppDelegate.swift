@@ -114,6 +114,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate : MapViewControllerDelegate {
     
     func navigateToVirtualTourWithPlacemark(placemark: Placemark) {
-        
+        let tabBarController:UITabBarController = self.window!.rootViewController as! UITabBarController
+        tabBarController.selectedIndex = TabBarControllerIndices.VirtualTourViewController.rawValue
+        let virtualTourViewController = tabBarController.viewControllers![TabBarControllerIndices.VirtualTourViewController.rawValue] as! VirtualTourViewController
+        let index = Trail.instance.placemarkIndex(placemark)
+        virtualTourViewController.model.navigateToLookAt(index)
     }
 }
