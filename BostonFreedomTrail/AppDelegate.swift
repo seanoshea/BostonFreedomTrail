@@ -36,6 +36,12 @@ import Fabric
 import Crashlytics
 import ReachabilitySwift
 
+enum TabBarControllerIndices : Int {
+    case MapViewController = 0
+    case VirtualTourViewController = 1
+    case AboutViewController = 2
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -49,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initializeReachability()
         self.initializeLocalization()
         self.initializeAnalytics()
+        self.initializeDelegates()
         return true
     }
     
@@ -96,5 +103,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initializeCrashReporting() {
         Fabric.with([Crashlytics.self])
     }
+    
+    func initializeDelegates() {
+        let tabBarController:UITabBarController = self.window!.rootViewController as! UITabBarController
+        let mapViewController = tabBarController.viewControllers![TabBarControllerIndices.MapViewController.rawValue] as! MapViewController
+        mapViewController.delegate = self
+    }
 }
 
+extension AppDelegate : MapViewControllerDelegate {
+    
+    func navigateToVirtualTourWithPlacemark(placemark: Placemark) {
+        
+    }
+}

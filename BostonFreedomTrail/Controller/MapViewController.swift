@@ -31,10 +31,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 import GoogleMaps
 
+protocol MapViewControllerDelegate:class {
+    func navigateToVirtualTourWithPlacemark(placemark:Placemark)
+}
+
 class MapViewController : BaseViewController {
     
     var model:MapModel = MapModel()
     var mapView:GMSMapView?
+    weak var delegate:MapViewControllerDelegate?
 
 // MARK: Lifecycle
     
@@ -48,6 +53,7 @@ class MapViewController : BaseViewController {
         if let identifier = segue.identifier {
             if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == NSComparisonResult.OrderedSame {
                 let placemarkViewController = segue.destinationViewController as! PlacemarkViewController
+                placemarkViewController.delegate = self
                 let placemark = self.mapView?.selectedMarker!.userData as! Placemark
                 placemarkViewController.model!.placemark = placemark
             }
@@ -99,6 +105,15 @@ extension MapViewController : GMSMapViewDelegate {
     
     func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
         coordinate.logCoordinate()
+    }
+}
+
+extension MapViewController : PlacemarkViewControllerDelegate {
+    
+    func streetViewButtonPressedForPlacemark(placemark: Placemark) {
+        if let delegate = self.delegate {
+            delegate.navigateToVirtualTourWithPlacemark(placemark)
+        }
     }
 }
 

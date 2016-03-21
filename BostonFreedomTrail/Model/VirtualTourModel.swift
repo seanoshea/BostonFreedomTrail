@@ -46,7 +46,7 @@ enum VirtualTourStopStopDuration : Double {
     case DelayForLookAt = 5.0
 }
 
-protocol VirtualTourModelDelegate {
+protocol VirtualTourModelDelegate:class {
     func navigateToCurrentPosition(model:VirtualTourModel)
 }
 
@@ -56,7 +56,7 @@ class VirtualTourModel : NSObject {
     var placemarkDemarkations = [Int:Int]()
     var currentTourLocation:Int = 0
     var currentTourState:VirtualTourState = VirtualTourState.BeforeStart
-    var delegate:VirtualTourModelDelegate?
+    weak var delegate:VirtualTourModelDelegate?
     
     func setupTour() {
         var index = 0
