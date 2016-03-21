@@ -48,8 +48,10 @@ class PlacemarkViewController : BaseViewController {
         self.loadPlacemarkInformation()
     }
     
-    @IBAction func streetViewButtonPressed() {
-    
+    @IBAction func streetViewButtonPressed(sender: UIButton) {
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            
+        }
     }
     
 // MARK: Private Functions

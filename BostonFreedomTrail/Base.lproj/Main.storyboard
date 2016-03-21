@@ -47,7 +47,7 @@
                                 <rect key="frame" x="20" y="440" width="560" height="30"/>
                                 <state key="normal" title="Street View"/>
                                 <connections>
-                                    <action selector="streetViewButtonPressed" destination="f9d-M6-DNw" eventType="touchDragInside" id="Raw-kR-KH4"/>
+                                    <action selector="streetViewButtonPressed:" destination="f9d-M6-DNw" eventType="touchUpInside" id="U8V-5n-XTi"/>
                                 </connections>
                             </button>
                         </subviews>
