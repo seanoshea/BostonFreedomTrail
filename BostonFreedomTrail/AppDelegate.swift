@@ -93,7 +93,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeLocalization() {
-        
+        let tabBarController:UITabBarController = self.window!.rootViewController as! UITabBarController
+        for (index, item) in (tabBarController.tabBar.items?.enumerate())! {
+            var title = ""
+            switch (index) {
+            case TabBarControllerIndices.MapViewController.rawValue:
+                title = NSLocalizedString("Map", comment: "")
+                break
+            case TabBarControllerIndices.VirtualTourViewController.rawValue:
+                title = NSLocalizedString("Virtual Tour", comment: "")
+                break
+            case TabBarControllerIndices.AboutViewController.rawValue:
+                title = NSLocalizedString("About", comment: "")
+                break
+            default:
+                NSLog("Add a new index to TabBarControllerIndices for this new controller")
+            }
+            item.title = title
+        }
     }
     
     func initializeAnalytics() {
