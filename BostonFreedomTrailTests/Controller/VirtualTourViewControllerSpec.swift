@@ -59,8 +59,8 @@ class VirtualTourViewControllerTest: QuickSpec {
                     expect(subject?.panoView).toNot(beNil())
                 }
                 
-                it("should be initialized to having a state of BeforeStart") {
-                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.BeforeStart))
+                it("should be initialized to having a state of PreSetup") {
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.PreSetup))
                 }
             }
             

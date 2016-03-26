@@ -54,7 +54,7 @@ class VirtualTourViewController : BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if self.isOnline() {
+        if self.isOnline() && !self.model.tourIsRunning() {
             self.startTour()
         }
     }
@@ -145,7 +145,6 @@ extension VirtualTourViewController : VirtualTourModelDelegate {
     
     func navigateToCurrentPosition(model: VirtualTourModel) {
         self.postDispatchAction(self.model.nextLocation())
-        self.model.pauseTour()
     }
 }
 

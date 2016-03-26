@@ -30,12 +30,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
+protocol PlacemarkViewControllerDelegate:class {
+    func streetViewButtonPressedForPlacemark(placemark:Placemark)
+}
+
 class PlacemarkViewController : BaseViewController {
     
     @IBOutlet weak var webView: UIWebView?
     @IBOutlet weak var streetViewButton: UIButton?
 
     var model:PlacemarkModel?
+    weak var delegate:PlacemarkViewControllerDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,8 +53,14 @@ class PlacemarkViewController : BaseViewController {
         self.loadPlacemarkInformation()
     }
     
-    @IBAction func streetViewButtonPressed() {
-    
+    @IBAction func streetViewButtonPressed(sender: UIButton) {
+        if let delegate = self.delegate {
+            // TODO: Analytics
+            delegate.streetViewButtonPressedForPlacemark((self.model?.placemark)!)
+        }
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            
+        }
     }
     
 // MARK: Private Functions
