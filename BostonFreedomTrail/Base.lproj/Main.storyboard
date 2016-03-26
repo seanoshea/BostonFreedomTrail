@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="ic_map" id="acW-dT-cKf"/>
                     <connections>
                         <segue destination="f9d-M6-DNw" kind="show" identifier="MapToPlacemarkSegueIdentifier" id="fXy-Y4-ObH"/>
                     </connections>
@@ -76,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Virtual Tour" id="xG8-KH-aqc" userLabel="Virtual Tour"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Virtual Tour" image="ic_streetview" id="xG8-KH-aqc" userLabel="Virtual Tour"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZ8-by-twt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -184,7 +184,7 @@
                             <constraint firstItem="XNB-OL-chl" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="m7s-08-WKs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" title="About" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="About" image="ic_info" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="designerDetailsLabel" destination="p45-Wg-sve" id="GAH-Gi-gKF"/>
                         <outlet property="designerLabel" destination="4QQ-t9-mKx" id="lga-dA-0dD"/>
@@ -221,4 +221,9 @@
             <point key="canvasLocation" x="16" y="0.0"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_info" width="24" height="24"/>
+        <image name="ic_map" width="24" height="24"/>
+        <image name="ic_streetview" width="24" height="24"/>
+    </resources>
 </document>
