@@ -53,8 +53,6 @@ class AboutViewControllerTest: QuickSpec {
                     expect(aboutViewController?.developerDetailsLabel).toNot(equal(nil))
                     expect(aboutViewController?.designerLabel).toNot(equal(nil))
                     expect(aboutViewController?.designerDetailsLabel).toNot(equal(nil))
-                    expect(aboutViewController?.nounProjectLabel).toNot(equal(nil))
-                    expect(aboutViewController?.nounProjectDetailsLabel).toNot(equal(nil))
                     expect(aboutViewController?.googleMapsLabel).toNot(equal(nil))
                 }
                 
@@ -63,8 +61,6 @@ class AboutViewControllerTest: QuickSpec {
                     expect(aboutViewController?.developerDetailsLabel?.text).toNot(equal(""))
                     expect(aboutViewController?.designerLabel?.text).toNot(equal(""))
                     expect(aboutViewController?.designerDetailsLabel?.text).toNot(equal(""))
-                    expect(aboutViewController?.nounProjectLabel?.text).toNot(equal(""))
-                    expect(aboutViewController?.nounProjectDetailsLabel?.text).toNot(equal(""))
                     expect(aboutViewController?.googleMapsLabel?.text).toNot(equal(""))
                 }
             }
