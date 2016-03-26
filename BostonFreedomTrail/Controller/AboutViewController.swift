@@ -38,8 +38,6 @@ class AboutViewController : BaseViewController {
     @IBOutlet weak var developerDetailsLabel: AboutDetailsLabel?
     @IBOutlet weak var designerLabel: AboutTitleLabel?
     @IBOutlet weak var designerDetailsLabel: AboutDetailsLabel?
-    @IBOutlet weak var nounProjectLabel: AboutTitleLabel?
-    @IBOutlet weak var nounProjectDetailsLabel: AboutDetailsLabel?
     @IBOutlet weak var googleMapsLabel: AboutTitleLabel?
     @IBOutlet weak var googleMapsDetailsLabel: AboutDetailsLabel?
     
@@ -53,8 +51,6 @@ class AboutViewController : BaseViewController {
         self.developerDetailsLabel!.text = NSLocalizedString("Developed by Sean O'Shea", comment: "")
         self.designerLabel!.text = NSLocalizedString("Designer Details", comment: "")
         self.designerDetailsLabel!.text = NSLocalizedString("TBD", comment: "")
-        self.nounProjectLabel!.text = NSLocalizedString("Noun Project", comment: "")
-        self.nounProjectDetailsLabel!.text = NSLocalizedString("Some of the icons in this application are freely downloadable from The Noun Project. Information Icon by Creatorid'immagine & Map Icon by Stefan Zoll", comment: "")
         self.googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
         self.googleMapsDetailsLabel!.text = GMSServices.openSourceLicenseInfo()
     }
