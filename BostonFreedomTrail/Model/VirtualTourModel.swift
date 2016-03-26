@@ -33,10 +33,11 @@ import Foundation
 import CoreLocation
 
 enum VirtualTourState : Int {
-    case BeforeStart = 0
-    case InProgress = 1
-    case Paused = 2
-    case Finished = 3
+    case PreSetup = 0
+    case PostSetup = 1
+    case InProgress = 2
+    case Paused = 3
+    case Finished = 4
 }
 
 enum VirtualTourStopStopDuration : Double {
@@ -55,7 +56,7 @@ class VirtualTourModel : NSObject {
     var lookAts = [Int:Int]()
     var placemarkDemarkations = [Int:Int]()
     var currentTourLocation:Int = 0
-    var currentTourState:VirtualTourState = VirtualTourState.BeforeStart
+    var currentTourState:VirtualTourState = VirtualTourState.PreSetup
     weak var delegate:VirtualTourModelDelegate?
     
     func setupTour() {
@@ -72,6 +73,7 @@ class VirtualTourModel : NSObject {
             }
             self.placemarkDemarkations[index] = placemarkIndex
         }
+        self.currentTourState = VirtualTourState.PostSetup
     }
     
     func startTour() -> CLLocation {
@@ -150,9 +152,13 @@ class VirtualTourModel : NSObject {
     }
     
     func navigateToLookAt(placemarkIndex:Int) {
+        if self.currentTourState == VirtualTourState.PreSetup {
+            self.setupTour()
+        }
         let lookAtPosition = self.lookAtPositionInTourForPlacementIndex(placemarkIndex)
         if let position = lookAtPosition {
             self.currentTourLocation = position
+            self.currentTourState = VirtualTourState.InProgress
             if let delegate = self.delegate {
                 delegate.navigateToCurrentPosition(self)
             }
