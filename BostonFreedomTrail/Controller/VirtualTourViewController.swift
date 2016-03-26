@@ -126,15 +126,6 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
         }
     }
     
-    func panoramaView(panoramaView: GMSPanoramaView, didTap point: CGPoint) {
-        if self.model.tourIsRunning() {
-            self.model.pauseTour()
-        } else {
-            self.model.resumeTour()
-            self.advanceToNextLocation(1)
-        }
-    }
-    
     func panoramaView(panoramaView: GMSPanoramaView, didMoveCamera camera: GMSPanoramaCamera) {
         panoramaView.logLocation()
         camera.logLocation()
