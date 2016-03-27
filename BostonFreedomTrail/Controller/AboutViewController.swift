@@ -38,6 +38,8 @@ class AboutViewController : BaseViewController {
     @IBOutlet weak var developerDetailsLabel: AboutDetailsLabel?
     @IBOutlet weak var designerLabel: AboutTitleLabel?
     @IBOutlet weak var designerDetailsLabel: AboutDetailsLabel?
+    @IBOutlet weak var trailInformationLabel: AboutTitleLabel?
+    @IBOutlet weak var trailInformationDetailsLabel: AboutDetailsLabel?
     @IBOutlet weak var googleMapsLabel: AboutTitleLabel?
     @IBOutlet weak var googleMapsDetailsLabel: AboutDetailsLabel?
     
@@ -50,6 +52,8 @@ class AboutViewController : BaseViewController {
         self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
         self.developerDetailsLabel!.text = NSLocalizedString("Developed by Sean O'Shea", comment: "")
         self.designerLabel!.text = NSLocalizedString("Designer Details", comment: "")
+        self.trailInformationLabel!.text = NSLocalizedString("Trail Information", comment: "")
+        self.trailInformationDetailsLabel!.text = NSLocalizedString("http://www.thefreedomtrail.org/, https://en.wikipedia.org/wiki/Freedom_Trail, http://www.cityofboston.gov/freedomtrail/", comment: "")
         self.designerDetailsLabel!.text = NSLocalizedString("TBD", comment: "")
         self.googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
         self.googleMapsDetailsLabel!.text = GMSServices.openSourceLicenseInfo()
