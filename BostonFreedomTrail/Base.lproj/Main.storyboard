@@ -121,31 +121,40 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Maps Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcV-ww-lhg" userLabel="Google Maps Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trail Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bto-r3-B32" userLabel="Trail Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
                                         <rect key="frame" x="10" y="130" width="580" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="koc-pP-ivW"/>
-                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trail Information Details Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILG-UU-cPN" userLabel="Trail Details Label" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="159" width="580" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Maps Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcV-ww-lhg" userLabel="Google Maps Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="188" width="580" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Maps Details Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKB-Vm-6k0" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="154" width="580" height="16"/>
+                                        <rect key="frame" x="10" y="212" width="580" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="p45-Wg-sve" secondAttribute="bottom" constant="8" id="4c3-Dd-4dt"/>
+                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="p45-Wg-sve" secondAttribute="bottom" constant="66" id="4c3-Dd-4dt"/>
                                     <constraint firstAttribute="trailing" secondItem="d03-Jp-YyK" secondAttribute="trailing" constant="10" id="5jN-7P-gbO"/>
                                     <constraint firstItem="q8g-Yg-P2X" firstAttribute="leading" secondItem="4QQ-t9-mKx" secondAttribute="leading" id="96X-Ol-QwG"/>
                                     <constraint firstItem="p45-Wg-sve" firstAttribute="top" secondItem="4QQ-t9-mKx" secondAttribute="bottom" constant="3" id="BQU-XC-jbm"/>
                                     <constraint firstItem="jcV-ww-lhg" firstAttribute="trailing" secondItem="CKB-Vm-6k0" secondAttribute="trailing" id="DYM-Al-OfN"/>
                                     <constraint firstItem="q8g-Yg-P2X" firstAttribute="trailing" secondItem="d03-Jp-YyK" secondAttribute="trailing" id="Fzx-Fy-WhS"/>
                                     <constraint firstItem="jcV-ww-lhg" firstAttribute="trailing" secondItem="p45-Wg-sve" secondAttribute="trailing" id="LPc-ZI-DCp"/>
-                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="XNB-OL-chl" secondAttribute="top" constant="130" id="ODV-ax-nxi"/>
+                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="XNB-OL-chl" secondAttribute="top" constant="188" id="ODV-ax-nxi"/>
                                     <constraint firstItem="jcV-ww-lhg" firstAttribute="leading" secondItem="p45-Wg-sve" secondAttribute="leading" id="RFq-YO-lto"/>
                                     <constraint firstItem="p45-Wg-sve" firstAttribute="centerX" secondItem="XNB-OL-chl" secondAttribute="centerX" id="V2u-Hr-j2i"/>
                                     <constraint firstItem="4QQ-t9-mKx" firstAttribute="top" secondItem="q8g-Yg-P2X" secondAttribute="bottom" constant="10" id="ZB4-3E-mfX"/>
@@ -153,7 +162,7 @@
                                     <constraint firstItem="jcV-ww-lhg" firstAttribute="leading" secondItem="CKB-Vm-6k0" secondAttribute="leading" id="d2N-EQ-UGk"/>
                                     <constraint firstItem="4QQ-t9-mKx" firstAttribute="trailing" secondItem="q8g-Yg-P2X" secondAttribute="trailing" id="eqw-SJ-NV8"/>
                                     <constraint firstItem="p45-Wg-sve" firstAttribute="trailing" secondItem="4QQ-t9-mKx" secondAttribute="trailing" id="frg-1W-iPz"/>
-                                    <constraint firstAttribute="bottom" secondItem="CKB-Vm-6k0" secondAttribute="bottom" constant="430" id="mdq-Tn-1pI"/>
+                                    <constraint firstAttribute="bottom" secondItem="CKB-Vm-6k0" secondAttribute="bottom" constant="372" id="mdq-Tn-1pI"/>
                                     <constraint firstItem="d03-Jp-YyK" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="10" id="pLY-OA-eF9"/>
                                     <constraint firstItem="p45-Wg-sve" firstAttribute="leading" secondItem="4QQ-t9-mKx" secondAttribute="leading" id="rqA-DL-pcV"/>
                                     <constraint firstItem="d03-Jp-YyK" firstAttribute="leading" secondItem="q8g-Yg-P2X" secondAttribute="leading" id="tBH-Hu-gpw"/>
@@ -178,6 +187,8 @@
                         <outlet property="developerLabel" destination="d03-Jp-YyK" id="uPk-c5-ycK"/>
                         <outlet property="googleMapsDetailsLabel" destination="CKB-Vm-6k0" id="ItE-6N-brQ"/>
                         <outlet property="googleMapsLabel" destination="jcV-ww-lhg" id="PMF-de-gOO"/>
+                        <outlet property="trailInformationDetailsLabel" destination="ILG-UU-cPN" id="Y5r-Fi-ay5"/>
+                        <outlet property="trailInformationLabel" destination="Bto-r3-B32" id="y5T-VZ-j5J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
