@@ -55,7 +55,7 @@ class VirtualTourViewController : BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if self.isOnline() && !self.model.tourIsRunning() {
-            self.startTour()
+            // TODO: Should give the user the opportunity to restart the tour
         }
     }
     

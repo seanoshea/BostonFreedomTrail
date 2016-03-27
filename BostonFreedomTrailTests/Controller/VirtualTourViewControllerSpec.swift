@@ -66,12 +66,7 @@ class VirtualTourViewControllerTest: QuickSpec {
             
             context("View Controller Lifecycle") {
                 
-                it("should automatically start the tour when the view appears") {
-                    subject?.viewDidAppear(true)
-                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.InProgress))
-                }
-                
-                it("should automatically stop the tour when the view disappears") {
+                it("should automatically pause the tour when the view disappears") {
                     subject?.viewDidDisappear(true)
                     expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
                 }
