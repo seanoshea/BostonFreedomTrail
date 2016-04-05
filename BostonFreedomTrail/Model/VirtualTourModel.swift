@@ -152,7 +152,7 @@ class VirtualTourModel : NSObject {
     }
     
     func navigateToLookAt(placemarkIndex:Int) {
-        if self.currentTourState == VirtualTourState.PreSetup {
+        if self.currentTourState == VirtualTourState.PreSetup || self.lookAts.count == 0 {
             self.setupTour()
         }
         let lookAtPosition = self.lookAtPositionInTourForPlacementIndex(placemarkIndex)

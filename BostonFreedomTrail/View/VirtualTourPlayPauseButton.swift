@@ -12,7 +12,7 @@ documentation and/or other materials provided with the distribution.
 3. All advertising materials mentioning features or use of this software
 must display the following acknowledgement:
 This product includes software developed by Upwards Northwards Software Limited.
-4. Neither the name of Upwards Northwards Software Limited nor the
+4. Neither th e name of Upwards Northwards Software Limited nor the
 names of its contributors may be used to endorse or promote products
 derived from this software without specific prior written permission.
 
@@ -30,6 +30,35 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
-class StreetViewViewController : BaseViewController {
+enum VirtialTourButtonNames : String {
+    case Pause = "ic_pause_circle_filled"
+    case Play = "ic_play_circle_filled"
+}
+
+class VirtualTourPlayPauseButton : UIButton {
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.paused = true
+        super.init(coder: aDecoder)
+        self.applyStyles()
+    }
+    
+    var paused : Bool {
+        didSet {
+            self.toggleButtonBackground()
+        }
+    }
+    
+    func applyStyles() {
+        // TODO - any other additional styles to be applied to the button?
+    }
+    
+    func toggleButtonBackground() {
+        if self.paused {
+            self.setBackgroundImage(UIImage(named:VirtialTourButtonNames.Pause.rawValue), forState:UIControlState.Normal)
+        } else {
+            self.setBackgroundImage(UIImage(named:VirtialTourButtonNames.Play.rawValue), forState:UIControlState.Normal)
+        }
+    }
     
 }

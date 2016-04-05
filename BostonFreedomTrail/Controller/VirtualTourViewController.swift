@@ -37,6 +37,7 @@ class VirtualTourViewController : BaseViewController {
     
     var model:VirtualTourModel = VirtualTourModel()
     var panoView:GMSPanoramaView?
+    var playPauseButton:VirtualTourPlayPauseButton?
 
 // MARK: Lifecycle
     
@@ -44,12 +45,8 @@ class VirtualTourViewController : BaseViewController {
         super.viewDidLoad()
         self.model.delegate = self
         let firstPlacemark = self.model.firstPlacemark()
-        let panoramaNear = CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude)
-        let panoView = GMSPanoramaView.panoramaWithFrame(CGRectZero, nearCoordinate:panoramaNear)
-        panoView.navigationLinksHidden = true
-        panoView.delegate = self
-        self.panoView = panoView
-        self.view = panoView
+        self.addPanoramaView(CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude))
+        self.addPlayPauseButton()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -65,6 +62,18 @@ class VirtualTourViewController : BaseViewController {
     }
     
 // MARK: Private Functions
+    
+    func addPanoramaView(panoramaNear:CLLocationCoordinate2D) {
+        let panoView = GMSPanoramaView.panoramaWithFrame(CGRectZero, nearCoordinate:panoramaNear)
+        panoView.navigationLinksHidden = true
+        panoView.delegate = self
+        self.panoView = panoView
+        self.view = panoView
+    }
+    
+    func addPlayPauseButton() {
+        
+    }
     
     func startTour() {
         self.model.setupTour()
