@@ -37,7 +37,7 @@ class VirtualTourViewController : BaseViewController {
     
     var model:VirtualTourModel = VirtualTourModel()
     var panoView:GMSPanoramaView?
-    var playPauseButton:VirtualTourPlayPauseButton?
+    @IBOutlet weak var playPauseButton: VirtualTourPlayPauseButton?
 
 // MARK: Lifecycle
     
@@ -64,7 +64,7 @@ class VirtualTourViewController : BaseViewController {
 // MARK: Private Functions
     
     func addPanoramaView(panoramaNear:CLLocationCoordinate2D) {
-        let panoView = GMSPanoramaView.panoramaWithFrame(CGRectZero, nearCoordinate:panoramaNear)
+        let panoView = GMSPanoramaView.panoramaWithFrame(self.view.frame, nearCoordinate:panoramaNear)
         panoView.navigationLinksHidden = true
         panoView.delegate = self
         self.panoView = panoView

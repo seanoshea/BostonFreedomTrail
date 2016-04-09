@@ -41,11 +41,12 @@ class VirtualTourPlayPauseButton : UIButton {
         self.paused = true
         super.init(coder: aDecoder)
         self.applyStyles()
+        self.assignButtonBackground()
     }
     
     var paused : Bool {
         didSet {
-            self.toggleButtonBackground()
+            self.assignButtonBackground()
         }
     }
     
@@ -53,7 +54,7 @@ class VirtualTourPlayPauseButton : UIButton {
         // TODO - any other additional styles to be applied to the button?
     }
     
-    func toggleButtonBackground() {
+    func assignButtonBackground() {
         if self.paused {
             self.setBackgroundImage(UIImage(named:VirtialTourButtonNames.Pause.rawValue), forState:UIControlState.Normal)
         } else {
