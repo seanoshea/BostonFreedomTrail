@@ -115,6 +115,7 @@ class VirtualTourModelTest: QuickSpec {
                 }
                 
                 it("should be able to toggle the tour state") {
+                    subject?.currentTourState = VirtualTourState.Paused
                     subject?.togglePlayPause()
                     expect(subject?.currentTourState).to(equal(VirtualTourState.InProgress))
                     subject?.togglePlayPause()

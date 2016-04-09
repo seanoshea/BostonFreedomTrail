@@ -63,6 +63,16 @@ class VirtualTourViewController : BaseViewController {
     
     @IBAction func pressedOnPlayPauseButton(sender: UIButton) {
         self.model.togglePlayPause()
+        switch (self.model.currentTourState) {
+        case VirtualTourState.PostSetup:
+            self.startTour()
+            break
+        case VirtualTourState.InProgress:
+            self.postDispatchAction(self.model.nextLocation())
+            break
+        default:
+            break
+        }
         self.playPauseButton?.paused = !self.model.tourIsRunning()
     }
     
@@ -77,7 +87,7 @@ class VirtualTourViewController : BaseViewController {
         self.panoView = panoView
     }
     
-    func startTour(model:VirtualTourModel) {
+    func startTour() {
         let firstTourLocation = self.model.startTour()
         self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(firstTourLocation.coordinate.latitude, firstTourLocation.coordinate.longitude))
     }
