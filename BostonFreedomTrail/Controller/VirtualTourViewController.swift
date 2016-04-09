@@ -46,11 +46,11 @@ class VirtualTourViewController : BaseViewController {
         self.model.delegate = self
         let firstPlacemark = self.model.firstPlacemark()
         self.addPanoramaView(CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude))
-        self.addPlayPauseButton()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.model.setupTour()
         if self.isOnline() && !self.model.tourIsRunning() {
             // TODO: Should give the user the opportunity to restart the tour
         }
@@ -61,6 +61,11 @@ class VirtualTourViewController : BaseViewController {
         self.model.pauseTour()
     }
     
+    @IBAction func pressedOnPlayPauseButton(sender: UIButton) {
+        self.model.togglePlayPause()
+        self.playPauseButton?.paused = !self.model.tourIsRunning()
+    }
+    
 // MARK: Private Functions
     
     func addPanoramaView(panoramaNear:CLLocationCoordinate2D) {
@@ -68,11 +73,7 @@ class VirtualTourViewController : BaseViewController {
         panoView.navigationLinksHidden = true
         panoView.delegate = self
         self.panoView = panoView
-        self.view = panoView
-    }
-    
-    func addPlayPauseButton() {
-        
+//        self.view = panoView
     }
     
     func startTour() {

@@ -103,6 +103,11 @@ class VirtualTourModel : NSObject {
         return self.tour[self.currentTourLocation]
     }
     
+    func togglePlayPause() {
+        guard self.currentTourState == VirtualTourState.PostSetup || self.currentTourState == VirtualTourState.Paused || self.currentTourState == VirtualTourState.InProgress else { return }
+        self.currentTourState = self.currentTourState == VirtualTourState.Paused ? VirtualTourState.InProgress : VirtualTourState.Paused
+    }
+    
     func pauseTour() {
         self.currentTourState = VirtualTourState.Paused
     }

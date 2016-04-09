@@ -56,9 +56,9 @@ class VirtualTourPlayPauseButton : UIButton {
     
     func assignButtonBackground() {
         if self.paused {
-            self.setBackgroundImage(UIImage(named:VirtialTourButtonNames.Pause.rawValue), forState:UIControlState.Normal)
+            self.setImage(UIImage(named:VirtialTourButtonNames.Pause.rawValue), forState:UIControlState.Normal)
         } else {
-            self.setBackgroundImage(UIImage(named:VirtialTourButtonNames.Play.rawValue), forState:UIControlState.Normal)
+            self.setImage(UIImage(named:VirtialTourButtonNames.Play.rawValue), forState:UIControlState.Normal)
         }
     }
     
