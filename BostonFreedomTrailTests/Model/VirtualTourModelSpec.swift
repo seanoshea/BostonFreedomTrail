@@ -103,6 +103,23 @@ class VirtualTourModelTest: QuickSpec {
                     subject?.reverseLocation()
                     expect(subject?.currentTourLocation).to(equal(before! - 1))
                 }
+                
+                it("should understand when the tour has already been initialized") {
+                    subject?.currentTourState = VirtualTourState.PreSetup
+                    expect(subject?.tourNotInitialized()).to(beTrue())
+                    subject?.currentTourState = VirtualTourState.PostSetup
+                    subject?.lookAts = [Int:Int]()
+                    expect(subject?.tourNotInitialized()).to(beTrue())
+                    subject?.setupTour()
+                    expect(subject?.tourNotInitialized()).to(beFalse())
+                }
+                
+                it("should be able to toggle the tour state") {
+                    subject?.togglePlayPause()
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.InProgress))
+                    subject?.togglePlayPause()
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.Paused))
+                }
             }
             
             context("LookAts") {
