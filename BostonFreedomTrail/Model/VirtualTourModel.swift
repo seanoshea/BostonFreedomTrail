@@ -49,6 +49,7 @@ enum VirtualTourStopStopDuration : Double {
 
 protocol VirtualTourModelDelegate:class {
     func navigateToCurrentPosition(model:VirtualTourModel)
+    func startTour(model:VirtualTourModel)
 }
 
 class VirtualTourModel : NSObject {
@@ -110,7 +111,15 @@ class VirtualTourModel : NSObject {
     
     func togglePlayPause() {
         guard self.tourIsToggleable() else { return }
-        self.currentTourState = self.tourIsPlayable() ? VirtualTourState.InProgress : VirtualTourState.Paused
+        if self.tourIsPlayable() {
+            if self.currentTourState == VirtualTourState.PostSetup {
+                self.delegate!.startTour(self)
+            } else {
+                self.resumeTour()
+            }
+        } else {
+            self.pauseTour()
+        }
     }
     
     func pauseTour() {

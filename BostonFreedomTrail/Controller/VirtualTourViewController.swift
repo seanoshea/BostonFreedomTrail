@@ -72,12 +72,12 @@ class VirtualTourViewController : BaseViewController {
         let panoView = GMSPanoramaView.panoramaWithFrame(self.view.frame, nearCoordinate:panoramaNear)
         panoView.navigationLinksHidden = true
         panoView.delegate = self
+        self.view.addSubview(panoView)
+        panoView.addSubview(self.playPauseButton!)
         self.panoView = panoView
-//        self.view = panoView
     }
     
-    func startTour() {
-        self.model.setupTour()
+    func startTour(model:VirtualTourModel) {
         let firstTourLocation = self.model.startTour()
         self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(firstTourLocation.coordinate.latitude, firstTourLocation.coordinate.longitude))
     }
