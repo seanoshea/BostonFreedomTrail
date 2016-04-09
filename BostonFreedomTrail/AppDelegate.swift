@@ -114,7 +114,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeAnalytics() {
-        
+        if ApplicationSharedState.sharedInstance.isDebug() {
+            // only bother with analytics for prod builds
+        }
     }
     
     func initializeCrashReporting() {
