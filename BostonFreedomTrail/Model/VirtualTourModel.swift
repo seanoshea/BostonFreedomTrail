@@ -60,6 +60,7 @@ class VirtualTourModel : NSObject {
     weak var delegate:VirtualTourModelDelegate?
     
     func setupTour() {
+        guard tourNotInitialized() else { return }
         var index = 0
         for (placemarkIndex, placemark) in Trail.instance.placemarks.enumerate() {
             for (locationIndex, location) in placemark.coordinates.enumerate() {
@@ -74,6 +75,10 @@ class VirtualTourModel : NSObject {
             self.placemarkDemarkations[index] = placemarkIndex
         }
         self.currentTourState = VirtualTourState.PostSetup
+    }
+    
+    func tourNotInitialized() -> Bool {
+        return self.currentTourState == VirtualTourState.PreSetup || self.lookAts.count == 0
     }
     
     func startTour() -> CLLocation {
@@ -101,6 +106,17 @@ class VirtualTourModel : NSObject {
     func enqueueNextLocation() -> CLLocation {
         self.currentTourLocation = self.currentTourLocation + 1
         return self.tour[self.currentTourLocation]
+    }
+    
+    func togglePlayPause() {
+        guard self.tourIsToggleable() else { return }
+        if self.tourIsPlayable() {
+            if self.currentTourState != VirtualTourState.PostSetup {
+                self.resumeTour()
+            }
+        } else {
+            self.pauseTour()
+        }
     }
     
     func pauseTour() {
@@ -131,6 +147,14 @@ class VirtualTourModel : NSObject {
         self.currentTourLocation = self.currentTourLocation - 1
     }
     
+    func tourIsPlayable() -> Bool {
+        return self.currentTourState == VirtualTourState.PostSetup || self.currentTourState == VirtualTourState.Paused
+    }
+    
+    func tourIsToggleable() -> Bool {
+        return self.tourIsRunning() || self.tourIsPlayable()
+    }
+    
     func nextLocation() -> CLLocation {
         var nextLocation:CLLocation
         if self.atLookAtLocation() {
@@ -152,9 +176,7 @@ class VirtualTourModel : NSObject {
     }
     
     func navigateToLookAt(placemarkIndex:Int) {
-        if self.currentTourState == VirtualTourState.PreSetup {
-            self.setupTour()
-        }
+        self.setupTour()
         let lookAtPosition = self.lookAtPositionInTourForPlacementIndex(placemarkIndex)
         if let position = lookAtPosition {
             self.currentTourLocation = position

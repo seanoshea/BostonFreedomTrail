@@ -74,9 +74,25 @@
                     <view key="view" contentMode="scaleToFill" id="PYW-Gj-rDv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ye-ba-8nD" userLabel="PlayPauseButton" customClass="VirtualTourPlayPauseButton" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                <rect key="frame" x="288" y="288" width="24" height="24"/>
+                                <state key="normal" image="ic_play_circle_filled"/>
+                                <connections>
+                                    <action selector="pressedOnPlayPauseButton:" destination="5ee-gd-RMW" eventType="touchUpInside" id="KMC-y9-gpy"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4ye-ba-8nD" firstAttribute="centerX" secondItem="PYW-Gj-rDv" secondAttribute="centerX" id="6PX-SY-gxo"/>
+                            <constraint firstItem="4ye-ba-8nD" firstAttribute="centerY" secondItem="PYW-Gj-rDv" secondAttribute="centerY" id="sPK-FX-h7o"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="Virtual Tour" image="ic_streetview" id="xG8-KH-aqc" userLabel="Virtual Tour"/>
+                    <connections>
+                        <outlet property="playPauseButton" destination="4ye-ba-8nD" id="jnb-zu-TFs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZ8-by-twt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -124,13 +140,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trail Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bto-r3-B32" userLabel="Trail Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
                                         <rect key="frame" x="10" y="130" width="580" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trail Information Details Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILG-UU-cPN" userLabel="Trail Details Label" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
                                         <rect key="frame" x="10" y="159" width="580" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Maps Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcV-ww-lhg" userLabel="Google Maps Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
@@ -219,6 +235,7 @@
     <resources>
         <image name="ic_info" width="24" height="24"/>
         <image name="ic_map" width="24" height="24"/>
+        <image name="ic_play_circle_filled" width="24" height="24"/>
         <image name="ic_streetview" width="24" height="24"/>
     </resources>
 </document>

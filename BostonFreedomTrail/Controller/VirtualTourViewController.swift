@@ -37,6 +37,7 @@ class VirtualTourViewController : BaseViewController {
     
     var model:VirtualTourModel = VirtualTourModel()
     var panoView:GMSPanoramaView?
+    @IBOutlet weak var playPauseButton: VirtualTourPlayPauseButton?
 
 // MARK: Lifecycle
     
@@ -44,18 +45,14 @@ class VirtualTourViewController : BaseViewController {
         super.viewDidLoad()
         self.model.delegate = self
         let firstPlacemark = self.model.firstPlacemark()
-        let panoramaNear = CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude)
-        let panoView = GMSPanoramaView.panoramaWithFrame(CGRectZero, nearCoordinate:panoramaNear)
-        panoView.navigationLinksHidden = true
-        panoView.delegate = self
-        self.panoView = panoView
-        self.view = panoView
+        self.addPanoramaView(CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude))
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.model.setupTour()
         if self.isOnline() && !self.model.tourIsRunning() {
-            self.startTour()
+            // TODO: Should give the user the opportunity to restart the tour
         }
     }
     
@@ -64,10 +61,33 @@ class VirtualTourViewController : BaseViewController {
         self.model.pauseTour()
     }
     
+    @IBAction func pressedOnPlayPauseButton(sender: UIButton) {
+        self.model.togglePlayPause()
+        switch (self.model.currentTourState) {
+        case VirtualTourState.PostSetup:
+            self.startTour()
+            break
+        case VirtualTourState.InProgress:
+            self.postDispatchAction(self.model.nextLocation())
+            break
+        default:
+            break
+        }
+        self.playPauseButton?.paused = !self.model.tourIsRunning()
+    }
+    
 // MARK: Private Functions
     
+    func addPanoramaView(panoramaNear:CLLocationCoordinate2D) {
+        let panoView = GMSPanoramaView.panoramaWithFrame(self.view.frame, nearCoordinate:panoramaNear)
+        panoView.navigationLinksHidden = true
+        panoView.delegate = self
+        self.view.addSubview(panoView)
+        panoView.addSubview(self.playPauseButton!)
+        self.panoView = panoView
+    }
+    
     func startTour() {
-        self.model.setupTour()
         let firstTourLocation = self.model.startTour()
         self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(firstTourLocation.coordinate.latitude, firstTourLocation.coordinate.longitude))
     }
