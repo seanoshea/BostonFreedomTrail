@@ -31,6 +31,7 @@
 		4157BFE31C8C7AFE009CDF0F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157BFE21C8C7AFE009CDF0F /* BaseViewController.swift */; };
 		417757FD1CB9C0D0008294C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417757FC1CB9C0D0008294C8 /* GoogleService-Info.plist */; };
 		417758001CB9E8C0008294C8 /* AnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */; };
+		417758011CBAFCD6008294C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417757FC1CB9C0D0008294C8 /* GoogleService-Info.plist */; };
 		4199CD7F1C98F5E60017919E /* TrailSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199CD7E1C98F5E60017919E /* TrailSpec.swift */; };
 		41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
 		41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */; };
@@ -412,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				417758011CBAFCD6008294C8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
