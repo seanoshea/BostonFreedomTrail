@@ -53,6 +53,10 @@ class PlacemarkViewController : BaseViewController {
         self.loadPlacemarkInformation()
     }
     
+    override func getScreenTrackingName() -> String {
+        return AnalyticsScreenNames.PlacemarkScreen.rawValue
+    }
+    
     @IBAction func streetViewButtonPressed(sender: UIButton) {
         if let delegate = self.delegate {
             // TODO: Analytics

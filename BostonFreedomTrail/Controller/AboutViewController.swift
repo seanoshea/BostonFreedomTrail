@@ -48,6 +48,10 @@ class AboutViewController : BaseViewController {
         self.localizeLabels()
     }
     
+    func getScreenTrackingName() -> String {
+        return AnalyticsScreenNames.AboutScreen.rawValue
+    }
+    
     func localizeLabels() {
         self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
         self.developerDetailsLabel!.text = NSLocalizedString("Developed by Sean O'Shea", comment: "")

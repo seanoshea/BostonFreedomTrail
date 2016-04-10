@@ -30,15 +30,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
+enum AnalyticsScreenNames : String {
+    case AboutScreen = "AboutScreen"
+    case MapScreen = "MapScreen"
+    case PlacemarkScreen = "PlacemarkScreen"
+    case VirtualTourScreen = "VirtualTourScreen"
+}
+
 protocol AnalyticsTracker {
-    func name() -> String
+    func getScreenTrackingName() -> String
 }
 
 extension AnalyticsTracker where Self : UIViewController {
     
     func trackScreenName() {
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: self.name())
+        tracker.set(kGAIScreenName, value: self.getScreenTrackingName())
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
     }
