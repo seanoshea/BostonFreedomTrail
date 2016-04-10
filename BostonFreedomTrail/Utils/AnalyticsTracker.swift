@@ -59,10 +59,11 @@ protocol AnalyticsTracker {
 extension AnalyticsTracker where Self : UIViewController {
     
     func trackScreenName() {
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: self.getScreenTrackingName())
-        let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
+        if let tracker = GAI.sharedInstance().defaultTracker {
+            tracker.set(kGAIScreenName, value: self.getScreenTrackingName())
+            let builder = GAIDictionaryBuilder.createScreenView()
+            tracker.send(builder.build() as [NSObject : AnyObject])
+        }
     }
     
     func trackButtonPressForPlacemark(placemark:Placemark, label:String) {
