@@ -30,6 +30,7 @@
 		4157BFE11C8C72E2009CDF0F /* ReachabilityListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157BFE01C8C72E2009CDF0F /* ReachabilityListener.swift */; };
 		4157BFE31C8C7AFE009CDF0F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157BFE21C8C7AFE009CDF0F /* BaseViewController.swift */; };
 		417757FD1CB9C0D0008294C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417757FC1CB9C0D0008294C8 /* GoogleService-Info.plist */; };
+		417758001CB9E8C0008294C8 /* AnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */; };
 		4199CD7F1C98F5E60017919E /* TrailSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199CD7E1C98F5E60017919E /* TrailSpec.swift */; };
 		41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
 		41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */; };
@@ -95,6 +96,7 @@
 		41691D211C4C0034009A03B3 /* TrailParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParserSpec.swift; sourceTree = "<group>"; };
 		417757FC1CB9C0D0008294C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		417757FE1CB9DA07008294C8 /* BostonFreedomTrail-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BostonFreedomTrail-Bridging-Header.h"; sourceTree = "<group>"; };
+		417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracker.swift; sourceTree = "<group>"; };
 		4199CD7E1C98F5E60017919E /* TrailSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailSpec.swift; sourceTree = "<group>"; };
 		41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedState.swift; sourceTree = "<group>"; };
 		41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedStateSpec.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		41237C1D1C4923E60007F76B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */,
 				41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */,
 				41E1C3701C525B670009570C /* Constants.swift */,
 				41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */,
@@ -538,6 +541,7 @@
 				41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */,
 				41D8574E1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift in Sources */,
 				41E1C3711C525B670009570C /* Constants.swift in Sources */,
+				417758001CB9E8C0008294C8 /* AnalyticsTracker.swift in Sources */,
 				41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */,
 				41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */,
 				41237C101C4921070007F76B /* AboutViewController.swift in Sources */,
