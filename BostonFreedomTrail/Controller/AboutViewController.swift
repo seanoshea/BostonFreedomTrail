@@ -48,7 +48,7 @@ class AboutViewController : BaseViewController {
         self.localizeLabels()
     }
     
-    func getScreenTrackingName() -> String {
+    override func getScreenTrackingName() -> String {
         return AnalyticsScreenNames.AboutScreen.rawValue
     }
     
