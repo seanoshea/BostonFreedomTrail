@@ -91,6 +91,7 @@ class MapViewControllerTest: QuickSpec {
                 it("should set the last known placemark in the application state when the user taps on a marker") {
                     
                     let marker = GMSMarker.init(position: CLLocationCoordinate2D.init(latitude: 45, longitude: 45))
+                    marker.userData = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description", lookAt:nil)
                     
                     subject?.mapView((subject?.mapView)!, didTapMarker: marker)
                     

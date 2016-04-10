@@ -61,6 +61,10 @@ class VirtualTourViewController : BaseViewController {
         self.model.pauseTour()
     }
     
+    override func getScreenTrackingName() -> String {
+        return AnalyticsScreenNames.VirtualTourScreen.rawValue
+    }
+    
     @IBAction func pressedOnPlayPauseButton(sender: UIButton) {
         self.model.togglePlayPause()
         switch (self.model.currentTourState) {

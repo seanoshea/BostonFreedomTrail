@@ -114,7 +114,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeAnalytics() {
-        
+        // only bother with analytics for prod builds
+        guard ApplicationSharedState.sharedInstance.isDebug() else { return }
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        let gai = GAI.sharedInstance()
+        gai.trackUncaughtExceptions = true
     }
     
     func initializeCrashReporting() {

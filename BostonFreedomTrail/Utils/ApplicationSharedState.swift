@@ -94,6 +94,14 @@ public class ApplicationSharedState {
         }
     }
     
+    public func isDebug() -> Bool {
+        #if DEBUG
+            return true;
+        #else
+            return false;
+        #endif
+    }
+    
     public func clear() {
         NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
         NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)

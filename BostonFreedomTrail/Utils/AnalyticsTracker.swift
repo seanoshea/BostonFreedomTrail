@@ -28,61 +28,48 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
+import Foundation
 
-protocol PlacemarkViewControllerDelegate:class {
-    func streetViewButtonPressedForPlacemark(placemark:Placemark)
+enum AnalyticsScreenNames : String {
+    case AboutScreen = "AboutScreen"
+    case MapScreen = "MapScreen"
+    case PlacemarkScreen = "PlacemarkScreen"
+    case VirtualTourScreen = "VirtualTourScreen"
 }
 
-class PlacemarkViewController : BaseViewController {
-    
-    @IBOutlet weak var webView: UIWebView?
-    @IBOutlet weak var streetViewButton: UIButton?
+enum AnalyticsEventCategories : String {
+    case Action = "ui_action"
+}
 
-    var model:PlacemarkModel?
-    weak var delegate:PlacemarkViewControllerDelegate?
+enum AnalyticsActions : String {
+    case ButtonPress = "button_press"
+}
+
+enum AnalyticsLabels : String {
+    case MarkerPress = "marker_press"
+    case InfoWindowPress = "info_window_press"
+    case StreetViewPress = "street_view_press"
+}
+
+protocol AnalyticsTracker {
+    func getScreenTrackingName() -> String
+    func trackButtonPressForPlacemark(placemark:Placemark, label:String)
+}
+
+extension AnalyticsTracker where Self : UIViewController {
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.model = PlacemarkModel.init()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.configureView()
-        self.loadPlacemarkInformation()
-    }
-    
-    override func getScreenTrackingName() -> String {
-        return AnalyticsScreenNames.PlacemarkScreen.rawValue
-    }
-    
-    @IBAction func streetViewButtonPressed(sender: UIButton) {
-        if let delegate = self.delegate {
-            // TODO: Analytics
-            if let placemark = self.model?.placemark {
-                self.trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.StreetViewPress.rawValue)
-                delegate.streetViewButtonPressedForPlacemark(placemark)
-            }
-        }
-        self.dismissViewControllerAnimated(true) { () -> Void in
-            
+    func trackScreenName() {
+        if let tracker = GAI.sharedInstance().defaultTracker {
+            tracker.set(kGAIScreenName, value: self.getScreenTrackingName())
+            let builder = GAIDictionaryBuilder.createScreenView()
+            tracker.send(builder.build() as [NSObject : AnyObject])
         }
     }
     
-// MARK: Private Functions
-    
-    func configureView() {
-        // only bother showing the street view button if there is a LookAt associated with this placemark.
-        self.streetViewButton?.hidden = self.model?.placemark?.lookAt == nil
+    func trackButtonPressForPlacemark(placemark:Placemark, label:String) {
+        if let tracker = GAI.sharedInstance().defaultTracker {
+            let parameters = GAIDictionaryBuilder.createEventWithCategory(AnalyticsEventCategories.Action.rawValue, action:AnalyticsActions.ButtonPress.rawValue, label:AnalyticsLabels.InfoWindowPress.rawValue, value: Int(placemark.identifier)).build()
+            tracker.send(parameters as [NSObject : AnyObject])
+        }
     }
-    
-    func loadPlacemarkInformation() {
-        self.webView?.delegate = self
-        self.webView?.loadHTMLString((self.model?.stringForWebView())!, baseURL: nil)
-    }
-}
-
-extension PlacemarkViewController : UIWebViewDelegate {
-    
 }
