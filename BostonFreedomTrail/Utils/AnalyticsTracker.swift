@@ -37,8 +37,23 @@ enum AnalyticsScreenNames : String {
     case VirtualTourScreen = "VirtualTourScreen"
 }
 
+enum AnalyticsEventCategories : String {
+    case Action = "ui_action"
+}
+
+enum AnalyticsActions : String {
+    case ButtonPress = "button_press"
+}
+
+enum AnalyticsLabels : String {
+    case MarkerPress = "marker_press"
+    case InfoWindowPress = "info_window_press"
+    case StreetViewPress = "street_view_press"
+}
+
 protocol AnalyticsTracker {
     func getScreenTrackingName() -> String
+    func trackButtonPressForPlacemark(placemark:Placemark, label:String)
 }
 
 extension AnalyticsTracker where Self : UIViewController {
@@ -48,5 +63,12 @@ extension AnalyticsTracker where Self : UIViewController {
         tracker.set(kGAIScreenName, value: self.getScreenTrackingName())
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+    
+    func trackButtonPressForPlacemark(placemark:Placemark, label:String) {
+        if let tracker = GAI.sharedInstance().defaultTracker {
+            let parameters = GAIDictionaryBuilder.createEventWithCategory(AnalyticsEventCategories.Action.rawValue, action:AnalyticsActions.ButtonPress.rawValue, label:AnalyticsLabels.InfoWindowPress.rawValue, value: Int(placemark.identifier)).build()
+            tracker.send(parameters as [NSObject : AnyObject])
+        }
     }
 }

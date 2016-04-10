@@ -97,13 +97,13 @@ extension MapViewController : GMSMapViewDelegate {
     
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
-        // TODO: Analytics
+        self.trackButtonPressForPlacemark(marker.userData as! Placemark, label: AnalyticsLabels.MarkerPress.rawValue)
         return false
     }
     
     func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
-        // TODO: Analytics
+        self.trackButtonPressForPlacemark(marker.userData as! Placemark, label: AnalyticsLabels.InfoWindowPress.rawValue)
         self.performSegueWithIdentifier(SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
     }
     
