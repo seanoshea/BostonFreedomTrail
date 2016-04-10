@@ -49,6 +49,13 @@ class MapViewControllerTest: QuickSpec {
                 ApplicationSharedState.sharedInstance.clear()
             })
             
+            context("Analytics") {
+                
+                it("should have a unique screen name to track analytics") {
+                    expect(subject?.getScreenTrackingName()).to(equal(AnalyticsScreenNames.MapScreen.rawValue))
+                }
+            }
+            
             context("Initialization of the MapViewController") {
                 
                 it("should have a model set by default") {

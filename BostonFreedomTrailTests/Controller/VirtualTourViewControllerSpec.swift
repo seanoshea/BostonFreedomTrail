@@ -66,9 +66,34 @@ class VirtualTourViewControllerTest: QuickSpec {
             
             context("View Controller Lifecycle") {
                 
+                it("should set up the tour when the view appears") {
+                    subject?.viewDidAppear(true)
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.PostSetup))
+                }
+                
                 it("should automatically pause the tour when the view disappears") {
                     subject?.viewDidDisappear(true)
                     expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
+                }
+            }
+            
+            context("Analytics") {
+                
+                it("should have a unique screen name to track analytics") {
+                    expect(subject?.getScreenTrackingName()).to(equal(AnalyticsScreenNames.VirtualTourScreen.rawValue))
+                }
+            }
+            
+            context("Play Pause Button") {
+                
+                it("should toggle the tour state when the user presses on the play pause button") {
+                    subject?.viewDidAppear(true)
+                    
+                    subject?.pressedOnPlayPauseButton((subject?.playPauseButton)!)
+                    expect(subject?.playPauseButton?.paused).to(beFalse())
+                    
+                    subject?.pressedOnPlayPauseButton((subject?.playPauseButton)!)
+                    expect(subject?.playPauseButton?.paused).to(beTrue())
                 }
             }
             

@@ -51,9 +51,7 @@ class VirtualTourViewController : BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.model.setupTour()
-        if self.isOnline() && !self.model.tourIsRunning() {
-            // TODO: Should give the user the opportunity to restart the tour
-        }
+        self.playPauseButton?.enabled = self.isOnline()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -115,8 +113,13 @@ class VirtualTourViewController : BaseViewController {
     
     func postDispatchAction(nextLocation:CLLocation) {
         if self.model.tourIsRunning() {
-            self.repositionPanoViewForNextLocation(nextLocation)
-            self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
+            if self.isOnline() {
+                self.repositionPanoViewForNextLocation(nextLocation)
+                self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
+            } else {
+                self.playPauseButton?.paused = true
+                self.model.pauseTour()
+            }
         } else {
             // back up
             self.model.reverseLocation()
