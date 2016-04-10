@@ -7,7 +7,7 @@ use_frameworks!
 
 xcodeproj 'BostonFreedomTrail.xcodeproj'
 
-pod 'GoogleAnalytics', '3.14.0'
+pod 'Google/Analytics'
 pod 'GoogleMaps', '1.12.3'
 pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift'
 pod 'TSMessages', :git => 'https://github.com/KrauseFx/TSMessages.git'
