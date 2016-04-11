@@ -43,14 +43,20 @@ class AboutViewController : BaseViewController {
     @IBOutlet weak var googleMapsLabel: AboutTitleLabel?
     @IBOutlet weak var googleMapsDetailsLabel: AboutDetailsLabel?
     
+// MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.localizeLabels()
     }
+
+// MARK: Analytics
     
     override func getScreenTrackingName() -> String {
         return AnalyticsScreenNames.AboutScreen.rawValue
     }
+    
+// MARK: Private Functions
     
     func localizeLabels() {
         self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")

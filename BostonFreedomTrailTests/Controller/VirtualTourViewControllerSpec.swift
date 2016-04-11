@@ -66,9 +66,50 @@ class VirtualTourViewControllerTest: QuickSpec {
             
             context("View Controller Lifecycle") {
                 
+                it("should set up the tour when the view appears") {
+                    subject?.viewDidAppear(true)
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.PostSetup))
+                }
+                
                 it("should automatically pause the tour when the view disappears") {
                     subject?.viewDidDisappear(true)
                     expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
+                }
+            }
+            
+            context("Analytics") {
+                
+                it("should have a unique screen name to track analytics") {
+                    expect(subject?.getScreenTrackingName()).to(equal(AnalyticsScreenNames.VirtualTourScreen.rawValue))
+                }
+            }
+            
+            context("Play Pause Button") {
+                
+                it("should toggle the tour state when the user presses on the play pause button") {
+                    subject?.viewDidAppear(true)
+                    
+                    subject?.pressedOnPlayPauseButton((subject?.playPauseButton)!)
+                    expect(subject?.playPauseButton?.paused).to(beFalse())
+                    
+                    subject?.pressedOnPlayPauseButton((subject?.playPauseButton)!)
+                    expect(subject?.playPauseButton?.paused).to(beTrue())
+                }
+            }
+            
+            context("Online and Offline") {
+                
+                it("should pause the tour if the user goes offline") {
+                    subject?.reachabilityStatusChanged(false)
+                    
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
+                    expect(subject?.playPauseButton?.enabled).to(beFalse())
+                }
+                
+                it("should allow the user to restart the tour if the user comes back online") {
+                    subject?.reachabilityStatusChanged(true)
+                    
+                    expect(subject?.playPauseButton?.enabled).to(beTrue())
                 }
             }
             

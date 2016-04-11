@@ -51,9 +51,7 @@ class VirtualTourViewController : BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.model.setupTour()
-        if self.isOnline() && !self.model.tourIsRunning() {
-            // TODO: Should give the user the opportunity to restart the tour
-        }
+        self.playPauseButton?.enabled = self.isOnline()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -61,9 +59,7 @@ class VirtualTourViewController : BaseViewController {
         self.model.pauseTour()
     }
     
-    override func getScreenTrackingName() -> String {
-        return AnalyticsScreenNames.VirtualTourScreen.rawValue
-    }
+// MARK: IBActions
     
     @IBAction func pressedOnPlayPauseButton(sender: UIButton) {
         self.model.togglePlayPause()
@@ -78,6 +74,24 @@ class VirtualTourViewController : BaseViewController {
             break
         }
         self.playPauseButton?.paused = !self.model.tourIsRunning()
+    }
+    
+// MARK: Analytics
+    
+    override func getScreenTrackingName() -> String {
+        return AnalyticsScreenNames.VirtualTourScreen.rawValue
+    }
+
+// MARK: Online/Offline
+    
+    func reachabilityStatusChanged(online: Bool) {
+        super.reachabilityStatusChanged(online)
+        if online {
+            self.playPauseButton?.enabled = true
+        } else {
+            self.playPauseButton?.enabled = false
+            self.model.pauseTour()
+        }
     }
     
 // MARK: Private Functions
@@ -115,8 +129,13 @@ class VirtualTourViewController : BaseViewController {
     
     func postDispatchAction(nextLocation:CLLocation) {
         if self.model.tourIsRunning() {
-            self.repositionPanoViewForNextLocation(nextLocation)
-            self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
+            if self.isOnline() {
+                self.repositionPanoViewForNextLocation(nextLocation)
+                self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
+            } else {
+                self.playPauseButton?.paused = true
+                self.model.pauseTour()
+            }
         } else {
             // back up
             self.model.reverseLocation()

@@ -39,33 +39,40 @@ class AboutViewControllerTest: QuickSpec {
         
         describe("AboutViewController") {
             
+            var subject:AboutViewController?
+            
+            beforeEach({ () -> () in
+                subject = UIStoryboard.aboutViewController()
+                subject?.view
+            })
+            
+            context("Analytics") {
+                
+                it("should have a unique screen name to track analytics") {
+                    expect(subject?.getScreenTrackingName()).to(equal(AnalyticsScreenNames.AboutScreen.rawValue))
+                }
+            }
+            
             context("Initialization of the AboutViewController") {
                 
-                var aboutViewController:AboutViewController?
-                
-                beforeEach({ () -> () in
-                    aboutViewController = UIStoryboard.aboutViewController()
-                    aboutViewController?.view
-                })
-                
                 it("should have labels set via IBOutlets") {
-                    expect(aboutViewController?.developerLabel).toNot(equal(nil))
-                    expect(aboutViewController?.developerDetailsLabel).toNot(equal(nil))
-                    expect(aboutViewController?.designerLabel).toNot(equal(nil))
-                    expect(aboutViewController?.designerDetailsLabel).toNot(equal(nil))
-                    expect(aboutViewController?.trailInformationLabel).toNot(equal(nil))
-                    expect(aboutViewController?.trailInformationDetailsLabel).toNot(equal(nil))
-                    expect(aboutViewController?.googleMapsLabel).toNot(equal(nil))
+                    expect(subject?.developerLabel).toNot(equal(nil))
+                    expect(subject?.developerDetailsLabel).toNot(equal(nil))
+                    expect(subject?.designerLabel).toNot(equal(nil))
+                    expect(subject?.designerDetailsLabel).toNot(equal(nil))
+                    expect(subject?.trailInformationLabel).toNot(equal(nil))
+                    expect(subject?.trailInformationDetailsLabel).toNot(equal(nil))
+                    expect(subject?.googleMapsLabel).toNot(equal(nil))
                 }
                 
                 it("should have text on each of its labels") {
-                    expect(aboutViewController?.developerLabel?.text).toNot(equal(""))
-                    expect(aboutViewController?.developerDetailsLabel?.text).toNot(equal(""))
-                    expect(aboutViewController?.designerLabel?.text).toNot(equal(""))
-                    expect(aboutViewController?.designerDetailsLabel?.text).toNot(equal(""))
-                    expect(aboutViewController?.trailInformationLabel?.text).toNot(equal(""))
-                    expect(aboutViewController?.trailInformationDetailsLabel?.text).toNot(equal(""))
-                    expect(aboutViewController?.googleMapsLabel?.text).toNot(equal(""))
+                    expect(subject?.developerLabel?.text).toNot(equal(""))
+                    expect(subject?.developerDetailsLabel?.text).toNot(equal(""))
+                    expect(subject?.designerLabel?.text).toNot(equal(""))
+                    expect(subject?.designerDetailsLabel?.text).toNot(equal(""))
+                    expect(subject?.trailInformationLabel?.text).toNot(equal(""))
+                    expect(subject?.trailInformationDetailsLabel?.text).toNot(equal(""))
+                    expect(subject?.googleMapsLabel?.text).toNot(equal(""))
                 }
             }
         }

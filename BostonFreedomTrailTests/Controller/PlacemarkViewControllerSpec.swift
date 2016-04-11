@@ -49,6 +49,28 @@ class PlacemarkViewControllerTest: QuickSpec {
                 ApplicationSharedState.sharedInstance.clear()
             })
             
+            context("Analytics") {
+                
+                it("should have a unique screen name to track analytics") {
+                    expect(subject?.getScreenTrackingName()).to(equal(AnalyticsScreenNames.PlacemarkScreen.rawValue))
+                }
+            }
+            
+            context("Online and Offline") {
+                
+                it("should not allow the user to navigate to the street view if the user if offline") {
+                    subject?.reachabilityStatusChanged(false)
+                    
+                    expect(subject?.streetViewButton?.enabled).to(beFalse())
+                }
+                
+                it("should allow the user to navigate to the street view when the user comes back online") {
+                    subject?.reachabilityStatusChanged(true)
+                    
+                    expect(subject?.streetViewButton?.enabled).to(beTrue())
+                }
+            }
+            
             context("Initialization of the PlacemarkViewController") {
                 
                 it("should have a model set by default") {
