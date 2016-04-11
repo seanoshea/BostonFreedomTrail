@@ -59,6 +59,8 @@ class MapViewController : BaseViewController {
             }
         }
     }
+
+// MARK: Analytics
     
     override func getScreenTrackingName() -> String {
         return AnalyticsScreenNames.MapScreen.rawValue

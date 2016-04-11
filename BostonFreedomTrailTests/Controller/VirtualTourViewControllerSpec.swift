@@ -97,6 +97,22 @@ class VirtualTourViewControllerTest: QuickSpec {
                 }
             }
             
+            context("Online and Offline") {
+                
+                it("should pause the tour if the user goes offline") {
+                    subject?.reachabilityStatusChanged(false)
+                    
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
+                    expect(subject?.playPauseButton?.enabled).to(beFalse())
+                }
+                
+                it("should allow the user to restart the tour if the user comes back online") {
+                    subject?.reachabilityStatusChanged(true)
+                    
+                    expect(subject?.playPauseButton?.enabled).to(beTrue())
+                }
+            }
+            
             context("Repositioning the camera") {
                 
                 it("should return a camera with the correct bearing zoom and pitch for the next location when repositionCamera is invoked") {

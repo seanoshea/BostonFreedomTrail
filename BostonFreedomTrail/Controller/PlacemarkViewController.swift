@@ -42,6 +42,8 @@ class PlacemarkViewController : BaseViewController {
     var model:PlacemarkModel?
     weak var delegate:PlacemarkViewControllerDelegate?
     
+// MARK: Lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.model = PlacemarkModel.init()
@@ -53,9 +55,7 @@ class PlacemarkViewController : BaseViewController {
         self.loadPlacemarkInformation()
     }
     
-    override func getScreenTrackingName() -> String {
-        return AnalyticsScreenNames.PlacemarkScreen.rawValue
-    }
+// MARK: IBActions
     
     @IBAction func streetViewButtonPressed(sender: UIButton) {
         if let delegate = self.delegate {
@@ -68,6 +68,19 @@ class PlacemarkViewController : BaseViewController {
         self.dismissViewControllerAnimated(true) { () -> Void in
             
         }
+    }
+    
+// MARK: Analytics
+    
+    override func getScreenTrackingName() -> String {
+        return AnalyticsScreenNames.PlacemarkScreen.rawValue
+    }
+    
+// MARK: Online/Offline
+    
+    func reachabilityStatusChanged(online: Bool) {
+        super.reachabilityStatusChanged(online)
+        self.streetViewButton?.enabled = online
     }
     
 // MARK: Private Functions

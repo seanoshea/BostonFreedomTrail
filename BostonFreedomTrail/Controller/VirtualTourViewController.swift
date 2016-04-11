@@ -59,9 +59,7 @@ class VirtualTourViewController : BaseViewController {
         self.model.pauseTour()
     }
     
-    override func getScreenTrackingName() -> String {
-        return AnalyticsScreenNames.VirtualTourScreen.rawValue
-    }
+// MARK: IBActions
     
     @IBAction func pressedOnPlayPauseButton(sender: UIButton) {
         self.model.togglePlayPause()
@@ -76,6 +74,24 @@ class VirtualTourViewController : BaseViewController {
             break
         }
         self.playPauseButton?.paused = !self.model.tourIsRunning()
+    }
+    
+// MARK: Analytics
+    
+    override func getScreenTrackingName() -> String {
+        return AnalyticsScreenNames.VirtualTourScreen.rawValue
+    }
+
+// MARK: Online/Offline
+    
+    func reachabilityStatusChanged(online: Bool) {
+        super.reachabilityStatusChanged(online)
+        if online {
+            self.playPauseButton?.enabled = true
+        } else {
+            self.playPauseButton?.enabled = false
+            self.model.pauseTour()
+        }
     }
     
 // MARK: Private Functions
