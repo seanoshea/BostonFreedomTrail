@@ -105,6 +105,42 @@ class PlacemarkViewControllerTest: QuickSpec {
                     }
                 }
             }
+            
+            context("Navigating to the Virtual Tour View Controller") {
+                
+                context("No placemark associated with the model") {
+                    
+                    it("should not tell its delegate that the street view button was pressed") {
+                        let dummyDelegate = DummyDelegate.init()
+                        subject?.delegate = dummyDelegate
+                        subject?.streetViewButtonPressed((subject?.streetViewButton)!)
+                        expect(dummyDelegate.buttonPressed).to(beFalse())
+                    }
+                }
+                
+                context("Placemark associated with the model") {
+                    
+                    it("should tell its delegate that the street view button was pressed") {
+                        let dummyDelegate = DummyDelegate.init()
+                        subject?.delegate = dummyDelegate
+                        let placemark = Trail.instance.placemarks[1]
+                        subject?.model?.placemark = placemark
+                        subject?.viewDidLoad()
+                        
+                        subject?.streetViewButtonPressed((subject?.streetViewButton)!)
+                        expect(dummyDelegate.buttonPressed).to(beTrue())
+                    }
+                }
+            }
         }
+    }
+}
+
+class DummyDelegate : PlacemarkViewControllerDelegate {
+    
+    var buttonPressed = false
+    
+    func streetViewButtonPressedForPlacemark(placemark: Placemark) {
+        self.buttonPressed = true
     }
 }

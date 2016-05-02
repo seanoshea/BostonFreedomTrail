@@ -37,11 +37,6 @@ class BaseViewController : UIViewController, ReachabilityListener, AnalyticsTrac
         self.registerListener()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.deregisterListener()
-    }
-    
     func getScreenTrackingName() -> String {
         return ""
     }

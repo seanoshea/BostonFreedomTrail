@@ -34,7 +34,6 @@ import TSMessages
 
 protocol ReachabilityListener {
     func registerListener()
-    func deregisterListener()
     func reachabilityStatusChanged(online:Bool)
     func isOnline() -> Bool
 }
@@ -53,10 +52,6 @@ extension ReachabilityListener where Self : UIViewController {
                 self.reachabilityStatusChanged(false)
             }
         }
-    }
-    
-    func deregisterListener() {
-        
     }
     
     func reachabilityChanged(note: NSNotification) {

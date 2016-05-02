@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Quick
 import Nimble
+import ReachabilitySwift
 
 @testable import BostonFreedomTrail
 
@@ -113,6 +114,93 @@ class VirtualTourViewControllerTest: QuickSpec {
                 }
             }
             
+            context("Queuing up the next location") {
+                
+                context("Tour is running") {
+                    
+                    it("should queue up the next location") {
+                        subject?.model.currentTourState = VirtualTourState.InProgress
+                        
+                        expect(subject?.shouldEnqueueNextLocationForPanorama(nil)).to(beTrue())
+                    }
+                }
+                
+                context("Tour is not running") {
+
+                    it("should queue up the next location") {
+                        subject?.model.currentTourState = VirtualTourState.Paused
+                        
+                        expect(subject?.shouldEnqueueNextLocationForPanorama(nil)).to(beFalse())
+                    }
+                }
+            }
+            
+            context("After deciding to move onto the next location") {
+                
+                let location = CLLocation.init(latitude: 123, longitude: 312)
+                
+                beforeEach({ () -> () in
+                    subject?.viewDidAppear(true)
+                    subject?.startTour()
+                    subject?.model.currentTourLocation = 14
+                })
+                
+                context("the user has decided to pause the tour") {
+                    
+                    it("should back up the tour one location") {
+                        subject?.model.currentTourState = VirtualTourState.Paused
+                        
+                        subject?.postDispatchAction(location)
+                        
+                        expect(subject?.model.currentTourLocation).to(equal(13))
+                    }
+                }
+                
+                context("the user has decided to allow the tour to continue") {
+
+                    var dummyReachability:DummyReachability?
+                    var dummyPanoView:DummyPanoramaView?
+                    
+                    beforeEach({ () -> () in
+                        do {
+                            dummyReachability = try DummyReachability.init(hostname:"https://google.com")
+                            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                            appDelegate.reachability = dummyReachability
+                            GMSServices.provideAPIKey(PListHelper.googleMapsApiKey())
+                            dummyPanoView = DummyPanoramaView.init(frame: CGRectMake(0, 0, 100, 100))
+                            subject?.panoView = dummyPanoView
+                        } catch {
+                            NSLog("Failed to start the reachability notifier")
+                        }
+                    })
+                    
+                    context("the user is offline") {
+                        
+                        it("should automatically pause the tour") {
+                            
+                            dummyReachability?.dummyIsReachable = false
+                            subject?.postDispatchAction(location)
+                            
+                            expect(subject?.playPauseButton?.paused).to(beTrue())
+                            expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
+                            expect(dummyPanoView?.wasMoved).to(beFalse())
+                        }
+                    }
+                    
+                    context("the user is online") {
+                        
+                        it("should reposition the panorama view to focus on the new location") {
+                            
+                            dummyReachability?.dummyIsReachable = true
+                            subject?.postDispatchAction(location)
+                            
+                            expect(subject?.model.currentTourState).to(equal(VirtualTourState.InProgress))
+                            expect(dummyPanoView?.wasMoved).to(beTrue())
+                        }
+                    }
+                }
+            }
+            
             context("Repositioning the camera") {
                 
                 it("should return a camera with the correct bearing zoom and pitch for the next location when repositionCamera is invoked") {
@@ -129,5 +217,23 @@ class VirtualTourViewControllerTest: QuickSpec {
                 }
             }
         }
+    }
+}
+
+class DummyReachability : Reachability {
+    
+    var dummyIsReachable = false
+    
+    override func isReachable() -> Bool {
+        return self.dummyIsReachable
+    }
+}
+
+class DummyPanoramaView : GMSPanoramaView {
+    
+    var wasMoved = false
+    
+    override func moveNearCoordinate(coordinate: CLLocationCoordinate2D) {
+        self.wasMoved = true
     }
 }

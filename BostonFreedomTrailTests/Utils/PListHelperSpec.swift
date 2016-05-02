@@ -42,16 +42,19 @@ class PListHelperTest: QuickSpec {
             context("Testing Retrieving Values from a the plist file") {
                 
                 it("should be able to get string values from the plist file") {
-
-                    PListHelper.googleMapsApiKey()
+                    expect(PListHelper.googleMapsApiKey()).to(equal("AIzaSyAboFJaMbnKvTdFoxB4X3n5oG2n43Kaxkk"))
                 }
                 
-                it("should be able to get float values from the plist file") {
-                    
+                it("should be able to get the default latitude for the map from the plist file") {
+                    expect(PListHelper.defaultLatitude()).to(equal(42.355721486582))
                 }
                 
-                it("should be able to get double values from the plist file") {
-                    
+                it("should be able to get the default longitude for the map from the plist file") {
+                    expect(PListHelper.defaultLongitude()).to(equal(-71.063303947449))
+                }
+                
+                it("should be able to get the default camera zoom for the map from the plist file") {
+                    expect(PListHelper.defaultCameraZoom()).to(equal(14.0))
                 }
             }
         }

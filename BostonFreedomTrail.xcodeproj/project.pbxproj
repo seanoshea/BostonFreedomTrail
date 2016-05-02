@@ -23,6 +23,7 @@
 		41237C1C1C4923D20007F76B /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
 		41237C211C49244D0007F76B /* TrailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* TrailParser.swift */; };
 		41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */; };
+		413A01C31CD7B43C006E7667 /* BaseViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A01C21CD7B43C006E7667 /* BaseViewControllerSpec.swift */; };
 		41443EB81C894DBE0096EE06 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41443EB61C894DBE0096EE06 /* Fabric.framework */; };
 		41443EB91C894DBE0096EE06 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41443EB71C894DBE0096EE06 /* Crashlytics.framework */; };
 		414A7AA71C6D728800385442 /* placemark.html in Resources */ = {isa = PBXBuildFile; fileRef = 414A7AA61C6D728800385442 /* placemark.html */; };
@@ -86,6 +87,7 @@
 		41237C1B1C4923D20007F76B /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
 		41237C201C49244D0007F76B /* TrailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParser.swift; sourceTree = "<group>"; };
 		41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkViewButton.swift; sourceTree = "<group>"; };
+		413A01C21CD7B43C006E7667 /* BaseViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerSpec.swift; sourceTree = "<group>"; };
 		41443EB61C894DBE0096EE06 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		41443EB71C894DBE0096EE06 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		414A7AA61C6D728800385442 /* placemark.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = placemark.html; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */,
+				413A01C21CD7B43C006E7667 /* BaseViewControllerSpec.swift */,
 				410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */,
 				410C23761C9EEF83001EF660 /* PlacemarkViewControllerSpec.swift */,
 				41DE05E91C55B480008AFCA5 /* VirtualTourViewControllerSpec.swift */,
@@ -565,6 +568,7 @@
 				41DE05EC1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift in Sources */,
 				41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */,
 				410C23771C9EEF83001EF660 /* PlacemarkViewControllerSpec.swift in Sources */,
+				413A01C31CD7B43C006E7667 /* BaseViewControllerSpec.swift in Sources */,
 				41D0F4EC1C53E64A00FCAB17 /* MapModelSpec.swift in Sources */,
 				41DE05EA1C55B480008AFCA5 /* VirtualTourViewControllerSpec.swift in Sources */,
 				41DE95051C701D89004ACD7A /* PlacemarkModelSpec.swift in Sources */,

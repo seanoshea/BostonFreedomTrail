@@ -41,6 +41,16 @@ class TrailTest: QuickSpec {
         
         describe("Trail") {
             
+            context("Figuring out the placemark index") {
+                
+                it("should be able to serve up an index based on a placemark") {
+                    let index = 2
+                    let placemark = Trail.instance.placemarks[index]
+                    
+                    expect(Trail.instance.placemarkIndex(placemark)).to(equal(index))
+                }
+            }
+            
             context("Integer Extensions") {
                 
                 it("should be able to figure out the correct placemark index for a placemark identifier") {
