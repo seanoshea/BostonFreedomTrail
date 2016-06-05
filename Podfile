@@ -5,7 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 use_frameworks!
 
-xcodeproj 'BostonFreedomTrail.xcodeproj'
+project 'BostonFreedomTrail.xcodeproj'
 
 pod 'Google/Analytics'
 pod 'GoogleMaps', '1.13.2'
