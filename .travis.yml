@@ -4,7 +4,6 @@ before_install:
   - brew update
 install:
   - bundle install --without=documentation --path ../travis_bundle_dir
-  - bundle exec pod repo update
   - bundle exec pod install
   - bundle exec fastlane enable_crash_reporting
 script: bundle exec fastlane test
