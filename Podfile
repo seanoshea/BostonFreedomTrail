@@ -11,8 +11,7 @@ target :BostonFreedomTrail do
   pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift'
   pod 'TSMessages', :git => 'https://github.com/KrauseFx/TSMessages.git'
 
-  target :BostonFreedomTrailTests do
-    inherit! :search_paths
+  target :BostonFreedomTrailTests do    
     pod 'Quick', '~> 0.9.2'
     pod 'Nimble', '~> 4.0.1'
     pod 'OHHTTPStubs', '~> 5.0.0'
