@@ -38,7 +38,7 @@ PODS:
     - HexColors (~> 2.3.0)
 
 DEPENDENCIES:
-  - Google/Analytics
+  - Google/Analytics (= 3.0.3)
   - GoogleMaps (= 1.13.2)
   - Nimble (~> 4.0.1)
   - OHHTTPStubs (~> 5.0.0)
@@ -76,6 +76,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
   TSMessages: 6e403b790139636c15ab4f51946537095e03e79c
 
-PODFILE CHECKSUM: b574d2fcbee616d83024d763100f0f4221ae52e6
+PODFILE CHECKSUM: 79ee12589c3c70dbb2ae08cc2e713cb4c91f9f2d
 
 COCOAPODS: 1.0.0
