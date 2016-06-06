@@ -125,6 +125,13 @@ class VirtualTourModelTest: QuickSpec {
             
             context("LookAts") {
                 
+                var dummyDelegate:DummyVirtualTourModelDelegate?
+                
+                beforeEach({ () -> () in
+                    dummyDelegate = DummyVirtualTourModelDelegate.init()
+                    subject?.delegate = dummyDelegate
+                })
+                
                 it("should not return a look at for an invalid tour location") {
                     subject?.currentTourLocation = 0
                     expect(subject?.lookAtForCurrentLocation()).to(beNil())
@@ -149,6 +156,20 @@ class VirtualTourModelTest: QuickSpec {
                 
                 it("should be able to find a LookAt for the 4th placemark") {
                     expect(subject?.lookAtPositionInTourForPlacementIndex(3)).to(equal(25))
+                }
+                
+                it("should be able to navigate directly to a LookAt when the placement index has a LookAt associated with it") {
+                    subject?.navigateToLookAt(3)
+                    
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.Paused))
+                    expect(dummyDelegate!.navigationInitiated).to(beTrue())
+                }
+                
+                it("should not navigate directly to a LookAt when the placement index does not have a LookAt associated with it") {
+                    subject?.navigateToLookAt(0)
+                    
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.PostSetup))
+                    expect(dummyDelegate!.navigationInitiated).to(beFalse())
                 }
             }
             
@@ -197,5 +218,15 @@ class VirtualTourModelTest: QuickSpec {
                 }
             }
         }
+    }
+}
+
+
+class DummyVirtualTourModelDelegate : VirtualTourModelDelegate {
+    
+    var navigationInitiated = false
+    
+    func navigateToCurrentPosition(model:VirtualTourModel) {
+        self.navigationInitiated = true
     }
 }

@@ -192,8 +192,6 @@
 		41237BE61C486CDF0007F76B /* BostonFreedomTrail */ = {
 			isa = PBXGroup;
 			children = (
-				41443EB61C894DBE0096EE06 /* Fabric.framework */,
-				41443EB71C894DBE0096EE06 /* Crashlytics.framework */,
 				41237BE71C486CDF0007F76B /* AppDelegate.swift */,
 				41237BF01C486CDF0007F76B /* Assets.xcassets */,
 				41237C0E1C4920AF0007F76B /* Controller */,
@@ -292,6 +290,8 @@
 		C0497F188083798A2930EFE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41443EB61C894DBE0096EE06 /* Fabric.framework */,
+				41443EB71C894DBE0096EE06 /* Crashlytics.framework */,
 				41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */,
 			);
 			name = Frameworks;
