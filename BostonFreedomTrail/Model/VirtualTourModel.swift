@@ -180,7 +180,7 @@ class VirtualTourModel : NSObject {
         let lookAtPosition = self.lookAtPositionInTourForPlacementIndex(placemarkIndex)
         if let position = lookAtPosition {
             self.currentTourLocation = position
-            self.currentTourState = VirtualTourState.InProgress
+            self.currentTourState = VirtualTourState.Paused
             if let delegate = self.delegate {
                 delegate.navigateToCurrentPosition(self)
             }

@@ -128,7 +128,11 @@ class VirtualTourViewController : BaseViewController {
     }
     
     func postDispatchAction(nextLocation:CLLocation) {
-        if self.model.tourIsRunning() {
+        self.postDispatchAction(nextLocation, force:false)
+    }
+    
+    func postDispatchAction(nextLocation:CLLocation, force:Bool) {
+        if self.model.tourIsRunning() || force {
             if self.isOnline() {
                 self.repositionPanoViewForNextLocation(nextLocation)
                 self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
@@ -178,7 +182,7 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
 extension VirtualTourViewController : VirtualTourModelDelegate {
     
     func navigateToCurrentPosition(model: VirtualTourModel) {
-        self.postDispatchAction(self.model.nextLocation())
+        self.postDispatchAction(self.model.nextLocation(), force:true)
     }
 }
 
