@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02C99F49ED538590AF59B9D4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C2543599204AB4B2D5CCB5 /* Pods.framework */; };
 		41079D5F1C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */; };
 		410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE61C4D9B0F007DF354 /* PListHelper.swift */; };
 		410C23771C9EEF83001EF660 /* PlacemarkViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C23761C9EEF83001EF660 /* PlacemarkViewControllerSpec.swift */; };
@@ -50,7 +49,6 @@
 		41DE05EC1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05EB1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift */; };
 		41DE95051C701D89004ACD7A /* PlacemarkModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE95041C701D89004ACD7A /* PlacemarkModelSpec.swift */; };
 		41E1C3711C525B670009570C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E1C3701C525B670009570C /* Constants.swift */; };
-		CF369AA8CC8EC25E478A4126 /* Pods_BostonFreedomTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,12 +110,12 @@
 		41DE05EB1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourModelSpec.swift; sourceTree = "<group>"; };
 		41DE95041C701D89004ACD7A /* PlacemarkModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkModelSpec.swift; sourceTree = "<group>"; };
 		41E1C3701C525B670009570C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BostonFreedomTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5737435D621BC5FC4BCB0FAE /* Pods-BostonFreedomTrail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrail.release.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrail/Pods-BostonFreedomTrail.release.xcconfig"; sourceTree = "<group>"; };
+		663F58F447E9B9FC83DDF3D0 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrail-BostonFreedomTrailTests/Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig"; sourceTree = "<group>"; };
 		9F7E77009F744B3C6A681368 /* Pods-BostonFreedomTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrailTests/Pods-BostonFreedomTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AF363DE63FB716C518554FBA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		C2C2543599204AB4B2D5CCB5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D941C04A510D02D0A4628A6D /* Pods-BostonFreedomTrail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrail/Pods-BostonFreedomTrail.debug.xcconfig"; sourceTree = "<group>"; };
 		DCADC52A6E0EF11BA0B373CC /* Pods-BostonFreedomTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrailTests/Pods-BostonFreedomTrailTests.release.xcconfig"; sourceTree = "<group>"; };
-		EFD3B8AB5645EDE10FDEEAA7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		DFB7FEF1A49A76AF859E0D14 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrail-BostonFreedomTrailTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrail-BostonFreedomTrailTests/Pods-BostonFreedomTrail-BostonFreedomTrailTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +123,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02C99F49ED538590AF59B9D4 /* Pods.framework in Frameworks */,
 				41443EB91C894DBE0096EE06 /* Crashlytics.framework in Frameworks */,
 				41443EB81C894DBE0096EE06 /* Fabric.framework in Frameworks */,
 			);
@@ -135,7 +132,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF369AA8CC8EC25E478A4126 /* Pods_BostonFreedomTrailTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,8 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */,
-				C2C2543599204AB4B2D5CCB5 /* Pods.framework */,
-				46AA9BCBD90861D8BFC31F64 /* Pods_BostonFreedomTrailTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -306,10 +300,12 @@
 		CFD8331D401330980D2B232D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AF363DE63FB716C518554FBA /* Pods.debug.xcconfig */,
-				EFD3B8AB5645EDE10FDEEAA7 /* Pods.release.xcconfig */,
 				9F7E77009F744B3C6A681368 /* Pods-BostonFreedomTrailTests.debug.xcconfig */,
 				DCADC52A6E0EF11BA0B373CC /* Pods-BostonFreedomTrailTests.release.xcconfig */,
+				D941C04A510D02D0A4628A6D /* Pods-BostonFreedomTrail.debug.xcconfig */,
+				5737435D621BC5FC4BCB0FAE /* Pods-BostonFreedomTrail.release.xcconfig */,
+				DFB7FEF1A49A76AF859E0D14 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.debug.xcconfig */,
+				663F58F447E9B9FC83DDF3D0 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -321,12 +317,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41237C031C486CDF0007F76B /* Build configuration list for PBXNativeTarget "BostonFreedomTrail" */;
 			buildPhases = (
-				92295CE4E074960500EBCDA8 /* Check Pods Manifest.lock */,
+				CEB85F0AA2855E6934D62FA1 /* 📦 Check Pods Manifest.lock */,
 				41237BE01C486CDF0007F76B /* Sources */,
 				41237BE11C486CDF0007F76B /* Frameworks */,
 				41237BE21C486CDF0007F76B /* Resources */,
-				7D2131569E6BC6A2947B2434 /* Embed Pods Frameworks */,
-				AE2B572869515091D3992489 /* Copy Pods Resources */,
+				3357F654E40850647B2E4B62 /* 📦 Embed Pods Frameworks */,
+				23FD358A6C8D19FDBC7DACB5 /* 📦 Copy Pods Resources */,
 				41443EB51C894D940096EE06 /* ShellScript */,
 			);
 			buildRules = (
@@ -342,12 +338,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41237C061C486CDF0007F76B /* Build configuration list for PBXNativeTarget "BostonFreedomTrailTests" */;
 			buildPhases = (
-				ABF7EFDCFC7E5E05A43E14A3 /* Check Pods Manifest.lock */,
+				ABF7EFDCFC7E5E05A43E14A3 /* 📦 Check Pods Manifest.lock */,
 				41237BF61C486CDF0007F76B /* Sources */,
 				41237BF71C486CDF0007F76B /* Frameworks */,
 				41237BF81C486CDF0007F76B /* Resources */,
-				C2B536EF84E15C2032606370 /* Embed Pods Frameworks */,
-				63F1C7785DE69CAC30AB88B4 /* Copy Pods Resources */,
+				C2B536EF84E15C2032606370 /* 📦 Embed Pods Frameworks */,
+				63F1C7785DE69CAC30AB88B4 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -421,6 +417,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		23FD358A6C8D19FDBC7DACB5 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BostonFreedomTrail/Pods-BostonFreedomTrail-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3357F654E40850647B2E4B62 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BostonFreedomTrail/Pods-BostonFreedomTrail-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		41443EB51C894D940096EE06 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -434,44 +460,29 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 8aa2986353e21d6181e23a9360cd528dca68aafb 5769576e5978757dbd9058df640a5f116b6c94ab6e35b7321786486fc8bff94f";
 		};
-		63F1C7785DE69CAC30AB88B4 /* Copy Pods Resources */ = {
+		63F1C7785DE69CAC30AB88B4 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BostonFreedomTrailTests/Pods-BostonFreedomTrailTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BostonFreedomTrail-BostonFreedomTrailTests/Pods-BostonFreedomTrail-BostonFreedomTrailTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7D2131569E6BC6A2947B2434 /* Embed Pods Frameworks */ = {
+		ABF7EFDCFC7E5E05A43E14A3 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		92295CE4E074960500EBCDA8 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,49 +490,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		ABF7EFDCFC7E5E05A43E14A3 /* Check Pods Manifest.lock */ = {
+		C2B536EF84E15C2032606370 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BostonFreedomTrail-BostonFreedomTrailTests/Pods-BostonFreedomTrail-BostonFreedomTrailTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEB85F0AA2855E6934D62FA1 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		AE2B572869515091D3992489 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C2B536EF84E15C2032606370 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BostonFreedomTrailTests/Pods-BostonFreedomTrailTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -642,7 +638,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -682,7 +678,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -692,7 +688,7 @@
 		};
 		41237C041C486CDF0007F76B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF363DE63FB716C518554FBA /* Pods.debug.xcconfig */;
+			baseConfigurationReference = D941C04A510D02D0A4628A6D /* Pods-BostonFreedomTrail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -713,7 +709,7 @@
 		};
 		41237C051C486CDF0007F76B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFD3B8AB5645EDE10FDEEAA7 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 5737435D621BC5FC4BCB0FAE /* Pods-BostonFreedomTrail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -733,9 +729,18 @@
 		};
 		41237C071C486CDF0007F76B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F7E77009F744B3C6A681368 /* Pods-BostonFreedomTrailTests.debug.xcconfig */;
+			baseConfigurationReference = DFB7FEF1A49A76AF859E0D14 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Nimble\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/OHHTTPStubs\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Quick\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/HexColors\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/TSMessages\"",
+				);
 				INFOPLIST_FILE = BostonFreedomTrailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrailTests;
@@ -747,7 +752,7 @@
 		};
 		41237C081C486CDF0007F76B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCADC52A6E0EF11BA0B373CC /* Pods-BostonFreedomTrailTests.release.xcconfig */;
+			baseConfigurationReference = 663F58F447E9B9FC83DDF3D0 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = BostonFreedomTrailTests/Info.plist;
