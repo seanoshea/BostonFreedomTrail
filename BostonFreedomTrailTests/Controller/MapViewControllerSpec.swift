@@ -108,6 +108,17 @@ class MapViewControllerTest: QuickSpec {
                     expect(lastKnownPlacemark.longitude).to(equal(45))
                 }
             }
+            
+            context("UIPopoverPresentationControllerDelegate") {
+                
+                it("should return a view controller for presentationController:viewControllerForAdaptivePresentationStyle") {
+                    let placemarkViewController = UIStoryboard.placemarkViewController()
+                    let _ = placemarkViewController.view
+                    let popoverPresentationController = UIPopoverPresentationController.init(presentedViewController:subject!, presentingViewController:placemarkViewController)
+                    let returnedViewController = subject?.presentationController(popoverPresentationController, viewControllerForAdaptivePresentationStyle:UIModalPresentationStyle.Popover)
+                    expect(returnedViewController).toNot(beNil())
+                }
+            }
         }
     }
 }

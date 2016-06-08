@@ -54,6 +54,8 @@ class MapViewController : BaseViewController {
             if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == NSComparisonResult.OrderedSame {
                 let placemarkViewController = segue.destinationViewController as! PlacemarkViewController
                 placemarkViewController.delegate = self
+                placemarkViewController.popoverPresentationController?.delegate = self
+                placemarkViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
                 let placemark = self.mapView?.selectedMarker!.userData as! Placemark
                 placemarkViewController.model!.placemark = placemark
             }
@@ -120,6 +122,20 @@ extension MapViewController : PlacemarkViewControllerDelegate {
         if let delegate = self.delegate {
             delegate.navigateToVirtualTourWithPlacemark(placemark)
         }
+    }
+}
+
+extension MapViewController : UIPopoverPresentationControllerDelegate {
+    
+    func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+        let doneButton = UIBarButtonItem(title:NSLocalizedString("Done", comment: ""), style:.Done, target:self, action:#selector(dismiss))
+        let navigationController = UINavigationController(rootViewController: controller.presentedViewController)
+        navigationController.topViewController!.navigationItem.leftBarButtonItem = doneButton
+        return navigationController
+    }
+    
+    func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
