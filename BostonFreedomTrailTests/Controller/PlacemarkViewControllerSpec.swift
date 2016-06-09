@@ -81,6 +81,16 @@ class PlacemarkViewControllerTest: QuickSpec {
                     expect(subject?.streetViewButton).toNot(beNil())
                 }
                 
+                it("should set the title of the view when it loads") {
+                    let location = CLLocation.init(latitude:120, longitude:122)
+                    subject?.model?.placemark = Placemark.init(identifier:"1", name:"Old State House", location:location, coordinates:[location], placemarkDescription:"Old State House Description", lookAt:nil)
+                    
+                    subject?.viewDidLoad()
+                    
+                    expect(subject?.title).toNot(beNil())
+                    expect(subject?.title).to(equal("Old State House"))
+                }
+                
                 context("LookAt associated with the model") {
                     
                     it("should show the street view button") {
