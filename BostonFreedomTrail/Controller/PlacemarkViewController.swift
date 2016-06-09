@@ -53,6 +53,7 @@ class PlacemarkViewController : BaseViewController {
         super.viewDidLoad()
         self.configureView()
         self.loadPlacemarkInformation()
+        self.title = self.model?.placemark?.name
     }
     
 // MARK: IBActions
