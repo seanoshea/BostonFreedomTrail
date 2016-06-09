@@ -42,11 +42,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWM-jP-gCv" userLabel="Placemark Web View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="368"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="368"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEp-WQ-mfj" userLabel="Street View Button">
-                                <rect key="frame" x="20" y="440" width="560" height="30"/>
+                                <rect key="frame" x="20" y="382" width="560" height="30"/>
                                 <state key="normal" title="Street View"/>
                                 <connections>
                                     <action selector="streetViewButtonPressed:" destination="f9d-M6-DNw" eventType="touchUpInside" id="U8V-5n-XTi"/>
@@ -55,6 +55,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="0TN-Pc-QeH"/>
                     <connections>
                         <outlet property="streetViewButton" destination="tEp-WQ-mfj" id="rtY-ye-ry1"/>
