@@ -38,7 +38,7 @@ class MapModel : NSObject {
         var markers = [GMSMarker]()
         for placemark:Placemark in Trail.instance.placemarks {
             let marker = GMSMarker()
-            marker.userData = placemark;
+            marker.userData = placemark
             marker.position = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude)
             marker.title = placemark.name
             marker.appearAnimation = kGMSMarkerAnimationPop

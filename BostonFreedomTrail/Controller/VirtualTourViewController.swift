@@ -63,7 +63,7 @@ class VirtualTourViewController : BaseViewController {
     
     @IBAction func pressedOnPlayPauseButton(sender: UIButton) {
         self.model.togglePlayPause()
-        switch (self.model.currentTourState) {
+        switch self.model.currentTourState {
         case VirtualTourState.PostSetup:
             self.startTour()
             break

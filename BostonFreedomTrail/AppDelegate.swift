@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController:UITabBarController = self.window!.rootViewController as! UITabBarController
         for (index, item) in (tabBarController.tabBar.items?.enumerate())! {
             var title = ""
-            switch (index) {
+            switch index {
             case TabBarControllerIndices.MapViewController.rawValue:
                 title = NSLocalizedString("Map", comment: "")
                 break
