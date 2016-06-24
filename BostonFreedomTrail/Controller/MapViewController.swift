@@ -52,11 +52,11 @@ class MapViewController : BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == NSComparisonResult.OrderedSame {
-                let placemarkViewController = segue.destinationViewController as! PlacemarkViewController
+                guard let placemarkViewController = segue.destinationViewController as? PlacemarkViewController else { return }
+                guard let placemark = self.mapView?.selectedMarker!.userData as? Placemark else { return }
                 placemarkViewController.delegate = self
                 placemarkViewController.popoverPresentationController?.delegate = self
                 placemarkViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-                let placemark = self.mapView?.selectedMarker!.userData as! Placemark
                 placemarkViewController.model!.placemark = placemark
             }
         }
@@ -101,13 +101,15 @@ extension MapViewController : GMSMapViewDelegate {
     
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
-        self.trackButtonPressForPlacemark(marker.userData as! Placemark, label: AnalyticsLabels.MarkerPress.rawValue)
+        guard let userData = marker.userData as? Placemark else { return false }
+        self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.MarkerPress.rawValue)
         return false
     }
     
     func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
-        self.trackButtonPressForPlacemark(marker.userData as! Placemark, label: AnalyticsLabels.InfoWindowPress.rawValue)
+        guard let userData = marker.userData as? Placemark else { return }
+        self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.InfoWindowPress.rawValue)
         self.performSegueWithIdentifier(SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
     }
     

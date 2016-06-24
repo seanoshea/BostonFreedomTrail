@@ -93,7 +93,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeLocalization() {
-        let tabBarController:UITabBarController = self.window!.rootViewController as! UITabBarController
+        guard let window = self.window else { return }
+        guard let tabBarController = window.rootViewController as? UITabBarController else { return }
         for (index, item) in (tabBarController.tabBar.items?.enumerate())! {
             var title = ""
             switch index {
@@ -128,8 +129,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeDelegates() {
-        let tabBarController:UITabBarController = self.window!.rootViewController as! UITabBarController
-        let mapViewController = tabBarController.viewControllers![TabBarControllerIndices.MapViewController.rawValue] as! MapViewController
+        guard let window = self.window else { return }
+        guard let tabBarController = window.rootViewController as? UITabBarController else { return }
+        guard let viewControllers = tabBarController.viewControllers else { return }
+        guard let mapViewController = viewControllers[TabBarControllerIndices.MapViewController.rawValue] as? MapViewController else { return }
         mapViewController.delegate = self
     }
 }
@@ -137,9 +140,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate : MapViewControllerDelegate {
     
     func navigateToVirtualTourWithPlacemark(placemark: Placemark) {
-        let tabBarController:UITabBarController = self.window!.rootViewController as! UITabBarController
+        guard let window = self.window else { return }
+        guard let tabBarController = window.rootViewController as? UITabBarController else { return }
+        guard let viewControllers = tabBarController.viewControllers else { return }
+        guard let virtualTourViewController = viewControllers[TabBarControllerIndices.VirtualTourViewController.rawValue] as? VirtualTourViewController else { return }
         tabBarController.selectedIndex = TabBarControllerIndices.VirtualTourViewController.rawValue
-        let virtualTourViewController = tabBarController.viewControllers![TabBarControllerIndices.VirtualTourViewController.rawValue] as! VirtualTourViewController
         let index = Trail.instance.placemarkIndex(placemark)
         virtualTourViewController.model.navigateToLookAt(index)
     }
