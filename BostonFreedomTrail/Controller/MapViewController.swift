@@ -142,8 +142,8 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
 }
 
 extension CLLocationCoordinate2D {
-    
     func logCoordinate() {
+        guard ApplicationSharedState.sharedInstance.isDebug() else { return }
         NSLog("%.10f,%.10f,0.0", self.longitude, self.latitude)
     }
 }

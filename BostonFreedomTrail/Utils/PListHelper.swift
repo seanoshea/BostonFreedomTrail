@@ -37,7 +37,7 @@ enum PListHelperConstants : String {
     case BostonFreedomTrailDefaultCameraZoom = "BostonFreedomTrailDefaultCameraZoom"
 }
 
-class PListHelper {
+struct PListHelper {
     
     static func googleMapsApiKey() -> String {
         return (self.plistDictionary()[PListHelperConstants.BostonFreedomTrailGoogleMapAPIKey.rawValue] as? String)!

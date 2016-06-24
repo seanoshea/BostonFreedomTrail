@@ -34,7 +34,7 @@ enum SegueConstants : String {
     case MapToPlacemarkSegueIdentifier = "MapToPlacemarkSegueIdentifier"
 }
 
-enum TabBarControllerTags : NSInteger {
+enum TabBarControllerTags : Int {
     case MapViewTag = 0
     case VirtualTourViewTag = 1
     case AboutViewTag = 2

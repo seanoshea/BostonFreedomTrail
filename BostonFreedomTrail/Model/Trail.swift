@@ -32,7 +32,7 @@ import Foundation
 
 import CoreLocation
 
-public class Placemark {
+class Placemark {
     var identifier:String = ""
     var name:String = ""
     var location:CLLocation = CLLocation()
@@ -50,7 +50,7 @@ public class Placemark {
     }
 }
 
-public class LookAt {
+struct LookAt {
     var latitude:Double = 0.0
     var longitude:Double = 0.0
     var tilt:Double = 0.0
@@ -64,7 +64,7 @@ public class LookAt {
     }
 }
 
-public class Trail {
+struct Trail {
     static let instance = TrailParser().parseTrail()
     var placemarks = [Placemark]()
     

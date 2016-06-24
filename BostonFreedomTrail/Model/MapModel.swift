@@ -32,7 +32,7 @@ import Foundation
 
 import GoogleMaps
 
-class MapModel : NSObject {
+class MapModel {
     
     func addPlacemarksToMap(mapView:GMSMapView) -> [GMSMarker] {
         var markers = [GMSMarker]()

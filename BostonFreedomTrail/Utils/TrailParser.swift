@@ -52,7 +52,7 @@ enum TrailParserConstants : String {
     case heading = "heading"
 }
 
-public class TrailParser : NSObject, NSXMLParserDelegate {
+class TrailParser : NSObject, NSXMLParserDelegate {
  
     var trail = Trail()
     var currentLocation:CLLocation?
@@ -81,7 +81,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
     var currentTilt:String?
     var currentHeading:String?
 
-    public func parseTrail() -> Trail {
+    func parseTrail() -> Trail {
         let path = NSBundle.mainBundle().pathForResource(TrailParserConstants.trail.rawValue, ofType: TrailParserConstants.kml.rawValue)
         let parser = NSXMLParser(contentsOfURL: NSURL.fileURLWithPath(path!))!
         parser.delegate = self
@@ -89,7 +89,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
         return trail
     }
     
-    public func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         switch elementName {
         case TrailParserConstants.folder.rawValue:
             startFolder = true
@@ -139,7 +139,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
         }
     }
     
-    public func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
         if startFolder {
             if startName {
                 currentName = string
@@ -166,7 +166,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
         }
     }
     
-    public func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         switch elementName {
         case TrailParserConstants.folder.rawValue:
             startFolder = false
