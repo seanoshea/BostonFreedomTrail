@@ -90,7 +90,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
     }
     
     public func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        switch (elementName) {
+        switch elementName {
         case TrailParserConstants.folder.rawValue:
             startFolder = true
             break
@@ -167,7 +167,7 @@ public class TrailParser : NSObject, NSXMLParserDelegate {
     }
     
     public func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        switch (elementName) {
+        switch elementName {
         case TrailParserConstants.folder.rawValue:
             startFolder = false
             break

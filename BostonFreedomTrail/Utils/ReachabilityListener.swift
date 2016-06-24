@@ -41,7 +41,7 @@ protocol ReachabilityListener {
 extension ReachabilityListener where Self : UIViewController {
     
     func registerListener() {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return }
         appDelegate.reachability?.whenReachable = { reachability in
             dispatch_async(dispatch_get_main_queue()) {
                 self.reachabilityStatusChanged(true)
@@ -55,7 +55,7 @@ extension ReachabilityListener where Self : UIViewController {
     }
     
     func reachabilityChanged(note: NSNotification) {
-        let reachability = note.object as! Reachability
+        guard let reachability = note.object as? Reachability else { return }
         self.reachabilityStatusChanged(reachability.isReachable())
     }
     
@@ -68,7 +68,7 @@ extension ReachabilityListener where Self : UIViewController {
     }
     
     func isOnline() -> Bool {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return false }
         return appDelegate.isOnline()
     }
 }

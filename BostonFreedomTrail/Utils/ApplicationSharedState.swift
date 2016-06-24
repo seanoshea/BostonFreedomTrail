@@ -96,9 +96,9 @@ public class ApplicationSharedState {
     
     public func isDebug() -> Bool {
         #if DEBUG
-            return true;
+            return true
         #else
-            return false;
+            return false
         #endif
     }
     
