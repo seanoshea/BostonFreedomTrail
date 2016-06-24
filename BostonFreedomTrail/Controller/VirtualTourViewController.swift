@@ -196,7 +196,7 @@ extension GMSPanoramaView {
 
 extension GMSPanoramaCamera {
     func logLocation() {
-        guard ApplicationSharedState.sharedInstance.isDebug() else { return }
+        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
         NSLog("Heading: %.10f, Pitch: %.10f", self.orientation.heading, self.orientation.pitch)
     }
 }
