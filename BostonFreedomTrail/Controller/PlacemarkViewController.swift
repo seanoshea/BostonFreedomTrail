@@ -34,7 +34,7 @@ protocol PlacemarkViewControllerDelegate:class {
     func streetViewButtonPressedForPlacemark(placemark: Placemark)
 }
 
-class PlacemarkViewController: BaseViewController {
+final class PlacemarkViewController: BaseViewController {
 
     @IBOutlet weak var webView: UIWebView?
     @IBOutlet weak var streetViewButton: UIButton?

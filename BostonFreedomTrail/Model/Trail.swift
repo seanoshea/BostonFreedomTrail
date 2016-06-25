@@ -32,7 +32,7 @@ import Foundation
 
 import CoreLocation
 
-class Placemark {
+final class Placemark {
     var identifier: String = ""
     var name: String = ""
     var location: CLLocation = CLLocation()

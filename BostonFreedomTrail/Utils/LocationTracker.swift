@@ -32,7 +32,7 @@ import Foundation
 
 import CoreLocation
 
-class LocationTracker: NSObject {
+final class LocationTracker : NSObject {
 
     static let sharedInstance = LocationTracker()
     var currentLocation: CLLocation?

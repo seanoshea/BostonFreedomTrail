@@ -52,7 +52,7 @@ enum TrailParserConstants: String {
     case heading = "heading"
 }
 
-class TrailParser: NSObject, NSXMLParserDelegate {
+final class TrailParser: NSObject, NSXMLParserDelegate {
 
     var trail = Trail()
     var currentLocation: CLLocation?

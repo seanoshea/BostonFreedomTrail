@@ -43,7 +43,7 @@ enum TabBarControllerIndices: Int {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var reachability: Reachability?

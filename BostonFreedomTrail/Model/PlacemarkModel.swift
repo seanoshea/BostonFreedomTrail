@@ -30,7 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-class PlacemarkModel {
+final class PlacemarkModel {
 
     var placemark: Placemark?
 

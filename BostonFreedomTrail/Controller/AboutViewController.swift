@@ -32,7 +32,7 @@ import UIKit
 
 import GoogleMaps
 
-class AboutViewController: BaseViewController {
+final class AboutViewController: BaseViewController {
 
     @IBOutlet weak var developerLabel: AboutTitleLabel?
     @IBOutlet weak var developerDetailsLabel: AboutDetailsLabel?

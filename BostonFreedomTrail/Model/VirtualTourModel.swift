@@ -51,7 +51,7 @@ protocol VirtualTourModelDelegate:class {
     func navigateToCurrentPosition(model: VirtualTourModel)
 }
 
-class VirtualTourModel {
+final class VirtualTourModel {
     var tour: [CLLocation] = []
     var lookAts = [Int:Int]()
     var placemarkDemarkations = [Int:Int]()

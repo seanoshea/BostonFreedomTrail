@@ -35,7 +35,7 @@ enum VirtialTourButtonNames: String {
     case Play = "ic_play_circle_filled"
 }
 
-class VirtualTourPlayPauseButton: UIButton {
+final class VirtualTourPlayPauseButton: UIButton {
 
     required init?(coder aDecoder: NSCoder) {
         self.paused = true

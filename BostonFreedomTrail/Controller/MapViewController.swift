@@ -35,7 +35,7 @@ protocol MapViewControllerDelegate:class {
     func navigateToVirtualTourWithPlacemark(placemark: Placemark)
 }
 
-class MapViewController: BaseViewController {
+final class MapViewController: BaseViewController {
 
     var model: MapModel = MapModel()
     var mapView: GMSMapView?

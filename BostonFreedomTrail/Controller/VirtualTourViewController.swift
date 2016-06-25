@@ -33,7 +33,7 @@ import UIKit
 import GoogleMaps
 import TSMessages
 
-class VirtualTourViewController: BaseViewController {
+final class VirtualTourViewController: BaseViewController {
 
     var model: VirtualTourModel = VirtualTourModel()
     var panoView: GMSPanoramaView?

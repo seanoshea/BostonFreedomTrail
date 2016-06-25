@@ -32,7 +32,7 @@ import UIKit
 import ReachabilitySwift
 import TSMessages
 
-protocol ReachabilityListener {
+protocol ReachabilityListener:class {
     func registerListener()
     func reachabilityStatusChanged(online: Bool)
     func isOnline() -> Bool

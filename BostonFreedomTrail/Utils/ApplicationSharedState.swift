@@ -42,7 +42,7 @@ enum DefaultsKeys: String {
     case ApplicationSharedStateLastKnownCoordinateLongitude = "ApplicationSharedStateLastKnownCoordinateLongitude"
 }
 
-class ApplicationSharedState {
+final class ApplicationSharedState {
 
     static let sharedInstance = ApplicationSharedState()
 

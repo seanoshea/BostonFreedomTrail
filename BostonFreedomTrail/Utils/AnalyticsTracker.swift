@@ -51,7 +51,7 @@ enum AnalyticsLabels: String {
     case StreetViewPress = "street_view_press"
 }
 
-protocol AnalyticsTracker {
+protocol AnalyticsTracker:class {
     func getScreenTrackingName() -> String
     func trackButtonPressForPlacemark(placemark: Placemark, label: String)
 }
