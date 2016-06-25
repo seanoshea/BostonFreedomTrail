@@ -32,11 +32,11 @@ import Foundation
 
 import CoreLocation
 
-class LocationTracker : NSObject {
-    
+class LocationTracker: NSObject {
+
     static let sharedInstance = LocationTracker()
-    var currentLocation:CLLocation?
-    
+    var currentLocation: CLLocation?
+
     lazy var locationManager: CLLocationManager = {
         var manager = CLLocationManager.init()
         manager.delegate = LocationTracker.sharedInstance
@@ -46,14 +46,14 @@ class LocationTracker : NSObject {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         return manager
     }()
-    
+
     func startUpdatingLocation() {
         self.locationManager.startUpdatingLocation()
     }
 }
 
 extension LocationTracker : CLLocationManagerDelegate {
-    
+
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         LocationTracker.sharedInstance.currentLocation = locations.last
         if let lastKnownLocation = LocationTracker.sharedInstance.currentLocation {

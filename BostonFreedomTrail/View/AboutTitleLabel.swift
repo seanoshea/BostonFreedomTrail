@@ -30,31 +30,31 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
-enum AboutFontSizes : CGFloat {
+enum AboutFontSizes: CGFloat {
     case AboutTitle = 17.0
     case AboutDetails = 12.0
 }
 
-class AboutTitleLabel : UILabel {
-    
+class AboutTitleLabel: UILabel {
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.applyStyles()
     }
-    
+
     func applyStyles() {
         // TODO - font, kerning and color
         self.font = UIFont.systemFontOfSize(AboutFontSizes.AboutTitle.rawValue)
     }
 }
 
-class AboutDetailsLabel : AboutTitleLabel {
-    
+class AboutDetailsLabel: AboutTitleLabel {
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.applyStyles()
     }
-    
+
     override func applyStyles() {
         // TODO - font, kerning and color
         self.font = UIFont.systemFontOfSize(AboutFontSizes.AboutDetails.rawValue)

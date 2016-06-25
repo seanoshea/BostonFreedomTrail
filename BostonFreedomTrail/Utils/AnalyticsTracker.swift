@@ -30,22 +30,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-enum AnalyticsScreenNames : String {
+enum AnalyticsScreenNames: String {
     case AboutScreen = "AboutScreen"
     case MapScreen = "MapScreen"
     case PlacemarkScreen = "PlacemarkScreen"
     case VirtualTourScreen = "VirtualTourScreen"
 }
 
-enum AnalyticsEventCategories : String {
+enum AnalyticsEventCategories: String {
     case Action = "ui_action"
 }
 
-enum AnalyticsActions : String {
+enum AnalyticsActions: String {
     case ButtonPress = "button_press"
 }
 
-enum AnalyticsLabels : String {
+enum AnalyticsLabels: String {
     case MarkerPress = "marker_press"
     case InfoWindowPress = "info_window_press"
     case StreetViewPress = "street_view_press"
@@ -53,11 +53,11 @@ enum AnalyticsLabels : String {
 
 protocol AnalyticsTracker {
     func getScreenTrackingName() -> String
-    func trackButtonPressForPlacemark(placemark:Placemark, label:String)
+    func trackButtonPressForPlacemark(placemark: Placemark, label: String)
 }
 
 extension AnalyticsTracker where Self : UIViewController {
-    
+
     func trackScreenName() {
         if let tracker = GAI.sharedInstance().defaultTracker {
             let trackingName = self.getScreenTrackingName()
@@ -67,8 +67,8 @@ extension AnalyticsTracker where Self : UIViewController {
             tracker.send(builder.build() as [NSObject : AnyObject])
         }
     }
-    
-    func trackButtonPressForPlacemark(placemark:Placemark, label:String) {
+
+    func trackButtonPressForPlacemark(placemark: Placemark, label: String) {
         if let tracker = GAI.sharedInstance().defaultTracker {
             let parameters = GAIDictionaryBuilder.createEventWithCategory(AnalyticsEventCategories.Action.rawValue, action:AnalyticsActions.ButtonPress.rawValue, label:AnalyticsLabels.InfoWindowPress.rawValue, value: Int(placemark.identifier)).build()
             tracker.send(parameters as [NSObject : AnyObject])

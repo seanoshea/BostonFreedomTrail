@@ -31,9 +31,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import Foundation
 
 class PlacemarkModel {
-    
-    var placemark:Placemark?
-    
+
+    var placemark: Placemark?
+
     func stringForWebView() -> String {
         var returnString = ""
         if let htmlString = NSBundle.mainBundle().pathForResource("placemark", ofType: "html") {
@@ -41,11 +41,11 @@ class PlacemarkModel {
                 do {
                     returnString = try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: NSUTF8StringEncoding), description) as String
                 } catch (_) {
-                    
+
                 }
             }
         }
         return returnString
     }
-    
+
 }

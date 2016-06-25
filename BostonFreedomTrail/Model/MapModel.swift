@@ -33,10 +33,10 @@ import Foundation
 import GoogleMaps
 
 class MapModel {
-    
-    func addPlacemarksToMap(mapView:GMSMapView) -> [GMSMarker] {
+
+    func addPlacemarksToMap(mapView: GMSMapView) -> [GMSMarker] {
         var markers = [GMSMarker]()
-        for placemark:Placemark in Trail.instance.placemarks {
+        for placemark: Placemark in Trail.instance.placemarks {
             let marker = GMSMarker()
             marker.userData = placemark
             marker.position = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude)
@@ -47,11 +47,11 @@ class MapModel {
         }
         return markers
     }
-    
-    func addPathToMap(mapView:GMSMapView) {
+
+    func addPathToMap(mapView: GMSMapView) {
         let path = GMSMutablePath()
-        for placemark:Placemark in Trail.instance.placemarks {
-            for location:CLLocation in placemark.coordinates {
+        for placemark: Placemark in Trail.instance.placemarks {
+            for location: CLLocation in placemark.coordinates {
                 path.addLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
             }
         }
@@ -60,7 +60,7 @@ class MapModel {
         polyline.strokeWidth = 3.0
         polyline.map = mapView
     }
-    
+
     func zoomForMap() -> Float {
         var zoom = ApplicationSharedState.sharedInstance.cameraZoom
         if zoom <= 0 {
@@ -68,7 +68,7 @@ class MapModel {
         }
         return zoom
     }
-    
+
     func lastKnownCoordinate() -> CLLocationCoordinate2D {
         var lastKnownCoordinate = ApplicationSharedState.sharedInstance.lastKnownCoordinate
         if lastKnownCoordinate.latitude == 0.0 && lastKnownCoordinate.longitude == 0.0 {

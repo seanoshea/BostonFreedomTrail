@@ -32,7 +32,7 @@ import Foundation
 
 import GoogleMaps
 
-enum DefaultsKeys : String {
+enum DefaultsKeys: String {
     case ApplicationSharedStateCameraZoom = "ApplicationSharedStateCameraZoom"
     case ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude"
     case ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude"
@@ -43,10 +43,10 @@ enum DefaultsKeys : String {
 }
 
 class ApplicationSharedState {
-    
+
     static let sharedInstance = ApplicationSharedState()
-    
-    var cameraZoom:Float {
+
+    var cameraZoom: Float {
         set {
             guard newValue > kGMSMinZoomLevel && newValue < kGMSMaxZoomLevel else {
                 return
@@ -57,8 +57,8 @@ class ApplicationSharedState {
             return NSUserDefaults.standardUserDefaults().floatForKey(DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue) ?? PListHelper.defaultCameraZoom()
         }
     }
-    
-    var lastKnownPlacemarkCoordinate:CLLocationCoordinate2D {
+
+    var lastKnownPlacemarkCoordinate: CLLocationCoordinate2D {
         set {
             NSUserDefaults.standardUserDefaults().setDouble(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
             NSUserDefaults.standardUserDefaults().setDouble(newValue.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
@@ -69,8 +69,8 @@ class ApplicationSharedState {
             return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
         }
     }
-    
-    var lastKnownCoordinate:CLLocationCoordinate2D {
+
+    var lastKnownCoordinate: CLLocationCoordinate2D {
         set {
             NSUserDefaults.standardUserDefaults().setDouble(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
             NSUserDefaults.standardUserDefaults().setDouble(newValue.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
@@ -81,8 +81,8 @@ class ApplicationSharedState {
             return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
         }
     }
-    
-    var lastKnownLocation:CLLocation {
+
+    var lastKnownLocation: CLLocation {
         set {
             NSUserDefaults.standardUserDefaults().setDouble(newValue.coordinate.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
             NSUserDefaults.standardUserDefaults().setDouble(newValue.coordinate.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
@@ -93,7 +93,7 @@ class ApplicationSharedState {
             return CLLocation.init(latitude:latitude, longitude:longitude)
         }
     }
-    
+
     func isDebug() -> Bool {
         #if DEBUG
             return true
@@ -101,7 +101,7 @@ class ApplicationSharedState {
             return false
         #endif
     }
-    
+
     func clear() {
         NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
         NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)

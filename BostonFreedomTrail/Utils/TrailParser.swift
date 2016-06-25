@@ -32,7 +32,7 @@ import Foundation
 
 import CoreLocation
 
-enum TrailParserConstants : String {
+enum TrailParserConstants: String {
     case trail = "trail"
     case kml = "kml"
     case folder = "Folder"
@@ -52,10 +52,10 @@ enum TrailParserConstants : String {
     case heading = "heading"
 }
 
-class TrailParser : NSObject, NSXMLParserDelegate {
- 
+class TrailParser: NSObject, NSXMLParserDelegate {
+
     var trail = Trail()
-    var currentLocation:CLLocation?
+    var currentLocation: CLLocation?
 
     var startFolder = false
     var startPlacemark = false
@@ -71,15 +71,15 @@ class TrailParser : NSObject, NSXMLParserDelegate {
     var startLongitude = false
     var startTilt = false
     var startHeading = false
-    
-    var currentIdentifier:String?
-    var currentName:String?
-    var currentLineCoordinates:String?
-    var currentDescription:String?
-    var currentLatitude:String?
-    var currentLongitude:String?
-    var currentTilt:String?
-    var currentHeading:String?
+
+    var currentIdentifier: String?
+    var currentName: String?
+    var currentLineCoordinates: String?
+    var currentDescription: String?
+    var currentLatitude: String?
+    var currentLongitude: String?
+    var currentTilt: String?
+    var currentHeading: String?
 
     func parseTrail() -> Trail {
         let path = NSBundle.mainBundle().pathForResource(TrailParserConstants.trail.rawValue, ofType: TrailParserConstants.kml.rawValue)
@@ -88,7 +88,7 @@ class TrailParser : NSObject, NSXMLParserDelegate {
         parser.parse()
         return trail
     }
-    
+
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         switch elementName {
         case TrailParserConstants.folder.rawValue:
@@ -138,7 +138,7 @@ class TrailParser : NSObject, NSXMLParserDelegate {
             break
         }
     }
-    
+
     func parser(parser: NSXMLParser, foundCharacters string: String) {
         if startFolder {
             if startName {
@@ -165,7 +165,7 @@ class TrailParser : NSObject, NSXMLParserDelegate {
             }
         }
     }
-    
+
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         switch elementName {
         case TrailParserConstants.folder.rawValue:
@@ -213,7 +213,7 @@ class TrailParser : NSObject, NSXMLParserDelegate {
             break
         }
     }
-    
+
     func parseLineCoordinates() -> [CLLocation] {
         var path = [CLLocation]()
         guard currentLineCoordinates != nil else { return path }
@@ -225,11 +225,11 @@ class TrailParser : NSObject, NSXMLParserDelegate {
         }
         return path
     }
-    
+
     func parseLookAt() -> LookAt? {
         guard hasLookAt else { return nil }
-        let latitude:Double = Double(currentLatitude!)!
-        let longitude:Double = Double(currentLongitude!)!
+        let latitude: Double = Double(currentLatitude!)!
+        let longitude: Double = Double(currentLongitude!)!
         let tilt = Double(currentTilt!)!
         let heading = Double(currentHeading!)!
         return LookAt.init(latitude:latitude, longitude:longitude, tilt:tilt, heading:heading)

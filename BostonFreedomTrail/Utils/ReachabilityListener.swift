@@ -34,12 +34,12 @@ import TSMessages
 
 protocol ReachabilityListener {
     func registerListener()
-    func reachabilityStatusChanged(online:Bool)
+    func reachabilityStatusChanged(online: Bool)
     func isOnline() -> Bool
 }
 
 extension ReachabilityListener where Self : UIViewController {
-    
+
     func registerListener() {
         guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return }
         appDelegate.reachability?.whenReachable = { reachability in
@@ -53,20 +53,20 @@ extension ReachabilityListener where Self : UIViewController {
             }
         }
     }
-    
+
     func reachabilityChanged(note: NSNotification) {
         guard let reachability = note.object as? Reachability else { return }
         self.reachabilityStatusChanged(reachability.isReachable())
     }
-    
-    func reachabilityStatusChanged(online:Bool) {
+
+    func reachabilityStatusChanged(online: Bool) {
         if online {
             TSMessage.showNotificationWithTitle("Back Online", type: TSMessageNotificationType.Success)
         } else {
             TSMessage.showNotificationWithTitle("Check your network settings to get back online", type: TSMessageNotificationType.Warning)
         }
     }
-    
+
     func isOnline() -> Bool {
         guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return false }
         return appDelegate.isOnline()
