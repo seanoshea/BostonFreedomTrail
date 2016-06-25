@@ -69,6 +69,7 @@ extension ReachabilityListener where Self : UIViewController {
 
     func isOnline() -> Bool {
         guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return false }
-        return appDelegate.isOnline()
+        guard let reachability = appDelegate.reachability else { return false }
+        return reachability.isReachable()
     }
 }

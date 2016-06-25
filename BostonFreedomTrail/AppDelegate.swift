@@ -59,14 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func isOnline() -> Bool {
-        var isOnline = false
-        if let unwrappedReachability = self.reachability {
-            isOnline = unwrappedReachability.isReachable()
-        }
-        return isOnline
-    }
-
     func initializeGoogleMapsApi() {
         GMSServices.provideAPIKey(PListHelper.googleMapsApiKey())
     }
