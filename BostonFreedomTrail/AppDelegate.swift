@@ -55,7 +55,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initializeReachability()
         self.initializeLocalization()
         self.initializeAnalytics()
-        self.initializeDelegates()
         return true
     }
 
@@ -68,7 +67,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func initializeStyling() {
-
+        // TODO: Styling
     }
 
     func initializeReachability() {
@@ -120,15 +119,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func initializeCrashReporting() {
+        // only bother with crash reporting for prod builds
+        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
         Fabric.with([Crashlytics.self])
-    }
-
-    func initializeDelegates() {
-        guard let window = self.window else { return }
-        guard let tabBarController = window.rootViewController as? UITabBarController else { return }
-        guard let viewControllers = tabBarController.viewControllers else { return }
-        guard let mapViewController = viewControllers[TabBarControllerIndices.MapViewController.rawValue] as? MapViewController else { return }
-        mapViewController.delegate = self
     }
 }
 

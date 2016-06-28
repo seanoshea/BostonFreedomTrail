@@ -45,8 +45,9 @@ final class MapViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        createMapView()
-        setupPlacemarks()
+        self.initializeDelegate()
+        self.createMapView()
+        self.setupPlacemarks()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -87,6 +88,11 @@ final class MapViewController: BaseViewController {
     func setupPlacemarks() {
         self.model.addPlacemarksToMap(self.mapView!)
         self.model.addPathToMap(self.mapView!)
+    }
+    
+    func initializeDelegate() {
+        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return }
+        self.delegate = appDelegate
     }
 }
 
