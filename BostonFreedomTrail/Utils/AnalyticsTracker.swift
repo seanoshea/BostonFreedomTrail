@@ -74,4 +74,11 @@ extension AnalyticsTracker where Self : UIViewController {
             tracker.send(parameters as [NSObject : AnyObject])
         }
     }
+    
+    func trackNonFatalErrorMessage(errorMessage:String) {
+        if let tracker = GAI.sharedInstance().defaultTracker {
+            let parameters = GAIDictionaryBuilder.createExceptionWithDescription(errorMessage, withFatal:0).build()
+            tracker.send(parameters as [NSObject : AnyObject])
+        }
+    }
 }

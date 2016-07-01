@@ -185,18 +185,3 @@ extension VirtualTourViewController : VirtualTourModelDelegate {
         self.postDispatchAction(self.model.nextLocation(), force:true)
     }
 }
-
-extension GMSPanoramaView {
-    func logLocation() {
-        if let pano = self.panorama {
-            pano.coordinate.logCoordinate()
-        }
-    }
-}
-
-extension GMSPanoramaCamera {
-    func logLocation() {
-        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
-        NSLog("Heading: %.10f, Pitch: %.10f", self.orientation.heading, self.orientation.pitch)
-    }
-}

@@ -52,9 +52,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initializeCrashReporting()
         self.initializeGoogleMapsApi()
         self.initializeStyling()
+        self.initializeAnalytics()
         self.initializeReachability()
         self.initializeLocalization()
-        self.initializeAnalytics()
         return true
     }
 

@@ -129,6 +129,8 @@ extension MapViewController : PlacemarkViewControllerDelegate {
     func streetViewButtonPressedForPlacemark(placemark: Placemark) {
         if let delegate = self.delegate {
             delegate.navigateToVirtualTourWithPlacemark(placemark)
+        } else {
+            self.trackNonFatalErrorMessage("No delegate for allowing the user navigate to street view from a placemark view")
         }
     }
 }
@@ -144,12 +146,5 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
 
     func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-}
-
-extension CLLocationCoordinate2D {
-    func logCoordinate() {
-        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
-        NSLog("%.10f,%.10f,0.0", self.longitude, self.latitude)
     }
 }
