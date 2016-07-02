@@ -35,17 +35,12 @@ final class PlacemarkModel {
     var placemark: Placemark?
 
     func stringForWebView() -> String {
-        var returnString = ""
-        if let htmlString = NSBundle.mainBundle().pathForResource("placemark", ofType: "html") {
-            if let description = self.placemark?.placemarkDescription {
-                do {
-                    returnString = try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: NSUTF8StringEncoding), description) as String
-                } catch (_) {
-
-                }
-            }
+        guard let htmlString = NSBundle.mainBundle().pathForResource(ResourceConstants.PlacemarkIdentifier.rawValue, ofType: "html") else { return "" }
+        guard let description = self.placemark?.placemarkDescription else { return "" }
+        do {
+            return try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: NSUTF8StringEncoding), description) as String
+        } catch (_) {
+            return ""
         }
-        return returnString
     }
-
 }
