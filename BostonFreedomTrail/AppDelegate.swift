@@ -47,7 +47,9 @@ enum TabBarControllerIndices: Int {
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    /// Main window for the app.
     var window: UIWindow?
+    /// Allows the app understand whether the user is online of offline.
     var reachability: Reachability?
 
 // MARK: Lifecycle
@@ -139,7 +141,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 /// Allows a `PlacemarkViewController` to tell the delegate to navigate to the virtual tour section of the app.
 extension AppDelegate : MapViewControllerDelegate {
-
+    /**
+     Executed when navigating to the virtual tour screen.
+     - parameter placemark: The `Placemark` to land on after switching to the virtual tour.
+     */
     func navigateToVirtualTourWithPlacemark(placemark: Placemark) {
         guard let window = self.window else { return }
         guard let tabBarController = window.rootViewController as? UITabBarController else { return }

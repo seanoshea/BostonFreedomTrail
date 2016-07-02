@@ -31,14 +31,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 import GoogleMaps
 
+/// Delegate for the `MapViewController`
 protocol MapViewControllerDelegate:class {
+    /**
+     Executed when navigating to the virtual tour screen.
+     - parameter placemark: The `Placemark` to land on after switching to the virtual tour.
+     */
     func navigateToVirtualTourWithPlacemark(placemark: Placemark)
 }
 
+/// View Controller class for presenting the map of Boston to the user.
 final class MapViewController: BaseViewController {
 
+    /// Basic business logic for the `MapViewController`
     var model: MapModel = MapModel()
+    /// The view which dominates the `MapViewController`
     var mapView: GMSMapView?
+    /// Delegate for the `MapViewController`
     weak var delegate: MapViewControllerDelegate?
 
 // MARK: Lifecycle
@@ -71,6 +80,7 @@ final class MapViewController: BaseViewController {
 
 // MARK: Private Functions
 
+    /// Initializes the `mapView` and configures properties on it to make sure it displays correctly.
     func createMapView() {
         let lastKnownCoordinate = self.model.lastKnownCoordinate()
         let camera = GMSCameraPosition.cameraWithLatitude(lastKnownCoordinate.latitude, longitude:lastKnownCoordinate.longitude, zoom:self.model.zoomForMap())
