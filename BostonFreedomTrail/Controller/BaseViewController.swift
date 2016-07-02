@@ -32,11 +32,15 @@ import UIKit
 
 class BaseViewController: UIViewController, ReachabilityListener, AnalyticsTracker {
 
+// MARK: Lifecycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.registerListener()
     }
 
+// MARK: Analytics
+    
     func getScreenTrackingName() -> String {
         return ""
     }

@@ -32,15 +32,24 @@ import UIKit
 
 import GoogleMaps
 
+/// View Controller class for the About Screen.
 final class AboutViewController: BaseViewController {
 
+    /// A title label for developer details
     @IBOutlet weak var developerLabel: AboutTitleLabel?
+    /// Information label for the developer details
     @IBOutlet weak var developerDetailsLabel: AboutDetailsLabel?
+    /// A title label for designer details
     @IBOutlet weak var designerLabel: AboutTitleLabel?
+    /// Information label for the designer details
     @IBOutlet weak var designerDetailsLabel: AboutDetailsLabel?
+    /// A title label for trail details
     @IBOutlet weak var trailInformationLabel: AboutTitleLabel?
+    /// Information label for the trail details
     @IBOutlet weak var trailInformationDetailsLabel: AboutDetailsLabel?
+    /// A title label for Google Maps details
     @IBOutlet weak var googleMapsLabel: AboutTitleLabel?
+    /// Information label for the Google Maps legalese
     @IBOutlet weak var googleMapsDetailsLabel: AboutDetailsLabel?
 
 // MARK: Lifecycle
@@ -58,6 +67,7 @@ final class AboutViewController: BaseViewController {
 
 // MARK: Private Functions
 
+    /// Ensures that the labels on this screen are localized and fully filled in.
     func localizeLabels() {
         self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
         self.developerDetailsLabel!.text = NSLocalizedString("Developed by Sean O'Shea", comment: "")

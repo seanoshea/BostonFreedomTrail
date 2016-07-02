@@ -30,11 +30,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
+/// A few constants for font sizes for the About Screen.
 enum AboutFontSizes: CGFloat {
     case AboutTitle = 17.0
     case AboutDetails = 12.0
 }
 
+/// Customized title label for the About Screen.
 class AboutTitleLabel: UILabel {
 
     required init?(coder aDecoder: NSCoder) {
@@ -42,12 +44,14 @@ class AboutTitleLabel: UILabel {
         self.applyStyles()
     }
 
+    /// Ensures that the appropriate styles are set on the label.
     func applyStyles() {
         // TODO - font, kerning and color
         self.font = UIFont.systemFontOfSize(AboutFontSizes.AboutTitle.rawValue)
     }
 }
 
+/// Customized details label for the About Screen.
 class AboutDetailsLabel: AboutTitleLabel {
 
     required init?(coder aDecoder: NSCoder) {
@@ -55,6 +59,7 @@ class AboutDetailsLabel: AboutTitleLabel {
         self.applyStyles()
     }
 
+    /// Ensures that the appropriate styles are set on the label.
     override func applyStyles() {
         // TODO - font, kerning and color
         self.font = UIFont.systemFontOfSize(AboutFontSizes.AboutDetails.rawValue)
