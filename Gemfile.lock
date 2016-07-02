@@ -221,7 +221,7 @@ GEM
     representable (2.3.0)
       uber (~> 0.0.7)
     retriable (2.1.0)
-    rouge (1.10.1)
+    rouge (1.11.1)
     rubyzip (1.1.7)
     sass (3.4.22)
     scan (0.8.0)
