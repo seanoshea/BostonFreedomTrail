@@ -13,6 +13,7 @@ GITHUB=https://github.com/seanoshea/BostonFreedomTrail
 bundle exec jazzy \
   --config .jazzy.json \
   --clean \
+  --min-acl private \
   --output "$OUTPUT_PATH" \
   --module-version "$BRANCH" \
   --github_url "$GITHUB" \
