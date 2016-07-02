@@ -40,6 +40,7 @@
 		41D0F4EE1C53E64A00FCAB17 /* ApplicationSharedStateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */; };
 		41D0F4EF1C53E64A00FCAB17 /* PListHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415095431C4DA11C00681F82 /* PListHelperSpec.swift */; };
 		41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41691D211C4C0034009A03B3 /* TrailParserSpec.swift */; };
+		41D527E91D25EB6C005B8D5E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D527E81D25EB6C005B8D5E /* Extensions.swift */; };
 		41D8574E1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8574D1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift */; };
 		41DE05E21C5515B0008AFCA5 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */; };
 		41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */; };
@@ -101,6 +102,7 @@
 		41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedState.swift; sourceTree = "<group>"; };
 		41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedStateSpec.swift; sourceTree = "<group>"; };
 		41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		41D527E81D25EB6C005B8D5E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		41D8574D1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourPlayPauseButton.swift; sourceTree = "<group>"; };
 		41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracker.swift; sourceTree = "<group>"; };
 		41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackerSpec.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */,
 				41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */,
 				41E1C3701C525B670009570C /* Constants.swift */,
+				41D527E81D25EB6C005B8D5E /* Extensions.swift */,
 				41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */,
 				410AFEE61C4D9B0F007DF354 /* PListHelper.swift */,
 				4157BFE01C8C72E2009CDF0F /* ReachabilityListener.swift */,
@@ -554,6 +557,7 @@
 				41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */,
 				41D8574E1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift in Sources */,
 				41E1C3711C525B670009570C /* Constants.swift in Sources */,
+				41D527E91D25EB6C005B8D5E /* Extensions.swift in Sources */,
 				417758001CB9E8C0008294C8 /* AnalyticsTracker.swift in Sources */,
 				41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */,
 				41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */,

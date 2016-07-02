@@ -32,8 +32,8 @@ import UIKit
 
 import GoogleMaps
 
-class AboutViewController : BaseViewController {
-  
+final class AboutViewController: BaseViewController {
+
     @IBOutlet weak var developerLabel: AboutTitleLabel?
     @IBOutlet weak var developerDetailsLabel: AboutDetailsLabel?
     @IBOutlet weak var designerLabel: AboutTitleLabel?
@@ -42,22 +42,22 @@ class AboutViewController : BaseViewController {
     @IBOutlet weak var trailInformationDetailsLabel: AboutDetailsLabel?
     @IBOutlet weak var googleMapsLabel: AboutTitleLabel?
     @IBOutlet weak var googleMapsDetailsLabel: AboutDetailsLabel?
-    
+
 // MARK: Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.localizeLabels()
     }
 
 // MARK: Analytics
-    
+
     override func getScreenTrackingName() -> String {
         return AnalyticsScreenNames.AboutScreen.rawValue
     }
-    
+
 // MARK: Private Functions
-    
+
     func localizeLabels() {
         self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
         self.developerDetailsLabel!.text = NSLocalizedString("Developed by Sean O'Shea", comment: "")

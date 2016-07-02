@@ -30,13 +30,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
-class BaseViewController : UIViewController, ReachabilityListener, AnalyticsTracker {
-    
+class BaseViewController: UIViewController, ReachabilityListener, AnalyticsTracker {
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.registerListener()
     }
-    
+
     func getScreenTrackingName() -> String {
         return ""
     }

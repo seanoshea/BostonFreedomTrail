@@ -32,23 +32,24 @@ import UIKit
 import GoogleMaps
 
 protocol MapViewControllerDelegate:class {
-    func navigateToVirtualTourWithPlacemark(placemark:Placemark)
+    func navigateToVirtualTourWithPlacemark(placemark: Placemark)
 }
 
-class MapViewController : BaseViewController {
-    
-    var model:MapModel = MapModel()
-    var mapView:GMSMapView?
-    weak var delegate:MapViewControllerDelegate?
+final class MapViewController: BaseViewController {
+
+    var model: MapModel = MapModel()
+    var mapView: GMSMapView?
+    weak var delegate: MapViewControllerDelegate?
 
 // MARK: Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        createMapView()
-        setupPlacemarks()
+        self.initializeDelegate()
+        self.createMapView()
+        self.setupPlacemarks()
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == NSComparisonResult.OrderedSame {
@@ -63,18 +64,18 @@ class MapViewController : BaseViewController {
     }
 
 // MARK: Analytics
-    
+
     override func getScreenTrackingName() -> String {
         return AnalyticsScreenNames.MapScreen.rawValue
     }
 
 // MARK: Private Functions
-    
+
     func createMapView() {
         let lastKnownCoordinate = self.model.lastKnownCoordinate()
         let camera = GMSCameraPosition.cameraWithLatitude(lastKnownCoordinate.latitude, longitude:lastKnownCoordinate.longitude, zoom:self.model.zoomForMap())
-        let mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
-        mapView.padding = UIEdgeInsetsMake(0.0, 5.0, 48.0, 0.0)
+        let mapView = GMSMapView.mapWithFrame(CGRect.zero, camera:camera)
+        mapView.padding = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 48.0, right: 0.0)
         mapView.indoorEnabled = false
         mapView.myLocationEnabled = true
         mapView.settings.myLocationButton = true
@@ -83,67 +84,67 @@ class MapViewController : BaseViewController {
         self.mapView = mapView
         self.view = self.mapView
     }
-    
+
     func setupPlacemarks() {
         self.model.addPlacemarksToMap(self.mapView!)
         self.model.addPathToMap(self.mapView!)
     }
+    
+    func initializeDelegate() {
+        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return }
+        self.delegate = appDelegate
+    }
 }
 
 extension MapViewController : GMSMapViewDelegate {
-    
+
     func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
         if position.zoom > 0.0 {
             ApplicationSharedState.sharedInstance.cameraZoom = position.zoom
         }
         ApplicationSharedState.sharedInstance.lastKnownCoordinate = position.target
     }
-    
+
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
         guard let userData = marker.userData as? Placemark else { return false }
         self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.MarkerPress.rawValue)
         return false
     }
-    
+
     func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
         guard let userData = marker.userData as? Placemark else { return }
         self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.InfoWindowPress.rawValue)
         self.performSegueWithIdentifier(SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
     }
-    
+
     func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
         coordinate.logCoordinate()
     }
 }
 
 extension MapViewController : PlacemarkViewControllerDelegate {
-    
+
     func streetViewButtonPressedForPlacemark(placemark: Placemark) {
         if let delegate = self.delegate {
             delegate.navigateToVirtualTourWithPlacemark(placemark)
+        } else {
+            self.trackNonFatalErrorMessage("No delegate for allowing the user navigate to street view from a placemark view")
         }
     }
 }
 
 extension MapViewController : UIPopoverPresentationControllerDelegate {
-    
+
     func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
         let doneButton = UIBarButtonItem(title:NSLocalizedString("Done", comment: ""), style:.Done, target:self, action:#selector(dismiss))
         let navigationController = UINavigationController(rootViewController: controller.presentedViewController)
         navigationController.topViewController!.navigationItem.leftBarButtonItem = doneButton
         return navigationController
     }
-    
+
     func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-}
-
-extension CLLocationCoordinate2D {
-    
-    func logCoordinate() {
-        NSLog("%.10f,%.10f,0.0", self.longitude, self.latitude)
     }
 }

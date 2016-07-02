@@ -31,66 +31,66 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 
 protocol PlacemarkViewControllerDelegate:class {
-    func streetViewButtonPressedForPlacemark(placemark:Placemark)
+    func streetViewButtonPressedForPlacemark(placemark: Placemark)
 }
 
-class PlacemarkViewController : BaseViewController {
-    
+final class PlacemarkViewController: BaseViewController {
+
     @IBOutlet weak var webView: UIWebView?
     @IBOutlet weak var streetViewButton: UIButton?
 
-    var model:PlacemarkModel?
-    weak var delegate:PlacemarkViewControllerDelegate?
-    
+    var model: PlacemarkModel?
+    weak var delegate: PlacemarkViewControllerDelegate?
+
 // MARK: Lifecycle
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.model = PlacemarkModel.init()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
         self.loadPlacemarkInformation()
         self.title = self.model?.placemark?.name
     }
-    
+
 // MARK: IBActions
-    
+
     @IBAction func streetViewButtonPressed(sender: UIButton) {
-        if let delegate = self.delegate {
-            // TODO: Analytics
-            if let placemark = self.model?.placemark {
-                self.trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.StreetViewPress.rawValue)
-                delegate.streetViewButtonPressedForPlacemark(placemark)
-            }
+        guard let delegate = self.delegate else { return }
+        if let placemark = self.model?.placemark {
+            self.trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.StreetViewPress.rawValue)
+            delegate.streetViewButtonPressedForPlacemark(placemark)
+        } else {
+            self.trackNonFatalErrorMessage("Street View Button Pressed, but no placemark associated with model")
         }
         self.dismissViewControllerAnimated(true) { () -> Void in
-            
+
         }
     }
-    
+
 // MARK: Analytics
-    
+
     override func getScreenTrackingName() -> String {
         return AnalyticsScreenNames.PlacemarkScreen.rawValue
     }
-    
+
 // MARK: Online/Offline
-    
+
     func reachabilityStatusChanged(online: Bool) {
         super.reachabilityStatusChanged(online)
         self.streetViewButton?.enabled = online
     }
-    
+
 // MARK: Private Functions
-    
+
     func configureView() {
         // only bother showing the street view button if there is a LookAt associated with this placemark.
         self.streetViewButton?.hidden = self.model?.placemark?.lookAt == nil
     }
-    
+
     func loadPlacemarkInformation() {
         self.webView?.delegate = self
         self.webView?.loadHTMLString((self.model?.stringForWebView())!, baseURL: nil)
@@ -98,5 +98,5 @@ class PlacemarkViewController : BaseViewController {
 }
 
 extension PlacemarkViewController : UIWebViewDelegate {
-    
+
 }

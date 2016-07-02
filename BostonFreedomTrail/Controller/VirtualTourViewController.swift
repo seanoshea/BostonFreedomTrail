@@ -33,34 +33,34 @@ import UIKit
 import GoogleMaps
 import TSMessages
 
-class VirtualTourViewController : BaseViewController {
-    
-    var model:VirtualTourModel = VirtualTourModel()
-    var panoView:GMSPanoramaView?
+final class VirtualTourViewController: BaseViewController {
+
+    var model: VirtualTourModel = VirtualTourModel()
+    var panoView: GMSPanoramaView?
     @IBOutlet weak var playPauseButton: VirtualTourPlayPauseButton?
 
 // MARK: Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.model.delegate = self
         let firstPlacemark = self.model.firstPlacemark()
         self.addPanoramaView(CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude))
     }
-    
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.model.setupTour()
         self.playPauseButton?.enabled = self.isOnline()
     }
-    
+
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         self.model.pauseTour()
     }
-    
+
 // MARK: IBActions
-    
+
     @IBAction func pressedOnPlayPauseButton(sender: UIButton) {
         self.model.togglePlayPause()
         switch self.model.currentTourState {
@@ -75,15 +75,15 @@ class VirtualTourViewController : BaseViewController {
         }
         self.playPauseButton?.paused = !self.model.tourIsRunning()
     }
-    
+
 // MARK: Analytics
-    
+
     override func getScreenTrackingName() -> String {
         return AnalyticsScreenNames.VirtualTourScreen.rawValue
     }
 
 // MARK: Online/Offline
-    
+
     func reachabilityStatusChanged(online: Bool) {
         super.reachabilityStatusChanged(online)
         if online {
@@ -93,10 +93,10 @@ class VirtualTourViewController : BaseViewController {
             self.model.pauseTour()
         }
     }
-    
+
 // MARK: Private Functions
-    
-    func addPanoramaView(panoramaNear:CLLocationCoordinate2D) {
+
+    func addPanoramaView(panoramaNear: CLLocationCoordinate2D) {
         let panoView = GMSPanoramaView.panoramaWithFrame(self.view.frame, nearCoordinate:panoramaNear)
         panoView.navigationLinksHidden = true
         panoView.delegate = self
@@ -104,17 +104,17 @@ class VirtualTourViewController : BaseViewController {
         panoView.addSubview(self.playPauseButton!)
         self.panoView = panoView
     }
-    
+
     func startTour() {
         let firstTourLocation = self.model.startTour()
         self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(firstTourLocation.coordinate.latitude, firstTourLocation.coordinate.longitude))
     }
-    
-    func cameraPositionForNextLocation(nextLocation:CLLocation) -> GMSPanoramaCamera {
+
+    func cameraPositionForNextLocation(nextLocation: CLLocation) -> GMSPanoramaCamera {
         var pitch = 0.0
-        var heading:CLLocationDirection?
+        var heading: CLLocationDirection?
         if self.model.atLookAtLocation() {
-            let lookAt:LookAt = self.model.lookAtForCurrentLocation()!
+            let lookAt: LookAt = self.model.lookAtForCurrentLocation()!
             pitch = lookAt.tilt
             heading = lookAt.heading
         } else {
@@ -122,16 +122,16 @@ class VirtualTourViewController : BaseViewController {
         }
         return GMSPanoramaCamera.init(heading:heading!, pitch:pitch, zoom:1)
     }
-    
-    func shouldEnqueueNextLocationForPanorama(panorama:GMSPanorama?) -> Bool {
+
+    func shouldEnqueueNextLocationForPanorama(panorama: GMSPanorama?) -> Bool {
         return self.model.tourIsRunning()
     }
-    
-    func postDispatchAction(nextLocation:CLLocation) {
+
+    func postDispatchAction(nextLocation: CLLocation) {
         self.postDispatchAction(nextLocation, force:false)
     }
-    
-    func postDispatchAction(nextLocation:CLLocation, force:Bool) {
+
+    func postDispatchAction(nextLocation: CLLocation, force: Bool) {
         if self.model.tourIsRunning() || force {
             if self.isOnline() {
                 self.repositionPanoViewForNextLocation(nextLocation)
@@ -145,8 +145,8 @@ class VirtualTourViewController : BaseViewController {
             self.model.reverseLocation()
         }
     }
-    
-    func repositionPanoViewForNextLocation(nextLocation:CLLocation) {
+
+    func repositionPanoViewForNextLocation(nextLocation: CLLocation) {
         if self.model.hasAdvancedPastFirstLocation() {
             let newCamera = self.cameraPositionForNextLocation(nextLocation)
             self.panoView?.animateToCamera(newCamera, animationDuration: VirtualTourStopStopDuration.CameraRepositionAnimation.rawValue)
@@ -156,8 +156,8 @@ class VirtualTourViewController : BaseViewController {
             }
         }
     }
-    
-    func advanceToNextLocation(delayTime:dispatch_time_t) {
+
+    func advanceToNextLocation(delayTime: dispatch_time_t) {
         unowned let unownedSelf: VirtualTourViewController = self
         dispatch_after(self.model.delayTime(), dispatch_get_main_queue()) {
             unownedSelf.postDispatchAction(unownedSelf.model.nextLocation())
@@ -166,13 +166,13 @@ class VirtualTourViewController : BaseViewController {
 }
 
 extension VirtualTourViewController : GMSPanoramaViewDelegate {
-    
+
     func panoramaView(view: GMSPanoramaView, didMoveToPanorama panorama: GMSPanorama?) {
         if self.shouldEnqueueNextLocationForPanorama(panorama) {
             self.advanceToNextLocation(self.model.delayTime())
         }
     }
-    
+
     func panoramaView(panoramaView: GMSPanoramaView, didMoveCamera camera: GMSPanoramaCamera) {
         panoramaView.logLocation()
         camera.logLocation()
@@ -180,22 +180,8 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
 }
 
 extension VirtualTourViewController : VirtualTourModelDelegate {
-    
+
     func navigateToCurrentPosition(model: VirtualTourModel) {
         self.postDispatchAction(self.model.nextLocation(), force:true)
-    }
-}
-
-extension GMSPanoramaView {
-    func logLocation() {
-        if let pano = self.panorama {
-            pano.coordinate.logCoordinate()
-        }
-    }
-}
-
-extension GMSPanoramaCamera {
-    func logLocation() {
-        NSLog("Heading: %.10f, Pitch: %.10f", self.orientation.heading, self.orientation.pitch)
     }
 }

@@ -30,19 +30,19 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-enum PListHelperConstants : String {
+enum PListHelperConstants: String {
     case BostonFreedomTrailGoogleMapAPIKey = "BostonFreedomTrailGoogleMapAPIKey"
     case BostonFreedomTrailDefaultLatitude = "BostonFreedomTrailDefaultLatitude"
     case BostonFreedomTrailDefaultLongitude = "BostonFreedomTrailDefaultLongitude"
     case BostonFreedomTrailDefaultCameraZoom = "BostonFreedomTrailDefaultCameraZoom"
 }
 
-class PListHelper {
-    
+struct PListHelper {
+
     static func googleMapsApiKey() -> String {
         return (self.plistDictionary()[PListHelperConstants.BostonFreedomTrailGoogleMapAPIKey.rawValue] as? String)!
     }
-    
+
     static func defaultLatitude() -> Double {
         return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLatitude.rawValue]!.doubleValue
     }
@@ -50,11 +50,11 @@ class PListHelper {
     static func defaultLongitude() -> Double {
         return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLongitude.rawValue]!.doubleValue
     }
-    
+
     static func defaultCameraZoom() -> Float {
         return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultCameraZoom.rawValue]!.floatValue
     }
-    
+
     static func plistDictionary() -> [String: AnyObject] {
         let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist")
         let pListContents = NSDictionary(contentsOfFile: path!) as? [String: AnyObject]

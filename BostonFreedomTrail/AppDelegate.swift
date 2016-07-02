@@ -36,14 +36,14 @@ import Fabric
 import Crashlytics
 import ReachabilitySwift
 
-enum TabBarControllerIndices : Int {
+enum TabBarControllerIndices: Int {
     case MapViewController = 0
     case VirtualTourViewController = 1
     case AboutViewController = 2
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var reachability: Reachability?
@@ -52,33 +52,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initializeCrashReporting()
         self.initializeGoogleMapsApi()
         self.initializeStyling()
+        self.initializeAnalytics()
         self.initializeReachability()
         self.initializeLocalization()
-        self.initializeAnalytics()
-        self.initializeDelegates()
         return true
     }
-    
-    func isOnline() -> Bool {
-        var isOnline = false
-        if let unwrappedReachability = self.reachability {
-            isOnline = unwrappedReachability.isReachable()
-        }
-        return isOnline
-    }
-    
+
     func initializeGoogleMapsApi() {
         GMSServices.provideAPIKey(PListHelper.googleMapsApiKey())
     }
-    
+
     func applicationDidBecomeActive(application: UIApplication) {
         LocationTracker.sharedInstance.startUpdatingLocation()
     }
-    
+
     func initializeStyling() {
-        
+        // TODO: Styling
     }
-    
+
     func initializeReachability() {
         do {
             self.reachability = try Reachability.reachabilityForInternetConnection()
@@ -91,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("Failed to start Reachability")
         }
     }
-    
+
     func initializeLocalization() {
         guard let window = self.window else { return }
         guard let tabBarController = window.rootViewController as? UITabBarController else { return }
@@ -113,32 +104,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             item.title = title
         }
     }
-    
+
     func initializeAnalytics() {
         // only bother with analytics for prod builds
-        guard ApplicationSharedState.sharedInstance.isDebug() else { return }
-        var configureError:NSError?
+        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
+        var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        guard configureError == nil else {
+            NSLog("Error configuring Google services: \(configureError)")
+            return
+        }
         let gai = GAI.sharedInstance()
         gai.trackUncaughtExceptions = true
     }
-    
+
     func initializeCrashReporting() {
+        // only bother with crash reporting for prod builds
+        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
         Fabric.with([Crashlytics.self])
-    }
-    
-    func initializeDelegates() {
-        guard let window = self.window else { return }
-        guard let tabBarController = window.rootViewController as? UITabBarController else { return }
-        guard let viewControllers = tabBarController.viewControllers else { return }
-        guard let mapViewController = viewControllers[TabBarControllerIndices.MapViewController.rawValue] as? MapViewController else { return }
-        mapViewController.delegate = self
     }
 }
 
 extension AppDelegate : MapViewControllerDelegate {
-    
+
     func navigateToVirtualTourWithPlacemark(placemark: Placemark) {
         guard let window = self.window else { return }
         guard let tabBarController = window.rootViewController as? UITabBarController else { return }

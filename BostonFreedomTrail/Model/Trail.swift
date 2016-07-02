@@ -32,15 +32,15 @@ import Foundation
 
 import CoreLocation
 
-public class Placemark {
-    var identifier:String = ""
-    var name:String = ""
-    var location:CLLocation = CLLocation()
+final class Placemark {
+    var identifier: String = ""
+    var name: String = ""
+    var location: CLLocation = CLLocation()
     var coordinates = [CLLocation]()
-    var placemarkDescription:String = ""
-    var lookAt:LookAt?
-    
-    init(identifier:String, name:String, location:CLLocation, coordinates:[CLLocation], placemarkDescription:String, lookAt:LookAt?) {
+    var placemarkDescription: String = ""
+    var lookAt: LookAt?
+
+    init(identifier: String, name: String, location: CLLocation, coordinates: [CLLocation], placemarkDescription: String, lookAt: LookAt?) {
         self.identifier = identifier
         self.name = name
         self.location = location
@@ -50,13 +50,13 @@ public class Placemark {
     }
 }
 
-public class LookAt {
-    var latitude:Double = 0.0
-    var longitude:Double = 0.0
-    var tilt:Double = 0.0
-    var heading:Double = 0.0
-    
-    init(latitude:Double, longitude:Double, tilt:Double, heading:Double) {
+struct LookAt {
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var tilt: Double = 0.0
+    var heading: Double = 0.0
+
+    init(latitude: Double, longitude: Double, tilt: Double, heading: Double) {
         self.latitude = latitude
         self.longitude = longitude
         self.tilt = tilt
@@ -64,11 +64,11 @@ public class LookAt {
     }
 }
 
-public class Trail {
+struct Trail {
     static let instance = TrailParser().parseTrail()
     var placemarks = [Placemark]()
-    
-    func placemarkIndex(placemark:Placemark) -> Int {
+
+    func placemarkIndex(placemark: Placemark) -> Int {
         var placemarkIndex = 0
         for (index, pm) in self.placemarks.enumerate() {
             if pm.identifier.caseInsensitiveCompare(placemark.identifier) == NSComparisonResult.OrderedSame {
@@ -77,16 +77,5 @@ public class Trail {
             }
         }
         return placemarkIndex
-    }
-}
-
-extension Int {
-    func placemarkIndexFromIdentifier(placemarkIdentifier:String) -> Int {
-        let stringRepresentation = placemarkIdentifier.stringByReplacingOccurrencesOfString("placemark", withString:"")
-        if let integerRepresentation = Int(stringRepresentation) {
-            return integerRepresentation - 1
-        } else {
-            return 0
-        }
     }
 }
