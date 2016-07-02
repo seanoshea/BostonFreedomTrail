@@ -1,6 +1,8 @@
 machine:
   xcode:
     version: 7.3.1
+  ruby:
+    version: 2.2.2
 dependencies:
   pre:
     - gem install bundler -v 1.12.5
