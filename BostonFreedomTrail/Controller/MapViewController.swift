@@ -43,6 +43,8 @@ protocol MapViewControllerDelegate:class {
 /// View Controller class for presenting the map of Boston to the user.
 final class MapViewController: BaseViewController {
 
+// MARK: Properties
+    
     /// Basic business logic for the `MapViewController`
     var model: MapModel = MapModel()
     /// The view which dominates the `MapViewController`
@@ -95,19 +97,29 @@ final class MapViewController: BaseViewController {
         self.view = self.mapView
     }
 
+    /// Adds all the placemarks to the `mapView`. Also responsible for mapping out the path between the placemarks.
     func setupPlacemarks() {
         self.model.addPlacemarksToMap(self.mapView!)
         self.model.addPathToMap(self.mapView!)
     }
     
+    /// Ensures that the `delegate` property is set to the `AppDelegate`
     func initializeDelegate() {
         guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return }
         self.delegate = appDelegate
     }
 }
 
+// MARK: GMSMapViewDelegate Functions
+
+/// Extensiom for all the Google Maps callbacks
 extension MapViewController : GMSMapViewDelegate {
 
+    /**
+     Ensures that the last known coordinate is set in the app's state.
+     @param mapView the view associated with the `MapViewController`
+     @param position defines where the `mapView` is positioned
+     */
     func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
         if position.zoom > 0.0 {
             ApplicationSharedState.sharedInstance.cameraZoom = position.zoom
@@ -115,6 +127,11 @@ extension MapViewController : GMSMapViewDelegate {
         ApplicationSharedState.sharedInstance.lastKnownCoordinate = position.target
     }
 
+    /**
+     Ensures that the last known placemark pressed by the user is set in the app's state.
+     @param mapView the view associated with the `MapViewController`
+     @param marker the `GMSMarker` the user pressed
+     */
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
         guard let userData = marker.userData as? Placemark else { return false }
@@ -122,6 +139,11 @@ extension MapViewController : GMSMapViewDelegate {
         return false
     }
 
+    /**
+     Transitions the user over to the `PlacemarkViewController`
+     @param mapView the view associated with the `MapViewController`
+     @param marker the `GMSMarker` associated with the info window that the user just pressed
+     */
     func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
         guard let userData = marker.userData as? Placemark else { return }
@@ -129,13 +151,25 @@ extension MapViewController : GMSMapViewDelegate {
         self.performSegueWithIdentifier(SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
     }
 
+    /**
+     Simple logging callback which logs to the console the coordinates of the current position when the user presses on the map.
+     @param mapView the view associated with the `MapViewController`
+     @param coordinate the coordinate at which the user just pressed
+     */
     func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
         coordinate.logCoordinate()
     }
 }
 
+// MARK: PlacemarkViewControllerDelegate Functions
+
+/// Extension for the `MapViewController` to take care of all the `PlacemarkViewControllerDelegate` methods.
 extension MapViewController : PlacemarkViewControllerDelegate {
 
+    /**
+     Allows the `MapViewController` to navigate to the virtual tour.
+     @param placemark the placemark at which to land the user on the virtual tour screen
+     */
     func streetViewButtonPressedForPlacemark(placemark: Placemark) {
         if let delegate = self.delegate {
             delegate.navigateToVirtualTourWithPlacemark(placemark)
@@ -145,6 +179,9 @@ extension MapViewController : PlacemarkViewControllerDelegate {
     }
 }
 
+// MARK: UIPopoverPresentationControllerDelegate Functions
+
+/// Extension for the `MapViewController` to ensure that the user can sucessfully close out of a `PlacemarkViewController`
 extension MapViewController : UIPopoverPresentationControllerDelegate {
 
     func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
@@ -154,6 +191,7 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
         return navigationController
     }
 
+    /// Simply dismisses the current view controller.
     func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

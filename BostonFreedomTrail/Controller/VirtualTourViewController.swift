@@ -35,6 +35,8 @@ import TSMessages
 
 final class VirtualTourViewController: BaseViewController {
 
+// MARK: Properties
+    
     var model: VirtualTourModel = VirtualTourModel()
     var panoView: GMSPanoramaView?
     @IBOutlet weak var playPauseButton: VirtualTourPlayPauseButton?

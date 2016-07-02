@@ -32,6 +32,8 @@ import Foundation
 
 final class PlacemarkModel {
 
+// MARK: Properties
+    
     var placemark: Placemark?
 
     func stringForWebView() -> String {

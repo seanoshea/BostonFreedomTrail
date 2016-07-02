@@ -52,6 +52,9 @@ protocol VirtualTourModelDelegate:class {
 }
 
 final class VirtualTourModel {
+    
+// MARK: Properties
+    
     var tour: [CLLocation] = []
     var lookAts = [Int:Int]()
     var placemarkDemarkations = [Int:Int]()

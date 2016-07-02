@@ -33,6 +33,9 @@ import Foundation
 import CoreLocation
 
 final class Placemark {
+    
+// MARK: Properties
+    
     var identifier: String = ""
     var name: String = ""
     var location: CLLocation = CLLocation()
