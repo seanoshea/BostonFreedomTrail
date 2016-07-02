@@ -36,18 +36,22 @@ import Fabric
 import Crashlytics
 import ReachabilitySwift
 
+/// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndices: Int {
     case MapViewController = 0
     case VirtualTourViewController = 1
     case AboutViewController = 2
 }
 
+/// Main entry point for the app.
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var reachability: Reachability?
 
+// MARK: Lifecycle
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.initializeCrashReporting()
         self.initializeGoogleMapsApi()
@@ -58,18 +62,44 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func applicationDidBecomeActive(application: UIApplication) {
+        LocationTracker.sharedInstance.startUpdatingLocation()
+    }
+    
+// MARK: Private Functions
+    
+    /// Crash reporting is used in `Release` builds of the app to ensure that all crashes in the live versions of the app are reported and can be analyzed for solutions.
+    func initializeCrashReporting() {
+        // only bother with crash reporting for prod builds
+        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
+        Fabric.with([Crashlytics.self])
+    }
+    
+    /// Sets up the Google Maps integration. See `GoogleService-Info.plist` for more details.
     func initializeGoogleMapsApi() {
         GMSServices.provideAPIKey(PListHelper.googleMapsApiKey())
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
-        LocationTracker.sharedInstance.startUpdatingLocation()
-    }
-
+    /// Sets up all generic styling in the app.
     func initializeStyling() {
         // TODO: Styling
     }
+    
+    /// The app uses Google Analytics for tracking usage of the app. Only enabled for `Release` builds.
+    func initializeAnalytics() {
+        // only bother with analytics for prod builds
+        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        guard configureError == nil else {
+            NSLog("Error configuring Google services: \(configureError)")
+            return
+        }
+        let gai = GAI.sharedInstance()
+        gai.trackUncaughtExceptions = true
+    }
 
+    /// Reachability is used in the app to understand whether the user is online or offline. This function is responsible for starting the notifier so that all elements in the app know when they are offline and when they are online.
     func initializeReachability() {
         do {
             self.reachability = try Reachability.reachabilityForInternetConnection()
@@ -83,6 +113,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    /// Ensures that the titles on the tabs at the bottom of the app are fully localized.
     func initializeLocalization() {
         guard let window = self.window else { return }
         guard let tabBarController = window.rootViewController as? UITabBarController else { return }
@@ -104,27 +135,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             item.title = title
         }
     }
-
-    func initializeAnalytics() {
-        // only bother with analytics for prod builds
-        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        guard configureError == nil else {
-            NSLog("Error configuring Google services: \(configureError)")
-            return
-        }
-        let gai = GAI.sharedInstance()
-        gai.trackUncaughtExceptions = true
-    }
-
-    func initializeCrashReporting() {
-        // only bother with crash reporting for prod builds
-        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
-        Fabric.with([Crashlytics.self])
-    }
 }
 
+/// Allows a `PlacemarkViewController` to tell the delegate to navigate to the virtual tour section of the app.
 extension AppDelegate : MapViewControllerDelegate {
 
     func navigateToVirtualTourWithPlacemark(placemark: Placemark) {

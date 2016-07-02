@@ -4,6 +4,9 @@
 # BostonFreedomTrail
 iOS Application for walking the Boston Freedom Trail.
 
+# Documentation
+Documentation for the application is generated using [Jazzy](https://github.com/realm/jazzy) which is a fantastic documentation generation library from the good people at [Realm](https://realm.io). Run `generate_docs.sh` after a `bundle install` to generate the documentation for the project.
+
 # Beta Builds
 If you're interested in access to beta-builds of the application, send an email to oshea.ie@gmail.com
 
