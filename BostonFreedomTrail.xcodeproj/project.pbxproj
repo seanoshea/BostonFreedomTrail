@@ -33,6 +33,7 @@
 		417758001CB9E8C0008294C8 /* AnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */; };
 		417758031CBB03D1008294C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417758021CBB03D1008294C8 /* GoogleService-Info.plist */; };
 		4199CD7F1C98F5E60017919E /* TrailSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199CD7E1C98F5E60017919E /* TrailSpec.swift */; };
+		41C654031D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */; };
 		41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
 		41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */; };
 		41D0F4EB1C53E64A00FCAB17 /* AboutViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */; };
@@ -101,6 +102,7 @@
 		417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracker.swift; sourceTree = "<group>"; };
 		417758021CBB03D1008294C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4199CD7E1C98F5E60017919E /* TrailSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailSpec.swift; sourceTree = "<group>"; };
+		41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewControllerSnapshotTest.swift; sourceTree = "<group>"; };
 		41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedState.swift; sourceTree = "<group>"; };
 		41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedStateSpec.swift; sourceTree = "<group>"; };
 		41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -220,6 +222,7 @@
 				410AFEE31C4D991A007DF354 /* Controller */,
 				41237C001C486CDF0007F76B /* Info.plist */,
 				410AFEE01C4D97F4007DF354 /* Model */,
+				41C654011D2AB5FA00C75AB4 /* SnapshotTests */,
 				41079D641C4FBB7300BF2CFF /* TestUtilities */,
 				41691D201C4C000C009A03B3 /* Utils */,
 			);
@@ -294,6 +297,14 @@
 				41691D211C4C0034009A03B3 /* TrailParserSpec.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		41C654011D2AB5FA00C75AB4 /* SnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */,
+			);
+			path = SnapshotTests;
 			sourceTree = "<group>";
 		};
 		C0497F188083798A2930EFE1 /* Frameworks */ = {
@@ -584,6 +595,7 @@
 				4199CD7F1C98F5E60017919E /* TrailSpec.swift in Sources */,
 				41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */,
 				41D0F4EB1C53E64A00FCAB17 /* AboutViewControllerSpec.swift in Sources */,
+				41C654031D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift in Sources */,
 				41D0F4EF1C53E64A00FCAB17 /* PListHelperSpec.swift in Sources */,
 				41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */,
 				41D0F4ED1C53E64A00FCAB17 /* StoryboardExtensions.swift in Sources */,
