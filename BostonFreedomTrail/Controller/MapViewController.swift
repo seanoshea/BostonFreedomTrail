@@ -117,8 +117,8 @@ extension MapViewController : GMSMapViewDelegate {
 
     /**
      Ensures that the last known coordinate is set in the app's state.
-     @param mapView the view associated with the `MapViewController`
-     @param position defines where the `mapView` is positioned
+     - parameter mapView: the view associated with the `MapViewController`
+     - parameter position: defines where the `mapView` is positioned
      */
     func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
         if position.zoom > 0.0 {
@@ -129,8 +129,9 @@ extension MapViewController : GMSMapViewDelegate {
 
     /**
      Ensures that the last known placemark pressed by the user is set in the app's state.
-     @param mapView the view associated with the `MapViewController`
-     @param marker the `GMSMarker` the user pressed
+     - parameter mapView: the view associated with the `MapViewController`
+     - parameter marker: the `GMSMarker` the user pressed
+     - returns: always returns false as this delegate does not handle the tap event
      */
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
@@ -141,8 +142,8 @@ extension MapViewController : GMSMapViewDelegate {
 
     /**
      Transitions the user over to the `PlacemarkViewController`
-     @param mapView the view associated with the `MapViewController`
-     @param marker the `GMSMarker` associated with the info window that the user just pressed
+     - parameter mapView: the view associated with the `MapViewController`
+     - parameter marker: the `GMSMarker` associated with the info window that the user just pressed
      */
     func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
@@ -153,8 +154,8 @@ extension MapViewController : GMSMapViewDelegate {
 
     /**
      Simple logging callback which logs to the console the coordinates of the current position when the user presses on the map.
-     @param mapView the view associated with the `MapViewController`
-     @param coordinate the coordinate at which the user just pressed
+     - parameter mapView: the view associated with the `MapViewController`
+     - parameter coordinate: the coordinate at which the user just pressed
      */
     func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
         coordinate.logCoordinate()
@@ -168,7 +169,7 @@ extension MapViewController : PlacemarkViewControllerDelegate {
 
     /**
      Allows the `MapViewController` to navigate to the virtual tour.
-     @param placemark the placemark at which to land the user on the virtual tour screen
+     - parameter placemark: the placemark at which to land the user on the virtual tour screen
      */
     func streetViewButtonPressedForPlacemark(placemark: Placemark) {
         if let delegate = self.delegate {
