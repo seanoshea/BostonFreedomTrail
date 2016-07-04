@@ -1,4 +1,9 @@
 PODS:
+  - FBSnapshotTestCase (2.1.1):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.1)
+  - FBSnapshotTestCase/Core (2.1.1)
+  - FBSnapshotTestCase/SwiftSupport (2.1.1):
+    - FBSnapshotTestCase/Core
   - FirebaseAnalytics (3.2.0):
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
@@ -38,6 +43,7 @@ PODS:
     - HexColors (~> 2.3.0)
 
 DEPENDENCIES:
+  - FBSnapshotTestCase (~> 2.1.1)
   - Google/Analytics (= 3.0.3)
   - GoogleMaps (= 1.13.2)
   - Nimble (~> 4.0.1)
@@ -61,6 +67,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/KrauseFx/TSMessages.git
 
 SPEC CHECKSUMS:
+  FBSnapshotTestCase: 432afd8d059ccef7f207225894840a03fbcf7474
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
@@ -76,6 +83,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
   TSMessages: 6e403b790139636c15ab4f51946537095e03e79c
 
-PODFILE CHECKSUM: f835a2b60b3d8636dea36a7e7839245e0b5cbd1b
+PODFILE CHECKSUM: 0df90bdfa5b64f019f2ea4d04bcdcfe92dfd4114
 
 COCOAPODS: 1.0.0
