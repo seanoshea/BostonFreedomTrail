@@ -167,6 +167,8 @@ final class VirtualTourViewController: BaseViewController {
     }
 }
 
+// MARK: GMSPanoramaViewDelegate Functions
+
 extension VirtualTourViewController : GMSPanoramaViewDelegate {
 
     func panoramaView(view: GMSPanoramaView, didMoveToPanorama panorama: GMSPanorama?) {
@@ -180,6 +182,8 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
         camera.logLocation()
     }
 }
+
+// MARK: VirtualTourModelDelegate Functions
 
 extension VirtualTourViewController : VirtualTourModelDelegate {
 

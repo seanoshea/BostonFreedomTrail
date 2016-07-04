@@ -30,12 +30,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
+/// Backing model for the `PlacemarkViewController`
 final class PlacemarkModel {
 
 // MARK: Properties
     
     var placemark: Placemark?
 
+    /**
+     Determines the correct HTML for the web view associated with a `Placemark`
+     - returns: full HTML for the web view based on the `placemark` description.
+     */
     func stringForWebView() -> String {
         guard let htmlString = NSBundle.mainBundle().pathForResource(ResourceConstants.PlacemarkIdentifier.rawValue, ofType: "html") else { return "" }
         guard let description = self.placemark?.placemarkDescription else { return "" }

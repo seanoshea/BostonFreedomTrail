@@ -32,8 +32,14 @@ import Foundation
 
 import GoogleMaps
 
+/// Backing model for the `MapViewController`
 final class MapModel {
 
+    /**
+     Based on the details in the KML file, this function adds the placemark indicators to the `mapView`
+     - parameter mapView: the view associated with the `MapViewController`
+     - returns: an array of `GMSMarker`s which represent the Freedom Trail
+     */
     func addPlacemarksToMap(mapView: GMSMapView) -> [GMSMarker] {
         var markers = [GMSMarker]()
         for placemark: Placemark in Trail.instance.placemarks {
@@ -48,6 +54,10 @@ final class MapModel {
         return markers
     }
 
+    /**
+     Responsible for drawing the path between all the placemarks which are created as a result of `addPlacemarksToMap`
+     - parameter mapView: the view associated with the `MapViewController`
+     */
     func addPathToMap(mapView: GMSMapView) {
         let path = GMSMutablePath()
         for placemark: Placemark in Trail.instance.placemarks {
@@ -60,7 +70,11 @@ final class MapModel {
         polyline.strokeWidth = 3.0
         polyline.map = mapView
     }
-
+    
+    /**
+     Figures out the correct camera zoom for the map view. Falls back on defaults which can be configured in the .plist file if the user has never interacted with the map.
+     - returns: float indicating how zoomed in or out the camera should be positioned
+     */
     func zoomForMap() -> Float {
         var zoom = ApplicationSharedState.sharedInstance.cameraZoom
         if zoom <= 0 {
@@ -69,6 +83,10 @@ final class MapModel {
         return zoom
     }
 
+    /**
+     Figures out the correct last known coordinate for the map view so we know where to place the user in the map when they load up the `MapViewController`. Falls back to defaults which can be configured in the .plist file if the user has never tapped on the map before.
+     - returns: a `CLLocationCoordinate2D` object representing where the map should be positioned
+    */
     func lastKnownCoordinate() -> CLLocationCoordinate2D {
         var lastKnownCoordinate = ApplicationSharedState.sharedInstance.lastKnownCoordinate
         if lastKnownCoordinate.latitude == 0.0 && lastKnownCoordinate.longitude == 0.0 {
