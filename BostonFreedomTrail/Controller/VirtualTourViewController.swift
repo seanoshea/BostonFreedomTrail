@@ -58,7 +58,7 @@ final class VirtualTourViewController: BaseViewController {
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self.model.pauseTour()
+        self.pauseTour()
     }
 
 // MARK: IBActions
@@ -92,7 +92,7 @@ final class VirtualTourViewController: BaseViewController {
             self.playPauseButton?.enabled = true
         } else {
             self.playPauseButton?.enabled = false
-            self.model.pauseTour()
+            self.pauseTour()
         }
     }
 
@@ -139,8 +139,7 @@ final class VirtualTourViewController: BaseViewController {
                 self.repositionPanoViewForNextLocation(nextLocation)
                 self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
             } else {
-                self.playPauseButton?.paused = true
-                self.model.pauseTour()
+                self.pauseTour()
             }
         } else {
             // back up
@@ -164,6 +163,11 @@ final class VirtualTourViewController: BaseViewController {
         dispatch_after(self.model.delayTime(), dispatch_get_main_queue()) {
             unownedSelf.postDispatchAction(unownedSelf.model.nextLocation())
         }
+    }
+    
+    func pauseTour() {
+        self.playPauseButton?.paused = true
+        self.model.pauseTour()
     }
 }
 
