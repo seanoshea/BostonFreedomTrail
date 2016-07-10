@@ -32,14 +32,27 @@ import Foundation
 
 import CoreLocation
 
+/// Backling class for every placemark on the Boston Freedom Trail.
 final class Placemark {
+    
+// MARK: Properties
+    
+    /// Unique identifier for the placemark
     var identifier: String = ""
+    /// Human readable placemark name
     var name: String = ""
+    /// Defines where the placemark is located
     var location: CLLocation = CLLocation()
+    /// Array of coordinates which defines the path up to the placemark
     var coordinates = [CLLocation]()
+    /// A brief HTML-encoded description of the placemark.
     var placemarkDescription: String = ""
+    /// Includes heading and pitch information for the best view of the placemark
     var lookAt: LookAt?
 
+    /**
+     Convenience initializer. Sets all the properties for the class.
+     */
     init(identifier: String, name: String, location: CLLocation, coordinates: [CLLocation], placemarkDescription: String, lookAt: LookAt?) {
         self.identifier = identifier
         self.name = name
@@ -50,12 +63,23 @@ final class Placemark {
     }
 }
 
+/// Similar to a `CLLocation` but includes tilt and heading properties too.
 struct LookAt {
+    
+// MARK: Properties
+    
+    /// Latitude for the LookAt
     var latitude: Double = 0.0
+    /// Longitude for the LookAt
     var longitude: Double = 0.0
+    /// The tilt at which the camera should be position for the best view of the LookAt
     var tilt: Double = 0.0
+    /// The relative positioning of the camera for the best view of the LookAt
     var heading: Double = 0.0
 
+    /**
+     Convenience initializer. Sets all the properties for the class.
+     */
     init(latitude: Double, longitude: Double, tilt: Double, heading: Double) {
         self.latitude = latitude
         self.longitude = longitude
@@ -64,10 +88,21 @@ struct LookAt {
     }
 }
 
+/// Defines the full trail and collection of placemarks for the app.
 struct Trail {
+    
+// MARK: Properties
+    
+    /// Singleton accessor
     static let instance = TrailParser().parseTrail()
+    /// Collection of placemarks which represents the Freedom Trail
     var placemarks = [Placemark]()
 
+    /**
+     Given a `Placemark` this function returns the associated index of the placemark in the trail.
+     - parameter placemark: the `Placemark` to search for
+     - returns: index of the `Placemark` in the trail
+     */
     func placemarkIndex(placemark: Placemark) -> Int {
         var placemarkIndex = 0
         for (index, pm) in self.placemarks.enumerate() {

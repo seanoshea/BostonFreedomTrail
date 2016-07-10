@@ -75,6 +75,7 @@ class VirtualTourViewControllerTest: QuickSpec {
                 it("should automatically pause the tour when the view disappears") {
                     subject?.viewDidDisappear(true)
                     expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
+                    expect(subject?.playPauseButton?.paused).to(beTrue())
                 }
             }
             

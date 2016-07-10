@@ -36,6 +36,8 @@ protocol PlacemarkViewControllerDelegate:class {
 
 final class PlacemarkViewController: BaseViewController {
 
+// MARK: Properties
+    
     @IBOutlet weak var webView: UIWebView?
     @IBOutlet weak var streetViewButton: UIButton?
 

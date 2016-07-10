@@ -35,6 +35,8 @@ import TSMessages
 
 final class VirtualTourViewController: BaseViewController {
 
+// MARK: Properties
+    
     var model: VirtualTourModel = VirtualTourModel()
     var panoView: GMSPanoramaView?
     @IBOutlet weak var playPauseButton: VirtualTourPlayPauseButton?
@@ -56,7 +58,7 @@ final class VirtualTourViewController: BaseViewController {
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self.model.pauseTour()
+        self.pauseTour()
     }
 
 // MARK: IBActions
@@ -90,7 +92,7 @@ final class VirtualTourViewController: BaseViewController {
             self.playPauseButton?.enabled = true
         } else {
             self.playPauseButton?.enabled = false
-            self.model.pauseTour()
+            self.pauseTour()
         }
     }
 
@@ -137,8 +139,7 @@ final class VirtualTourViewController: BaseViewController {
                 self.repositionPanoViewForNextLocation(nextLocation)
                 self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
             } else {
-                self.playPauseButton?.paused = true
-                self.model.pauseTour()
+                self.pauseTour()
             }
         } else {
             // back up
@@ -151,8 +152,9 @@ final class VirtualTourViewController: BaseViewController {
             let newCamera = self.cameraPositionForNextLocation(nextLocation)
             self.panoView?.animateToCamera(newCamera, animationDuration: VirtualTourStopStopDuration.CameraRepositionAnimation.rawValue)
             if self.model.atLookAtLocation() {
-                let pm = self.model.placemarkForCurrentLookAt()
-                TSMessage.showNotificationWithTitle(pm.name, type: TSMessageNotificationType.Message)
+                if let pm = self.model.placemarkForNextLocation() {
+                    TSMessage.showNotificationWithTitle(pm.name, type: TSMessageNotificationType.Message)
+                }
             }
         }
     }
@@ -163,7 +165,14 @@ final class VirtualTourViewController: BaseViewController {
             unownedSelf.postDispatchAction(unownedSelf.model.nextLocation())
         }
     }
+    
+    func pauseTour() {
+        self.playPauseButton?.paused = true
+        self.model.pauseTour()
+    }
 }
+
+// MARK: GMSPanoramaViewDelegate Functions
 
 extension VirtualTourViewController : GMSPanoramaViewDelegate {
 
@@ -178,6 +187,8 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
         camera.logLocation()
     }
 }
+
+// MARK: VirtualTourModelDelegate Functions
 
 extension VirtualTourViewController : VirtualTourModelDelegate {
 

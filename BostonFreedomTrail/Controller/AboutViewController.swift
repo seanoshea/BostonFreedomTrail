@@ -35,6 +35,8 @@ import GoogleMaps
 /// View Controller class for the About Screen.
 final class AboutViewController: BaseViewController {
 
+// MARK: Properties
+    
     /// A title label for developer details
     @IBOutlet weak var developerLabel: AboutTitleLabel?
     /// Information label for the developer details

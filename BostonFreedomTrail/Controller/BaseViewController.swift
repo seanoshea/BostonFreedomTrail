@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
+/// View controller which includes a few basic functions.
 class BaseViewController: UIViewController, ReachabilityListener, AnalyticsTracker {
 
 // MARK: Lifecycle
@@ -40,7 +41,11 @@ class BaseViewController: UIViewController, ReachabilityListener, AnalyticsTrack
     }
 
 // MARK: Analytics
-    
+
+    /**
+     Base implementation of `AnalyticsTracker`
+     - returns: a String which can be passed to analytics to uniquely identify this view controller.
+     */
     func getScreenTrackingName() -> String {
         return ""
     }

@@ -34,6 +34,10 @@ enum SegueConstants: String {
     case MapToPlacemarkSegueIdentifier = "MapToPlacemarkSegueIdentifier"
 }
 
+enum ResourceConstants: String {
+    case PlacemarkIdentifier = "placemark"
+}
+
 enum TabBarControllerTags: Int {
     case MapViewTag = 0
     case VirtualTourViewTag = 1

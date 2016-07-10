@@ -34,6 +34,8 @@ import CoreLocation
 
 final class LocationTracker : NSObject {
 
+// MARK: Properties
+    
     static let sharedInstance = LocationTracker()
     var currentLocation: CLLocation?
 
