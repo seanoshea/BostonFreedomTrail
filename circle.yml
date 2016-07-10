@@ -3,7 +3,6 @@ machine:
     version: 7.3.1
 dependencies:
   pre:
-    - rvm use 2.2.2
     - gem install bundler -v 1.12.5
   post:
     - bundle exec fastlane enable_crash_reporting
