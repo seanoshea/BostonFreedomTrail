@@ -4,6 +4,7 @@ machine:
 dependencies:
   pre:
     - gem install bundler -v 1.12.5
+    - gem install activesupport -v 5.0.0
   post:
     - bundle exec fastlane enable_crash_reporting
 test:
