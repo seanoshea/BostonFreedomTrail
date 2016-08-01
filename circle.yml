@@ -9,3 +9,5 @@ dependencies:
 test:
   override:
     - set -o pipefail && bundle exec fastlane test
+  post:
+    - bash <(curl -s https://codecov.io/bash)
