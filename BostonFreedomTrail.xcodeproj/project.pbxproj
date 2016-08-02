@@ -339,12 +339,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41237C031C486CDF0007F76B /* Build configuration list for PBXNativeTarget "BostonFreedomTrail" */;
 			buildPhases = (
-				CEB85F0AA2855E6934D62FA1 /* 📦 Check Pods Manifest.lock */,
+				CEB85F0AA2855E6934D62FA1 /* [CP] Check Pods Manifest.lock */,
 				41237BE01C486CDF0007F76B /* Sources */,
 				41237BE11C486CDF0007F76B /* Frameworks */,
 				41237BE21C486CDF0007F76B /* Resources */,
-				3357F654E40850647B2E4B62 /* 📦 Embed Pods Frameworks */,
-				23FD358A6C8D19FDBC7DACB5 /* 📦 Copy Pods Resources */,
+				3357F654E40850647B2E4B62 /* [CP] Embed Pods Frameworks */,
+				23FD358A6C8D19FDBC7DACB5 /* [CP] Copy Pods Resources */,
 				41443EB51C894D940096EE06 /* ShellScript */,
 				416C3CE51D1DC881005F9A8C /* ShellScript */,
 			);
@@ -361,12 +361,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41237C061C486CDF0007F76B /* Build configuration list for PBXNativeTarget "BostonFreedomTrailTests" */;
 			buildPhases = (
-				ABF7EFDCFC7E5E05A43E14A3 /* 📦 Check Pods Manifest.lock */,
+				ABF7EFDCFC7E5E05A43E14A3 /* [CP] Check Pods Manifest.lock */,
 				41237BF61C486CDF0007F76B /* Sources */,
 				41237BF71C486CDF0007F76B /* Frameworks */,
 				41237BF81C486CDF0007F76B /* Resources */,
-				C2B536EF84E15C2032606370 /* 📦 Embed Pods Frameworks */,
-				63F1C7785DE69CAC30AB88B4 /* 📦 Copy Pods Resources */,
+				C2B536EF84E15C2032606370 /* [CP] Embed Pods Frameworks */,
+				63F1C7785DE69CAC30AB88B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -440,14 +440,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		23FD358A6C8D19FDBC7DACB5 /* 📦 Copy Pods Resources */ = {
+		23FD358A6C8D19FDBC7DACB5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,14 +455,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BostonFreedomTrail/Pods-BostonFreedomTrail-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3357F654E40850647B2E4B62 /* 📦 Embed Pods Frameworks */ = {
+		3357F654E40850647B2E4B62 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,14 +496,14 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
-		63F1C7785DE69CAC30AB88B4 /* 📦 Copy Pods Resources */ = {
+		63F1C7785DE69CAC30AB88B4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,14 +511,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BostonFreedomTrail-BostonFreedomTrailTests/Pods-BostonFreedomTrail-BostonFreedomTrailTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ABF7EFDCFC7E5E05A43E14A3 /* 📦 Check Pods Manifest.lock */ = {
+		ABF7EFDCFC7E5E05A43E14A3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,14 +526,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		C2B536EF84E15C2032606370 /* 📦 Embed Pods Frameworks */ = {
+		C2B536EF84E15C2032606370 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,14 +541,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BostonFreedomTrail-BostonFreedomTrailTests/Pods-BostonFreedomTrail-BostonFreedomTrailTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CEB85F0AA2855E6934D62FA1 /* 📦 Check Pods Manifest.lock */ = {
+		CEB85F0AA2855E6934D62FA1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

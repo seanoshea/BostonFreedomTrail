@@ -2,10 +2,10 @@ machine:
   xcode:
     version: 7.3.1
 dependencies:
-  pre:
-    - gem install bundler -v 1.12.5
   post:
     - bundle exec fastlane enable_crash_reporting
 test:
   override:
     - set -o pipefail && bundle exec fastlane test
+  post:
+    - bash <(curl -s https://codecov.io/bash)
