@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
+// Screen name constants for analytics
 enum AnalyticsScreenNames: String {
     case AboutScreen = "AboutScreen"
     case MapScreen = "MapScreen"
@@ -37,27 +38,42 @@ enum AnalyticsScreenNames: String {
     case VirtualTourScreen = "VirtualTourScreen"
 }
 
+// Category constants for analytics
 enum AnalyticsEventCategories: String {
     case Action = "ui_action"
 }
 
+// Action constants for analytics
 enum AnalyticsActions: String {
     case ButtonPress = "button_press"
 }
 
+// Label constants for analytics
 enum AnalyticsLabels: String {
     case MarkerPress = "marker_press"
     case InfoWindowPress = "info_window_press"
     case StreetViewPress = "street_view_press"
 }
 
+// Protocol for analytics
 protocol AnalyticsTracker:class {
+    /**
+     Retrieves the screen name.
+     - returns: the screen name which will be used for any screen tracking in analytics
+     */
     func getScreenTrackingName() -> String
+    
+    /**
+     Tracks a button press when the user requests information on a placemark.
+     - parameter placemark: the placemark about which the user is requesting information.
+     - parameter label: additional label information about the placemark & where the user is requesting the info from.
+     */
     func trackButtonPressForPlacemark(placemark: Placemark, label: String)
 }
 
 extension AnalyticsTracker where Self : UIViewController {
 
+    // Tracks the user viewing a screen in the app.
     func trackScreenName() {
         if let tracker = GAI.sharedInstance().defaultTracker {
             let trackingName = self.getScreenTrackingName()
@@ -68,13 +84,22 @@ extension AnalyticsTracker where Self : UIViewController {
         }
     }
 
+    /**
+     Tracks a button press when the user requests information on a placemark.
+     - parameter placemark: the placemark about which the user is requesting information.
+     - parameter label: additional label information about the placemark & where the user is requesting the info from.
+     */
     func trackButtonPressForPlacemark(placemark: Placemark, label: String) {
         if let tracker = GAI.sharedInstance().defaultTracker {
             let parameters = GAIDictionaryBuilder.createEventWithCategory(AnalyticsEventCategories.Action.rawValue, action:AnalyticsActions.ButtonPress.rawValue, label:AnalyticsLabels.InfoWindowPress.rawValue, value: Int(placemark.identifier)).build()
             tracker.send(parameters as [NSObject : AnyObject])
         }
     }
-    
+
+    /**
+     Tracks an error happening in the application.
+     - parameter errorMessage: information on where the error occured.
+     */
     func trackNonFatalErrorMessage(errorMessage:String) {
         if let tracker = GAI.sharedInstance().defaultTracker {
             let parameters = GAIDictionaryBuilder.createExceptionWithDescription(errorMessage, withFatal:0).build()
