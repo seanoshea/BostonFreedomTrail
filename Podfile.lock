@@ -1,15 +1,15 @@
 PODS:
-  - FBSnapshotTestCase (2.1.1):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.1)
-  - FBSnapshotTestCase/Core (2.1.1)
-  - FBSnapshotTestCase/SwiftSupport (2.1.1):
+  - FBSnapshotTestCase (2.1.2):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.2)
+  - FBSnapshotTestCase/Core (2.1.2)
+  - FBSnapshotTestCase/SwiftSupport (2.1.2):
     - FBSnapshotTestCase/Core
-  - FirebaseAnalytics (3.2.0):
+  - FirebaseAnalytics (3.3.0):
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
-    - GoogleUtilities (~> 1.3)
-  - FirebaseInstanceID (1.0.6)
+    - GoogleUtilities (~> 1.2)
+  - FirebaseInstanceID (1.0.8)
   - Google/Analytics (3.0.3):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
@@ -22,7 +22,146 @@ PODS:
   - GoogleSymbolUtilities (1.1.1)
   - GoogleUtilities (1.3.1):
     - GoogleSymbolUtilities (~> 1.0)
-  - HexColors (2.3.0)
+  - MaterialComponents (13.0.1):
+    - MaterialComponents/ActivityIndicator (= 13.0.1)
+    - MaterialComponents/AppBar (= 13.0.1)
+    - MaterialComponents/ButtonBar (= 13.0.1)
+    - MaterialComponents/Buttons (= 13.0.1)
+    - MaterialComponents/CollectionCells (= 13.0.1)
+    - MaterialComponents/CollectionLayoutAttributes (= 13.0.1)
+    - MaterialComponents/Collections (= 13.0.1)
+    - MaterialComponents/Dialogs (= 13.0.1)
+    - MaterialComponents/FlexibleHeader (= 13.0.1)
+    - MaterialComponents/FontDiskLoader (= 13.0.1)
+    - MaterialComponents/HeaderStackView (= 13.0.1)
+    - MaterialComponents/Ink (= 13.0.1)
+    - MaterialComponents/NavigationBar (= 13.0.1)
+    - MaterialComponents/OverlayWindow (= 13.0.1)
+    - MaterialComponents/PageControl (= 13.0.1)
+    - MaterialComponents/Palettes (= 13.0.1)
+    - MaterialComponents/private (= 13.0.1)
+    - MaterialComponents/ProgressView (= 13.0.1)
+    - MaterialComponents/RobotoFontLoader (= 13.0.1)
+    - MaterialComponents/ShadowElevations (= 13.0.1)
+    - MaterialComponents/ShadowLayer (= 13.0.1)
+    - MaterialComponents/Slider (= 13.0.1)
+    - MaterialComponents/Snackbar (= 13.0.1)
+    - MaterialComponents/SpritedAnimationView (= 13.0.1)
+    - MaterialComponents/Switch (= 13.0.1)
+    - MaterialComponents/Typography (= 13.0.1)
+  - MaterialComponents/ActivityIndicator (13.0.1)
+  - MaterialComponents/AppBar (13.0.1):
+    - MaterialComponents/FlexibleHeader
+    - MaterialComponents/HeaderStackView
+    - MaterialComponents/NavigationBar
+    - MaterialComponents/private/Icons/ic_arrow_back
+    - MaterialComponents/private/RTL
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+  - MaterialComponents/ButtonBar (13.0.1):
+    - MaterialComponents/Buttons
+    - MaterialComponents/private/RTL
+  - MaterialComponents/Buttons (13.0.1):
+    - MaterialComponents/Ink
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+  - MaterialComponents/CollectionCells (13.0.1):
+    - MaterialComponents/CollectionLayoutAttributes
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Icons/ic_chevron_right
+    - MaterialComponents/private/Icons/ic_info
+    - MaterialComponents/private/Icons/ic_radio_button_unchecked
+    - MaterialComponents/private/Icons/ic_reorder
+    - MaterialComponents/private/RTL
+    - MaterialComponents/Typography
+  - MaterialComponents/CollectionLayoutAttributes (13.0.1)
+  - MaterialComponents/Collections (13.0.1):
+    - MaterialComponents/CollectionCells
+    - MaterialComponents/CollectionLayoutAttributes
+    - MaterialComponents/Ink
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+  - MaterialComponents/Dialogs (13.0.1):
+    - MaterialComponents/Buttons
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/FlexibleHeader (13.0.1):
+    - MDFTextAccessibility (~> 1.1)
+  - MaterialComponents/FontDiskLoader (13.0.1)
+  - MaterialComponents/HeaderStackView (13.0.1)
+  - MaterialComponents/Ink (13.0.1)
+  - MaterialComponents/NavigationBar (13.0.1):
+    - MaterialComponents/ButtonBar
+    - MaterialComponents/private/RTL
+    - MaterialComponents/Typography
+  - MaterialComponents/OverlayWindow (13.0.1)
+  - MaterialComponents/PageControl (13.0.1)
+  - MaterialComponents/Palettes (13.0.1)
+  - MaterialComponents/private (13.0.1):
+    - MaterialComponents/private/Color (= 13.0.1)
+    - MaterialComponents/private/Icons (= 13.0.1)
+    - MaterialComponents/private/KeyboardWatcher (= 13.0.1)
+    - MaterialComponents/private/Overlay (= 13.0.1)
+    - MaterialComponents/private/RTL (= 13.0.1)
+    - MaterialComponents/private/ThumbTrack (= 13.0.1)
+  - MaterialComponents/private/Color (13.0.1)
+  - MaterialComponents/private/Icons (13.0.1):
+    - MaterialComponents/private/Icons/Base (= 13.0.1)
+    - MaterialComponents/private/Icons/ic_arrow_back (= 13.0.1)
+    - MaterialComponents/private/Icons/ic_check (= 13.0.1)
+    - MaterialComponents/private/Icons/ic_check_circle (= 13.0.1)
+    - MaterialComponents/private/Icons/ic_chevron_right (= 13.0.1)
+    - MaterialComponents/private/Icons/ic_info (= 13.0.1)
+    - MaterialComponents/private/Icons/ic_radio_button_unchecked (= 13.0.1)
+    - MaterialComponents/private/Icons/ic_reorder (= 13.0.1)
+  - MaterialComponents/private/Icons/Base (13.0.1)
+  - MaterialComponents/private/Icons/ic_arrow_back (13.0.1):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_check (13.0.1):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_check_circle (13.0.1):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_chevron_right (13.0.1):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_info (13.0.1):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_radio_button_unchecked (13.0.1):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Icons/ic_reorder (13.0.1):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/KeyboardWatcher (13.0.1)
+  - MaterialComponents/private/Overlay (13.0.1)
+  - MaterialComponents/private/RTL (13.0.1)
+  - MaterialComponents/private/ThumbTrack (13.0.1):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Color
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/ProgressView (13.0.1):
+    - MaterialComponents/private/RTL
+  - MaterialComponents/RobotoFontLoader (13.0.1):
+    - MaterialComponents/FontDiskLoader
+    - MaterialComponents/Typography
+  - MaterialComponents/ShadowElevations (13.0.1)
+  - MaterialComponents/ShadowLayer (13.0.1)
+  - MaterialComponents/Slider (13.0.1):
+    - MaterialComponents/private/ThumbTrack
+  - MaterialComponents/Snackbar (13.0.1):
+    - MaterialComponents/Buttons
+    - MaterialComponents/OverlayWindow
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Overlay
+  - MaterialComponents/SpritedAnimationView (13.0.1)
+  - MaterialComponents/Switch (13.0.1):
+    - MaterialComponents/private/ThumbTrack
+  - MaterialComponents/Typography (13.0.1)
+  - MDFTextAccessibility (1.1.1)
   - Nimble (4.0.1)
   - OHHTTPStubs (5.0.0):
     - OHHTTPStubs/Default (= 5.0.0)
@@ -37,52 +176,47 @@ PODS:
   - OHHTTPStubs/NSURLSession (5.0.0):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (5.0.0)
-  - Quick (0.9.2)
+  - Quick (0.9.3)
   - ReachabilitySwift (2.3.3)
-  - TSMessages (0.9.13):
-    - HexColors (~> 2.3.0)
 
 DEPENDENCIES:
   - FBSnapshotTestCase (~> 2.1.1)
   - Google/Analytics (= 3.0.3)
   - GoogleMaps (= 1.13.2)
+  - MaterialComponents (from `../material-components-ios`)
   - Nimble (~> 4.0.1)
   - OHHTTPStubs (~> 5.0.0)
   - Quick (~> 0.9.2)
   - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift`)
-  - TSMessages (from `https://github.com/KrauseFx/TSMessages.git`)
 
 EXTERNAL SOURCES:
+  MaterialComponents:
+    :path: "../material-components-ios"
   ReachabilitySwift:
     :git: https://github.com/ashleymills/Reachability.swift
-  TSMessages:
-    :git: https://github.com/KrauseFx/TSMessages.git
 
 CHECKOUT OPTIONS:
   ReachabilitySwift:
-    :commit: cecd16a3ef8d77e916a66a5d7422c34a3e6d0e29
+    :commit: 225f5af85fe2f776c0ab2e5f3d7a25c38fa1532f
     :git: https://github.com/ashleymills/Reachability.swift
-  TSMessages:
-    :commit: e63f23304f781dcadbac31e6d338f3105fb3cd78
-    :git: https://github.com/KrauseFx/TSMessages.git
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: 432afd8d059ccef7f207225894840a03fbcf7474
-  FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
-  FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
+  FBSnapshotTestCase: 918c55861356ee83aee7843d759f55a18ff6982b
+  FirebaseAnalytics: 228be2991cb28efb96cdafc4d62f64680e615c69
+  FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
   GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
-  HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
+  MaterialComponents: aec3377a656ee1b95cdde77fd908f892be35c303
+  MDFTextAccessibility: 79e89490f26446f49ff47a116923e9b6cc10808e
   Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
   OHHTTPStubs: a5d2e9eea07869d42ec03338325f398bc520e159
-  Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
+  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
-  TSMessages: 6e403b790139636c15ab4f51946537095e03e79c
 
-PODFILE CHECKSUM: 0df90bdfa5b64f019f2ea4d04bcdcfe92dfd4114
+PODFILE CHECKSUM: baa85e26e877fd6cc52d65ce2bc2a7ba3212ab42
 
 COCOAPODS: 1.0.1

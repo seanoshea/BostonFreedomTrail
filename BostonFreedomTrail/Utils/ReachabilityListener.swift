@@ -30,7 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 import ReachabilitySwift
-import TSMessages
 
 protocol ReachabilityListener:class {
     func registerListener()
@@ -61,9 +60,9 @@ extension ReachabilityListener where Self : UIViewController {
 
     func reachabilityStatusChanged(online: Bool) {
         if online {
-            TSMessage.showNotificationWithTitle("Back Online", type: TSMessageNotificationType.Success)
+//            TSMessage.showNotificationWithTitle("Back Online", type: TSMessageNotificationType.Success)
         } else {
-            TSMessage.showNotificationWithTitle("Check your network settings to get back online", type: TSMessageNotificationType.Warning)
+//            TSMessage.showNotificationWithTitle("Check your network settings to get back online", type: TSMessageNotificationType.Warning)
         }
     }
 

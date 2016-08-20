@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 
 import GoogleMaps
-import TSMessages
+import MaterialComponents
 
 final class VirtualTourViewController: BaseViewController {
 
@@ -54,6 +54,7 @@ final class VirtualTourViewController: BaseViewController {
         super.viewDidAppear(animated)
         self.model.setupTour()
         self.playPauseButton?.enabled = self.isOnline()
+//      self.displayDelayedSnackbarMessage()
     }
 
     override func viewDidDisappear(animated: Bool) {
@@ -146,14 +147,14 @@ final class VirtualTourViewController: BaseViewController {
             self.model.reverseLocation()
         }
     }
-
+  
     func repositionPanoViewForNextLocation(nextLocation: CLLocation) {
         if self.model.hasAdvancedPastFirstLocation() {
             let newCamera = self.cameraPositionForNextLocation(nextLocation)
             self.panoView?.animateToCamera(newCamera, animationDuration: VirtualTourStopStopDuration.CameraRepositionAnimation.rawValue)
             if self.model.atLookAtLocation() {
                 if let pm = self.model.placemarkForNextLocation() {
-                    TSMessage.showNotificationWithTitle(pm.name, type: TSMessageNotificationType.Message)
+                  self.displaySnackbarMessage(pm.name)
                 }
             }
         }

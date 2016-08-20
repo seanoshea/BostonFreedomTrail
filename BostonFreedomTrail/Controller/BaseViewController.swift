@@ -29,12 +29,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 import UIKit
+import MaterialComponents
 
 /// View controller which includes a few basic functions.
 class BaseViewController: UIViewController, ReachabilityListener, AnalyticsTracker {
 
 // MARK: Lifecycle
-    
+  
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.registerListener()
@@ -49,4 +50,14 @@ class BaseViewController: UIViewController, ReachabilityListener, AnalyticsTrack
     func getScreenTrackingName() -> String {
         return ""
     }
+  
+  func displaySnackbarMessage(text:String) {
+    let windowRect = self.view.frame
+    MDCSnackbarManager.setBottomOffset(windowRect.size.height - 52.0)
+    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+    dispatch_after(delayTime, dispatch_get_main_queue()) {
+      let message = MDCSnackbarMessage.init(text: text)
+      MDCSnackbarManager.showMessage(message)
+    }
+  }
 }
