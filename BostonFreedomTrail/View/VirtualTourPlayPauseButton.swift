@@ -30,35 +30,31 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
-enum VirtialTourButtonNames: String {
-    case Pause = "ic_pause_circle_filled"
-    case Play = "ic_play_circle_filled"
-}
+import MaterialComponents
 
-final class VirtualTourPlayPauseButton: UIButton {
-
-    required init?(coder aDecoder: NSCoder) {
-        self.paused = true
-        super.init(coder: aDecoder)
-        self.applyStyles()
-        self.assignButtonBackground()
-    }
-
+final class VirtualTourPlayPauseButton: MDCFloatingButton {
+  
+  override init(frame: CGRect, shape: MDCFloatingButtonShape) {
+    paused = true
+    super.init(frame: frame, shape: shape)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    paused = true
+    super.init(coder: aDecoder)
+  }
+  
     var paused: Bool {
         didSet {
             self.assignButtonBackground()
         }
     }
 
-    func applyStyles() {
-        // TODO - any other additional styles to be applied to the button?
-    }
-
     func assignButtonBackground() {
-        if self.paused {
-            self.setImage(UIImage(named:VirtialTourButtonNames.Play.rawValue), for:UIControlState())
+        if paused {
+          self.setTitle(">", for: .normal)
         } else {
-            self.setImage(UIImage(named:VirtialTourButtonNames.Pause.rawValue), for:UIControlState())
+          self.setTitle("||", for: .normal)
         }
     }
 

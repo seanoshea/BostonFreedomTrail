@@ -39,12 +39,13 @@ final class VirtualTourViewController: BaseViewController {
     
     var model: VirtualTourModel = VirtualTourModel()
     var panoView: GMSPanoramaView?
-    @IBOutlet weak var playPauseButton: VirtualTourPlayPauseButton?
+    var playPauseButton: VirtualTourPlayPauseButton!
 
 // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupPlayPauseButton()
         self.model.delegate = self
         let firstPlacemark = self.model.firstPlacemark()
         self.addPanoramaView(CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude))
@@ -60,23 +61,6 @@ final class VirtualTourViewController: BaseViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.pauseTour()
-    }
-
-// MARK: IBActions
-
-    @IBAction func pressedOnPlayPauseButton(_ sender: UIButton) {
-        self.model.togglePlayPause()
-        switch self.model.currentTourState {
-        case VirtualTourState.postSetup:
-            self.startTour()
-            break
-        case VirtualTourState.inProgress:
-            self.postDispatchAction(self.model.nextLocation())
-            break
-        default:
-            break
-        }
-        self.playPauseButton?.paused = !self.model.tourIsRunning()
     }
 
 // MARK: Analytics
@@ -99,6 +83,32 @@ final class VirtualTourViewController: BaseViewController {
 
 // MARK: Private Functions
 
+  func setupPlayPauseButton() {
+    playPauseButton = VirtualTourPlayPauseButton()
+    playPauseButton.paused = true
+    playPauseButton.sizeToFit()
+    playPauseButton.translatesAutoresizingMaskIntoConstraints = false
+    let selector = #selector(pressedOnPlayPauseButton as (_: UIButton) -> Void)
+    playPauseButton.addTarget(self, action: selector, for: .touchUpInside)
+    self.view.addSubview(playPauseButton)
+    playPauseButton.center = self.view.center
+  }
+  
+  func pressedOnPlayPauseButton(_ sender: UIButton) {
+    self.model.togglePlayPause()
+    switch self.model.currentTourState {
+    case VirtualTourState.postSetup:
+      self.startTour()
+      break
+    case VirtualTourState.inProgress:
+      self.postDispatchAction(self.model.nextLocation())
+      break
+    default:
+      break
+    }
+    self.playPauseButton?.paused = !self.model.tourIsRunning()
+  }
+  
     func addPanoramaView(_ panoramaNear: CLLocationCoordinate2D) {
         let panoView = GMSPanoramaView.panorama(withFrame: self.view.frame, nearCoordinate:panoramaNear)
         panoView.navigationLinksHidden = true
