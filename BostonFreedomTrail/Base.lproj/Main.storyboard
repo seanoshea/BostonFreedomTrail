@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0P-4p-o5O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1419" y="-716"/>
+            <point key="canvasLocation" x="1572" y="-772"/>
         </scene>
         <!--Virtual Tour View Controller-->
         <scene sceneID="d8J-BA-lzr">
@@ -100,97 +100,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNB-OL-chl" userLabel="About Scroll View">
-                                <frame key="frameInset" width="600" height="600"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNB-OL-chl" userLabel="About Scroll View">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Developer Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d03-Jp-YyK" userLabel="Developer Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="30" width="580" height="21"/>
+                                        <rect key="frame" x="16" y="32" width="382" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Developer Details Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8g-Yg-P2X" userLabel="Developer Details Label" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="56" width="580" height="16"/>
+                                        <rect key="frame" x="16" y="54" width="382" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="Designer Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QQ-t9-mKx" userLabel="Designer Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="82" width="580" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Trail Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bto-r3-B32" userLabel="Trail Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="86" width="382" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Designer Details Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p45-Wg-sve" userLabel="Designer Details Label" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="106" width="580" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trail Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bto-r3-B32" userLabel="Trail Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="130" width="580" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trail Information Details Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILG-UU-cPN" userLabel="Trail Details Label" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="159" width="580" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Trail Information Details Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILG-UU-cPN" userLabel="Trail Details Label" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="108" width="382" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Google Maps Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcV-ww-lhg" userLabel="Google Maps Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="188" width="580" height="21"/>
+                                        <rect key="frame" x="16" y="140" width="382" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Google Maps Details Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKB-Vm-6k0" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="212" width="580" height="16"/>
+                                        <rect key="frame" x="16" y="162" width="382" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="p45-Wg-sve" secondAttribute="bottom" constant="66" id="4c3-Dd-4dt"/>
-                                    <constraint firstAttribute="trailing" secondItem="d03-Jp-YyK" secondAttribute="trailing" constant="10" id="5jN-7P-gbO"/>
-                                    <constraint firstItem="q8g-Yg-P2X" firstAttribute="leading" secondItem="4QQ-t9-mKx" secondAttribute="leading" id="96X-Ol-QwG"/>
-                                    <constraint firstItem="p45-Wg-sve" firstAttribute="top" secondItem="4QQ-t9-mKx" secondAttribute="bottom" constant="3" id="BQU-XC-jbm"/>
-                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="trailing" secondItem="CKB-Vm-6k0" secondAttribute="trailing" id="DYM-Al-OfN"/>
-                                    <constraint firstItem="q8g-Yg-P2X" firstAttribute="trailing" secondItem="d03-Jp-YyK" secondAttribute="trailing" id="Fzx-Fy-WhS"/>
-                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="trailing" secondItem="p45-Wg-sve" secondAttribute="trailing" id="LPc-ZI-DCp"/>
-                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="XNB-OL-chl" secondAttribute="top" constant="188" id="ODV-ax-nxi"/>
-                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="leading" secondItem="p45-Wg-sve" secondAttribute="leading" id="RFq-YO-lto"/>
-                                    <constraint firstItem="p45-Wg-sve" firstAttribute="centerX" secondItem="XNB-OL-chl" secondAttribute="centerX" id="V2u-Hr-j2i"/>
-                                    <constraint firstItem="4QQ-t9-mKx" firstAttribute="top" secondItem="q8g-Yg-P2X" secondAttribute="bottom" constant="10" id="ZB4-3E-mfX"/>
-                                    <constraint firstItem="d03-Jp-YyK" firstAttribute="top" secondItem="XNB-OL-chl" secondAttribute="top" constant="30" id="ZlV-HK-Sjz"/>
-                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="leading" secondItem="CKB-Vm-6k0" secondAttribute="leading" id="d2N-EQ-UGk"/>
-                                    <constraint firstItem="4QQ-t9-mKx" firstAttribute="trailing" secondItem="q8g-Yg-P2X" secondAttribute="trailing" id="eqw-SJ-NV8"/>
-                                    <constraint firstItem="p45-Wg-sve" firstAttribute="trailing" secondItem="4QQ-t9-mKx" secondAttribute="trailing" id="frg-1W-iPz"/>
-                                    <constraint firstAttribute="bottom" secondItem="CKB-Vm-6k0" secondAttribute="bottom" constant="372" id="mdq-Tn-1pI"/>
-                                    <constraint firstItem="d03-Jp-YyK" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="10" id="pLY-OA-eF9"/>
-                                    <constraint firstItem="p45-Wg-sve" firstAttribute="leading" secondItem="4QQ-t9-mKx" secondAttribute="leading" id="rqA-DL-pcV"/>
-                                    <constraint firstItem="d03-Jp-YyK" firstAttribute="leading" secondItem="q8g-Yg-P2X" secondAttribute="leading" id="tBH-Hu-gpw"/>
-                                    <constraint firstItem="q8g-Yg-P2X" firstAttribute="top" secondItem="d03-Jp-YyK" secondAttribute="bottom" constant="5" id="zhU-tB-ntB"/>
-                                    <constraint firstItem="CKB-Vm-6k0" firstAttribute="top" secondItem="jcV-ww-lhg" secondAttribute="bottom" constant="3" id="zwa-1H-b4Q"/>
+                                    <constraint firstItem="Bto-r3-B32" firstAttribute="top" secondItem="q8g-Yg-P2X" secondAttribute="bottom" constant="16" id="4ab-3Q-O1I"/>
+                                    <constraint firstItem="ILG-UU-cPN" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="4fl-m8-vh4"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bto-r3-B32" secondAttribute="trailing" constant="16" id="Faw-ev-ZWf"/>
+                                    <constraint firstItem="CKB-Vm-6k0" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="GMw-Xn-Ukh"/>
+                                    <constraint firstAttribute="trailing" secondItem="CKB-Vm-6k0" secondAttribute="trailing" constant="16" id="Gzh-uI-Gz9"/>
+                                    <constraint firstItem="ILG-UU-cPN" firstAttribute="top" secondItem="Bto-r3-B32" secondAttribute="bottom" constant="1" id="H26-Cq-yMt"/>
+                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="ILG-UU-cPN" secondAttribute="bottom" constant="16" id="J5i-i3-g1G"/>
+                                    <constraint firstItem="CKB-Vm-6k0" firstAttribute="top" secondItem="jcV-ww-lhg" secondAttribute="bottom" constant="1" id="Jj4-Og-hSS"/>
+                                    <constraint firstItem="q8g-Yg-P2X" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="LOz-W0-MWj"/>
+                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="PbT-E3-vxu"/>
+                                    <constraint firstAttribute="trailing" secondItem="jcV-ww-lhg" secondAttribute="trailing" constant="16" id="PfX-uO-HHy"/>
+                                    <constraint firstAttribute="bottom" secondItem="CKB-Vm-6k0" secondAttribute="bottom" constant="32" id="WFv-Gv-ktw"/>
+                                    <constraint firstItem="d03-Jp-YyK" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="YVG-Bv-JmE"/>
+                                    <constraint firstAttribute="trailing" secondItem="ILG-UU-cPN" secondAttribute="trailing" constant="16" id="e7b-Tg-b04"/>
+                                    <constraint firstItem="d03-Jp-YyK" firstAttribute="top" secondItem="XNB-OL-chl" secondAttribute="top" constant="32" id="eGp-bT-40e"/>
+                                    <constraint firstAttribute="trailing" secondItem="q8g-Yg-P2X" secondAttribute="trailing" constant="16" id="hk7-vZ-7Z6"/>
+                                    <constraint firstItem="Bto-r3-B32" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="lwf-cx-2MT"/>
+                                    <constraint firstAttribute="trailing" secondItem="d03-Jp-YyK" secondAttribute="trailing" constant="16" id="mA7-6b-G1a"/>
+                                    <constraint firstItem="q8g-Yg-P2X" firstAttribute="top" secondItem="d03-Jp-YyK" secondAttribute="bottom" constant="1" id="xcl-wp-gf9"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XNB-OL-chl" secondAttribute="trailing" id="2AB-6w-Uw0"/>
-                            <constraint firstItem="XNB-OL-chl" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="9Z6-4Y-jof"/>
-                            <constraint firstAttribute="bottom" secondItem="XNB-OL-chl" secondAttribute="bottom" id="en3-Ma-wWw"/>
-                            <constraint firstItem="XNB-OL-chl" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="m7s-08-WKs"/>
+                            <constraint firstItem="XNB-OL-chl" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="9fv-MK-WV6"/>
+                            <constraint firstAttribute="bottom" secondItem="XNB-OL-chl" secondAttribute="bottom" id="Wa1-1u-iaG"/>
+                            <constraint firstItem="XNB-OL-chl" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="e91-L5-AdO"/>
+                            <constraint firstAttribute="trailing" secondItem="XNB-OL-chl" secondAttribute="trailing" id="qqx-Ma-iAk"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="About" image="ic_info" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="designerDetailsLabel" destination="p45-Wg-sve" id="GAH-Gi-gKF"/>
-                        <outlet property="designerLabel" destination="4QQ-t9-mKx" id="lga-dA-0dD"/>
                         <outlet property="developerDetailsLabel" destination="q8g-Yg-P2X" id="fxk-3w-F56"/>
                         <outlet property="developerLabel" destination="d03-Jp-YyK" id="uPk-c5-ycK"/>
                         <outlet property="googleMapsDetailsLabel" destination="CKB-Vm-6k0" id="ItE-6N-brQ"/>

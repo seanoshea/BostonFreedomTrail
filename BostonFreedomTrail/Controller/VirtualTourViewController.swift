@@ -87,11 +87,10 @@ final class VirtualTourViewController: BaseViewController {
     playPauseButton = VirtualTourPlayPauseButton()
     playPauseButton.paused = true
     playPauseButton.sizeToFit()
-    playPauseButton.translatesAutoresizingMaskIntoConstraints = false
     let selector = #selector(pressedOnPlayPauseButton as (_: UIButton) -> Void)
     playPauseButton.addTarget(self, action: selector, for: .touchUpInside)
-    self.view.addSubview(playPauseButton)
-    playPauseButton.center = self.view.center
+    playPauseButton.setBackgroundColor(UIColor.init(red:231/255, green:232/255, blue:235/255, alpha: 1), for: .normal)
+    playPauseButton.setTitleColor(UIColor.init(red:92/255, green:92/255, blue:92/255, alpha: 1), for: .normal)
   }
   
   func pressedOnPlayPauseButton(_ sender: UIButton) {
@@ -115,6 +114,7 @@ final class VirtualTourViewController: BaseViewController {
         panoView.delegate = self
         self.view.addSubview(panoView)
         panoView.addSubview(self.playPauseButton!)
+        playPauseButton.center = panoView.center
         self.panoView = panoView
     }
 

@@ -41,10 +41,6 @@ final class AboutViewController: BaseViewController {
     @IBOutlet weak var developerLabel: AboutTitleLabel?
     /// Information label for the developer details
     @IBOutlet weak var developerDetailsLabel: AboutDetailsLabel?
-    /// A title label for designer details
-    @IBOutlet weak var designerLabel: AboutTitleLabel?
-    /// Information label for the designer details
-    @IBOutlet weak var designerDetailsLabel: AboutDetailsLabel?
     /// A title label for trail details
     @IBOutlet weak var trailInformationLabel: AboutTitleLabel?
     /// Information label for the trail details
@@ -73,10 +69,8 @@ final class AboutViewController: BaseViewController {
     func localizeLabels() {
         self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
         self.developerDetailsLabel!.text = NSLocalizedString("Developed by Sean O'Shea", comment: "")
-        self.designerLabel!.text = NSLocalizedString("Designer Details", comment: "")
         self.trailInformationLabel!.text = NSLocalizedString("Trail Information", comment: "")
         self.trailInformationDetailsLabel!.text = NSLocalizedString("http://www.thefreedomtrail.org/, https://en.wikipedia.org/wiki/Freedom_Trail, http://www.cityofboston.gov/freedomtrail/", comment: "")
-        self.designerDetailsLabel!.text = NSLocalizedString("TBD", comment: "")
         self.googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
         self.googleMapsDetailsLabel!.text = GMSServices.openSourceLicenseInfo()
     }

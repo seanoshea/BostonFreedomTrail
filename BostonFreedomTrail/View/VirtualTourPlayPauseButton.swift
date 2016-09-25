@@ -52,7 +52,7 @@ final class VirtualTourPlayPauseButton: MDCFloatingButton {
 
     func assignButtonBackground() {
         if paused {
-          self.setTitle(">", for: .normal)
+          self.setTitle("⊳", for: .normal)
         } else {
           self.setTitle("||", for: .normal)
         }

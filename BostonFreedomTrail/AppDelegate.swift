@@ -72,7 +72,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /// Crash reporting is used in `Release` builds of the app to ensure that all crashes in the live versions of the app are reported and can be analyzed for solutions.
     func initializeCrashReporting() {
-        // only bother with crash reporting for prod builds
+        // only bother with crash reporting for release builds
         guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
         Fabric.with([Crashlytics.self])
     }
