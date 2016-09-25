@@ -103,10 +103,10 @@ struct Trail {
      - parameter placemark: the `Placemark` to search for
      - returns: index of the `Placemark` in the trail
      */
-    func placemarkIndex(placemark: Placemark) -> Int {
+    func placemarkIndex(_ placemark: Placemark) -> Int {
         var placemarkIndex = 0
-        for (index, pm) in self.placemarks.enumerate() {
-            if pm.identifier.caseInsensitiveCompare(placemark.identifier) == NSComparisonResult.OrderedSame {
+        for (index, pm) in self.placemarks.enumerated() {
+            if pm.identifier.caseInsensitiveCompare(placemark.identifier) == ComparisonResult.orderedSame {
                 placemarkIndex = index
                 break
             }

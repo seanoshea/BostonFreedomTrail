@@ -33,19 +33,19 @@ import CoreLocation
 
 /// enum for understanding what state the virtual tour is in
 enum VirtualTourState: Int {
-    case PreSetup = 0
-    case PostSetup = 1
-    case InProgress = 2
-    case Paused = 3
-    case Finished = 4
+    case preSetup = 0
+    case postSetup = 1
+    case inProgress = 2
+    case paused = 3
+    case finished = 4
 }
 
 /// enum for the durations to wait while moving through the virtial tour
 enum VirtualTourStopStopDuration: Double {
-    case CameraRepositionAnimation = 0.5
-    case DefaultDelay = 1.0
-    case DelayForCameraRepositioning = 2.0
-    case DelayForLookAt = 5.0
+    case cameraRepositionAnimation = 0.5
+    case defaultDelay = 1.0
+    case delayForCameraRepositioning = 2.0
+    case delayForLookAt = 5.0
 }
 
 /// Delegate protocol for the `VirtualTourModel`
@@ -55,7 +55,7 @@ protocol VirtualTourModelDelegate:class {
      Given a `VirtualTourModel` this function navigates to the current position in the tour automatically.
      - parameter model: the `VirtualTourModel`
      */
-    func navigateToCurrentPosition(model: VirtualTourModel)
+    func navigateToCurrentPosition(_ model: VirtualTourModel)
 }
 
 /// Backling business logic class for the `VirtualTourController`
@@ -72,7 +72,7 @@ final class VirtualTourModel {
     /// Where the tour is currently located
     var currentTourLocation: Int = 0
     /// The state of the virtual tour
-    var currentTourState: VirtualTourState = VirtualTourState.PreSetup
+    var currentTourState: VirtualTourState = VirtualTourState.preSetup
     /// Simple delegate to allow the model navigate to the current position in the tour
     weak var delegate: VirtualTourModelDelegate?
 
@@ -80,8 +80,8 @@ final class VirtualTourModel {
     func setupTour() {
         guard tourNotInitialized() else { return }
         var index = 0
-        for (placemarkIndex, placemark) in Trail.instance.placemarks.enumerate() {
-            for (locationIndex, location) in placemark.coordinates.enumerate() {
+        for (placemarkIndex, placemark) in Trail.instance.placemarks.enumerated() {
+            for (locationIndex, location) in placemark.coordinates.enumerated() {
                 if locationIndex == placemark.coordinates.count - 1 {
                     if placemark.lookAt != nil {
                         self.lookAts[index] = placemarkIndex
@@ -92,7 +92,7 @@ final class VirtualTourModel {
             }
             self.placemarkDemarkations[index] = placemarkIndex
         }
-        self.currentTourState = VirtualTourState.PostSetup
+        self.currentTourState = VirtualTourState.postSetup
     }
 
     /**
@@ -101,7 +101,7 @@ final class VirtualTourModel {
      */
     func startTour() -> CLLocation {
         self.currentTourLocation = 0
-        self.currentTourState = VirtualTourState.InProgress
+        self.currentTourState = VirtualTourState.inProgress
         return self.tour[self.currentTourLocation]
     }
 
@@ -147,7 +147,7 @@ final class VirtualTourModel {
     func togglePlayPause() {
         guard self.tourIsToggleable() else { return }
         if self.tourIsPlayable() {
-            if self.currentTourState != VirtualTourState.PostSetup {
+            if self.currentTourState != VirtualTourState.postSetup {
                 self.resumeTour()
             }
         } else {
@@ -157,12 +157,12 @@ final class VirtualTourModel {
 
     /// Pauses the tour
     func pauseTour() {
-        self.currentTourState = VirtualTourState.Paused
+        self.currentTourState = VirtualTourState.paused
     }
 
     /// Unpauses the tour
     func resumeTour() {
-        self.currentTourState = VirtualTourState.InProgress
+        self.currentTourState = VirtualTourState.inProgress
     }
 
     /**
@@ -178,7 +178,7 @@ final class VirtualTourModel {
      - returns: Bool indicating that the tour is running
      */
     func tourIsRunning() -> Bool {
-        return self.currentTourState == VirtualTourState.InProgress
+        return self.currentTourState == VirtualTourState.inProgress
     }
 
     /**
@@ -204,7 +204,7 @@ final class VirtualTourModel {
      - returns: Bool indicating that the tour is startable or resumable
      */
     func tourIsPlayable() -> Bool {
-        return self.currentTourState == VirtualTourState.PostSetup || self.currentTourState == VirtualTourState.Paused
+        return self.currentTourState == VirtualTourState.postSetup || self.currentTourState == VirtualTourState.paused
     }
 
     /**
@@ -235,20 +235,20 @@ final class VirtualTourModel {
      Retrieves the the time we should delay for at the current location.
      - returns: a time in seconds that we should wait for at the current location in the virtual tour
      */
-    func delayTime() -> dispatch_time_t {
-        var delay = self.hasAdvancedPastFirstLocation() ? VirtualTourStopStopDuration.DelayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.DefaultDelay.rawValue
+    func delayTime() -> DispatchTime {
+        var delay = self.hasAdvancedPastFirstLocation() ? VirtualTourStopStopDuration.delayForCameraRepositioning.rawValue : VirtualTourStopStopDuration.defaultDelay.rawValue
         if self.atLookAtLocation() {
-            delay = VirtualTourStopStopDuration.DelayForLookAt.rawValue
+            delay = VirtualTourStopStopDuration.delayForLookAt.rawValue
         }
-        return dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+        return DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
     }
 
-    func navigateToLookAt(placemarkIndex: Int) {
+    func navigateToLookAt(_ placemarkIndex: Int) {
         self.setupTour()
         let lookAtPosition = self.lookAtPositionInTourForPlacementIndex(placemarkIndex)
         if let position = lookAtPosition {
             self.currentTourLocation = position
-            self.currentTourState = VirtualTourState.Paused
+            self.currentTourState = VirtualTourState.paused
             if let delegate = self.delegate {
                 delegate.navigateToCurrentPosition(self)
             }
@@ -257,7 +257,7 @@ final class VirtualTourModel {
     
 // MARK: Private Functions
 
-    func lookAtPositionInTourForPlacementIndex(placemarkIndex: Int) -> Int? {
+    func lookAtPositionInTourForPlacementIndex(_ placemarkIndex: Int) -> Int? {
         var foundKey: Int?
         for (key, value) in self.lookAts {
             if value == placemarkIndex {
@@ -277,12 +277,12 @@ final class VirtualTourModel {
      - returns: Bool indicating that the tour has not been set up yet
      */
     func tourNotInitialized() -> Bool {
-        return self.currentTourState == VirtualTourState.PreSetup || self.lookAts.count == 0
+        return self.currentTourState == VirtualTourState.preSetup || self.lookAts.count == 0
     }
 
 // MARK: Calculating Camera Directions
 
-    func locationDirectionForNextLocation(nextLocation: CLLocation) -> CLLocationDirection {
+    func locationDirectionForNextLocation(_ nextLocation: CLLocation) -> CLLocationDirection {
         let from = self.tour[self.currentTourLocation - 1]
         let to = CLLocation.init(latitude:nextLocation.coordinate.latitude, longitude:nextLocation.coordinate.longitude)
         let fromLatitude = self.degreesToRadians(from.coordinate.latitude)
@@ -293,11 +293,11 @@ final class VirtualTourModel {
         return degree >= 0.0 ? degree : 360.0 + degree
     }
 
-    func degreesToRadians(value: CLLocationDegrees) -> CLLocationDegrees {
+    func degreesToRadians(_ value: CLLocationDegrees) -> CLLocationDegrees {
         return value * M_PI / 180.0
     }
 
-    func radiansToDegrees(value: Double) -> Double {
+    func radiansToDegrees(_ value: Double) -> Double {
         return (value * 180.0 / M_PI)
     }
 }

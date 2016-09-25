@@ -40,8 +40,8 @@ extension CLLocationCoordinate2D {
 }
 
 extension Int {
-    func placemarkIndexFromIdentifier(placemarkIdentifier: String) -> Int {
-        let stringRepresentation = placemarkIdentifier.stringByReplacingOccurrencesOfString("placemark", withString:"")
+    func placemarkIndexFromIdentifier(_ placemarkIdentifier: String) -> Int {
+        let stringRepresentation = placemarkIdentifier.replacingOccurrences(of: "placemark", with:"")
         if let integerRepresentation = Int(stringRepresentation) {
             return integerRepresentation - 1
         } else {

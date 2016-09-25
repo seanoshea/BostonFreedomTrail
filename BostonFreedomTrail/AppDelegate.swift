@@ -38,9 +38,9 @@ import ReachabilitySwift
 
 /// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndices: Int {
-    case MapViewController = 0
-    case VirtualTourViewController = 1
-    case AboutViewController = 2
+    case mapViewController = 0
+    case virtualTourViewController = 1
+    case aboutViewController = 2
 }
 
 /// Main entry point for the app.
@@ -54,7 +54,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: Lifecycle
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.initializeCrashReporting()
         self.initializeGoogleMapsApi()
         self.initializeStyling()
@@ -64,7 +64,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         LocationTracker.sharedInstance.startUpdatingLocation()
     }
     
@@ -98,7 +98,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
         let gai = GAI.sharedInstance()
-        gai.trackUncaughtExceptions = true
+        gai?.trackUncaughtExceptions = true
     }
 
     /// Reachability is used in the app to understand whether the user is online or offline. This function is responsible for starting the notifier so that all elements in the app know when they are offline and when they are online.
@@ -119,16 +119,16 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func initializeLocalization() {
         guard let window = self.window else { return }
         guard let tabBarController = window.rootViewController as? UITabBarController else { return }
-        for (index, item) in (tabBarController.tabBar.items?.enumerate())! {
+        for (index, item) in (tabBarController.tabBar.items?.enumerated())! {
             var title = ""
             switch index {
-            case TabBarControllerIndices.MapViewController.rawValue:
+            case TabBarControllerIndices.mapViewController.rawValue:
                 title = NSLocalizedString("Map", comment: "")
                 break
-            case TabBarControllerIndices.VirtualTourViewController.rawValue:
+            case TabBarControllerIndices.virtualTourViewController.rawValue:
                 title = NSLocalizedString("Virtual Tour", comment: "")
                 break
-            case TabBarControllerIndices.AboutViewController.rawValue:
+            case TabBarControllerIndices.aboutViewController.rawValue:
                 title = NSLocalizedString("About", comment: "")
                 break
             default:
@@ -145,12 +145,12 @@ extension AppDelegate : MapViewControllerDelegate {
      Executed when navigating to the virtual tour screen.
      - parameter placemark: The `Placemark` to land on after switching to the virtual tour.
      */
-    func navigateToVirtualTourWithPlacemark(placemark: Placemark) {
+    func navigateToVirtualTourWithPlacemark(_ placemark: Placemark) {
         guard let window = self.window else { return }
         guard let tabBarController = window.rootViewController as? UITabBarController else { return }
         guard let viewControllers = tabBarController.viewControllers else { return }
-        guard let virtualTourViewController = viewControllers[TabBarControllerIndices.VirtualTourViewController.rawValue] as? VirtualTourViewController else { return }
-        tabBarController.selectedIndex = TabBarControllerIndices.VirtualTourViewController.rawValue
+        guard let virtualTourViewController = viewControllers[TabBarControllerIndices.virtualTourViewController.rawValue] as? VirtualTourViewController else { return }
+        tabBarController.selectedIndex = TabBarControllerIndices.virtualTourViewController.rawValue
         let index = Trail.instance.placemarkIndex(placemark)
         virtualTourViewController.model.navigateToLookAt(index)
     }

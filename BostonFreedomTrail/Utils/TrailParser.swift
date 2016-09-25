@@ -52,7 +52,7 @@ enum TrailParserConstants: String {
     case heading = "heading"
 }
 
-final class TrailParser: NSObject, NSXMLParserDelegate {
+final class TrailParser: NSObject, XMLParserDelegate {
 
     var trail = Trail()
     var currentLocation: CLLocation?
@@ -82,14 +82,14 @@ final class TrailParser: NSObject, NSXMLParserDelegate {
     var currentHeading: String?
 
     func parseTrail() -> Trail {
-        let path = NSBundle.mainBundle().pathForResource(TrailParserConstants.trail.rawValue, ofType: TrailParserConstants.kml.rawValue)
-        let parser = NSXMLParser(contentsOfURL: NSURL.fileURLWithPath(path!))!
+        let path = Bundle.main.path(forResource: TrailParserConstants.trail.rawValue, ofType: TrailParserConstants.kml.rawValue)
+        let parser = XMLParser(contentsOf: URL(fileURLWithPath: path!))!
         parser.delegate = self
         parser.parse()
         return trail
     }
 
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         switch elementName {
         case TrailParserConstants.folder.rawValue:
             startFolder = true
@@ -139,14 +139,14 @@ final class TrailParser: NSObject, NSXMLParserDelegate {
         }
     }
 
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
         if startFolder {
             if startName {
                 currentName = string
             } else if startDescription {
                 currentDescription = string
             } else if startCoordinates && !startLineCoordinates {
-                let coordinates = string.componentsSeparatedByString(",")
+                let coordinates = string.components(separatedBy: ",")
                 self.currentLocation = CLLocation.init(latitude: Double(coordinates[1])!, longitude: Double(coordinates[0])!)
             } else if startLineCoordinates {
                 currentLineCoordinates = string
@@ -166,7 +166,7 @@ final class TrailParser: NSObject, NSXMLParserDelegate {
         }
     }
 
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         switch elementName {
         case TrailParserConstants.folder.rawValue:
             startFolder = false
@@ -217,10 +217,10 @@ final class TrailParser: NSObject, NSXMLParserDelegate {
     func parseLineCoordinates() -> [CLLocation] {
         var path = [CLLocation]()
         guard currentLineCoordinates != nil else { return path }
-        currentLineCoordinates = currentLineCoordinates?.stringByReplacingOccurrencesOfString("0.0 ", withString: "")
-        var coordinatesArray = currentLineCoordinates!.componentsSeparatedByString(",")
+        currentLineCoordinates = currentLineCoordinates?.replacingOccurrences(of: "0.0 ", with: "")
+        var coordinatesArray = currentLineCoordinates!.components(separatedBy: ",")
         coordinatesArray.removeLast()
-        for index in 0.stride(to: coordinatesArray.count - 1, by: 2) {
+        for index in stride(from: 0, to: coordinatesArray.count - 1, by: 2) {
             path.append(CLLocation.init(latitude: Double(coordinatesArray[index + 1])!, longitude: Double(coordinatesArray[index])!))
         }
         return path

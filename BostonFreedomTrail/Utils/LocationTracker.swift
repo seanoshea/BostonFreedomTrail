@@ -56,7 +56,7 @@ final class LocationTracker : NSObject {
 
 extension LocationTracker : CLLocationManagerDelegate {
 
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         LocationTracker.sharedInstance.currentLocation = locations.last
         if let lastKnownLocation = LocationTracker.sharedInstance.currentLocation {
             ApplicationSharedState.sharedInstance.lastKnownLocation = lastKnownLocation

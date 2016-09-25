@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 
 protocol PlacemarkViewControllerDelegate:class {
-    func streetViewButtonPressedForPlacemark(placemark: Placemark)
+    func streetViewButtonPressedForPlacemark(_ placemark: Placemark)
 }
 
 final class PlacemarkViewController: BaseViewController {
@@ -60,7 +60,7 @@ final class PlacemarkViewController: BaseViewController {
 
 // MARK: IBActions
 
-    @IBAction func streetViewButtonPressed(sender: UIButton) {
+    @IBAction func streetViewButtonPressed(_ sender: UIButton) {
         guard let delegate = self.delegate else { return }
         if let placemark = self.model?.placemark {
             self.trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.StreetViewPress.rawValue)
@@ -68,7 +68,7 @@ final class PlacemarkViewController: BaseViewController {
         } else {
             self.trackNonFatalErrorMessage("Street View Button Pressed, but no placemark associated with model")
         }
-        self.dismissViewControllerAnimated(true) { () -> Void in
+        self.dismiss(animated: true) { () -> Void in
 
         }
     }
@@ -81,16 +81,16 @@ final class PlacemarkViewController: BaseViewController {
 
 // MARK: Online/Offline
 
-    func reachabilityStatusChanged(online: Bool) {
+    func reachabilityStatusChanged(_ online: Bool) {
         super.reachabilityStatusChanged(online)
-        self.streetViewButton?.enabled = online
+        self.streetViewButton?.isEnabled = online
     }
 
 // MARK: Private Functions
 
     func configureView() {
         // only bother showing the street view button if there is a LookAt associated with this placemark.
-        self.streetViewButton?.hidden = self.model?.placemark?.lookAt == nil
+        self.streetViewButton?.isHidden = self.model?.placemark?.lookAt == nil
     }
 
     func loadPlacemarkInformation() {

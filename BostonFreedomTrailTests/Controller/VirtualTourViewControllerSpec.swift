@@ -234,7 +234,7 @@ class DummyPanoramaView : GMSPanoramaView {
     
     var wasMoved = false
     
-    override func moveNearCoordinate(coordinate: CLLocationCoordinate2D) {
+    override func moveNearCoordinate(_ coordinate: CLLocationCoordinate2D) {
         self.wasMoved = true
     }
 }

@@ -226,7 +226,7 @@ class DummyVirtualTourModelDelegate : VirtualTourModelDelegate {
     
     var navigationInitiated = false
     
-    func navigateToCurrentPosition(model:VirtualTourModel) {
+    func navigateToCurrentPosition(_ model:VirtualTourModel) {
         self.navigationInitiated = true
     }
 }

@@ -37,7 +37,7 @@ protocol MapViewControllerDelegate:class {
      Executed when navigating to the virtual tour screen.
      - parameter placemark: The `Placemark` to land on after switching to the virtual tour.
      */
-    func navigateToVirtualTourWithPlacemark(placemark: Placemark)
+    func navigateToVirtualTourWithPlacemark(_ placemark: Placemark)
 }
 
 /// View Controller class for presenting the map of Boston to the user.
@@ -61,14 +61,14 @@ final class MapViewController: BaseViewController {
         self.setupPlacemarks()
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == NSComparisonResult.OrderedSame {
-                guard let placemarkViewController = segue.destinationViewController as? PlacemarkViewController else { return }
+            if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == ComparisonResult.orderedSame {
+                guard let placemarkViewController = segue.destination as? PlacemarkViewController else { return }
                 guard let placemark = self.mapView?.selectedMarker!.userData as? Placemark else { return }
                 placemarkViewController.delegate = self
                 placemarkViewController.popoverPresentationController?.delegate = self
-                placemarkViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+                placemarkViewController.modalPresentationStyle = UIModalPresentationStyle.popover
                 placemarkViewController.model!.placemark = placemark
             }
         }
@@ -85,11 +85,11 @@ final class MapViewController: BaseViewController {
     /// Initializes the `mapView` and configures properties on it to make sure it displays correctly.
     func createMapView() {
         let lastKnownCoordinate = self.model.lastKnownCoordinate()
-        let camera = GMSCameraPosition.cameraWithLatitude(lastKnownCoordinate.latitude, longitude:lastKnownCoordinate.longitude, zoom:self.model.zoomForMap())
-        let mapView = GMSMapView.mapWithFrame(CGRect.zero, camera:camera)
+        let camera = GMSCameraPosition.camera(withLatitude: lastKnownCoordinate.latitude, longitude:lastKnownCoordinate.longitude, zoom:self.model.zoomForMap())
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera:camera)
         mapView.padding = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 48.0, right: 0.0)
-        mapView.indoorEnabled = false
-        mapView.myLocationEnabled = true
+        mapView.isIndoorEnabled = false
+        mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.settings.compassButton = false
         mapView.delegate = self
@@ -105,7 +105,7 @@ final class MapViewController: BaseViewController {
     
     /// Ensures that the `delegate` property is set to the `AppDelegate`
     func initializeDelegate() {
-        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         self.delegate = appDelegate
     }
 }
@@ -120,7 +120,7 @@ extension MapViewController : GMSMapViewDelegate {
      - parameter mapView: the view associated with the `MapViewController`
      - parameter position: defines where the `mapView` is positioned
      */
-    func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         if position.zoom > 0.0 {
             ApplicationSharedState.sharedInstance.cameraZoom = position.zoom
         }
@@ -133,7 +133,7 @@ extension MapViewController : GMSMapViewDelegate {
      - parameter marker: the `GMSMarker` the user pressed
      - returns: always returns false as this delegate does not handle the tap event
      */
-    func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
         guard let userData = marker.userData as? Placemark else { return false }
         self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.MarkerPress.rawValue)
@@ -145,11 +145,11 @@ extension MapViewController : GMSMapViewDelegate {
      - parameter mapView: the view associated with the `MapViewController`
      - parameter marker: the `GMSMarker` associated with the info window that the user just pressed
      */
-    func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
         guard let userData = marker.userData as? Placemark else { return }
         self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.InfoWindowPress.rawValue)
-        self.performSegueWithIdentifier(SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
+        self.performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
     }
 
     /**
@@ -157,7 +157,7 @@ extension MapViewController : GMSMapViewDelegate {
      - parameter mapView: the view associated with the `MapViewController`
      - parameter coordinate: the coordinate at which the user just pressed
      */
-    func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         coordinate.logCoordinate()
     }
 }
@@ -171,7 +171,7 @@ extension MapViewController : PlacemarkViewControllerDelegate {
      Allows the `MapViewController` to navigate to the virtual tour.
      - parameter placemark: the placemark at which to land the user on the virtual tour screen
      */
-    func streetViewButtonPressedForPlacemark(placemark: Placemark) {
+    func streetViewButtonPressedForPlacemark(_ placemark: Placemark) {
         if let delegate = self.delegate {
             delegate.navigateToVirtualTourWithPlacemark(placemark)
         } else {
@@ -185,8 +185,8 @@ extension MapViewController : PlacemarkViewControllerDelegate {
 /// Extension for the `MapViewController` to ensure that the user can sucessfully close out of a `PlacemarkViewController`
 extension MapViewController : UIPopoverPresentationControllerDelegate {
 
-    func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-        let doneButton = UIBarButtonItem(title:NSLocalizedString("Done", comment: ""), style:.Done, target:self, action:#selector(dismiss))
+    func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+        let doneButton = UIBarButtonItem(title:NSLocalizedString("Done", comment: ""), style:.done, target:self, action:#selector(dismiss))
         let navigationController = UINavigationController(rootViewController: controller.presentedViewController)
         navigationController.topViewController!.navigationItem.leftBarButtonItem = doneButton
         return navigationController
@@ -194,6 +194,6 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
 
     /// Simply dismisses the current view controller.
     func dismiss() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

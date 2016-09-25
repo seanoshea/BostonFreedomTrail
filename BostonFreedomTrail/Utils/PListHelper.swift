@@ -56,7 +56,7 @@ struct PListHelper {
     }
 
     static func plistDictionary() -> [String: AnyObject] {
-        let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist")
+        let path = Bundle.main.path(forResource: "Info", ofType: "plist")
         let pListContents = NSDictionary(contentsOfFile: path!) as? [String: AnyObject]
         return pListContents!
     }

@@ -32,8 +32,8 @@ import UIKit
 
 /// A few constants for font sizes for the About Screen.
 enum AboutFontSizes: CGFloat {
-    case AboutTitle = 17.0
-    case AboutDetails = 12.0
+    case aboutTitle = 17.0
+    case aboutDetails = 12.0
 }
 
 /// Customized title label for the About Screen.
@@ -47,7 +47,7 @@ class AboutTitleLabel: UILabel {
     /// Ensures that the appropriate styles are set on the label.
     func applyStyles() {
         // TODO - font, kerning and color
-        self.font = UIFont.systemFontOfSize(AboutFontSizes.AboutTitle.rawValue)
+        self.font = UIFont.systemFont(ofSize: AboutFontSizes.aboutTitle.rawValue)
     }
 }
 
@@ -62,6 +62,6 @@ class AboutDetailsLabel: AboutTitleLabel {
     /// Ensures that the appropriate styles are set on the label.
     override func applyStyles() {
         // TODO - font, kerning and color
-        self.font = UIFont.systemFontOfSize(AboutFontSizes.AboutDetails.rawValue)
+        self.font = UIFont.systemFont(ofSize: AboutFontSizes.aboutDetails.rawValue)
     }
 }

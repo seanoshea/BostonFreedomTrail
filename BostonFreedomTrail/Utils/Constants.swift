@@ -39,7 +39,7 @@ enum ResourceConstants: String {
 }
 
 enum TabBarControllerTags: Int {
-    case MapViewTag = 0
-    case VirtualTourViewTag = 1
-    case AboutViewTag = 2
+    case mapViewTag = 0
+    case virtualTourViewTag = 1
+    case aboutViewTag = 2
 }

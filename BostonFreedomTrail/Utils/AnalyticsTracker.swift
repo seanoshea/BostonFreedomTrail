@@ -68,7 +68,7 @@ protocol AnalyticsTracker:class {
      - parameter placemark: the placemark about which the user is requesting information.
      - parameter label: additional label information about the placemark & where the user is requesting the info from.
      */
-    func trackButtonPressForPlacemark(placemark: Placemark, label: String)
+    func trackButtonPressForPlacemark(_ placemark: Placemark, label: String)
 }
 
 extension AnalyticsTracker where Self : UIViewController {
@@ -80,7 +80,7 @@ extension AnalyticsTracker where Self : UIViewController {
             guard trackingName.characters.count > 0 else { return }
             tracker.set(kGAIScreenName, value: trackingName)
             let builder = GAIDictionaryBuilder.createScreenView()
-            tracker.send(builder.build() as [NSObject : AnyObject])
+            tracker.send(builder?.build() as [AnyHashable: Any])
         }
     }
 
@@ -89,10 +89,10 @@ extension AnalyticsTracker where Self : UIViewController {
      - parameter placemark: the placemark about which the user is requesting information.
      - parameter label: additional label information about the placemark & where the user is requesting the info from.
      */
-    func trackButtonPressForPlacemark(placemark: Placemark, label: String) {
+    func trackButtonPressForPlacemark(_ placemark: Placemark, label: String) {
         if let tracker = GAI.sharedInstance().defaultTracker {
-            let parameters = GAIDictionaryBuilder.createEventWithCategory(AnalyticsEventCategories.Action.rawValue, action:AnalyticsActions.ButtonPress.rawValue, label:AnalyticsLabels.InfoWindowPress.rawValue, value: Int(placemark.identifier)).build()
-            tracker.send(parameters as [NSObject : AnyObject])
+            let parameters = GAIDictionaryBuilder.createEvent(withCategory: AnalyticsEventCategories.Action.rawValue, action:AnalyticsActions.ButtonPress.rawValue, label:AnalyticsLabels.InfoWindowPress.rawValue, value: Int(placemark.identifier) as NSNumber!).build()
+            tracker.send(parameters as [AnyHashable: Any])
         }
     }
 
@@ -100,10 +100,10 @@ extension AnalyticsTracker where Self : UIViewController {
      Tracks an error happening in the application.
      - parameter errorMessage: information on where the error occured.
      */
-    func trackNonFatalErrorMessage(errorMessage:String) {
+    func trackNonFatalErrorMessage(_ errorMessage:String) {
         if let tracker = GAI.sharedInstance().defaultTracker {
-            let parameters = GAIDictionaryBuilder.createExceptionWithDescription(errorMessage, withFatal:0).build()
-            tracker.send(parameters as [NSObject : AnyObject])
+            let parameters = GAIDictionaryBuilder.createException(withDescription: errorMessage, withFatal:0).build()
+            tracker.send(parameters as [AnyHashable: Any])
         }
     }
 }

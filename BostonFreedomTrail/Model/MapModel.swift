@@ -40,7 +40,7 @@ final class MapModel {
      - parameter mapView: the view associated with the `MapViewController`
      - returns: an array of `GMSMarker`s which represent the Freedom Trail
      */
-    func addPlacemarksToMap(mapView: GMSMapView) -> [GMSMarker] {
+    func addPlacemarksToMap(_ mapView: GMSMapView) -> [GMSMarker] {
         var markers = [GMSMarker]()
         for placemark: Placemark in Trail.instance.placemarks {
             let marker = GMSMarker()
@@ -58,7 +58,7 @@ final class MapModel {
      Responsible for drawing the path between all the placemarks which are created as a result of `addPlacemarksToMap`
      - parameter mapView: the view associated with the `MapViewController`
      */
-    func addPathToMap(mapView: GMSMapView) {
+    func addPathToMap(_ mapView: GMSMapView) {
         let path = GMSMutablePath()
         for placemark: Placemark in Trail.instance.placemarks {
             for location: CLLocation in placemark.coordinates {

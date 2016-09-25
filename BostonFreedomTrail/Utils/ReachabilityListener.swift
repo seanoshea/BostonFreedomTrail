@@ -33,32 +33,32 @@ import ReachabilitySwift
 
 protocol ReachabilityListener:class {
     func registerListener()
-    func reachabilityStatusChanged(online: Bool)
+    func reachabilityStatusChanged(_ online: Bool)
     func isOnline() -> Bool
 }
 
 extension ReachabilityListener where Self : UIViewController {
 
     func registerListener() {
-        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.reachability?.whenReachable = { reachability in
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.reachabilityStatusChanged(true)
             }
         }
         appDelegate.reachability?.whenUnreachable = { reachability in
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.reachabilityStatusChanged(false)
             }
         }
     }
 
-    func reachabilityChanged(note: NSNotification) {
+    func reachabilityChanged(_ note: Notification) {
         guard let reachability = note.object as? Reachability else { return }
         self.reachabilityStatusChanged(reachability.isReachable())
     }
 
-    func reachabilityStatusChanged(online: Bool) {
+    func reachabilityStatusChanged(_ online: Bool) {
         if online {
 //            TSMessage.showNotificationWithTitle("Back Online", type: TSMessageNotificationType.Success)
         } else {
@@ -67,7 +67,7 @@ extension ReachabilityListener where Self : UIViewController {
     }
 
     func isOnline() -> Bool {
-        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return false }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
         guard let reachability = appDelegate.reachability else { return false }
         return reachability.isReachable()
     }

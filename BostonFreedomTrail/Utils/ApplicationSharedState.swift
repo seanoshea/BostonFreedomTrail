@@ -51,45 +51,45 @@ final class ApplicationSharedState {
             guard newValue > kGMSMinZoomLevel && newValue < kGMSMaxZoomLevel else {
                 return
             }
-            NSUserDefaults.standardUserDefaults().setFloat(newValue, forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
+            UserDefaults.standard.set(newValue, forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
         }
         get {
-            return NSUserDefaults.standardUserDefaults().floatForKey(DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue) ?? PListHelper.defaultCameraZoom()
+            return UserDefaults.standard.float(forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue) ?? PListHelper.defaultCameraZoom()
         }
     }
 
     var lastKnownPlacemarkCoordinate: CLLocationCoordinate2D {
         set {
-            NSUserDefaults.standardUserDefaults().setDouble(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
-            NSUserDefaults.standardUserDefaults().setDouble(newValue.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
+            UserDefaults.standard.set(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
+            UserDefaults.standard.set(newValue.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
         }
         get {
-            let latitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
-            let longitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
+            let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
+            let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
             return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
         }
     }
 
     var lastKnownCoordinate: CLLocationCoordinate2D {
         set {
-            NSUserDefaults.standardUserDefaults().setDouble(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
-            NSUserDefaults.standardUserDefaults().setDouble(newValue.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
+            UserDefaults.standard.set(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
+            UserDefaults.standard.set(newValue.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
         }
         get {
-            let latitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
-            let longitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
+            let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
+            let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
             return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
         }
     }
 
     var lastKnownLocation: CLLocation {
         set {
-            NSUserDefaults.standardUserDefaults().setDouble(newValue.coordinate.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
-            NSUserDefaults.standardUserDefaults().setDouble(newValue.coordinate.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
+            UserDefaults.standard.set(newValue.coordinate.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
+            UserDefaults.standard.set(newValue.coordinate.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
         }
         get {
-            let latitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
-            let longitude = NSUserDefaults.standardUserDefaults().doubleForKey(DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
+            let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
+            let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
             return CLLocation.init(latitude:latitude, longitude:longitude)
         }
     }
@@ -103,10 +103,10 @@ final class ApplicationSharedState {
     }
 
     func clear() {
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
+        UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
+        UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
+        UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
+        UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
+        UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
     }
 }

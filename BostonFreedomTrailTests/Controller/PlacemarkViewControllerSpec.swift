@@ -150,7 +150,7 @@ class DummyDelegate : PlacemarkViewControllerDelegate {
     
     var buttonPressed = false
     
-    func streetViewButtonPressedForPlacemark(placemark: Placemark) {
+    func streetViewButtonPressedForPlacemark(_ placemark: Placemark) {
         self.buttonPressed = true
     }
 }
