@@ -55,7 +55,7 @@ extension ReachabilityListener where Self : UIViewController {
 
     func reachabilityChanged(_ note: Notification) {
         guard let reachability = note.object as? Reachability else { return }
-        self.reachabilityStatusChanged(reachability.isReachable())
+        self.reachabilityStatusChanged(reachability.isReachable)
     }
 
     func reachabilityStatusChanged(_ online: Bool) {
@@ -69,6 +69,6 @@ extension ReachabilityListener where Self : UIViewController {
     func isOnline() -> Bool {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
         guard let reachability = appDelegate.reachability else { return false }
-        return reachability.isReachable()
+        return reachability.isReachable
     }
 }

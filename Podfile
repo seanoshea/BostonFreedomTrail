@@ -8,7 +8,7 @@ target :BostonFreedomTrail do
 
   pod 'Google/Analytics', '3.0.3'
   pod 'GoogleMaps', '1.13.2'
-  pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift'
+  pod 'ReachabilitySwift', '~> 3'
   pod 'MaterialComponents', :path => '../material-components-ios'
 
   target :BostonFreedomTrailTests do

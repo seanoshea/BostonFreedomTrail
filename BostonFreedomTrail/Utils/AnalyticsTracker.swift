@@ -80,7 +80,7 @@ extension AnalyticsTracker where Self : UIViewController {
             guard trackingName.characters.count > 0 else { return }
             tracker.set(kGAIScreenName, value: trackingName)
             let builder = GAIDictionaryBuilder.createScreenView()
-            tracker.send(builder?.build() as [AnyHashable: Any])
+//            tracker.send(builder?.build() as NSMutableDictionary)
         }
     }
 
@@ -92,7 +92,7 @@ extension AnalyticsTracker where Self : UIViewController {
     func trackButtonPressForPlacemark(_ placemark: Placemark, label: String) {
         if let tracker = GAI.sharedInstance().defaultTracker {
             let parameters = GAIDictionaryBuilder.createEvent(withCategory: AnalyticsEventCategories.Action.rawValue, action:AnalyticsActions.ButtonPress.rawValue, label:AnalyticsLabels.InfoWindowPress.rawValue, value: Int(placemark.identifier) as NSNumber!).build()
-            tracker.send(parameters as [AnyHashable: Any])
+//            tracker.send(parameters as [AnyHashable: Any])
         }
     }
 
@@ -103,7 +103,7 @@ extension AnalyticsTracker where Self : UIViewController {
     func trackNonFatalErrorMessage(_ errorMessage:String) {
         if let tracker = GAI.sharedInstance().defaultTracker {
             let parameters = GAIDictionaryBuilder.createException(withDescription: errorMessage, withFatal:0).build()
-            tracker.send(parameters as [AnyHashable: Any])
+//            tracker.send(parameters as! [NSObject : AnyObject])
         }
     }
 }

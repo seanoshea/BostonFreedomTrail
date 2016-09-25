@@ -103,16 +103,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// Reachability is used in the app to understand whether the user is online or offline. This function is responsible for starting the notifier so that all elements in the app know when they are offline and when they are online.
     func initializeReachability() {
-        do {
-            self.reachability = try Reachability.reachabilityForInternetConnection()
-            do {
-                try self.reachability!.startNotifier()
-            } catch {
-                NSLog("Failed to start the reachability notifier")
-            }
-        } catch {
-            NSLog("Failed to start Reachability")
-        }
+      self.reachability = Reachability.init()
+      do {
+        try self.reachability!.startNotifier()
+      } catch {
+        NSLog("Failed to start the reachability notifier")
+      }
     }
 
     /// Ensures that the titles on the tabs at the bottom of the app are fully localized.

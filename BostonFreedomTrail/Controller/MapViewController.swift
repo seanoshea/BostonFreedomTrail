@@ -186,7 +186,8 @@ extension MapViewController : PlacemarkViewControllerDelegate {
 extension MapViewController : UIPopoverPresentationControllerDelegate {
 
     func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-        let doneButton = UIBarButtonItem(title:NSLocalizedString("Done", comment: ""), style:.done, target:self, action:#selector(dismiss))
+        let selector = #selector(dismiss as (Void) -> Void)
+        let doneButton = UIBarButtonItem(title:NSLocalizedString("Done", comment: ""), style:.done, target:self, action:selector)
         let navigationController = UINavigationController(rootViewController: controller.presentedViewController)
         navigationController.topViewController!.navigationItem.leftBarButtonItem = doneButton
         return navigationController

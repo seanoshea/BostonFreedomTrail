@@ -46,6 +46,7 @@ final class MapModel {
             let marker = GMSMarker()
             marker.userData = placemark
             marker.position = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude)
+            marker.icon = UIImage.init(named: "orange_red")
             marker.title = placemark.name
             marker.appearAnimation = kGMSMarkerAnimationPop
             marker.map = mapView
@@ -66,7 +67,7 @@ final class MapModel {
             }
         }
         let polyline = GMSPolyline(path: path)
-        polyline.strokeColor = UIColor.init(red:221/255, green:164/255, blue:147/255, alpha: 1)
+        polyline.strokeColor = UIColor.init(red:216/255, green:67/255, blue:21/255, alpha: 1)
         polyline.strokeWidth = 3.0
         polyline.map = mapView
     }
