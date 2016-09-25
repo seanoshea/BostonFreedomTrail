@@ -22,7 +22,6 @@
 		41237C1A1C4921E50007F76B /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C191C4921E50007F76B /* MapModel.swift */; };
 		41237C1C1C4923D20007F76B /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
 		41237C211C49244D0007F76B /* TrailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* TrailParser.swift */; };
-		41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */; };
 		413A01C31CD7B43C006E7667 /* BaseViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A01C21CD7B43C006E7667 /* BaseViewControllerSpec.swift */; };
 		41443EB81C894DBE0096EE06 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41443EB61C894DBE0096EE06 /* Fabric.framework */; };
 		41443EB91C894DBE0096EE06 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41443EB71C894DBE0096EE06 /* Crashlytics.framework */; };
@@ -88,7 +87,6 @@
 		41237C191C4921E50007F76B /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		41237C1B1C4923D20007F76B /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
 		41237C201C49244D0007F76B /* TrailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParser.swift; sourceTree = "<group>"; };
-		41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkViewButton.swift; sourceTree = "<group>"; };
 		413A01C21CD7B43C006E7667 /* BaseViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerSpec.swift; sourceTree = "<group>"; };
 		41443EB61C894DBE0096EE06 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		41443EB71C894DBE0096EE06 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
@@ -255,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */,
-				41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */,
 				41D8574D1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift */,
 			);
 			path = View;
@@ -575,7 +572,6 @@
 				414A7AA91C6D80E000385442 /* PlacemarkModel.swift in Sources */,
 				41DE05E21C5515B0008AFCA5 /* LocationTracker.swift in Sources */,
 				41DE05E61C553694008AFCA5 /* VirtualTourViewController.swift in Sources */,
-				41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */,
 				41D8574E1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift in Sources */,
 				41E1C3711C525B670009570C /* Constants.swift in Sources */,
 				41D527E91D25EB6C005B8D5E /* Extensions.swift in Sources */,
