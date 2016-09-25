@@ -181,7 +181,7 @@ PODS:
 
 DEPENDENCIES:
   - FBSnapshotTestCase (~> 2.1.1)
-  - Google/Analytics (= 3.0.3)
+  - Google/Analytics
   - GoogleMaps (= 1.13.2)
   - MaterialComponents (from `../material-components-ios`)
   - Nimble (~> 4.0.1)
@@ -210,6 +210,6 @@ SPEC CHECKSUMS:
   Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
 
-PODFILE CHECKSUM: 613fe761b18c73d11af88ddba6855a03512337ac
+PODFILE CHECKSUM: 9c99ac3003d197b110c80340677989ce998fc204
 
 COCOAPODS: 1.0.1

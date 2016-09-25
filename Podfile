@@ -6,7 +6,7 @@ target :BostonFreedomTrail do
   inhibit_all_warnings!
   use_frameworks!
 
-  pod 'Google/Analytics', '3.0.3'
+  pod 'Google/Analytics'
   pod 'GoogleMaps', '1.13.2'
   pod 'ReachabilitySwift', '~> 3'
   pod 'MaterialComponents', :path => '../material-components-ios'

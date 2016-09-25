@@ -99,7 +99,7 @@ final class MapViewController: BaseViewController {
   
   /// Adds all the placemarks to the `mapView`. Also responsible for mapping out the path between the placemarks.
   func setupPlacemarks() {
-    self.model.addPlacemarksToMap(self.mapView!)
+    let _ = self.model.addPlacemarksToMap(self.mapView!)
     self.model.addPathToMap(self.mapView!)
   }
   
@@ -149,8 +149,7 @@ extension MapViewController : GMSMapViewDelegate {
     ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
     guard let userData = marker.userData as? Placemark else { return }
     self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.InfoWindowPress.rawValue)
-    return
-      self.performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
+//    self.performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
   }
   
   /**
