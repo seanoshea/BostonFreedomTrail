@@ -32,14 +32,7 @@ import UIKit
 import MaterialComponents
 
 /// View controller which includes a few basic functions.
-class BaseViewController: UIViewController, ReachabilityListener, AnalyticsTracker {
-  
-  // MARK: Lifecycle
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    self.registerListener()
-  }
+class BaseViewController: UIViewController, AnalyticsTracker {
   
   // MARK: Analytics
   

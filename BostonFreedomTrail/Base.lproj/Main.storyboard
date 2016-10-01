@@ -15,11 +15,11 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="ic_map" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="ic_place" id="acW-dT-cKf"/>
                     <connections>
                         <segue destination="f9d-M6-DNw" kind="popoverPresentation" identifier="MapToPlacemarkSegueIdentifier" popoverAnchorView="tsR-hK-woN" id="fXy-Y4-ObH">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -78,7 +78,7 @@
                         <viewControllerLayoutGuide type="bottom" id="vAw-iQ-CEP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PYW-Gj-rDv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -97,7 +97,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNB-OL-chl" userLabel="About Scroll View">
@@ -203,7 +203,7 @@
     </scenes>
     <resources>
         <image name="ic_info" width="24" height="24"/>
-        <image name="ic_map" width="24" height="24"/>
-        <image name="ic_streetview" width="24" height="24"/>
+        <image name="ic_place" width="48" height="48"/>
+        <image name="ic_streetview" width="48" height="48"/>
     </resources>
 </document>

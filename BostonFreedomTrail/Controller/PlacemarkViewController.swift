@@ -79,13 +79,6 @@ final class PlacemarkViewController: BaseViewController {
     return AnalyticsScreenNames.PlacemarkScreen.rawValue
   }
   
-  // MARK: Online/Offline
-  
-  func reachabilityStatusChanged(_ online: Bool) {
-    super.reachabilityStatusChanged(online)
-    self.streetViewButton?.isEnabled = online
-  }
-  
   // MARK: Private Functions
   
   func configureView() {

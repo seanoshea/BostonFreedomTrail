@@ -34,7 +34,6 @@ import GoogleMaps
 import CoreLocation
 import Fabric
 import Crashlytics
-import ReachabilitySwift
 
 /// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndices: Int {
@@ -49,8 +48,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// Main window for the app.
     var window: UIWindow?
-    /// Allows the app understand whether the user is online of offline.
-    var reachability: Reachability?
 
 // MARK: Lifecycle
     
@@ -59,7 +56,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initializeGoogleMapsApi()
         self.initializeStyling()
         self.initializeAnalytics()
-        self.initializeReachability()
         self.initializeLocalization()
         return true
     }
@@ -99,16 +95,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         let gai = GAI.sharedInstance()
         gai?.trackUncaughtExceptions = true
-    }
-
-    /// Reachability is used in the app to understand whether the user is online or offline. This function is responsible for starting the notifier so that all elements in the app know when they are offline and when they are online.
-    func initializeReachability() {
-      self.reachability = Reachability.init()
-      do {
-        try self.reachability!.startNotifier()
-      } catch {
-        NSLog("Failed to start the reachability notifier")
-      }
     }
 
     /// Ensures that the titles on the tabs at the bottom of the app are fully localized.
