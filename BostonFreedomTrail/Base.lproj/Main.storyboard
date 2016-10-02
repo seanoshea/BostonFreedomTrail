@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -78,7 +78,7 @@
                         <viewControllerLayoutGuide type="bottom" id="vAw-iQ-CEP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PYW-Gj-rDv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -97,7 +97,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNB-OL-chl" userLabel="About Scroll View">
@@ -117,50 +117,51 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trail Information Details Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILG-UU-cPN" userLabel="Trail Details Label" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Trail Details" translatesAutoresizingMaskIntoConstraints="NO" id="lMp-lK-l9c" userLabel="Trail Details Text View">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                    </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Maps Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcV-ww-lhg" userLabel="Google Maps Label" customClass="AboutTitleLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Maps Details Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKB-Vm-6k0" customClass="AboutDetailsLabel" customModule="BostonFreedomTrail" customModuleProvider="target">
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Google Maps Details View" translatesAutoresizingMaskIntoConstraints="NO" id="Zpy-fy-KnQ">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Bto-r3-B32" firstAttribute="top" secondItem="q8g-Yg-P2X" secondAttribute="bottom" constant="16" id="4ab-3Q-O1I"/>
-                                    <constraint firstItem="ILG-UU-cPN" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="4fl-m8-vh4"/>
-                                    <constraint firstAttribute="trailing" secondItem="Bto-r3-B32" secondAttribute="trailing" constant="16" id="Faw-ev-ZWf"/>
-                                    <constraint firstItem="CKB-Vm-6k0" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="GMw-Xn-Ukh"/>
-                                    <constraint firstAttribute="trailing" secondItem="CKB-Vm-6k0" secondAttribute="trailing" constant="16" id="Gzh-uI-Gz9"/>
-                                    <constraint firstItem="ILG-UU-cPN" firstAttribute="top" secondItem="Bto-r3-B32" secondAttribute="bottom" constant="1" id="H26-Cq-yMt"/>
-                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="ILG-UU-cPN" secondAttribute="bottom" constant="16" id="J5i-i3-g1G"/>
-                                    <constraint firstItem="CKB-Vm-6k0" firstAttribute="top" secondItem="jcV-ww-lhg" secondAttribute="bottom" constant="1" id="Jj4-Og-hSS"/>
-                                    <constraint firstItem="q8g-Yg-P2X" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="LOz-W0-MWj"/>
-                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="PbT-E3-vxu"/>
-                                    <constraint firstAttribute="trailing" secondItem="jcV-ww-lhg" secondAttribute="trailing" constant="16" id="PfX-uO-HHy"/>
-                                    <constraint firstAttribute="bottom" secondItem="CKB-Vm-6k0" secondAttribute="bottom" constant="32" id="WFv-Gv-ktw"/>
-                                    <constraint firstItem="d03-Jp-YyK" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="YVG-Bv-JmE"/>
-                                    <constraint firstAttribute="trailing" secondItem="ILG-UU-cPN" secondAttribute="trailing" constant="16" id="e7b-Tg-b04"/>
-                                    <constraint firstItem="d03-Jp-YyK" firstAttribute="top" secondItem="XNB-OL-chl" secondAttribute="top" constant="32" id="eGp-bT-40e"/>
-                                    <constraint firstAttribute="trailing" secondItem="q8g-Yg-P2X" secondAttribute="trailing" constant="16" id="hk7-vZ-7Z6"/>
-                                    <constraint firstItem="Bto-r3-B32" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="lwf-cx-2MT"/>
-                                    <constraint firstAttribute="trailing" secondItem="d03-Jp-YyK" secondAttribute="trailing" constant="16" id="mA7-6b-G1a"/>
-                                    <constraint firstItem="q8g-Yg-P2X" firstAttribute="top" secondItem="d03-Jp-YyK" secondAttribute="bottom" constant="1" id="xcl-wp-gf9"/>
+                                    <constraint firstAttribute="trailing" secondItem="lMp-lK-l9c" secondAttribute="trailing" constant="16" id="00o-96-QH4"/>
+                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="lMp-lK-l9c" secondAttribute="bottom" constant="16" id="1K6-iu-JgB"/>
+                                    <constraint firstItem="d03-Jp-YyK" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="CSv-P9-XCF"/>
+                                    <constraint firstItem="Zpy-fy-KnQ" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="FwD-zY-pWE"/>
+                                    <constraint firstAttribute="trailing" secondItem="d03-Jp-YyK" secondAttribute="trailing" constant="16" id="HKa-4q-LEw"/>
+                                    <constraint firstItem="d03-Jp-YyK" firstAttribute="top" secondItem="XNB-OL-chl" secondAttribute="top" constant="32" id="HNO-iE-6j9"/>
+                                    <constraint firstItem="q8g-Yg-P2X" firstAttribute="top" secondItem="d03-Jp-YyK" secondAttribute="bottom" constant="1" id="I96-7D-xKq"/>
+                                    <constraint firstAttribute="trailing" secondItem="q8g-Yg-P2X" secondAttribute="trailing" constant="16" id="Qxp-Ld-l0C"/>
+                                    <constraint firstItem="Bto-r3-B32" firstAttribute="top" secondItem="q8g-Yg-P2X" secondAttribute="bottom" constant="16" id="Vl9-ar-2hp"/>
+                                    <constraint firstItem="jcV-ww-lhg" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="WVO-De-Fqb"/>
+                                    <constraint firstItem="Zpy-fy-KnQ" firstAttribute="top" secondItem="jcV-ww-lhg" secondAttribute="bottom" constant="1" id="Xi2-Yb-tOr"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zpy-fy-KnQ" secondAttribute="bottom" constant="16" id="Yoh-eA-1dZ"/>
+                                    <constraint firstItem="lMp-lK-l9c" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="aFT-Hy-BU0"/>
+                                    <constraint firstItem="Bto-r3-B32" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="f04-kv-gbV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bto-r3-B32" secondAttribute="trailing" constant="16" id="g94-WS-mKZ"/>
+                                    <constraint firstItem="lMp-lK-l9c" firstAttribute="top" secondItem="Bto-r3-B32" secondAttribute="bottom" constant="1" id="ifc-vX-Kvf"/>
+                                    <constraint firstItem="q8g-Yg-P2X" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="jFA-7G-Zco"/>
+                                    <constraint firstAttribute="trailing" secondItem="jcV-ww-lhg" secondAttribute="trailing" constant="16" id="lPF-d3-yfW"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zpy-fy-KnQ" secondAttribute="trailing" constant="16" id="znH-Vj-HU2"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="CKB-Vm-6k0" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="72o-4h-Wkw"/>
+                            <constraint firstItem="lMp-lK-l9c" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="9Cb-cU-rR4"/>
                             <constraint firstItem="XNB-OL-chl" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="9fv-MK-WV6"/>
-                            <constraint firstItem="ILG-UU-cPN" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="GEI-0n-K0M"/>
                             <constraint firstAttribute="bottom" secondItem="XNB-OL-chl" secondAttribute="bottom" id="Wa1-1u-iaG"/>
                             <constraint firstItem="XNB-OL-chl" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="e91-L5-AdO"/>
                             <constraint firstAttribute="trailing" secondItem="XNB-OL-chl" secondAttribute="trailing" id="qqx-Ma-iAk"/>
@@ -170,15 +171,15 @@
                     <connections>
                         <outlet property="developerDetailsLabel" destination="q8g-Yg-P2X" id="fxk-3w-F56"/>
                         <outlet property="developerLabel" destination="d03-Jp-YyK" id="uPk-c5-ycK"/>
-                        <outlet property="googleMapsDetailsLabel" destination="CKB-Vm-6k0" id="ItE-6N-brQ"/>
+                        <outlet property="googleMapsDetailsTextView" destination="Zpy-fy-KnQ" id="jdN-dG-yYv"/>
                         <outlet property="googleMapsLabel" destination="jcV-ww-lhg" id="PMF-de-gOO"/>
-                        <outlet property="trailInformationDetailsLabel" destination="ILG-UU-cPN" id="Y5r-Fi-ay5"/>
+                        <outlet property="trailInformationDetailsLabel" destination="lMp-lK-l9c" id="UaB-8b-R2X"/>
                         <outlet property="trailInformationLabel" destination="Bto-r3-B32" id="y5T-VZ-j5J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730" y="776"/>
+            <point key="canvasLocation" x="728.98550724637687" y="775.27173913043487"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -203,7 +204,7 @@
     </scenes>
     <resources>
         <image name="ic_info" width="24" height="24"/>
-        <image name="ic_place" width="48" height="48"/>
-        <image name="ic_streetview" width="48" height="48"/>
+        <image name="ic_place" width="24" height="24"/>
+        <image name="ic_streetview" width="24" height="24"/>
     </resources>
 </document>
