@@ -117,7 +117,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Trail Details" translatesAutoresizingMaskIntoConstraints="NO" id="lMp-lK-l9c" userLabel="Trail Details Text View">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Trail Details" translatesAutoresizingMaskIntoConstraints="NO" id="lMp-lK-l9c" userLabel="Trail Details Text View" customClass="AboutTextView" customModule="BostonFreedomTrail" customModuleProvider="target">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -128,7 +128,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Google Maps Details View" translatesAutoresizingMaskIntoConstraints="NO" id="Zpy-fy-KnQ">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Google Maps Details View" translatesAutoresizingMaskIntoConstraints="NO" id="Zpy-fy-KnQ" customClass="AboutTextView" customModule="BostonFreedomTrail" customModuleProvider="target">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -140,27 +140,27 @@
                                     <constraint firstItem="jcV-ww-lhg" firstAttribute="top" secondItem="lMp-lK-l9c" secondAttribute="bottom" constant="16" id="1K6-iu-JgB"/>
                                     <constraint firstItem="d03-Jp-YyK" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="CSv-P9-XCF"/>
                                     <constraint firstItem="Zpy-fy-KnQ" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="FwD-zY-pWE"/>
-                                    <constraint firstAttribute="trailing" secondItem="d03-Jp-YyK" secondAttribute="trailing" constant="16" id="HKa-4q-LEw"/>
+                                    <constraint firstAttribute="trailing" secondItem="d03-Jp-YyK" secondAttribute="trailing" constant="-16" id="HKa-4q-LEw"/>
                                     <constraint firstItem="d03-Jp-YyK" firstAttribute="top" secondItem="XNB-OL-chl" secondAttribute="top" constant="32" id="HNO-iE-6j9"/>
                                     <constraint firstItem="q8g-Yg-P2X" firstAttribute="top" secondItem="d03-Jp-YyK" secondAttribute="bottom" constant="1" id="I96-7D-xKq"/>
-                                    <constraint firstAttribute="trailing" secondItem="q8g-Yg-P2X" secondAttribute="trailing" constant="16" id="Qxp-Ld-l0C"/>
+                                    <constraint firstAttribute="trailing" secondItem="q8g-Yg-P2X" secondAttribute="trailing" constant="-16" id="Qxp-Ld-l0C"/>
                                     <constraint firstItem="Bto-r3-B32" firstAttribute="top" secondItem="q8g-Yg-P2X" secondAttribute="bottom" constant="16" id="Vl9-ar-2hp"/>
                                     <constraint firstItem="jcV-ww-lhg" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="WVO-De-Fqb"/>
                                     <constraint firstItem="Zpy-fy-KnQ" firstAttribute="top" secondItem="jcV-ww-lhg" secondAttribute="bottom" constant="1" id="Xi2-Yb-tOr"/>
                                     <constraint firstAttribute="bottom" secondItem="Zpy-fy-KnQ" secondAttribute="bottom" constant="16" id="Yoh-eA-1dZ"/>
                                     <constraint firstItem="lMp-lK-l9c" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="aFT-Hy-BU0"/>
                                     <constraint firstItem="Bto-r3-B32" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="f04-kv-gbV"/>
-                                    <constraint firstAttribute="trailing" secondItem="Bto-r3-B32" secondAttribute="trailing" constant="16" id="g94-WS-mKZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bto-r3-B32" secondAttribute="trailing" constant="-16" id="g94-WS-mKZ"/>
                                     <constraint firstItem="lMp-lK-l9c" firstAttribute="top" secondItem="Bto-r3-B32" secondAttribute="bottom" constant="1" id="ifc-vX-Kvf"/>
                                     <constraint firstItem="q8g-Yg-P2X" firstAttribute="leading" secondItem="XNB-OL-chl" secondAttribute="leading" constant="16" id="jFA-7G-Zco"/>
-                                    <constraint firstAttribute="trailing" secondItem="jcV-ww-lhg" secondAttribute="trailing" constant="16" id="lPF-d3-yfW"/>
+                                    <constraint firstAttribute="trailing" secondItem="jcV-ww-lhg" secondAttribute="trailing" constant="-16" id="lPF-d3-yfW"/>
                                     <constraint firstAttribute="trailing" secondItem="Zpy-fy-KnQ" secondAttribute="trailing" constant="16" id="znH-Vj-HU2"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lMp-lK-l9c" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="9Cb-cU-rR4"/>
+                            <constraint firstItem="lMp-lK-l9c" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" constant="-32" id="9Cb-cU-rR4"/>
                             <constraint firstItem="XNB-OL-chl" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="9fv-MK-WV6"/>
                             <constraint firstAttribute="bottom" secondItem="XNB-OL-chl" secondAttribute="bottom" id="Wa1-1u-iaG"/>
                             <constraint firstItem="XNB-OL-chl" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="e91-L5-AdO"/>

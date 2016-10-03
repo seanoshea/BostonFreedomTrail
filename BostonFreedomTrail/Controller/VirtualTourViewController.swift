@@ -55,7 +55,6 @@ final class VirtualTourViewController: BaseViewController {
     super.viewDidAppear(animated)
     self.model.setupTour()
     self.playPauseButton?.isEnabled = true
-    //      self.displayDelayedSnackbarMessage()
   }
   
   override func viewDidDisappear(_ animated: Bool) {

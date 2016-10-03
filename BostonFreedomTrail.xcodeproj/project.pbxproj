@@ -30,6 +30,7 @@
 		4157BFE31C8C7AFE009CDF0F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157BFE21C8C7AFE009CDF0F /* BaseViewController.swift */; };
 		417758001CB9E8C0008294C8 /* AnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */; };
 		417758031CBB03D1008294C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417758021CBB03D1008294C8 /* GoogleService-Info.plist */; };
+		418FC9C71DA1642900367010 /* AboutTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FC9C61DA1642900367010 /* AboutTextView.swift */; };
 		4199CD7F1C98F5E60017919E /* TrailSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199CD7E1C98F5E60017919E /* TrailSpec.swift */; };
 		41C654031D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */; };
 		41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
@@ -97,6 +98,7 @@
 		417757FE1CB9DA07008294C8 /* BostonFreedomTrail-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BostonFreedomTrail-Bridging-Header.h"; sourceTree = "<group>"; };
 		417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracker.swift; sourceTree = "<group>"; };
 		417758021CBB03D1008294C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		418FC9C61DA1642900367010 /* AboutTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTextView.swift; sourceTree = "<group>"; };
 		4199CD7E1C98F5E60017919E /* TrailSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailSpec.swift; sourceTree = "<group>"; };
 		41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewControllerSnapshotTest.swift; sourceTree = "<group>"; };
 		41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedState.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 		41237C0D1C4920A60007F76B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				418FC9C61DA1642900367010 /* AboutTextView.swift */,
 				41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */,
 				41D8574D1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift */,
 			);
@@ -564,6 +567,7 @@
 				41237C141C49213F0007F76B /* PlacemarkViewController.swift in Sources */,
 				41237C1C1C4923D20007F76B /* Trail.swift in Sources */,
 				41237C211C49244D0007F76B /* TrailParser.swift in Sources */,
+				418FC9C71DA1642900367010 /* AboutTextView.swift in Sources */,
 				4157BFE31C8C7AFE009CDF0F /* BaseViewController.swift in Sources */,
 				41DE05E81C5536E5008AFCA5 /* VirtualTourModel.swift in Sources */,
 				414A7AA91C6D80E000385442 /* PlacemarkModel.swift in Sources */,

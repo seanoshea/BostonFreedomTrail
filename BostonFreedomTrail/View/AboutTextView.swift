@@ -12,7 +12,7 @@
  3. All advertising materials mentioning features or use of this software
  must display the following acknowledgement:
  This product includes software developed by Upwards Northwards Software Limited.
- 4. Neither the name of Upwards Northwards Software Limited nor the
+ 4. Neither th e name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
  
@@ -30,23 +30,23 @@
 
 import Foundation
 
-enum SegueConstants: String {
-  case MapToPlacemarkSegueIdentifier = "MapToPlacemarkSegueIdentifier"
-}
+import UIKit
 
-enum ResourceConstants: String {
-  case PlacemarkIdentifier = "placemark"
-}
+import MaterialComponents
 
-enum TabBarControllerTags: Int {
-  case mapViewTag = 0
-  case virtualTourViewTag = 1
-  case aboutViewTag = 2
-}
-
-extension UIColor {
+/// Customized text view for the About Screen.
+class AboutTextView: UITextView {
   
-  static func bftDarkTextColor() -> UIColor {
-    return UIColor.init(red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    self.applyStyles()
+  }
+  
+  /// Ensures that the appropriate styles are set on the text view.
+  func applyStyles() {
+    self.textContainerInset = UIEdgeInsets.zero
+    self.textContainer.lineFragmentPadding = 0
+    self.textColor = UIColor.bftDarkTextColor()
+    self.font = MDCTypography.body1Font()
   }
 }
