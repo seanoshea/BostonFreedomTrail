@@ -152,6 +152,14 @@ extension MapViewController : GMSMapViewDelegate {
 //    self.performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
   }
   
+  func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+    guard let userData = marker.userData as? Placemark else { return nil }
+    guard let viewArray = Bundle.main.loadNibNamed("InfoWindow", owner: self, options: nil) else { return nil }
+    guard let infoWindow = viewArray[0] as? InfoWindow else { return nil }
+    infoWindow.header?.text = userData.name
+    return infoWindow
+  }
+  
   /**
    Simple logging callback which logs to the console the coordinates of the current position when the user presses on the map.
    - parameter mapView: the view associated with the `MapViewController`
