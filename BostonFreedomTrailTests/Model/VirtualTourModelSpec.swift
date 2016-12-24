@@ -56,22 +56,22 @@ class VirtualTourModelTest: QuickSpec {
                 it("should start the tour when startTour is invoked") {
                     subject?.startTour()
                     
-                    expect(subject?.currentTourState).to(equal(VirtualTourState.InProgress))
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.inProgress))
                     expect(subject?.currentTourLocation).to(equal(0))
                 }
                 
                 it("should pause the tour when pauseTour is invoked") {
                     subject?.pauseTour()
-                    expect(subject?.currentTourState).to(equal(VirtualTourState.Paused))
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.paused))
                 }
                 
                 it("should mark the tour as not running if it has finished") {
-                    subject?.currentTourState = VirtualTourState.Finished
+                    subject?.currentTourState = VirtualTourState.finished
                     expect(subject?.tourIsRunning()).to(beFalse())
                 }
                 
                 it("should mark the tour as not running if it has been paused") {
-                    subject?.currentTourState = VirtualTourState.Paused
+                    subject?.currentTourState = VirtualTourState.paused
                     expect(subject?.tourIsRunning()).to(beFalse())
                 }
                 
@@ -87,7 +87,7 @@ class VirtualTourModelTest: QuickSpec {
                 it("should mark the tour as in progress when the model is asked to resume the tour") {
                     subject?.resumeTour()
                     
-                    expect(subject?.currentTourState).to(equal(VirtualTourState.InProgress))
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.inProgress))
                 }
                 
                 it("should bump the currentTourLocation when advance is invoked") {
@@ -105,9 +105,9 @@ class VirtualTourModelTest: QuickSpec {
                 }
                 
                 it("should understand when the tour has already been initialized") {
-                    subject?.currentTourState = VirtualTourState.PreSetup
+                    subject?.currentTourState = VirtualTourState.preSetup
                     expect(subject?.tourNotInitialized()).to(beTrue())
-                    subject?.currentTourState = VirtualTourState.PostSetup
+                    subject?.currentTourState = VirtualTourState.postSetup
                     subject?.lookAts = [Int:Int]()
                     expect(subject?.tourNotInitialized()).to(beTrue())
                     subject?.setupTour()
@@ -115,11 +115,11 @@ class VirtualTourModelTest: QuickSpec {
                 }
                 
                 it("should be able to toggle the tour state") {
-                    subject?.currentTourState = VirtualTourState.Paused
+                    subject?.currentTourState = VirtualTourState.paused
                     subject?.togglePlayPause()
-                    expect(subject?.currentTourState).to(equal(VirtualTourState.InProgress))
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.inProgress))
                     subject?.togglePlayPause()
-                    expect(subject?.currentTourState).to(equal(VirtualTourState.Paused))
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.paused))
                 }
             }
             
@@ -161,14 +161,14 @@ class VirtualTourModelTest: QuickSpec {
                 it("should be able to navigate directly to a LookAt when the placement index has a LookAt associated with it") {
                     subject?.navigateToLookAt(3)
                     
-                    expect(subject?.currentTourState).to(equal(VirtualTourState.Paused))
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.paused))
                     expect(dummyDelegate!.navigationInitiated).to(beTrue())
                 }
                 
                 it("should not navigate directly to a LookAt when the placement index does not have a LookAt associated with it") {
                     subject?.navigateToLookAt(0)
                     
-                    expect(subject?.currentTourState).to(equal(VirtualTourState.PostSetup))
+                    expect(subject?.currentTourState).to(equal(VirtualTourState.postSetup))
                     expect(dummyDelegate!.navigationInitiated).to(beFalse())
                 }
             }
@@ -226,7 +226,7 @@ class DummyVirtualTourModelDelegate : VirtualTourModelDelegate {
     
     var navigationInitiated = false
     
-    func navigateToCurrentPosition(model:VirtualTourModel) {
+    func navigateToCurrentPosition(_ model:VirtualTourModel) {
         self.navigationInitiated = true
     }
 }

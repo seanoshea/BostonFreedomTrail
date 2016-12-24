@@ -1,6 +1,6 @@
 {
     "xcodebuild_arguments": ["-project", "BostonFreedomTrail.xcodeproj", "-scheme", "BostonFreedomTrail"],
-    "swift_version": "2.2",
+    "swift_version": "3.0",
     "author": "Sean O'Shea",
     "author_url": "https://github.com/seanoshea",
     "readme": "README.md"

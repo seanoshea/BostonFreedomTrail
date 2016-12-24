@@ -30,7 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Quick
 import Nimble
-import ReachabilitySwift
 
 @testable import BostonFreedomTrail
 
@@ -46,7 +45,7 @@ class VirtualTourViewControllerTest: QuickSpec {
             
             beforeEach({ () -> () in
                 subject = UIStoryboard.virtualTourViewController()
-                subject?.view
+                let _ = subject?.view
                 ApplicationSharedState.sharedInstance.clear()
             })
             
@@ -61,7 +60,7 @@ class VirtualTourViewControllerTest: QuickSpec {
                 }
                 
                 it("should be initialized to having a state of PreSetup") {
-                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.PreSetup))
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.preSetup))
                 }
             }
             
@@ -69,12 +68,12 @@ class VirtualTourViewControllerTest: QuickSpec {
                 
                 it("should set up the tour when the view appears") {
                     subject?.viewDidAppear(true)
-                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.PostSetup))
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.postSetup))
                 }
                 
                 it("should automatically pause the tour when the view disappears") {
                     subject?.viewDidDisappear(true)
-                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
+                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.paused))
                     expect(subject?.playPauseButton?.paused).to(beTrue())
                 }
             }
@@ -99,28 +98,12 @@ class VirtualTourViewControllerTest: QuickSpec {
                 }
             }
             
-            context("Online and Offline") {
-                
-                it("should pause the tour if the user goes offline") {
-                    subject?.reachabilityStatusChanged(false)
-                    
-                    expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
-                    expect(subject?.playPauseButton?.enabled).to(beFalse())
-                }
-                
-                it("should allow the user to restart the tour if the user comes back online") {
-                    subject?.reachabilityStatusChanged(true)
-                    
-                    expect(subject?.playPauseButton?.enabled).to(beTrue())
-                }
-            }
-            
             context("Queuing up the next location") {
                 
                 context("Tour is running") {
                     
                     it("should queue up the next location") {
-                        subject?.model.currentTourState = VirtualTourState.InProgress
+                        subject?.model.currentTourState = VirtualTourState.inProgress
                         
                         expect(subject?.shouldEnqueueNextLocationForPanorama(nil)).to(beTrue())
                     }
@@ -129,7 +112,7 @@ class VirtualTourViewControllerTest: QuickSpec {
                 context("Tour is not running") {
 
                     it("should queue up the next location") {
-                        subject?.model.currentTourState = VirtualTourState.Paused
+                        subject?.model.currentTourState = VirtualTourState.paused
                         
                         expect(subject?.shouldEnqueueNextLocationForPanorama(nil)).to(beFalse())
                     }
@@ -149,55 +132,11 @@ class VirtualTourViewControllerTest: QuickSpec {
                 context("the user has decided to pause the tour") {
                     
                     it("should back up the tour one location") {
-                        subject?.model.currentTourState = VirtualTourState.Paused
+                        subject?.model.currentTourState = VirtualTourState.paused
                         
                         subject?.postDispatchAction(location)
                         
                         expect(subject?.model.currentTourLocation).to(equal(13))
-                    }
-                }
-                
-                context("the user has decided to allow the tour to continue") {
-
-                    var dummyReachability:DummyReachability?
-                    var dummyPanoView:DummyPanoramaView?
-                    
-                    beforeEach({ () -> () in
-                        do {
-                            dummyReachability = try DummyReachability.init(hostname:"https://google.com")
-                            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                            appDelegate.reachability = dummyReachability
-                            GMSServices.provideAPIKey(PListHelper.googleMapsApiKey())
-                            dummyPanoView = DummyPanoramaView.init(frame: CGRectMake(0, 0, 100, 100))
-                            subject?.panoView = dummyPanoView
-                        } catch {
-                            NSLog("Failed to start the reachability notifier")
-                        }
-                    })
-                    
-                    context("the user is offline") {
-                        
-                        it("should automatically pause the tour") {
-                            
-                            dummyReachability?.dummyIsReachable = false
-                            subject?.postDispatchAction(location)
-                            
-                            expect(subject?.playPauseButton?.paused).to(beTrue())
-                            expect(subject?.model.currentTourState).to(equal(VirtualTourState.Paused))
-                            expect(dummyPanoView?.wasMoved).to(beFalse())
-                        }
-                    }
-                    
-                    context("the user is online") {
-                        
-                        it("should reposition the panorama view to focus on the new location") {
-                            
-                            dummyReachability?.dummyIsReachable = true
-                            subject?.postDispatchAction(location)
-                            
-                            expect(subject?.model.currentTourState).to(equal(VirtualTourState.InProgress))
-                            expect(dummyPanoView?.wasMoved).to(beTrue())
-                        }
                     }
                 }
             }
@@ -207,7 +146,7 @@ class VirtualTourViewControllerTest: QuickSpec {
                 it("should return a camera with the correct bearing zoom and pitch for the next location when repositionCamera is invoked") {
                     
                     subject?.model.setupTour()
-                    subject?.model.startTour()
+                    let _ = subject?.model.startTour()
                     let nextStop = (subject?.model.enqueueNextLocation())!
                     
                     let newCamera:GMSPanoramaCamera = (subject?.cameraPositionForNextLocation(nextStop))!
@@ -221,20 +160,11 @@ class VirtualTourViewControllerTest: QuickSpec {
     }
 }
 
-class DummyReachability : Reachability {
-    
-    var dummyIsReachable = false
-    
-    override func isReachable() -> Bool {
-        return self.dummyIsReachable
-    }
-}
-
 class DummyPanoramaView : GMSPanoramaView {
     
     var wasMoved = false
     
-    override func moveNearCoordinate(coordinate: CLLocationCoordinate2D) {
+    override func moveNearCoordinate(_ coordinate: CLLocationCoordinate2D) {
         self.wasMoved = true
     }
 }

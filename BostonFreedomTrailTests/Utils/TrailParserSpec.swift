@@ -52,14 +52,14 @@ class TrailParserTest: QuickSpec {
                 }
                 
                 it("should order the placemarks correctly after parsing") {
-                    for (index, placemark) in trail!.placemarks.enumerate() {
+                    for (index, placemark) in trail!.placemarks.enumerated() {
                         let identifier = "placemark\(index + 1)"
                         expect(placemark.identifier).to(equal(identifier))
                     }
                 }
                 
                 it("should parse out a LookAt value for each placemark except for the first one") {
-                    for (index, placemark) in trail!.placemarks.enumerate() {
+                    for (index, placemark) in trail!.placemarks.enumerated() {
                         guard index > 0 else { continue }
                         expect(placemark.lookAt).toNot(beNil())
                     }

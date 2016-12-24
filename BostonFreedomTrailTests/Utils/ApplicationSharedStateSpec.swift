@@ -44,8 +44,8 @@ class ApplicationSharedStateTest: QuickSpec {
                 
                 it("should know the current camera zoom") {
                     
-                    NSUserDefaults.standardUserDefaults().setFloat(12.0, forKey: "ApplicationSharedStateCameraZoom")
-                    
+                    UserDefaults.standard.set(12.0, forKey: "ApplicationSharedStateCameraZoom")
+                  
                     expect(ApplicationSharedState.sharedInstance.cameraZoom).to(equal(12.0))
                 }
                 
@@ -53,7 +53,7 @@ class ApplicationSharedStateTest: QuickSpec {
                     
                     ApplicationSharedState.sharedInstance.cameraZoom = 8.0
                     
-                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateCameraZoom")).to(equal(8.0))
+                    expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateCameraZoom")).to(equal(8.0))
                 }
                 
                 it("should not allow a camera zoom level that is too small") {
@@ -62,7 +62,7 @@ class ApplicationSharedStateTest: QuickSpec {
                     
                     ApplicationSharedState.sharedInstance.cameraZoom = 1.0
                     
-                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateCameraZoom")).to(equal(12.0))
+                    expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateCameraZoom")).to(equal(12.0))
                 }
             }
             
@@ -73,8 +73,8 @@ class ApplicationSharedStateTest: QuickSpec {
                 
                 it("should be able to retrieve the lat and long of a recently pressed placemark") {
                     
-                    NSUserDefaults.standardUserDefaults().setFloat(12.0, forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude")
-                    NSUserDefaults.standardUserDefaults().setFloat(11.0, forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude")
+                    UserDefaults.standard.set(12.0, forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude")
+                    UserDefaults.standard.set(11.0, forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude")
                     
                     let coordinate = ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate
                     
@@ -85,8 +85,8 @@ class ApplicationSharedStateTest: QuickSpec {
                 it("should be able to store the lat and long of a recently pressed placemark") {
                     
                     ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
-                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude")).to(equal(-71.063303))
-                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude")).to(equal(42.35769))
+                    expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude")).to(equal(-71.063303))
+                    expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude")).to(equal(42.35769))
                 }
             }
             
@@ -97,8 +97,8 @@ class ApplicationSharedStateTest: QuickSpec {
                 
                 it("should be able to retrieve the lat and long of where the user was most recently seen") {
                     
-                    NSUserDefaults.standardUserDefaults().setDouble(latitude, forKey: "ApplicationSharedStateLastKnownLocationLatitude")
-                    NSUserDefaults.standardUserDefaults().setDouble(longitude, forKey: "ApplicationSharedStateLastKnownLocationLongitude")
+                    UserDefaults.standard.set(latitude, forKey: "ApplicationSharedStateLastKnownLocationLatitude")
+                    UserDefaults.standard.set(longitude, forKey: "ApplicationSharedStateLastKnownLocationLongitude")
                     
                     let location:CLLocation = ApplicationSharedState.sharedInstance.lastKnownLocation
                     
@@ -109,9 +109,9 @@ class ApplicationSharedStateTest: QuickSpec {
                 it("should be able to store the lat and long of a where the user was most recently seen") {
                     
                     ApplicationSharedState.sharedInstance.lastKnownLocation = CLLocation.init(latitude: latitude, longitude: longitude)
-                    
-                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownLocationLatitude")).to(equal(-71.063303))
-                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownLocationLongitude")).to(equal(42.35769))
+                  
+                    expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownLocationLatitude")).to(equal(-71.063303))
+                    expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownLocationLongitude")).to(equal(42.35769))
                 }
             }
         }

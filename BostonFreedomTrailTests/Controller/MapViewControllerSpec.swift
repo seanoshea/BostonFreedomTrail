@@ -45,7 +45,7 @@ class MapViewControllerTest: QuickSpec {
             
             beforeEach({ () -> () in
                 subject = UIStoryboard.mapViewController()
-                subject?.view
+                let _ = subject?.view
                 ApplicationSharedState.sharedInstance.clear()
             })
             
@@ -69,13 +69,13 @@ class MapViewControllerTest: QuickSpec {
                 it("should set up the map to allow a location button and disallow a compass button") {
                     let mapView:GMSMapView = (subject?.mapView)!
                     expect(mapView.settings.compassButton).to(beFalse())
-                    expect(mapView.myLocationEnabled).to(beTrue())
+                    expect(mapView.isMyLocationEnabled).to(beTrue())
                     expect(mapView.settings.myLocationButton).to(beTrue())
                 }
                 
                 it("should disable the indoor capabilities of the map view") {
                     let mapView:GMSMapView = (subject?.mapView)!
-                    expect(mapView.indoorEnabled).to(beFalse())
+                    expect(mapView.isIndoorEnabled).to(beFalse())
                 }
                 
                 it("should set the delegate of the map view to be the MapViewController") {
@@ -90,8 +90,10 @@ class MapViewControllerTest: QuickSpec {
                     let zoom:Float = 14
                     let position:GMSCameraPosition = GMSCameraPosition.init(target: CLLocationCoordinate2D.init(latitude: 45, longitude: 45), zoom: zoom, bearing: 14.0, viewingAngle: 1.2)
                     
-                    subject?.mapView((subject?.mapView)!, didChangeCameraPosition: position)
-                    
+//                    subject?.mapView((subject?.mapView)!, didChangeCameraPosition: position)
+                    subject?.mapView((subject?.mapView)!, didChange:position)
+//                  mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
+                  
                     expect(ApplicationSharedState.sharedInstance.cameraZoom).to(equal(zoom))
                 }
                 
@@ -100,7 +102,8 @@ class MapViewControllerTest: QuickSpec {
                     let marker = GMSMarker.init(position: CLLocationCoordinate2D.init(latitude: 45, longitude: 45))
                     marker.userData = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description", lookAt:nil)
                     
-                    subject?.mapView((subject?.mapView)!, didTapMarker: marker)
+//                    subject?.mapView((subject?.mapView)!, didTapMarker: marker)
+                    subject?.mapView((subject?.mapView)!, didTap:marker)
                     
                     let lastKnownPlacemark = ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate
                     
@@ -114,8 +117,8 @@ class MapViewControllerTest: QuickSpec {
                 it("should return a view controller for presentationController:viewControllerForAdaptivePresentationStyle") {
                     let placemarkViewController = UIStoryboard.placemarkViewController()
                     let _ = placemarkViewController.view
-                    let popoverPresentationController = UIPopoverPresentationController.init(presentedViewController:subject!, presentingViewController:placemarkViewController)
-                    let returnedViewController = subject?.presentationController(popoverPresentationController, viewControllerForAdaptivePresentationStyle:UIModalPresentationStyle.Popover)
+                    let popoverPresentationController = UIPopoverPresentationController.init(presentedViewController:subject!, presenting:placemarkViewController)
+                    let returnedViewController = subject?.presentationController(popoverPresentationController, viewControllerForAdaptivePresentationStyle:UIModalPresentationStyle.popover)
                     expect(returnedViewController).toNot(beNil())
                 }
             }

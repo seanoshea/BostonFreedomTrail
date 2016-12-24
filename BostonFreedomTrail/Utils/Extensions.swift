@@ -33,34 +33,34 @@ import CoreLocation
 import GoogleMaps
 
 extension CLLocationCoordinate2D {
-    func logCoordinate() {
-        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
-        debugPrint(self.longitude, self.latitude)
-    }
+  func logCoordinate() {
+    guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
+    debugPrint(self.longitude, self.latitude)
+  }
 }
 
 extension Int {
-    func placemarkIndexFromIdentifier(placemarkIdentifier: String) -> Int {
-        let stringRepresentation = placemarkIdentifier.stringByReplacingOccurrencesOfString("placemark", withString:"")
-        if let integerRepresentation = Int(stringRepresentation) {
-            return integerRepresentation - 1
-        } else {
-            return 0
-        }
+  func placemarkIndexFromIdentifier(_ placemarkIdentifier: String) -> Int {
+    let stringRepresentation = placemarkIdentifier.replacingOccurrences(of: "placemark", with:"")
+    if let integerRepresentation = Int(stringRepresentation) {
+      return integerRepresentation - 1
+    } else {
+      return 0
     }
+  }
 }
 
 extension GMSPanoramaView {
-    final func logLocation() {
-        if let pano = self.panorama {
-            pano.coordinate.logCoordinate()
-        }
+  final func logLocation() {
+    if let pano = self.panorama {
+      pano.coordinate.logCoordinate()
     }
+  }
 }
 
 extension GMSPanoramaCamera {
-    final func logLocation() {
-        guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
-        debugPrint(self.orientation.heading, self.orientation.pitch, separator: ",", terminator: "")
-    }
+  final func logLocation() {
+    guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
+    debugPrint(self.orientation.heading, self.orientation.pitch, separator: ",", terminator: "")
+  }
 }

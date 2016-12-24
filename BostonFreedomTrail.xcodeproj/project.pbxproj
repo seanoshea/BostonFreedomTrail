@@ -22,16 +22,17 @@
 		41237C1A1C4921E50007F76B /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C191C4921E50007F76B /* MapModel.swift */; };
 		41237C1C1C4923D20007F76B /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
 		41237C211C49244D0007F76B /* TrailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* TrailParser.swift */; };
-		41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */; };
+		4136F2CD1DA1E7AE00F431A8 /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4136F2CC1DA1E7AE00F431A8 /* InfoWindow.xib */; };
+		4136F2CF1DA1E7C600F431A8 /* InfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4136F2CE1DA1E7C600F431A8 /* InfoWindow.swift */; };
 		413A01C31CD7B43C006E7667 /* BaseViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A01C21CD7B43C006E7667 /* BaseViewControllerSpec.swift */; };
 		41443EB81C894DBE0096EE06 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41443EB61C894DBE0096EE06 /* Fabric.framework */; };
 		41443EB91C894DBE0096EE06 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41443EB71C894DBE0096EE06 /* Crashlytics.framework */; };
 		414A7AA71C6D728800385442 /* placemark.html in Resources */ = {isa = PBXBuildFile; fileRef = 414A7AA61C6D728800385442 /* placemark.html */; };
 		414A7AA91C6D80E000385442 /* PlacemarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414A7AA81C6D80E000385442 /* PlacemarkModel.swift */; };
-		4157BFE11C8C72E2009CDF0F /* ReachabilityListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157BFE01C8C72E2009CDF0F /* ReachabilityListener.swift */; };
 		4157BFE31C8C7AFE009CDF0F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157BFE21C8C7AFE009CDF0F /* BaseViewController.swift */; };
 		417758001CB9E8C0008294C8 /* AnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */; };
 		417758031CBB03D1008294C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417758021CBB03D1008294C8 /* GoogleService-Info.plist */; };
+		418FC9C71DA1642900367010 /* AboutTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FC9C61DA1642900367010 /* AboutTextView.swift */; };
 		4199CD7F1C98F5E60017919E /* TrailSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199CD7E1C98F5E60017919E /* TrailSpec.swift */; };
 		41C654031D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */; };
 		41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
@@ -88,19 +89,20 @@
 		41237C191C4921E50007F76B /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		41237C1B1C4923D20007F76B /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
 		41237C201C49244D0007F76B /* TrailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParser.swift; sourceTree = "<group>"; };
-		41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkViewButton.swift; sourceTree = "<group>"; };
+		4136F2CC1DA1E7AE00F431A8 /* InfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindow.xib; sourceTree = "<group>"; };
+		4136F2CE1DA1E7C600F431A8 /* InfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoWindow.swift; sourceTree = "<group>"; };
 		413A01C21CD7B43C006E7667 /* BaseViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerSpec.swift; sourceTree = "<group>"; };
 		41443EB61C894DBE0096EE06 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		41443EB71C894DBE0096EE06 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		414A7AA61C6D728800385442 /* placemark.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = placemark.html; sourceTree = "<group>"; };
 		414A7AA81C6D80E000385442 /* PlacemarkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkModel.swift; sourceTree = "<group>"; };
 		415095431C4DA11C00681F82 /* PListHelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListHelperSpec.swift; sourceTree = "<group>"; };
-		4157BFE01C8C72E2009CDF0F /* ReachabilityListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityListener.swift; sourceTree = "<group>"; };
 		4157BFE21C8C7AFE009CDF0F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		41691D211C4C0034009A03B3 /* TrailParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParserSpec.swift; sourceTree = "<group>"; };
 		417757FE1CB9DA07008294C8 /* BostonFreedomTrail-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BostonFreedomTrail-Bridging-Header.h"; sourceTree = "<group>"; };
 		417757FF1CB9E8C0008294C8 /* AnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracker.swift; sourceTree = "<group>"; };
 		417758021CBB03D1008294C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		418FC9C61DA1642900367010 /* AboutTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTextView.swift; sourceTree = "<group>"; };
 		4199CD7E1C98F5E60017919E /* TrailSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailSpec.swift; sourceTree = "<group>"; };
 		41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewControllerSnapshotTest.swift; sourceTree = "<group>"; };
 		41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedState.swift; sourceTree = "<group>"; };
@@ -254,8 +256,10 @@
 		41237C0D1C4920A60007F76B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				418FC9C61DA1642900367010 /* AboutTextView.swift */,
 				41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */,
-				41275A611C52F6AB00A48A6A /* PlacemarkViewButton.swift */,
+				4136F2CE1DA1E7C600F431A8 /* InfoWindow.swift */,
+				4136F2CC1DA1E7AE00F431A8 /* InfoWindow.xib */,
 				41D8574D1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift */,
 			);
 			path = View;
@@ -282,7 +286,6 @@
 				41D527E81D25EB6C005B8D5E /* Extensions.swift */,
 				41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */,
 				410AFEE61C4D9B0F007DF354 /* PListHelper.swift */,
-				4157BFE01C8C72E2009CDF0F /* ReachabilityListener.swift */,
 				41237C201C49244D0007F76B /* TrailParser.swift */,
 			);
 			path = Utils;
@@ -385,14 +388,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = UpwardsNorthwards;
 				TargetAttributes = {
 					41237BE31C486CDF0007F76B = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 					41237BF91C486CDF0007F76B = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 						TestTargetID = 41237BE31C486CDF0007F76B;
 					};
 				};
@@ -422,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41237BF41C486CDF0007F76B /* LaunchScreen.storyboard in Resources */,
+				4136F2CD1DA1E7AE00F431A8 /* InfoWindow.xib in Resources */,
 				41237BF11C486CDF0007F76B /* Assets.xcassets in Resources */,
 				414A7AA71C6D728800385442 /* placemark.html in Resources */,
 				41237BEF1C486CDF0007F76B /* Main.storyboard in Resources */,
@@ -523,7 +529,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C2B536EF84E15C2032606370 /* [CP] Embed Pods Frameworks */ = {
@@ -553,7 +559,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -568,12 +574,12 @@
 				41237C141C49213F0007F76B /* PlacemarkViewController.swift in Sources */,
 				41237C1C1C4923D20007F76B /* Trail.swift in Sources */,
 				41237C211C49244D0007F76B /* TrailParser.swift in Sources */,
+				418FC9C71DA1642900367010 /* AboutTextView.swift in Sources */,
 				4157BFE31C8C7AFE009CDF0F /* BaseViewController.swift in Sources */,
 				41DE05E81C5536E5008AFCA5 /* VirtualTourModel.swift in Sources */,
 				414A7AA91C6D80E000385442 /* PlacemarkModel.swift in Sources */,
 				41DE05E21C5515B0008AFCA5 /* LocationTracker.swift in Sources */,
 				41DE05E61C553694008AFCA5 /* VirtualTourViewController.swift in Sources */,
-				41275A621C52F6AB00A48A6A /* PlacemarkViewButton.swift in Sources */,
 				41D8574E1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift in Sources */,
 				41E1C3711C525B670009570C /* Constants.swift in Sources */,
 				41D527E91D25EB6C005B8D5E /* Extensions.swift in Sources */,
@@ -581,9 +587,9 @@
 				41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */,
 				41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */,
 				41237C101C4921070007F76B /* AboutViewController.swift in Sources */,
-				4157BFE11C8C72E2009CDF0F /* ReachabilityListener.swift in Sources */,
 				410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */,
 				41237C121C4921210007F76B /* MapViewController.swift in Sources */,
+				4136F2CF1DA1E7C600F431A8 /* InfoWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,8 +658,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -698,8 +706,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -719,6 +729,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -741,6 +752,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrail;
 				PRODUCT_NAME = BostonFreedomTrail;
 				SWIFT_OBJC_BRIDGING_HEADER = "BostonFreedomTrail/Resources/BostonFreedomTrail-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -761,6 +773,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrail;
 				PRODUCT_NAME = BostonFreedomTrail;
 				SWIFT_OBJC_BRIDGING_HEADER = "BostonFreedomTrail/Resources/BostonFreedomTrail-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -769,6 +782,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DFB7FEF1A49A76AF859E0D14 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -784,6 +798,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrailTests;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)Tests";
 				PRODUCT_NAME = BostonFreedomTrail;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BostonFreedomTrail.app/BostonFreedomTrail";
 			};
 			name = Debug;
@@ -792,12 +807,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 663F58F447E9B9FC83DDF3D0 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = BostonFreedomTrailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrailTests;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)Tests";
 				PRODUCT_NAME = BostonFreedomTrail;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BostonFreedomTrail.app/BostonFreedomTrail";
 			};
 			name = Release;

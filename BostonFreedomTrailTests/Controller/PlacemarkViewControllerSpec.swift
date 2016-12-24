@@ -56,21 +56,6 @@ class PlacemarkViewControllerTest: QuickSpec {
                 }
             }
             
-            context("Online and Offline") {
-                
-                it("should not allow the user to navigate to the street view if the user if offline") {
-                    subject?.reachabilityStatusChanged(false)
-                    
-                    expect(subject?.streetViewButton?.enabled).to(beFalse())
-                }
-                
-                it("should allow the user to navigate to the street view when the user comes back online") {
-                    subject?.reachabilityStatusChanged(true)
-                    
-                    expect(subject?.streetViewButton?.enabled).to(beTrue())
-                }
-            }
-            
             context("Initialization of the PlacemarkViewController") {
                 
                 it("should have a model set by default") {
@@ -99,7 +84,7 @@ class PlacemarkViewControllerTest: QuickSpec {
                         
                         subject?.viewDidLoad()
                         
-                        expect(subject?.streetViewButton?.hidden).to(beFalse())
+                        expect(subject?.streetViewButton?.isHidden).to(beFalse())
                     }
                 }
                 
@@ -111,7 +96,7 @@ class PlacemarkViewControllerTest: QuickSpec {
 
                         subject?.viewDidLoad()
                         
-                        expect(subject?.streetViewButton?.hidden).to(beTrue())
+                        expect(subject?.streetViewButton?.isHidden).to(beTrue())
                     }
                 }
             }
@@ -150,7 +135,7 @@ class DummyDelegate : PlacemarkViewControllerDelegate {
     
     var buttonPressed = false
     
-    func streetViewButtonPressedForPlacemark(placemark: Placemark) {
+    func streetViewButtonPressedForPlacemark(_ placemark: Placemark) {
         self.buttonPressed = true
     }
 }

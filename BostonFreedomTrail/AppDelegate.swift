@@ -34,13 +34,12 @@ import GoogleMaps
 import CoreLocation
 import Fabric
 import Crashlytics
-import ReachabilitySwift
 
 /// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndices: Int {
-    case MapViewController = 0
-    case VirtualTourViewController = 1
-    case AboutViewController = 2
+    case mapViewController = 0
+    case virtualTourViewController = 1
+    case aboutViewController = 2
 }
 
 /// Main entry point for the app.
@@ -49,22 +48,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// Main window for the app.
     var window: UIWindow?
-    /// Allows the app understand whether the user is online of offline.
-    var reachability: Reachability?
 
 // MARK: Lifecycle
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.initializeCrashReporting()
         self.initializeGoogleMapsApi()
         self.initializeStyling()
         self.initializeAnalytics()
-        self.initializeReachability()
         self.initializeLocalization()
         return true
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         LocationTracker.sharedInstance.startUpdatingLocation()
     }
     
@@ -72,7 +68,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /// Crash reporting is used in `Release` builds of the app to ensure that all crashes in the live versions of the app are reported and can be analyzed for solutions.
     func initializeCrashReporting() {
-        // only bother with crash reporting for prod builds
+        // only bother with crash reporting for release builds
         guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
         Fabric.with([Crashlytics.self])
     }
@@ -98,37 +94,23 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
         let gai = GAI.sharedInstance()
-        gai.trackUncaughtExceptions = true
-    }
-
-    /// Reachability is used in the app to understand whether the user is online or offline. This function is responsible for starting the notifier so that all elements in the app know when they are offline and when they are online.
-    func initializeReachability() {
-        do {
-            self.reachability = try Reachability.reachabilityForInternetConnection()
-            do {
-                try self.reachability!.startNotifier()
-            } catch {
-                NSLog("Failed to start the reachability notifier")
-            }
-        } catch {
-            NSLog("Failed to start Reachability")
-        }
+        gai?.trackUncaughtExceptions = true
     }
 
     /// Ensures that the titles on the tabs at the bottom of the app are fully localized.
     func initializeLocalization() {
         guard let window = self.window else { return }
         guard let tabBarController = window.rootViewController as? UITabBarController else { return }
-        for (index, item) in (tabBarController.tabBar.items?.enumerate())! {
+        for (index, item) in (tabBarController.tabBar.items?.enumerated())! {
             var title = ""
             switch index {
-            case TabBarControllerIndices.MapViewController.rawValue:
+            case TabBarControllerIndices.mapViewController.rawValue:
                 title = NSLocalizedString("Map", comment: "")
                 break
-            case TabBarControllerIndices.VirtualTourViewController.rawValue:
+            case TabBarControllerIndices.virtualTourViewController.rawValue:
                 title = NSLocalizedString("Virtual Tour", comment: "")
                 break
-            case TabBarControllerIndices.AboutViewController.rawValue:
+            case TabBarControllerIndices.aboutViewController.rawValue:
                 title = NSLocalizedString("About", comment: "")
                 break
             default:
@@ -145,12 +127,12 @@ extension AppDelegate : MapViewControllerDelegate {
      Executed when navigating to the virtual tour screen.
      - parameter placemark: The `Placemark` to land on after switching to the virtual tour.
      */
-    func navigateToVirtualTourWithPlacemark(placemark: Placemark) {
+    func navigateToVirtualTourWithPlacemark(_ placemark: Placemark) {
         guard let window = self.window else { return }
         guard let tabBarController = window.rootViewController as? UITabBarController else { return }
         guard let viewControllers = tabBarController.viewControllers else { return }
-        guard let virtualTourViewController = viewControllers[TabBarControllerIndices.VirtualTourViewController.rawValue] as? VirtualTourViewController else { return }
-        tabBarController.selectedIndex = TabBarControllerIndices.VirtualTourViewController.rawValue
+        guard let virtualTourViewController = viewControllers[TabBarControllerIndices.virtualTourViewController.rawValue] as? VirtualTourViewController else { return }
+        tabBarController.selectedIndex = TabBarControllerIndices.virtualTourViewController.rawValue
         let index = Trail.instance.placemarkIndex(placemark)
         virtualTourViewController.model.navigateToLookAt(index)
     }
