@@ -8,13 +8,13 @@ target :BostonFreedomTrail do
 
   pod 'Google/Analytics'
   pod 'GoogleMaps', '1.13.2'
-  pod 'MaterialComponents', :path => '../material-components-ios'
+  pod 'MaterialComponents', '19.0.4'
 
   target :BostonFreedomTrailTests do
-    pod 'Quick', '~> 0.9.2'
-    pod 'Nimble', '~> 4.0.1'
-    pod 'OHHTTPStubs', '~> 5.0.0'
-    pod 'FBSnapshotTestCase', '~> 2.1.1'
+    pod 'Quick', '1.0.0'
+    pod 'Nimble', '5.1.1'
+    pod 'OHHTTPStubs', '5.2.3'
+    pod 'FBSnapshotTestCase', '2.1.4'
   end
 
 end

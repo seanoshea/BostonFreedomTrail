@@ -69,8 +69,8 @@ class LocationTrackerTest: QuickSpec {
                     LocationTracker.sharedInstance.locationManager(LocationTracker.sharedInstance.locationManager, didUpdateLocations: [CLLocation.init(latitude: latitude, longitude: longitude)])
                     
                     expect(LocationTracker.sharedInstance.currentLocation).toNot(beNil())
-                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownLocationLatitude")).to(equal(-71.063303))
-                    expect(NSUserDefaults.standardUserDefaults().floatForKey("ApplicationSharedStateLastKnownLocationLongitude")).to(equal(42.35769))
+                    expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownLocationLatitude")).to(equal(-71.063303))
+                    expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownLocationLongitude")).to(equal(42.35769))
                 }
             }
         }
