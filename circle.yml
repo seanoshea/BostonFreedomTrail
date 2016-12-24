@@ -1,9 +1,6 @@
 machine:
   xcode:
     version: 8.1
-dependencies:
-  post:
-    - bundle exec fastlane enable_crash_reporting
 test:
   override:
     - set -o pipefail && bundle exec fastlane test
