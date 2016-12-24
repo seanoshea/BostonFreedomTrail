@@ -2,6 +2,7 @@
 [![License](http://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://github.com/seanoshea/BostonFreedomTrail/blob/master/LICENSE)
 [![Build Status](https://circleci.com/gh/seanoshea/BostonFreedomTrail.svg?style=svg)](https://circleci.com/gh/seanoshea/BostonFreedomTrail.svg?style=svg)
 [![Code Coverage](http://codecov.io/github/seanoshea/BostonFreedomTrail/coverage.svg?branch=develop)](http://codecov.io/github/seanoshea/BostonFreedomTrail?branch=develop)
+[![PRs Welcome](https://img.shields.io/badge/prs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 # BostonFreedomTrail
 iOS Application for walking the Boston Freedom Trail.
 
