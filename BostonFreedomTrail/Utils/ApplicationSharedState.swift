@@ -54,7 +54,7 @@ final class ApplicationSharedState {
       UserDefaults.standard.set(newValue, forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
     }
     get {
-      return UserDefaults.standard.float(forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue) ?? PListHelper.defaultCameraZoom()
+      return UserDefaults.standard.float(forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue) 
     }
   }
   
