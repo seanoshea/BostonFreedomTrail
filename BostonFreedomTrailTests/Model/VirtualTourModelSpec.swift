@@ -54,7 +54,7 @@ class VirtualTourModelTest: QuickSpec {
             context("Tour Controls") {
                 
                 it("should start the tour when startTour is invoked") {
-                    subject?.startTour()
+                    let _ = subject?.startTour()
                     
                     expect(subject?.currentTourState).to(equal(VirtualTourState.inProgress))
                     expect(subject?.currentTourLocation).to(equal(0))
