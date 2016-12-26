@@ -45,7 +45,7 @@ class PlacemarkViewControllerTest: QuickSpec {
             
             beforeEach({ () -> () in
                 subject = UIStoryboard.placemarkViewController()
-                subject?.view
+                let _ = subject?.view
                 ApplicationSharedState.sharedInstance.clear()
             })
             

@@ -43,7 +43,7 @@ class BaseViewControllerTest: QuickSpec {
             
             beforeEach({ () -> () in
                 subject = BaseViewController.init()
-                subject?.view
+                let _ = subject?.view
             })
             
             context("Analytics") {

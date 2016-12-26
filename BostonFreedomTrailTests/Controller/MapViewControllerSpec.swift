@@ -89,10 +89,8 @@ class MapViewControllerTest: QuickSpec {
                 it("should set the zoom level in the application state when the user zooms with the camera") {
                     let zoom:Float = 14
                     let position:GMSCameraPosition = GMSCameraPosition.init(target: CLLocationCoordinate2D.init(latitude: 45, longitude: 45), zoom: zoom, bearing: 14.0, viewingAngle: 1.2)
-                    
-//                    subject?.mapView((subject?.mapView)!, didChangeCameraPosition: position)
+
                     subject?.mapView((subject?.mapView)!, didChange:position)
-//                  mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
                   
                     expect(ApplicationSharedState.sharedInstance.cameraZoom).to(equal(zoom))
                 }
@@ -101,9 +99,8 @@ class MapViewControllerTest: QuickSpec {
                     
                     let marker = GMSMarker.init(position: CLLocationCoordinate2D.init(latitude: 45, longitude: 45))
                     marker.userData = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description", lookAt:nil)
-                    
-//                    subject?.mapView((subject?.mapView)!, didTapMarker: marker)
-                    subject?.mapView((subject?.mapView)!, didTap:marker)
+                  
+                    let _ = subject?.mapView((subject?.mapView)!, didTap:marker)
                     
                     let lastKnownPlacemark = ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate
                     

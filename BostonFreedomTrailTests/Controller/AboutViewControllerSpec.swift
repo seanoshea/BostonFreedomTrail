@@ -43,7 +43,7 @@ class AboutViewControllerTest: QuickSpec {
             
             beforeEach({ () -> () in
                 subject = UIStoryboard.aboutViewController()
-                subject?.view
+                let _ = subject?.view
             })
             
             context("Analytics") {

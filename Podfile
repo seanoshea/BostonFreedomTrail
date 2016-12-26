@@ -8,7 +8,9 @@ target :BostonFreedomTrail do
 
   pod 'Google/Analytics'
   pod 'GoogleMaps', '1.13.2'
-  pod 'MaterialComponents', '19.0.4'
+  pod 'MaterialComponents/Typography', '19.0.4'
+  pod 'MaterialComponents/Buttons', '19.0.4'
+  pod 'MaterialComponents/Snackbar', '19.0.4'
 
   target :BostonFreedomTrailTests do
     pod 'Quick', '1.0.0'
