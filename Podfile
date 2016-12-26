@@ -7,7 +7,7 @@ target :BostonFreedomTrail do
   use_frameworks!
 
   pod 'Google/Analytics'
-  pod 'GoogleMaps', '1.13.2'
+  pod 'GoogleMaps', '2.1.1'
   pod 'MaterialComponents/Typography', '19.0.4'
   pod 'MaterialComponents/Buttons', '19.0.4'
   pod 'MaterialComponents/Snackbar', '19.0.4'
