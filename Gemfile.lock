@@ -152,6 +152,7 @@ GEM
     os (0.9.6)
     plist (3.2.0)
     public_suffix (2.0.4)
+    rake (12.0.0)
     redcarpet (3.4.0)
     representable (2.3.0)
       uber (~> 0.0.7)
@@ -196,10 +197,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (= 4.2.7.1)
   cocoapods (= 1.1.1)
   fastlane (= 2.3.0)
   jazzy (= 0.7.3)
+  rake (= 12.0.0)
 
 BUNDLED WITH
    1.12.5
