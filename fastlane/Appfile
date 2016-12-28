@@ -1,2 +1,3 @@
-app_identifier "com.upwardsnorthwards.BostonFreedomTrail"
-apple_id "xyz@abc.com"
+app_identifier "com.upwardsnorthwards.BostonFreedomTrail" # The bundle identifier of your app
+apple_id "oshea.ie@gmail.com" # Your Apple email address
+team_id "3TQU8WFYZ9"  # Developer Portal Team ID
