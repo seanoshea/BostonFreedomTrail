@@ -196,6 +196,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (= 4.2.7.1)
   cocoapods (= 1.1.1)
   fastlane (= 2.3.0)
   jazzy (= 0.7.3)
