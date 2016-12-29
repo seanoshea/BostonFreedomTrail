@@ -36,6 +36,7 @@ enum SegueConstants: String {
 
 enum ResourceConstants: String {
   case PlacemarkIdentifier = "placemark"
+  case PlacemarkResourceImage = "orange_red"
 }
 
 enum TabBarControllerTags: Int {
@@ -48,5 +49,9 @@ extension UIColor {
   
   static func bftDarkTextColor() -> UIColor {
     return UIColor.init(red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
+  }
+  
+  static func bftOrangeRedColor() -> UIColor {
+    return UIColor.init(red: 216/255, green: 67/255, blue: 21/255, alpha: 1.0)
   }
 }

@@ -182,7 +182,7 @@
                     <connections>
                         <outlet property="developerDetailsTextView" destination="cIf-k7-cxc" id="dFg-xb-GdR"/>
                         <outlet property="developerLabel" destination="d03-Jp-YyK" id="uPk-c5-ycK"/>
-                        <outlet property="googleMapsDetailsTextView" destination="Zpy-fy-KnQ" id="jdN-dG-yYv"/>
+                        <outlet property="googleMapsDetailsTextView" destination="Zpy-fy-KnQ" id="P9q-ak-rFl"/>
                         <outlet property="googleMapsLabel" destination="jcV-ww-lhg" id="PMF-de-gOO"/>
                         <outlet property="trailInformationDetailsTextView" destination="lMp-lK-l9c" id="QIP-vR-9pa"/>
                         <outlet property="trailInformationLabel" destination="Bto-r3-B32" id="y5T-VZ-j5J"/>
