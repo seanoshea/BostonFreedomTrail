@@ -83,6 +83,6 @@ final class AboutViewController: BaseViewController {
 
     // google maps info
     self.googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
-    self.googleMapsDetailsTextView!.text = GMSServices.openSourceLicenseInfo()
+    self.googleMapsDetailsTextView!.attributedText = NSAttributedString.init(string: GMSServices.openSourceLicenseInfo())
   }
 }
