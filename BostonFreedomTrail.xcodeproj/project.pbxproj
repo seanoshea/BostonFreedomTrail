@@ -835,7 +835,7 @@
 				41237C021C486CDF0007F76B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		41237C031C486CDF0007F76B /* Build configuration list for PBXNativeTarget "BostonFreedomTrail" */ = {
 			isa = XCConfigurationList;
@@ -844,7 +844,7 @@
 				41237C051C486CDF0007F76B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		41237C061C486CDF0007F76B /* Build configuration list for PBXNativeTarget "BostonFreedomTrailTests" */ = {
 			isa = XCConfigurationList;
@@ -853,7 +853,7 @@
 				41237C081C486CDF0007F76B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
