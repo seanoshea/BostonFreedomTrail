@@ -49,4 +49,17 @@ class AboutTextView: UITextView {
     self.textColor = UIColor.bftDarkTextColor()
     self.font = MDCTypography.body1Font()
   }
+  
+  override var attributedText: NSAttributedString? {
+    get {
+      return super.attributedText
+    }
+    set(newAttributedText) {
+      let mutableAttributedString = NSMutableAttributedString.init(attributedString: newAttributedText!)
+      let range = NSMakeRange(0, mutableAttributedString.length)
+      mutableAttributedString.addAttribute(NSForegroundColorAttributeName, value:UIColor.bftDarkTextColor(), range:range)
+      mutableAttributedString.addAttribute(NSFontAttributeName, value:MDCTypography.body1Font(), range:range)
+      super.attributedText = mutableAttributedString
+    }
+  }
 }

@@ -67,19 +67,22 @@ final class AboutViewController: BaseViewController {
   
   /// Ensures that the labels on this screen are localized and fully filled in.
   func localizeLabelsAndTextViews() {
+    // developer info
+    self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
     let developerAttributedString = NSMutableAttributedString(string:NSLocalizedString("Developed by Sean O'Shea", comment: ""))
     let trailInformationAttributedString = NSMutableAttributedString(string:NSLocalizedString("There are several different websites which have additional information on the Freedom Trail", comment: ""))
     developerAttributedString.linkify(textToFind: "Sean O'Shea", linkURL: "https://twitter.com/seanoshea")
     trailInformationAttributedString.linkify(textToFind: "several", linkURL: "https://www.thefreedomtrail.org/")
     trailInformationAttributedString.linkify(textToFind: "different", linkURL: "https://en.wikipedia.org/wiki/Freedom_Trail/")
     trailInformationAttributedString.linkify(textToFind: "websites", linkURL: "http://www.cityofboston.gov/freedomtrail/")
-    self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
     self.developerDetailsTextView!.attributedText = developerAttributedString
     
+    // trail info
     self.trailInformationLabel!.text = NSLocalizedString("Trail Information", comment: "")
     self.trailInformationDetailsTextView!.attributedText = trailInformationAttributedString
-    
+
+    // google maps info
     self.googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
-    self.googleMapsDetailsTextView!.text = GMSServices.openSourceLicenseInfo()
+    self.googleMapsDetailsTextView!.attributedText = NSAttributedString.init(string: GMSServices.openSourceLicenseInfo())
   }
 }
