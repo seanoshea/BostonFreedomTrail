@@ -76,8 +76,6 @@ final class VirtualTourViewController: BaseViewController {
     playPauseButton.sizeToFit()
     let selector = #selector(pressedOnPlayPauseButton as (_: UIButton) -> Void)
     playPauseButton.addTarget(self, action: selector, for: .touchUpInside)
-    playPauseButton.setBackgroundColor(UIColor.init(red:231/255, green:232/255, blue:235/255, alpha: 1), for: .normal)
-    playPauseButton.setTitleColor(UIColor.init(red:92/255, green:92/255, blue:92/255, alpha: 1), for: .normal)
   }
   
   func pressedOnPlayPauseButton(_ sender: UIButton) {

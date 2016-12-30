@@ -37,6 +37,7 @@ enum SegueConstants: String {
 enum ResourceConstants: String {
   case PlacemarkIdentifier = "placemark"
   case PlacemarkResourceImage = "orange_red"
+  case InfoWindowXibName = "InfoWindow"
 }
 
 enum TabBarControllerTags: Int {
