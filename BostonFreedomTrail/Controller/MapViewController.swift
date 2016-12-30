@@ -141,7 +141,7 @@ extension MapViewController : GMSMapViewDelegate {
   }
   
   /**
-   Transitions the user over to the `PlacemarkViewController`
+   Transitions the user over to the `VirtualTourViewController`
    - parameter mapView: the view associated with the `MapViewController`
    - parameter marker: the `GMSMarker` associated with the info window that the user just pressed
    */
@@ -149,7 +149,9 @@ extension MapViewController : GMSMapViewDelegate {
     ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
     guard let userData = marker.userData as? Placemark else { return }
     self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.InfoWindowPress.rawValue)
-//    self.performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
+    self.streetViewButtonPressedForPlacemark(userData)
+    // previous implementation.
+    //    self.performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
   }
   
   func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {

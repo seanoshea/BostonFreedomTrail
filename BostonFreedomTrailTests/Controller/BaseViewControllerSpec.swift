@@ -34,25 +34,25 @@ import Nimble
 @testable import BostonFreedomTrail
 
 class BaseViewControllerTest: QuickSpec {
+  
+  override func spec() {
     
-    override func spec() {
+    describe("BaseViewController") {
+      
+      var subject:BaseViewController?
+      
+      beforeEach({ () -> () in
+        subject = BaseViewController.init()
+        let _ = subject?.view
+      })
+      
+      context("Analytics") {
         
-        describe("BaseViewController") {
-            
-            var subject:BaseViewController?
-            
-            beforeEach({ () -> () in
-                subject = BaseViewController.init()
-                let _ = subject?.view
-            })
-            
-            context("Analytics") {
-                
-                it("should return an empty string for the screen tracking name") {
-                    expect(subject?.getScreenTrackingName()).to(equal(""))
-                }
-            }
+        it("should return an empty string for the screen tracking name") {
+          expect(subject?.getScreenTrackingName()).to(equal(""))
         }
+      }
     }
+  }
 }
 
