@@ -156,7 +156,7 @@ extension MapViewController : GMSMapViewDelegate {
   
   func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
     guard let userData = marker.userData as? Placemark else { return nil }
-    guard let viewArray = Bundle.main.loadNibNamed("InfoWindow", owner: self, options: nil) else { return nil }
+    guard let viewArray = Bundle.main.loadNibNamed(ResourceConstants.InfoWindowXibName.rawValue, owner: self, options: nil) else { return nil }
     guard let infoWindow = viewArray[0] as? InfoWindow else { return nil }
     infoWindow.header?.text = userData.name
     return infoWindow
