@@ -39,7 +39,7 @@ final class VirtualTourViewController: BaseViewController {
   
   var model: VirtualTourModel = VirtualTourModel()
   var panoView: GMSPanoramaView?
-  var playPauseButton: VirtualTourPlayPauseButton!
+  @IBOutlet weak var playPauseButton: VirtualTourPlayPauseButton!
   
   // MARK: Lifecycle
   
@@ -71,9 +71,7 @@ final class VirtualTourViewController: BaseViewController {
   // MARK: Private Functions
   
   func setupPlayPauseButton() {
-    playPauseButton = VirtualTourPlayPauseButton()
     playPauseButton.paused = true
-    playPauseButton.sizeToFit()
     let selector = #selector(pressedOnPlayPauseButton as (_: UIButton) -> Void)
     playPauseButton.addTarget(self, action: selector, for: .touchUpInside)
   }
@@ -99,7 +97,6 @@ final class VirtualTourViewController: BaseViewController {
     panoView.delegate = self
     self.view.addSubview(panoView)
     panoView.addSubview(self.playPauseButton!)
-    playPauseButton.center = panoView.center
     self.panoView = panoView
   }
   

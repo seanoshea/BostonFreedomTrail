@@ -83,9 +83,21 @@
                     <view key="view" contentMode="scaleToFill" id="PYW-Gj-rDv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bq9-em-4rf" customClass="VirtualTourPlayPauseButton" customModule="BostonFreedomTrail" customModuleProvider="target">
+                                <rect key="frame" x="337" y="580" width="30" height="30"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bq9-em-4rf" secondAttribute="trailing" constant="8" id="QWL-me-tAT"/>
+                            <constraint firstItem="vAw-iQ-CEP" firstAttribute="top" secondItem="bq9-em-4rf" secondAttribute="bottom" constant="8" id="eHJ-g8-NuD"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="Virtual Tour" image="ic_streetview" id="xG8-KH-aqc" userLabel="Virtual Tour"/>
+                    <connections>
+                        <outlet property="playPauseButton" destination="bq9-em-4rf" id="l0s-KQ-YAx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZ8-by-twt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
