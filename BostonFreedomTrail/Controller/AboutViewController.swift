@@ -80,7 +80,7 @@ final class AboutViewController: BaseViewController {
     // trail info
     self.trailInformationLabel!.text = NSLocalizedString("Trail Information", comment: "")
     self.trailInformationDetailsTextView!.attributedText = trailInformationAttributedString
-
+    
     // google maps info
     self.googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
     self.googleMapsDetailsTextView!.attributedText = NSAttributedString.init(string: GMSServices.openSourceLicenseInfo())
