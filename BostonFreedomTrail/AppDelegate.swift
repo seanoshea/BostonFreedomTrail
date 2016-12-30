@@ -34,6 +34,7 @@ import GoogleMaps
 import CoreLocation
 import Fabric
 import Crashlytics
+import MaterialComponents
 
 /// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndices: Int {
@@ -80,7 +81,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// Sets up all generic styling in the app.
     func initializeStyling() {
-        // TODO: Styling
+      UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName : MDCTypography.captionFont()], for: UIControlState.normal)
     }
     
     /// The app uses Google Analytics for tracking usage of the app. Only enabled for `Release` builds.
