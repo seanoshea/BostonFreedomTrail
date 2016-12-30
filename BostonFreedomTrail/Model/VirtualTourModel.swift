@@ -246,13 +246,11 @@ final class VirtualTourModel {
   func navigateToLookAt(_ placemarkIndex: Int) {
     self.setupTour()
     let lookAtPosition = self.lookAtPositionInTourForPlacementIndex(placemarkIndex)
-    if let position = lookAtPosition {
-      self.currentTourLocation = position
-      self.currentTourState = VirtualTourState.paused
-      if let delegate = self.delegate {
-        delegate.navigateToCurrentPosition(self)
-      }
-    }
+    guard let position = lookAtPosition else { return }
+    guard let delegate = self.delegate else { return }
+    self.currentTourLocation = position
+    self.currentTourState = VirtualTourState.paused
+    delegate.navigateToCurrentPosition(self)
   }
   
   // MARK: Private Functions
@@ -265,11 +263,8 @@ final class VirtualTourModel {
         break
       }
     }
-    if let positionInTour = foundKey {
-      return positionInTour - 1
-    } else {
-      return nil
-    }
+    guard let positionInTour = foundKey else { return nil }
+    return positionInTour - 1
   }
   
   /**

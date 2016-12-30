@@ -58,8 +58,7 @@ extension LocationTracker : CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     LocationTracker.sharedInstance.currentLocation = locations.last
-    if let lastKnownLocation = LocationTracker.sharedInstance.currentLocation {
-      ApplicationSharedState.sharedInstance.lastKnownLocation = lastKnownLocation
-    }
+    guard let lastKnownLocation = LocationTracker.sharedInstance.currentLocation else { return }
+    ApplicationSharedState.sharedInstance.lastKnownLocation = lastKnownLocation
   }
 }

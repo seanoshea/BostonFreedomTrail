@@ -42,19 +42,15 @@ extension CLLocationCoordinate2D {
 extension Int {
   func placemarkIndexFromIdentifier(_ placemarkIdentifier: String) -> Int {
     let stringRepresentation = placemarkIdentifier.replacingOccurrences(of: "placemark", with:"")
-    if let integerRepresentation = Int(stringRepresentation) {
-      return integerRepresentation - 1
-    } else {
-      return 0
-    }
+    guard let integerRepresentation = Int(stringRepresentation) else { return 0}
+    return integerRepresentation - 1
   }
 }
 
 extension GMSPanoramaView {
   final func logLocation() {
-    if let pano = self.panorama {
-      pano.coordinate.logCoordinate()
-    }
+    guard let pano = self.panorama else { return }
+    pano.coordinate.logCoordinate()
   }
 }
 
