@@ -794,9 +794,6 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Nimble\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/OHHTTPStubs\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Quick\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/HexColors\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/TSMessages\"",
 				);
 				INFOPLIST_FILE = BostonFreedomTrailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
