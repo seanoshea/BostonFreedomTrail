@@ -90,6 +90,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   /// Sets up all generic styling in the app.
   func initializeStyling() {
     UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName : MDCTypography.captionFont()], for: UIControlState.normal)
+    // offset for the snack bar message view which is used to display LookAt information in the virtual tour
+    guard let window = self.window else { return }
+    guard let tabBarController = window.rootViewController as? UITabBarController else { return }
+    let windowRect = tabBarController.view.frame
+    MDCSnackbarManager.setBottomOffset(windowRect.size.height - SnackbarMessageViewOffsets.topOffset.rawValue)
   }
   
   /// The app uses Google Analytics for tracking usage of the app. Only enabled for `Release` builds.

@@ -51,6 +51,10 @@ enum CameraZoomConstraints: Float {
   case maximum = 20.0
 }
 
+enum SnackbarMessageViewOffsets: CGFloat {
+  case topOffset = 52.0
+}
+
 extension UIColor {
   
   static func bftDarkTextColor() -> UIColor {
