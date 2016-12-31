@@ -120,7 +120,7 @@ extension MapViewController : GMSMapViewDelegate {
    - parameter position: defines where the `mapView` is positioned
    */
   func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-    if position.zoom > 0.0 {
+    if self.model.isViableZoom(zoom: position.zoom) {
       ApplicationSharedState.sharedInstance.cameraZoom = position.zoom
     }
     ApplicationSharedState.sharedInstance.lastKnownCoordinate = position.target

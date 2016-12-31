@@ -41,16 +41,16 @@ class MapModelTest: QuickSpec {
     
     describe("MapModel") {
       
+      var subject:MapModel?
+      var mapViewController:MapViewController?
+      
+      beforeEach({ () -> () in
+        subject = MapModel.init()
+        mapViewController = UIStoryboard.mapViewController()
+        let _ = mapViewController?.view
+      })
+      
       context("Adding the placemarks") {
-        
-        var subject:MapModel?
-        var mapViewController:MapViewController?
-        
-        beforeEach({ () -> () in
-          subject = MapModel.init()
-          mapViewController = UIStoryboard.mapViewController()
-          let _ = mapViewController?.view
-        })
         
         it("should add all the placemarks to the map") {
           let mapView:GMSMapView = (mapViewController?.mapView)!
@@ -58,6 +58,18 @@ class MapModelTest: QuickSpec {
           let marker:GMSMarker = placemarks![0]
           
           expect(marker.map).toNot(beNil())
+        }
+      }
+      
+      context("Validating the users current camera zoom level") {
+        
+        it("should allow a reasonable zoom value") {
+          expect(subject!.isViableZoom(zoom: 14)).to(beTrue())
+        }
+        
+        it("should not allow an unreasonable zoom value") {
+          expect(subject!.isViableZoom(zoom: -1)).to(beFalse())
+          expect(subject!.isViableZoom(zoom: 400)).to(beFalse())
         }
       }
     }
