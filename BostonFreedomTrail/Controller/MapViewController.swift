@@ -62,15 +62,14 @@ final class MapViewController: BaseViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let identifier = segue.identifier {
-      if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == ComparisonResult.orderedSame {
-        guard let placemarkViewController = segue.destination as? PlacemarkViewController else { return }
-        guard let placemark = self.mapView?.selectedMarker!.userData as? Placemark else { return }
-        placemarkViewController.delegate = self
-        placemarkViewController.popoverPresentationController?.delegate = self
-        placemarkViewController.modalPresentationStyle = UIModalPresentationStyle.popover
-        placemarkViewController.model!.placemark = placemark
-      }
+    guard let identifier = segue.identifier else { return }
+    if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == ComparisonResult.orderedSame {
+      guard let placemarkViewController = segue.destination as? PlacemarkViewController else { return }
+      guard let placemark = self.mapView?.selectedMarker!.userData as? Placemark else { return }
+      placemarkViewController.delegate = self
+      placemarkViewController.popoverPresentationController?.delegate = self
+      placemarkViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+      placemarkViewController.model!.placemark = placemark
     }
   }
   
@@ -182,11 +181,8 @@ extension MapViewController : PlacemarkViewControllerDelegate {
    - parameter placemark: the placemark at which to land the user on the virtual tour screen
    */
   func streetViewButtonPressedForPlacemark(_ placemark: Placemark) {
-    if let delegate = self.delegate {
-      delegate.navigateToVirtualTourWithPlacemark(placemark)
-    } else {
-      self.trackNonFatalErrorMessage("No delegate for allowing the user navigate to street view from a placemark view")
-    }
+    guard let delegate = self.delegate else { self.trackNonFatalErrorMessage("No delegate for allowing the user navigate to street view from a placemark view"); return }
+    delegate.navigateToVirtualTourWithPlacemark(placemark)
   }
 }
 

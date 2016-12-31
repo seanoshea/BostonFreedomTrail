@@ -141,9 +141,8 @@ final class VirtualTourViewController: BaseViewController {
       let newCamera = self.cameraPositionForNextLocation(nextLocation)
       self.panoView?.animate(to: newCamera, animationDuration: VirtualTourStopStopDuration.cameraRepositionAnimation.rawValue)
       if self.model.atLookAtLocation() {
-        if let pm = self.model.placemarkForNextLocation() {
-          self.displaySnackbarMessage(pm.name)
-        }
+        guard let pm = self.model.placemarkForNextLocation() else { return }
+        self.displaySnackbarMessage(pm.name)
       }
     }
   }
