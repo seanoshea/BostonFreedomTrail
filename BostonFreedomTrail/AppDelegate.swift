@@ -37,7 +37,7 @@ import Crashlytics
 import MaterialComponents
 
 /// Simple enum to keep track of the different tabs in the app.
-enum TabBarControllerIndices: Int {
+enum TabBarControllerIndex: Int {
   case mapViewController = 0
   case virtualTourViewController = 1
   case aboutViewController = 2
@@ -53,6 +53,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: Lifecycle
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    self.initializeTabBarDelegate()
     self.initializeCrashReporting()
     self.initializeGoogleMapsApi()
     self.initializeStyling()
@@ -66,6 +67,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   // MARK: Private Functions
+  
+  /// Sets the delegate property on the main UITabBarController to AppDelegate.
+  func initializeTabBarDelegate() {
+    guard let window = self.window else { return }
+    guard let tabBarController = window.rootViewController as? UITabBarController else { return }
+    tabBarController.delegate = self
+  }
   
   /// Crash reporting is used in `Release` builds of the app to ensure that all crashes in the live versions of the app are reported and can be analyzed for solutions.
   func initializeCrashReporting() {
@@ -105,17 +113,17 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     for (index, item) in (tabBarController.tabBar.items?.enumerated())! {
       var title = ""
       switch index {
-      case TabBarControllerIndices.mapViewController.rawValue:
+      case TabBarControllerIndex.mapViewController.rawValue:
         title = NSLocalizedString("Map", comment: "")
         break
-      case TabBarControllerIndices.virtualTourViewController.rawValue:
+      case TabBarControllerIndex.virtualTourViewController.rawValue:
         title = NSLocalizedString("Virtual Tour", comment: "")
         break
-      case TabBarControllerIndices.aboutViewController.rawValue:
+      case TabBarControllerIndex.aboutViewController.rawValue:
         title = NSLocalizedString("About", comment: "")
         break
       default:
-        NSLog("Add a new index to TabBarControllerIndices for this new controller")
+        NSLog("Add a new index to TabBarControllerIndex for this new controller")
       }
       item.title = title
     }
@@ -132,9 +140,29 @@ extension AppDelegate : MapViewControllerDelegate {
     guard let window = self.window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     guard let viewControllers = tabBarController.viewControllers else { return }
-    guard let virtualTourViewController = viewControllers[TabBarControllerIndices.virtualTourViewController.rawValue] as? VirtualTourViewController else { return }
-    tabBarController.selectedIndex = TabBarControllerIndices.virtualTourViewController.rawValue
+    guard let virtualTourViewController = viewControllers[TabBarControllerIndex.virtualTourViewController.rawValue] as? VirtualTourViewController else { return }
+    tabBarController.selectedIndex = TabBarControllerIndex.virtualTourViewController.rawValue
     let index = Trail.instance.placemarkIndex(placemark)
     virtualTourViewController.model.navigateToLookAt(index)
+  }
+}
+
+/// Allows AppDelegate to keep track of when a particular tab is selected.
+extension AppDelegate: UITabBarControllerDelegate {
+  /**
+   Executed when one of the view controllers in the tab view controller is selected.
+   - tabBarController: the main controller for the application.
+   - viewController: the view controller which was just selected.
+   */
+  func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    guard let viewControllers = tabBarController.viewControllers else { return }
+    guard let baseViewController = viewController as? BaseViewController else { return }
+    guard let indexSelected = viewControllers.index(of: viewController) else { return }
+    // tell analytics that a particular tab has been selected
+    baseViewController.trackTabBarButtonPress(index: indexSelected)
+    // kill off any remaining snackbar messages
+    if indexSelected != TabBarControllerIndex.virtualTourViewController.rawValue {
+      MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+    }
   }
 }
