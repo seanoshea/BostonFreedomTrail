@@ -142,10 +142,6 @@ class VirtualTourModelTest: QuickSpec {
           expect(subject?.lookAtForCurrentLocation()).toNot(beNil())
         }
         
-        it("should not be able to find a LookAt for the 1st placemark") {
-          expect(subject?.lookAtPositionInTourForPlacementIndex(0)).to(beNil())
-        }
-        
         it("should not be able to find a LookAt if a placemark is requested which is out of bounds on the lower end") {
           expect(subject?.lookAtPositionInTourForPlacementIndex(-1)).to(beNil())
         }
@@ -163,13 +159,6 @@ class VirtualTourModelTest: QuickSpec {
           
           expect(subject?.currentTourState).to(equal(VirtualTourState.paused))
           expect(dummyDelegate!.navigationInitiated).to(beTrue())
-        }
-        
-        it("should not navigate directly to a LookAt when the placement index does not have a LookAt associated with it") {
-          subject?.navigateToLookAt(0)
-          
-          expect(subject?.currentTourState).to(equal(VirtualTourState.postSetup))
-          expect(dummyDelegate!.navigationInitiated).to(beFalse())
         }
       }
       

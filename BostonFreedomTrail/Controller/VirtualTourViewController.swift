@@ -90,6 +90,7 @@ final class VirtualTourViewController: BaseViewController {
       break
     }
     self.playPauseButton?.paused = !self.model.tourIsRunning()
+    MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
   }
   
   func addPanoramaView(_ panoramaNear: CLLocationCoordinate2D) {
