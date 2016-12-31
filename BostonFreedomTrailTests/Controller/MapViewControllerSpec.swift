@@ -93,6 +93,10 @@ class MapViewControllerTest: QuickSpec {
           marker?.userData = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description", lookAt:nil)
         })
         
+        afterEach({ () -> () in
+          ApplicationSharedState.sharedInstance.clear()
+        })
+        
         it("should set the zoom level in the application state when the user zooms with the camera") {
           let zoom:Float = 14
           let position:GMSCameraPosition = GMSCameraPosition.init(target: CLLocationCoordinate2D.init(latitude: 45, longitude: 45), zoom: zoom, bearing: 14.0, viewingAngle: 1.2)
@@ -121,7 +125,6 @@ class MapViewControllerTest: QuickSpec {
           
           expect(dummyDelegate.navigationInitiated).to(beTrue())
         }
-        
       }
       
       context("UIPopoverPresentationControllerDelegate") {

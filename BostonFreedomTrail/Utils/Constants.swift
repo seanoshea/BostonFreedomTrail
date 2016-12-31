@@ -46,6 +46,11 @@ enum TabBarControllerTags: Int {
   case aboutViewTag = 2
 }
 
+enum CameraZoomConstraints: Float {
+  case minimum = 12.0
+  case maximum = 20.0
+}
+
 extension UIColor {
   
   static func bftDarkTextColor() -> UIColor {
