@@ -49,6 +49,7 @@ final class VirtualTourViewController: BaseViewController {
     self.model.delegate = self
     let firstPlacemark = self.model.firstPlacemark()
     self.addPanoramaView(CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude))
+    MDCSnackbarManager.setPresentationHostView(self.view)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -157,6 +158,12 @@ final class VirtualTourViewController: BaseViewController {
   func pauseTour() {
     self.playPauseButton?.paused = true
     self.model.pauseTour()
+  }
+  
+  func displaySnackbarMessage(_ text:String) {
+    DispatchQueue.main.async {
+      MDCSnackbarManager.show(MDCSnackbarMessage.init(text: text))
+    }
   }
 }
 

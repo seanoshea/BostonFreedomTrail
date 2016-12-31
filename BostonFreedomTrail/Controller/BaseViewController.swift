@@ -43,14 +43,4 @@ class BaseViewController: UIViewController, AnalyticsTracker {
   func getScreenTrackingName() -> String {
     return ""
   }
-  
-  func displaySnackbarMessage(_ text:String) {
-    let windowRect = self.view.frame
-    MDCSnackbarManager.setBottomOffset(windowRect.size.height - 52.0)
-    let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-    DispatchQueue.main.asyncAfter(deadline: delayTime) {
-      let message = MDCSnackbarMessage.init(text: text)
-      MDCSnackbarManager.show(message)
-    }
-  }
 }
