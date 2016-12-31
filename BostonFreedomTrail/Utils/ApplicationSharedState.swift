@@ -108,5 +108,7 @@ final class ApplicationSharedState {
     UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
     UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
     UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
+    UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
+    UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
   }
 }
