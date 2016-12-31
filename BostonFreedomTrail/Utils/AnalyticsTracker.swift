@@ -50,6 +50,7 @@ enum AnalyticsActions: String {
 
 // Label constants for analytics
 enum AnalyticsLabels: String {
+  case TabBarPress = "tab_bar_press"
   case MarkerPress = "marker_press"
   case InfoWindowPress = "info_window_press"
   case StreetViewPress = "street_view_press"
@@ -80,6 +81,16 @@ extension AnalyticsTracker where Self : UIViewController {
     guard trackingName.characters.count > 0 else { return }
     guard let parameters = GAIDictionaryBuilder.createScreenView().build() else { return }
     tracker.set(kGAIScreenName, value: trackingName)
+    tracker.send(parameters as [NSObject : AnyObject])
+  }
+
+  /**
+   Tracks when a tab bar button is selected.
+   - parameter index: the index of the tab bar button which was just selected.
+   */
+  func trackTabBarButtonPress(index:Int) {
+    guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+    guard let parameters = GAIDictionaryBuilder.createEvent(withCategory: AnalyticsEventCategories.Action.rawValue, action:AnalyticsActions.ButtonPress.rawValue, label:AnalyticsLabels.TabBarPress.rawValue, value: index as NSNumber).build() else { return }
     tracker.send(parameters as [NSObject : AnyObject])
   }
   

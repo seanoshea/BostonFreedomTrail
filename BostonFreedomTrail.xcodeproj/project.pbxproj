@@ -22,6 +22,7 @@
 		41237C1A1C4921E50007F76B /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C191C4921E50007F76B /* MapModel.swift */; };
 		41237C1C1C4923D20007F76B /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C1B1C4923D20007F76B /* Trail.swift */; };
 		41237C211C49244D0007F76B /* TrailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237C201C49244D0007F76B /* TrailParser.swift */; };
+		412FBE6C1E180DD200CCF375 /* AppDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412FBE6B1E180DD200CCF375 /* AppDelegateSpec.swift */; };
 		4136F2CD1DA1E7AE00F431A8 /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4136F2CC1DA1E7AE00F431A8 /* InfoWindow.xib */; };
 		4136F2CF1DA1E7C600F431A8 /* InfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4136F2CE1DA1E7C600F431A8 /* InfoWindow.swift */; };
 		413A01C31CD7B43C006E7667 /* BaseViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A01C21CD7B43C006E7667 /* BaseViewControllerSpec.swift */; };
@@ -89,6 +90,7 @@
 		41237C191C4921E50007F76B /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		41237C1B1C4923D20007F76B /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
 		41237C201C49244D0007F76B /* TrailParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailParser.swift; sourceTree = "<group>"; };
+		412FBE6B1E180DD200CCF375 /* AppDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateSpec.swift; sourceTree = "<group>"; };
 		4136F2CC1DA1E7AE00F431A8 /* InfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindow.xib; sourceTree = "<group>"; };
 		4136F2CE1DA1E7C600F431A8 /* InfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoWindow.swift; sourceTree = "<group>"; };
 		413A01C21CD7B43C006E7667 /* BaseViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerSpec.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 		41237BFD1C486CDF0007F76B /* BostonFreedomTrailTests */ = {
 			isa = PBXGroup;
 			children = (
+				412FBE6B1E180DD200CCF375 /* AppDelegateSpec.swift */,
 				410AFEE31C4D991A007DF354 /* Controller */,
 				41237C001C486CDF0007F76B /* Info.plist */,
 				410AFEE01C4D97F4007DF354 /* Model */,
@@ -606,6 +609,7 @@
 				41C654031D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift in Sources */,
 				41D0F4EF1C53E64A00FCAB17 /* PListHelperSpec.swift in Sources */,
 				41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */,
+				412FBE6C1E180DD200CCF375 /* AppDelegateSpec.swift in Sources */,
 				41D0F4ED1C53E64A00FCAB17 /* StoryboardExtensions.swift in Sources */,
 				41DE05EC1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift in Sources */,
 				41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */,
