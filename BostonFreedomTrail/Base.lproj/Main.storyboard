@@ -84,8 +84,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bq9-em-4rf" customClass="VirtualTourPlayPauseButton" customModule="BostonFreedomTrail" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bq9-em-4rf" customClass="VirtualTourButton" customModule="BostonFreedomTrail" customModuleProvider="target">
                                 <rect key="frame" x="337" y="580" width="30" height="30"/>
+                                <connections>
+                                    <action selector="pressedOnVirtualTourButton:" destination="5ee-gd-RMW" eventType="touchUpInside" id="LZj-nV-XYH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -96,7 +99,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="Virtual Tour" image="ic_streetview" id="xG8-KH-aqc" userLabel="Virtual Tour"/>
                     <connections>
-                        <outlet property="playPauseButton" destination="bq9-em-4rf" id="l0s-KQ-YAx"/>
+                        <outlet property="virtualTourButton" destination="bq9-em-4rf" id="sAX-bK-36f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZ8-by-twt" userLabel="First Responder" sceneMemberID="firstResponder"/>

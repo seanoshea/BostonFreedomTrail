@@ -218,4 +218,8 @@ class DummyVirtualTourModelDelegate : VirtualTourModelDelegate {
   func navigateToCurrentPosition(_ model:VirtualTourModel) {
     self.navigationInitiated = true
   }
+  
+  func didChangeTourState(fromState:VirtualTourState, toState:VirtualTourState) {
+    
+  }
 }

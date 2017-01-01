@@ -12,7 +12,7 @@
  3. All advertising materials mentioning features or use of this software
  must display the following acknowledgement:
  This product includes software developed by Upwards Northwards Software Limited.
- 4. Neither th e name of Upwards Northwards Software Limited nor the
+ 4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
  
@@ -28,39 +28,50 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import UIKit
+import Quick
+import Nimble
 
-import MaterialComponents
+@testable import BostonFreedomTrail
 
-final class VirtualTourPlayPauseButton: MDCFloatingButton {
+class VirtualTourButtonTest: QuickSpec {
   
-  override init(frame: CGRect, shape: MDCFloatingButtonShape) {
-    paused = true
-    super.init(frame: frame, shape: shape)
-    commonInit()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    paused = true
-    super.init(coder: aDecoder)
-    commonInit()
-  }
-  
-  var paused: Bool {
-    didSet {
-      self.assignButtonBackground()
+  override func spec() {
+    
+    describe("VirtualTourButton") {
+      
+      var subject:VirtualTourButton!
+      
+      beforeEach({ () -> () in
+        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 100, height: 100))
+        subject = VirtualTourButton.init(frame: rect, shape: .default)
+      })
+      
+      context("Updating the button title") {
+        
+        it("should update the title for VirtualTourState.postSetup") {
+          subject.updateButtonTitle(state: .postSetup)
+          
+          expect(subject.title(for: .normal)).to(equal("⊳"))
+        }
+        
+        it("should update the title for VirtualTourState.paused") {
+          subject.updateButtonTitle(state: .paused)
+          
+          expect(subject.title(for: .normal)).to(equal("⊳"))
+        }
+        
+        it("should update the title for VirtualTourState.finished") {
+          subject.updateButtonTitle(state: .finished)
+          
+          expect(subject.title(for: .normal)).to(equal("?"))
+        }
+        
+        it("should update the title for VirtualTourState.inProgress") {
+          subject.updateButtonTitle(state: .inProgress)
+          
+          expect(subject.title(for: .normal)).to(equal("||"))
+        }
+      }
     }
   }
-  
-  /// Styles the button
-  func commonInit() {
-    setBackgroundColor(UIColor.bftOrangeRedColor(), for: .normal)
-    setTitleColor(UIColor.white, for: .normal)
-  }
-  
-  /// Sets the button display based on the tour state
-  func assignButtonBackground() {
-    self.setTitle(paused ? "⊳" : "||", for: .normal)
-  }
-  
 }

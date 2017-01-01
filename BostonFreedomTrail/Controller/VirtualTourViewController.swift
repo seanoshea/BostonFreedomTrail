@@ -39,13 +39,12 @@ final class VirtualTourViewController: BaseViewController {
   
   var model: VirtualTourModel = VirtualTourModel()
   var panoView: GMSPanoramaView?
-  @IBOutlet weak var playPauseButton: VirtualTourPlayPauseButton!
+  @IBOutlet weak var virtualTourButton: VirtualTourButton!
   
   // MARK: Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.setupPlayPauseButton()
     self.model.delegate = self
     let firstPlacemark = self.model.firstPlacemark()
     self.addPanoramaView(CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude))
@@ -55,12 +54,34 @@ final class VirtualTourViewController: BaseViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.model.setupTour()
-    self.playPauseButton?.isEnabled = true
+    self.virtualTourButton?.isEnabled = true
   }
   
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    self.pauseTour()
+    if self.model.currentTourState != VirtualTourState.finished {
+      self.pauseTour()
+    }
+  }
+  
+  // MARK: IBActions
+  
+  @IBAction func pressedOnVirtualTourButton(_ sender: UIButton) {
+    self.model.togglePlayPause()
+    switch self.model.currentTourState {
+    case VirtualTourState.postSetup:
+      self.startTour()
+      break
+    case VirtualTourState.inProgress:
+      self.postDispatchAction(self.model.nextLocation())
+      break
+    case VirtualTourState.finished:
+      self.restartTour()
+      break
+    default:
+      break
+    }
+    MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
   }
   
   // MARK: Analytics
@@ -71,40 +92,23 @@ final class VirtualTourViewController: BaseViewController {
   
   // MARK: Private Functions
   
-  func setupPlayPauseButton() {
-    playPauseButton.paused = true
-    let selector = #selector(pressedOnPlayPauseButton as (_: UIButton) -> Void)
-    playPauseButton.addTarget(self, action: selector, for: .touchUpInside)
-  }
-  
-  func pressedOnPlayPauseButton(_ sender: UIButton) {
-    self.model.togglePlayPause()
-    switch self.model.currentTourState {
-    case VirtualTourState.postSetup:
-      self.startTour()
-      break
-    case VirtualTourState.inProgress:
-      self.postDispatchAction(self.model.nextLocation())
-      break
-    default:
-      break
-    }
-    self.playPauseButton?.paused = !self.model.tourIsRunning()
-    MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
-  }
-  
   func addPanoramaView(_ panoramaNear: CLLocationCoordinate2D) {
     let panoView = GMSPanoramaView.panorama(withFrame: self.view.frame, nearCoordinate:panoramaNear)
     panoView.navigationLinksHidden = true
     panoView.delegate = self
     self.view.addSubview(panoView)
-    panoView.addSubview(self.playPauseButton!)
+    panoView.addSubview(self.virtualTourButton!)
     self.panoView = panoView
   }
   
   func startTour() {
     let firstTourLocation = self.model.startTour()
     self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(firstTourLocation.coordinate.latitude, firstTourLocation.coordinate.longitude))
+  }
+  
+  func restartTour() {
+    self.model.currentTourState = VirtualTourState.postSetup
+    self.startTour()
   }
   
   func cameraPositionForNextLocation(_ nextLocation: CLLocation) -> GMSPanoramaCamera {
@@ -157,7 +161,6 @@ final class VirtualTourViewController: BaseViewController {
   }
   
   func pauseTour() {
-    self.playPauseButton?.paused = true
     self.model.pauseTour()
   }
   
@@ -190,5 +193,9 @@ extension VirtualTourViewController : VirtualTourModelDelegate {
   
   func navigateToCurrentPosition(_ model: VirtualTourModel) {
     self.postDispatchAction(self.model.nextLocation(), force:true)
+  }
+  
+  func didChangeTourState(fromState:VirtualTourState, toState:VirtualTourState) {
+    self.virtualTourButton.updateButtonTitle(state: toState)
   }
 }
