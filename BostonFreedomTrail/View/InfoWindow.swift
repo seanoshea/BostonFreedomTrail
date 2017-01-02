@@ -31,6 +31,8 @@
 
 import Foundation
 
+/// Custom information window which is presented to the user when they press on pins in the map view.
 class InfoWindow : UIView {
+  /// the title associated with the info window.
   @IBOutlet weak var header: AboutTitleLabel?
 }

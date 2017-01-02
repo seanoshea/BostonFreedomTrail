@@ -60,12 +60,14 @@ enum AnalyticsLabels: String {
 protocol AnalyticsTracker:class {
   /**
    Retrieves the screen name.
+   
    - returns: the screen name which will be used for any screen tracking in analytics
    */
   func getScreenTrackingName() -> String
   
   /**
    Tracks a button press when the user requests information on a placemark.
+   
    - parameter placemark: the placemark about which the user is requesting information.
    - parameter label: additional label information about the placemark & where the user is requesting the info from.
    */
@@ -74,7 +76,7 @@ protocol AnalyticsTracker:class {
 
 extension AnalyticsTracker where Self : UIViewController {
   
-  // Tracks the user viewing a screen in the app.
+  /// Tracks the user viewing a screen in the app.
   func trackScreenName() {
     guard let tracker = GAI.sharedInstance().defaultTracker else { return }
     let trackingName = self.getScreenTrackingName()
@@ -86,6 +88,7 @@ extension AnalyticsTracker where Self : UIViewController {
 
   /**
    Tracks when a tab bar button is selected.
+   
    - parameter index: the index of the tab bar button which was just selected.
    */
   func trackTabBarButtonPress(index:Int) {
@@ -96,6 +99,7 @@ extension AnalyticsTracker where Self : UIViewController {
   
   /**
    Tracks a button press when the user requests information on a placemark.
+   
    - parameter placemark: the placemark about which the user is requesting information.
    - parameter label: additional label information about the placemark & where the user is requesting the info from.
    */
@@ -107,6 +111,7 @@ extension AnalyticsTracker where Self : UIViewController {
   
   /**
    Tracks an error happening in the application.
+   
    - parameter errorMessage: information on where the error occured.
    */
   func trackNonFatalErrorMessage(_ errorMessage:String) {

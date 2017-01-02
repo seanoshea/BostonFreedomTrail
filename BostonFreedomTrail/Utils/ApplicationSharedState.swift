@@ -42,10 +42,13 @@ enum DefaultsKeys: String {
   case ApplicationSharedStateLastKnownCoordinateLongitude = "ApplicationSharedStateLastKnownCoordinateLongitude"
 }
 
+/// Simple accessors for user defaults used throughout the app.
 final class ApplicationSharedState {
   
+  /// Singleton accessor for `ApplicationSharedState`.
   static let sharedInstance = ApplicationSharedState()
   
+  /// The last known camera zoom specified by the user in the virtual tour.
   var cameraZoom: Float {
     set {
       guard newValue > kGMSMinZoomLevel && newValue < kGMSMaxZoomLevel else {
@@ -58,6 +61,7 @@ final class ApplicationSharedState {
     }
   }
   
+  /// The last known placemark that the user interacted with in the map view.
   var lastKnownPlacemarkCoordinate: CLLocationCoordinate2D {
     set {
       UserDefaults.standard.set(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
@@ -69,7 +73,8 @@ final class ApplicationSharedState {
       return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
     }
   }
-  
+
+  /// The last known location that the user interacted with in the map view.
   var lastKnownCoordinate: CLLocationCoordinate2D {
     set {
       UserDefaults.standard.set(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
@@ -82,6 +87,7 @@ final class ApplicationSharedState {
     }
   }
   
+  /// The last known location the user was seen in the map view.
   var lastKnownLocation: CLLocation {
     set {
       UserDefaults.standard.set(newValue.coordinate.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
@@ -94,6 +100,7 @@ final class ApplicationSharedState {
     }
   }
   
+  /// Indicates whether the app is built in debug mode or not.
   func isDebug() -> Bool {
     #if DEBUG
       return true
@@ -102,6 +109,7 @@ final class ApplicationSharedState {
     #endif
   }
   
+  /// Gives a clean slate to the user defaults.
   func clear() {
     UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
     UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)

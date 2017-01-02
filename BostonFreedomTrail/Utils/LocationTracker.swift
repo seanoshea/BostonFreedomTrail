@@ -32,13 +32,17 @@ import Foundation
 
 import CoreLocation
 
+/// Keeps track of where the user is in the map.
 final class LocationTracker : NSObject {
   
   // MARK: Properties
   
+  /// Singleton accessor for the `LocationTracker`.
   static let sharedInstance = LocationTracker()
+  /// Where the user is in the map view.
   var currentLocation: CLLocation?
   
+  /// Lazy initializer for the `CLLocationManager`.
   lazy var locationManager: CLLocationManager = {
     var manager = CLLocationManager.init()
     manager.delegate = LocationTracker.sharedInstance
@@ -49,13 +53,20 @@ final class LocationTracker : NSObject {
     return manager
   }()
   
+  /// Allows client code to tell the locationManager to start updating where the user is located in the map view.
   func startUpdatingLocation() {
     self.locationManager.startUpdatingLocation()
   }
 }
 
+/// Implmentation of `CLLocationManagerDelegate` which keeps track of where the user is in the map view.
 extension LocationTracker : CLLocationManagerDelegate {
-  
+  /**
+   Executed when the CLLocationManager updates the user's location in the map view.
+   
+   - parameter manager: the `CLLocationManager`.
+   - parameter locations: collection of locations where the user has been in the map view.
+   */
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     LocationTracker.sharedInstance.currentLocation = locations.last
     guard let lastKnownLocation = LocationTracker.sharedInstance.currentLocation else { return }

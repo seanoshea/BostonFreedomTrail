@@ -139,6 +139,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate : MapViewControllerDelegate {
   /**
    Executed when navigating to the virtual tour screen.
+   
    - parameter placemark: The `Placemark` to land on after switching to the virtual tour.
    */
   func navigateToVirtualTourWithPlacemark(_ placemark: Placemark) {
@@ -156,6 +157,7 @@ extension AppDelegate : MapViewControllerDelegate {
 extension AppDelegate: UITabBarControllerDelegate {
   /**
    Executed when one of the view controllers in the tab view controller is selected.
+   
    - tabBarController: the main controller for the application.
    - viewController: the view controller which was just selected.
    */

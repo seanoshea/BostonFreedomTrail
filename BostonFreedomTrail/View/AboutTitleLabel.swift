@@ -35,6 +35,12 @@ import MaterialComponents
 /// Customized title label for the About Screen.
 class AboutTitleLabel: UILabel {
   
+  /**
+   Initializer for `AboutDetailsLabel`.
+
+   - parameter coder: the coder.
+   - returns: instance of `AboutDetailsLabel`.
+   */
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     self.applyStyles()
@@ -44,20 +50,5 @@ class AboutTitleLabel: UILabel {
   func applyStyles() {
     self.textColor = UIColor.bftDarkTextColor()
     self.font = MDCTypography.titleFont()
-  }
-}
-
-/// Customized details label for the About Screen.
-class AboutDetailsLabel: AboutTitleLabel {
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    self.applyStyles()
-  }
-  
-  /// Ensures that the appropriate styles are set on the label.
-  override func applyStyles() {
-    self.textColor = UIColor.bftDarkTextColor()
-    self.font = MDCTypography.captionFont()
   }
 }

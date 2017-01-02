@@ -38,6 +38,7 @@ class BaseViewController: UIViewController, AnalyticsTracker {
   
   /**
    Base implementation of `AnalyticsTracker`
+   
    - returns: a String which can be passed to analytics to uniquely identify this view controller.
    */
   func getScreenTrackingName() -> String {

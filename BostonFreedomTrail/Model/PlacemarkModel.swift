@@ -35,10 +35,12 @@ final class PlacemarkModel {
   
   // MARK: Properties
   
+  /// the `Placemark` associated with this model.
   var placemark: Placemark?
   
   /**
    Determines the correct HTML for the web view associated with a `Placemark`
+   
    - returns: full HTML for the web view based on the `placemark` description.
    */
   func stringForWebView() -> String {

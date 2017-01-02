@@ -53,12 +53,14 @@ protocol VirtualTourModelDelegate:class {
   
   /**
    Given a `VirtualTourModel` this function navigates to the current position in the tour automatically.
+   
    - parameter model: the `VirtualTourModel`
    */
   func navigateToCurrentPosition(_ model: VirtualTourModel)
   
   /**
    Records when the tour state changes.
+   
    - parameter fromState: the previous tour state
    - parameter toState: the new tour state
    */
@@ -108,6 +110,7 @@ final class VirtualTourModel {
   
   /**
    Starts the virtual tour from the very beginning
+   
    - returns: a `CLLocation` which represents the starting point on the virtual tour
    */
   func startTour() -> CLLocation {
@@ -118,6 +121,7 @@ final class VirtualTourModel {
   
   /**
    Checks the `currentTourLocation` to see if the virtual tour is currently at a `LookAt` location.
+   
    - returns: Bool indicating that the tour is currently positioned at a `LookAt`
    */
   func atLookAtLocation() -> Bool {
@@ -126,6 +130,7 @@ final class VirtualTourModel {
   
   /**
    Possibly returns a `LookAt` if the virtual tour is at a LookAt location.
+   
    - returns: a `LookAt` corresponding to the current location of the tour
    */
   func lookAtForCurrentLocation() -> LookAt? {
@@ -137,6 +142,7 @@ final class VirtualTourModel {
   
   /**
    Gets the placemark based on the next location in the tour.
+   
    - returns: a `Placemark` corresponding to the next tour location
    */
   func placemarkForNextLocation() -> Placemark? {
@@ -148,6 +154,7 @@ final class VirtualTourModel {
   
   /**
    Bumps the `currentTourLocation` and returns the next placemark in the tour
+   
    - returns: a `Placemark` corresponding to the next tour location
    */
   func enqueueNextLocation() -> CLLocation {
@@ -184,6 +191,7 @@ final class VirtualTourModel {
   
   /**
    Checks to see if the tour has gone past the first `Placemark`
+   
    - returns: Bool indicating that the tour has advanced past the first `Placemark`
    */
   func hasAdvancedPastFirstLocation() -> Bool {
@@ -192,6 +200,7 @@ final class VirtualTourModel {
   
   /**
    Checks to see if the tour is currently active.
+   
    - returns: Bool indicating that the tour is running
    */
   func tourIsRunning() -> Bool {
@@ -200,6 +209,7 @@ final class VirtualTourModel {
   
   /**
    Retrieves the first placemark in the virtual tour.
+   
    - returns: `Placemark` representing the first stop in the virtual tour
    */
   func firstPlacemark() -> Placemark {
@@ -218,6 +228,7 @@ final class VirtualTourModel {
   
   /**
    Checks to see if we can advance in the tour.
+   
    - returns: Bool indicating that the tour is startable or resumable
    */
   func tourIsPlayable() -> Bool {
@@ -226,6 +237,7 @@ final class VirtualTourModel {
   
   /**
    Checks to see if we can toggle between a paused and resumed state in the virtual tour.
+   
    - returns: Bool indicating that the user can pause or resume the virtual tour
    */
   func tourIsToggleable() -> Bool {
@@ -234,6 +246,7 @@ final class VirtualTourModel {
 
   /**
    Checks to see if the tour has finished or not.
+   
    - returns: Bool indicating that the tour has reached it's final location.
    */
   func isAtLastPosition() -> Bool {
@@ -242,6 +255,7 @@ final class VirtualTourModel {
   
   /**
    Retrieves the next `CLLocation` in the virtual tour.
+   
    - returns: a `CLLocation` object which is the next location to navigate to in the virtual tour
    */
   func nextLocation() -> CLLocation {
@@ -258,6 +272,7 @@ final class VirtualTourModel {
   
   /**
    Retrieves the the time we should delay for at the current location.
+   
    - returns: a time in seconds that we should wait for at the current location in the virtual tour
    */
   func delayTime() -> DispatchTime {
@@ -296,6 +311,7 @@ final class VirtualTourModel {
   
   /**
    Figures out whether or not the tour has been initialized and is ready to go yet.
+   
    - returns: Bool indicating that the tour has not been set up yet
    */
   func tourNotInitialized() -> Bool {

@@ -36,7 +36,12 @@ import MaterialComponents
 
 /// Customized text view for the About Screen.
 class AboutTextView: UITextView {
-  
+  /**
+   Initializer for `AboutTextView`.
+   
+   - parameter coder: the coder associated with the text view.
+   - returns: a new instance of AboutTextView.
+   */
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     self.applyStyles()
@@ -50,6 +55,7 @@ class AboutTextView: UITextView {
     self.font = MDCTypography.body1Font()
   }
   
+  /// attributed text associated with `AboutTextView`.
   override var attributedText: NSAttributedString? {
     get {
       return super.attributedText

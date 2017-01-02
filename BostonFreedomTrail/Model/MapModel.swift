@@ -36,7 +36,8 @@ import GoogleMaps
 final class MapModel {
   
   /**
-   Based on the details in the KML file, this function adds the placemark indicators to the `mapView`
+   Based on the details in the KML file, this function adds the placemark indicators to the `mapView`.
+   
    - parameter mapView: the view associated with the `MapViewController`
    - returns: an array of `GMSMarker`s which represent the Freedom Trail
    */
@@ -56,7 +57,8 @@ final class MapModel {
   }
   
   /**
-   Responsible for drawing the path between all the placemarks which are created as a result of `addPlacemarksToMap`
+   Responsible for drawing the path between all the placemarks which are created as a result of `addPlacemarksToMap`.
+   
    - parameter mapView: the view associated with the `MapViewController`
    */
   func addPathToMap(_ mapView: GMSMapView) {
@@ -74,6 +76,7 @@ final class MapModel {
   
   /**
    Figures out the correct camera zoom for the map view. Falls back on defaults which can be configured in the .plist file if the user has never interacted with the map.
+   
    - returns: float indicating how zoomed in or out the camera should be positioned
    */
   func zoomForMap() -> Float {
@@ -85,7 +88,8 @@ final class MapModel {
   }
   
   /**
-   Figures out the correct last known coordinate for the map view so we know where to place the user in the map when they load up the `MapViewController`. Falls back to defaults which can be configured in the .plist file if the user has never tapped on the map before.
+   Figures out the correct last known coordinate for the map view so we know where to place the user in the map when they load up the `MapViewController`. Falls back to defaults which can be configured in the .plist file if the user has never tapped in the map view before.
+   
    - returns: a `CLLocationCoordinate2D` object representing where the map should be positioned
    */
   func lastKnownCoordinate() -> CLLocationCoordinate2D {
@@ -98,6 +102,7 @@ final class MapModel {
 
   /**
    Gives an understanding of whether the zoom parameter generally presented from the camera position is a viable zoom level for the application.
+   
    - parameter zoom: the current zoom value for the map view's camera.
    - returns: Bool indicating that the zoom parameter is worthwhile to save to user defaults to remember it for the next application load.
    */

@@ -51,7 +51,14 @@ final class Placemark {
   var lookAt: LookAt?
   
   /**
-   Convenience initializer. Sets all the properties for the class.
+   Convenience initializer. Sets all the properties for the `Placemark` class.
+   
+   - parameter identifier: the identifier for the `Placemark`.
+   - parameter name: the name for the `Placemark`.
+   - parameter location: the location for the `Placemark`.
+   - parameter coordinates: the coordinates associated with the `Placemark`.
+   - parameter placemarkDescription: the description for the `Placemark`.
+   - parameter lookAt: `LookAt` associated with the `Placemark`.
    */
   init(identifier: String, name: String, location: CLLocation, coordinates: [CLLocation], placemarkDescription: String, lookAt: LookAt?) {
     self.identifier = identifier
@@ -78,7 +85,12 @@ struct LookAt {
   var heading: Double = 0.0
   
   /**
-   Convenience initializer. Sets all the properties for the class.
+   Convenience initializer. Sets all the properties for the `LookAt` class.
+   
+   - parameter latitude: latitude for the `LookAt`.
+   - parameter longitude: longitude for the `LookAt`.
+   - parameter tilt: tilt for the `LookAt`.
+   - parameter heading: heading for the `LookAt`.
    */
   init(latitude: Double, longitude: Double, tilt: Double, heading: Double) {
     self.latitude = latitude
