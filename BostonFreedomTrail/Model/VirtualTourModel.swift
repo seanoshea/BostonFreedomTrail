@@ -140,8 +140,9 @@ final class VirtualTourModel {
    - returns: a `Placemark` corresponding to the next tour location
    */
   func placemarkForNextLocation() -> Placemark? {
-    guard self.placemarkDemarkations.count < self.currentTourLocation + 1 else { return nil }
-    let index = self.placemarkDemarkations[self.currentTourLocation + 1]
+    let placemarkIndex = self.currentTourLocation + 1
+    guard self.placemarkDemarkations.count < placemarkIndex + 1 else { return nil }
+    let index = self.placemarkDemarkations[placemarkIndex]
     return Trail.instance.placemarks[index!]
   }
   
