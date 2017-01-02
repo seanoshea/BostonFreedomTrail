@@ -661,8 +661,8 @@
         <LookAt>
             <longitude>-71.061833</longitude>
             <latitude>42.356623</latitude>
-            <tilt>9.974019</tilt>
-            <heading>320.124847</heading>
+            <tilt>21.224020</tilt>
+            <heading>332.65277</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
@@ -693,8 +693,8 @@
         <LookAt>
             <longitude>-71.061976</longitude>
             <latitude>42.357140</latitude>
-            <tilt>-18.375767</tilt>
-            <heading>9.274039</heading>
+            <tilt>-9.897511</tilt>
+            <heading>338.8762512</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
@@ -789,8 +789,8 @@
         <LookAt>
             <longitude>-71.058708</longitude>
             <latitude>42.357017</latitude>
-            <tilt>17.790241</tilt>
-            <heading>79.199158</heading>
+            <tilt>17.0973072</tilt>
+            <heading>117.444595</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
@@ -853,8 +853,8 @@
         <LookAt>
             <longitude>-71.056954</longitude>
             <latitude>42.358871</latitude>
-            <tilt>2.1646618843</tilt>
-            <heading>100.8098297119</heading>
+            <tilt>6.52607631</tilt>
+            <heading>66.5827941</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
@@ -885,8 +885,8 @@
         <LookAt>
             <longitude>-71.0571390</longitude>
             <latitude>42.3588581</latitude>
-            <tilt>-21.0303573608</tilt>
-            <heading>174.9428863525</heading>
+            <tilt>-23.19068336</tilt>
+            <heading>151.30526733</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
@@ -1013,8 +1013,8 @@
         <LookAt>
             <longitude>-71.056151</longitude>
             <latitude>42.366951</latitude>
-            <tilt>-5.483906</tilt>
-            <heading>46.164173</heading>
+            <tilt>-0.307276695</tilt>
+            <heading>19.028345108</heading>
         </LookAt>
 		<MultiGeometry>
 			<Point>
