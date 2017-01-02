@@ -121,6 +121,11 @@ class VirtualTourModelTest: QuickSpec {
           subject?.togglePlayPause()
           expect(subject?.currentTourState).to(equal(VirtualTourState.paused))
         }
+        
+        it("should understand when the tour has finished") {
+          subject?.currentTourLocation = (subject?.tour.count)! - 1
+          expect(subject?.isAtLastPosition()).to(beTrue())
+        }
       }
       
       context("LookAts") {

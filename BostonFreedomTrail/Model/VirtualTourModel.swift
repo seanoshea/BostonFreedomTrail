@@ -230,6 +230,14 @@ final class VirtualTourModel {
   func tourIsToggleable() -> Bool {
     return self.tourIsRunning() || self.tourIsPlayable()
   }
+
+  /**
+   Checks to see if the tour has finished or not.
+   - returns: Bool indicating that the tour has reached it's final location.
+   */
+  func isAtLastPosition() -> Bool {
+    return self.currentTourLocation == self.tour.count - 1
+  }
   
   /**
    Retrieves the next `CLLocation` in the virtual tour.

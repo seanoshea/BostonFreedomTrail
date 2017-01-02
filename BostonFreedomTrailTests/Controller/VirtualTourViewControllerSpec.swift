@@ -77,7 +77,7 @@ class VirtualTourViewControllerTest: QuickSpec {
             subject?.viewDidDisappear(true)
             
             expect(subject?.model.currentTourState).to(equal(VirtualTourState.paused))
-            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("⊳"))
+            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("▷"))
           }
         }
         
@@ -88,7 +88,7 @@ class VirtualTourViewControllerTest: QuickSpec {
             subject?.viewDidDisappear(true)
             
             expect(subject?.model.currentTourState).to(equal(VirtualTourState.finished))
-            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("?"))
+            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("↻"))
           }
         }
       }
@@ -113,7 +113,7 @@ class VirtualTourViewControllerTest: QuickSpec {
             expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("||"))
             
             subject?.pressedOnVirtualTourButton((subject?.virtualTourButton)!)
-            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("⊳"))
+            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("▷"))
           }
         }
         

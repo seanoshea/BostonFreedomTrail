@@ -51,19 +51,19 @@ class VirtualTourButtonTest: QuickSpec {
         it("should update the title for VirtualTourState.postSetup") {
           subject.updateButtonTitle(state: .postSetup)
           
-          expect(subject.title(for: .normal)).to(equal("⊳"))
+          expect(subject.title(for: .normal)).to(equal("▷"))
         }
         
         it("should update the title for VirtualTourState.paused") {
           subject.updateButtonTitle(state: .paused)
           
-          expect(subject.title(for: .normal)).to(equal("⊳"))
+          expect(subject.title(for: .normal)).to(equal("▷"))
         }
         
         it("should update the title for VirtualTourState.finished") {
           subject.updateButtonTitle(state: .finished)
           
-          expect(subject.title(for: .normal)).to(equal("?"))
+          expect(subject.title(for: .normal)).to(equal("↻"))
         }
         
         it("should update the title for VirtualTourState.inProgress") {
