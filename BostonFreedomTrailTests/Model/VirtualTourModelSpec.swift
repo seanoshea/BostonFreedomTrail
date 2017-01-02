@@ -126,6 +126,11 @@ class VirtualTourModelTest: QuickSpec {
           subject?.currentTourLocation = (subject?.tour.count)! - 1
           expect(subject?.isAtLastPosition()).to(beTrue())
         }
+        
+        it("should be able to mark the tour as finished") {
+          subject?.finishTour()
+          expect(subject?.currentTourState).to(equal(VirtualTourState.finished))
+        }
       }
       
       context("LookAts") {
@@ -169,6 +174,12 @@ class VirtualTourModelTest: QuickSpec {
       
       context("Understanding the next location to go to") {
         
+        it("should be able to retrieve a placemark for the next location") {
+          subject?.setupTour()
+          subject?.currentTourLocation = 23
+          expect(subject?.placemarkForNextLocation()).toNot(beNil())
+        }
+        
         it("should use the next location in the queue if the current location does not represent a LookAt") {
           subject?.currentTourLocation = 14
           let location:CLLocation = (subject?.nextLocation())!
@@ -182,7 +193,6 @@ class VirtualTourModelTest: QuickSpec {
           let location:CLLocation = (subject?.nextLocation())!
           let lookAtIndex = subject?.lookAts[15]!
           let lookAt = Trail.instance.placemarks[lookAtIndex!].lookAt
-          
           
           expect(location.coordinate.latitude).to(equal(lookAt?.latitude))
           expect(location.coordinate.longitude).to(equal(lookAt?.longitude))
