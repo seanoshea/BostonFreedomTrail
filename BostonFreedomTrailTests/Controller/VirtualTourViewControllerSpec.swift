@@ -100,7 +100,7 @@ class VirtualTourViewControllerTest: QuickSpec {
         }
       }
       
-      context("Play Pause Button") {
+      context("Virtual Tour Button") {
         
         beforeEach({ () -> () in
           subject?.viewDidAppear(true)
@@ -168,6 +168,20 @@ class VirtualTourViewControllerTest: QuickSpec {
             
             expect(subject?.model.currentTourLocation).to(equal(13))
           }
+        }
+      }
+      
+      context("Tour is finished") {
+        
+        it("should set the model to be finished when we reach the final location") {
+          subject?.viewDidAppear(true)
+          subject?.startTour()
+          let nextLocation = CLLocation.init()
+          subject?.model.currentTourLocation = (subject?.model.tour.count)! - 1
+          
+          subject?.repositionPanoViewForNextLocation(nextLocation)
+          
+          expect(subject?.model.currentTourState).to(equal(VirtualTourState.finished))
         }
       }
       

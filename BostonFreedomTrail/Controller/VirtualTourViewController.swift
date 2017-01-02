@@ -136,7 +136,6 @@ final class VirtualTourViewController: BaseViewController {
     if self.model.tourIsRunning() || force {
       self.repositionPanoViewForNextLocation(nextLocation)
       self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
-      // check to see if we're at the last position
     } else {
       // back up
       self.model.reverseLocation()

@@ -136,7 +136,7 @@ final class VirtualTourModel {
   }
   
   /**
-   Gets the placemark based on the next location in the c location.
+   Gets the placemark based on the next location in the tour.
    - returns: a `Placemark` corresponding to the next tour location
    */
   func placemarkForNextLocation() -> Placemark? {
