@@ -32,23 +32,29 @@ import UIKit
 
 import MaterialComponents
 
-final class VirtualTourPlayPauseButton: MDCFloatingButton {
+final class VirtualTourButton: MDCFloatingButton {
   
   override init(frame: CGRect, shape: MDCFloatingButtonShape) {
-    paused = true
     super.init(frame: frame, shape: shape)
     commonInit()
   }
   
   required init?(coder aDecoder: NSCoder) {
-    paused = true
     super.init(coder: aDecoder)
     commonInit()
   }
   
-  var paused: Bool {
-    didSet {
-      self.assignButtonBackground()
+  /// Sets the button display based on the tour state
+  func updateButtonTitle(state:VirtualTourState) {
+    switch state {
+    case .postSetup:
+      self.setTitle("▷", for: .normal)
+    case .paused:
+      self.setTitle("▷", for: .normal)
+    case .finished:
+      self.setTitle("↻", for: .normal)
+    default:
+      self.setTitle("||", for: .normal)
     }
   }
   
@@ -56,11 +62,6 @@ final class VirtualTourPlayPauseButton: MDCFloatingButton {
   func commonInit() {
     setBackgroundColor(UIColor.bftOrangeRedColor(), for: .normal)
     setTitleColor(UIColor.white, for: .normal)
+    updateButtonTitle(state: VirtualTourState.paused)
   }
-  
-  /// Sets the button display based on the tour state
-  func assignButtonBackground() {
-    self.setTitle(paused ? "⊳" : "||", for: .normal)
-  }
-  
 }

@@ -45,7 +45,8 @@
 		41D0F4EF1C53E64A00FCAB17 /* PListHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415095431C4DA11C00681F82 /* PListHelperSpec.swift */; };
 		41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41691D211C4C0034009A03B3 /* TrailParserSpec.swift */; };
 		41D527E91D25EB6C005B8D5E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D527E81D25EB6C005B8D5E /* Extensions.swift */; };
-		41D8574E1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8574D1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift */; };
+		41D8574E1CB1D4A3007EFE72 /* VirtualTourButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8574D1CB1D4A3007EFE72 /* VirtualTourButton.swift */; };
+		41DBB11A1E197CCF001EBA7F /* VirtualTourButtonSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */; };
 		41DE05E21C5515B0008AFCA5 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */; };
 		41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */; };
 		41DE05E61C553694008AFCA5 /* VirtualTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E51C553694008AFCA5 /* VirtualTourViewController.swift */; };
@@ -111,7 +112,8 @@
 		41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedStateSpec.swift; sourceTree = "<group>"; };
 		41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		41D527E81D25EB6C005B8D5E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		41D8574D1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourPlayPauseButton.swift; sourceTree = "<group>"; };
+		41D8574D1CB1D4A3007EFE72 /* VirtualTourButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourButton.swift; sourceTree = "<group>"; };
+		41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourButtonSpec.swift; sourceTree = "<group>"; };
 		41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracker.swift; sourceTree = "<group>"; };
 		41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackerSpec.swift; sourceTree = "<group>"; };
 		41DE05E51C553694008AFCA5 /* VirtualTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				41C654011D2AB5FA00C75AB4 /* SnapshotTests */,
 				41079D641C4FBB7300BF2CFF /* TestUtilities */,
 				41691D201C4C000C009A03B3 /* Utils */,
+				41DBB1181E197C91001EBA7F /* View */,
 			);
 			path = BostonFreedomTrailTests;
 			sourceTree = "<group>";
@@ -263,7 +266,7 @@
 				41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */,
 				4136F2CE1DA1E7C600F431A8 /* InfoWindow.swift */,
 				4136F2CC1DA1E7AE00F431A8 /* InfoWindow.xib */,
-				41D8574D1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift */,
+				41D8574D1CB1D4A3007EFE72 /* VirtualTourButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -311,6 +314,14 @@
 				41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */,
 			);
 			path = SnapshotTests;
+			sourceTree = "<group>";
+		};
+		41DBB1181E197C91001EBA7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C0497F188083798A2930EFE1 /* Frameworks */ = {
@@ -585,7 +596,7 @@
 				414A7AA91C6D80E000385442 /* PlacemarkModel.swift in Sources */,
 				41DE05E21C5515B0008AFCA5 /* LocationTracker.swift in Sources */,
 				41DE05E61C553694008AFCA5 /* VirtualTourViewController.swift in Sources */,
-				41D8574E1CB1D4A3007EFE72 /* VirtualTourPlayPauseButton.swift in Sources */,
+				41D8574E1CB1D4A3007EFE72 /* VirtualTourButton.swift in Sources */,
 				41E1C3711C525B670009570C /* Constants.swift in Sources */,
 				41D527E91D25EB6C005B8D5E /* Extensions.swift in Sources */,
 				417758001CB9E8C0008294C8 /* AnalyticsTracker.swift in Sources */,
@@ -618,6 +629,7 @@
 				41D0F4EC1C53E64A00FCAB17 /* MapModelSpec.swift in Sources */,
 				41DE05EA1C55B480008AFCA5 /* VirtualTourViewControllerSpec.swift in Sources */,
 				41DE95051C701D89004ACD7A /* PlacemarkModelSpec.swift in Sources */,
+				41DBB11A1E197CCF001EBA7F /* VirtualTourButtonSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

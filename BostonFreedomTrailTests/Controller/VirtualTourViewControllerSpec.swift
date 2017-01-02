@@ -71,10 +71,25 @@ class VirtualTourViewControllerTest: QuickSpec {
           expect(subject?.model.currentTourState).to(equal(VirtualTourState.postSetup))
         }
         
-        it("should automatically pause the tour when the view disappears") {
-          subject?.viewDidDisappear(true)
-          expect(subject?.model.currentTourState).to(equal(VirtualTourState.paused))
-          expect(subject?.playPauseButton?.paused).to(beTrue())
+        context("The tour is not finished") {
+          
+          it("should automatically pause the tour when the view disappears") {
+            subject?.viewDidDisappear(true)
+            
+            expect(subject?.model.currentTourState).to(equal(VirtualTourState.paused))
+            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("▷"))
+          }
+        }
+        
+        context("The tour is finished") {
+          
+          it("should not automatically pause the tour when the view disappears") {
+            subject?.model.currentTourState = VirtualTourState.finished
+            subject?.viewDidDisappear(true)
+            
+            expect(subject?.model.currentTourState).to(equal(VirtualTourState.finished))
+            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("↻"))
+          }
         }
       }
       
@@ -87,14 +102,29 @@ class VirtualTourViewControllerTest: QuickSpec {
       
       context("Play Pause Button") {
         
-        it("should toggle the tour state when the user presses on the play pause button") {
+        beforeEach({ () -> () in
           subject?.viewDidAppear(true)
+        })
+        
+        context("The tour is not finished") {
           
-          subject?.pressedOnPlayPauseButton((subject?.playPauseButton)!)
-          expect(subject?.playPauseButton?.paused).to(beFalse())
+          it("should toggle the tour state when the user presses on the virtual tour button") {
+            subject?.pressedOnVirtualTourButton((subject?.virtualTourButton)!)
+            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("||"))
+            
+            subject?.pressedOnVirtualTourButton((subject?.virtualTourButton)!)
+            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("▷"))
+          }
+        }
+        
+        context("The tour is finished") {
           
-          subject?.pressedOnPlayPauseButton((subject?.playPauseButton)!)
-          expect(subject?.playPauseButton?.paused).to(beTrue())
+          it("should restart the tour when the user presses on the virtual tour button") {
+            subject?.model.currentTourState = VirtualTourState.finished
+            
+            subject?.pressedOnVirtualTourButton((subject?.virtualTourButton)!)
+            expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("||"))
+          }
         }
       }
       
