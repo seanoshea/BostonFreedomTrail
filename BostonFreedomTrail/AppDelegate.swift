@@ -95,6 +95,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     let windowRect = tabBarController.view.frame
     MDCSnackbarManager.setBottomOffset(windowRect.size.height - SnackbarMessageViewOffsets.topOffset.rawValue)
+    MDCSnackbarMessageView.appearance().snackbarMessageViewBackgroundColor = UIColor.bftOrangeRedColor()
+    MDCSnackbarMessageView.appearance().snackbarMessageViewTextColor = UIColor.white
   }
   
   /// The app uses Google Analytics for tracking usage of the app. Only enabled for `Release` builds.
