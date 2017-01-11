@@ -8,7 +8,7 @@ target :BostonFreedomTrail do
 
   pod 'Google/Analytics'
   pod 'GoogleMaps', '2.1.1'
-  pod 'MaterialComponents', :path => '../material-components-ios'
+  pod 'MaterialComponents', :git => 'https://github.com/material-components/material-components-ios', :branch => 'develop'
 
   target :BostonFreedomTrailTests do
     pod 'Quick', '1.0.0'
