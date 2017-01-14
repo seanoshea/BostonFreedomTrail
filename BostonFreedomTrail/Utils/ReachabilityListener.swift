@@ -54,11 +54,6 @@ extension ReachabilityListener where Self : BaseViewController {
     }
   }
   
-  func reachabilityChanged(_ note: Notification) {
-    guard let reachability = note.object as? Reachability else { return }
-    self.reachabilityStatusChanged(reachability.isReachable)
-  }
-  
   func reachabilityStatusChanged(_ online: Bool) {
     if online {
       MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
