@@ -30,6 +30,7 @@
 
 import Quick
 import Nimble
+import ReachabilitySwift
 
 @testable import BostonFreedomTrail
 
@@ -125,6 +126,22 @@ class VirtualTourViewControllerTest: QuickSpec {
             subject?.pressedOnVirtualTourButton((subject?.virtualTourButton)!)
             expect(subject?.virtualTourButton?.title(for: .normal)).to(equal("||"))
           }
+        }
+      }
+      
+      context("Online and Offline") {
+        
+        it("should pause the tour if the user goes offline") {
+          subject?.reachabilityStatusChanged(false)
+          
+          expect(subject?.model.currentTourState).to(equal(VirtualTourState.paused))
+          expect(subject?.virtualTourButton?.isEnabled).to(beFalse())
+        }
+        
+        it("should allow the user to restart the tour if the user comes back online") {
+          subject?.reachabilityStatusChanged(true)
+          
+          expect(subject?.virtualTourButton?.isEnabled).to(beTrue())
         }
       }
       

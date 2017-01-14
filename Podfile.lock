@@ -187,6 +187,7 @@ PODS:
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (5.2.3)
   - Quick (1.0.0)
+  - ReachabilitySwift (3)
 
 DEPENDENCIES:
   - FBSnapshotTestCase (= 2.1.4)
@@ -196,6 +197,7 @@ DEPENDENCIES:
   - Nimble (= 5.1.1)
   - OHHTTPStubs (= 5.2.3)
   - Quick (= 1.0.0)
+  - ReachabilitySwift (= 3)
 
 EXTERNAL SOURCES:
   MaterialComponents:
@@ -222,7 +224,8 @@ SPEC CHECKSUMS:
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
 
-PODFILE CHECKSUM: 61c5d4e8c963f01f816bd40fc13d52c1312c4edb
+PODFILE CHECKSUM: 463e4941314858958a94ae2428b9718a74dad550
 
 COCOAPODS: 1.1.1

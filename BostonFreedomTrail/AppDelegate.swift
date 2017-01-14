@@ -35,6 +35,7 @@ import CoreLocation
 import Fabric
 import Crashlytics
 import MaterialComponents
+import ReachabilitySwift
 
 /// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndex: Int {
@@ -49,6 +50,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   /// Main window for the app.
   var window: UIWindow?
+  /// Allows the app understand whether the user is online of offline.
+  var reachability: Reachability?
   
   // MARK: Lifecycle
   
@@ -59,6 +62,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     self.initializeStyling()
     self.initializeAnalytics()
     self.initializeLocalization()
+    self.initializeReachability()
     return true
   }
   
@@ -133,6 +137,16 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         NSLog("Add a new index to TabBarControllerIndex for this new controller")
       }
       item.title = title
+    }
+  }
+  
+  /// Reachability is used in the app to understand whether the user is online or offline. This function is responsible for starting the notifier so that all elements in the app know when they are offline and when they are online.
+  func initializeReachability() {
+    self.reachability = Reachability.init()
+    do {
+      try self.reachability!.startNotifier()
+    } catch {
+      NSLog("Failed to start the reachability notifier")
     }
   }
 }

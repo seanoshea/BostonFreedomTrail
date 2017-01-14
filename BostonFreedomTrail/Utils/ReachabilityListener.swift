@@ -12,7 +12,7 @@
  3. All advertising materials mentioning features or use of this software
  must display the following acknowledgement:
  This product includes software developed by Upwards Northwards Software Limited.
- 4. Neither the name of Upwards Northwards Software Limited nor the
+ 4. Neither th e name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
  
@@ -29,34 +29,47 @@
  */
 
 import UIKit
+import ReachabilitySwift
 import MaterialComponents
 
-/// View controller which includes a few basic functions.
-class BaseViewController: UIViewController, AnalyticsTracker, ReachabilityListener {
+protocol ReachabilityListener:class {
+  func registerListener()
+  func reachabilityStatusChanged(_ online: Bool)
+  func isOnline() -> Bool
+}
+
+extension ReachabilityListener where Self : BaseViewController {
   
-  // MARK: Lifecycle
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    self.registerListener()
-  }
-  
-  // MARK: Snackbar Messages
-  
-  func displaySnackbarMessage(_ text:String) {
-    DispatchQueue.main.async {
-      MDCSnackbarManager.show(MDCSnackbarMessage.init(text: text))
+  func registerListener() {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+    appDelegate.reachability?.whenReachable = { reachability in
+      DispatchQueue.main.async {
+        self.reachabilityStatusChanged(true)
+      }
+    }
+    appDelegate.reachability?.whenUnreachable = { reachability in
+      DispatchQueue.main.async {
+        self.reachabilityStatusChanged(false)
+      }
     }
   }
   
-  // MARK: Analytics
+  func reachabilityChanged(_ note: Notification) {
+    guard let reachability = note.object as? Reachability else { return }
+    self.reachabilityStatusChanged(reachability.isReachable)
+  }
   
-  /**
-   Base implementation of `AnalyticsTracker`
-   
-   - returns: a String which can be passed to analytics to uniquely identify this view controller.
-   */
-  func getScreenTrackingName() -> String {
-    return ""
+  func reachabilityStatusChanged(_ online: Bool) {
+    if online {
+      MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+    } else {
+      self.displaySnackbarMessage(NSLocalizedString("Please check your network connection", comment: ""))
+    }
+  }
+  
+  func isOnline() -> Bool {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
+    guard let reachability = appDelegate.reachability else { return false }
+    return reachability.isReachable
   }
 }

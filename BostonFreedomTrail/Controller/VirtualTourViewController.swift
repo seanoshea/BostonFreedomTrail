@@ -54,7 +54,7 @@ final class VirtualTourViewController: BaseViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.model.setupTour()
-    self.virtualTourButton?.isEnabled = true
+    self.virtualTourButton?.isEnabled = self.isOnline()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -88,6 +88,17 @@ final class VirtualTourViewController: BaseViewController {
   
   override func getScreenTrackingName() -> String {
     return AnalyticsScreenNames.VirtualTourScreen.rawValue
+  }
+  
+  // MARK: Online/Offline
+  func reachabilityStatusChanged(_ online: Bool) {
+    super.reachabilityStatusChanged(online)
+    if online {
+      self.virtualTourButton?.isEnabled = true
+    } else {
+      self.virtualTourButton?.isEnabled = false
+      self.pauseTour()
+    }
   }
   
   // MARK: Private Functions
@@ -134,8 +145,12 @@ final class VirtualTourViewController: BaseViewController {
   
   func postDispatchAction(_ nextLocation: CLLocation, force: Bool) {
     if self.model.tourIsRunning() || force {
-      self.repositionPanoViewForNextLocation(nextLocation)
-      self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
+      if self.isOnline() {
+        self.repositionPanoViewForNextLocation(nextLocation)
+        self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
+      } else {
+        self.pauseTour()
+      }
     } else {
       // back up
       self.model.reverseLocation()
@@ -165,12 +180,6 @@ final class VirtualTourViewController: BaseViewController {
   
   func pauseTour() {
     self.model.pauseTour()
-  }
-  
-  func displaySnackbarMessage(_ text:String) {
-    DispatchQueue.main.async {
-      MDCSnackbarManager.show(MDCSnackbarMessage.init(text: text))
-    }
   }
 }
 
