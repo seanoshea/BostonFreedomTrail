@@ -53,7 +53,7 @@ class VirtualTourViewControllerTest: QuickSpec {
       context("Initialization of the VirtualTourViewController") {
         
         it("should start with a tour location of zero") {
-          expect(subject?.model.currentTourLocation).to(equal(0))
+          expect(subject?.model.currentTourPosition).to(equal(0))
         }
         
         it("should have a panoView set by default") {
@@ -173,7 +173,7 @@ class VirtualTourViewControllerTest: QuickSpec {
         beforeEach({ () -> () in
           subject?.viewDidAppear(true)
           subject?.startTour()
-          subject?.model.currentTourLocation = 14
+          subject?.model.currentTourPosition = 14
         })
         
         context("the user has decided to pause the tour") {
@@ -183,7 +183,7 @@ class VirtualTourViewControllerTest: QuickSpec {
             
             subject?.postDispatchAction(location)
             
-            expect(subject?.model.currentTourLocation).to(equal(13))
+            expect(subject?.model.currentTourPosition).to(equal(13))
           }
         }
       }
@@ -194,7 +194,7 @@ class VirtualTourViewControllerTest: QuickSpec {
           subject?.viewDidAppear(true)
           subject?.startTour()
           let nextLocation = CLLocation.init()
-          subject?.model.currentTourLocation = (subject?.model.tour.count)! - 1
+          subject?.model.currentTourPosition = (subject?.model.tour.count)! - 1
           
           subject?.repositionPanoViewForNextLocation(nextLocation)
           

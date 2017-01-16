@@ -78,8 +78,15 @@ final class VirtualTourModel {
   var lookAts = [Int:Int]()
   /// Collection of indexes for understanding what `Placemark` the user is navigating towards
   var placemarkDemarkations = [Int:Int]()
+  /// Where the tour is currently positioned
+  var currentTourLocation: CLLocation? {
+    get {
+      guard self.tour.count > self.currentTourPosition else { return nil }
+      return self.tour[self.currentTourPosition]
+    }
+  }
   /// Where the tour is currently located
-  var currentTourLocation: Int = 0
+  var currentTourPosition: Int = 0
   /// The state of the virtual tour
   var currentTourState: VirtualTourState = VirtualTourState.preSetup {
     didSet {
@@ -114,18 +121,18 @@ final class VirtualTourModel {
    - returns: a `CLLocation` which represents the starting point on the virtual tour
    */
   func startTour() -> CLLocation {
-    self.currentTourLocation = 0
+    self.currentTourPosition = 0
     self.currentTourState = VirtualTourState.inProgress
-    return self.tour[self.currentTourLocation]
+    return self.tour[self.currentTourPosition]
   }
   
   /**
-   Checks the `currentTourLocation` to see if the virtual tour is currently at a `LookAt` location.
+   Checks the `currentTourPosition` to see if the virtual tour is currently at a `LookAt` location.
    
    - returns: Bool indicating that the tour is currently positioned at a `LookAt`
    */
   func atLookAtLocation() -> Bool {
-    return self.currentTourLocation > 0 && self.lookAts[self.currentTourLocation] != nil
+    return self.currentTourPosition > 0 && self.lookAts[self.currentTourPosition] != nil
   }
   
   /**
@@ -134,8 +141,8 @@ final class VirtualTourModel {
    - returns: a `LookAt` corresponding to the current location of the tour
    */
   func lookAtForCurrentLocation() -> LookAt? {
-    guard self.currentTourLocation > 0 else { return nil}
-    let placemarkIndex = self.lookAts[self.currentTourLocation]
+    guard self.currentTourPosition > 0 else { return nil}
+    let placemarkIndex = self.lookAts[self.currentTourPosition]
     let placemark = Trail.instance.placemarks[placemarkIndex!]
     return placemark.lookAt
   }
@@ -146,20 +153,20 @@ final class VirtualTourModel {
    - returns: a `Placemark` corresponding to the next tour location
    */
   func placemarkForNextLocation() -> Placemark? {
-    let placemarkIndex = self.currentTourLocation + 1
+    let placemarkIndex = self.currentTourPosition + 1
     guard self.placemarkDemarkations.count < placemarkIndex + 1 else { return nil }
     let index = self.placemarkDemarkations[placemarkIndex]
     return Trail.instance.placemarks[index!]
   }
   
   /**
-   Bumps the `currentTourLocation` and returns the next placemark in the tour
+   Bumps the `currentTourPosition` and returns the next placemark in the tour
    
    - returns: a `Placemark` corresponding to the next tour location
    */
   func enqueueNextLocation() -> CLLocation {
     self.advanceLocation()
-    return self.tour[self.currentTourLocation]
+    return self.tour[self.currentTourPosition]
   }
   
   /// Toggles the virtual tour state between play and pause
@@ -195,7 +202,7 @@ final class VirtualTourModel {
    - returns: Bool indicating that the tour has advanced past the first `Placemark`
    */
   func hasAdvancedPastFirstLocation() -> Bool {
-    return self.currentTourLocation > 0
+    return self.currentTourPosition > 0
   }
   
   /**
@@ -216,14 +223,14 @@ final class VirtualTourModel {
     return Trail.instance.placemarks[0]
   }
   
-  /// Bumps the `currentTourLocation` by one.
+  /// Bumps the `currentTourPosition` by one.
   func advanceLocation() {
-    self.currentTourLocation = self.currentTourLocation + 1
+    self.currentTourPosition = self.currentTourPosition + 1
   }
   
-  /// Decrements the `currentTourLocation` by one.
+  /// Decrements the `currentTourPosition` by one.
   func reverseLocation() {
-    self.currentTourLocation = self.currentTourLocation - 1
+    self.currentTourPosition = self.currentTourPosition - 1
   }
   
   /**
@@ -250,7 +257,7 @@ final class VirtualTourModel {
    - returns: Bool indicating that the tour has reached it's final location.
    */
   func isAtLastPosition() -> Bool {
-    return self.currentTourLocation == self.tour.count - 1
+    return self.currentTourPosition == self.tour.count - 1
   }
   
   /**
@@ -287,7 +294,7 @@ final class VirtualTourModel {
     self.setupTour()
     guard let delegate = self.delegate else { return }
     guard let position = self.lookAtPositionInTourForPlacementIndex(placemarkIndex) else { return }
-    self.currentTourLocation = position
+    self.currentTourPosition = position
     self.currentTourState = VirtualTourState.paused
     delegate.navigateToCurrentPosition(self)
   }
@@ -321,7 +328,7 @@ final class VirtualTourModel {
   // MARK: Calculating Camera Directions
   
   func locationDirectionForNextLocation(_ nextLocation: CLLocation) -> CLLocationDirection {
-    let from = self.tour[self.currentTourLocation - 1]
+    let from = self.tour[self.currentTourPosition - 1]
     let to = CLLocation.init(latitude:nextLocation.coordinate.latitude, longitude:nextLocation.coordinate.longitude)
     let fromLatitude = self.degreesToRadians(from.coordinate.latitude)
     let fromLongitude = self.degreesToRadians(from.coordinate.longitude)

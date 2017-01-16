@@ -57,7 +57,7 @@ class VirtualTourModelTest: QuickSpec {
           let _ = subject?.startTour()
           
           expect(subject?.currentTourState).to(equal(VirtualTourState.inProgress))
-          expect(subject?.currentTourLocation).to(equal(0))
+          expect(subject?.currentTourPosition).to(equal(0))
         }
         
         it("should pause the tour when pauseTour is invoked") {
@@ -76,12 +76,12 @@ class VirtualTourModelTest: QuickSpec {
         }
         
         it("should advance the tour when enqueueNextLocation is invoked") {
-          subject?.currentTourLocation = 1
+          subject?.currentTourPosition = 1
           
           let location:CLLocation = (subject?.enqueueNextLocation())!
           
           expect(location).toNot(beNil())
-          expect(subject?.currentTourLocation).to(equal(2))
+          expect(subject?.currentTourPosition).to(equal(2))
         }
         
         it("should mark the tour as in progress when the model is asked to resume the tour") {
@@ -90,18 +90,18 @@ class VirtualTourModelTest: QuickSpec {
           expect(subject?.currentTourState).to(equal(VirtualTourState.inProgress))
         }
         
-        it("should bump the currentTourLocation when advance is invoked") {
-          let before = subject?.currentTourLocation
+        it("should bump the currentTourPosition when advance is invoked") {
+          let before = subject?.currentTourPosition
           subject?.advanceLocation()
-          expect(subject?.currentTourLocation).to(equal(before! + 1))
+          expect(subject?.currentTourPosition).to(equal(before! + 1))
         }
         
-        it("should decrement the currentTourLocation when reverseLocation is invoked") {
+        it("should decrement the currentTourPosition when reverseLocation is invoked") {
           subject?.advanceLocation()
           subject?.advanceLocation()
-          let before = subject?.currentTourLocation
+          let before = subject?.currentTourPosition
           subject?.reverseLocation()
-          expect(subject?.currentTourLocation).to(equal(before! - 1))
+          expect(subject?.currentTourPosition).to(equal(before! - 1))
         }
         
         it("should understand when the tour has already been initialized") {
@@ -123,7 +123,7 @@ class VirtualTourModelTest: QuickSpec {
         }
         
         it("should understand when the tour has finished") {
-          subject?.currentTourLocation = (subject?.tour.count)! - 1
+          subject?.currentTourPosition = (subject?.tour.count)! - 1
           expect(subject?.isAtLastPosition()).to(beTrue())
         }
         
@@ -143,12 +143,12 @@ class VirtualTourModelTest: QuickSpec {
         })
         
         it("should not return a look at for an invalid tour location") {
-          subject?.currentTourLocation = 0
+          subject?.currentTourPosition = 0
           expect(subject?.lookAtForCurrentLocation()).to(beNil())
         }
         
         it("should return a LookAt for a valid tour location") {
-          subject?.currentTourLocation = 15
+          subject?.currentTourPosition = 15
           expect(subject?.lookAtForCurrentLocation()).toNot(beNil())
         }
         
@@ -176,12 +176,12 @@ class VirtualTourModelTest: QuickSpec {
         
         it("should be able to retrieve a placemark for the next location") {
           subject?.setupTour()
-          subject?.currentTourLocation = 23
+          subject?.currentTourPosition = 23
           expect(subject?.placemarkForNextLocation()).toNot(beNil())
         }
         
         it("should use the next location in the queue if the current location does not represent a LookAt") {
-          subject?.currentTourLocation = 14
+          subject?.currentTourPosition = 14
           let location:CLLocation = (subject?.nextLocation())!
           
           expect(location.coordinate.latitude).to(equal(42.357560999999997))
@@ -189,7 +189,7 @@ class VirtualTourModelTest: QuickSpec {
         }
         
         it("should use the LookAt location if the current location represents a LookAt") {
-          subject?.currentTourLocation = 15
+          subject?.currentTourPosition = 15
           let location:CLLocation = (subject?.nextLocation())!
           let lookAtIndex = subject?.lookAts[15]!
           let lookAt = Trail.instance.placemarks[lookAtIndex!].lookAt
@@ -202,9 +202,9 @@ class VirtualTourModelTest: QuickSpec {
       context("Calculating the delayTime for a location") {
         
         it("should wait longer at a LookAt location than it does at a regular location") {
-          subject?.currentTourLocation = 15
+          subject?.currentTourPosition = 15
           let firstDelay = (subject?.delayTime())!
-          subject?.currentTourLocation = 16
+          subject?.currentTourPosition = 16
           let secondDelay = (subject?.delayTime())!
           expect(firstDelay) > secondDelay
         }

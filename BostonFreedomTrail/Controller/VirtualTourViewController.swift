@@ -91,10 +91,12 @@ final class VirtualTourViewController: BaseViewController {
   }
   
   // MARK: Online/Offline
+  
   func reachabilityStatusChanged(_ online: Bool) {
     super.reachabilityStatusChanged(online)
     if online {
       self.virtualTourButton?.isEnabled = true
+      self.reloadCurrentLocation()
     } else {
       self.virtualTourButton?.isEnabled = false
       self.model.pauseTour()
@@ -175,6 +177,15 @@ final class VirtualTourViewController: BaseViewController {
     unowned let unownedSelf: VirtualTourViewController = self
     DispatchQueue.main.asyncAfter(deadline: self.model.delayTime()) {
       unownedSelf.postDispatchAction(unownedSelf.model.nextLocation())
+    }
+  }
+  
+  func reloadCurrentLocation() {
+    guard let currentLocation = self.model.currentTourLocation else { return }
+    if self.model.currentTourState == .paused {
+      DispatchQueue.main.asyncAfter(deadline: self.model.delayTime()) {
+        self.postDispatchAction(currentLocation)
+      }
     }
   }
 }
