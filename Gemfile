@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'fastlane', '2.14.2'
+gem 'fastlane', '2.3.1'
 gem 'cocoapods', '1.2.0'
 group :docs do
   gem 'rake', '12.0.0'
