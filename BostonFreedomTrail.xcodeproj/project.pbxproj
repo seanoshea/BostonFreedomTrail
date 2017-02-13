@@ -46,6 +46,7 @@
 		41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41691D211C4C0034009A03B3 /* TrailParserSpec.swift */; };
 		41D527E91D25EB6C005B8D5E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D527E81D25EB6C005B8D5E /* Extensions.swift */; };
 		41D8574E1CB1D4A3007EFE72 /* VirtualTourButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8574D1CB1D4A3007EFE72 /* VirtualTourButton.swift */; };
+		41DBA0781E51497E003B1316 /* FreedomTrailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DBA0771E51497E003B1316 /* FreedomTrailUITests.swift */; };
 		41DBB11A1E197CCF001EBA7F /* VirtualTourButtonSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */; };
 		41DE05E21C5515B0008AFCA5 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */; };
 		41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */; };
@@ -60,6 +61,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		41237BFB1C486CDF0007F76B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41237BDC1C486CDF0007F76B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41237BE31C486CDF0007F76B;
+			remoteInfo = BostonFreedomTrail;
+		};
+		41DBA07A1E51497E003B1316 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 41237BDC1C486CDF0007F76B /* Project object */;
 			proxyType = 1;
@@ -113,6 +121,9 @@
 		41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		41D527E81D25EB6C005B8D5E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		41D8574D1CB1D4A3007EFE72 /* VirtualTourButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourButton.swift; sourceTree = "<group>"; };
+		41DBA0751E51497E003B1316 /* BostonFreedomTrailUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BostonFreedomTrailUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41DBA0771E51497E003B1316 /* FreedomTrailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomTrailUITests.swift; sourceTree = "<group>"; };
+		41DBA0791E51497E003B1316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourButtonSpec.swift; sourceTree = "<group>"; };
 		41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracker.swift; sourceTree = "<group>"; };
 		41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackerSpec.swift; sourceTree = "<group>"; };
@@ -148,6 +159,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				219DB1ED2143D6C764169F59 /* Pods_BostonFreedomTrail_BostonFreedomTrailTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41DBA0721E51497E003B1316 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +208,7 @@
 			children = (
 				41237BE61C486CDF0007F76B /* BostonFreedomTrail */,
 				41237BFD1C486CDF0007F76B /* BostonFreedomTrailTests */,
+				41DBA0761E51497E003B1316 /* BostonFreedomTrailUITests */,
 				41237BE51C486CDF0007F76B /* Products */,
 				CFD8331D401330980D2B232D /* Pods */,
 				C0497F188083798A2930EFE1 /* Frameworks */,
@@ -201,6 +220,7 @@
 			children = (
 				41237BE41C486CDF0007F76B /* BostonFreedomTrail.app */,
 				41237BFA1C486CDF0007F76B /* BostonFreedomTrail.xctest */,
+				41DBA0751E51497E003B1316 /* BostonFreedomTrailUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -316,6 +336,16 @@
 			path = SnapshotTests;
 			sourceTree = "<group>";
 		};
+		41DBA0761E51497E003B1316 /* BostonFreedomTrailUITests */ = {
+			isa = PBXGroup;
+			children = (
+				41DBA0771E51497E003B1316 /* FreedomTrailUITests.swift */,
+				41DBA0791E51497E003B1316 /* Info.plist */,
+			);
+			name = BostonFreedomTrailUITests;
+			path = FreedomTrailUITests;
+			sourceTree = "<group>";
+		};
 		41DBB1181E197C91001EBA7F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,13 +425,31 @@
 			productReference = 41237BFA1C486CDF0007F76B /* BostonFreedomTrail.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		41DBA0741E51497E003B1316 /* BostonFreedomTrailUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41DBA07E1E51497E003B1316 /* Build configuration list for PBXNativeTarget "BostonFreedomTrailUITests" */;
+			buildPhases = (
+				41DBA0711E51497E003B1316 /* Sources */,
+				41DBA0721E51497E003B1316 /* Frameworks */,
+				41DBA0731E51497E003B1316 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41DBA07B1E51497E003B1316 /* PBXTargetDependency */,
+			);
+			name = BostonFreedomTrailUITests;
+			productName = FreedomTrailUITests;
+			productReference = 41DBA0751E51497E003B1316 /* BostonFreedomTrailUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		41237BDC1C486CDF0007F76B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = UpwardsNorthwards;
 				TargetAttributes = {
@@ -414,6 +462,11 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 3TQU8WFYZ9;
 						LastSwiftMigration = 0800;
+						TestTargetID = 41237BE31C486CDF0007F76B;
+					};
+					41DBA0741E51497E003B1316 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 41237BE31C486CDF0007F76B;
 					};
 				};
@@ -433,6 +486,7 @@
 			targets = (
 				41237BE31C486CDF0007F76B /* BostonFreedomTrail */,
 				41237BF91C486CDF0007F76B /* BostonFreedomTrailTests */,
+				41DBA0741E51497E003B1316 /* BostonFreedomTrailUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -453,6 +507,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		41237BF81C486CDF0007F76B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41DBA0731E51497E003B1316 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -633,6 +694,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		41DBA0711E51497E003B1316 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41DBA0781E51497E003B1316 /* FreedomTrailUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -640,6 +709,11 @@
 			isa = PBXTargetDependency;
 			target = 41237BE31C486CDF0007F76B /* BostonFreedomTrail */;
 			targetProxy = 41237BFB1C486CDF0007F76B /* PBXContainerItemProxy */;
+		};
+		41DBA07B1E51497E003B1316 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41237BE31C486CDF0007F76B /* BostonFreedomTrail */;
+			targetProxy = 41DBA07A1E51497E003B1316 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -840,6 +914,37 @@
 			};
 			name = Release;
 		};
+		41DBA07C1E51497E003B1316 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = FreedomTrailUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.FreedomTrailUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = BostonFreedomTrail;
+			};
+			name = Debug;
+		};
+		41DBA07D1E51497E003B1316 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = FreedomTrailUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.FreedomTrailUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = BostonFreedomTrail;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -869,6 +974,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		41DBA07E1E51497E003B1316 /* Build configuration list for PBXNativeTarget "BostonFreedomTrailUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41DBA07C1E51497E003B1316 /* Debug */,
+				41DBA07D1E51497E003B1316 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

@@ -39,6 +39,16 @@
                ReferencedContainer = "container:BostonFreedomTrail.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "41DBA0741E51497E003B1316"
+               BuildableName = "BostonFreedomTrailUITests.xctest"
+               BlueprintName = "BostonFreedomTrailUITests"
+               ReferencedContainer = "container:BostonFreedomTrail.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
