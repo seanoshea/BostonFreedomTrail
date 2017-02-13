@@ -8,5 +8,5 @@ devices([
 languages([
   "en-US",
 ])
-scheme "BostonFreedomTrailUITests"
+scheme "BostonFreedomTrail"
 workspace "./BostonFreedomTrail.xcworkspace"
