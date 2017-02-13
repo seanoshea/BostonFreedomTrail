@@ -33,13 +33,13 @@ import Foundation
 import GoogleMaps
 
 enum DefaultsKeys: String {
-  case ApplicationSharedStateCameraZoom = "ApplicationSharedStateCameraZoom"
-  case ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude"
-  case ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude = "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude"
-  case ApplicationSharedStateLastKnownLocationLatitude = "ApplicationSharedStateLastKnownLocationLatitude"
-  case ApplicationSharedStateLastKnownLocationLongitude = "ApplicationSharedStateLastKnownLocationLongitude"
-  case ApplicationSharedStateLastKnownCoordinateLatitude = "ApplicationSharedStateLastKnownCoordinateLatitude"
-  case ApplicationSharedStateLastKnownCoordinateLongitude = "ApplicationSharedStateLastKnownCoordinateLongitude"
+  case ApplicationSharedStateCameraZoom
+  case ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude
+  case ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude
+  case ApplicationSharedStateLastKnownLocationLatitude
+  case ApplicationSharedStateLastKnownLocationLongitude
+  case ApplicationSharedStateLastKnownCoordinateLatitude
+  case ApplicationSharedStateLastKnownCoordinateLongitude
 }
 
 /// Simple accessors for user defaults used throughout the app.

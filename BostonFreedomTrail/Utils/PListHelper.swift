@@ -31,10 +31,10 @@
 import Foundation
 
 enum PListHelperConstants: String {
-  case BostonFreedomTrailGoogleMapAPIKey = "BostonFreedomTrailGoogleMapAPIKey"
-  case BostonFreedomTrailDefaultLatitude = "BostonFreedomTrailDefaultLatitude"
-  case BostonFreedomTrailDefaultLongitude = "BostonFreedomTrailDefaultLongitude"
-  case BostonFreedomTrailDefaultCameraZoom = "BostonFreedomTrailDefaultCameraZoom"
+  case BostonFreedomTrailGoogleMapAPIKey
+  case BostonFreedomTrailDefaultLatitude
+  case BostonFreedomTrailDefaultLongitude
+  case BostonFreedomTrailDefaultCameraZoom
 }
 
 struct PListHelper {
