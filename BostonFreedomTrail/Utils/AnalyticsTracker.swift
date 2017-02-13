@@ -32,10 +32,10 @@ import Foundation
 
 // Screen name constants for analytics
 enum AnalyticsScreenNames: String {
-  case AboutScreen = "AboutScreen"
-  case MapScreen = "MapScreen"
-  case PlacemarkScreen = "PlacemarkScreen"
-  case VirtualTourScreen = "VirtualTourScreen"
+  case AboutScreen
+  case MapScreen
+  case PlacemarkScreen
+  case VirtualTourScreen
 }
 
 // Category constants for analytics

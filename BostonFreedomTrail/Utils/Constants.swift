@@ -31,7 +31,7 @@
 import Foundation
 
 enum SegueConstants: String {
-  case MapToPlacemarkSegueIdentifier = "MapToPlacemarkSegueIdentifier"
+  case MapToPlacemarkSegueIdentifier
 }
 
 enum ResourceConstants: String {
