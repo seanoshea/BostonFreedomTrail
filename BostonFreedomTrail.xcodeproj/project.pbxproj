@@ -46,7 +46,7 @@
 		41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41691D211C4C0034009A03B3 /* TrailParserSpec.swift */; };
 		41D527E91D25EB6C005B8D5E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D527E81D25EB6C005B8D5E /* Extensions.swift */; };
 		41D8574E1CB1D4A3007EFE72 /* VirtualTourButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8574D1CB1D4A3007EFE72 /* VirtualTourButton.swift */; };
-		41DBA0781E51497E003B1316 /* FreedomTrailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DBA0771E51497E003B1316 /* FreedomTrailUITests.swift */; };
+		41DBA0781E51497E003B1316 /* BostonFreedomTrailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DBA0771E51497E003B1316 /* BostonFreedomTrailUITests.swift */; };
 		41DBB11A1E197CCF001EBA7F /* VirtualTourButtonSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */; };
 		41DE05E21C5515B0008AFCA5 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */; };
 		41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */; };
@@ -56,6 +56,7 @@
 		41DE05EC1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05EB1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift */; };
 		41DE95051C701D89004ACD7A /* PlacemarkModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE95041C701D89004ACD7A /* PlacemarkModelSpec.swift */; };
 		41E1C3711C525B670009570C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E1C3701C525B670009570C /* Constants.swift */; };
+		41F53A9A1E5BBC3800108FE3 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F53A981E5BBC3500108FE3 /* SnapshotHelper.swift */; };
 		AF025F457E34613F159E86BF /* Pods_BostonFreedomTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9776FBAD1FA52D4988E3D221 /* Pods_BostonFreedomTrail.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,7 +123,7 @@
 		41D527E81D25EB6C005B8D5E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		41D8574D1CB1D4A3007EFE72 /* VirtualTourButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourButton.swift; sourceTree = "<group>"; };
 		41DBA0751E51497E003B1316 /* BostonFreedomTrailUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BostonFreedomTrailUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		41DBA0771E51497E003B1316 /* FreedomTrailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomTrailUITests.swift; sourceTree = "<group>"; };
+		41DBA0771E51497E003B1316 /* BostonFreedomTrailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BostonFreedomTrailUITests.swift; sourceTree = "<group>"; };
 		41DBA0791E51497E003B1316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourButtonSpec.swift; sourceTree = "<group>"; };
 		41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracker.swift; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		41DE05EB1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourModelSpec.swift; sourceTree = "<group>"; };
 		41DE95041C701D89004ACD7A /* PlacemarkModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkModelSpec.swift; sourceTree = "<group>"; };
 		41E1C3701C525B670009570C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		41F53A981E5BBC3500108FE3 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		5737435D621BC5FC4BCB0FAE /* Pods-BostonFreedomTrail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrail.release.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrail/Pods-BostonFreedomTrail.release.xcconfig"; sourceTree = "<group>"; };
 		663F58F447E9B9FC83DDF3D0 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrail-BostonFreedomTrailTests/Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig"; sourceTree = "<group>"; };
 		73019A86399D78A0DDA5E021 /* Pods_BostonFreedomTrail_BostonFreedomTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BostonFreedomTrail_BostonFreedomTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,7 +341,8 @@
 		41DBA0761E51497E003B1316 /* BostonFreedomTrailUITests */ = {
 			isa = PBXGroup;
 			children = (
-				41DBA0771E51497E003B1316 /* FreedomTrailUITests.swift */,
+				41F53A971E5BBC1400108FE3 /* FastlaneImports */,
+				41DBA0771E51497E003B1316 /* BostonFreedomTrailUITests.swift */,
 				41DBA0791E51497E003B1316 /* Info.plist */,
 			);
 			name = BostonFreedomTrailUITests;
@@ -352,6 +355,14 @@
 				41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		41F53A971E5BBC1400108FE3 /* FastlaneImports */ = {
+			isa = PBXGroup;
+			children = (
+				41F53A981E5BBC3500108FE3 /* SnapshotHelper.swift */,
+			);
+			name = FastlaneImports;
 			sourceTree = "<group>";
 		};
 		C0497F188083798A2930EFE1 /* Frameworks */ = {
@@ -698,7 +709,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41DBA0781E51497E003B1316 /* FreedomTrailUITests.swift in Sources */,
+				41DBA0781E51497E003B1316 /* BostonFreedomTrailUITests.swift in Sources */,
+				41F53A9A1E5BBC3800108FE3 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +994,7 @@
 				41DBA07D1E51497E003B1316 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
