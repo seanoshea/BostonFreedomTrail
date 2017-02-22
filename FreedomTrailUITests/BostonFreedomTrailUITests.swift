@@ -9,20 +9,28 @@
 import XCTest
 
 class BostonFreedomTrailUITests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        let app = XCUIApplication()
-        setupSnapshot(app)
-        app.launch()
-        addUIInterruptionMonitor(withDescription: "Alert Dialog") { (alert) -> Bool in
-            alert.buttons["Allow"].tap()
-            return true
-        }
-        app.tap()
+  
+  var app:XCUIApplication!
+  
+  override func setUp() {
+    super.setUp()
+    app = XCUIApplication()
+    setupSnapshot(app)
+    app.launchArguments.append("SnapshotIdentifier")
+    app.launch()
+    addUIInterruptionMonitor(withDescription: "Alert Dialog") { (alert) -> Bool in
+      alert.buttons["Allow"].tap()
+      return true
     }
-    
-    func testOne() {
-        snapshot("one")
-    }
+    app.tap()
+  }
+  
+  func testOne() {
+    snapshot("one")
+  }
+  
+  func testTwo() {
+    app.tabBars.buttons["Map"].tap()
+    snapshot("two")
+  }
 }
