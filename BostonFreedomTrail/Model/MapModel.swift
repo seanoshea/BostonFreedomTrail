@@ -85,7 +85,7 @@ final class MapModel {
       zoom = PListHelper.defaultCameraZoom()
     }
     if ProcessInfo.processInfo.arguments.contains("SnapshotIdentifier") {
-      zoom = 16.0
+      zoom = SnapshotConstants.cameraZoom.rawValue
     }
     return zoom
   }
@@ -101,7 +101,7 @@ final class MapModel {
       lastKnownCoordinate = CLLocationCoordinate2D.init(latitude:PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude())
     }
     if ProcessInfo.processInfo.arguments.contains("SnapshotIdentifier") {
-      lastKnownCoordinate = CLLocationCoordinate2D.init(latitude:42.358969550484964, longitude:-71.06010876595974)
+      lastKnownCoordinate = CLLocationCoordinate2D.init(latitude:CLLocationDegrees(SnapshotConstants.defaultLatitude.rawValue), longitude:CLLocationDegrees(SnapshotConstants.defaultLongitude.rawValue))
     }
     return lastKnownCoordinate
   }
