@@ -84,6 +84,9 @@ final class MapModel {
     if zoom <= 0 {
       zoom = PListHelper.defaultCameraZoom()
     }
+    if ProcessInfo.processInfo.arguments.contains("SnapshotIdentifier") {
+      zoom = SnapshotConstants.cameraZoom.rawValue
+    }
     return zoom
   }
   
@@ -96,6 +99,9 @@ final class MapModel {
     var lastKnownCoordinate = ApplicationSharedState.sharedInstance.lastKnownCoordinate
     if lastKnownCoordinate.latitude == 0.0 && lastKnownCoordinate.longitude == 0.0 {
       lastKnownCoordinate = CLLocationCoordinate2D.init(latitude:PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude())
+    }
+    if ProcessInfo.processInfo.arguments.contains("SnapshotIdentifier") {
+      lastKnownCoordinate = CLLocationCoordinate2D.init(latitude:CLLocationDegrees(SnapshotConstants.defaultLatitude.rawValue), longitude:CLLocationDegrees(SnapshotConstants.defaultLongitude.rawValue))
     }
     return lastKnownCoordinate
   }

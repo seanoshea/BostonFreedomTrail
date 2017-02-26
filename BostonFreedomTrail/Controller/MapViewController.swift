@@ -99,8 +99,10 @@ final class MapViewController: BaseViewController {
   
   /// Adds all the placemarks to the `mapView`. Also responsible for mapping out the path between the placemarks.
   func setupPlacemarks() {
-    let _ = self.model.addPlacemarksToMap(self.mapView!)
+    let markers = self.model.addPlacemarksToMap(self.mapView!)
     self.model.addPathToMap(self.mapView!)
+    // do some checking for fastlane
+    self.snaplaneCallbacks(markers:markers)
   }
   
   /// Ensures that the `delegate` property is set to the `AppDelegate`.
@@ -126,6 +128,7 @@ extension MapViewController : GMSMapViewDelegate {
       ApplicationSharedState.sharedInstance.cameraZoom = position.zoom
     }
     ApplicationSharedState.sharedInstance.lastKnownCoordinate = position.target
+    debugPrint(position.target)
   }
   
   /**
@@ -154,7 +157,7 @@ extension MapViewController : GMSMapViewDelegate {
     self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.InfoWindowPress.rawValue)
     self.streetViewButtonPressedForPlacemark(userData)
     // previous implementation.
-    //    self.performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
+    // self.performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
   }
   
   /**
@@ -221,5 +224,37 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
   /// Simply dismisses the current view controller.
   func dismiss() {
     self.dismiss(animated: true, completion: nil)
+  }
+}
+
+extension MapViewController {
+  
+  func snaplaneCallbacks(markers:[GMSMarker]) {
+    if ProcessInfo.processInfo.arguments.contains("SnapshotIdentifier") {
+      if let lastArgument = ProcessInfo.processInfo.arguments.last {
+        var markerName = ""
+        switch lastArgument {
+          case "TapOnStateHouse":
+            markerName = "State House"
+          break
+          case "TapOnPaulRevereHouse":
+            markerName = "Paul Revere House"
+          break
+          case "TapOnFaneuilHallMarketplace":
+            markerName = "Faneuil Hall Marketplace"
+          break
+        default:
+          break
+        }
+        for marker:GMSMarker in markers {
+          if marker.title?.caseInsensitiveCompare(markerName) == .orderedSame {
+            self.mapView?.selectedMarker = marker
+            let camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude:marker.position.longitude, zoom:self.model.zoomForMap())
+            self.mapView?.camera = camera
+            break
+          }
+        }
+      }
+    }
   }
 }

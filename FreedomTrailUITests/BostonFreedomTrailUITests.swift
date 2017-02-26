@@ -28,46 +28,52 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Foundation
+import XCTest
 
-enum SegueConstants: String {
-  case MapToPlacemarkSegueIdentifier
-}
-
-enum ResourceConstants: String {
-  case PlacemarkIdentifier = "placemark"
-  case PlacemarkResourceImage = "orange_red"
-  case InfoWindowXibName = "InfoWindow"
-}
-
-enum TabBarControllerTags: Int {
-  case mapViewTag = 0
-  case virtualTourViewTag = 1
-  case aboutViewTag = 2
-}
-
-enum CameraZoomConstraints: Float {
-  case minimum = 12.0
-  case maximum = 20.0
-}
-
-enum SnackbarMessageViewOffsets: CGFloat {
-  case topOffset = 52.0
-}
-
-enum SnapshotConstants: Float {
-  case cameraZoom = 16.0
-  case defaultLatitude = 42.358969550484964
-  case defaultLongitude = -71.06010876595974
-}
-
-extension UIColor {
+class BostonFreedomTrailUITests: XCTestCase {
   
-  static func bftDarkTextColor() -> UIColor {
-    return UIColor.init(red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
+  var app:XCUIApplication!
+  
+  override func setUp() {
+    super.setUp()
+    app = XCUIApplication()
+    setupSnapshot(app)
   }
   
-  static func bftOrangeRedColor() -> UIColor {
-    return UIColor.init(red: 216/255, green: 67/255, blue: 21/255, alpha: 1.0)
+  func testOne() {
+    launchAppWithArguments(arguments: [])
+    snapshot("one")
+  }
+  
+  func testTwo() {
+    launchAppWithArguments(arguments: ["TapOnStateHouse"])
+    snapshot("two")
+  }
+  
+  func testThree() {
+    launchAppWithArguments(arguments: ["TapOnPaulRevereHouse"])
+    snapshot("three")
+  }
+  
+  func testFour() {
+    launchAppWithArguments(arguments: ["TapOnFaneuilHallMarketplace"])
+    snapshot("four")
+  }
+  
+  func testFive() {
+    launchAppWithArguments(arguments: [])
+    app.tabBars.buttons["Virtual Tour"].tap()
+    snapshot("five")
+  }
+  
+  func launchAppWithArguments(arguments:[String]) {
+    app.launchArguments.append("SnapshotIdentifier")
+    app.launchArguments.append(contentsOf:arguments)
+    app.launch()
+    addUIInterruptionMonitor(withDescription: "Alert Dialog") { (alert) -> Bool in
+      alert.buttons["Allow"].tap()
+      return true
+    }
+    app.tap()
   }
 }
