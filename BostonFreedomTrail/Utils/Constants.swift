@@ -31,7 +31,7 @@
 import Foundation
 
 enum SegueConstants: String {
-  case MapToPlacemarkSegueIdentifier = "MapToPlacemarkSegueIdentifier"
+  case MapToPlacemarkSegueIdentifier
 }
 
 enum ResourceConstants: String {
@@ -53,6 +53,12 @@ enum CameraZoomConstraints: Float {
 
 enum SnackbarMessageViewOffsets: CGFloat {
   case topOffset = 52.0
+}
+
+enum SnapshotConstants: Float {
+  case cameraZoom = 16.0
+  case defaultLatitude = 42.358969550484964
+  case defaultLongitude = -71.06010876595974
 }
 
 extension UIColor {

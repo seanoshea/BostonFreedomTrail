@@ -28,7 +28,6 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
 import Foundation
 
 /// Custom information window which is presented to the user when they press on pins in the map view.

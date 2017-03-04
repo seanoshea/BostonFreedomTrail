@@ -28,36 +28,52 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Foundation
+import XCTest
 
-enum PListHelperConstants: String {
-  case BostonFreedomTrailGoogleMapAPIKey
-  case BostonFreedomTrailDefaultLatitude
-  case BostonFreedomTrailDefaultLongitude
-  case BostonFreedomTrailDefaultCameraZoom
-}
-
-struct PListHelper {
+class BostonFreedomTrailUITests: XCTestCase {
   
-  static func googleMapsApiKey() -> String {
-    return (self.plistDictionary()[PListHelperConstants.BostonFreedomTrailGoogleMapAPIKey.rawValue] as? String)!
+  var app:XCUIApplication!
+  
+  override func setUp() {
+    super.setUp()
+    app = XCUIApplication()
+    setupSnapshot(app)
   }
   
-  static func defaultLatitude() -> Double {
-    return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLatitude.rawValue]!.doubleValue
+  func testOne() {
+    launchAppWithArguments(arguments: [])
+    snapshot("one")
   }
   
-  static func defaultLongitude() -> Double {
-    return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLongitude.rawValue]!.doubleValue
+  func testTwo() {
+    launchAppWithArguments(arguments: ["TapOnStateHouse"])
+    snapshot("two")
   }
   
-  static func defaultCameraZoom() -> Float {
-    return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultCameraZoom.rawValue]!.floatValue
+  func testThree() {
+    launchAppWithArguments(arguments: ["TapOnPaulRevereHouse"])
+    snapshot("three")
   }
   
-  static func plistDictionary() -> [String: AnyObject] {
-    let path = Bundle.main.path(forResource: "Info", ofType: "plist")
-    let pListContents = NSDictionary(contentsOfFile: path!) as? [String: AnyObject]
-    return pListContents!
+  func testFour() {
+    launchAppWithArguments(arguments: ["TapOnFaneuilHallMarketplace"])
+    snapshot("four")
+  }
+  
+  func testFive() {
+    launchAppWithArguments(arguments: [])
+    app.tabBars.buttons["Virtual Tour"].tap()
+    snapshot("five")
+  }
+  
+  func launchAppWithArguments(arguments:[String]) {
+    app.launchArguments.append("SnapshotIdentifier")
+    app.launchArguments.append(contentsOf:arguments)
+    app.launch()
+    addUIInterruptionMonitor(withDescription: "Alert Dialog") { (alert) -> Bool in
+      alert.buttons["Allow"].tap()
+      return true
+    }
+    app.tap()
   }
 }
