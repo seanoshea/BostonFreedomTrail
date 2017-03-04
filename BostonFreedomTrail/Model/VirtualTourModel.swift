@@ -64,7 +64,7 @@ protocol VirtualTourModelDelegate:class {
    - parameter fromState: the previous tour state
    - parameter toState: the new tour state
    */
-  func didChangeTourState(fromState:VirtualTourState, toState:VirtualTourState)
+  func didChangeTourState(_ fromState:VirtualTourState, toState:VirtualTourState)
 }
 
 /// Backling business logic class for the `VirtualTourController`
@@ -83,7 +83,7 @@ final class VirtualTourModel {
   /// The state of the virtual tour
   var currentTourState: VirtualTourState = VirtualTourState.preSetup {
     didSet {
-      self.delegate?.didChangeTourState(fromState:oldValue, toState:currentTourState)
+      self.delegate?.didChangeTourState(oldValue, toState:currentTourState)
     }
   }
   /// Simple delegate to allow the model navigate to the current position in the tour

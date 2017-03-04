@@ -102,7 +102,7 @@ final class MapViewController: BaseViewController {
     let markers = self.model.addPlacemarksToMap(self.mapView!)
     self.model.addPathToMap(self.mapView!)
     // do some checking for fastlane
-    self.snaplaneCallbacks(markers:markers)
+    self.snaplaneCallbacks(markers)
   }
   
   /// Ensures that the `delegate` property is set to the `AppDelegate`.
@@ -124,7 +124,7 @@ extension MapViewController : GMSMapViewDelegate {
    - parameter position: defines where the `mapView` is positioned.
    */
   func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-    if self.model.isViableZoom(zoom: position.zoom) {
+    if self.model.isViableZoom(position.zoom) {
       ApplicationSharedState.sharedInstance.cameraZoom = position.zoom
     }
     ApplicationSharedState.sharedInstance.lastKnownCoordinate = position.target
@@ -229,7 +229,7 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
 
 extension MapViewController {
   
-  func snaplaneCallbacks(markers:[GMSMarker]) {
+  func snaplaneCallbacks(_ markers:[GMSMarker]) {
     if ProcessInfo.processInfo.arguments.contains("SnapshotIdentifier") {
       if let lastArgument = ProcessInfo.processInfo.arguments.last {
         var markerName = ""

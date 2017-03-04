@@ -234,7 +234,7 @@ class DummyVirtualTourModelDelegate : VirtualTourModelDelegate {
     self.navigationInitiated = true
   }
   
-  func didChangeTourState(fromState:VirtualTourState, toState:VirtualTourState) {
+  func didChangeTourState(_ fromState:VirtualTourState, toState:VirtualTourState) {
     
   }
 }

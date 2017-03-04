@@ -112,7 +112,7 @@ final class MapModel {
    - parameter zoom: the current zoom value for the map view's camera.
    - returns: Bool indicating that the zoom parameter is worthwhile to save to user defaults to remember it for the next application load.
    */
-  func isViableZoom(zoom:Float) -> Bool {
+  func isViableZoom(_ zoom:Float) -> Bool {
     return zoom >= CameraZoomConstraints.minimum.rawValue && zoom <= CameraZoomConstraints.maximum.rawValue
   }
 }
