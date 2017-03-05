@@ -64,12 +64,12 @@ class MapModelTest: QuickSpec {
       context("Validating the users current camera zoom level") {
         
         it("should allow a reasonable zoom value") {
-          expect(subject!.isViableZoom(zoom: 14)).to(beTrue())
+          expect(subject!.isViableZoom(14)).to(beTrue())
         }
         
         it("should not allow an unreasonable zoom value") {
-          expect(subject!.isViableZoom(zoom: -1)).to(beFalse())
-          expect(subject!.isViableZoom(zoom: 400)).to(beFalse())
+          expect(subject!.isViableZoom(-1)).to(beFalse())
+          expect(subject!.isViableZoom(400)).to(beFalse())
         }
       }
     }

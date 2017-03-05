@@ -467,7 +467,7 @@
 					41237BE31C486CDF0007F76B = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 3TQU8WFYZ9;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 					41237BF91C486CDF0007F76B = {
 						CreatedOnToolsVersion = 7.2;
@@ -477,6 +477,7 @@
 					};
 					41DBA0741E51497E003B1316 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 41237BE31C486CDF0007F76B;
 					};

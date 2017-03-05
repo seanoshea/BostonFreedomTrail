@@ -45,7 +45,7 @@ final class VirtualTourButton: MDCFloatingButton {
   }
   
   /// Sets the button display based on the tour state
-  func updateButtonTitle(state:VirtualTourState) {
+  func updateButtonTitle(_ state:VirtualTourState) {
     switch state {
     case .postSetup:
       self.setTitle("▷", for: .normal)
@@ -62,6 +62,6 @@ final class VirtualTourButton: MDCFloatingButton {
   func commonInit() {
     setBackgroundColor(UIColor.bftOrangeRedColor(), for: .normal)
     setTitleColor(UIColor.white, for: .normal)
-    updateButtonTitle(state: VirtualTourState.paused)
+    updateButtonTitle(VirtualTourState.paused)
   }
 }

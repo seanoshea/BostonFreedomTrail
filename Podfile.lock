@@ -81,7 +81,7 @@ DEPENDENCIES:
   - Quick (= 1.1.0)
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: '094f9f314decbabe373b87cc339bea235a63e07a'
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   FirebaseAnalytics: 3f5358d9104adf159cc8d99b7b501e50099a39ad
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
