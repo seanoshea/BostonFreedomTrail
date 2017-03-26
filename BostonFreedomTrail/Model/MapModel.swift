@@ -49,7 +49,6 @@ final class MapModel {
       marker.position = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude)
       marker.icon = UIImage.init(named: ResourceConstants.PlacemarkResourceImage.rawValue)
       marker.title = placemark.name
-      marker.appearAnimation = kGMSMarkerAnimationPop
       marker.map = mapView
       markers.append(marker)
     }
