@@ -332,10 +332,10 @@ final class VirtualTourModel {
   }
   
   func degreesToRadians(_ value: CLLocationDegrees) -> CLLocationDegrees {
-    return value * M_PI / 180.0
+    return value * Double.pi / 180.0
   }
   
   func radiansToDegrees(_ value: Double) -> Double {
-    return (value * 180.0 / M_PI)
+    return (value * 180.0 / Double.pi)
   }
 }

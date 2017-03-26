@@ -106,7 +106,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     var configureError: NSError?
     GGLContext.sharedInstance().configureWithError(&configureError)
     guard configureError == nil else {
-      NSLog("Error configuring Google services: \(configureError)")
+      NSLog("Error configuring Google services: \(String(describing: configureError))")
       return
     }
     let gai = GAI.sharedInstance()
