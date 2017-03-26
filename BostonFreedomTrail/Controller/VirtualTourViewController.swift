@@ -45,22 +45,22 @@ final class VirtualTourViewController: BaseViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.model.delegate = self
-    let firstPlacemark = self.model.firstPlacemark()
-    self.addPanoramaView(CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude))
-    MDCSnackbarManager.setPresentationHostView(self.view)
+    model.delegate = self
+    let firstPlacemark = model.firstPlacemark()
+    addPanoramaView(CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude))
+    MDCSnackbarManager.setPresentationHostView(view)
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    self.model.setupTour()
-    self.virtualTourButton?.isEnabled = self.isOnline()
+    model.setupTour()
+    virtualTourButton?.isEnabled = isOnline()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    if self.model.currentTourState != VirtualTourState.finished {
-      self.model.pauseTour()
+    if model.currentTourState != VirtualTourState.finished {
+      model.pauseTour()
     }
   }
   
@@ -69,16 +69,16 @@ final class VirtualTourViewController: BaseViewController {
   @IBAction func pressedOnVirtualTourButton(_ sender: UIButton) {
     // first check to see that the user is actually online
     if isOnline() {
-      self.model.togglePlayPause()
-      switch self.model.currentTourState {
+      model.togglePlayPause()
+      switch model.currentTourState {
       case VirtualTourState.postSetup:
-        self.startTour()
+        startTour()
         break
       case VirtualTourState.inProgress:
-        self.postDispatchAction(self.model.nextLocation())
+        postDispatchAction(model.nextLocation())
         break
       case VirtualTourState.finished:
-        self.restartTour()
+        restartTour()
         break
       default:
         break
@@ -100,96 +100,96 @@ final class VirtualTourViewController: BaseViewController {
   func reachabilityStatusChanged(_ online: Bool) {
     super.reachabilityStatusChanged(online)
     if online {
-      self.virtualTourButton?.isEnabled = true
-      self.reloadCurrentLocation()
+      virtualTourButton?.isEnabled = true
+      reloadCurrentLocation()
     } else {
-      self.virtualTourButton?.isEnabled = false
-      self.model.pauseTour()
+      virtualTourButton?.isEnabled = false
+      model.pauseTour()
     }
   }
   
   // MARK: Private Functions
   
   func addPanoramaView(_ panoramaNear: CLLocationCoordinate2D) {
-    let panoView = GMSPanoramaView.panorama(withFrame: self.view.frame, nearCoordinate:panoramaNear)
+    let panoView = GMSPanoramaView.panorama(withFrame: view.frame, nearCoordinate:panoramaNear)
     panoView.navigationLinksHidden = true
     panoView.delegate = self
-    self.view.addSubview(panoView)
-    panoView.addSubview(self.virtualTourButton!)
+    view.addSubview(panoView)
+    panoView.addSubview(virtualTourButton!)
     self.panoView = panoView
   }
   
   func startTour() {
-    let firstTourLocation = self.model.startTour()
-    self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(firstTourLocation.coordinate.latitude, firstTourLocation.coordinate.longitude))
+    let firstTourLocation = model.startTour()
+    panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(firstTourLocation.coordinate.latitude, firstTourLocation.coordinate.longitude))
   }
   
   func restartTour() {
-    self.model.currentTourState = VirtualTourState.postSetup
-    self.startTour()
+    model.currentTourState = VirtualTourState.postSetup
+    startTour()
   }
   
   func cameraPositionForNextLocation(_ nextLocation: CLLocation) -> GMSPanoramaCamera {
     var pitch = 0.0
     var heading: CLLocationDirection?
-    if self.model.atLookAtLocation() {
-      let lookAt: LookAt = self.model.lookAtForCurrentLocation()!
+    if model.atLookAtLocation() {
+      let lookAt: LookAt = model.lookAtForCurrentLocation()!
       pitch = lookAt.tilt
       heading = lookAt.heading
     } else {
-      heading = self.model.locationDirectionForNextLocation(nextLocation)
+      heading = model.locationDirectionForNextLocation(nextLocation)
     }
     return GMSPanoramaCamera.init(heading:heading!, pitch:pitch, zoom:1)
   }
   
   func shouldEnqueueNextLocationForPanorama(_ panorama: GMSPanorama?) -> Bool {
-    return self.model.tourIsRunning()
+    return model.tourIsRunning()
   }
   
   func postDispatchAction(_ nextLocation: CLLocation) {
-    self.postDispatchAction(nextLocation, force:false)
+    postDispatchAction(nextLocation, force:false)
   }
   
   func postDispatchAction(_ nextLocation: CLLocation, force: Bool) {
-    if self.model.tourIsRunning() || force {
-      if self.isOnline() {
-        self.repositionPanoViewForNextLocation(nextLocation)
-        self.panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
+    if model.tourIsRunning() || force {
+      if isOnline() {
+        repositionPanoViewForNextLocation(nextLocation)
+        panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
       } else {
-        self.model.pauseTour()
+        model.pauseTour()
       }
     } else {
       // back up
-      self.model.reverseLocation()
+      model.reverseLocation()
     }
   }
   
   func repositionPanoViewForNextLocation(_ nextLocation: CLLocation) {
-    if self.model.hasAdvancedPastFirstLocation() {
-      let newCamera = self.cameraPositionForNextLocation(nextLocation)
-      self.panoView?.animate(to: newCamera, animationDuration: VirtualTourStopStopDuration.cameraRepositionAnimation.rawValue)
-      if self.model.atLookAtLocation() {
-        guard let pm = self.model.placemarkForNextLocation() else { return }
-        self.displaySnackbarMessage(pm.name)
+    if model.hasAdvancedPastFirstLocation() {
+      let newCamera = cameraPositionForNextLocation(nextLocation)
+      panoView?.animate(to: newCamera, animationDuration: VirtualTourStopStopDuration.cameraRepositionAnimation.rawValue)
+      if model.atLookAtLocation() {
+        guard let pm = model.placemarkForNextLocation() else { return }
+        displaySnackbarMessage(pm.name)
       }
     }
-    if self.model.isAtLastPosition() {
-      self.model.finishTour()
+    if model.isAtLastPosition() {
+      model.finishTour()
     }
   }
   
   func advanceToNextLocation(_ delayTime: DispatchTime) {
     unowned let unownedSelf: VirtualTourViewController = self
-    DispatchQueue.main.asyncAfter(deadline: self.model.delayTime()) {
+    DispatchQueue.main.asyncAfter(deadline: model.delayTime()) {
       unownedSelf.postDispatchAction(unownedSelf.model.nextLocation())
     }
   }
   
   func reloadCurrentLocation() {
-    guard let currentLocation = self.model.currentTourLocation else { return }
-    if self.model.currentTourState == .paused {
-      DispatchQueue.main.asyncAfter(deadline: self.model.delayTime()) {
-        self.postDispatchAction(currentLocation)
+    guard let currentLocation = model.currentTourLocation else { return }
+    if model.currentTourState == .paused {
+      DispatchQueue.main.asyncAfter(deadline: model.delayTime()) { [weak self] in
+        self?.postDispatchAction(currentLocation)
       }
     }
   }
@@ -200,8 +200,8 @@ final class VirtualTourViewController: BaseViewController {
 extension VirtualTourViewController : GMSPanoramaViewDelegate {
   
   func panoramaView(_ view: GMSPanoramaView, didMoveTo panorama: GMSPanorama?) {
-    if self.shouldEnqueueNextLocationForPanorama(panorama) {
-      self.advanceToNextLocation(self.model.delayTime())
+    if shouldEnqueueNextLocationForPanorama(panorama) {
+      advanceToNextLocation(model.delayTime())
     }
   }
   
@@ -216,10 +216,10 @@ extension VirtualTourViewController : GMSPanoramaViewDelegate {
 extension VirtualTourViewController : VirtualTourModelDelegate {
   
   func navigateToCurrentPosition(_ model: VirtualTourModel) {
-    self.postDispatchAction(self.model.nextLocation(), force:true)
+    postDispatchAction(model.nextLocation(), force:true)
   }
   
   func didChangeTourState(_ fromState:VirtualTourState, toState:VirtualTourState) {
-    self.virtualTourButton.updateButtonTitle(toState)
+    virtualTourButton.updateButtonTitle(toState)
   }
 }

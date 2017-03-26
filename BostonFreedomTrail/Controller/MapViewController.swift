@@ -57,16 +57,16 @@ final class MapViewController: BaseViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.initializeDelegate()
-    self.createMapView()
-    self.setupPlacemarks()
+    initializeDelegate()
+    createMapView()
+    setupPlacemarks()
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else { return }
     if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == ComparisonResult.orderedSame {
       guard let placemarkViewController = segue.destination as? PlacemarkViewController else { return }
-      guard let placemark = self.mapView?.selectedMarker!.userData as? Placemark else { return }
+      guard let placemark = mapView?.selectedMarker!.userData as? Placemark else { return }
       placemarkViewController.delegate = self
       placemarkViewController.popoverPresentationController?.delegate = self
       placemarkViewController.modalPresentationStyle = UIModalPresentationStyle.popover
@@ -84,8 +84,8 @@ final class MapViewController: BaseViewController {
   
   /// Initializes the `mapView` and configures properties on it to make sure it displays correctly.
   func createMapView() {
-    let lastKnownCoordinate = self.model.lastKnownCoordinate()
-    let camera = GMSCameraPosition.camera(withLatitude: lastKnownCoordinate.latitude, longitude:lastKnownCoordinate.longitude, zoom:self.model.zoomForMap())
+    let lastKnownCoordinate = model.lastKnownCoordinate()
+    let camera = GMSCameraPosition.camera(withLatitude: lastKnownCoordinate.latitude, longitude:lastKnownCoordinate.longitude, zoom:model.zoomForMap())
     let mapView = GMSMapView.map(withFrame: CGRect.zero, camera:camera)
     mapView.padding = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 48.0, right: 0.0)
     mapView.isIndoorEnabled = false
@@ -94,21 +94,21 @@ final class MapViewController: BaseViewController {
     mapView.settings.compassButton = false
     mapView.delegate = self
     self.mapView = mapView
-    self.view = self.mapView
+    view = mapView
   }
   
   /// Adds all the placemarks to the `mapView`. Also responsible for mapping out the path between the placemarks.
   func setupPlacemarks() {
-    let markers = self.model.addPlacemarksToMap(self.mapView!)
-    self.model.addPathToMap(self.mapView!)
+    let markers = model.addPlacemarksToMap(mapView!)
+    model.addPathToMap(mapView!)
     // do some checking for fastlane
-    self.snaplaneCallbacks(markers)
+    snaplaneCallbacks(markers)
   }
   
   /// Ensures that the `delegate` property is set to the `AppDelegate`.
   func initializeDelegate() {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    self.delegate = appDelegate
+    delegate = appDelegate
   }
 }
 
@@ -124,7 +124,7 @@ extension MapViewController : GMSMapViewDelegate {
    - parameter position: defines where the `mapView` is positioned.
    */
   func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-    if self.model.isViableZoom(position.zoom) {
+    if model.isViableZoom(position.zoom) {
       ApplicationSharedState.sharedInstance.cameraZoom = position.zoom
     }
     ApplicationSharedState.sharedInstance.lastKnownCoordinate = position.target
@@ -141,7 +141,7 @@ extension MapViewController : GMSMapViewDelegate {
   func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
     ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
     guard let userData = marker.userData as? Placemark else { return false }
-    self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.MarkerPress.rawValue)
+    trackButtonPressForPlacemark(userData, label: AnalyticsLabels.MarkerPress.rawValue)
     return false
   }
   
@@ -154,10 +154,10 @@ extension MapViewController : GMSMapViewDelegate {
   func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
     ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
     guard let userData = marker.userData as? Placemark else { return }
-    self.trackButtonPressForPlacemark(userData, label: AnalyticsLabels.InfoWindowPress.rawValue)
-    self.streetViewButtonPressedForPlacemark(userData)
+    trackButtonPressForPlacemark(userData, label: AnalyticsLabels.InfoWindowPress.rawValue)
+    streetViewButtonPressedForPlacemark(userData)
     // previous implementation.
-    // self.performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
+    // performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
   }
   
   /**
@@ -197,7 +197,7 @@ extension MapViewController : PlacemarkViewControllerDelegate {
    - parameter placemark: the placemark at which to land the user on the virtual tour screen
    */
   func streetViewButtonPressedForPlacemark(_ placemark: Placemark) {
-    guard let delegate = self.delegate else { self.trackNonFatalErrorMessage("No delegate for allowing the user navigate to street view from a placemark view"); return }
+    guard let delegate = delegate else { trackNonFatalErrorMessage("No delegate for allowing the user navigate to street view from a placemark view"); return }
     delegate.navigateToVirtualTourWithPlacemark(placemark)
   }
 }
@@ -223,7 +223,7 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
   
   /// Simply dismisses the current view controller.
   func dismiss() {
-    self.dismiss(animated: true, completion: nil)
+    dismiss(animated: true, completion: nil)
   }
 }
 
@@ -248,9 +248,9 @@ extension MapViewController {
         }
         for marker:GMSMarker in markers {
           if marker.title?.caseInsensitiveCompare(markerName) == .orderedSame {
-            self.mapView?.selectedMarker = marker
-            let camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude:marker.position.longitude, zoom:self.model.zoomForMap())
-            self.mapView?.camera = camera
+            mapView?.selectedMarker = marker
+            let camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude:marker.position.longitude, zoom:model.zoomForMap())
+            mapView?.camera = camera
             break
           }
         }

@@ -43,13 +43,13 @@ extension ReachabilityListener where Self : BaseViewController {
   func registerListener() {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     appDelegate.reachability?.whenReachable = { reachability in
-      DispatchQueue.main.async {
-        self.reachabilityStatusChanged(true)
+      DispatchQueue.main.async { [weak self] in
+        self?.reachabilityStatusChanged(true)
       }
     }
     appDelegate.reachability?.whenUnreachable = { reachability in
-      DispatchQueue.main.async {
-        self.reachabilityStatusChanged(false)
+      DispatchQueue.main.async { [weak self] in
+        self?.reachabilityStatusChanged(false)
       }
     }
   }

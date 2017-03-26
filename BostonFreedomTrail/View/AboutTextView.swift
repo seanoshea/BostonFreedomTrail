@@ -44,15 +44,15 @@ class AboutTextView: UITextView {
    */
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-    self.applyStyles()
+    applyStyles()
   }
   
   /// Ensures that the appropriate styles are set on the text view.
   func applyStyles() {
-    self.textContainerInset = UIEdgeInsets.zero
-    self.textContainer.lineFragmentPadding = 0
-    self.textColor = UIColor.bftDarkTextColor()
-    self.font = MDCTypography.body1Font()
+    textContainerInset = UIEdgeInsets.zero
+    textContainer.lineFragmentPadding = 0
+    textColor = UIColor.bftDarkTextColor()
+    font = MDCTypography.body1Font()
   }
   
   /// attributed text associated with `AboutTextView`.

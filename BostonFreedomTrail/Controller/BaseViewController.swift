@@ -38,7 +38,7 @@ class BaseViewController: UIViewController, AnalyticsTracker, ReachabilityListen
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.registerListener()
+    registerListener()
   }
   
   // MARK: Snackbar Messages

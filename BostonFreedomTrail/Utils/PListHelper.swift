@@ -40,19 +40,19 @@ enum PListHelperConstants: String {
 struct PListHelper {
   
   static func googleMapsApiKey() -> String {
-    return (self.plistDictionary()[PListHelperConstants.BostonFreedomTrailGoogleMapAPIKey.rawValue] as? String)!
+    return (plistDictionary()[PListHelperConstants.BostonFreedomTrailGoogleMapAPIKey.rawValue] as? String)!
   }
   
   static func defaultLatitude() -> Double {
-    return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLatitude.rawValue]!.doubleValue
+    return plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLatitude.rawValue]!.doubleValue
   }
   
   static func defaultLongitude() -> Double {
-    return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLongitude.rawValue]!.doubleValue
+    return plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLongitude.rawValue]!.doubleValue
   }
   
   static func defaultCameraZoom() -> Float {
-    return self.plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultCameraZoom.rawValue]!.floatValue
+    return plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultCameraZoom.rawValue]!.floatValue
   }
   
   static func plistDictionary() -> [String: AnyObject] {
