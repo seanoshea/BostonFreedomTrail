@@ -71,10 +71,10 @@ final class AboutViewController: BaseViewController {
     self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
     let developerAttributedString = NSMutableAttributedString(string:NSLocalizedString("Developed by Sean O'Shea", comment: ""))
     let trailInformationAttributedString = NSMutableAttributedString(string:NSLocalizedString("There are several different websites which have additional information on the Freedom Trail", comment: ""))
-    developerAttributedString.linkify(textToFind: "Sean O'Shea", linkURL: "https://twitter.com/seanoshea")
-    trailInformationAttributedString.linkify(textToFind: "several", linkURL: "https://www.thefreedomtrail.org/")
-    trailInformationAttributedString.linkify(textToFind: "different", linkURL: "https://en.wikipedia.org/wiki/Freedom_Trail/")
-    trailInformationAttributedString.linkify(textToFind: "websites", linkURL: "http://www.cityofboston.gov/freedomtrail/")
+    developerAttributedString.linkify("Sean O'Shea", linkURL: "https://twitter.com/seanoshea")
+    trailInformationAttributedString.linkify("several", linkURL: "https://www.thefreedomtrail.org/")
+    trailInformationAttributedString.linkify("different", linkURL: "https://en.wikipedia.org/wiki/Freedom_Trail/")
+    trailInformationAttributedString.linkify("websites", linkURL: "http://www.cityofboston.gov/freedomtrail/")
     self.developerDetailsTextView!.attributedText = developerAttributedString
     
     // trail info

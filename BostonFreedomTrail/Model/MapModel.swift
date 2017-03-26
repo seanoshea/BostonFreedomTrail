@@ -49,7 +49,6 @@ final class MapModel {
       marker.position = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude)
       marker.icon = UIImage.init(named: ResourceConstants.PlacemarkResourceImage.rawValue)
       marker.title = placemark.name
-      marker.appearAnimation = kGMSMarkerAnimationPop
       marker.map = mapView
       markers.append(marker)
     }
@@ -112,7 +111,7 @@ final class MapModel {
    - parameter zoom: the current zoom value for the map view's camera.
    - returns: Bool indicating that the zoom parameter is worthwhile to save to user defaults to remember it for the next application load.
    */
-  func isViableZoom(zoom:Float) -> Bool {
+  func isViableZoom(_ zoom:Float) -> Bool {
     return zoom >= CameraZoomConstraints.minimum.rawValue && zoom <= CameraZoomConstraints.maximum.rawValue
   }
 }

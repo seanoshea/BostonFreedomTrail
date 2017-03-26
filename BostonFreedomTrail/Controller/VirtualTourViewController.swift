@@ -214,7 +214,7 @@ extension VirtualTourViewController : VirtualTourModelDelegate {
     self.postDispatchAction(self.model.nextLocation(), force:true)
   }
   
-  func didChangeTourState(fromState:VirtualTourState, toState:VirtualTourState) {
-    self.virtualTourButton.updateButtonTitle(state: toState)
+  func didChangeTourState(_ fromState:VirtualTourState, toState:VirtualTourState) {
+    self.virtualTourButton.updateButtonTitle(toState)
   }
 }
