@@ -163,6 +163,7 @@ extension AppDelegate : MapViewControllerDelegate {
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     guard let viewControllers = tabBarController.viewControllers else { return }
     guard let virtualTourViewController = viewControllers[TabBarControllerIndex.virtualTourViewController.rawValue] as? VirtualTourViewController else { return }
+    guard virtualTourViewController.isOnline() else { return }
     tabBarController.selectedIndex = TabBarControllerIndex.virtualTourViewController.rawValue
     let index = Trail.instance.placemarkIndex(placemark)
     virtualTourViewController.model.navigateToLookAt(index)

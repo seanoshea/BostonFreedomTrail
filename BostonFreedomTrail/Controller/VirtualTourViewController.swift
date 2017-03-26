@@ -54,7 +54,6 @@ final class VirtualTourViewController: BaseViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     model.setupTour()
-    virtualTourButton?.isEnabled = isOnline()
   }
   
   override func viewDidDisappear(_ animated: Bool) {

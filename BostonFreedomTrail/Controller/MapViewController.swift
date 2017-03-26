@@ -197,7 +197,10 @@ extension MapViewController : PlacemarkViewControllerDelegate {
    - parameter placemark: the placemark at which to land the user on the virtual tour screen
    */
   func streetViewButtonPressedForPlacemark(_ placemark: Placemark) {
-    guard let delegate = delegate else { trackNonFatalErrorMessage("No delegate for allowing the user navigate to street view from a placemark view"); return }
+    guard let delegate = delegate else {
+      trackNonFatalErrorMessage("No delegate for allowing the user navigate to street view from a placemark view")
+      return
+    }
     delegate.navigateToVirtualTourWithPlacemark(placemark)
   }
 }
