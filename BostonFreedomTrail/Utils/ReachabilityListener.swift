@@ -58,7 +58,7 @@ extension ReachabilityListener where Self : BaseViewController {
     if online {
       MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
     } else {
-      self.displaySnackbarMessage(NSLocalizedString("Please check your network connection", comment: ""))
+      displaySnackbarMessage(NSLocalizedString("Please check your network connection", comment: ""))
     }
   }
   

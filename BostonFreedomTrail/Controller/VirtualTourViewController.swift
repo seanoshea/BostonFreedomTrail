@@ -67,21 +67,26 @@ final class VirtualTourViewController: BaseViewController {
   // MARK: IBActions
   
   @IBAction func pressedOnVirtualTourButton(_ sender: UIButton) {
-    self.model.togglePlayPause()
-    switch self.model.currentTourState {
-    case VirtualTourState.postSetup:
-      self.startTour()
-      break
-    case VirtualTourState.inProgress:
-      self.postDispatchAction(self.model.nextLocation())
-      break
-    case VirtualTourState.finished:
-      self.restartTour()
-      break
-    default:
-      break
+    // first check to see that the user is actually online
+    if isOnline() {
+      self.model.togglePlayPause()
+      switch self.model.currentTourState {
+      case VirtualTourState.postSetup:
+        self.startTour()
+        break
+      case VirtualTourState.inProgress:
+        self.postDispatchAction(self.model.nextLocation())
+        break
+      case VirtualTourState.finished:
+        self.restartTour()
+        break
+      default:
+        break
+      }
+      MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+    } else {
+      displaySnackbarMessage(NSLocalizedString("Please check your network connection", comment: ""))
     }
-    MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
   }
   
   // MARK: Analytics
