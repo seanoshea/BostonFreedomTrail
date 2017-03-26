@@ -1,4 +1,7 @@
 PODS:
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.11)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -70,6 +73,8 @@ PODS:
   - Quick (1.1.0)
 
 DEPENDENCIES:
+  - Crashlytics (= 3.8.4)
+  - Fabric (= 1.6.11)
   - FBSnapshotTestCase (= 2.1.4)
   - Google/Analytics
   - GoogleMaps (= 2.1.1)
@@ -81,7 +86,9 @@ DEPENDENCIES:
   - Quick (= 1.1.0)
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  FBSnapshotTestCase: '094f9f314decbabe373b87cc339bea235a63e07a'
   FirebaseAnalytics: 3f5358d9104adf159cc8d99b7b501e50099a39ad
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
@@ -96,6 +103,6 @@ SPEC CHECKSUMS:
   OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
-PODFILE CHECKSUM: ed7ab0881f21ba26fbdcdc1f81349f4329d57cc5
+PODFILE CHECKSUM: a4824ea0c45f89eba0761b7197e11892786c9da7
 
 COCOAPODS: 1.2.0
