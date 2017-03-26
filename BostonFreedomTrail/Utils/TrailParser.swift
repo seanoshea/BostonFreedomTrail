@@ -95,9 +95,8 @@ final class TrailParser: NSObject, XMLParserDelegate {
       startFolder = true
       break
     case TrailParserConstants.placemark.rawValue:
-      if let identifier = attributeDict[TrailParserConstants.identifier.rawValue] {
-        currentIdentifier = identifier
-      }
+      guard let identifier = attributeDict[TrailParserConstants.identifier.rawValue] else { break }
+      currentIdentifier = identifier
       startPlacemark = true
       break
     case TrailParserConstants.name.rawValue:

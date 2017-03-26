@@ -62,12 +62,12 @@ final class PlacemarkViewController: BaseViewController {
   
   @IBAction func streetViewButtonPressed(_ sender: UIButton) {
     guard let delegate = self.delegate else { return }
-    if let placemark = self.model?.placemark {
-      self.trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.StreetViewPress.rawValue)
-      delegate.streetViewButtonPressedForPlacemark(placemark)
-    } else {
+    guard let placemark = self.model?.placemark else {
       self.trackNonFatalErrorMessage("Street View Button Pressed, but no placemark associated with model")
+      return
     }
+    self.trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.StreetViewPress.rawValue)
+    delegate.streetViewButtonPressedForPlacemark(placemark)
     self.dismiss(animated: true) { () -> Void in
       
     }

@@ -39,7 +39,7 @@ class AboutViewControllerSnapshotTest : FBSnapshotTestCase {
   func testAboutViewController() {
     
     let subject = UIStoryboard.aboutViewController()
-    let view = subject.view!
+    let _ = subject.view!
     
     //        FBSnapshotVerifyView(view, identifier:StoryboardExtensionConstants.AboutViewControllerIdentifier.rawValue)
   }
