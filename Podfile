@@ -8,6 +8,8 @@ target :BostonFreedomTrail do
 
   pod 'Google/Analytics'
   pod 'GoogleMaps', '2.1.1'
+  pod 'Fabric', '1.6.11'
+  pod 'Crashlytics', '3.8.4'
   pod 'MaterialComponents/Typography', '21.0.1'
   pod 'MaterialComponents/Buttons', '21.0.1'
   pod 'MaterialComponents/Snackbar', '21.0.1'
