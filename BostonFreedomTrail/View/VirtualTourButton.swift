@@ -32,13 +32,25 @@ import UIKit
 
 import MaterialComponents
 
+/// Play/Pause/Repeat button used in the virtual tour
 final class VirtualTourButton: MDCFloatingButton {
   
+  /**
+   Initializer for the button.
+   
+   - parameter frame: the frame for the button
+   - parameter shape: customizes the shape for the button
+   */
   override init(frame: CGRect, shape: MDCFloatingButtonShape) {
     super.init(frame: frame, shape: shape)
     commonInit()
   }
-  
+
+  /**
+   Initializer for the button.
+   
+   - parameter coder: `NSCoder` for initialization
+   */
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     commonInit()

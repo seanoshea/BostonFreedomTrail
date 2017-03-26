@@ -30,18 +30,29 @@
 
 import UIKit
 
+/// Delegate for the `PlacemarkViewController`
 protocol PlacemarkViewControllerDelegate:class {
+  /**
+   Executed when the user indicates that they want to go to the virtual tour.
+   
+   - parameter placemark: The `Placemark` to land on after switching to the virtual tour.
+   */
   func streetViewButtonPressedForPlacemark(_ placemark: Placemark)
 }
 
+/// Responsible for showing additional information on a placemark to the user.
 final class PlacemarkViewController: BaseViewController {
   
   // MARK: Properties
   
+  /// Used to display information on the specific placemark associated with the `PlacemarkViewController`
   @IBOutlet weak var webView: UIWebView?
+  /// Button to allow users navigate to the virtual tour.
   @IBOutlet weak var streetViewButton: UIButton?
   
+  /// Contains and business logic and state for the `PlacemarkViewController`
   var model: PlacemarkModel?
+  /// Delegate for the `PlacemarkViewController`
   weak var delegate: PlacemarkViewControllerDelegate?
   
   // MARK: Lifecycle
@@ -60,6 +71,11 @@ final class PlacemarkViewController: BaseViewController {
   
   // MARK: IBActions
   
+  /**
+   Executed when the street view button is pressed.
+   
+   - parameter sender: a reference to the `streetViewButton`
+   */
   @IBAction func streetViewButtonPressed(_ sender: UIButton) {
     guard let delegate = delegate else { return }
     guard let placemark = model?.placemark else {
@@ -80,12 +96,14 @@ final class PlacemarkViewController: BaseViewController {
   }
   
   // MARK: Private Functions
-  
+
+  /// Configures the view specific to the placemark associated with the `PlacemarkViewController`
   func configureView() {
     // only bother showing the street view button if there is a LookAt associated with this placemark.
     streetViewButton?.isHidden = model?.placemark?.lookAt == nil
   }
-  
+
+  /// Sets up the `UIWebViewDelegate` and loads the HTML into the web view.
   func loadPlacemarkInformation() {
     webView?.delegate = self
     webView?.loadHTMLString((model?.stringForWebView())!, baseURL: nil)

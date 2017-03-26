@@ -32,13 +32,21 @@ import Foundation
 
 import GoogleMaps
 
+/// Keys used to store user preferences in NSUserDefaults
 enum DefaultsKeys: String {
+  /// Key for storing the last known camera zoom in the map view
   case ApplicationSharedStateCameraZoom
+  /// Key for storing the latitude of the placemark on which the user last tapped
   case ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude
+  /// Key for storing the longitude of the placemark on which the user last tapped
   case ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude
+  /// Key for storing the latitude of where the user last tapped on the map view
   case ApplicationSharedStateLastKnownLocationLatitude
+  /// Key for storing the longitude of where the user last tapped on the map view
   case ApplicationSharedStateLastKnownLocationLongitude
+  /// Key for storing the latitude of where the user was last noticed on the map view
   case ApplicationSharedStateLastKnownCoordinateLatitude
+  /// Key for storing the longitude of where the user was last noticed on the map view
   case ApplicationSharedStateLastKnownCoordinateLongitude
 }
 

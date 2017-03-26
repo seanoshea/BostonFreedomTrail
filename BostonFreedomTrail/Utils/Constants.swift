@@ -30,43 +30,52 @@
 
 import Foundation
 
+/// Identifiers for segues in the app
 enum SegueConstants: String {
   case MapToPlacemarkSegueIdentifier
 }
 
+/// Identifiers for loading files from the resources bundle
 enum ResourceConstants: String {
   case PlacemarkIdentifier = "placemark"
   case PlacemarkResourceImage = "orange_red"
   case InfoWindowXibName = "InfoWindow"
 }
 
+/// Tags for the three tabs in the app
 enum TabBarControllerTags: Int {
   case mapViewTag = 0
   case virtualTourViewTag = 1
   case aboutViewTag = 2
 }
 
+/// Zoom constants for the camera
 enum CameraZoomConstraints: Float {
   case minimum = 12.0
   case maximum = 20.0
 }
 
+/// Constants for displaying the snackbar at the top of the app
 enum SnackbarMessageViewOffsets: CGFloat {
   case topOffset = 52.0
 }
 
+/// Constants when running the snapshot tests
 enum SnapshotConstants: Float {
   case cameraZoom = 16.0
   case defaultLatitude = 42.358969550484964
   case defaultLongitude = -71.06010876595974
 }
 
+/// Extension on `UIColor` for colors specific to the app
 extension UIColor {
   
+  /// Text color for the app
   static func bftDarkTextColor() -> UIColor {
     return UIColor.init(red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
   }
   
+  /// Orange/Red color used throughout the app
   static func bftOrangeRedColor() -> UIColor {
     return UIColor.init(red: 216/255, green: 67/255, blue: 21/255, alpha: 1.0)
   }

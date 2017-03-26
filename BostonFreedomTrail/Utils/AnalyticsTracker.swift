@@ -30,33 +30,43 @@
 
 import Foundation
 
-// Screen name constants for analytics
+/// Screen name constants for analytics
 enum AnalyticsScreenNames: String {
+  /// Used when the user taps on the about tab
   case AboutScreen
+  /// Used when the user taps on the map tab
   case MapScreen
+  /// Used when the user taps into more information on a placemark
   case PlacemarkScreen
+  /// Used when the user taps on the virtual tour tab
   case VirtualTourScreen
 }
 
-// Category constants for analytics
+/// Category constants for analytics
 enum AnalyticsEventCategories: String {
+  /// Analytics constant for identifying a user interaction in the app
   case Action = "ui_action"
 }
 
-// Action constants for analytics
+/// Action constants for analytics
 enum AnalyticsActions: String {
+  /// Analytics constant for identifying a user button press in the app
   case ButtonPress = "button_press"
 }
 
-// Label constants for analytics
+/// Label constants for analytics
 enum AnalyticsLabels: String {
+  /// Analytics constant used when the user taps on a tab bar
   case TabBarPress = "tab_bar_press"
+  /// Analytics constant used when the user taps on a marker
   case MarkerPress = "marker_press"
+  /// Analytics constant used when the user taps on an info window
   case InfoWindowPress = "info_window_press"
+  /// Analytics constant used when the user taps on the street view button
   case StreetViewPress = "street_view_press"
 }
 
-// Protocol for analytics
+/// Protocol for analytics
 protocol AnalyticsTracker:class {
   /**
    Retrieves the screen name.

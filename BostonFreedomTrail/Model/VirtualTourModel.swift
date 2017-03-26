@@ -33,18 +33,27 @@ import CoreLocation
 
 /// enum for understanding what state the virtual tour is in
 enum VirtualTourState: Int {
+  /// Used prior to the tour being initialized
   case preSetup = 0
+  /// Used after the tour has been initialized
   case postSetup = 1
+  /// Used while the tour is in progress
   case inProgress = 2
+  /// Used if the tour has been paused by the user
   case paused = 3
+  /// Used when the tour has been finished
   case finished = 4
 }
 
 /// enum for the durations to wait while moving through the virtial tour
 enum VirtualTourStopStopDuration: Double {
+  /// Animation delay when repositioning the camera
   case cameraRepositionAnimation = 0.5
+  /// Default delay when navigating through the tour
   case defaultDelay = 1.0
+  /// Used when we are in the middle of repositioning the camera during the tour
   case delayForCameraRepositioning = 2.0
+  /// Used when the tour has hit a LookAt and we want to pause for a time
   case delayForLookAt = 5.0
 }
 

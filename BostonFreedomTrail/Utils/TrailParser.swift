@@ -32,6 +32,7 @@ import Foundation
 
 import CoreLocation
 
+/// Constants for parsing the kml file.
 enum TrailParserConstants: String {
   case trail = "trail"
   case kml = "kml"
@@ -52,6 +53,7 @@ enum TrailParserConstants: String {
   case heading = "heading"
 }
 
+/// Used to parse the trails from the kml file.
 final class TrailParser: NSObject, XMLParserDelegate {
   
   var trail = Trail()

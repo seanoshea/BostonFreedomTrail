@@ -32,7 +32,9 @@ import Foundation
 import CoreLocation
 import GoogleMaps
 
+/// Extension for logging the coordinate of the `CLLocationCoordinate2D`
 extension CLLocationCoordinate2D {
+  /// Debug logs the current lat and long
   func logCoordinate() {
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
     debugPrint(longitude, latitude)
@@ -47,21 +49,32 @@ extension Int {
   }
 }
 
+/// Extension for logging the coordinate of the `GMSPanoramaView`
 extension GMSPanoramaView {
+  /// Logs the current coordinate of the `GMSPanoramaView`
   final func logLocation() {
     guard let pano = panorama else { return }
     pano.coordinate.logCoordinate()
   }
 }
 
+/// Extension for logging the coordinate of the `GMSPanoramaCamera`
 extension GMSPanoramaCamera {
+  /// Logs the current coordinate of the `GMSPanoramaCamera`
   final func logLocation() {
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
     debugPrint(orientation.heading, orientation.pitch, separator: ",", terminator: "")
   }
 }
 
+/// Extension for creating links in the middle of `NSMutableAttributedString`
 extension NSMutableAttributedString {
+  /**
+   Allows parts of the text in the `NSMutableAttributedString` to be made into web links.
+   
+   - parameter textToFind: the text to make into a link
+   - parameter linkURL: where to send the user should they press on the link
+   */
   public func linkify(_ textToFind:String, linkURL:String) {
     let foundRange = mutableString.range(of: textToFind)
     if foundRange.location != NSNotFound {
