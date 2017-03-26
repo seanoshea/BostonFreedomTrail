@@ -117,7 +117,7 @@ struct Trail {
    */
   func placemarkIndex(_ placemark: Placemark) -> Int {
     var placemarkIndex = 0
-    for (index, pm) in self.placemarks.enumerated() {
+    for (index, pm) in placemarks.enumerated() {
       if pm.identifier.caseInsensitiveCompare(placemark.identifier) == ComparisonResult.orderedSame {
         placemarkIndex = index
         break

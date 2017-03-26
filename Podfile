@@ -7,6 +7,7 @@ target :BostonFreedomTrail do
   use_frameworks!
 
   pod 'Google/Analytics'
+  pod 'ReachabilitySwift', '3'
   pod 'GoogleMaps', '2.2.0'
   pod 'Fabric', '1.6.11'
   pod 'Crashlytics', '3.8.4'

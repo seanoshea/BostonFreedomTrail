@@ -12,7 +12,7 @@
  3. All advertising materials mentioning features or use of this software
  must display the following acknowledgement:
  This product includes software developed by Upwards Northwards Software Limited.
- 4. Neither the name of Upwards Northwards Software Limited nor the
+ 4. Neither th e name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
  
@@ -28,19 +28,43 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Foundation
+import UIKit
+import ReachabilitySwift
+import MaterialComponents
 
-import FBSnapshotTestCase
+protocol ReachabilityListener:class {
+  func registerListener()
+  func reachabilityStatusChanged(_ online: Bool)
+  func isOnline() -> Bool
+}
 
-@testable import BostonFreedomTrail
-
-class AboutViewControllerSnapshotTest : FBSnapshotTestCase {
+extension ReachabilityListener where Self : BaseViewController {
   
-  func testAboutViewController() {
-    
-    let subject = UIStoryboard.aboutViewController()
-    let _ = subject.view!
-    
-    //        FBSnapshotVerifyView(view, identifier:StoryboardExtensionConstants.AboutViewControllerIdentifier.rawValue)
+  func registerListener() {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+    appDelegate.reachability?.whenReachable = { reachability in
+      DispatchQueue.main.async { [weak self] in
+        self?.reachabilityStatusChanged(true)
+      }
+    }
+    appDelegate.reachability?.whenUnreachable = { reachability in
+      DispatchQueue.main.async { [weak self] in
+        self?.reachabilityStatusChanged(false)
+      }
+    }
+  }
+  
+  func reachabilityStatusChanged(_ online: Bool) {
+    if online {
+      MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+    } else {
+      displaySnackbarMessage(NSLocalizedString("Please check your network connection", comment: ""))
+    }
+  }
+  
+  func isOnline() -> Bool {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
+    guard let reachability = appDelegate.reachability else { return false }
+    return reachability.isReachable
   }
 }

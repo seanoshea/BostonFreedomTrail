@@ -30,6 +30,7 @@
 
 import Quick
 import Nimble
+import ReachabilitySwift
 
 @testable import BostonFreedomTrail
 
@@ -52,7 +53,7 @@ class VirtualTourViewControllerTest: QuickSpec {
       context("Initialization of the VirtualTourViewController") {
         
         it("should start with a tour location of zero") {
-          expect(subject?.model.currentTourLocation).to(equal(0))
+          expect(subject?.model.currentTourPosition).to(equal(0))
         }
         
         it("should have a panoView set by default") {
@@ -128,6 +129,22 @@ class VirtualTourViewControllerTest: QuickSpec {
         }
       }
       
+      context("Online and Offline") {
+        
+        it("should pause the tour if the user goes offline") {
+          subject?.reachabilityStatusChanged(false)
+          
+          expect(subject?.model.currentTourState).to(equal(VirtualTourState.paused))
+          expect(subject?.virtualTourButton?.isEnabled).to(beFalse())
+        }
+        
+        it("should allow the user to restart the tour if the user comes back online") {
+          subject?.reachabilityStatusChanged(true)
+          
+          expect(subject?.virtualTourButton?.isEnabled).to(beTrue())
+        }
+      }
+      
       context("Queuing up the next location") {
         
         context("Tour is running") {
@@ -156,7 +173,7 @@ class VirtualTourViewControllerTest: QuickSpec {
         beforeEach({ () -> () in
           subject?.viewDidAppear(true)
           subject?.startTour()
-          subject?.model.currentTourLocation = 14
+          subject?.model.currentTourPosition = 14
         })
         
         context("the user has decided to pause the tour") {
@@ -166,7 +183,7 @@ class VirtualTourViewControllerTest: QuickSpec {
             
             subject?.postDispatchAction(location)
             
-            expect(subject?.model.currentTourLocation).to(equal(13))
+            expect(subject?.model.currentTourPosition).to(equal(13))
           }
         }
       }
@@ -177,7 +194,7 @@ class VirtualTourViewControllerTest: QuickSpec {
           subject?.viewDidAppear(true)
           subject?.startTour()
           let nextLocation = CLLocation.init()
-          subject?.model.currentTourLocation = (subject?.model.tour.count)! - 1
+          subject?.model.currentTourPosition = (subject?.model.tour.count)! - 1
           
           subject?.repositionPanoViewForNextLocation(nextLocation)
           

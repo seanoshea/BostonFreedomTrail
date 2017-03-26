@@ -48,13 +48,13 @@ final class VirtualTourButton: MDCFloatingButton {
   func updateButtonTitle(_ state:VirtualTourState) {
     switch state {
     case .postSetup:
-      self.setTitle("▷", for: .normal)
+      setTitle("▷", for: .normal)
     case .paused:
-      self.setTitle("▷", for: .normal)
+      setTitle("▷", for: .normal)
     case .finished:
-      self.setTitle("↻", for: .normal)
+      setTitle("↻", for: .normal)
     default:
-      self.setTitle("||", for: .normal)
+      setTitle("||", for: .normal)
     }
   }
   

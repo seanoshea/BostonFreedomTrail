@@ -35,7 +35,7 @@ import GoogleMaps
 extension CLLocationCoordinate2D {
   func logCoordinate() {
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
-    debugPrint(self.longitude, self.latitude)
+    debugPrint(longitude, latitude)
   }
 }
 
@@ -49,7 +49,7 @@ extension Int {
 
 extension GMSPanoramaView {
   final func logLocation() {
-    guard let pano = self.panorama else { return }
+    guard let pano = panorama else { return }
     pano.coordinate.logCoordinate()
   }
 }
@@ -57,16 +57,16 @@ extension GMSPanoramaView {
 extension GMSPanoramaCamera {
   final func logLocation() {
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
-    debugPrint(self.orientation.heading, self.orientation.pitch, separator: ",", terminator: "")
+    debugPrint(orientation.heading, orientation.pitch, separator: ",", terminator: "")
   }
 }
 
 extension NSMutableAttributedString {
   public func linkify(_ textToFind:String, linkURL:String) {
-    let foundRange = self.mutableString.range(of: textToFind)
+    let foundRange = mutableString.range(of: textToFind)
     if foundRange.location != NSNotFound {
-      self.addAttribute(NSLinkAttributeName, value: linkURL, range: foundRange)
-      self.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14.0), range: foundRange)
+      addAttribute(NSLinkAttributeName, value: linkURL, range: foundRange)
+      addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14.0), range: foundRange)
     }
   }
 }

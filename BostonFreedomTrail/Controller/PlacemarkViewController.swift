@@ -48,27 +48,27 @@ final class PlacemarkViewController: BaseViewController {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.model = PlacemarkModel.init()
+    model = PlacemarkModel.init()
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.configureView()
-    self.loadPlacemarkInformation()
-    self.title = self.model?.placemark?.name
+    configureView()
+    loadPlacemarkInformation()
+    title = model?.placemark?.name
   }
   
   // MARK: IBActions
   
   @IBAction func streetViewButtonPressed(_ sender: UIButton) {
-    guard let delegate = self.delegate else { return }
-    if let placemark = self.model?.placemark {
-      self.trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.StreetViewPress.rawValue)
-      delegate.streetViewButtonPressedForPlacemark(placemark)
-    } else {
-      self.trackNonFatalErrorMessage("Street View Button Pressed, but no placemark associated with model")
+    guard let delegate = delegate else { return }
+    guard let placemark = model?.placemark else {
+      trackNonFatalErrorMessage("Street View Button Pressed, but no placemark associated with model")
+      return
     }
-    self.dismiss(animated: true) { () -> Void in
+    trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.StreetViewPress.rawValue)
+    delegate.streetViewButtonPressedForPlacemark(placemark)
+    dismiss(animated: true) { () -> Void in
       
     }
   }
@@ -83,12 +83,12 @@ final class PlacemarkViewController: BaseViewController {
   
   func configureView() {
     // only bother showing the street view button if there is a LookAt associated with this placemark.
-    self.streetViewButton?.isHidden = self.model?.placemark?.lookAt == nil
+    streetViewButton?.isHidden = model?.placemark?.lookAt == nil
   }
   
   func loadPlacemarkInformation() {
-    self.webView?.delegate = self
-    self.webView?.loadHTMLString((self.model?.stringForWebView())!, baseURL: nil)
+    webView?.delegate = self
+    webView?.loadHTMLString((model?.stringForWebView())!, baseURL: nil)
   }
 }
 

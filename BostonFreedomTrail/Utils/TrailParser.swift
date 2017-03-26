@@ -95,9 +95,8 @@ final class TrailParser: NSObject, XMLParserDelegate {
       startFolder = true
       break
     case TrailParserConstants.placemark.rawValue:
-      if let identifier = attributeDict[TrailParserConstants.identifier.rawValue] {
-        currentIdentifier = identifier
-      }
+      guard let identifier = attributeDict[TrailParserConstants.identifier.rawValue] else { break }
+      currentIdentifier = identifier
       startPlacemark = true
       break
     case TrailParserConstants.name.rawValue:
@@ -147,7 +146,7 @@ final class TrailParser: NSObject, XMLParserDelegate {
         currentDescription = string
       } else if startCoordinates && !startLineCoordinates {
         let coordinates = string.components(separatedBy: ",")
-        self.currentLocation = CLLocation.init(latitude: Double(coordinates[1])!, longitude: Double(coordinates[0])!)
+        currentLocation = CLLocation.init(latitude: Double(coordinates[1])!, longitude: Double(coordinates[0])!)
       } else if startLineCoordinates {
         currentLineCoordinates = string
       }
@@ -192,8 +191,8 @@ final class TrailParser: NSObject, XMLParserDelegate {
       break
     case TrailParserConstants.lineString.rawValue:
       startLine = false
-      let lookAt = self.parseLookAt()
-      let placemark = Placemark(identifier:currentIdentifier!, name:currentName!, location:currentLocation!, coordinates:self.parseLineCoordinates(), placemarkDescription:currentDescription!, lookAt:lookAt)
+      let lookAt = parseLookAt()
+      let placemark = Placemark(identifier:currentIdentifier!, name:currentName!, location:currentLocation!, coordinates:parseLineCoordinates(), placemarkDescription:currentDescription!, lookAt:lookAt)
       trail.placemarks.append(placemark)
       hasLookAt = false
       break

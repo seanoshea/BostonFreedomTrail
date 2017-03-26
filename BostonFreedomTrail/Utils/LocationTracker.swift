@@ -55,7 +55,7 @@ final class LocationTracker : NSObject {
   
   /// Allows client code to tell the locationManager to start updating where the user is located in the map view.
   func startUpdatingLocation() {
-    self.locationManager.startUpdatingLocation()
+    locationManager.startUpdatingLocation()
   }
 }
 

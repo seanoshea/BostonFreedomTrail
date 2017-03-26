@@ -32,7 +32,22 @@ import UIKit
 import MaterialComponents
 
 /// View controller which includes a few basic functions.
-class BaseViewController: UIViewController, AnalyticsTracker {
+class BaseViewController: UIViewController, AnalyticsTracker, ReachabilityListener {
+  
+  // MARK: Lifecycle
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    registerListener()
+  }
+  
+  // MARK: Snackbar Messages
+  
+  func displaySnackbarMessage(_ text:String) {
+    DispatchQueue.main.async {
+      MDCSnackbarManager.show(MDCSnackbarMessage.init(text: text))
+    }
+  }
   
   // MARK: Analytics
   

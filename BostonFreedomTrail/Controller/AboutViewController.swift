@@ -54,7 +54,7 @@ final class AboutViewController: BaseViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.localizeLabelsAndTextViews()
+    localizeLabelsAndTextViews()
   }
   
   // MARK: Analytics
@@ -68,21 +68,21 @@ final class AboutViewController: BaseViewController {
   /// Ensures that the labels on this screen are localized and fully filled in.
   func localizeLabelsAndTextViews() {
     // developer info
-    self.developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
+    developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
     let developerAttributedString = NSMutableAttributedString(string:NSLocalizedString("Developed by Sean O'Shea", comment: ""))
     let trailInformationAttributedString = NSMutableAttributedString(string:NSLocalizedString("There are several different websites which have additional information on the Freedom Trail", comment: ""))
     developerAttributedString.linkify("Sean O'Shea", linkURL: "https://twitter.com/seanoshea")
     trailInformationAttributedString.linkify("several", linkURL: "https://www.thefreedomtrail.org/")
     trailInformationAttributedString.linkify("different", linkURL: "https://en.wikipedia.org/wiki/Freedom_Trail/")
     trailInformationAttributedString.linkify("websites", linkURL: "http://www.cityofboston.gov/freedomtrail/")
-    self.developerDetailsTextView!.attributedText = developerAttributedString
+    developerDetailsTextView!.attributedText = developerAttributedString
     
     // trail info
-    self.trailInformationLabel!.text = NSLocalizedString("Trail Information", comment: "")
-    self.trailInformationDetailsTextView!.attributedText = trailInformationAttributedString
+    trailInformationLabel!.text = NSLocalizedString("Trail Information", comment: "")
+    trailInformationDetailsTextView!.attributedText = trailInformationAttributedString
     
     // google maps info
-    self.googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
-    self.googleMapsDetailsTextView!.attributedText = NSAttributedString.init(string: GMSServices.openSourceLicenseInfo())
+    googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
+    googleMapsDetailsTextView!.attributedText = NSAttributedString.init(string: GMSServices.openSourceLicenseInfo())
   }
 }

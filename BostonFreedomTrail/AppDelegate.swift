@@ -35,6 +35,7 @@ import CoreLocation
 import Fabric
 import Crashlytics
 import MaterialComponents
+import ReachabilitySwift
 
 /// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndex: Int {
@@ -49,16 +50,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   /// Main window for the app.
   var window: UIWindow?
+  /// Allows the app understand whether the user is online of offline.
+  var reachability: Reachability?
   
   // MARK: Lifecycle
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    self.initializeTabBarDelegate()
-    self.initializeCrashReporting()
-    self.initializeGoogleMapsApi()
-    self.initializeStyling()
-    self.initializeAnalytics()
-    self.initializeLocalization()
+    initializeTabBarDelegate()
+    initializeCrashReporting()
+    initializeGoogleMapsApi()
+    initializeStyling()
+    initializeAnalytics()
+    initializeLocalization()
+    initializeReachability()
     return true
   }
   
@@ -70,7 +74,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   /// Sets the delegate property on the main UITabBarController to AppDelegate.
   func initializeTabBarDelegate() {
-    guard let window = self.window else { return }
+    guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     tabBarController.delegate = self
   }
@@ -91,7 +95,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   func initializeStyling() {
     UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName : MDCTypography.captionFont()], for: UIControlState.normal)
     // offset for the snack bar message view which is used to display LookAt information in the virtual tour
-    guard let window = self.window else { return }
+    guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     let windowRect = tabBarController.view.frame
     MDCSnackbarManager.setBottomOffset(windowRect.size.height - SnackbarMessageViewOffsets.topOffset.rawValue)
@@ -115,7 +119,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   /// Ensures that the titles on the tabs at the bottom of the app are fully localized.
   func initializeLocalization() {
-    guard let window = self.window else { return }
+    guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     for (index, item) in (tabBarController.tabBar.items?.enumerated())! {
       var title = ""
@@ -135,6 +139,16 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
       item.title = title
     }
   }
+  
+  /// Reachability is used in the app to understand whether the user is online or offline. This function is responsible for starting the notifier so that all elements in the app know when they are offline and when they are online.
+  func initializeReachability() {
+    reachability = Reachability.init()
+    do {
+      try reachability!.startNotifier()
+    } catch {
+      NSLog("Failed to start the reachability notifier")
+    }
+  }
 }
 
 /// Allows a `PlacemarkViewController` to tell the delegate to navigate to the virtual tour section of the app.
@@ -145,10 +159,11 @@ extension AppDelegate : MapViewControllerDelegate {
    - parameter placemark: The `Placemark` to land on after switching to the virtual tour.
    */
   func navigateToVirtualTourWithPlacemark(_ placemark: Placemark) {
-    guard let window = self.window else { return }
+    guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     guard let viewControllers = tabBarController.viewControllers else { return }
     guard let virtualTourViewController = viewControllers[TabBarControllerIndex.virtualTourViewController.rawValue] as? VirtualTourViewController else { return }
+    guard virtualTourViewController.isOnline() else { return }
     tabBarController.selectedIndex = TabBarControllerIndex.virtualTourViewController.rawValue
     let index = Trail.instance.placemarkIndex(placemark)
     virtualTourViewController.model.navigateToLookAt(index)

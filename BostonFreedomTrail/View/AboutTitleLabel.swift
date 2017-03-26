@@ -43,12 +43,12 @@ class AboutTitleLabel: UILabel {
    */
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-    self.applyStyles()
+    applyStyles()
   }
   
   /// Ensures that the appropriate styles are set on the label.
   func applyStyles() {
-    self.textColor = UIColor.bftDarkTextColor()
-    self.font = MDCTypography.titleFont()
+    textColor = UIColor.bftDarkTextColor()
+    font = MDCTypography.titleFont()
   }
 }

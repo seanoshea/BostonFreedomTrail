@@ -45,7 +45,7 @@ final class PlacemarkModel {
    */
   func stringForWebView() -> String {
     guard let htmlString = Bundle.main.path(forResource: ResourceConstants.PlacemarkIdentifier.rawValue, ofType: "html") else { return "" }
-    guard let description = self.placemark?.placemarkDescription else { return "" }
+    guard let description = placemark?.placemarkDescription else { return "" }
     do {
       return try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: String.Encoding.utf8.rawValue), description) as String
     } catch (_) {
