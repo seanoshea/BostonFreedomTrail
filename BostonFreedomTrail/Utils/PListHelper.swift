@@ -30,31 +30,62 @@
 
 import Foundation
 
+/// Enum for loading values from the app's plist
 enum PListHelperConstants: String {
+  /// Constant for the API key for Google Maps
   case BostonFreedomTrailGoogleMapAPIKey
+  /// Constant for the default latitude for the map view
   case BostonFreedomTrailDefaultLatitude
+  /// Constant for the default longitude for the map view
   case BostonFreedomTrailDefaultLongitude
+  /// Constant for the default camera zoom for the map view
   case BostonFreedomTrailDefaultCameraZoom
 }
 
+/// Helper functions for loading values from the app's plist
 struct PListHelper {
   
+  /**
+   Retrieves the Google Maps API which is used to initialize the map in the map view
+   
+   - returns: the Google Maps API key used in the app
+   */
   static func googleMapsApiKey() -> String {
     return (plistDictionary()[PListHelperConstants.BostonFreedomTrailGoogleMapAPIKey.rawValue] as? String)!
   }
-  
+
+  /**
+   Retrieves the latitude to set the map to if the user has never used the app before
+   
+   - returns: the default latitude used in the map view
+   */
   static func defaultLatitude() -> Double {
     return plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLatitude.rawValue]!.doubleValue
   }
-  
+
+  /**
+   Retrieves the longitude to set the map to if the user has never used the app before
+   
+   - returns: the default longitude used in the map view
+   */
   static func defaultLongitude() -> Double {
     return plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLongitude.rawValue]!.doubleValue
   }
-  
+
+  /**
+   Retrieves the camera zoom to set the map to if the user has never used the app before
+   
+   - returns: the default camera zoom used in the map view
+   */
   static func defaultCameraZoom() -> Float {
     return plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultCameraZoom.rawValue]!.floatValue
   }
-  
+
+  /**
+   Retrieves the plist in key/value format
+   
+   - returns: dictionary representation of the app's plist
+   */
   static func plistDictionary() -> [String: AnyObject] {
     let path = Bundle.main.path(forResource: "Info", ofType: "plist")
     let pListContents = NSDictionary(contentsOfFile: path!) as? [String: AnyObject]

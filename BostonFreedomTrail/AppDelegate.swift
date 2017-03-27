@@ -39,8 +39,11 @@ import ReachabilitySwift
 
 /// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndex: Int {
+  /// index for the map view tab
   case mapViewController = 0
+  /// index for the virtual tour tab
   case virtualTourViewController = 1
+  /// index for the about tab
   case aboutViewController = 2
 }
 

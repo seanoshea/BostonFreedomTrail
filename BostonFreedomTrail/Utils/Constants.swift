@@ -37,33 +37,45 @@ enum SegueConstants: String {
 
 /// Identifiers for loading files from the resources bundle
 enum ResourceConstants: String {
+  /// identifier for the html file loaded for the placemark view
   case PlacemarkIdentifier = "placemark"
+  /// identifier for the map view icon
   case PlacemarkResourceImage = "orange_red"
+  /// identifier for xib loaded for the info window which is used when the user taps on a marker in the map view
   case InfoWindowXibName = "InfoWindow"
 }
 
 /// Tags for the three tabs in the app
 enum TabBarControllerTags: Int {
+  /// identifier for the map view tab
   case mapViewTag = 0
+  /// identifier for the virtual tour tab
   case virtualTourViewTag = 1
+  /// identifier for the about tab
   case aboutViewTag = 2
 }
 
 /// Zoom constants for the camera
 enum CameraZoomConstraints: Float {
+  /// the minimum possible camera zoom
   case minimum = 12.0
+  /// the maximum possible camera zoom
   case maximum = 20.0
 }
 
 /// Constants for displaying the snackbar at the top of the app
 enum SnackbarMessageViewOffsets: CGFloat {
+  /// y offset for where to position the snackbar message from the top of the app
   case topOffset = 52.0
 }
 
 /// Constants when running the snapshot tests
 enum SnapshotConstants: Float {
+  /// the camera zoom used for snapshot tests
   case cameraZoom = 16.0
+  /// the latitude to set the app to for snapshot tests
   case defaultLatitude = 42.358969550484964
+  /// the longitude to set the app to for snapshot tests
   case defaultLongitude = -71.06010876595974
 }
 
