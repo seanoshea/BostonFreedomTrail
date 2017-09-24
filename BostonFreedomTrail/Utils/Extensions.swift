@@ -78,8 +78,8 @@ extension NSMutableAttributedString {
   public func linkify(_ textToFind:String, linkURL:String) {
     let foundRange = mutableString.range(of: textToFind)
     if foundRange.location != NSNotFound {
-      addAttribute(NSLinkAttributeName, value: linkURL, range: foundRange)
-      addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14.0), range: foundRange)
+      addAttribute(NSAttributedStringKey.link, value: linkURL, range: foundRange)
+      addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 14.0), range: foundRange)
     }
   }
 }

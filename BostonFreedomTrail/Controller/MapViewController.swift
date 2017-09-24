@@ -217,7 +217,7 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
    - parameter style:
    */
   func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-    let selector = #selector(dismiss as (Void) -> Void)
+    let selector = #selector(dismiss as () -> Void)
     let doneButton = UIBarButtonItem(title:NSLocalizedString("Done", comment: ""), style:.done, target:self, action:selector)
     let navigationController = UINavigationController(rootViewController: controller.presentedViewController)
     navigationController.topViewController!.navigationItem.leftBarButtonItem = doneButton
@@ -225,7 +225,7 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
   }
   
   /// Simply dismisses the current view controller.
-  func dismiss() {
+  @objc func dismiss() {
     dismiss(animated: true, completion: nil)
   }
 }

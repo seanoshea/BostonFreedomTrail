@@ -96,7 +96,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   /// Sets up all generic styling in the app.
   func initializeStyling() {
-    UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName : MDCTypography.captionFont()], for: UIControlState.normal)
+    UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font : MDCTypography.captionFont()], for: UIControlState.normal)
     // offset for the snack bar message view which is used to display LookAt information in the virtual tour
     guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
