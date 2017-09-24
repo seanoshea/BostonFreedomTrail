@@ -106,7 +106,7 @@ PODS:
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (6.0.0)
   - Quick (1.1.0)
-  - ReachabilitySwift (3)
+  - ReachabilitySwift (4.0-beta2)
 
 DEPENDENCIES:
   - Crashlytics (= 3.8.6)
@@ -120,7 +120,7 @@ DEPENDENCIES:
   - Nimble (= 7.0.1)
   - OHHTTPStubs (= 6.0.0)
   - Quick (= 1.1.0)
-  - ReachabilitySwift (= 3)
+  - ReachabilitySwift (= 4.0-beta2)
 
 SPEC CHECKSUMS:
   Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
@@ -138,8 +138,8 @@ SPEC CHECKSUMS:
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   OHHTTPStubs: 752f9b11fd810a15162d50f11c06ff94f8e012eb
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
-  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  ReachabilitySwift: d2e9cf75db8b2140bef42db5dafc6269d46cc137
 
-PODFILE CHECKSUM: 3d6243917ff03f987380b2e4d3bb4ba0af41c3f6
+PODFILE CHECKSUM: 26686237bba75677edb65889f603d671a8ac1d48
 
 COCOAPODS: 1.3.1
