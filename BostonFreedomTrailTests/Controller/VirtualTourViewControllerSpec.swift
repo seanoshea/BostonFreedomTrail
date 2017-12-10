@@ -30,7 +30,7 @@
 
 import Quick
 import Nimble
-import ReachabilitySwift
+import Reachability
 
 @testable import BostonFreedomTrail
 

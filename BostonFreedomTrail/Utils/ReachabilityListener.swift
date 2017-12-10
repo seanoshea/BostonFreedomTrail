@@ -65,6 +65,6 @@ extension ReachabilityListener where Self : BaseViewController {
   func isOnline() -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     guard let reachability = appDelegate.reachability else { return false }
-    return reachability.isReachable
+    return reachability.connection != .none
   }
 }
