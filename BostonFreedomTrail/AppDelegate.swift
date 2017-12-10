@@ -35,7 +35,7 @@ import CoreLocation
 import Fabric
 import Crashlytics
 import MaterialComponents
-import ReachabilitySwift
+import Reachability
 
 /// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndex: Int {

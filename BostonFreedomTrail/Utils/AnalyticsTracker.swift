@@ -90,7 +90,7 @@ extension AnalyticsTracker where Self : UIViewController {
   func trackScreenName() {
     guard let tracker = GAI.sharedInstance().defaultTracker else { return }
     let trackingName = getScreenTrackingName()
-    guard trackingName.characters.count > 0 else { return }
+    guard trackingName.count > 0 else { return }
     guard let parameters = GAIDictionaryBuilder.createScreenView().build() else { return }
     tracker.set(kGAIScreenName, value: trackingName)
     tracker.send(parameters as [NSObject : AnyObject])

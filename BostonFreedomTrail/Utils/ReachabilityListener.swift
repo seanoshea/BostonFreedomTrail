@@ -29,7 +29,7 @@
  */
 
 import UIKit
-import ReachabilitySwift
+import Reachability
 import MaterialComponents
 
 protocol ReachabilityListener:class {
