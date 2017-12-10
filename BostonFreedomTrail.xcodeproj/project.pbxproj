@@ -34,7 +34,6 @@
 		417758031CBB03D1008294C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 417758021CBB03D1008294C8 /* GoogleService-Info.plist */; };
 		418FC9C71DA1642900367010 /* AboutTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FC9C61DA1642900367010 /* AboutTextView.swift */; };
 		4199CD7F1C98F5E60017919E /* TrailSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199CD7E1C98F5E60017919E /* TrailSpec.swift */; };
-		41C654031D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */; };
 		41CB50E01C4EFDE000FFBD9E /* ApplicationSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */; };
 		41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE41C4D9930007DF354 /* MapViewControllerSpec.swift */; };
 		41D0F4EB1C53E64A00FCAB17 /* AboutViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D611C4FBAC300BF2CFF /* AboutViewControllerSpec.swift */; };
@@ -45,7 +44,6 @@
 		41D0F4F01C53E64A00FCAB17 /* TrailParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41691D211C4C0034009A03B3 /* TrailParserSpec.swift */; };
 		41D527E91D25EB6C005B8D5E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D527E81D25EB6C005B8D5E /* Extensions.swift */; };
 		41D8574E1CB1D4A3007EFE72 /* VirtualTourButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8574D1CB1D4A3007EFE72 /* VirtualTourButton.swift */; };
-		41DBA0781E51497E003B1316 /* BostonFreedomTrailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DBA0771E51497E003B1316 /* BostonFreedomTrailUITests.swift */; };
 		41DBB11A1E197CCF001EBA7F /* VirtualTourButtonSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */; };
 		41DE05E21C5515B0008AFCA5 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */; };
 		41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */; };
@@ -55,19 +53,11 @@
 		41DE05EC1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05EB1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift */; };
 		41DE95051C701D89004ACD7A /* PlacemarkModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE95041C701D89004ACD7A /* PlacemarkModelSpec.swift */; };
 		41E1C3711C525B670009570C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E1C3701C525B670009570C /* Constants.swift */; };
-		41F53A9A1E5BBC3800108FE3 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F53A981E5BBC3500108FE3 /* SnapshotHelper.swift */; };
 		AF025F457E34613F159E86BF /* Pods_BostonFreedomTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9776FBAD1FA52D4988E3D221 /* Pods_BostonFreedomTrail.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		41237BFB1C486CDF0007F76B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 41237BDC1C486CDF0007F76B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 41237BE31C486CDF0007F76B;
-			remoteInfo = BostonFreedomTrail;
-		};
-		41DBA07A1E51497E003B1316 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 41237BDC1C486CDF0007F76B /* Project object */;
 			proxyType = 1;
@@ -114,15 +104,11 @@
 		417758021CBB03D1008294C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		418FC9C61DA1642900367010 /* AboutTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTextView.swift; sourceTree = "<group>"; };
 		4199CD7E1C98F5E60017919E /* TrailSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailSpec.swift; sourceTree = "<group>"; };
-		41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewControllerSnapshotTest.swift; sourceTree = "<group>"; };
 		41CB50DF1C4EFDE000FFBD9E /* ApplicationSharedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedState.swift; sourceTree = "<group>"; };
 		41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSharedStateSpec.swift; sourceTree = "<group>"; };
 		41CB50E41C4F063A00FFBD9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		41D527E81D25EB6C005B8D5E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		41D8574D1CB1D4A3007EFE72 /* VirtualTourButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourButton.swift; sourceTree = "<group>"; };
-		41DBA0751E51497E003B1316 /* BostonFreedomTrailUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BostonFreedomTrailUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		41DBA0771E51497E003B1316 /* BostonFreedomTrailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BostonFreedomTrailUITests.swift; sourceTree = "<group>"; };
-		41DBA0791E51497E003B1316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourButtonSpec.swift; sourceTree = "<group>"; };
 		41DE05E11C5515B0008AFCA5 /* LocationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracker.swift; sourceTree = "<group>"; };
 		41DE05E31C552775008AFCA5 /* LocationTrackerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackerSpec.swift; sourceTree = "<group>"; };
@@ -132,7 +118,6 @@
 		41DE05EB1C55CEC5008AFCA5 /* VirtualTourModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourModelSpec.swift; sourceTree = "<group>"; };
 		41DE95041C701D89004ACD7A /* PlacemarkModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkModelSpec.swift; sourceTree = "<group>"; };
 		41E1C3701C525B670009570C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		41F53A981E5BBC3500108FE3 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		5737435D621BC5FC4BCB0FAE /* Pods-BostonFreedomTrail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrail.release.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrail/Pods-BostonFreedomTrail.release.xcconfig"; sourceTree = "<group>"; };
 		663F58F447E9B9FC83DDF3D0 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrail-BostonFreedomTrailTests/Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig"; sourceTree = "<group>"; };
 		73019A86399D78A0DDA5E021 /* Pods_BostonFreedomTrail_BostonFreedomTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BostonFreedomTrail_BostonFreedomTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,13 +142,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				219DB1ED2143D6C764169F59 /* Pods_BostonFreedomTrail_BostonFreedomTrailTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		41DBA0721E51497E003B1316 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +184,6 @@
 			children = (
 				41237BE61C486CDF0007F76B /* BostonFreedomTrail */,
 				41237BFD1C486CDF0007F76B /* BostonFreedomTrailTests */,
-				41DBA0761E51497E003B1316 /* BostonFreedomTrailUITests */,
 				41237BE51C486CDF0007F76B /* Products */,
 				CFD8331D401330980D2B232D /* Pods */,
 				C0497F188083798A2930EFE1 /* Frameworks */,
@@ -218,7 +195,6 @@
 			children = (
 				41237BE41C486CDF0007F76B /* BostonFreedomTrail.app */,
 				41237BFA1C486CDF0007F76B /* BostonFreedomTrail.xctest */,
-				41DBA0751E51497E003B1316 /* BostonFreedomTrailUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,7 +223,6 @@
 				410AFEE31C4D991A007DF354 /* Controller */,
 				41237C001C486CDF0007F76B /* Info.plist */,
 				410AFEE01C4D97F4007DF354 /* Model */,
-				41C654011D2AB5FA00C75AB4 /* SnapshotTests */,
 				41079D641C4FBB7300BF2CFF /* TestUtilities */,
 				41691D201C4C000C009A03B3 /* Utils */,
 				41DBB1181E197C91001EBA7F /* View */,
@@ -327,39 +302,12 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		41C654011D2AB5FA00C75AB4 /* SnapshotTests */ = {
-			isa = PBXGroup;
-			children = (
-				41C654021D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift */,
-			);
-			path = SnapshotTests;
-			sourceTree = "<group>";
-		};
-		41DBA0761E51497E003B1316 /* BostonFreedomTrailUITests */ = {
-			isa = PBXGroup;
-			children = (
-				41F53A971E5BBC1400108FE3 /* FastlaneImports */,
-				41DBA0771E51497E003B1316 /* BostonFreedomTrailUITests.swift */,
-				41DBA0791E51497E003B1316 /* Info.plist */,
-			);
-			name = BostonFreedomTrailUITests;
-			path = FreedomTrailUITests;
-			sourceTree = "<group>";
-		};
 		41DBB1181E197C91001EBA7F /* View */ = {
 			isa = PBXGroup;
 			children = (
 				41DBB1191E197CCF001EBA7F /* VirtualTourButtonSpec.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		41F53A971E5BBC1400108FE3 /* FastlaneImports */ = {
-			isa = PBXGroup;
-			children = (
-				41F53A981E5BBC3500108FE3 /* SnapshotHelper.swift */,
-			);
-			name = FastlaneImports;
 			sourceTree = "<group>";
 		};
 		C0497F188083798A2930EFE1 /* Frameworks */ = {
@@ -431,24 +379,6 @@
 			productReference = 41237BFA1C486CDF0007F76B /* BostonFreedomTrail.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		41DBA0741E51497E003B1316 /* BostonFreedomTrailUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 41DBA07E1E51497E003B1316 /* Build configuration list for PBXNativeTarget "BostonFreedomTrailUITests" */;
-			buildPhases = (
-				41DBA0711E51497E003B1316 /* Sources */,
-				41DBA0721E51497E003B1316 /* Frameworks */,
-				41DBA0731E51497E003B1316 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				41DBA07B1E51497E003B1316 /* PBXTargetDependency */,
-			);
-			name = BostonFreedomTrailUITests;
-			productName = FreedomTrailUITests;
-			productReference = 41DBA0751E51497E003B1316 /* BostonFreedomTrailUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -470,12 +400,6 @@
 						LastSwiftMigration = 0900;
 						TestTargetID = 41237BE31C486CDF0007F76B;
 					};
-					41DBA0741E51497E003B1316 = {
-						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 41237BE31C486CDF0007F76B;
-					};
 				};
 			};
 			buildConfigurationList = 41237BDF1C486CDF0007F76B /* Build configuration list for PBXProject "BostonFreedomTrail" */;
@@ -493,7 +417,6 @@
 			targets = (
 				41237BE31C486CDF0007F76B /* BostonFreedomTrail */,
 				41237BF91C486CDF0007F76B /* BostonFreedomTrailTests */,
-				41DBA0741E51497E003B1316 /* BostonFreedomTrailUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -514,13 +437,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		41237BF81C486CDF0007F76B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		41DBA0731E51497E003B1316 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -648,7 +564,6 @@
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
@@ -660,7 +575,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
@@ -728,7 +642,6 @@
 				4199CD7F1C98F5E60017919E /* TrailSpec.swift in Sources */,
 				41D0F4EA1C53E64A00FCAB17 /* MapViewControllerSpec.swift in Sources */,
 				41D0F4EB1C53E64A00FCAB17 /* AboutViewControllerSpec.swift in Sources */,
-				41C654031D2AB99E00C75AB4 /* AboutViewControllerSnapshotTest.swift in Sources */,
 				41D0F4EF1C53E64A00FCAB17 /* PListHelperSpec.swift in Sources */,
 				41DE05E41C552775008AFCA5 /* LocationTrackerSpec.swift in Sources */,
 				412FBE6C1E180DD200CCF375 /* AppDelegateSpec.swift in Sources */,
@@ -744,15 +657,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		41DBA0711E51497E003B1316 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				41DBA0781E51497E003B1316 /* BostonFreedomTrailUITests.swift in Sources */,
-				41F53A9A1E5BBC3800108FE3 /* SnapshotHelper.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -760,11 +664,6 @@
 			isa = PBXTargetDependency;
 			target = 41237BE31C486CDF0007F76B /* BostonFreedomTrail */;
 			targetProxy = 41237BFB1C486CDF0007F76B /* PBXContainerItemProxy */;
-		};
-		41DBA07B1E51497E003B1316 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 41237BE31C486CDF0007F76B /* BostonFreedomTrail */;
-			targetProxy = 41DBA07A1E51497E003B1316 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -987,39 +886,6 @@
 			};
 			name = Release;
 		};
-		41DBA07C1E51497E003B1316 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				INFOPLIST_FILE = FreedomTrailUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.FreedomTrailUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = BostonFreedomTrail;
-			};
-			name = Debug;
-		};
-		41DBA07D1E51497E003B1316 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				INFOPLIST_FILE = FreedomTrailUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.FreedomTrailUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = BostonFreedomTrail;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1046,15 +912,6 @@
 			buildConfigurations = (
 				41237C071C486CDF0007F76B /* Debug */,
 				41237C081C486CDF0007F76B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		41DBA07E1E51497E003B1316 /* Build configuration list for PBXNativeTarget "BostonFreedomTrailUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				41DBA07C1E51497E003B1316 /* Debug */,
-				41DBA07D1E51497E003B1316 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

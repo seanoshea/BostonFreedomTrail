@@ -69,16 +69,6 @@ enum SnackbarMessageViewOffsets: CGFloat {
   case topOffset = 52.0
 }
 
-/// Constants when running the snapshot tests
-enum SnapshotConstants: Float {
-  /// the camera zoom used for snapshot tests
-  case cameraZoom = 16.0
-  /// the latitude to set the app to for snapshot tests
-  case defaultLatitude = 42.358969550484964
-  /// the longitude to set the app to for snapshot tests
-  case defaultLongitude = -71.06010876595974
-}
-
 /// Extension on `UIColor` for colors specific to the app
 extension UIColor {
   

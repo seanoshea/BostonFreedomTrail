@@ -110,6 +110,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   func initializeAnalytics() {
     // only bother with analytics for prod builds
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
+    guard ApplicationSharedState.sharedInstance.isDebug() else { return }
     var configureError: NSError?
     GGLContext.sharedInstance().configureWithError(&configureError)
     guard configureError == nil else {

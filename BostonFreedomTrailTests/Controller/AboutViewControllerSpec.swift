@@ -55,14 +55,6 @@ class AboutViewControllerTest: QuickSpec {
       
       context("Initialization of the AboutViewController") {
         
-        it("should have labels set via IBOutlets") {
-          expect(subject?.developerLabel).toNot(equal(nil))
-          expect(subject?.developerDetailsTextView).toNot(equal(nil))
-          expect(subject?.trailInformationLabel).toNot(equal(nil))
-          expect(subject?.trailInformationDetailsTextView).toNot(equal(nil))
-          expect(subject?.googleMapsLabel).toNot(equal(nil))
-        }
-        
         it("should have text on each of its labels") {
           expect(subject?.developerLabel?.text).toNot(equal(""))
           expect(subject?.developerDetailsTextView?.text).toNot(equal(""))

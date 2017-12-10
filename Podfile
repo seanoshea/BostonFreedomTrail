@@ -19,7 +19,6 @@ target :BostonFreedomTrail do
     pod 'Quick', '1.2.0'
     pod 'Nimble', '7.0.3'
     pod 'OHHTTPStubs', '6.1.0'
-    pod 'FBSnapshotTestCase', '2.1.4'
   end
 
 end
