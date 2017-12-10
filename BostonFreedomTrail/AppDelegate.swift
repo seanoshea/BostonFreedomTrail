@@ -35,7 +35,7 @@ import CoreLocation
 import Fabric
 import Crashlytics
 import MaterialComponents
-import ReachabilitySwift
+import Reachability
 
 /// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndex: Int {
@@ -96,7 +96,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   /// Sets up all generic styling in the app.
   func initializeStyling() {
-    UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName : MDCTypography.captionFont()], for: UIControlState.normal)
+    UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font : MDCTypography.captionFont()], for: UIControlState.normal)
     // offset for the snack bar message view which is used to display LookAt information in the virtual tour
     guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
@@ -110,6 +110,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   func initializeAnalytics() {
     // only bother with analytics for prod builds
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
+    guard ApplicationSharedState.sharedInstance.isDebug() else { return }
     var configureError: NSError?
     GGLContext.sharedInstance().configureWithError(&configureError)
     guard configureError == nil else {

@@ -63,8 +63,8 @@ class AboutTextView: UITextView {
     set(newAttributedText) {
       let mutableAttributedString = NSMutableAttributedString.init(attributedString: newAttributedText!)
       let range = NSRange.init(location: 0, length: mutableAttributedString.length)
-      mutableAttributedString.addAttribute(NSForegroundColorAttributeName, value:UIColor.bftDarkTextColor(), range:range)
-      mutableAttributedString.addAttribute(NSFontAttributeName, value:MDCTypography.body1Font(), range:range)
+      mutableAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value:UIColor.bftDarkTextColor(), range:range)
+      mutableAttributedString.addAttribute(NSAttributedStringKey.font, value:MDCTypography.body1Font(), range:range)
       super.attributedText = mutableAttributedString
     }
   }

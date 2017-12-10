@@ -59,7 +59,7 @@ final class MapViewController: BaseViewController {
     super.viewDidLoad()
     initializeDelegate()
     createMapView()
-    setupPlacemarks()
+    model.addPathToMap(mapView!)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,14 +95,6 @@ final class MapViewController: BaseViewController {
     mapView.delegate = self
     self.mapView = mapView
     view = mapView
-  }
-  
-  /// Adds all the placemarks to the `mapView`. Also responsible for mapping out the path between the placemarks.
-  func setupPlacemarks() {
-    let markers = model.addPlacemarksToMap(mapView!)
-    model.addPathToMap(mapView!)
-    // do some checking for fastlane
-    snaplaneCallbacks(markers)
   }
   
   /// Ensures that the `delegate` property is set to the `AppDelegate`.
@@ -217,7 +209,7 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
    - parameter style:
    */
   func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-    let selector = #selector(dismiss as (Void) -> Void)
+    let selector = #selector(dismiss as () -> Void)
     let doneButton = UIBarButtonItem(title:NSLocalizedString("Done", comment: ""), style:.done, target:self, action:selector)
     let navigationController = UINavigationController(rootViewController: controller.presentedViewController)
     navigationController.topViewController!.navigationItem.leftBarButtonItem = doneButton
@@ -225,39 +217,7 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
   }
   
   /// Simply dismisses the current view controller.
-  func dismiss() {
+  @objc func dismiss() {
     dismiss(animated: true, completion: nil)
-  }
-}
-
-extension MapViewController {
-  
-  func snaplaneCallbacks(_ markers:[GMSMarker]) {
-    if ProcessInfo.processInfo.arguments.contains("SnapshotIdentifier") {
-      if let lastArgument = ProcessInfo.processInfo.arguments.last {
-        var markerName = ""
-        switch lastArgument {
-          case "TapOnStateHouse":
-            markerName = "State House"
-          break
-          case "TapOnPaulRevereHouse":
-            markerName = "Paul Revere House"
-          break
-          case "TapOnFaneuilHallMarketplace":
-            markerName = "Faneuil Hall Marketplace"
-          break
-        default:
-          break
-        }
-        for marker:GMSMarker in markers {
-          if marker.title?.caseInsensitiveCompare(markerName) == .orderedSame {
-            mapView?.selectedMarker = marker
-            let camera = GMSCameraPosition.camera(withLatitude: marker.position.latitude, longitude:marker.position.longitude, zoom:model.zoomForMap())
-            mapView?.camera = camera
-            break
-          }
-        }
-      }
-    }
   }
 }
