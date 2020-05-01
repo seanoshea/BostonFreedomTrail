@@ -1,0 +1,26 @@
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.2
+jobs:
+  build-and-test:
+    macos:
+      xcode: 11.3.1
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout
+      - run: bundle install
+      - run: bundle exec pod install
+      - run: cd fastlane && bundle exec fastlane test
+      - run: curl -s https://codecov.io/bash
+  swiftlint:
+    docker:
+      - image: dantoml/swiftlint:latest
+    steps:
+      - checkout
+      - run: swiftlint lint --config .swiftlint.yml --reporter junit | tee result.xml
+workflows:
+  version: 2
+  build-test-adhoc:
+    jobs:
+      - build-and-test
+      - swiftlint
