@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -35,19 +35,19 @@ import GoogleMaps
 /// Keys used to store user preferences in NSUserDefaults
 enum DefaultsKeys: String {
   /// Key for storing the last known camera zoom in the map view
-  case ApplicationSharedStateCameraZoom
+  case applicationSharedStateCameraZoom
   /// Key for storing the latitude of the placemark on which the user last tapped
-  case ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude
+  case lastKnownPlacemarkCoordinateLatitude
   /// Key for storing the longitude of the placemark on which the user last tapped
-  case ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude
+  case lastKnownPlacemarkCoordinateLongitude
   /// Key for storing the latitude of where the user last tapped on the map view
-  case ApplicationSharedStateLastKnownLocationLatitude
+  case lastKnownLocationLatitude
   /// Key for storing the longitude of where the user last tapped on the map view
-  case ApplicationSharedStateLastKnownLocationLongitude
+  case lastKnownLocationLongitude
   /// Key for storing the latitude of where the user was last noticed on the map view
-  case ApplicationSharedStateLastKnownCoordinateLatitude
+  case lastKnownCoordinateLatitude
   /// Key for storing the longitude of where the user was last noticed on the map view
-  case ApplicationSharedStateLastKnownCoordinateLongitude
+  case lastKnownCoordinateLongitude
 }
 
 /// Simple accessors for user defaults used throughout the app.
@@ -62,22 +62,22 @@ final class ApplicationSharedState {
       guard newValue > kGMSMinZoomLevel && newValue < kGMSMaxZoomLevel else {
         return
       }
-      UserDefaults.standard.set(newValue, forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
+      UserDefaults.standard.set(newValue, forKey: DefaultsKeys.applicationSharedStateCameraZoom.rawValue)
     }
     get {
-      return UserDefaults.standard.float(forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
+      return UserDefaults.standard.float(forKey: DefaultsKeys.applicationSharedStateCameraZoom.rawValue)
     }
   }
   
   /// The last known placemark that the user interacted with in the map view.
   var lastKnownPlacemarkCoordinate: CLLocationCoordinate2D {
     set {
-      UserDefaults.standard.set(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
-      UserDefaults.standard.set(newValue.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
+      UserDefaults.standard.set(newValue.latitude, forKey: DefaultsKeys.lastKnownPlacemarkCoordinateLatitude.rawValue)
+      UserDefaults.standard.set(newValue.longitude, forKey: DefaultsKeys.lastKnownPlacemarkCoordinateLongitude.rawValue)
     }
     get {
-      let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
-      let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
+      let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownPlacemarkCoordinateLatitude.rawValue)
+      let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownPlacemarkCoordinateLongitude.rawValue)
       return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
     }
   }
@@ -85,12 +85,12 @@ final class ApplicationSharedState {
   /// The last known location that the user interacted with in the map view.
   var lastKnownCoordinate: CLLocationCoordinate2D {
     set {
-      UserDefaults.standard.set(newValue.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
-      UserDefaults.standard.set(newValue.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
+      UserDefaults.standard.set(newValue.latitude, forKey: DefaultsKeys.lastKnownCoordinateLatitude.rawValue)
+      UserDefaults.standard.set(newValue.longitude, forKey: DefaultsKeys.lastKnownCoordinateLongitude.rawValue)
     }
     get {
-      let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
-      let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
+      let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownCoordinateLatitude.rawValue)
+      let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownCoordinateLongitude.rawValue)
       return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
     }
   }
@@ -98,12 +98,12 @@ final class ApplicationSharedState {
   /// The last known location the user was seen in the map view.
   var lastKnownLocation: CLLocation {
     set {
-      UserDefaults.standard.set(newValue.coordinate.latitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
-      UserDefaults.standard.set(newValue.coordinate.longitude, forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
+      UserDefaults.standard.set(newValue.coordinate.latitude, forKey: DefaultsKeys.lastKnownLocationLatitude.rawValue)
+      UserDefaults.standard.set(newValue.coordinate.longitude, forKey: DefaultsKeys.lastKnownLocationLongitude.rawValue)
     }
     get {
-      let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
-      let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
+      let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownLocationLatitude.rawValue)
+      let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownLocationLongitude.rawValue)
       return CLLocation.init(latitude:latitude, longitude:longitude)
     }
   }
@@ -119,12 +119,12 @@ final class ApplicationSharedState {
   
   /// Gives a clean slate to the user defaults.
   func clear() {
-    UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateCameraZoom.rawValue)
-    UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude.rawValue)
-    UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude.rawValue)
-    UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLatitude.rawValue)
-    UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownLocationLongitude.rawValue)
-    UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLatitude.rawValue)
-    UserDefaults.standard.removeObject(forKey: DefaultsKeys.ApplicationSharedStateLastKnownCoordinateLongitude.rawValue)
+    UserDefaults.standard.removeObject(forKey: DefaultsKeys.applicationSharedStateCameraZoom.rawValue)
+    UserDefaults.standard.removeObject(forKey: DefaultsKeys.lastKnownPlacemarkCoordinateLatitude.rawValue)
+    UserDefaults.standard.removeObject(forKey: DefaultsKeys.lastKnownPlacemarkCoordinateLongitude.rawValue)
+    UserDefaults.standard.removeObject(forKey: DefaultsKeys.lastKnownLocationLatitude.rawValue)
+    UserDefaults.standard.removeObject(forKey: DefaultsKeys.lastKnownLocationLongitude.rawValue)
+    UserDefaults.standard.removeObject(forKey: DefaultsKeys.lastKnownCoordinateLatitude.rawValue)
+    UserDefaults.standard.removeObject(forKey: DefaultsKeys.lastKnownCoordinateLongitude.rawValue)
   }
 }

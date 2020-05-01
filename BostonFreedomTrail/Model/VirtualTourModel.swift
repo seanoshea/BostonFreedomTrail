@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -87,13 +87,6 @@ final class VirtualTourModel {
   var lookAts = [Int:Int]()
   /// Collection of indexes for understanding what `Placemark` the user is navigating towards
   var placemarkDemarkations = [Int:Int]()
-  /// Where the tour is currently positioned
-  var currentTourLocation: CLLocation? {
-    get {
-      guard tour.count > currentTourPosition else { return nil }
-      return tour[currentTourPosition]
-    }
-  }
   /// Where the tour is currently located
   var currentTourPosition: Int = 0
   /// The state of the virtual tour
@@ -177,6 +170,8 @@ final class VirtualTourModel {
     advanceLocation()
     return tour[currentTourPosition]
   }
+    
+  // MARK: Tour Controls
   
   /// Toggles the virtual tour state between play and pause
   func togglePlayPause() {
@@ -212,6 +207,11 @@ final class VirtualTourModel {
    */
   func hasAdvancedPastFirstLocation() -> Bool {
     return currentTourPosition > 0
+  }
+
+  func getCurrentTourLocation() -> CLLocation? {
+    guard tour.count > currentTourPosition else { return nil }
+    return tour[currentTourPosition]
   }
   
   /**
@@ -315,11 +315,8 @@ final class VirtualTourModel {
       return 0
     }
     var foundKey: Int?
-    for (key, value) in lookAts {
-      if value == placemarkIndex {
-        foundKey = key
-        break
-      }
+    for (key, value) in lookAts where value == placemarkIndex {
+      foundKey = key
     }
     guard let positionInTour = foundKey else { return nil }
     return positionInTour - 1
@@ -337,12 +334,12 @@ final class VirtualTourModel {
   // MARK: Calculating Camera Directions
   
   func locationDirectionForNextLocation(_ nextLocation: CLLocation) -> CLLocationDirection {
-    let from = tour[currentTourPosition - 1]
-    let to = CLLocation.init(latitude:nextLocation.coordinate.latitude, longitude:nextLocation.coordinate.longitude)
-    let fromLatitude = degreesToRadians(from.coordinate.latitude)
-    let fromLongitude = degreesToRadians(from.coordinate.longitude)
-    let toLatitude = degreesToRadians(to.coordinate.latitude)
-    let toLongitude = degreesToRadians(to.coordinate.longitude)
+    let fromLocation = tour[currentTourPosition - 1]
+    let toLocation = CLLocation.init(latitude:nextLocation.coordinate.latitude, longitude:nextLocation.coordinate.longitude)
+    let fromLatitude = degreesToRadians(fromLocation.coordinate.latitude)
+    let fromLongitude = degreesToRadians(fromLocation.coordinate.longitude)
+    let toLatitude = degreesToRadians(toLocation.coordinate.latitude)
+    let toLongitude = degreesToRadians(toLocation.coordinate.longitude)
     let degree = radiansToDegrees(atan2(sin(toLongitude - fromLongitude) * cos(toLatitude), cos(fromLatitude) * sin(toLatitude)-sin(fromLatitude) * cos(toLatitude) * cos(toLongitude - fromLongitude)))
     return degree >= 0.0 ? degree : 360.0 + degree
   }

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ class ApplicationSharedStateTest: QuickSpec {
         
         it("should know the current camera zoom") {
           
-          UserDefaults.standard.set(12.0, forKey: "ApplicationSharedStateCameraZoom")
+          UserDefaults.standard.set(12.0, forKey: "applicationSharedStateCameraZoom")
           
           expect(ApplicationSharedState.sharedInstance.cameraZoom).to(equal(12.0))
         }
@@ -53,7 +53,7 @@ class ApplicationSharedStateTest: QuickSpec {
           
           ApplicationSharedState.sharedInstance.cameraZoom = 8.0
           
-          expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateCameraZoom")).to(equal(8.0))
+          expect(UserDefaults.standard.float(forKey: "applicationSharedStateCameraZoom")).to(equal(8.0))
         }
         
         it("should not allow a camera zoom level that is too small") {
@@ -62,7 +62,7 @@ class ApplicationSharedStateTest: QuickSpec {
           
           ApplicationSharedState.sharedInstance.cameraZoom = 1.0
           
-          expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateCameraZoom")).to(equal(12.0))
+          expect(UserDefaults.standard.float(forKey: "applicationSharedStateCameraZoom")).to(equal(12.0))
         }
       }
       
@@ -73,8 +73,8 @@ class ApplicationSharedStateTest: QuickSpec {
         
         it("should be able to retrieve the lat and long of a recently pressed placemark") {
           
-          UserDefaults.standard.set(12.0, forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude")
-          UserDefaults.standard.set(11.0, forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude")
+          UserDefaults.standard.set(12.0, forKey: "lastKnownPlacemarkCoordinateLatitude")
+          UserDefaults.standard.set(11.0, forKey: "lastKnownPlacemarkCoordinateLongitude")
           
           let coordinate = ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate
           
@@ -85,8 +85,8 @@ class ApplicationSharedStateTest: QuickSpec {
         it("should be able to store the lat and long of a recently pressed placemark") {
           
           ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
-          expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLatitude")).to(equal(-71.063303))
-          expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownPlacemarkCoordinateLongitude")).to(equal(42.35769))
+          expect(UserDefaults.standard.float(forKey: "lastKnownPlacemarkCoordinateLatitude")).to(equal(-71.063303))
+          expect(UserDefaults.standard.float(forKey: "lastKnownPlacemarkCoordinateLongitude")).to(equal(42.35769))
         }
       }
       
@@ -97,8 +97,8 @@ class ApplicationSharedStateTest: QuickSpec {
         
         it("should be able to retrieve the lat and long of where the user was most recently seen") {
           
-          UserDefaults.standard.set(latitude, forKey: "ApplicationSharedStateLastKnownLocationLatitude")
-          UserDefaults.standard.set(longitude, forKey: "ApplicationSharedStateLastKnownLocationLongitude")
+          UserDefaults.standard.set(latitude, forKey: "lastKnownLocationLatitude")
+          UserDefaults.standard.set(longitude, forKey: "lastKnownLocationLongitude")
           
           let location:CLLocation = ApplicationSharedState.sharedInstance.lastKnownLocation
           
@@ -110,8 +110,8 @@ class ApplicationSharedStateTest: QuickSpec {
           
           ApplicationSharedState.sharedInstance.lastKnownLocation = CLLocation.init(latitude: latitude, longitude: longitude)
           
-          expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownLocationLatitude")).to(equal(-71.063303))
-          expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownLocationLongitude")).to(equal(42.35769))
+          expect(UserDefaults.standard.float(forKey: "lastKnownLocationLatitude")).to(equal(-71.063303))
+          expect(UserDefaults.standard.float(forKey: "lastKnownLocationLongitude")).to(equal(42.35769))
         }
       }
     }

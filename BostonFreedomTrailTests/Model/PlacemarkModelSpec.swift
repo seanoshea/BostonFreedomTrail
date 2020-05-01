@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ class PlacemarkModelTest: QuickSpec {
       
       var subject:PlacemarkModel?
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         subject = PlacemarkModel.init()
         subject?.placemark = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description", lookAt:nil)
       })

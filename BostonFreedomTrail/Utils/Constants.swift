@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -32,17 +32,17 @@ import Foundation
 
 /// Identifiers for segues in the app
 enum SegueConstants: String {
-  case MapToPlacemarkSegueIdentifier
+  case mapToPlacemarkSegueIdentifier
 }
 
 /// Identifiers for loading files from the resources bundle
 enum ResourceConstants: String {
   /// identifier for the html file loaded for the placemark view
-  case PlacemarkIdentifier = "placemark"
+  case placemarkIdentifier = "placemark"
   /// identifier for the map view icon
-  case PlacemarkResourceImage = "orange_red"
+  case placemarkResourceImage = "orange_red"
   /// identifier for xib loaded for the info window which is used when the user taps on a marker in the map view
-  case InfoWindowXibName = "InfoWindow"
+  case infoWindowXibName = "InfoWindow"
 }
 
 /// Tags for the three tabs in the app
@@ -66,7 +66,7 @@ enum CameraZoomConstraints: Float {
 /// Constants for displaying the snackbar at the top of the app
 enum SnackbarMessageViewOffsets: CGFloat {
   /// y offset for where to position the snackbar message from the top of the app
-  case topOffset = 52.0
+  case topOffset = 94.0
 }
 
 /// Extension on `UIColor` for colors specific to the app

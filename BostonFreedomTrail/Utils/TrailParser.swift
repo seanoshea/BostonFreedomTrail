@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -95,46 +95,34 @@ final class TrailParser: NSObject, XMLParserDelegate {
     switch elementName {
     case TrailParserConstants.folder.rawValue:
       startFolder = true
-      break
     case TrailParserConstants.placemark.rawValue:
       guard let identifier = attributeDict[TrailParserConstants.identifier.rawValue] else { break }
       currentIdentifier = identifier
       startPlacemark = true
-      break
     case TrailParserConstants.name.rawValue:
       startName = true
-      break
     case TrailParserConstants.description.rawValue:
       startDescription = true
-      break
     case TrailParserConstants.lineString.rawValue:
       startLine = true
-      break
     case TrailParserConstants.coordinates.rawValue:
       if startLine {
         startLineCoordinates = true
       } else {
         startCoordinates = true
       }
-      break
     case TrailParserConstants.point.rawValue:
       startPoint = true
-      break
     case TrailParserConstants.lookAt.rawValue:
       startLookAt = true
-      break
     case TrailParserConstants.latitude.rawValue:
       startLatitude = true
-      break
     case TrailParserConstants.longitude.rawValue:
       startLongitude = true
-      break
     case TrailParserConstants.tilt.rawValue:
       startTilt = true
-      break
     case TrailParserConstants.heading.rawValue:
       startHeading = true
-      break
     default:
       break
     }
@@ -171,39 +159,30 @@ final class TrailParser: NSObject, XMLParserDelegate {
     switch elementName {
     case TrailParserConstants.folder.rawValue:
       startFolder = false
-      break
     case TrailParserConstants.name.rawValue:
       startName = false
-      break
     case TrailParserConstants.description.rawValue:
       startDescription = false
-      break
     case TrailParserConstants.coordinates.rawValue:
       if startLine {
         startLineCoordinates = false
       } else {
         startCoordinates = false
       }
-      break
     case TrailParserConstants.point.rawValue:
       startPoint = false
-      break
     case TrailParserConstants.placemark.rawValue:
       startPlacemark = false
-      break
     case TrailParserConstants.lineString.rawValue:
       startLine = false
       let lookAt = parseLookAt()
       let placemark = Placemark(identifier:currentIdentifier!, name:currentName!, location:currentLocation!, coordinates:parseLineCoordinates(), placemarkDescription:currentDescription!, lookAt:lookAt)
       trail.placemarks.append(placemark)
       hasLookAt = false
-      break
     case TrailParserConstants.lookAt.rawValue:
       startLookAt = false
-      break
     case TrailParserConstants.latitude.rawValue:
       startLatitude = false
-      break
     case TrailParserConstants.longitude.rawValue:
       startLongitude = false
     case TrailParserConstants.tilt.rawValue:

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -41,9 +41,9 @@ class BaseViewControllerTest: QuickSpec {
       
       var subject:BaseViewController?
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         subject = BaseViewController.init()
-        let _ = subject?.view
+        _ = subject?.view
       })
       
       context("Analytics") {
@@ -55,4 +55,3 @@ class BaseViewControllerTest: QuickSpec {
     }
   }
 }
-

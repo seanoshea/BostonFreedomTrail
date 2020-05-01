@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@ class LocationTrackerTest: QuickSpec {
       
       context("CLLocationManagerDelegate methods") {
         
-        beforeEach({ () -> () in
+        beforeEach({ () -> Void in
           ApplicationSharedState.sharedInstance.clear()
         })
         
@@ -69,8 +69,8 @@ class LocationTrackerTest: QuickSpec {
           LocationTracker.sharedInstance.locationManager(LocationTracker.sharedInstance.locationManager, didUpdateLocations: [CLLocation.init(latitude: latitude, longitude: longitude)])
           
           expect(LocationTracker.sharedInstance.currentLocation).toNot(beNil())
-          expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownLocationLatitude")).to(equal(-71.063303))
-          expect(UserDefaults.standard.float(forKey: "ApplicationSharedStateLastKnownLocationLongitude")).to(equal(42.35769))
+          expect(UserDefaults.standard.float(forKey: "lastKnownLocationLatitude")).to(equal(-71.063303))
+          expect(UserDefaults.standard.float(forKey: "lastKnownLocationLongitude")).to(equal(42.35769))
         }
       }
     }

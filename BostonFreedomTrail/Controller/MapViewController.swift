@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -60,11 +60,12 @@ final class MapViewController: BaseViewController {
     initializeDelegate()
     createMapView()
     model.addPathToMap(mapView!)
+    _ = model.addPlacemarksToMap(mapView!)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else { return }
-    if SegueConstants.MapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == ComparisonResult.orderedSame {
+    if SegueConstants.mapToPlacemarkSegueIdentifier.rawValue.caseInsensitiveCompare(identifier) == ComparisonResult.orderedSame {
       guard let placemarkViewController = segue.destination as? PlacemarkViewController else { return }
       guard let placemark = mapView?.selectedMarker!.userData as? Placemark else { return }
       placemarkViewController.delegate = self
@@ -77,7 +78,7 @@ final class MapViewController: BaseViewController {
   // MARK: Analytics
   
   override func getScreenTrackingName() -> String {
-    return AnalyticsScreenNames.MapScreen.rawValue
+    return AnalyticsScreenNames.mapScreen.rawValue
   }
   
   // MARK: Private Functions
@@ -133,7 +134,7 @@ extension MapViewController : GMSMapViewDelegate {
   func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
     ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
     guard let userData = marker.userData as? Placemark else { return false }
-    trackButtonPressForPlacemark(userData, label: AnalyticsLabels.MarkerPress.rawValue)
+    trackButtonPressForPlacemark(userData, label: AnalyticsLabels.markerPress.rawValue)
     return false
   }
   
@@ -146,7 +147,7 @@ extension MapViewController : GMSMapViewDelegate {
   func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
     ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = marker.position
     guard let userData = marker.userData as? Placemark else { return }
-    trackButtonPressForPlacemark(userData, label: AnalyticsLabels.InfoWindowPress.rawValue)
+    trackButtonPressForPlacemark(userData, label: AnalyticsLabels.infoWindowPress.rawValue)
     streetViewButtonPressedForPlacemark(userData)
     // previous implementation.
     // performSegue(withIdentifier: SegueConstants.MapToPlacemarkSegueIdentifier.rawValue, sender: self)
@@ -161,7 +162,7 @@ extension MapViewController : GMSMapViewDelegate {
    */
   func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
     guard let userData = marker.userData as? Placemark else { return nil }
-    guard let viewArray = Bundle.main.loadNibNamed(ResourceConstants.InfoWindowXibName.rawValue, owner: self, options: nil) else { return nil }
+    guard let viewArray = Bundle.main.loadNibNamed(ResourceConstants.infoWindowXibName.rawValue, owner: self, options: nil) else { return nil }
     guard let infoWindow = viewArray[0] as? InfoWindow else { return nil }
     infoWindow.header?.text = userData.name
     return infoWindow

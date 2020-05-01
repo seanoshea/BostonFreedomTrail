@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -41,8 +41,8 @@ class VirtualTourButtonTest: QuickSpec {
       
       var subject:VirtualTourButton!
       
-      beforeEach({ () -> () in
-        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 100, height: 100))
+      beforeEach({ () -> Void in
+        let rect = CGRect(origin: CGPoint(x: 0, y :0), size: CGSize(width: 100, height: 100))
         subject = VirtualTourButton.init(frame: rect, shape: .default)
       })
       

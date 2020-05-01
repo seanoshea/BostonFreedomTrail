@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -33,13 +33,13 @@ import Foundation
 /// Enum for loading values from the app's plist
 enum PListHelperConstants: String {
   /// Constant for the API key for Google Maps
-  case BostonFreedomTrailGoogleMapAPIKey
+  case bostonFreedomTrailGoogleMapAPIKey
   /// Constant for the default latitude for the map view
-  case BostonFreedomTrailDefaultLatitude
+  case bostonFreedomTrailDefaultLatitude
   /// Constant for the default longitude for the map view
-  case BostonFreedomTrailDefaultLongitude
+  case bostonFreedomTrailDefaultLongitude
   /// Constant for the default camera zoom for the map view
-  case BostonFreedomTrailDefaultCameraZoom
+  case bostonFreedomTrailDefaultCameraZoom
 }
 
 /// Helper functions for loading values from the app's plist
@@ -51,7 +51,7 @@ struct PListHelper {
    - returns: the Google Maps API key used in the app
    */
   static func googleMapsApiKey() -> String {
-    return (plistDictionary()[PListHelperConstants.BostonFreedomTrailGoogleMapAPIKey.rawValue] as? String)!
+    return (plistDictionary()[PListHelperConstants.bostonFreedomTrailGoogleMapAPIKey.rawValue] as? String)!
   }
 
   /**
@@ -60,7 +60,7 @@ struct PListHelper {
    - returns: the default latitude used in the map view
    */
   static func defaultLatitude() -> Double {
-    return plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLatitude.rawValue]!.doubleValue
+    return plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultLatitude.rawValue]!.doubleValue
   }
 
   /**
@@ -69,7 +69,7 @@ struct PListHelper {
    - returns: the default longitude used in the map view
    */
   static func defaultLongitude() -> Double {
-    return plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultLongitude.rawValue]!.doubleValue
+    return plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultLongitude.rawValue]!.doubleValue
   }
 
   /**
@@ -78,7 +78,7 @@ struct PListHelper {
    - returns: the default camera zoom used in the map view
    */
   static func defaultCameraZoom() -> Float {
-    return plistDictionary()[PListHelperConstants.BostonFreedomTrailDefaultCameraZoom.rawValue]!.floatValue
+    return plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultCameraZoom.rawValue]!.floatValue
   }
 
   /**

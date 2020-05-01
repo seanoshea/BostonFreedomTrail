@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -65,6 +65,6 @@ extension ReachabilityListener where Self : BaseViewController {
   func isOnline() -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     guard let reachability = appDelegate.reachability else { return false }
-    return reachability.connection != .none
+    return reachability.connection != .unavailable
   }
 }

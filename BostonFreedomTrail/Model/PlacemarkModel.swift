@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -44,11 +44,11 @@ final class PlacemarkModel {
    - returns: full HTML for the web view based on the `placemark` description.
    */
   func stringForWebView() -> String {
-    guard let htmlString = Bundle.main.path(forResource: ResourceConstants.PlacemarkIdentifier.rawValue, ofType: "html") else { return "" }
+    guard let htmlString = Bundle.main.path(forResource: ResourceConstants.placemarkIdentifier.rawValue, ofType: "html") else { return "" }
     guard let description = placemark?.placemarkDescription else { return "" }
     do {
       return try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: String.Encoding.utf8.rawValue), description) as String
-    } catch (_) {
+    } catch _ {
       return ""
     }
   }

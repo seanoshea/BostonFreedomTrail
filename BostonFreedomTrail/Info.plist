@@ -2,13 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>BostonFreedomTrailDefaultCameraZoom</key>
+	<key>bostonFreedomTrailDefaultCameraZoom</key>
 	<string>14.0</string>
-	<key>BostonFreedomTrailDefaultLatitude</key>
+	<key>bostonFreedomTrailDefaultLatitude</key>
 	<string>42.355721486582</string>
-	<key>BostonFreedomTrailDefaultLongitude</key>
+	<key>bostonFreedomTrailDefaultLongitude</key>
 	<string>-71.063303947449</string>
-	<key>BostonFreedomTrailGoogleMapAPIKey</key>
+	<key>bostonFreedomTrailGoogleMapAPIKey</key>
 	<string>AIzaSyAboFJaMbnKvTdFoxB4X3n5oG2n43Kaxkk</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
@@ -23,11 +23,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -43,16 +43,16 @@ class PlacemarkViewControllerTest: QuickSpec {
       
       var subject:PlacemarkViewController?
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         subject = UIStoryboard.placemarkViewController()
-        let _ = subject?.view
+        _ = subject?.view
         ApplicationSharedState.sharedInstance.clear()
       })
       
       context("Analytics") {
         
         it("should have a unique screen name to track analytics") {
-          expect(subject?.getScreenTrackingName()).to(equal(AnalyticsScreenNames.PlacemarkScreen.rawValue))
+          expect(subject?.getScreenTrackingName()).to(equal(AnalyticsScreenNames.placemarkScreen.rawValue))
         }
       }
       

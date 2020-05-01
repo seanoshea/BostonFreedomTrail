@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -14,7 +14,7 @@
  This product includes software developed by Upwards Northwards Software Limited.
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
- derived from this software without specific prior written permission.
+ derived from this software without speciMapViewControllerSpec.swiftfic prior written permission.
  
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -29,6 +29,7 @@
  */
 
 import UIKit
+import WebKit
 
 /// Delegate for the `PlacemarkViewController`
 protocol PlacemarkViewControllerDelegate:class {
@@ -46,7 +47,7 @@ final class PlacemarkViewController: BaseViewController {
   // MARK: Properties
   
   /// Used to display information on the specific placemark associated with the `PlacemarkViewController`
-  @IBOutlet weak var webView: UIWebView?
+  @IBOutlet weak var webView: WKWebView?
   /// Button to allow users navigate to the virtual tour.
   @IBOutlet weak var streetViewButton: UIButton?
   
@@ -82,7 +83,7 @@ final class PlacemarkViewController: BaseViewController {
       trackNonFatalErrorMessage("Street View Button Pressed, but no placemark associated with model")
       return
     }
-    trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.StreetViewPress.rawValue)
+    trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.streetViewPress.rawValue)
     delegate.streetViewButtonPressedForPlacemark(placemark)
     dismiss(animated: true) { () -> Void in
       
@@ -92,7 +93,7 @@ final class PlacemarkViewController: BaseViewController {
   // MARK: Analytics
   
   override func getScreenTrackingName() -> String {
-    return AnalyticsScreenNames.PlacemarkScreen.rawValue
+    return AnalyticsScreenNames.placemarkScreen.rawValue
   }
   
   // MARK: Private Functions
@@ -105,11 +106,6 @@ final class PlacemarkViewController: BaseViewController {
 
   /// Sets up the `UIWebViewDelegate` and loads the HTML into the web view.
   func loadPlacemarkInformation() {
-    webView?.delegate = self
     webView?.loadHTMLString((model?.stringForWebView())!, baseURL: nil)
   }
-}
-
-extension PlacemarkViewController : UIWebViewDelegate {
-  
 }

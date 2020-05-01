@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -72,13 +72,10 @@ final class VirtualTourViewController: BaseViewController {
       switch model.currentTourState {
       case VirtualTourState.postSetup:
         startTour()
-        break
       case VirtualTourState.inProgress:
         postDispatchAction(model.nextLocation())
-        break
       case VirtualTourState.finished:
         restartTour()
-        break
       default:
         break
       }
@@ -91,7 +88,7 @@ final class VirtualTourViewController: BaseViewController {
   // MARK: Analytics
   
   override func getScreenTrackingName() -> String {
-    return AnalyticsScreenNames.VirtualTourScreen.rawValue
+    return AnalyticsScreenNames.virtualTourScreen.rawValue
   }
   
   // MARK: Online/Offline
@@ -168,8 +165,8 @@ final class VirtualTourViewController: BaseViewController {
       let newCamera = cameraPositionForNextLocation(nextLocation)
       panoView?.animate(to: newCamera, animationDuration: VirtualTourStopStopDuration.cameraRepositionAnimation.rawValue)
       if model.atLookAtLocation() {
-        guard let pm = model.placemarkForNextLocation() else { return }
-        displaySnackbarMessage(pm.name)
+        guard let placemark = model.placemarkForNextLocation() else { return }
+        displaySnackbarMessage(placemark.name)
       }
     }
     if model.isAtLastPosition() {
@@ -185,7 +182,7 @@ final class VirtualTourViewController: BaseViewController {
   }
   
   func reloadCurrentLocation() {
-    guard let currentLocation = model.currentTourLocation else { return }
+    guard let currentLocation = model.getCurrentTourLocation() else { return }
     if model.currentTourState == .paused {
       DispatchQueue.main.asyncAfter(deadline: model.delayTime()) { [weak self] in
         self?.postDispatchAction(currentLocation)

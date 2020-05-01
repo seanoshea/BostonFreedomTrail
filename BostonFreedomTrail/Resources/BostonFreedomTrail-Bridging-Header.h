@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,11 @@
 #ifndef BostonFreedomTrail_Bridging_Header_h
 #define BostonFreedomTrail_Bridging_Header_h
 
-#import <Google/Analytics.h>
+#import <GoogleAnalytics/GAI.h>
+#import <GoogleAnalytics/GAIFields.h>
+#import <GoogleAnalytics/GAILogger.h>
+#import <GoogleAnalytics/GAIDictionaryBuilder.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
+#import <GoogleAnalytics/GAITracker.h>
 
 #endif /* BostonFreedomTrail_Bridging_Header_h */

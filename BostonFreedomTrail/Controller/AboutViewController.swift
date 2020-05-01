@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,7 @@ final class AboutViewController: BaseViewController {
   // MARK: Analytics
   
   override func getScreenTrackingName() -> String {
-    return AnalyticsScreenNames.AboutScreen.rawValue
+    return AnalyticsScreenNames.aboutScreen.rawValue
   }
   
   // MARK: Private Functions
