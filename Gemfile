@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
+ruby '2.6.5'
 
-gem 'fastlane', '2.68.2'
-gem 'cocoapods', '1.3.1'
+gem 'fastlane', '2.146.1'
+gem 'cocoapods', '1.9.1'
 group :docs do
-  gem 'rake', '12.3.0'
-  gem 'jazzy', '0.9.0'
+  gem 'rake', '13.0.1'
+  gem 'jazzy', '0.13.3'
 end

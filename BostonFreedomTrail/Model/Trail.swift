@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -117,8 +117,8 @@ struct Trail {
    */
   func placemarkIndex(_ placemark: Placemark) -> Int {
     var placemarkIndex = 0
-    for (index, pm) in placemarks.enumerated() {
-      if pm.identifier.caseInsensitiveCompare(placemark.identifier) == ComparisonResult.orderedSame {
+    for (index, pMark) in placemarks.enumerated() {
+      if pMark.identifier.caseInsensitiveCompare(placemark.identifier) == ComparisonResult.orderedSame {
         placemarkIndex = index
         break
       }

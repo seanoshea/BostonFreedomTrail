@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -58,7 +58,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   // MARK: Lifecycle
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     initializeTabBarDelegate()
     initializeCrashReporting()
     initializeGoogleMapsApi()
@@ -96,14 +96,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   /// Sets up all generic styling in the app.
   func initializeStyling() {
-    UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font : MDCTypography.captionFont()], for: UIControlState.normal)
+    UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font : MDCTypography.captionFont()], for: UIControl.State.normal)
     // offset for the snack bar message view which is used to display LookAt information in the virtual tour
     guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     let windowRect = tabBarController.view.frame
     MDCSnackbarManager.setBottomOffset(windowRect.size.height - SnackbarMessageViewOffsets.topOffset.rawValue)
     MDCSnackbarMessageView.appearance().snackbarMessageViewBackgroundColor = UIColor.bftOrangeRedColor()
-    MDCSnackbarMessageView.appearance().snackbarMessageViewTextColor = UIColor.white
   }
   
   /// The app uses Google Analytics for tracking usage of the app. Only enabled for `Release` builds.
@@ -111,14 +110,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     // only bother with analytics for prod builds
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
     guard ApplicationSharedState.sharedInstance.isDebug() else { return }
-    var configureError: NSError?
-    GGLContext.sharedInstance().configureWithError(&configureError)
-    guard configureError == nil else {
-      NSLog("Error configuring Google services: \(String(describing: configureError))")
-      return
+    
+    guard let gai = GAI.sharedInstance() else {
+      assert(false, "Google Analytics not configured correctly")
     }
-    let gai = GAI.sharedInstance()
-    gai?.trackUncaughtExceptions = true
+    gai.tracker(withTrackingId: "UA-76204571-1")
+    // Optional: automatically report uncaught exceptions.
+    gai.trackUncaughtExceptions = true
   }
   
   /// Ensures that the titles on the tabs at the bottom of the app are fully localized.
@@ -130,13 +128,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
       switch index {
       case TabBarControllerIndex.mapViewController.rawValue:
         title = NSLocalizedString("Map", comment: "")
-        break
       case TabBarControllerIndex.virtualTourViewController.rawValue:
         title = NSLocalizedString("Virtual Tour", comment: "")
-        break
       case TabBarControllerIndex.aboutViewController.rawValue:
         title = NSLocalizedString("About", comment: "")
-        break
       default:
         NSLog("Add a new index to TabBarControllerIndex for this new controller")
       }
@@ -146,9 +141,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   /// Reachability is used in the app to understand whether the user is online or offline. This function is responsible for starting the notifier so that all elements in the app know when they are offline and when they are online.
   func initializeReachability() {
-    reachability = Reachability.init()
+    let reachability = try! Reachability()
     do {
-      try reachability!.startNotifier()
+      try reachability.startNotifier()
     } catch {
       NSLog("Failed to start the reachability notifier")
     }
@@ -185,7 +180,7 @@ extension AppDelegate: UITabBarControllerDelegate {
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
     guard let viewControllers = tabBarController.viewControllers else { return }
     guard let baseViewController = viewController as? BaseViewController else { return }
-    guard let indexSelected = viewControllers.index(of: viewController) else { return }
+    guard let indexSelected = viewControllers.firstIndex(of: viewController) else { return }
     // tell analytics that a particular tab has been selected
     baseViewController.trackTabBarButtonPress(index: indexSelected)
     // kill off any remaining snackbar messages

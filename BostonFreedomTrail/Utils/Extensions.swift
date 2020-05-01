@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -78,8 +78,8 @@ extension NSMutableAttributedString {
   public func linkify(_ textToFind:String, linkURL:String) {
     let foundRange = mutableString.range(of: textToFind)
     if foundRange.location != NSNotFound {
-      addAttribute(NSAttributedStringKey.link, value: linkURL, range: foundRange)
-      addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 14.0), range: foundRange)
+      addAttribute(NSAttributedString.Key.link, value: linkURL, range: foundRange)
+      addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14.0), range: foundRange)
     }
   }
 }

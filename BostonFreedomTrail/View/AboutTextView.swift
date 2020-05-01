@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -63,8 +63,8 @@ class AboutTextView: UITextView {
     set(newAttributedText) {
       let mutableAttributedString = NSMutableAttributedString.init(attributedString: newAttributedText!)
       let range = NSRange.init(location: 0, length: mutableAttributedString.length)
-      mutableAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value:UIColor.bftDarkTextColor(), range:range)
-      mutableAttributedString.addAttribute(NSAttributedStringKey.font, value:MDCTypography.body1Font(), range:range)
+      mutableAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value:UIColor.bftDarkTextColor(), range:range)
+      mutableAttributedString.addAttribute(NSAttributedString.Key.font, value:MDCTypography.body1Font(), range:range)
       super.attributedText = mutableAttributedString
     }
   }

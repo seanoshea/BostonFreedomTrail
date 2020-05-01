@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,7 @@ final class MapModel {
       let marker = GMSMarker()
       marker.userData = placemark
       marker.position = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude)
-      marker.icon = UIImage.init(named: ResourceConstants.PlacemarkResourceImage.rawValue)
+      marker.icon = UIImage.init(named: ResourceConstants.placemarkResourceImage.rawValue)
       marker.title = placemark.name
       marker.map = mapView
       markers.append(marker)

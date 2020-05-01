@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -33,37 +33,37 @@ import Foundation
 /// Screen name constants for analytics
 enum AnalyticsScreenNames: String {
   /// Used when the user taps on the about tab
-  case AboutScreen
+  case aboutScreen
   /// Used when the user taps on the map tab
-  case MapScreen
+  case mapScreen
   /// Used when the user taps into more information on a placemark
-  case PlacemarkScreen
+  case placemarkScreen
   /// Used when the user taps on the virtual tour tab
-  case VirtualTourScreen
+  case virtualTourScreen
 }
 
 /// Category constants for analytics
 enum AnalyticsEventCategories: String {
   /// Analytics constant for identifying a user interaction in the app
-  case Action = "ui_action"
+  case action = "ui_action"
 }
 
 /// Action constants for analytics
 enum AnalyticsActions: String {
   /// Analytics constant for identifying a user button press in the app
-  case ButtonPress = "button_press"
+  case buttonPress = "button_press"
 }
 
 /// Label constants for analytics
 enum AnalyticsLabels: String {
   /// Analytics constant used when the user taps on a tab bar
-  case TabBarPress = "tab_bar_press"
+  case tabBarPress = "tab_bar_press"
   /// Analytics constant used when the user taps on a marker
-  case MarkerPress = "marker_press"
+  case markerPress = "marker_press"
   /// Analytics constant used when the user taps on an info window
-  case InfoWindowPress = "info_window_press"
+  case infoWindowPress = "info_window_press"
   /// Analytics constant used when the user taps on the street view button
-  case StreetViewPress = "street_view_press"
+  case streetViewPress = "street_view_press"
 }
 
 /// Protocol for analytics
@@ -91,9 +91,9 @@ extension AnalyticsTracker where Self : UIViewController {
     guard let tracker = GAI.sharedInstance().defaultTracker else { return }
     let trackingName = getScreenTrackingName()
     guard trackingName.count > 0 else { return }
-    guard let parameters = GAIDictionaryBuilder.createScreenView().build() else { return }
     tracker.set(kGAIScreenName, value: trackingName)
-    tracker.send(parameters as [NSObject : AnyObject])
+    guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
+    tracker.send(builder.build() as [NSObject : AnyObject])
   }
 
   /**
@@ -103,7 +103,7 @@ extension AnalyticsTracker where Self : UIViewController {
    */
   func trackTabBarButtonPress(index:Int) {
     guard let tracker = GAI.sharedInstance().defaultTracker else { return }
-    guard let parameters = GAIDictionaryBuilder.createEvent(withCategory: AnalyticsEventCategories.Action.rawValue, action:AnalyticsActions.ButtonPress.rawValue, label:AnalyticsLabels.TabBarPress.rawValue, value: index as NSNumber).build() else { return }
+    guard let parameters = GAIDictionaryBuilder.createEvent(withCategory: AnalyticsEventCategories.action.rawValue, action:AnalyticsActions.buttonPress.rawValue, label:AnalyticsLabels.tabBarPress.rawValue, value: index as NSNumber).build() else { return }
     tracker.send(parameters as [NSObject : AnyObject])
   }
   
@@ -115,7 +115,7 @@ extension AnalyticsTracker where Self : UIViewController {
    */
   func trackButtonPressForPlacemark(_ placemark: Placemark, label: String) {
     guard let tracker = GAI.sharedInstance().defaultTracker else { return }
-    guard let parameters = GAIDictionaryBuilder.createEvent(withCategory: AnalyticsEventCategories.Action.rawValue, action:AnalyticsActions.ButtonPress.rawValue, label:AnalyticsLabels.InfoWindowPress.rawValue, value: Int(placemark.identifier) as NSNumber!).build() else { return }
+    guard let parameters = GAIDictionaryBuilder.createEvent(withCategory: AnalyticsEventCategories.action.rawValue, action:AnalyticsActions.buttonPress.rawValue, label:AnalyticsLabels.infoWindowPress.rawValue, value: Int(placemark.identifier) as NSNumber?).build() else { return }
     tracker.send(parameters as [NSObject : AnyObject])
   }
   

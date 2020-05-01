@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -338,11 +338,11 @@ final class VirtualTourModel {
   
   func locationDirectionForNextLocation(_ nextLocation: CLLocation) -> CLLocationDirection {
     let from = tour[currentTourPosition - 1]
-    let to = CLLocation.init(latitude:nextLocation.coordinate.latitude, longitude:nextLocation.coordinate.longitude)
+    let toLocation = CLLocation.init(latitude:nextLocation.coordinate.latitude, longitude:nextLocation.coordinate.longitude)
     let fromLatitude = degreesToRadians(from.coordinate.latitude)
     let fromLongitude = degreesToRadians(from.coordinate.longitude)
-    let toLatitude = degreesToRadians(to.coordinate.latitude)
-    let toLongitude = degreesToRadians(to.coordinate.longitude)
+    let toLatitude = degreesToRadians(toLocation.coordinate.latitude)
+    let toLongitude = degreesToRadians(toLocation.coordinate.longitude)
     let degree = radiansToDegrees(atan2(sin(toLongitude - fromLongitude) * cos(toLatitude), cos(fromLatitude) * sin(toLatitude)-sin(fromLatitude) * cos(toLatitude) * cos(toLongitude - fromLongitude)))
     return degree >= 0.0 ? degree : 360.0 + degree
   }

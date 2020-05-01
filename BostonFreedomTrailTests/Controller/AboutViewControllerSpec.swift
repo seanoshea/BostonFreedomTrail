@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014 - 2016 Upwards Northwards Software Limited
+ Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ class AboutViewControllerTest: QuickSpec {
       context("Analytics") {
         
         it("should have a unique screen name to track analytics") {
-          expect(subject?.getScreenTrackingName()).to(equal(AnalyticsScreenNames.AboutScreen.rawValue))
+          expect(subject?.getScreenTrackingName()).to(equal(AnalyticsScreenNames.aboutScreen.rawValue))
         }
       }
       
