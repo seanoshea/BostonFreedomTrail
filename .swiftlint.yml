@@ -9,6 +9,7 @@ disabled_rules:
   - function_parameter_count
   - shorthand_operator
   - force_try
+  - force_cast
 excluded:
   - Carthage
   - Pods

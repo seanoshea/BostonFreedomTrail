@@ -48,8 +48,7 @@ final class PlacemarkModel {
     guard let description = placemark?.placemarkDescription else { return "" }
     do {
       return try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: String.Encoding.utf8.rawValue), description) as String
-    } catch let error as NSError {
-        
+    } catch (_) {
       return ""
     }
   }
