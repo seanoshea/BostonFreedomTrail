@@ -7,11 +7,6 @@ platform :ios do
     cocoapods
   end
 
-  desc "Runs all the tests"
-  lane :test do
-    scan(scheme: "BostonFreedomTrail", configuration: "Debug")
-  end
-
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do

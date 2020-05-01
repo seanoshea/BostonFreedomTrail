@@ -10,8 +10,13 @@ jobs:
       - checkout
       - run: bundle install
       - run: bundle exec pod install
-      - run: cd fastlane && bundle exec fastlane test
+      - run: cd fastlane && bundle exec fastlane scan
       - run: curl -s https://codecov.io/bash
+      - store_test_results:
+          path: test_output
+      - store_artifacts:
+          path: test_output
+          destination: scan-output
   swiftlint:
     docker:
       - image: dantoml/swiftlint:latest
