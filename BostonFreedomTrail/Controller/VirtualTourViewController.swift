@@ -182,7 +182,7 @@ final class VirtualTourViewController: BaseViewController {
   }
   
   func reloadCurrentLocation() {
-    guard let currentLocation = model.currentTourLocation else { return }
+    guard let currentLocation = model.getCurrentTourLocation() else { return }
     if model.currentTourState == .paused {
       DispatchQueue.main.asyncAfter(deadline: model.delayTime()) { [weak self] in
         self?.postDispatchAction(currentLocation)
