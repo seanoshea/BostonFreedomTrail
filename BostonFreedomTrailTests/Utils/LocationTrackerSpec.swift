@@ -57,7 +57,7 @@ class LocationTrackerTest: QuickSpec {
       
       context("CLLocationManagerDelegate methods") {
         
-        beforeEach({ () -> () in
+        beforeEach({ () -> Void in
           ApplicationSharedState.sharedInstance.clear()
         })
         

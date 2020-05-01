@@ -14,7 +14,7 @@
  This product includes software developed by Upwards Northwards Software Limited.
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
- derived from this software without specific prior written permission.
+ derived from this software without speciMapViewControllerSpec.swiftfic prior written permission.
  
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED

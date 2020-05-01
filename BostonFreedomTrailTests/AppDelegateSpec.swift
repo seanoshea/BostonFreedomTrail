@@ -42,7 +42,7 @@ class AppDelegateTest: QuickSpec {
       var subject:AppDelegate!
       var tabBarController:UITabBarController!
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         subject = UIApplication.shared.delegate as? AppDelegate
         guard let window = subject.window else { return }
         tabBarController = window.rootViewController as? UITabBarController

@@ -44,9 +44,9 @@ class VirtualTourViewControllerTest: QuickSpec {
       
       var subject:VirtualTourViewController?
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         subject = UIStoryboard.virtualTourViewController()
-        let _ = subject?.view
+        _ = subject?.view
         ApplicationSharedState.sharedInstance.clear()
       })
       
@@ -103,7 +103,7 @@ class VirtualTourViewControllerTest: QuickSpec {
       
 //      context("Virtual Tour Button") {
 //        
-//        beforeEach({ () -> () in
+//        beforeEach({ () -> Void in
 //          subject?.viewDidAppear(true)
 //        })
 //        
@@ -170,7 +170,7 @@ class VirtualTourViewControllerTest: QuickSpec {
         
         let location = CLLocation.init(latitude: 123, longitude: 312)
         
-        beforeEach({ () -> () in
+        beforeEach({ () -> Void in
           subject?.viewDidAppear(true)
           subject?.startTour()
           subject?.model.currentTourPosition = 14
@@ -207,7 +207,7 @@ class VirtualTourViewControllerTest: QuickSpec {
         it("should return a camera with the correct bearing zoom and pitch for the next location when repositionCamera is invoked") {
           
           subject?.model.setupTour()
-          let _ = subject?.model.startTour()
+          _ = subject?.model.startTour()
           let nextStop = (subject?.model.enqueueNextLocation())!
           
           let newCamera:GMSPanoramaCamera = (subject?.cameraPositionForNextLocation(nextStop))!

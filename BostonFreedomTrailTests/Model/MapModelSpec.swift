@@ -44,10 +44,10 @@ class MapModelTest: QuickSpec {
       var subject:MapModel?
       var mapViewController:MapViewController?
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         subject = MapModel.init()
         mapViewController = UIStoryboard.mapViewController()
-        let _ = mapViewController?.view
+        _ = mapViewController?.view
       })
       
       context("Adding the placemarks") {

@@ -44,22 +44,22 @@ extension UIStoryboard {
   
   static func mapViewController() -> MapViewController {
     let vc:UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.MapViewControllerIdentifier.rawValue)
-    return vc as! MapViewController
+    return vc as MapViewController
   }
   
   static func aboutViewController() -> AboutViewController {
     let vc:UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.AboutViewControllerIdentifier.rawValue)
-    return vc as! AboutViewController
+    return vc as AboutViewController
   }
   
   static func virtualTourViewController() -> VirtualTourViewController {
     let vc:UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.VirtualTourControllerIdentifier.rawValue)
-    return vc as! VirtualTourViewController
+    return vc as VirtualTourViewController
   }
   
   static func placemarkViewController() -> PlacemarkViewController {
     let vc:UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.PlacemarkViewControllerIdentifier.rawValue)
-    return vc as! PlacemarkViewController
+    return vc as PlacemarkViewController
   }
   
   static func mainStoryboard() -> UIStoryboard {

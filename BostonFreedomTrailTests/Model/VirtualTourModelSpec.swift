@@ -45,7 +45,7 @@ class VirtualTourModelTest: QuickSpec {
       
       var subject:VirtualTourModel?
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         subject = VirtualTourModel.init()
         subject?.setupTour()
         ApplicationSharedState.sharedInstance.clear()
@@ -54,7 +54,7 @@ class VirtualTourModelTest: QuickSpec {
       context("Tour Controls") {
         
         it("should start the tour when startTour is invoked") {
-          let _ = subject?.startTour()
+          _ = subject?.startTour()
           
           expect(subject?.currentTourState).to(equal(VirtualTourState.inProgress))
           expect(subject?.currentTourPosition).to(equal(0))
@@ -137,7 +137,7 @@ class VirtualTourModelTest: QuickSpec {
         
         var dummyDelegate:DummyVirtualTourModelDelegate?
         
-        beforeEach({ () -> () in
+        beforeEach({ () -> Void in
           dummyDelegate = DummyVirtualTourModelDelegate.init()
           subject?.delegate = dummyDelegate
         })
@@ -224,7 +224,6 @@ class VirtualTourModelTest: QuickSpec {
     }
   }
 }
-
 
 class DummyVirtualTourModelDelegate : VirtualTourModelDelegate {
   

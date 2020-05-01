@@ -43,9 +43,9 @@ class MapViewControllerTest: QuickSpec {
       
       var subject:MapViewController?
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         subject = UIStoryboard.mapViewController()
-        let _ = subject?.view
+        _ = subject?.view
         ApplicationSharedState.sharedInstance.clear()
       })
       
@@ -88,12 +88,12 @@ class MapViewControllerTest: QuickSpec {
         
         var marker:GMSMarker?
         
-        beforeEach({ () -> () in
+        beforeEach({ () -> Void in
           marker = GMSMarker.init(position: CLLocationCoordinate2D.init(latitude: 45, longitude: 45))
           marker?.userData = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description", lookAt:nil)
         })
         
-        afterEach({ () -> () in
+        afterEach({ () -> Void in
           ApplicationSharedState.sharedInstance.clear()
         })
         
@@ -108,7 +108,7 @@ class MapViewControllerTest: QuickSpec {
         
         it("should set the last known placemark in the application state when the user taps on a marker") {
           
-          let _ = subject?.mapView((subject?.mapView)!, didTap:marker!)
+          _ = subject?.mapView((subject?.mapView)!, didTap:marker!)
           
           let lastKnownPlacemark = ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate
           
@@ -131,7 +131,7 @@ class MapViewControllerTest: QuickSpec {
         
         it("should return a view controller for presentationController:viewControllerForAdaptivePresentationStyle") {
           let placemarkViewController = UIStoryboard.placemarkViewController()
-          let _ = placemarkViewController.view
+          _ = placemarkViewController.view
           let popoverPresentationController = UIPopoverPresentationController.init(presentedViewController:subject!, presenting:placemarkViewController)
           let returnedViewController = subject?.presentationController(popoverPresentationController, viewControllerForAdaptivePresentationStyle:UIModalPresentationStyle.popover)
           expect(returnedViewController).toNot(beNil())

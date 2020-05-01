@@ -41,8 +41,8 @@ class VirtualTourButtonTest: QuickSpec {
       
       var subject:VirtualTourButton!
       
-      beforeEach({ () -> () in
-        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 100, height: 100))
+      beforeEach({ () -> Void in
+        let rect = CGRect(origin: CGPoint(x: 0, y :0), size: CGSize(width: 100, height: 100))
         subject = VirtualTourButton.init(frame: rect, shape: .default)
       })
       

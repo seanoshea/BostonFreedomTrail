@@ -41,9 +41,9 @@ class AboutViewControllerTest: QuickSpec {
       
       var subject:AboutViewController?
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         subject = UIStoryboard.aboutViewController()
-        let _ = subject?.view
+        _ = subject?.view
       })
       
       context("Analytics") {

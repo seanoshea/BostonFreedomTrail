@@ -41,9 +41,9 @@ class BaseViewControllerTest: QuickSpec {
       
       var subject:BaseViewController?
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         subject = BaseViewController.init()
-        let _ = subject?.view
+        _ = subject?.view
       })
       
       context("Analytics") {
@@ -55,4 +55,3 @@ class BaseViewControllerTest: QuickSpec {
     }
   }
 }
-

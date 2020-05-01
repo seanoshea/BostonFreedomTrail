@@ -41,7 +41,7 @@ class TrailParserTest: QuickSpec {
       
       var trail:Trail?
       
-      beforeEach({ () -> () in
+      beforeEach({ () -> Void in
         trail = TrailParser().parseTrail()
       })
       
