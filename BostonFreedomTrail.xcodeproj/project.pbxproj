@@ -344,7 +344,6 @@
 				3357F654E40850647B2E4B62 /* [CP] Embed Pods Frameworks */,
 				23FD358A6C8D19FDBC7DACB5 /* [CP] Copy Pods Resources */,
 				416C3CE51D1DC881005F9A8C /* Run Script */,
-				41443EB51C894D940096EE06 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -388,7 +387,7 @@
 				TargetAttributes = {
 					41237BE31C486CDF0007F76B = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 869J5T9K99;
+						DevelopmentTeam = 3TQU8WFYZ9;
 						LastSwiftMigration = 1130;
 					};
 					41237BF91C486CDF0007F76B = {
@@ -483,19 +482,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BostonFreedomTrail/Pods-BostonFreedomTrail-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		41443EB51C894D940096EE06 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/Fabric/run 8aa2986353e21d6181e23a9360cd528dca68aafb 5769576e5978757dbd9058df640a5f116b6c94ab6e35b7321786486fc8bff94f\n";
 		};
 		416C3CE51D1DC881005F9A8C /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -799,7 +785,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 869J5T9K99;
+				DEVELOPMENT_TEAM = 3TQU8WFYZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
