@@ -1,7 +1,4 @@
 PODS:
-  - Crashlytics (3.14.0):
-    - Fabric (~> 1.10.2)
-  - Fabric (1.10.2)
   - GoogleAnalytics (3.17.0)
   - GoogleMaps (3.8.0):
     - GoogleMaps/Maps (= 3.8.0)
@@ -87,8 +84,6 @@ PODS:
   - ReachabilitySwift (5.0.0)
 
 DEPENDENCIES:
-  - Crashlytics (= 3.14.0)
-  - Fabric (= 1.10.2)
   - GoogleAnalytics
   - GoogleMaps (= 3.8.0)
   - MaterialComponents/Buttons (= 109.0.0)
@@ -101,8 +96,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Crashlytics
-    - Fabric
     - GoogleAnalytics
     - GoogleMaps
     - MaterialComponents
@@ -114,8 +107,6 @@ SPEC REPOS:
     - ReachabilitySwift
 
 SPEC CHECKSUMS:
-  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
-  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleMaps: 7c8d66d70e4e8c300f43a7219d8fdaad7b325a9a
   MaterialComponents: efea7f96438838624ea3a4fcc881bfd6b3b0bb7b
@@ -126,6 +117,6 @@ SPEC CHECKSUMS:
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
 
-PODFILE CHECKSUM: 93b73b38f965f99cbda3afa0ac6ee46f0ec5533a
+PODFILE CHECKSUM: 572f37c555032a4024c1e2c38e127e18ba1acd0c
 
 COCOAPODS: 1.9.1

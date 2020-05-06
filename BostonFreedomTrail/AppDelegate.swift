@@ -32,8 +32,6 @@ import UIKit
 
 import GoogleMaps
 import CoreLocation
-import Fabric
-import Crashlytics
 import MaterialComponents
 import Reachability
 
@@ -60,7 +58,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     initializeTabBarDelegate()
-    initializeCrashReporting()
     initializeGoogleMapsApi()
     initializeStyling()
     initializeAnalytics()
@@ -80,13 +77,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     tabBarController.delegate = self
-  }
-  
-  /// Crash reporting is used in `Release` builds of the app to ensure that all crashes in the live versions of the app are reported and can be analyzed for solutions.
-  func initializeCrashReporting() {
-    // only bother with crash reporting for release builds
-    guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
-    Fabric.with([Crashlytics.self])
   }
   
   /// Sets up the Google Maps integration. See `GoogleService-Info.plist` for more details.
@@ -113,6 +103,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     guard let gai = GAI.sharedInstance() else {
       assert(false, "Google Analytics not configured correctly")
+      return
     }
     gai.tracker(withTrackingId: "UA-76204571-1")
     // Optional: automatically report uncaught exceptions.

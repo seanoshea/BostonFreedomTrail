@@ -9,8 +9,6 @@ target :BostonFreedomTrail do
   pod 'GoogleAnalytics'
   pod 'ReachabilitySwift', '5.0.0'
   pod 'GoogleMaps', '3.8.0'
-  pod 'Fabric', '1.10.2'
-  pod 'Crashlytics', '3.14.0'
   pod 'MaterialComponents/Typography', '109.0.0'
   pod 'MaterialComponents/Buttons', '109.0.0'
   pod 'MaterialComponents/Snackbar', '109.0.0'
