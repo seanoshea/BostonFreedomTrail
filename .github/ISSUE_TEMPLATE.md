@@ -1,4 +1,4 @@
-Don't forget to check out [Stack  Overflow](http://stackoverflow.com/questions/tagged/BluePlaquesLondon) for common questions about BluePlaquesLondon. If you have a general question about app usage, it's probably best to ask there so that other people can find answers to similar questions.
+Don't forget to check out [Stack  Overflow](http://stackoverflow.com/questions/tagged/BostonFreedomTrail) for common questions about BostonFreedomTrail. If you have a general question about app usage, it's probably best to ask there so that other people can find answers to similar questions.
 
 Having said that, here's some handy headings which could guide creating a new issue:
 
