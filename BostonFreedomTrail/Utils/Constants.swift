@@ -29,6 +29,7 @@
  */
 
 import Foundation
+import UIKit
 
 /// Identifiers for segues in the app
 enum SegueConstants: String {

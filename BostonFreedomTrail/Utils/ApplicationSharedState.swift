@@ -51,8 +51,8 @@ enum DefaultsKeys: String {
 }
 
 /// Simple accessors for user defaults used throughout the app.
-final class ApplicationSharedState {
-  
+final class ApplicationSharedState: @unchecked Sendable {
+
   /// Singleton accessor for `ApplicationSharedState`.
   static let sharedInstance = ApplicationSharedState()
   

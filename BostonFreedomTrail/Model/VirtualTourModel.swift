@@ -58,7 +58,8 @@ enum VirtualTourStopStopDuration: Double {
 }
 
 /// Delegate protocol for the `VirtualTourModel`
-protocol VirtualTourModelDelegate:class {
+@MainActor
+protocol VirtualTourModelDelegate: AnyObject {
   
   /**
    Given a `VirtualTourModel` this function navigates to the current position in the tour automatically.
@@ -92,7 +93,11 @@ final class VirtualTourModel {
   /// The state of the virtual tour
   var currentTourState: VirtualTourState = VirtualTourState.preSetup {
     didSet {
-      delegate?.didChangeTourState(oldValue, toState:currentTourState)
+      let oldState = oldValue
+      let newState = currentTourState
+      Task { @MainActor [weak self] in
+        self?.delegate?.didChangeTourState(oldState, toState:newState)
+      }
     }
   }
   /// Simple delegate to allow the model navigate to the current position in the tour
@@ -305,7 +310,9 @@ final class VirtualTourModel {
     guard let position = lookAtPositionInTourForPlacementIndex(placemarkIndex) else { return }
     currentTourPosition = position
     currentTourState = VirtualTourState.paused
-    delegate.navigateToCurrentPosition(self)
+    Task { @MainActor in
+      delegate.navigateToCurrentPosition(self)
+    }
   }
   
   // MARK: Private Functions

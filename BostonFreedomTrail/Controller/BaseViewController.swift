@@ -45,7 +45,7 @@ class BaseViewController: UIViewController, AnalyticsTracker, ReachabilityListen
   
   func displaySnackbarMessage(_ text:String) {
     DispatchQueue.main.async {
-      MDCSnackbarManager.show(MDCSnackbarMessage.init(text: text))
+      MDCSnackbarManager.default.show(MDCSnackbarMessage.init(text: text))
     }
   }
   

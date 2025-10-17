@@ -48,7 +48,7 @@ enum TabBarControllerIndex: Int {
 }
 
 /// Main entry point for the app.
-@UIApplicationMain
+@main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   /// Main window for the app.
@@ -93,7 +93,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     let windowRect = tabBarController.view.frame
-    MDCSnackbarManager.setBottomOffset(windowRect.size.height - SnackbarMessageViewOffsets.topOffset.rawValue)
+    MDCSnackbarManager.default.setBottomOffset(windowRect.size.height - SnackbarMessageViewOffsets.topOffset.rawValue)
     MDCSnackbarMessageView.appearance().snackbarMessageViewBackgroundColor = UIColor.bftOrangeRedColor()
   }
   
@@ -172,7 +172,7 @@ extension AppDelegate: UITabBarControllerDelegate {
     baseViewController.trackTabBarButtonPress(index: indexSelected)
     // kill off any remaining snackbar messages
     if indexSelected != TabBarControllerIndex.virtualTourViewController.rawValue {
-      MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+      MDCSnackbarManager.default.dismissAndCallCompletionBlocks(withCategory: nil)
     }
   }
 }

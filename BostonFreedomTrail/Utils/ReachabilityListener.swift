@@ -56,7 +56,7 @@ extension ReachabilityListener where Self : BaseViewController {
   
   func reachabilityStatusChanged(_ online: Bool) {
     if online {
-      MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+      MDCSnackbarManager.default.dismissAndCallCompletionBlocks(withCategory: nil)
     } else {
       displaySnackbarMessage(NSLocalizedString("Please check your network connection", comment: ""))
     }

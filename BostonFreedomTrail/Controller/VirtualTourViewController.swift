@@ -48,7 +48,7 @@ final class VirtualTourViewController: BaseViewController {
     model.delegate = self
     let firstPlacemark = model.firstPlacemark()
     addPanoramaView(CLLocationCoordinate2DMake(firstPlacemark.location.coordinate.latitude, firstPlacemark.location.coordinate.longitude))
-    MDCSnackbarManager.setPresentationHostView(view)
+    MDCSnackbarManager.default.setPresentationHostView(view)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -79,7 +79,7 @@ final class VirtualTourViewController: BaseViewController {
       default:
         break
       }
-      MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+      MDCSnackbarManager.default.dismissAndCallCompletionBlocks(withCategory: nil)
     } else {
       displaySnackbarMessage(NSLocalizedString("Please check your network connection", comment: ""))
     }
@@ -193,7 +193,7 @@ final class VirtualTourViewController: BaseViewController {
 
 // MARK: GMSPanoramaViewDelegate Functions
 
-extension VirtualTourViewController : GMSPanoramaViewDelegate {
+extension VirtualTourViewController : @preconcurrency GMSPanoramaViewDelegate {
   
   func panoramaView(_ view: GMSPanoramaView, didMoveTo panorama: GMSPanorama?) {
     if shouldEnqueueNextLocationForPanorama(panorama) {

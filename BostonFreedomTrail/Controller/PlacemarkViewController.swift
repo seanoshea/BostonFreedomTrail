@@ -32,7 +32,8 @@ import UIKit
 import WebKit
 
 /// Delegate for the `PlacemarkViewController`
-protocol PlacemarkViewControllerDelegate:class {
+@MainActor
+protocol PlacemarkViewControllerDelegate: AnyObject {
   /**
    Executed when the user indicates that they want to go to the virtual tour.
    

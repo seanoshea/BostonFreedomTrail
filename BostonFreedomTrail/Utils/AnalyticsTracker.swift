@@ -68,7 +68,8 @@ enum AnalyticsLabels: String {
 }
 
 /// Protocol for analytics
-protocol AnalyticsTracker:class {
+@MainActor
+protocol AnalyticsTracker: AnyObject {
   /**
    Retrieves the screen name.
    
