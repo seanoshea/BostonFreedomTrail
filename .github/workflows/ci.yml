@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [ develop, main ]
+  pull_request:
+    branches: [ develop, main ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  swiftlint:
+    name: SwiftLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
+        with:
+          args: --strict
+
+  test:
+    name: Build and Test
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+
+      - name: Install CocoaPods dependencies
+        run: bundle exec pod install
+
+      - name: Select Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
+
+      - name: Build and run tests
+        run: bundle exec fastlane test
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test_output/
+          retention-days: 30
+
+      - name: Upload coverage reports
+        if: success()
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./test_output/coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
