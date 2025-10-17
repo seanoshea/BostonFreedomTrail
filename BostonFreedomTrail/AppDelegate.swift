@@ -34,6 +34,8 @@ import GoogleMaps
 import CoreLocation
 import MaterialComponents
 import Reachability
+import FirebaseCore
+import FirebaseAnalytics
 
 /// Simple enum to keep track of the different tabs in the app.
 enum TabBarControllerIndex: Int {
@@ -95,19 +97,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     MDCSnackbarMessageView.appearance().snackbarMessageViewBackgroundColor = UIColor.bftOrangeRedColor()
   }
   
-  /// The app uses Google Analytics for tracking usage of the app. Only enabled for `Release` builds.
+  /// The app uses Firebase Analytics for tracking usage of the app. Only enabled for `Release` builds.
   func initializeAnalytics() {
     // only bother with analytics for prod builds
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
-    guard ApplicationSharedState.sharedInstance.isDebug() else { return }
-    
-    guard let gai = GAI.sharedInstance() else {
-      assert(false, "Google Analytics not configured correctly")
-      return
-    }
-    gai.tracker(withTrackingId: "UA-76204571-1")
-    // Optional: automatically report uncaught exceptions.
-    gai.trackUncaughtExceptions = true
+
+    // Configure Firebase
+    FirebaseApp.configure()
   }
   
   /// Ensures that the titles on the tabs at the bottom of the app are fully localized.

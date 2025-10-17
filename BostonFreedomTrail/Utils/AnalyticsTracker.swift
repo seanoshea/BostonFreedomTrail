@@ -29,6 +29,7 @@
  */
 
 import Foundation
+import FirebaseAnalytics
 
 /// Screen name constants for analytics
 enum AnalyticsScreenNames: String {
@@ -85,48 +86,59 @@ protocol AnalyticsTracker:class {
 }
 
 extension AnalyticsTracker where Self : UIViewController {
-  
+
   /// Tracks the user viewing a screen in the app.
   func trackScreenName() {
-    guard let tracker = GAI.sharedInstance().defaultTracker else { return }
     let trackingName = getScreenTrackingName()
     guard trackingName.count > 0 else { return }
-    tracker.set(kGAIScreenName, value: trackingName)
-    guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
-    tracker.send(builder.build() as [NSObject : AnyObject])
+
+    // Log screen view to Firebase Analytics
+    Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+      AnalyticsParameterScreenName: trackingName,
+      AnalyticsParameterScreenClass: String(describing: type(of: self))
+    ])
   }
 
   /**
    Tracks when a tab bar button is selected.
-   
+
    - parameter index: the index of the tab bar button which was just selected.
    */
   func trackTabBarButtonPress(index:Int) {
-    guard let tracker = GAI.sharedInstance().defaultTracker else { return }
-    guard let parameters = GAIDictionaryBuilder.createEvent(withCategory: AnalyticsEventCategories.action.rawValue, action:AnalyticsActions.buttonPress.rawValue, label:AnalyticsLabels.tabBarPress.rawValue, value: index as NSNumber).build() else { return }
-    tracker.send(parameters as [NSObject : AnyObject])
+    Analytics.logEvent("tab_bar_press", parameters: [
+      "category": AnalyticsEventCategories.action.rawValue,
+      "action": AnalyticsActions.buttonPress.rawValue,
+      "label": AnalyticsLabels.tabBarPress.rawValue,
+      "value": index
+    ])
   }
-  
+
   /**
    Tracks a button press when the user requests information on a placemark.
-   
+
    - parameter placemark: the placemark about which the user is requesting information.
    - parameter label: additional label information about the placemark & where the user is requesting the info from.
    */
   func trackButtonPressForPlacemark(_ placemark: Placemark, label: String) {
-    guard let tracker = GAI.sharedInstance().defaultTracker else { return }
-    guard let parameters = GAIDictionaryBuilder.createEvent(withCategory: AnalyticsEventCategories.action.rawValue, action:AnalyticsActions.buttonPress.rawValue, label:AnalyticsLabels.infoWindowPress.rawValue, value: Int(placemark.identifier) as NSNumber?).build() else { return }
-    tracker.send(parameters as [NSObject : AnyObject])
+    Analytics.logEvent("placemark_info_press", parameters: [
+      "category": AnalyticsEventCategories.action.rawValue,
+      "action": AnalyticsActions.buttonPress.rawValue,
+      "label": AnalyticsLabels.infoWindowPress.rawValue,
+      "placemark_id": Int(placemark.identifier),
+      "placemark_label": label
+    ])
   }
-  
+
   /**
    Tracks an error happening in the application.
-   
+
    - parameter errorMessage: information on where the error occured.
    */
   func trackNonFatalErrorMessage(_ errorMessage:String) {
-    guard let tracker = GAI.sharedInstance().defaultTracker else { return }
-    guard let parameters = GAIDictionaryBuilder.createException(withDescription: errorMessage, withFatal:0).build() else { return }
-    tracker.send(parameters as [NSObject : AnyObject])
+    // Log non-fatal error to Firebase Analytics (Crashlytics would be better for this)
+    Analytics.logEvent("non_fatal_error", parameters: [
+      "error_message": errorMessage,
+      "screen": getScreenTrackingName()
+    ])
   }
 }
