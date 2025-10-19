@@ -41,7 +41,13 @@ bundle exec pod install
 - Obtain a Google Maps API key
 - Update `Info.plist` with your API key under `GMSApiKey`
 
-### 5. Open Workspace
+### 5. Install Git Hooks (Optional but Recommended)
+```bash
+./scripts/install-git-hooks.sh
+```
+This installs a pre-commit hook that runs SwiftLint on staged files to catch style violations before they're committed.
+
+### 6. Open Workspace
 ```bash
 open BostonFreedomTrail.xcworkspace
 ```
