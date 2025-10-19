@@ -12,7 +12,6 @@ platform :ios do
     scan(
       scheme: "BostonFreedomTrail",
       configuration: "Debug",
-      devices: ["iPhone 16 Pro"],
       clean: true
     )
   end
