@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,50 +28,40 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Quick
-import Nimble
-
+import Foundation
+import Testing
+import CoreLocation
 @testable import BostonFreedomTrail
 
-class VirtualTourButtonTest: QuickSpec {
-  
-  override func spec() {
-    
-    describe("VirtualTourButton") {
-      
-      var subject:VirtualTourButton!
-      
-      beforeEach({ () -> Void in
-        let rect = CGRect(origin: CGPoint(x: 0, y :0), size: CGSize(width: 100, height: 100))
-        subject = VirtualTourButton.init(frame: rect, shape: .default)
-      })
-      
-      context("Updating the button title") {
-        
-        it("should update the title for VirtualTourState.postSetup") {
-          subject.updateButtonTitle(.postSetup)
-          
-          expect(subject.title(for: .normal)).to(equal("▷"))
-        }
-        
-        it("should update the title for VirtualTourState.paused") {
-          subject.updateButtonTitle(.paused)
-          
-          expect(subject.title(for: .normal)).to(equal("▷"))
-        }
-        
-        it("should update the title for VirtualTourState.finished") {
-          subject.updateButtonTitle(.finished)
-          
-          expect(subject.title(for: .normal)).to(equal("↻"))
-        }
-        
-        it("should update the title for VirtualTourState.inProgress") {
-          subject.updateButtonTitle(.inProgress)
-          
-          expect(subject.title(for: .normal)).to(equal("||"))
-        }
-      }
-    }
+@Suite("LocationTracker")
+@MainActor
+struct LocationTrackerTests {
+
+  @Test("Has location manager property set")
+  func hasLocationManagerSet() async {
+    #expect(LocationTracker.sharedInstance.locationManager != nil)
+  }
+
+  @Test("Sets delegate of location manager to itself")
+  func setsDelegateToItself() async {
+    let delegate = LocationTracker.sharedInstance.locationManager.delegate
+    #expect(delegate != nil)
+  }
+
+  @Test("Updates shared application state on location update")
+  func updatesSharedStateOnLocationUpdate() async {
+    ApplicationSharedState.sharedInstance.clear()
+
+    let latitude: Double = -71.063303
+    let longitude: Double = 42.35769
+
+    LocationTracker.sharedInstance.locationManager(
+      LocationTracker.sharedInstance.locationManager,
+      didUpdateLocations: [CLLocation(latitude: latitude, longitude: longitude)]
+    )
+
+    #expect(LocationTracker.sharedInstance.currentLocation != nil)
+    #expect(UserDefaults.standard.float(forKey: "lastKnownLocationLatitude") == -71.063303)
+    #expect(UserDefaults.standard.float(forKey: "lastKnownLocationLongitude") == 42.35769)
   }
 }

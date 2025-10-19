@@ -21,8 +21,6 @@ target :BostonFreedomTrail do
   pod 'MaterialComponents/Snackbar'
 
   target :BostonFreedomTrailTests do
-    pod 'Quick'
-    pod 'Nimble'
     pod 'OHHTTPStubs'
   end
 

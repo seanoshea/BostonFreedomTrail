@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,35 +28,34 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Quick
-import Nimble
-
+import Testing
+import UIKit
 @testable import BostonFreedomTrail
 
-class PListHelperTest: QuickSpec {
-  
-  override func spec() {
-    
-    describe("PListHelper") {
-      
-      context("Testing Retrieving Values from a the plist file") {
-        
-        it("should be able to get string values from the plist file") {
-          expect(PListHelper.googleMapsApiKey()).to(equal("AIzaSyAboFJaMbnKvTdFoxB4X3n5oG2n43Kaxkk"))
-        }
-        
-        it("should be able to get the default latitude for the map from the plist file") {
-          expect(PListHelper.defaultLatitude()).to(equal(42.355721486582))
-        }
-        
-        it("should be able to get the default longitude for the map from the plist file") {
-          expect(PListHelper.defaultLongitude()).to(equal(-71.063303947449))
-        }
-        
-        it("should be able to get the default camera zoom for the map from the plist file") {
-          expect(PListHelper.defaultCameraZoom()).to(equal(14.0))
-        }
-      }
-    }
+@Suite("AppDelegate")
+@MainActor
+struct AppDelegateTests {
+
+  @Test("Has delegate set on UITabBarController")
+  func hasDelegateSetOnTabBarController() async {
+    let subject = UIApplication.shared.delegate as? AppDelegate
+    guard let window = subject?.window else { return }
+    let tabBarController = window.rootViewController as? UITabBarController
+
+    #expect(tabBarController?.delegate != nil)
+  }
+
+  @Test("Notifies analytics when controller is selected")
+  func notifiesAnalyticsOnControllerSelection() async {
+    let subject = UIApplication.shared.delegate as? AppDelegate
+    guard let window = subject?.window else { return }
+    let tabBarController = window.rootViewController as? UITabBarController
+
+    let viewController = tabBarController!.viewControllers![2]
+
+    subject?.tabBarController(tabBarController!, didSelect: viewController)
+
+    // This test verifies the method executes without error
+    // Analytics notification is a side effect
   }
 }

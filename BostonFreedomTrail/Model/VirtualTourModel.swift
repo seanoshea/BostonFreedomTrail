@@ -78,7 +78,7 @@ protocol VirtualTourModelDelegate: AnyObject {
 }
 
 /// Backling business logic class for the `VirtualTourController`
-final class VirtualTourModel {
+final class VirtualTourModel: @unchecked Sendable {
   
   // MARK: Properties
   

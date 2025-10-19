@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,50 +29,29 @@
  */
 
 import Foundation
-
-import Quick
-import Nimble
-
-import CoreLocation
-
+import Testing
 @testable import BostonFreedomTrail
 
-class LocationTrackerTest: QuickSpec {
-  
-  override func spec() {
-    
-    describe("LocationTracker") {
-      
-      context("Initialization") {
-        
-        it("should always have a manager property set") {
-          expect(LocationTracker.sharedInstance.locationManager).toNot(beNil())
-        }
-        
-        it("should set the delegate of the LocationTracker manager to itself") {
-          let delegate = LocationTracker.sharedInstance.locationManager.delegate
-          expect(delegate).toNot(beNil())
-        }
-      }
-      
-      context("CLLocationManagerDelegate methods") {
-        
-        beforeEach({ () -> Void in
-          ApplicationSharedState.sharedInstance.clear()
-        })
-        
-        it("should update the shared application state when the user moves to a new location") {
-          
-          let latitude:Double = -71.063303
-          let longitude:Double = 42.35769
-          
-          LocationTracker.sharedInstance.locationManager(LocationTracker.sharedInstance.locationManager, didUpdateLocations: [CLLocation.init(latitude: latitude, longitude: longitude)])
-          
-          expect(LocationTracker.sharedInstance.currentLocation).toNot(beNil())
-          expect(UserDefaults.standard.float(forKey: "lastKnownLocationLatitude")).to(equal(-71.063303))
-          expect(UserDefaults.standard.float(forKey: "lastKnownLocationLongitude")).to(equal(42.35769))
-        }
-      }
-    }
+@Suite("Trail")
+struct TrailTests {
+
+  @Test("Serves up index based on placemark")
+  func servesUpIndexBasedOnPlacemark() async {
+    let index = 2
+    let placemark = Trail.instance.placemarks[index]
+
+    #expect(Trail.instance.placemarkIndex(placemark) == index)
+  }
+
+  @Test("Figures out correct placemark index from identifier")
+  func figuresOutPlacemarkIndexFromIdentifier() async {
+    let i = 16
+    #expect(i.placemarkIndexFromIdentifier("placemark9") == 8)
+  }
+
+  @Test("Fails gracefully with poorly formed placemark identifier")
+  func failsGracefullyWithPoorlyFormedIdentifier() async {
+    let i = 16
+    #expect(i.placemarkIndexFromIdentifier("placeak9") == 0)
   }
 }

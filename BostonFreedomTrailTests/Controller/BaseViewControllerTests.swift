@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,50 +28,18 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Quick
-import Nimble
-
+import Testing
 @testable import BostonFreedomTrail
 
-import GoogleMaps
+@Suite("BaseViewController")
+@MainActor
+struct BaseViewControllerTests {
 
-class MapModelTest: QuickSpec {
-  
-  override func spec() {
-    
-    describe("MapModel") {
-      
-      var subject:MapModel?
-      var mapViewController:MapViewController?
-      
-      beforeEach({ () -> Void in
-        subject = MapModel.init()
-        mapViewController = UIStoryboard.mapViewController()
-        _ = mapViewController?.view
-      })
-      
-      context("Adding the placemarks") {
-        
-        it("should add all the placemarks to the map") {
-          let mapView:GMSMapView = (mapViewController?.mapView)!
-          let placemarks = subject?.addPlacemarksToMap(mapView)
-          let marker:GMSMarker = placemarks![0]
-          
-          expect(marker.map).toNot(beNil())
-        }
-      }
-      
-      context("Validating the users current camera zoom level") {
-        
-        it("should allow a reasonable zoom value") {
-          expect(subject!.isViableZoom(14)).to(beTrue())
-        }
-        
-        it("should not allow an unreasonable zoom value") {
-          expect(subject!.isViableZoom(-1)).to(beFalse())
-          expect(subject!.isViableZoom(400)).to(beFalse())
-        }
-      }
-    }
+  @Test("Returns empty string for screen tracking name")
+  func returnsEmptyStringForScreenTrackingName() async {
+    let subject = BaseViewController()
+    _ = subject.view
+
+    #expect(subject.getScreenTrackingName() == "")
   }
 }

@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,41 +28,29 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Quick
-import Nimble
-
+import Testing
 @testable import BostonFreedomTrail
 
-class AboutViewControllerTest: QuickSpec {
-  
-  override func spec() {
-    
-    describe("AboutViewController") {
-      
-      var subject:AboutViewController?
-      
-      beforeEach({ () -> Void in
-        subject = UIStoryboard.aboutViewController()
-        _ = subject?.view
-      })
-      
-      context("Analytics") {
-        
-        it("should have a unique screen name to track analytics") {
-          expect(subject?.getScreenTrackingName()).to(equal(AnalyticsScreenNames.aboutScreen.rawValue))
-        }
-      }
-      
-      context("Initialization of the AboutViewController") {
-        
-        it("should have text on each of its labels") {
-          expect(subject?.developerLabel?.text).toNot(equal(""))
-          expect(subject?.developerDetailsTextView?.text).toNot(equal(""))
-          expect(subject?.trailInformationLabel?.text).toNot(equal(""))
-          expect(subject?.trailInformationDetailsTextView?.text).toNot(equal(""))
-          expect(subject?.googleMapsLabel?.text).toNot(equal(""))
-        }
-      }
-    }
+@Suite("PListHelper")
+struct PListHelperTests {
+
+  @Test("Gets Google Maps API key from plist")
+  func getsGoogleMapsApiKey() async {
+    #expect(PListHelper.googleMapsApiKey() == "AIzaSyAboFJaMbnKvTdFoxB4X3n5oG2n43Kaxkk")
+  }
+
+  @Test("Gets default latitude from plist")
+  func getsDefaultLatitude() async {
+    #expect(PListHelper.defaultLatitude() == 42.355721486582)
+  }
+
+  @Test("Gets default longitude from plist")
+  func getsDefaultLongitude() async {
+    #expect(PListHelper.defaultLongitude() == -71.063303947449)
+  }
+
+  @Test("Gets default camera zoom from plist")
+  func getsDefaultCameraZoom() async {
+    #expect(PListHelper.defaultCameraZoom() == 14.0)
   }
 }

@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,30 +28,36 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Quick
-import Nimble
-
+import Testing
 @testable import BostonFreedomTrail
 
-class BaseViewControllerTest: QuickSpec {
-  
-  override func spec() {
-    
-    describe("BaseViewController") {
-      
-      var subject:BaseViewController?
-      
-      beforeEach({ () -> Void in
-        subject = BaseViewController.init()
-        _ = subject?.view
-      })
-      
-      context("Analytics") {
-        
-        it("should return an empty string for the screen tracking name") {
-          expect(subject?.getScreenTrackingName()).to(equal(""))
-        }
-      }
+@Suite("TrailParser")
+struct TrailParserTests {
+
+  @Test("Parses sixteen placemarks from trail XML")
+  func parsesSixteenPlacemarks() async {
+    let trail = TrailParser().parseTrail()
+
+    #expect(trail.placemarks.count == 16)
+  }
+
+  @Test("Orders placemarks correctly after parsing")
+  func ordersPlacemarksCorrectly() async {
+    let trail = TrailParser().parseTrail()
+
+    for (index, placemark) in trail.placemarks.enumerated() {
+      let identifier = "placemark\(index + 1)"
+      #expect(placemark.identifier == identifier)
+    }
+  }
+
+  @Test("Parses LookAt value for all placemarks except first")
+  func parsesLookAtForAllExceptFirst() async {
+    let trail = TrailParser().parseTrail()
+
+    for (index, placemark) in trail.placemarks.enumerated() {
+      guard index > 0 else { continue }
+      #expect(placemark.lookAt != nil)
     }
   }
 }

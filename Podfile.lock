@@ -1,13 +1,4 @@
 PODS:
-  - CwlCatchException (2.2.1):
-    - CwlCatchExceptionSupport (~> 2.2.1)
-  - CwlCatchExceptionSupport (2.2.1)
-  - CwlMachBadInstructionHandler (2.2.2)
-  - CwlPosixPreconditionTesting (2.2.2)
-  - CwlPreconditionTesting (2.2.2):
-    - CwlCatchException (~> 2.2.1)
-    - CwlMachBadInstructionHandler (~> 2.2.2)
-    - CwlPosixPreconditionTesting (~> 2.2.2)
   - FirebaseAnalytics (12.4.0):
     - FirebaseAnalytics/Default (= 12.4.0)
     - FirebaseCore (~> 12.4.0)
@@ -168,8 +159,6 @@ PODS:
     - nanopb/encode (= 3.30910.0)
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
-  - Nimble (13.8.0):
-    - CwlPreconditionTesting (~> 2.2.0)
   - OHHTTPStubs (9.1.0):
     - OHHTTPStubs/Default (= 9.1.0)
   - OHHTTPStubs/Core (9.1.0)
@@ -184,7 +173,6 @@ PODS:
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (9.1.0)
   - PromisesObjC (2.4.0)
-  - Quick (7.6.2)
   - ReachabilitySwift (5.2.4)
 
 DEPENDENCIES:
@@ -193,18 +181,11 @@ DEPENDENCIES:
   - MaterialComponents/Buttons
   - MaterialComponents/Snackbar
   - MaterialComponents/Typography
-  - Nimble
   - OHHTTPStubs
-  - Quick
   - ReachabilitySwift
 
 SPEC REPOS:
   trunk:
-    - CwlCatchException
-    - CwlCatchExceptionSupport
-    - CwlMachBadInstructionHandler
-    - CwlPosixPreconditionTesting
-    - CwlPreconditionTesting
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreInternal
@@ -217,18 +198,11 @@ SPEC REPOS:
     - MDFInternationalization
     - MDFTextAccessibility
     - nanopb
-    - Nimble
     - OHHTTPStubs
     - PromisesObjC
-    - Quick
     - ReachabilitySwift
 
 SPEC CHECKSUMS:
-  CwlCatchException: 7acc161b299a6de7f0a46a6ed741eae2c8b4d75a
-  CwlCatchExceptionSupport: 54ccab8d8c78907b57f99717fb19d4cc3bce02dc
-  CwlMachBadInstructionHandler: dae4fdd124d45c9910ac240287cc7b898f4502a1
-  CwlPosixPreconditionTesting: ecd095aa2129e740b44301c34571e8d85906fb88
-  CwlPreconditionTesting: 67a0047dd4de4382b93442c0e3f25207f984f35a
   FirebaseAnalytics: 0fc2b20091f0ddd21bf73397cf8f0eb5346dc24f
   FirebaseCore: bb595f3114953664e3c1dc032f008a244147cfd3
   FirebaseCoreInternal: d7f5a043c2cd01a08103ab586587c1468047bca6
@@ -241,12 +215,10 @@ SPEC CHECKSUMS:
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
-  Nimble: 84982ec98b5dfc0ffe9ae2ed4c0b2fc57807c2d5
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
-  Quick: b8bec97cd4b9f21da0472d45580f763b801fc353
   ReachabilitySwift: 32793e867593cfc1177f5d16491e3a197d2fccda
 
-PODFILE CHECKSUM: af640aac01e438aaf25cf20ae966deacb273e589
+PODFILE CHECKSUM: ab68b81d8cf094e04f3ffee7b47da041a003cc6b
 
 COCOAPODS: 1.16.2
