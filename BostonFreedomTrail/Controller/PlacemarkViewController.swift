@@ -86,8 +86,8 @@ final class PlacemarkViewController: BaseViewController {
     }
     trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.streetViewPress.rawValue)
     delegate.streetViewButtonPressedForPlacemark(placemark)
-    dismiss(animated: true) { () -> Void in
-      
+    dismiss(animated: true) {
+
     }
   }
   

@@ -117,11 +117,9 @@ struct Trail: Sendable {
    */
   func placemarkIndex(_ placemark: Placemark) -> Int {
     var placemarkIndex = 0
-    for (index, pMark) in placemarks.enumerated() {
-      if pMark.identifier.caseInsensitiveCompare(placemark.identifier) == ComparisonResult.orderedSame {
-        placemarkIndex = index
-        break
-      }
+    for (index, pMark) in placemarks.enumerated() where pMark.identifier.caseInsensitiveCompare(placemark.identifier) == ComparisonResult.orderedSame {
+      placemarkIndex = index
+      break
     }
     return placemarkIndex
   }
