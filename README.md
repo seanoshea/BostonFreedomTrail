@@ -3,7 +3,7 @@
 iOS Application for walking the Boston Freedom Trail.
 
 [![CI](https://github.com/seanoshea/BostonFreedomTrail/actions/workflows/ci.yml/badge.svg)](https://github.com/seanoshea/BostonFreedomTrail/actions/workflows/ci.yml)
-[![Code Coverage](http://codecov.io/github/seanoshea/BostonFreedomTrail/coverage.svg?branch=develop)](http://codecov.io/github/seanoshea/BostonFreedomTrail?branch=develop)
+[![codecov](https://codecov.io/gh/seanoshea/BostonFreedomTrail/branch/develop/graph/badge.svg)](https://codecov.io/gh/seanoshea/BostonFreedomTrail)
 [![PRs Welcome](https://img.shields.io/badge/prs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![License](http://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://github.com/seanoshea/BostonFreedomTrail/blob/master/LICENSE)
 [![Languages](https://img.shields.io/github/languages/count/seanoshea/BostonFreedomTrail)](https://img.shields.io/github/languages/count/seanoshea/BostonFreedomTrail)

@@ -34,23 +34,91 @@ import Testing
 import GoogleMaps
 
 @Suite("PlacemarkModel")
+@MainActor
 struct PlacemarkModelTests {
+
+  // MARK: - Initialization Tests
+
+  @Test("Initializes with nil placemark")
+  func initializesWithNilPlacemark() async {
+    let subject = PlacemarkModel()
+
+    #expect(subject.placemark == nil)
+  }
+
+  // MARK: - Placemark Property Tests
+
+  @Test("Sets and retrieves placemark")
+  func setsAndRetrievesPlacemark() async {
+    let subject = PlacemarkModel()
+    let location = CLLocation(latitude: 42.3601, longitude: -71.0589)
+    let placemark = Placemark(
+      identifier: "test-id",
+      name: "Test Placemark",
+      location: location,
+      coordinates: [location],
+      placemarkDescription: "Test description",
+      lookAt: nil
+    )
+
+    subject.placemark = placemark
+
+    #expect(subject.placemark?.identifier == "test-id")
+    #expect(subject.placemark?.name == "Test Placemark")
+    #expect(subject.placemark?.placemarkDescription == "Test description")
+  }
+
+  // MARK: - stringForWebView Tests
+
+  @Test("Returns empty string when placemark is nil")
+  func returnsEmptyStringWhenPlacemarkIsNil() async {
+    let subject = PlacemarkModel()
+
+    let result = subject.stringForWebView()
+
+    #expect(result == "")
+  }
+
+  @Test("Returns HTML template when placemark description is empty")
+  func returnsHTMLTemplateWhenDescriptionIsEmpty() async {
+    let subject = PlacemarkModel()
+    let location = CLLocation(latitude: 42.3601, longitude: -71.0589)
+    let placemark = Placemark(
+      identifier: "test-id",
+      name: "Test Placemark",
+      location: location,
+      coordinates: [location],
+      placemarkDescription: "",
+      lookAt: nil
+    )
+    subject.placemark = placemark
+
+    let result = subject.stringForWebView()
+
+    // Should still return HTML template even with empty description
+    #expect(!result.isEmpty)
+    #expect(result.contains("<!doctype html>") || result.contains("<!DOCTYPE html>"))
+  }
 
   @Test("Uses placemark description when creating web view")
   func usesPlacemarkDescriptionInWebView() async {
     let subject = PlacemarkModel()
+    let location = CLLocation(latitude: 42.3601, longitude: -71.0589)
+    let testDescription = "This is a test description for the placemark"
     subject.placemark = Placemark(
       identifier: "placemark identifier",
       name: "placemark name",
-      location: CLLocation(latitude: 10, longitude: 10),
-      coordinates: [CLLocation(latitude: 10, longitude: 10)],
-      placemarkDescription: "placemark description",
+      location: location,
+      coordinates: [location],
+      placemarkDescription: testDescription,
       lookAt: nil
     )
 
-    // This test was originally commented out in the Quick/Nimble version
-    // Keeping it as a placeholder for when stringForWebView is implemented
-    // let webViewString = subject.stringForWebView()
-    // #expect(webViewString.contains("placemark description"))
+    let webViewString = subject.stringForWebView()
+
+    // Should contain the description
+    #expect(webViewString.contains(testDescription))
+    // Should contain HTML content (not empty)
+    #expect(!webViewString.isEmpty)
   }
 }

@@ -12,7 +12,19 @@ platform :ios do
     scan(
       scheme: "BostonFreedomTrail",
       configuration: "Debug",
-      clean: true
+      clean: true,
+      code_coverage: true
+    )
+  end
+
+  desc "Generate code coverage report"
+  lane :coverage do
+    xcov(
+      workspace: "BostonFreedomTrail.xcworkspace",
+      scheme: "BostonFreedomTrail",
+      output_directory: "xcov_output",
+      minimum_coverage_percentage: 80.0,
+      include_test_targets: false
     )
   end
 

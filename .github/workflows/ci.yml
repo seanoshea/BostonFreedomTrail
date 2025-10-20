@@ -47,6 +47,10 @@ jobs:
       - name: Build and run tests
         run: bundle exec fastlane test
 
+      - name: Generate coverage report
+        if: success()
+        run: bundle exec fastlane coverage
+
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
@@ -55,12 +59,31 @@ jobs:
           path: test_output/
           retention-days: 30
 
-      - name: Upload coverage reports
+      - name: Upload coverage HTML report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: xcov_output/
+          retention-days: 30
+
+      - name: Check coverage threshold
+        if: success()
+        run: |
+          COVERAGE=$(grep -oP '(?<=<coverage line-rate=")[^"]*' xcov_output/coverage.xml | head -1 || echo "0")
+          COVERAGE_PCT=$(echo "$COVERAGE * 100" | bc)
+          echo "Coverage: ${COVERAGE_PCT}%"
+          if (( $(echo "$COVERAGE_PCT < 80.0" | bc -l) )); then
+            echo "::warning::Coverage ${COVERAGE_PCT}% is below minimum 80%"
+          fi
+
+      - name: Upload coverage reports to Codecov
         if: success()
         uses: codecov/codecov-action@v4
         with:
-          files: ./test_output/coverage.xml
+          files: ./xcov_output/coverage.xml
           flags: unittests
           name: codecov-umbrella
+          fail_ci_if_error: false
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
