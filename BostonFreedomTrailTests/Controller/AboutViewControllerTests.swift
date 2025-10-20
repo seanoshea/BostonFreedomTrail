@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,34 +28,31 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Foundation
-
-import Quick
-import Nimble
-
+import Testing
+import UIKit
 @testable import BostonFreedomTrail
 
-import GoogleMaps
+@Suite("AboutViewController")
+@MainActor
+struct AboutViewControllerTests {
 
-class PlacemarkModelTest: QuickSpec {
-  
-  override func spec() {
-    
-    describe("PlacemarkModel") {
-      
-      var subject:PlacemarkModel?
-      
-      beforeEach({ () -> Void in
-        subject = PlacemarkModel.init()
-        subject?.placemark = Placemark.init(identifier: "placemark identifier", name: "placemark name", location: CLLocation.init(latitude: 10, longitude: 10), coordinates: [CLLocation.init(latitude: 10, longitude: 10)], placemarkDescription: "placemark description", lookAt:nil)
-      })
-      
-      context("Creating the HTML for the placemark") {
-        
-        it("should use the placemark description when creating the web view") {
-          //                    expect(subject?.stringForWebView().rangeOfString("placemark description")).toNot(beNil())
-        }
-      }
-    }
+  @Test("Has unique screen name for analytics")
+  func hasUniqueScreenName() async {
+    let subject = UIStoryboard.aboutViewController()
+    _ = subject.view
+
+    #expect(subject.getScreenTrackingName() == AnalyticsScreenNames.aboutScreen.rawValue)
+  }
+
+  @Test("Has text on all labels")
+  func hasTextOnAllLabels() async {
+    let subject = UIStoryboard.aboutViewController()
+    _ = subject.view
+
+    #expect(subject.developerLabel?.text != "")
+    #expect(subject.developerDetailsTextView?.text != "")
+    #expect(subject.trailInformationLabel?.text != "")
+    #expect(subject.trailInformationDetailsTextView?.text != "")
+    #expect(subject.googleMapsLabel?.text != "")
   }
 }

@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,43 +29,29 @@
  */
 
 import Foundation
-
-import Quick
-import Nimble
-
+import Testing
 @testable import BostonFreedomTrail
 
-class TrailTest: QuickSpec {
-  
-  override func spec() {
-    
-    describe("Trail") {
-      
-      context("Figuring out the placemark index") {
-        
-        it("should be able to serve up an index based on a placemark") {
-          let index = 2
-          let placemark = Trail.instance.placemarks[index]
-          
-          expect(Trail.instance.placemarkIndex(placemark)).to(equal(index))
-        }
-      }
-      
-      context("Integer Extensions") {
-        
-        it("should be able to figure out the correct placemark index for a placemark identifier") {
-          let i = 16
-          expect(i.placemarkIndexFromIdentifier("placemark9")).to(equal(8))
-        }
-        
-        context("a poorly formed placemark identifier") {
-          
-          it("should be able to fail gracefully and return 0") {
-            let i = 16
-            expect(i.placemarkIndexFromIdentifier("placeak9")).to(equal(0))
-          }
-        }
-      }
-    }
+@Suite("Trail")
+struct TrailTests {
+
+  @Test("Serves up index based on placemark")
+  func servesUpIndexBasedOnPlacemark() async {
+    let index = 2
+    let placemark = Trail.instance.placemarks[index]
+
+    #expect(Trail.instance.placemarkIndex(placemark) == index)
+  }
+
+  @Test("Figures out correct placemark index from identifier")
+  func figuresOutPlacemarkIndexFromIdentifier() async {
+    let i = 16
+    #expect(i.placemarkIndexFromIdentifier("placemark9") == 8)
+  }
+
+  @Test("Fails gracefully with poorly formed placemark identifier")
+  func failsGracefullyWithPoorlyFormedIdentifier() async {
+    let i = 16
+    #expect(i.placemarkIndexFromIdentifier("placeak9") == 0)
   }
 }

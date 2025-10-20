@@ -31,11 +31,7 @@
 #ifndef BostonFreedomTrail_Bridging_Header_h
 #define BostonFreedomTrail_Bridging_Header_h
 
-#import <GoogleAnalytics/GAI.h>
-#import <GoogleAnalytics/GAIFields.h>
-#import <GoogleAnalytics/GAILogger.h>
-#import <GoogleAnalytics/GAIDictionaryBuilder.h>
-#import <GoogleAnalytics/GAITrackedViewController.h>
-#import <GoogleAnalytics/GAITracker.h>
+// GoogleAnalytics has been removed and replaced with Firebase Analytics
+// Firebase Analytics is imported directly in Swift and doesn't require bridging header imports
 
 #endif /* BostonFreedomTrail_Bridging_Header_h */

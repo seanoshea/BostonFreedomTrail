@@ -32,36 +32,37 @@ import UIKit
 import Reachability
 import MaterialComponents
 
-protocol ReachabilityListener:class {
+@MainActor
+protocol ReachabilityListener: AnyObject {
   func registerListener()
   func reachabilityStatusChanged(_ online: Bool)
   func isOnline() -> Bool
 }
 
 extension ReachabilityListener where Self : BaseViewController {
-  
+
   func registerListener() {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    appDelegate.reachability?.whenReachable = { reachability in
+    appDelegate.reachability?.whenReachable = { _ in
       DispatchQueue.main.async { [weak self] in
         self?.reachabilityStatusChanged(true)
       }
     }
-    appDelegate.reachability?.whenUnreachable = { reachability in
+    appDelegate.reachability?.whenUnreachable = { _ in
       DispatchQueue.main.async { [weak self] in
         self?.reachabilityStatusChanged(false)
       }
     }
   }
-  
+
   func reachabilityStatusChanged(_ online: Bool) {
     if online {
-      MDCSnackbarManager.dismissAndCallCompletionBlocks(withCategory: nil)
+      MDCSnackbarManager.default.dismissAndCallCompletionBlocks(withCategory: nil)
     } else {
       displaySnackbarMessage(NSLocalizedString("Please check your network connection", comment: ""))
     }
   }
-  
+
   func isOnline() -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     guard let reachability = appDelegate.reachability else { return false }

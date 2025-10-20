@@ -32,7 +32,8 @@ import UIKit
 import GoogleMaps
 
 /// Delegate for the `MapViewController`
-protocol MapViewControllerDelegate:class {
+@MainActor
+protocol MapViewControllerDelegate: AnyObject {
   /**
    Executed when navigating to the virtual tour screen.
    
@@ -108,7 +109,7 @@ final class MapViewController: BaseViewController {
 // MARK: GMSMapViewDelegate Functions
 
 /// Extensiom for all the Google Maps callbacks
-extension MapViewController : GMSMapViewDelegate {
+extension MapViewController : @preconcurrency GMSMapViewDelegate {
   
   /**
    Ensures that the last known coordinate is set in the app's state.

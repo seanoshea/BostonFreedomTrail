@@ -1,8 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'fastlane', '2.146.1'
-gem 'cocoapods', '1.9.1'
+ruby '~> 3.4.0'
+
+gem 'abbrev' # Required for Ruby 3.4
+gem 'fastlane'
+gem 'cocoapods'
+gem 'xcov' # Code coverage reporting
+
 group :docs do
-  gem 'rake', '13.0.1'
-  gem 'jazzy', '0.13.3'
+  gem 'rake'
+  gem 'jazzy'
 end

@@ -33,10 +33,10 @@ import Foundation
 import CoreLocation
 
 /// Keeps track of where the user is in the map.
-final class LocationTracker : NSObject {
-  
+final class LocationTracker : NSObject, @unchecked Sendable {
+
   // MARK: Properties
-  
+
   /// Singleton accessor for the `LocationTracker`.
   static let sharedInstance = LocationTracker()
   /// Where the user is in the map view.

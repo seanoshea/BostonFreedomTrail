@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,38 +28,51 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Quick
-import Nimble
-
+import Testing
+import UIKit
 @testable import BostonFreedomTrail
 
-class AppDelegateTest: QuickSpec {
-  
-  override func spec() {
-    
-    describe("AppDelegate") {
-      
-      var subject:AppDelegate!
-      var tabBarController:UITabBarController!
-      
-      beforeEach({ () -> Void in
-        subject = UIApplication.shared.delegate as? AppDelegate
-        guard let window = subject.window else { return }
-        tabBarController = window.rootViewController as? UITabBarController
-      })
-      
-      context("UITabBarControllerDelegate") {
-        
-        it("should have a delegate set on the UITabBarController") {
-          expect(tabBarController.delegate).toNot(beNil())
-        }
-        
-        it("should notify analytics about the selection of a controller") {
-          let viewController = tabBarController.viewControllers![2]
-          
-          subject.tabBarController(tabBarController, didSelect: viewController)
-        }
-      }
-    }
+@Suite("VirtualTourButton")
+@MainActor
+struct VirtualTourButtonTests {
+
+  @Test("Updates title for postSetup state")
+  func updatesTitleForPostSetup() async {
+    let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 100))
+    let subject = VirtualTourButton(frame: rect, shape: .default)
+
+    subject.updateButtonTitle(.postSetup)
+
+    #expect(subject.title(for: .normal) == "▷")
+  }
+
+  @Test("Updates title for paused state")
+  func updatesTitleForPaused() async {
+    let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 100))
+    let subject = VirtualTourButton(frame: rect, shape: .default)
+
+    subject.updateButtonTitle(.paused)
+
+    #expect(subject.title(for: .normal) == "▷")
+  }
+
+  @Test("Updates title for finished state")
+  func updatesTitleForFinished() async {
+    let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 100))
+    let subject = VirtualTourButton(frame: rect, shape: .default)
+
+    subject.updateButtonTitle(.finished)
+
+    #expect(subject.title(for: .normal) == "↻")
+  }
+
+  @Test("Updates title for inProgress state")
+  func updatesTitleForInProgress() async {
+    let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 100))
+    let subject = VirtualTourButton(frame: rect, shape: .default)
+
+    subject.updateButtonTitle(.inProgress)
+
+    #expect(subject.title(for: .normal) == "||")
   }
 }

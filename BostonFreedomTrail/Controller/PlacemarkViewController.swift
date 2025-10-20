@@ -32,7 +32,8 @@ import UIKit
 import WebKit
 
 /// Delegate for the `PlacemarkViewController`
-protocol PlacemarkViewControllerDelegate:class {
+@MainActor
+protocol PlacemarkViewControllerDelegate: AnyObject {
   /**
    Executed when the user indicates that they want to go to the virtual tour.
    
@@ -57,10 +58,12 @@ final class PlacemarkViewController: BaseViewController {
   weak var delegate: PlacemarkViewControllerDelegate?
   
   // MARK: Lifecycle
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
-    model = PlacemarkModel.init()
+    MainActor.assumeIsolated {
+      model = PlacemarkModel.init()
+    }
   }
   
   override func viewDidLoad() {
@@ -85,8 +88,8 @@ final class PlacemarkViewController: BaseViewController {
     }
     trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.streetViewPress.rawValue)
     delegate.streetViewButtonPressedForPlacemark(placemark)
-    dismiss(animated: true) { () -> Void in
-      
+    dismiss(animated: true) {
+
     }
   }
   

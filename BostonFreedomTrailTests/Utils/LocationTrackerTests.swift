@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2014 - present Upwards Northwards Software Limited
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  1. Redistributions of source code must retain the above copyright
@@ -15,7 +15,7 @@
  4. Neither the name of Upwards Northwards Software Limited nor the
  names of its contributors may be used to endorse or promote products
  derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY UPWARDS NORTHWARDS SOFTWARE LIMITED ''AS IS'' AND ANY
  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,43 +28,41 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import Quick
-import Nimble
-
+import Foundation
+import Testing
+import CoreLocation
 @testable import BostonFreedomTrail
 
-class TrailParserTest: QuickSpec {
-  
-  override func spec() {
-    
-    describe("TrailParser") {
-      
-      var trail:Trail?
-      
-      beforeEach({ () -> Void in
-        trail = TrailParser().parseTrail()
-      })
-      
-      context("Testing Parsing of Placemarks") {
-        
-        it("should parse out sixteen placemarks from the trail xml file") {
-          expect(trail!.placemarks.count).to(equal(16))
-        }
-        
-        it("should order the placemarks correctly after parsing") {
-          for (index, placemark) in trail!.placemarks.enumerated() {
-            let identifier = "placemark\(index + 1)"
-            expect(placemark.identifier).to(equal(identifier))
-          }
-        }
-        
-        it("should parse out a LookAt value for each placemark except for the first one") {
-          for (index, placemark) in trail!.placemarks.enumerated() {
-            guard index > 0 else { continue }
-            expect(placemark.lookAt).toNot(beNil())
-          }
-        }
-      }
-    }
+@Suite("LocationTracker")
+@MainActor
+struct LocationTrackerTests {
+
+  @Test("Has location manager property set")
+  func hasLocationManagerSet() async {
+    // locationManager is always non-nil since it's a non-optional lazy var
+    _ = LocationTracker.sharedInstance.locationManager
+  }
+
+  @Test("Sets delegate of location manager to itself")
+  func setsDelegateToItself() async {
+    let delegate = LocationTracker.sharedInstance.locationManager.delegate
+    #expect(delegate != nil)
+  }
+
+  @Test("Updates shared application state on location update")
+  func updatesSharedStateOnLocationUpdate() async {
+    ApplicationSharedState.sharedInstance.clear()
+
+    let latitude: Double = -71.063303
+    let longitude: Double = 42.35769
+
+    LocationTracker.sharedInstance.locationManager(
+      LocationTracker.sharedInstance.locationManager,
+      didUpdateLocations: [CLLocation(latitude: latitude, longitude: longitude)]
+    )
+
+    #expect(LocationTracker.sharedInstance.currentLocation != nil)
+    #expect(UserDefaults.standard.float(forKey: "lastKnownLocationLatitude") == -71.063303)
+    #expect(UserDefaults.standard.float(forKey: "lastKnownLocationLongitude") == 42.35769)
   }
 }

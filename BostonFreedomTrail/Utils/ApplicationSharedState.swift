@@ -51,13 +51,14 @@ enum DefaultsKeys: String {
 }
 
 /// Simple accessors for user defaults used throughout the app.
-final class ApplicationSharedState {
-  
+final class ApplicationSharedState: @unchecked Sendable {
+
   /// Singleton accessor for `ApplicationSharedState`.
   static let sharedInstance = ApplicationSharedState()
   
   /// The last known camera zoom specified by the user in the virtual tour.
   var cameraZoom: Float {
+    // swiftlint:disable:next computed_accessors_order
     set {
       guard newValue > kGMSMinZoomLevel && newValue < kGMSMaxZoomLevel else {
         return
@@ -71,6 +72,7 @@ final class ApplicationSharedState {
   
   /// The last known placemark that the user interacted with in the map view.
   var lastKnownPlacemarkCoordinate: CLLocationCoordinate2D {
+    // swiftlint:disable:next computed_accessors_order
     set {
       UserDefaults.standard.set(newValue.latitude, forKey: DefaultsKeys.lastKnownPlacemarkCoordinateLatitude.rawValue)
       UserDefaults.standard.set(newValue.longitude, forKey: DefaultsKeys.lastKnownPlacemarkCoordinateLongitude.rawValue)
@@ -84,6 +86,7 @@ final class ApplicationSharedState {
 
   /// The last known location that the user interacted with in the map view.
   var lastKnownCoordinate: CLLocationCoordinate2D {
+    // swiftlint:disable:next computed_accessors_order
     set {
       UserDefaults.standard.set(newValue.latitude, forKey: DefaultsKeys.lastKnownCoordinateLatitude.rawValue)
       UserDefaults.standard.set(newValue.longitude, forKey: DefaultsKeys.lastKnownCoordinateLongitude.rawValue)
@@ -97,6 +100,7 @@ final class ApplicationSharedState {
   
   /// The last known location the user was seen in the map view.
   var lastKnownLocation: CLLocation {
+    // swiftlint:disable:next computed_accessors_order
     set {
       UserDefaults.standard.set(newValue.coordinate.latitude, forKey: DefaultsKeys.lastKnownLocationLatitude.rawValue)
       UserDefaults.standard.set(newValue.coordinate.longitude, forKey: DefaultsKeys.lastKnownLocationLongitude.rawValue)

@@ -6,6 +6,9 @@
 build/
 DerivedData
 
+## macOS
+.DS_Store
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
@@ -66,3 +69,8 @@ fastlane/README.md
 
 # documentation
 docs/
+
+# Build and test logs
+*.log
+test_output/
+test_results/

@@ -33,7 +33,7 @@ import Foundation
 import CoreLocation
 
 /// Backling class for every placemark on the Boston Freedom Trail.
-final class Placemark {
+final class Placemark: @unchecked Sendable {
   
   // MARK: Properties
   
@@ -101,10 +101,10 @@ struct LookAt {
 }
 
 /// Defines the full trail and collection of placemarks for the app.
-struct Trail {
-  
+struct Trail: Sendable {
+
   // MARK: Properties
-  
+
   /// Singleton accessor
   static let instance = TrailParser().parseTrail()
   /// Collection of placemarks which represents the Freedom Trail
@@ -117,11 +117,9 @@ struct Trail {
    */
   func placemarkIndex(_ placemark: Placemark) -> Int {
     var placemarkIndex = 0
-    for (index, pMark) in placemarks.enumerated() {
-      if pMark.identifier.caseInsensitiveCompare(placemark.identifier) == ComparisonResult.orderedSame {
-        placemarkIndex = index
-        break
-      }
+    for (index, pMark) in placemarks.enumerated() where pMark.identifier.caseInsensitiveCompare(placemark.identifier) == ComparisonResult.orderedSame {
+      placemarkIndex = index
+      break
     }
     return placemarkIndex
   }

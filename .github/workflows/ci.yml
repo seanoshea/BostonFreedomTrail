@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches: [ develop, main, 'feature/**' ]
+  pull_request:
+    branches: [ develop, main ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  swiftlint:
+    name: SwiftLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
+        with:
+          args: --strict
+
+  test:
+    name: Build and Test
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+
+      - name: Install CocoaPods dependencies
+        run: bundle exec pod install
+
+      - name: Select Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+
+      - name: Build and run tests
+        run: bundle exec fastlane test
+
+      - name: Generate coverage report
+        if: success()
+        run: bundle exec fastlane coverage
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test_output/
+          retention-days: 30
+
+      - name: Upload coverage HTML report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: xcov_output/
+          retention-days: 30
+
+      - name: Check coverage threshold
+        if: success()
+        run: |
+          COVERAGE=$(sed -n 's/.*<coverage line-rate="\([^"]*\)".*/\1/p' xcov_output/coverage.xml | head -1)
+          if [ -z "$COVERAGE" ]; then
+            COVERAGE="0"
+          fi
+          COVERAGE_PCT=$(echo "$COVERAGE * 100" | bc)
+          echo "Coverage: ${COVERAGE_PCT}%"
+          if (( $(echo "$COVERAGE_PCT < 80.0" | bc -l) )); then
+            echo "::warning::Coverage ${COVERAGE_PCT}% is below minimum 80%"
+          fi
+
+      - name: Upload coverage reports to Codecov
+        if: success()
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./xcov_output/coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

@@ -1,0 +1,9 @@
+# Xcode generated files
+- GeneratedAssetSymbols.swift
+- .*\.generated\.swift
+
+# Third-party dependencies
+- Pods/
+
+# Build artifacts
+- DerivedData/
