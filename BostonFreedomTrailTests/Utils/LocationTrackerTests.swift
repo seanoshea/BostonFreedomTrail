@@ -39,7 +39,8 @@ struct LocationTrackerTests {
 
   @Test("Has location manager property set")
   func hasLocationManagerSet() async {
-    #expect(LocationTracker.sharedInstance.locationManager != nil)
+    // locationManager is always non-nil since it's a non-optional lazy var
+    _ = LocationTracker.sharedInstance.locationManager
   }
 
   @Test("Sets delegate of location manager to itself")

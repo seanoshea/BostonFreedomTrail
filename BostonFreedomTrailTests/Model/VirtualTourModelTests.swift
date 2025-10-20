@@ -91,9 +91,9 @@ struct VirtualTourModelTests {
     ApplicationSharedState.sharedInstance.clear()
     subject.currentTourPosition = 1
 
-    let location = subject.enqueueNextLocation()
+    _ = subject.enqueueNextLocation()
 
-    #expect(location != nil)
+    // Location is always non-nil since enqueueNextLocation() returns CLLocation (not optional)
     #expect(subject.currentTourPosition == 2)
   }
 

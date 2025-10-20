@@ -56,7 +56,8 @@ struct MapViewControllerTests {
     _ = subject.view
     ApplicationSharedState.sharedInstance.clear()
 
-    #expect(subject.model != nil)
+    // model is always non-nil since it's a non-optional var with default value
+    _ = subject.model
   }
 
   @Test("Has GMSMapView when loaded")
