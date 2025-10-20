@@ -58,10 +58,12 @@ final class PlacemarkViewController: BaseViewController {
   weak var delegate: PlacemarkViewControllerDelegate?
   
   // MARK: Lifecycle
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
-    model = PlacemarkModel.init()
+    MainActor.assumeIsolated {
+      model = PlacemarkModel.init()
+    }
   }
   
   override func viewDidLoad() {
