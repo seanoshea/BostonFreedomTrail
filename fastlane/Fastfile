@@ -24,7 +24,8 @@ platform :ios do
       scheme: "BostonFreedomTrail",
       output_directory: "xcov_output",
       minimum_coverage_percentage: 80.0,
-      include_test_targets: false
+      include_test_targets: false,
+      include_targets: "BostonFreedomTrail.app"
     )
   end
 
