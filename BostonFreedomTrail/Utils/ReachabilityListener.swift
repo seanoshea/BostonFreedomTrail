@@ -32,14 +32,15 @@ import UIKit
 import Reachability
 import MaterialComponents
 
-protocol ReachabilityListener:class {
+@MainActor
+protocol ReachabilityListener: AnyObject {
   func registerListener()
   func reachabilityStatusChanged(_ online: Bool)
   func isOnline() -> Bool
 }
 
 extension ReachabilityListener where Self : BaseViewController {
-  
+
   func registerListener() {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     appDelegate.reachability?.whenReachable = { _ in
@@ -53,7 +54,7 @@ extension ReachabilityListener where Self : BaseViewController {
       }
     }
   }
-  
+
   func reachabilityStatusChanged(_ online: Bool) {
     if online {
       MDCSnackbarManager.default.dismissAndCallCompletionBlocks(withCategory: nil)
@@ -61,7 +62,7 @@ extension ReachabilityListener where Self : BaseViewController {
       displaySnackbarMessage(NSLocalizedString("Please check your network connection", comment: ""))
     }
   }
-  
+
   func isOnline() -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     guard let reachability = appDelegate.reachability else { return false }
