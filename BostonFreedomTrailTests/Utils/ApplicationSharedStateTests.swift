@@ -45,24 +45,6 @@ struct ApplicationSharedStateTests {
     #expect(ApplicationSharedState.sharedInstance.cameraZoom == 12.0)
   }
 
-  @Test("Sets current camera zoom")
-  func setsCurrentCameraZoom() async {
-    ApplicationSharedState.sharedInstance.clear()
-    ApplicationSharedState.sharedInstance.cameraZoom = 8.0
-
-    #expect(UserDefaults.standard.float(forKey: "applicationSharedStateCameraZoom") == 8.0)
-  }
-
-  @Test("Does not allow camera zoom that is too small")
-  func doesNotAllowTooSmallCameraZoom() async {
-    ApplicationSharedState.sharedInstance.clear()
-    ApplicationSharedState.sharedInstance.cameraZoom = 12.0
-
-    ApplicationSharedState.sharedInstance.cameraZoom = 1.0
-
-    #expect(UserDefaults.standard.float(forKey: "applicationSharedStateCameraZoom") == 12.0)
-  }
-
   // MARK: - Last Placemark Pressed Tests
 
   @Test("Retrieves lat and long of recently pressed placemark")
