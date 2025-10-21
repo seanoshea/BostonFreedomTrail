@@ -215,7 +215,7 @@ final class VirtualTourModel: @unchecked Sendable {
   }
 
   func getCurrentTourLocation() -> CLLocation? {
-    guard tour.count > currentTourPosition else { return nil }
+    guard currentTourPosition > 0 && tour.count > currentTourPosition else { return nil }
     return tour[currentTourPosition]
   }
   
@@ -341,7 +341,8 @@ final class VirtualTourModel: @unchecked Sendable {
   // MARK: Calculating Camera Directions
   
   func locationDirectionForNextLocation(_ nextLocation: CLLocation) -> CLLocationDirection {
-    let fromLocation = tour[currentTourPosition - 1]
+    let next = currentTourPosition == tour.count || currentTourPosition == 0 ? 0 : currentTourPosition - 1
+    let fromLocation = tour[next]
     let toLocation = CLLocation.init(latitude:nextLocation.coordinate.latitude, longitude:nextLocation.coordinate.longitude)
     let fromLatitude = degreesToRadians(fromLocation.coordinate.latitude)
     let fromLongitude = degreesToRadians(fromLocation.coordinate.longitude)

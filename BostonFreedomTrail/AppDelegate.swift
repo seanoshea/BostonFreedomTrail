@@ -102,7 +102,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     // only bother with analytics for prod builds
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
 
-    // Configure Firebase
+    // Configure Firebase only if not already configured
+    guard FirebaseApp.app() == nil else { return }
     FirebaseApp.configure()
   }
   

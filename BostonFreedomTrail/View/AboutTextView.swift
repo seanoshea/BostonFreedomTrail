@@ -35,7 +35,27 @@ import UIKit
 import MaterialComponents
 
 /// Customized text view for the About Screen.
-class AboutTextView: UITextView {
+class AboutTextView: UITextView, UITextViewDelegate {
+  /**
+   Convenience initializer for `AboutTextView`.
+   
+   - returns: a new instance of AboutTextView.
+   */
+  convenience init() {
+    self.init(frame: .zero)
+  }
+  
+  /**
+   Frame initializer for `AboutTextView`.
+   
+   - parameter frame: the frame for the text view.
+   - returns: a new instance of AboutTextView.
+   */
+  override init(frame: CGRect, textContainer: NSTextContainer?) {
+    super.init(frame: frame, textContainer: textContainer)
+    applyStyles()
+  }
+  
   /**
    Initializer for `AboutTextView`.
    
@@ -53,6 +73,21 @@ class AboutTextView: UITextView {
     textContainer.lineFragmentPadding = 0
     textColor = UIColor.bftDarkTextColor()
     font = MDCTypography.body1Font()
+    delegate = self
+  }
+  
+  // MARK: - UITextViewDelegate
+  
+  func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+    return false
+  }
+  
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    return false
+  }
+  
+  func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+    return true
   }
   
   /// attributed text associated with `AboutTextView`.

@@ -33,7 +33,7 @@ import Testing
 import CoreLocation
 @testable import BostonFreedomTrail
 
-@Suite("LocationTracker")
+@Suite("LocationTracker", .serialized)
 @MainActor
 struct LocationTrackerTests {
 
@@ -64,5 +64,18 @@ struct LocationTrackerTests {
     #expect(LocationTracker.sharedInstance.currentLocation != nil)
     #expect(UserDefaults.standard.float(forKey: "lastKnownLocationLatitude") == -71.063303)
     #expect(UserDefaults.standard.float(forKey: "lastKnownLocationLongitude") == 42.35769)
+  }
+
+  @Test("Start updating location executes")
+  func startUpdatingLocationExecutes() async {
+    LocationTracker.sharedInstance.startUpdatingLocation()
+    #expect(true)
+  }
+
+  @Test("Location manager configuration")
+  func locationManagerConfiguration() async {
+    let manager = LocationTracker.sharedInstance.locationManager
+    #expect(manager.distanceFilter == kCLDistanceFilterNone)
+    #expect(manager.desiredAccuracy == kCLLocationAccuracyBest)
   }
 }

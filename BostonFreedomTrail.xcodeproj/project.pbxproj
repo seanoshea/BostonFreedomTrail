@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		219DB1ED2143D6C764169F59 /* Pods_BostonFreedomTrail_BostonFreedomTrailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73019A86399D78A0DDA5E021 /* Pods_BostonFreedomTrail_BostonFreedomTrailTests.framework */; };
+		31D0C3C52EA7276F004D0E0F /* AnalyticsTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D0C3C22EA7276E004D0E0F /* AnalyticsTrackerTests.swift */; };
+		31D0C3C62EA7276F004D0E0F /* ReachabilityListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D0C3C42EA7276E004D0E0F /* ReachabilityListenerTests.swift */; };
+		31D0C3C72EA7276F004D0E0F /* ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D0C3C32EA7276E004D0E0F /* ExtensionsTests.swift */; };
+		31D0C3C92EA7277D004D0E0F /* AboutTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D0C3C82EA7277D004D0E0F /* AboutTextViewTests.swift */; };
 		31E3E80D2EA3246900FC4AAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */; };
 		31E3E80E2EA3246900FC4AAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */; };
 		41079D5F1C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */; };
@@ -68,6 +72,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		31D0C3C22EA7276E004D0E0F /* AnalyticsTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTrackerTests.swift; sourceTree = "<group>"; };
+		31D0C3C32EA7276E004D0E0F /* ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTests.swift; sourceTree = "<group>"; };
+		31D0C3C42EA7276E004D0E0F /* ReachabilityListenerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityListenerTests.swift; sourceTree = "<group>"; };
+		31D0C3C82EA7277D004D0E0F /* AboutTextViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTextViewTests.swift; sourceTree = "<group>"; };
 		31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTitleLabel.swift; sourceTree = "<group>"; };
 		41079D611C4FBAC300BF2CFF /* AboutViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewControllerTests.swift; sourceTree = "<group>"; };
@@ -295,9 +303,12 @@
 		41691D201C4C000C009A03B3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				31D0C3C22EA7276E004D0E0F /* AnalyticsTrackerTests.swift */,
 				41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateTests.swift */,
+				31D0C3C32EA7276E004D0E0F /* ExtensionsTests.swift */,
 				41DE05E31C552775008AFCA5 /* LocationTrackerTests.swift */,
 				415095431C4DA11C00681F82 /* PListHelperTests.swift */,
+				31D0C3C42EA7276E004D0E0F /* ReachabilityListenerTests.swift */,
 				41691D211C4C0034009A03B3 /* TrailParserTests.swift */,
 			);
 			path = Utils;
@@ -306,6 +317,7 @@
 		41DBB1181E197C91001EBA7F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				31D0C3C82EA7277D004D0E0F /* AboutTextViewTests.swift */,
 				41DBB1191E197CCF001EBA7F /* VirtualTourButtonTests.swift */,
 			);
 			path = View;
@@ -658,6 +670,10 @@
 				41D0F4EC1C53E64A00FCAB17 /* MapModelTests.swift in Sources */,
 				41DE05EA1C55B480008AFCA5 /* VirtualTourViewControllerTests.swift in Sources */,
 				41DE95051C701D89004ACD7A /* PlacemarkModelTests.swift in Sources */,
+				31D0C3C52EA7276F004D0E0F /* AnalyticsTrackerTests.swift in Sources */,
+				31D0C3C62EA7276F004D0E0F /* ReachabilityListenerTests.swift in Sources */,
+				31D0C3C92EA7277D004D0E0F /* AboutTextViewTests.swift in Sources */,
+				31D0C3C72EA7276F004D0E0F /* ExtensionsTests.swift in Sources */,
 				41DBB11A1E197CCF001EBA7F /* VirtualTourButtonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -861,7 +877,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DFB7FEF1A49A76AF859E0D14 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 3TQU8WFYZ9;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -886,7 +902,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 663F58F447E9B9FC83DDF3D0 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 3TQU8WFYZ9;
 				INFOPLIST_FILE = BostonFreedomTrailTests/Info.plist;
