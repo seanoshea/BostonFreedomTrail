@@ -19,7 +19,6 @@
 		410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE61C4D9B0F007DF354 /* PListHelper.swift */; };
 		410C23771C9EEF83001EF660 /* PlacemarkViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C23761C9EEF83001EF660 /* PlacemarkViewControllerTests.swift */; };
 		41237BE81C486CDF0007F76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41237BE71C486CDF0007F76B /* AppDelegate.swift */; };
-		41SCENE001C486CDF0007F76B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41SCENE011C486CDF0007F76B /* SceneDelegate.swift */; };
 		41237BEF1C486CDF0007F76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41237BED1C486CDF0007F76B /* Main.storyboard */; };
 		41237BF11C486CDF0007F76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41237BF01C486CDF0007F76B /* Assets.xcassets */; };
 		41237BF41C486CDF0007F76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41237BF21C486CDF0007F76B /* LaunchScreen.storyboard */; };
@@ -60,6 +59,7 @@
 		41DE05EC1C55CEC5008AFCA5 /* VirtualTourModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE05EB1C55CEC5008AFCA5 /* VirtualTourModelTests.swift */; };
 		41DE95051C701D89004ACD7A /* PlacemarkModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DE95041C701D89004ACD7A /* PlacemarkModelTests.swift */; };
 		41E1C3711C525B670009570C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E1C3701C525B670009570C /* Constants.swift */; };
+		41SCENE001C486CDF0007F76B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41SCENE011C486CDF0007F76B /* SceneDelegate.swift */; };
 		AF025F457E34613F159E86BF /* Pods_BostonFreedomTrail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9776FBAD1FA52D4988E3D221 /* Pods_BostonFreedomTrail.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,7 +89,6 @@
 		410C23761C9EEF83001EF660 /* PlacemarkViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkViewControllerTests.swift; sourceTree = "<group>"; };
 		41237BE41C486CDF0007F76B /* BostonFreedomTrail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BostonFreedomTrail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41237BE71C486CDF0007F76B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		41SCENE011C486CDF0007F76B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		41237BEE1C486CDF0007F76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41237BF01C486CDF0007F76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41237BF31C486CDF0007F76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -131,6 +130,7 @@
 		41DE05EB1C55CEC5008AFCA5 /* VirtualTourModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTourModelTests.swift; sourceTree = "<group>"; };
 		41DE95041C701D89004ACD7A /* PlacemarkModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkModelTests.swift; sourceTree = "<group>"; };
 		41E1C3701C525B670009570C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		41SCENE011C486CDF0007F76B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5737435D621BC5FC4BCB0FAE /* Pods-BostonFreedomTrail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrail.release.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrail/Pods-BostonFreedomTrail.release.xcconfig"; sourceTree = "<group>"; };
 		663F58F447E9B9FC83DDF3D0 /* Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BostonFreedomTrail-BostonFreedomTrailTests/Pods-BostonFreedomTrail-BostonFreedomTrailTests.release.xcconfig"; sourceTree = "<group>"; };
 		73019A86399D78A0DDA5E021 /* Pods_BostonFreedomTrail_BostonFreedomTrailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BostonFreedomTrail_BostonFreedomTrailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -411,6 +411,7 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 3TQU8WFYZ9;
 						LastSwiftMigration = 1130;
+						ProvisioningStyle = Automatic;
 					};
 					41237BF91C486CDF0007F76B = {
 						CreatedOnToolsVersion = 7.2;
@@ -832,8 +833,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 9;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 3TQU8WFYZ9;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -847,6 +849,7 @@
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrail;
 				PRODUCT_NAME = BostonFreedomTrail;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BostonFreedomTrail/Resources/BostonFreedomTrail-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 6.0;
@@ -860,8 +863,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 9;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 3TQU8WFYZ9;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -874,6 +878,7 @@
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.upwardsnorthwards.BostonFreedomTrail;
 				PRODUCT_NAME = BostonFreedomTrail;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BostonFreedomTrail/Resources/BostonFreedomTrail-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 6.0;
