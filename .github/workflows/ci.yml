@@ -28,6 +28,8 @@ jobs:
       env:
         FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
         GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
+        FASTLANE_XCODEBUILD_SETTINGS_RETRIES: 3
       run: bundle exec fastlane test
     
     - name: Debug test output
