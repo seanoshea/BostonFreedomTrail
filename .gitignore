@@ -74,3 +74,6 @@ docs/
 *.log
 test_output/
 test_results/
+
+# Claude AI configuration
+.claude/
