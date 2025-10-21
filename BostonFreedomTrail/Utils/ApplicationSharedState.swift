@@ -55,7 +55,7 @@ final class ApplicationSharedState: @unchecked Sendable {
 
   /// Singleton accessor for `ApplicationSharedState`.
   static let sharedInstance = ApplicationSharedState()
-  
+
   /// The last known camera zoom specified by the user in the virtual tour.
   var cameraZoom: Float {
     // swiftlint:disable:next computed_accessors_order
@@ -66,10 +66,10 @@ final class ApplicationSharedState: @unchecked Sendable {
       UserDefaults.standard.set(newValue, forKey: DefaultsKeys.applicationSharedStateCameraZoom.rawValue)
     }
     get {
-      return UserDefaults.standard.float(forKey: DefaultsKeys.applicationSharedStateCameraZoom.rawValue)
+      UserDefaults.standard.float(forKey: DefaultsKeys.applicationSharedStateCameraZoom.rawValue)
     }
   }
-  
+
   /// The last known placemark that the user interacted with in the map view.
   var lastKnownPlacemarkCoordinate: CLLocationCoordinate2D {
     // swiftlint:disable:next computed_accessors_order
@@ -80,7 +80,7 @@ final class ApplicationSharedState: @unchecked Sendable {
     get {
       let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownPlacemarkCoordinateLatitude.rawValue)
       let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownPlacemarkCoordinateLongitude.rawValue)
-      return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
+      return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
   }
 
@@ -94,10 +94,10 @@ final class ApplicationSharedState: @unchecked Sendable {
     get {
       let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownCoordinateLatitude.rawValue)
       let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownCoordinateLongitude.rawValue)
-      return CLLocationCoordinate2D.init(latitude:latitude, longitude:longitude)
+      return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
   }
-  
+
   /// The last known location the user was seen in the map view.
   var lastKnownLocation: CLLocation {
     // swiftlint:disable:next computed_accessors_order
@@ -108,10 +108,10 @@ final class ApplicationSharedState: @unchecked Sendable {
     get {
       let latitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownLocationLatitude.rawValue)
       let longitude = UserDefaults.standard.double(forKey: DefaultsKeys.lastKnownLocationLongitude.rawValue)
-      return CLLocation.init(latitude:latitude, longitude:longitude)
+      return CLLocation(latitude: latitude, longitude: longitude)
     }
   }
-  
+
   /// Indicates whether the app is built in debug mode or not.
   func isDebug() -> Bool {
     #if DEBUG
@@ -120,7 +120,7 @@ final class ApplicationSharedState: @unchecked Sendable {
       return false
     #endif
   }
-  
+
   /// Gives a clean slate to the user defaults.
   func clear() {
     UserDefaults.standard.removeObject(forKey: DefaultsKeys.applicationSharedStateCameraZoom.rawValue)

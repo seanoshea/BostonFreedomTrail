@@ -38,3 +38,5 @@ post_install do |installer|
     end
   end
 end
+
+install! 'cocoapods', warn_for_unused_master_specs_repo: false

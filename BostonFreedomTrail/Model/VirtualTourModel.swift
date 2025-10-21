@@ -60,34 +60,34 @@ enum VirtualTourStopStopDuration: Double {
 /// Delegate protocol for the `VirtualTourModel`
 @MainActor
 protocol VirtualTourModelDelegate: AnyObject {
-  
+
   /**
    Given a `VirtualTourModel` this function navigates to the current position in the tour automatically.
    
    - parameter model: the `VirtualTourModel`
    */
   func navigateToCurrentPosition(_ model: VirtualTourModel)
-  
+
   /**
    Records when the tour state changes.
    
    - parameter fromState: the previous tour state
    - parameter toState: the new tour state
    */
-  func didChangeTourState(_ fromState:VirtualTourState, toState:VirtualTourState)
+  func didChangeTourState(_ fromState: VirtualTourState, toState: VirtualTourState)
 }
 
 /// Backling business logic class for the `VirtualTourController`
 final class VirtualTourModel: @unchecked Sendable {
-  
+
   // MARK: Properties
-  
+
   /// Contains all the locations for the virtual tour
   var tour: [CLLocation] = []
   /// Collection of indexes for `LookAt`s during the virtual tour
-  var lookAts = [Int:Int]()
+  var lookAts = [Int: Int]()
   /// Collection of indexes for understanding what `Placemark` the user is navigating towards
-  var placemarkDemarkations = [Int:Int]()
+  var placemarkDemarkations = [Int: Int]()
   /// Where the tour is currently located
   var currentTourPosition: Int = 0
   /// The state of the virtual tour
@@ -96,13 +96,13 @@ final class VirtualTourModel: @unchecked Sendable {
       let oldState = oldValue
       let newState = currentTourState
       Task { @MainActor [weak self] in
-        self?.delegate?.didChangeTourState(oldState, toState:newState)
+        self?.delegate?.didChangeTourState(oldState, toState: newState)
       }
     }
   }
   /// Simple delegate to allow the model navigate to the current position in the tour
   weak var delegate: VirtualTourModelDelegate?
-  
+
   /// Initializes the tour
   func setupTour() {
     guard tourNotInitialized() else { return }
@@ -114,14 +114,14 @@ final class VirtualTourModel: @unchecked Sendable {
             lookAts[index] = placemarkIndex
           }
         }
-        index = index + 1
+        index += 1
         tour.append(location)
       }
       placemarkDemarkations[index] = placemarkIndex
     }
     currentTourState = VirtualTourState.postSetup
   }
-  
+
   /**
    Starts the virtual tour from the very beginning
    
@@ -132,16 +132,16 @@ final class VirtualTourModel: @unchecked Sendable {
     currentTourState = VirtualTourState.inProgress
     return tour[currentTourPosition]
   }
-  
+
   /**
    Checks the `currentTourPosition` to see if the virtual tour is currently at a `LookAt` location.
    
    - returns: Bool indicating that the tour is currently positioned at a `LookAt`
    */
   func atLookAtLocation() -> Bool {
-    return currentTourPosition > 0 && lookAts[currentTourPosition] != nil
+    currentTourPosition > 0 && lookAts[currentTourPosition] != nil
   }
-  
+
   /**
    Possibly returns a `LookAt` if the virtual tour is at a LookAt location.
    
@@ -153,7 +153,7 @@ final class VirtualTourModel: @unchecked Sendable {
     let placemark = Trail.instance.placemarks[placemarkIndex!]
     return placemark.lookAt
   }
-  
+
   /**
    Gets the placemark based on the next location in the tour.
    
@@ -165,7 +165,7 @@ final class VirtualTourModel: @unchecked Sendable {
     let index = placemarkDemarkations[placemarkIndex]
     return Trail.instance.placemarks[index!]
   }
-  
+
   /**
    Bumps the `currentTourPosition` and returns the next placemark in the tour
    
@@ -175,9 +175,9 @@ final class VirtualTourModel: @unchecked Sendable {
     advanceLocation()
     return tour[currentTourPosition]
   }
-    
+
   // MARK: Tour Controls
-  
+
   /// Toggles the virtual tour state between play and pause
   func togglePlayPause() {
     guard tourIsToggleable() else { return }
@@ -189,80 +189,80 @@ final class VirtualTourModel: @unchecked Sendable {
       pauseTour()
     }
   }
-  
+
   /// Pauses the tour
   func pauseTour() {
     currentTourState = VirtualTourState.paused
   }
-  
+
   /// Unpauses the tour
   func resumeTour() {
     currentTourState = VirtualTourState.inProgress
   }
-  
+
   /// Marks the tour as finished
   func finishTour() {
     currentTourState = VirtualTourState.finished
   }
-  
+
   /**
    Checks to see if the tour has gone past the first `Placemark`
    
    - returns: Bool indicating that the tour has advanced past the first `Placemark`
    */
   func hasAdvancedPastFirstLocation() -> Bool {
-    return currentTourPosition > 0
+    currentTourPosition > 0
   }
 
   func getCurrentTourLocation() -> CLLocation? {
-    guard tour.count > currentTourPosition else { return nil }
+    guard currentTourPosition > 0 && tour.count > currentTourPosition else { return nil }
     return tour[currentTourPosition]
   }
-  
+
   /**
    Checks to see if the tour is currently active.
    
    - returns: Bool indicating that the tour is running
    */
   func tourIsRunning() -> Bool {
-    return currentTourState == VirtualTourState.inProgress
+    currentTourState == VirtualTourState.inProgress
   }
-  
+
   /**
    Retrieves the first placemark in the virtual tour.
    
    - returns: `Placemark` representing the first stop in the virtual tour
    */
   func firstPlacemark() -> Placemark {
-    return Trail.instance.placemarks[0]
+    Trail.instance.placemarks[0]
   }
-  
+
   /// Bumps the `currentTourPosition` by one.
   func advanceLocation() {
-    currentTourPosition = currentTourPosition + 1
+    currentTourPosition += 1
   }
-  
+
   /// Decrements the `currentTourPosition` by one.
   func reverseLocation() {
-    currentTourPosition = currentTourPosition - 1
+    currentTourPosition -= 1
   }
-  
+
   /**
    Checks to see if we can advance in the tour.
    
    - returns: Bool indicating that the tour is startable or resumable
    */
   func tourIsPlayable() -> Bool {
-    return currentTourState == VirtualTourState.postSetup || currentTourState == VirtualTourState.paused
+    currentTourState == VirtualTourState.postSetup || currentTourState == VirtualTourState.paused
   }
-  
+
   /**
    Checks to see if we can toggle between a paused and resumed state in the virtual tour.
    
    - returns: Bool indicating that the user can pause or resume the virtual tour
    */
   func tourIsToggleable() -> Bool {
-    return tourIsRunning() || tourIsPlayable()
+    tourIsRunning() || tourIsPlayable()
   }
 
   /**
@@ -271,9 +271,9 @@ final class VirtualTourModel: @unchecked Sendable {
    - returns: Bool indicating that the tour has reached it's final location.
    */
   func isAtLastPosition() -> Bool {
-    return currentTourPosition == tour.count - 1
+    currentTourPosition == tour.count - 1
   }
-  
+
   /**
    Retrieves the next `CLLocation` in the virtual tour.
    
@@ -283,14 +283,14 @@ final class VirtualTourModel: @unchecked Sendable {
     var nextLocation: CLLocation
     if atLookAtLocation() {
       let lookAt = lookAtForCurrentLocation()!
-      nextLocation = CLLocation.init(latitude:lookAt.latitude, longitude:lookAt.longitude)
+      nextLocation = CLLocation(latitude: lookAt.latitude, longitude: lookAt.longitude)
       advanceLocation()
     } else {
       nextLocation = enqueueNextLocation()
     }
     return nextLocation
   }
-  
+
   /**
    Retrieves the the time we should delay for at the current location.
    
@@ -303,7 +303,7 @@ final class VirtualTourModel: @unchecked Sendable {
     }
     return DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
   }
-  
+
   func navigateToLookAt(_ placemarkIndex: Int) {
     setupTour()
     guard let delegate = delegate else { return }
@@ -314,9 +314,9 @@ final class VirtualTourModel: @unchecked Sendable {
       delegate.navigateToCurrentPosition(self)
     }
   }
-  
+
   // MARK: Private Functions
-  
+
   func lookAtPositionInTourForPlacementIndex(_ placemarkIndex: Int) -> Int? {
     if placemarkIndex == 0 {
       return 0
@@ -328,34 +328,35 @@ final class VirtualTourModel: @unchecked Sendable {
     guard let positionInTour = foundKey else { return nil }
     return positionInTour - 1
   }
-  
+
   /**
    Figures out whether or not the tour has been initialized and is ready to go yet.
    
    - returns: Bool indicating that the tour has not been set up yet
    */
   func tourNotInitialized() -> Bool {
-    return currentTourState == VirtualTourState.preSetup || lookAts.count == 0
+    currentTourState == VirtualTourState.preSetup || lookAts.isEmpty
   }
-  
+
   // MARK: Calculating Camera Directions
-  
+
   func locationDirectionForNextLocation(_ nextLocation: CLLocation) -> CLLocationDirection {
-    let fromLocation = tour[currentTourPosition - 1]
-    let toLocation = CLLocation.init(latitude:nextLocation.coordinate.latitude, longitude:nextLocation.coordinate.longitude)
+    let next = currentTourPosition == tour.count || currentTourPosition == 0 ? 0 : currentTourPosition - 1
+    let fromLocation = tour[next]
+    let toLocation = CLLocation(latitude: nextLocation.coordinate.latitude, longitude: nextLocation.coordinate.longitude)
     let fromLatitude = degreesToRadians(fromLocation.coordinate.latitude)
     let fromLongitude = degreesToRadians(fromLocation.coordinate.longitude)
     let toLatitude = degreesToRadians(toLocation.coordinate.latitude)
     let toLongitude = degreesToRadians(toLocation.coordinate.longitude)
-    let degree = radiansToDegrees(atan2(sin(toLongitude - fromLongitude) * cos(toLatitude), cos(fromLatitude) * sin(toLatitude)-sin(fromLatitude) * cos(toLatitude) * cos(toLongitude - fromLongitude)))
+    let degree = radiansToDegrees(atan2(sin(toLongitude - fromLongitude) * cos(toLatitude), cos(fromLatitude) * sin(toLatitude) - sin(fromLatitude) * cos(toLatitude) * cos(toLongitude - fromLongitude)))
     return degree >= 0.0 ? degree : 360.0 + degree
   }
-  
+
   func degreesToRadians(_ value: CLLocationDegrees) -> CLLocationDegrees {
-    return value * Double.pi / 180.0
+    value * Double.pi / 180.0
   }
-  
+
   func radiansToDegrees(_ value: Double) -> Double {
-    return (value * 180.0 / Double.pi)
+    (value * 180.0 / Double.pi)
   }
 }

@@ -34,7 +34,7 @@ import GoogleMaps
 
 /// Backing model for the `MapViewController`
 final class MapModel {
-  
+
   /**
    Based on the details in the KML file, this function adds the placemark indicators to the `mapView`.
    
@@ -47,14 +47,14 @@ final class MapModel {
       let marker = GMSMarker()
       marker.userData = placemark
       marker.position = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude)
-      marker.icon = UIImage.init(named: ResourceConstants.placemarkResourceImage.rawValue)
+      marker.icon = UIImage(named: ResourceConstants.placemarkResourceImage.rawValue)
       marker.title = placemark.name
       marker.map = mapView
       markers.append(marker)
     }
     return markers
   }
-  
+
   /**
    Responsible for drawing the path between all the placemarks which are created as a result of `addPlacemarksToMap`.
    
@@ -72,7 +72,7 @@ final class MapModel {
     polyline.strokeWidth = 3.0
     polyline.map = mapView
   }
-  
+
   /**
    Figures out the correct camera zoom for the map view. Falls back on defaults which can be configured in the .plist file if the user has never interacted with the map.
    
@@ -85,7 +85,7 @@ final class MapModel {
     }
     return zoom
   }
-  
+
   /**
    Figures out the correct last known coordinate for the map view so we know where to place the user in the map when they load up the `MapViewController`. Falls back to defaults which can be configured in the .plist file if the user has never tapped in the map view before.
    
@@ -94,7 +94,7 @@ final class MapModel {
   func lastKnownCoordinate() -> CLLocationCoordinate2D {
     var lastKnownCoordinate = ApplicationSharedState.sharedInstance.lastKnownCoordinate
     if lastKnownCoordinate.latitude == 0.0 && lastKnownCoordinate.longitude == 0.0 {
-      lastKnownCoordinate = CLLocationCoordinate2D.init(latitude:PListHelper.defaultLatitude(), longitude:PListHelper.defaultLongitude())
+      lastKnownCoordinate = CLLocationCoordinate2D(latitude: PListHelper.defaultLatitude(), longitude: PListHelper.defaultLongitude())
     }
     return lastKnownCoordinate
   }
@@ -105,7 +105,7 @@ final class MapModel {
    - parameter zoom: the current zoom value for the map view's camera.
    - returns: Bool indicating that the zoom parameter is worthwhile to save to user defaults to remember it for the next application load.
    */
-  func isViableZoom(_ zoom:Float) -> Bool {
-    return zoom >= CameraZoomConstraints.minimum.rawValue && zoom <= CameraZoomConstraints.maximum.rawValue
+  func isViableZoom(_ zoom: Float) -> Bool {
+    zoom >= CameraZoomConstraints.minimum.rawValue && zoom <= CameraZoomConstraints.maximum.rawValue
   }
 }

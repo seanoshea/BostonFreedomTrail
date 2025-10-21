@@ -34,9 +34,9 @@ import CoreLocation
 
 /// Backling class for every placemark on the Boston Freedom Trail.
 final class Placemark: @unchecked Sendable {
-  
+
   // MARK: Properties
-  
+
   /// Unique identifier for the placemark
   var identifier: String = ""
   /// Human readable placemark name
@@ -49,7 +49,7 @@ final class Placemark: @unchecked Sendable {
   var placemarkDescription: String = ""
   /// Includes heading and pitch information for the best view of the placemark
   var lookAt: LookAt?
-  
+
   /**
    Convenience initializer. Sets all the properties for the `Placemark` class.
    
@@ -72,9 +72,9 @@ final class Placemark: @unchecked Sendable {
 
 /// Similar to a `CLLocation` but includes tilt and heading properties too.
 struct LookAt {
-  
+
   // MARK: Properties
-  
+
   /// Latitude for the LookAt
   var latitude: Double = 0.0
   /// Longitude for the LookAt
@@ -83,7 +83,7 @@ struct LookAt {
   var tilt: Double = 0.0
   /// The relative positioning of the camera for the best view of the LookAt
   var heading: Double = 0.0
-  
+
   /**
    Convenience initializer. Sets all the properties for the `LookAt` class.
    
@@ -109,7 +109,7 @@ struct Trail: Sendable {
   static let instance = TrailParser().parseTrail()
   /// Collection of placemarks which represents the Freedom Trail
   var placemarks = [Placemark]()
-  
+
   /**
    Given a `Placemark` this function returns the associated index of the placemark in the trail.
    - parameter placemark: the `Placemark` to search for

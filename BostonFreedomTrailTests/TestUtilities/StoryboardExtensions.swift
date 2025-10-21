@@ -32,7 +32,7 @@ import UIKit
 
 @testable import BostonFreedomTrail
 
-enum StoryboardExtensionConstants : String {
+enum StoryboardExtensionConstants: String {
   case StoryboardName = "Main"
   case MapViewControllerIdentifier = "MapViewControllerIdentifier"
   case AboutViewControllerIdentifier = "AboutViewControllerIdentifier"
@@ -41,28 +41,28 @@ enum StoryboardExtensionConstants : String {
 }
 
 extension UIStoryboard {
-  
+
   static func mapViewController() -> MapViewController {
-    let vc:UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.MapViewControllerIdentifier.rawValue)
+    let vc: UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.MapViewControllerIdentifier.rawValue)
     return vc as! MapViewController
   }
-  
+
   static func aboutViewController() -> AboutViewController {
-    let vc:UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.AboutViewControllerIdentifier.rawValue)
+    let vc: UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.AboutViewControllerIdentifier.rawValue)
     return vc as! AboutViewController
   }
-  
+
   static func virtualTourViewController() -> VirtualTourViewController {
-    let vc:UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.VirtualTourControllerIdentifier.rawValue)
+    let vc: UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.VirtualTourControllerIdentifier.rawValue)
     return vc as! VirtualTourViewController
   }
-  
+
   static func placemarkViewController() -> PlacemarkViewController {
-    let vc:UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.PlacemarkViewControllerIdentifier.rawValue)
+    let vc: UIViewController = self.mainStoryboard().instantiateViewController(withIdentifier: StoryboardExtensionConstants.PlacemarkViewControllerIdentifier.rawValue)
     return vc as! PlacemarkViewController
   }
-  
+
   static func mainStoryboard() -> UIStoryboard {
-    return UIStoryboard(name: StoryboardExtensionConstants.StoryboardName.rawValue, bundle: nil)
+    UIStoryboard(name: StoryboardExtensionConstants.StoryboardName.rawValue, bundle: nil)
   }
 }

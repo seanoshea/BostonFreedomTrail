@@ -76,7 +76,7 @@ protocol AnalyticsTracker: AnyObject {
    - returns: the screen name which will be used for any screen tracking in analytics
    */
   func getScreenTrackingName() -> String
-  
+
   /**
    Tracks a button press when the user requests information on a placemark.
    
@@ -86,12 +86,12 @@ protocol AnalyticsTracker: AnyObject {
   func trackButtonPressForPlacemark(_ placemark: Placemark, label: String)
 }
 
-extension AnalyticsTracker where Self : UIViewController {
+extension AnalyticsTracker where Self: UIViewController {
 
   /// Tracks the user viewing a screen in the app.
   func trackScreenName() {
     let trackingName = getScreenTrackingName()
-    guard trackingName.count > 0 else { return }
+    guard !trackingName.isEmpty else { return }
 
     // Log screen view to Firebase Analytics
     Analytics.logEvent(AnalyticsEventScreenView, parameters: [
@@ -105,7 +105,7 @@ extension AnalyticsTracker where Self : UIViewController {
 
    - parameter index: the index of the tab bar button which was just selected.
    */
-  func trackTabBarButtonPress(index:Int) {
+  func trackTabBarButtonPress(index: Int) {
     Analytics.logEvent("tab_bar_press", parameters: [
       "category": AnalyticsEventCategories.action.rawValue,
       "action": AnalyticsActions.buttonPress.rawValue,
@@ -135,7 +135,7 @@ extension AnalyticsTracker where Self : UIViewController {
 
    - parameter errorMessage: information on where the error occured.
    */
-  func trackNonFatalErrorMessage(_ errorMessage:String) {
+  func trackNonFatalErrorMessage(_ errorMessage: String) {
     // Log non-fatal error to Firebase Analytics (Crashlytics would be better for this)
     Analytics.logEvent("non_fatal_error", parameters: [
       "error_message": errorMessage,

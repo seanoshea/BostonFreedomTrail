@@ -32,12 +32,12 @@ import Foundation
 
 /// Backing model for the `PlacemarkViewController`
 final class PlacemarkModel {
-  
+
   // MARK: Properties
-  
+
   /// the `Placemark` associated with this model.
   var placemark: Placemark?
-  
+
   /**
    Determines the correct HTML for the web view associated with a `Placemark`
    
@@ -47,7 +47,7 @@ final class PlacemarkModel {
     guard let htmlString = Bundle.main.path(forResource: ResourceConstants.placemarkIdentifier.rawValue, ofType: "html") else { return "" }
     guard let description = placemark?.placemarkDescription else { return "" }
     do {
-      return try NSString(format:NSString.init(contentsOfFile: htmlString, encoding: String.Encoding.utf8.rawValue), description) as String
+      return try NSString(format: NSString(contentsOfFile: htmlString, encoding: String.Encoding.utf8.rawValue), description) as String
     } catch _ {
       return ""
     }

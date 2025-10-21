@@ -34,9 +34,9 @@ import GoogleMaps
 
 /// View Controller class for the About Screen.
 final class AboutViewController: BaseViewController {
-  
+
   // MARK: Properties
-  
+
   /// A title label for developer details
   @IBOutlet weak var developerLabel: AboutTitleLabel?
   /// Information label for the developer details
@@ -49,40 +49,40 @@ final class AboutViewController: BaseViewController {
   @IBOutlet weak var googleMapsLabel: AboutTitleLabel?
   /// Information label for the Google Maps legalese
   @IBOutlet weak var googleMapsDetailsTextView: AboutTextView?
-  
+
   // MARK: Lifecycle
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     localizeLabelsAndTextViews()
   }
-  
+
   // MARK: Analytics
-  
+
   override func getScreenTrackingName() -> String {
-    return AnalyticsScreenNames.aboutScreen.rawValue
+    AnalyticsScreenNames.aboutScreen.rawValue
   }
-  
+
   // MARK: Private Functions
-  
+
   /// Ensures that the labels on this screen are localized and fully filled in.
   func localizeLabelsAndTextViews() {
     // developer info
     developerLabel!.text = NSLocalizedString("Developer Details", comment: "")
-    let developerAttributedString = NSMutableAttributedString(string:NSLocalizedString("Developed by Sean O'Shea", comment: ""))
-    let trailInformationAttributedString = NSMutableAttributedString(string:NSLocalizedString("There are several different websites which have additional information on the Freedom Trail", comment: ""))
+    let developerAttributedString = NSMutableAttributedString(string: NSLocalizedString("Developed by Sean O'Shea", comment: ""))
+    let trailInformationAttributedString = NSMutableAttributedString(string: NSLocalizedString("There are several different websites which have additional information on the Freedom Trail", comment: ""))
     developerAttributedString.linkify("Sean O'Shea", linkURL: "https://twitter.com/seanoshea")
     trailInformationAttributedString.linkify("several", linkURL: "https://www.thefreedomtrail.org/")
     trailInformationAttributedString.linkify("different", linkURL: "https://en.wikipedia.org/wiki/Freedom_Trail/")
     trailInformationAttributedString.linkify("websites", linkURL: "http://www.cityofboston.gov/freedomtrail/")
     developerDetailsTextView!.attributedText = developerAttributedString
-    
+
     // trail info
     trailInformationLabel!.text = NSLocalizedString("Trail Information", comment: "")
     trailInformationDetailsTextView!.attributedText = trailInformationAttributedString
-    
+
     // google maps info
     googleMapsLabel!.text = NSLocalizedString("Google Maps Information", comment: "")
-    googleMapsDetailsTextView!.attributedText = NSAttributedString.init(string: GMSServices.openSourceLicenseInfo())
+    googleMapsDetailsTextView!.attributedText = NSAttributedString(string: GMSServices.openSourceLicenseInfo())
   }
 }

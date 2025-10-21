@@ -9,7 +9,7 @@
 	<key>bostonFreedomTrailDefaultLongitude</key>
 	<string>-71.063303947449</string>
 	<key>bostonFreedomTrailGoogleMapAPIKey</key>
-	<string>AIzaSyAboFJaMbnKvTdFoxB4X3n5oG2n43Kaxkk</string>
+	<string>$(GOOGLE_MAPS_API_KEY)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -23,11 +23,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>$(MARKETING_VERSION)</string>
+	<string>2.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<string>2</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<string>NO</string>
 	<key>LSRequiresIPhoneOS</key>

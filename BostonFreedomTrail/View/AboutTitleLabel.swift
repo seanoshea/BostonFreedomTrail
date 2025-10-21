@@ -34,7 +34,7 @@ import MaterialComponents
 
 /// Customized title label for the About Screen.
 class AboutTitleLabel: UILabel {
-  
+
   /**
    Initializer for `AboutDetailsLabel`.
 
@@ -45,7 +45,7 @@ class AboutTitleLabel: UILabel {
     super.init(coder: aDecoder)
     applyStyles()
   }
-  
+
   /// Ensures that the appropriate styles are set on the label.
   func applyStyles() {
     textColor = UIColor.bftDarkTextColor()

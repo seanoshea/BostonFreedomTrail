@@ -34,7 +34,7 @@ import MaterialComponents
 
 /// Play/Pause/Repeat button used in the virtual tour
 final class VirtualTourButton: MDCFloatingButton {
-  
+
   /**
    Initializer for the button.
    
@@ -55,9 +55,9 @@ final class VirtualTourButton: MDCFloatingButton {
     super.init(coder: aDecoder)
     commonInit()
   }
-  
+
   /// Sets the button display based on the tour state
-  func updateButtonTitle(_ state:VirtualTourState) {
+  func updateButtonTitle(_ state: VirtualTourState) {
     switch state {
     case .postSetup:
       setTitle("▷", for: .normal)
@@ -69,7 +69,7 @@ final class VirtualTourButton: MDCFloatingButton {
       setTitle("||", for: .normal)
     }
   }
-  
+
   /// Styles the button
   func commonInit() {
     setBackgroundColor(UIColor.bftOrangeRedColor(), for: .normal)

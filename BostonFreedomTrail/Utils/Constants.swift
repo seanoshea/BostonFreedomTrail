@@ -72,14 +72,14 @@ enum SnackbarMessageViewOffsets: CGFloat {
 
 /// Extension on `UIColor` for colors specific to the app
 extension UIColor {
-  
+
   /// Text color for the app
   static func bftDarkTextColor() -> UIColor {
-    return UIColor.init(red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
+    UIColor(red: 33 / 255, green: 33 / 255, blue: 33 / 255, alpha: 1.0)
   }
-  
+
   /// Orange/Red color used throughout the app
   static func bftOrangeRedColor() -> UIColor {
-    return UIColor.init(red: 216/255, green: 67/255, blue: 21/255, alpha: 1.0)
+    UIColor(red: 216 / 255, green: 67 / 255, blue: 21 / 255, alpha: 1.0)
   }
 }

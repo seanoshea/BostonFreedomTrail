@@ -60,6 +60,16 @@ if [ $LINT_ERRORS -ne 0 ]; then
 fi
 
 echo "✅ SwiftLint passed!"
+
+# Protect API keys from being committed
+echo "🔒 Protecting API keys..."
+plutil -replace API_KEY -string "FIREBASE_API_KEY_PLACEHOLDER" "BostonFreedomTrail/GoogleService-Info.plist" 2>/dev/null || true
+plutil -replace GoogleMapsAPIKey -string "GOOGLE_MAPS_API_KEY_PLACEHOLDER" "BostonFreedomTrail/Resources/APIKeys.plist" 2>/dev/null || true
+
+# Stage the protected files
+git add BostonFreedomTrail/GoogleService-Info.plist BostonFreedomTrail/Resources/APIKeys.plist 2>/dev/null || true
+
+echo "🔒 API keys protected!"
 exit 0
 EOF
 
@@ -70,5 +80,6 @@ echo "✅ Git hooks installed successfully!"
 echo ""
 echo "📝 Installed hooks:"
 echo "  - pre-commit: Runs SwiftLint on staged Swift files"
+echo "  - pre-commit: Protects API keys from being committed"
 echo ""
 echo "💡 To bypass hooks temporarily, use: git commit --no-verify"

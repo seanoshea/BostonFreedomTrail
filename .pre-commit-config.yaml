@@ -1,0 +1,34 @@
+repos:
+  - repo: local
+    hooks:
+      - id: bundle-check
+        name: Bundle check
+        entry: bundle check
+        language: system
+        pass_filenames: false
+        
+      - id: swiftlint
+        name: SwiftLint
+        entry: swiftlint lint --strict
+        language: system
+        files: '\.swift$'
+        
+      - id: api-key-protection
+        name: Protect API keys
+        entry: bash -c 'plutil -replace API_KEY -string "FIREBASE_API_KEY_PLACEHOLDER" "BostonFreedomTrail/GoogleService-Info.plist" 2>/dev/null || true; plutil -replace GoogleMapsAPIKey -string "GOOGLE_MAPS_API_KEY_PLACEHOLDER" "BostonFreedomTrail/Resources/APIKeys.plist" 2>/dev/null || true'
+        language: system
+        files: '(GoogleService-Info\.plist|APIKeys\.plist)$'
+        
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+        entry: trailing-whitespace-fixer
+        language: system
+        types: [text]
+        exclude: '\.plist$'
+        
+      - id: end-of-file-fixer
+        name: Fix end of files
+        entry: end-of-file-fixer
+        language: system
+        types: [text]
+        exclude: '\.plist$'

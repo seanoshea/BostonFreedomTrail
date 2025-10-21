@@ -20,67 +20,17 @@ iOS Application for walking the Boston Freedom Trail.
 - **Ruby:** 3.4.7
 - **CocoaPods:** 1.16.2+
 
-## Setup
+## Features
 
-### 1. Install Ruby Dependencies
-```bash
-bundle install
-```
+- 📍 Interactive map showing Freedom Trail locations across Boston
+- 🔍 Detailed information about each historic site
+- 🗺️ GPS navigation to guide you along the trail
+- 📱 Native iOS app optimized for iPhone and iPad
+- 🏛️ Rich historical content and imagery
 
-### 2. Install CocoaPods Dependencies
-```bash
-bundle exec pod install
-```
+## For Developers
 
-### 3. Configure Firebase
-- Create a Firebase project at [https://console.firebase.google.com](https://console.firebase.google.com)
-- Download `GoogleService-Info.plist` and replace the placeholder in `BostonFreedomTrail/`
-- Add the file to the Xcode project
-
-### 4. Configure Google Maps
-- Obtain a Google Maps API key
-- Update `Info.plist` with your API key under `GMSApiKey`
-
-### 5. Install Git Hooks (Optional but Recommended)
-```bash
-./scripts/install-git-hooks.sh
-```
-This installs a pre-commit hook that runs SwiftLint on staged files to catch style violations before they're committed.
-
-### 6. Open Workspace
-```bash
-open BostonFreedomTrail.xcworkspace
-```
-
-## Development
-
-### Running Tests
-```bash
-bundle exec fastlane test
-```
-
-### SwiftLint
-```bash
-swiftlint
-```
-
-### Generating Documentation
-Documentation is generated using [Jazzy](https://github.com/realm/jazzy):
-```bash
-./generate_docs.sh
-```
-
-## Deployment
-
-### TestFlight (Beta)
-```bash
-bundle exec fastlane beta
-```
-
-### App Store
-```bash
-bundle exec fastlane release
-```
+Interested in contributing or running the project locally? Check out our [Development Guide](DEVELOPMENT.md) for detailed setup instructions including API key configuration and security requirements.
 
 ## Gitflow Workflow
 
@@ -94,7 +44,7 @@ This project follows the Gitflow branching model:
 
 ## Contributing
 
-See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for details on submitting pull requests.
+We welcome contributions! Please see our [Contributing Guidelines](.github/CONTRIBUTING.md) and [Development Guide](DEVELOPMENT.md) to get started.
 
 ## Beta Builds
 
