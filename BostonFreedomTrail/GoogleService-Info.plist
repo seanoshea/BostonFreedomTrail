@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDI8IaPn8daFYuBrOyk0FPvzlS_ftycCRM</string>
+	<string>FIREBASE_API_KEY_PLACEHOLDER</string>
 	<key>BUNDLE_ID</key>
 	<string>com.upwardsnorthwards.BostonFreedomTrail</string>
 	<key>GCM_SENDER_ID</key>
