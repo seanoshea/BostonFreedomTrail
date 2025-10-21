@@ -39,7 +39,7 @@ protocol ReachabilityListener: AnyObject {
   func isOnline() -> Bool
 }
 
-extension ReachabilityListener where Self : BaseViewController {
+extension ReachabilityListener where Self: BaseViewController {
 
   func registerListener() {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }

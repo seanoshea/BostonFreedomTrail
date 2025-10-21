@@ -103,7 +103,7 @@ struct MapViewControllerTests {
 
     let marker = GMSMarker()
     marker.userData = "placemark1"
-    
+
     if let mapView = subject.mapView {
       subject.mapView(mapView, didTapInfoWindowOf: marker)
       // Should not crash
@@ -118,7 +118,7 @@ struct MapViewControllerTests {
     ApplicationSharedState.sharedInstance.clear()
 
     let camera = GMSCameraPosition.camera(withLatitude: 42.3601, longitude: -71.0589, zoom: 15)
-    
+
     if let mapView = subject.mapView {
       subject.mapView(mapView, didChange: camera)
       // Should update camera zoom in shared state

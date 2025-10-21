@@ -9,7 +9,7 @@
 	<key>bostonFreedomTrailDefaultLongitude</key>
 	<string>-71.063303947449</string>
 	<key>bostonFreedomTrailGoogleMapAPIKey</key>
-	<string>AIzaSyAboFJaMbnKvTdFoxB4X3n5oG2n43Kaxkk</string>
+	<string>$(GOOGLE_MAPS_API_KEY)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

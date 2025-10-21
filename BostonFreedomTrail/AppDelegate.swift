@@ -50,14 +50,14 @@ enum TabBarControllerIndex: Int {
 /// Main entry point for the app.
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-  
+
   /// Main window for the app.
   var window: UIWindow?
   /// Allows the app understand whether the user is online of offline.
   var reachability: Reachability?
-  
+
   // MARK: Lifecycle
-  
+
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     initializeTabBarDelegate()
     initializeGoogleMapsApi()
@@ -67,28 +67,28 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     initializeReachability()
     return true
   }
-  
+
   func applicationDidBecomeActive(_ application: UIApplication) {
     LocationTracker.sharedInstance.startUpdatingLocation()
   }
-  
+
   // MARK: Private Functions
-  
+
   /// Sets the delegate property on the main UITabBarController to AppDelegate.
   func initializeTabBarDelegate() {
     guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
     tabBarController.delegate = self
   }
-  
+
   /// Sets up the Google Maps integration. See `GoogleService-Info.plist` for more details.
   func initializeGoogleMapsApi() {
     GMSServices.provideAPIKey(PListHelper.googleMapsApiKey())
   }
-  
+
   /// Sets up all generic styling in the app.
   func initializeStyling() {
-    UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font : MDCTypography.captionFont()], for: UIControl.State.normal)
+    UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: MDCTypography.captionFont()], for: UIControl.State.normal)
     // offset for the snack bar message view which is used to display LookAt information in the virtual tour
     guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
@@ -96,7 +96,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     MDCSnackbarManager.default.setBottomOffset(windowRect.size.height - SnackbarMessageViewOffsets.topOffset.rawValue)
     MDCSnackbarMessageView.appearance().snackbarMessageViewBackgroundColor = UIColor.bftOrangeRedColor()
   }
-  
+
   /// The app uses Firebase Analytics for tracking usage of the app. Only enabled for `Release` builds.
   func initializeAnalytics() {
     // only bother with analytics for prod builds
@@ -106,7 +106,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     guard FirebaseApp.app() == nil else { return }
     FirebaseApp.configure()
   }
-  
+
   /// Ensures that the titles on the tabs at the bottom of the app are fully localized.
   func initializeLocalization() {
     guard let window = window else { return }
@@ -126,7 +126,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
       item.title = title
     }
   }
-  
+
   /// Reachability is used in the app to understand whether the user is online or offline. This function is responsible for starting the notifier so that all elements in the app know when they are offline and when they are online.
   func initializeReachability() {
     let reachability = try! Reachability()
@@ -139,7 +139,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 /// Allows a `PlacemarkViewController` to tell the delegate to navigate to the virtual tour section of the app.
-extension AppDelegate : MapViewControllerDelegate {
+extension AppDelegate: MapViewControllerDelegate {
   /**
    Executed when navigating to the virtual tour screen.
    

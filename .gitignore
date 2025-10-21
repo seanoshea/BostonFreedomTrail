@@ -55,17 +55,14 @@ Pods/
 
 Carthage/Build
 
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://github.com/fastlane/fastlane/blob/master/docs/Gitignore.md
-
-fastlane/report.xml
-fastlane/screenshots
-fastlane/test_output
+# Fastlane
 fastlane/README.md
+fastlane/report.xml
+fastlane/test_output/
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/screenshots/**/keyword.strings
+fastlane/api_keys/
 
 # documentation
 docs/
@@ -77,3 +74,13 @@ test_results/
 
 # Claude AI configuration
 .claude/
+
+# App Store Connect API Key
+AuthKey_*.p8
+
+# API Keys and Secrets
+.env
+.env.local
+.env.*.local
+fastlane/.env
+*.xcconfig

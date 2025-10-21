@@ -33,7 +33,7 @@ import Foundation
 import CoreLocation
 
 /// Keeps track of where the user is in the map.
-final class LocationTracker : NSObject, @unchecked Sendable {
+final class LocationTracker: NSObject, @unchecked Sendable {
 
   // MARK: Properties
 
@@ -41,10 +41,10 @@ final class LocationTracker : NSObject, @unchecked Sendable {
   static let sharedInstance = LocationTracker()
   /// Where the user is in the map view.
   var currentLocation: CLLocation?
-  
+
   /// Lazy initializer for the `CLLocationManager`.
   lazy var locationManager: CLLocationManager = {
-    var manager = CLLocationManager.init()
+    var manager = CLLocationManager()
     manager.delegate = LocationTracker.sharedInstance
     manager.requestAlwaysAuthorization()
     manager.requestWhenInUseAuthorization()
@@ -52,7 +52,7 @@ final class LocationTracker : NSObject, @unchecked Sendable {
     manager.desiredAccuracy = kCLLocationAccuracyBest
     return manager
   }()
-  
+
   /// Allows client code to tell the locationManager to start updating where the user is located in the map view.
   func startUpdatingLocation() {
     locationManager.startUpdatingLocation()
@@ -60,7 +60,7 @@ final class LocationTracker : NSObject, @unchecked Sendable {
 }
 
 /// Implmentation of `CLLocationManagerDelegate` which keeps track of where the user is in the map view.
-extension LocationTracker : CLLocationManagerDelegate {
+extension LocationTracker: CLLocationManagerDelegate {
   /**
    Executed when the CLLocationManager updates the user's location in the map view.
    

@@ -44,14 +44,20 @@ enum PListHelperConstants: String {
 
 /// Helper functions for loading values from the app's plist
 struct PListHelper {
-  
+
   /**
    Retrieves the Google Maps API which is used to initialize the map in the map view
    
    - returns: the Google Maps API key used in the app
    */
   static func googleMapsApiKey() -> String {
-    return (plistDictionary()[PListHelperConstants.bostonFreedomTrailGoogleMapAPIKey.rawValue] as? String)!
+    guard let path = Bundle.main.path(forResource: "APIKeys", ofType: "plist"),
+          let apiKeys = NSDictionary(contentsOfFile: path) as? [String: AnyObject],
+          let googleMapsKey = apiKeys["GoogleMapsAPIKey"] as? String,
+          !googleMapsKey.isEmpty && googleMapsKey != "GOOGLE_MAPS_API_KEY_PLACEHOLDER" else {
+      fatalError("GoogleMapsAPIKey not found or not configured in APIKeys.plist")
+    }
+    return googleMapsKey
   }
 
   /**
@@ -60,7 +66,10 @@ struct PListHelper {
    - returns: the default latitude used in the map view
    */
   static func defaultLatitude() -> Double {
-    return plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultLatitude.rawValue]!.doubleValue
+    guard let value = plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultLatitude.rawValue] else {
+      return 42.355721486582
+    }
+    return value.doubleValue
   }
 
   /**
@@ -69,7 +78,10 @@ struct PListHelper {
    - returns: the default longitude used in the map view
    */
   static func defaultLongitude() -> Double {
-    return plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultLongitude.rawValue]!.doubleValue
+    guard let value = plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultLongitude.rawValue] else {
+      return -71.063303947449
+    }
+    return value.doubleValue
   }
 
   /**
@@ -78,7 +90,10 @@ struct PListHelper {
    - returns: the default camera zoom used in the map view
    */
   static func defaultCameraZoom() -> Float {
-    return plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultCameraZoom.rawValue]!.floatValue
+    guard let value = plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultCameraZoom.rawValue] else {
+      return 14.0
+    }
+    return value.floatValue
   }
 
   /**
@@ -87,8 +102,10 @@ struct PListHelper {
    - returns: dictionary representation of the app's plist
    */
   static func plistDictionary() -> [String: AnyObject] {
-    let path = Bundle.main.path(forResource: "Info", ofType: "plist")
-    let pListContents = NSDictionary(contentsOfFile: path!) as? [String: AnyObject]
-    return pListContents!
+    guard let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
+          let pListContents = NSDictionary(contentsOfFile: path) as? [String: AnyObject] else {
+      return [:]
+    }
+    return pListContents
   }
 }

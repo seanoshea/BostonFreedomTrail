@@ -15,9 +15,9 @@ struct AppDelegateTests {
   func applicationDidFinishLaunching() async {
     let appDelegate = AppDelegate()
     let application = UIApplication.shared
-    
+
     let didFinishLaunching = appDelegate.application(application, didFinishLaunchingWithOptions: nil)
-    
+
     #expect(didFinishLaunching == true)
   }
 
@@ -25,20 +25,20 @@ struct AppDelegateTests {
   func applicationDidBecomeActiveExecutes() async {
     let appDelegate = AppDelegate()
     let application = UIApplication.shared
-    
+
     appDelegate.applicationDidBecomeActive(application)
-    
+
     #expect(true)
   }
 
   @Test("Initialize methods execute without error")
   func initializeMethodsExecuteWithoutError() async {
     let appDelegate = AppDelegate()
-    
+
     appDelegate.initializeGoogleMapsApi()
     appDelegate.initializeAnalytics()
     appDelegate.initializeLocalization()
-    
+
     #expect(true)
   }
 }

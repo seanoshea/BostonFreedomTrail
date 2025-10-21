@@ -33,30 +33,30 @@ import MaterialComponents
 
 /// View controller which includes a few basic functions.
 class BaseViewController: UIViewController, AnalyticsTracker, ReachabilityListener {
-  
+
   // MARK: Lifecycle
-  
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     registerListener()
   }
-  
+
   // MARK: Snackbar Messages
-  
-  func displaySnackbarMessage(_ text:String) {
+
+  func displaySnackbarMessage(_ text: String) {
     DispatchQueue.main.async {
-      MDCSnackbarManager.default.show(MDCSnackbarMessage.init(text: text))
+      MDCSnackbarManager.default.show(MDCSnackbarMessage(text: text))
     }
   }
-  
+
   // MARK: Analytics
-  
+
   /**
    Base implementation of `AnalyticsTracker`
    
    - returns: a String which can be passed to analytics to uniquely identify this view controller.
    */
   func getScreenTrackingName() -> String {
-    return ""
+    ""
   }
 }

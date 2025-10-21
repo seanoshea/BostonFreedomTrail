@@ -19,6 +19,7 @@
 - [ ] Added/updated unit tests for changes
 - [ ] Tested on physical device (if UI changes)
 - [ ] Tested on iOS 18.0 simulator
+- [ ] API keys are not exposed (placeholders only in committed files)
 
 ## Screenshots (if applicable)
 <!-- Add screenshots to help explain your changes -->

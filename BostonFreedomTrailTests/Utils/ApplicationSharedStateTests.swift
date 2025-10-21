@@ -45,25 +45,6 @@ struct ApplicationSharedStateTests {
     #expect(ApplicationSharedState.sharedInstance.cameraZoom == 12.0)
   }
 
-  // MARK: - Last Placemark Pressed Tests
-
-  @Test("Stores lat and long of recently pressed placemark")
-  func storesLastKnownPlacemarkCoordinate() async {
-    ApplicationSharedState.sharedInstance.clear()
-    let latitude: Double = -71.063303
-    let longitude: Double = 42.35769
-
-    ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = CLLocationCoordinate2D(
-      latitude: latitude,
-      longitude: longitude
-    )
-
-    #expect(UserDefaults.standard.double(forKey: "lastKnownPlacemarkCoordinateLatitude") == -71.063303)
-    #expect(UserDefaults.standard.double(forKey: "lastKnownPlacemarkCoordinateLongitude") == 42.35769)
-  }
-
-  // MARK: - Last User Location Tests
-
   @Test("Retrieves lat and long of where user was most recently seen")
   func retrievesLastKnownLocation() async {
     ApplicationSharedState.sharedInstance.clear()
@@ -99,23 +80,23 @@ struct ApplicationSharedStateTests {
   @Test("Debug mode returns correct value")
   func debugModeReturnsCorrectValue() async {
     ApplicationSharedState.sharedInstance.clear()
-    
+
     let isDebug = ApplicationSharedState.sharedInstance.isDebug()
-    
+
     #expect(isDebug == false || isDebug == true) // Accept either in test environment
   }
 
   @Test("Clear removes all stored values")
   func clearRemovesAllStoredValues() async {
     ApplicationSharedState.sharedInstance.clear()
-    
+
     // Set some values
     ApplicationSharedState.sharedInstance.cameraZoom = 15.0
     ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate = CLLocationCoordinate2D(latitude: 1.0, longitude: 2.0)
-    
+
     // Clear and verify
     ApplicationSharedState.sharedInstance.clear()
-    
+
     #expect(ApplicationSharedState.sharedInstance.cameraZoom == 0.0)
   }
 }

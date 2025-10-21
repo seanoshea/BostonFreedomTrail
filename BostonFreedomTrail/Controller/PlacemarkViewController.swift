@@ -44,37 +44,37 @@ protocol PlacemarkViewControllerDelegate: AnyObject {
 
 /// Responsible for showing additional information on a placemark to the user.
 final class PlacemarkViewController: BaseViewController {
-  
+
   // MARK: Properties
-  
+
   /// Used to display information on the specific placemark associated with the `PlacemarkViewController`
   @IBOutlet weak var webView: WKWebView?
   /// Button to allow users navigate to the virtual tour.
   @IBOutlet weak var streetViewButton: UIButton?
-  
+
   /// Contains and business logic and state for the `PlacemarkViewController`
   var model: PlacemarkModel?
   /// Delegate for the `PlacemarkViewController`
   weak var delegate: PlacemarkViewControllerDelegate?
-  
+
   // MARK: Lifecycle
 
   override func awakeFromNib() {
     super.awakeFromNib()
     MainActor.assumeIsolated {
-      model = PlacemarkModel.init()
+      model = PlacemarkModel()
     }
   }
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     configureView()
     loadPlacemarkInformation()
     title = model?.placemark?.name
   }
-  
+
   // MARK: IBActions
-  
+
   /**
    Executed when the street view button is pressed.
    
@@ -92,13 +92,13 @@ final class PlacemarkViewController: BaseViewController {
 
     }
   }
-  
+
   // MARK: Analytics
-  
+
   override func getScreenTrackingName() -> String {
-    return AnalyticsScreenNames.placemarkScreen.rawValue
+    AnalyticsScreenNames.placemarkScreen.rawValue
   }
-  
+
   // MARK: Private Functions
 
   /// Configures the view specific to the placemark associated with the `PlacemarkViewController`

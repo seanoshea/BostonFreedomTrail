@@ -4,7 +4,39 @@ default_platform :ios
 
 platform :ios do
   before_all do
+    setup
     cocoapods
+  end
+
+  desc "Setup API keys from environment variables"
+  lane :setup do
+    inject_firebase_api_key
+    inject_google_maps_api_key
+  end
+
+  private_lane :inject_firebase_api_key do
+    firebase_key = ENV['FIREBASE_API_KEY']
+    UI.user_error!("FIREBASE_API_KEY environment variable is required") if firebase_key.nil? || firebase_key.empty?
+    
+    plist_path = "../BostonFreedomTrail/GoogleService-Info.plist"
+    sh "plutil -replace API_KEY -string '#{firebase_key}' '#{plist_path}'"
+    UI.success("Firebase API key injected successfully")
+  end
+
+  private_lane :inject_google_maps_api_key do
+    maps_key = ENV['GOOGLE_MAPS_API_KEY']
+    UI.user_error!("GOOGLE_MAPS_API_KEY environment variable is required") if maps_key.nil? || maps_key.empty?
+    
+    plist_path = "../BostonFreedomTrail/Resources/APIKeys.plist"
+    sh "plutil -replace GoogleMapsAPIKey -string '#{maps_key}' '#{plist_path}'"
+    UI.success("Google Maps API key injected successfully")
+  end
+
+  desc "Reset API keys to placeholders"
+  lane :cleanup do
+    sh "plutil -replace API_KEY -string 'FIREBASE_API_KEY_PLACEHOLDER' '../BostonFreedomTrail/GoogleService-Info.plist'"
+    sh "plutil -replace GoogleMapsAPIKey -string 'GOOGLE_MAPS_API_KEY_PLACEHOLDER' '../BostonFreedomTrail/Resources/APIKeys.plist'"
+    UI.success("API keys reset to placeholders")
   end
 
   desc "Runs all the tests"

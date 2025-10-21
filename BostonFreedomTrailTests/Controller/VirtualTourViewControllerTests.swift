@@ -275,7 +275,7 @@ struct VirtualTourViewControllerTests {
     // Test delegate methods
     if let panoView = subject.panoView {
       subject.panoramaView(panoView, didMoveTo: nil)
-      
+
       let camera = GMSPanoramaCamera(heading: 0, pitch: 0, zoom: 1)
       subject.panoramaView(panoView, didMove: camera)
     }

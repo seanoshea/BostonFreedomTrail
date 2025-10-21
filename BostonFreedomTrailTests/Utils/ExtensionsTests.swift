@@ -41,10 +41,10 @@ struct ExtensionsTests {
   @Test("Coordinate logging executes without error")
   func coordinateLoggingExecutes() async {
     let coordinate = CLLocationCoordinate2D(latitude: 42.3601, longitude: -71.0589)
-    
+
     // Should not crash when called
     coordinate.logCoordinate()
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
@@ -53,34 +53,34 @@ struct ExtensionsTests {
   @Test("Placemark index from identifier with valid input")
   func placemarkIndexFromValidIdentifier() async {
     let result = 0.placemarkIndexFromIdentifier("placemark5")
-    
+
     #expect(result == 4) // placemark5 -> 5 - 1 = 4
   }
 
   @Test("Placemark index from identifier with invalid input")
   func placemarkIndexFromInvalidIdentifier() async {
     let result = 0.placemarkIndexFromIdentifier("invalid")
-    
+
     #expect(result == 0) // Should return 0 for invalid input
   }
 
   @Test("Placemark index from identifier with empty string")
   func placemarkIndexFromEmptyIdentifier() async {
     let result = 0.placemarkIndexFromIdentifier("")
-    
+
     #expect(result == 0) // Should return 0 for empty string
   }
 
   @Test("Placemark index from identifier with placemark prefix only")
   func placemarkIndexFromPrefixOnly() async {
     let result = 0.placemarkIndexFromIdentifier("placemark")
-    
+
     #expect(result == 0) // Should return 0 when no number follows
   }
 
   // MARK: - GMSPanoramaView Extension Tests
   // Note: These tests are disabled because they require Google Maps SDK initialization
-  
+
   // MARK: - GMSPanoramaCamera Extension Tests
   // Note: These tests are disabled because they require Google Maps SDK initialization
 
@@ -89,13 +89,13 @@ struct ExtensionsTests {
   @Test("Linkify adds link attribute to found text")
   func linkifyAddsLinkToFoundText() async {
     let attributedString = NSMutableAttributedString(string: "Visit our website for more info")
-    
+
     attributedString.linkify("website", linkURL: "https://example.com")
-    
+
     _ = NSRange(location: 10, length: 7) // "website" location
     let linkAttribute = attributedString.attribute(.link, at: 10, effectiveRange: nil) as? String
     let fontAttribute = attributedString.attribute(.font, at: 10, effectiveRange: nil) as? UIFont
-    
+
     #expect(linkAttribute == "https://example.com")
     #expect(fontAttribute?.pointSize == 14.0)
   }
@@ -103,33 +103,33 @@ struct ExtensionsTests {
   @Test("Linkify handles text not found")
   func linkifyHandlesTextNotFound() async {
     let attributedString = NSMutableAttributedString(string: "This is some text")
-    
+
     attributedString.linkify("missing", linkURL: "https://example.com")
-    
+
     // Should not add any link attributes since text is not found
     let linkAttribute = attributedString.attribute(.link, at: 0, effectiveRange: nil)
-    
+
     #expect(linkAttribute == nil)
   }
 
   @Test("Linkify handles empty string")
   func linkifyHandlesEmptyString() async {
     let attributedString = NSMutableAttributedString(string: "")
-    
+
     attributedString.linkify("text", linkURL: "https://example.com")
-    
+
     #expect(attributedString.length == 0)
   }
 
   @Test("Linkify handles multiple occurrences")
   func linkifyHandlesMultipleOccurrences() async {
     let attributedString = NSMutableAttributedString(string: "Click here and here for more")
-    
+
     attributedString.linkify("here", linkURL: "https://example.com")
-    
+
     // Should only linkify the first occurrence
     let firstLinkAttribute = attributedString.attribute(.link, at: 6, effectiveRange: nil) as? String
-    
+
     #expect(firstLinkAttribute == "https://example.com")
   }
 }

@@ -42,7 +42,7 @@ struct ReachabilityListenerTests {
   class TestReachabilityViewController: BaseViewController {
     var reachabilityChangedCalled = false
     var lastOnlineStatus: Bool?
-    
+
     func reachabilityStatusChanged(_ online: Bool) {
       reachabilityChangedCalled = true
       lastOnlineStatus = online
@@ -57,9 +57,9 @@ struct ReachabilityListenerTests {
   func reachabilityStatusChangedToOnline() async {
     let controller = TestReachabilityViewController()
     _ = controller.view // Trigger view loading
-    
+
     controller.reachabilityStatusChanged(true)
-    
+
     #expect(controller.reachabilityChangedCalled == true)
     #expect(controller.lastOnlineStatus == true)
   }
@@ -68,9 +68,9 @@ struct ReachabilityListenerTests {
   func reachabilityStatusChangedToOffline() async {
     let controller = TestReachabilityViewController()
     _ = controller.view // Trigger view loading
-    
+
     controller.reachabilityStatusChanged(false)
-    
+
     #expect(controller.reachabilityChangedCalled == true)
     #expect(controller.lastOnlineStatus == false)
   }
@@ -79,14 +79,14 @@ struct ReachabilityListenerTests {
   func multipleReachabilityStatusChanges() async {
     let controller = TestReachabilityViewController()
     _ = controller.view // Trigger view loading
-    
+
     // Test online -> offline -> online
     controller.reachabilityStatusChanged(true)
     #expect(controller.lastOnlineStatus == true)
-    
+
     controller.reachabilityStatusChanged(false)
     #expect(controller.lastOnlineStatus == false)
-    
+
     controller.reachabilityStatusChanged(true)
     #expect(controller.lastOnlineStatus == true)
   }
@@ -97,10 +97,10 @@ struct ReachabilityListenerTests {
   func registerListenerExecutesWithoutError() async {
     let controller = TestReachabilityViewController()
     _ = controller.view // Trigger view loading
-    
+
     // Should not crash when registering listener
     controller.registerListener()
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
@@ -110,10 +110,10 @@ struct ReachabilityListenerTests {
   func isOnlineReturnsFalseWhenAppDelegateIsNil() async {
     let controller = TestReachabilityViewController()
     _ = controller.view // Trigger view loading
-    
+
     // When app delegate is not properly set up, should return false
     let isOnline = controller.isOnline()
-    
+
     // This test may vary depending on test environment setup
     #expect(isOnline == false || isOnline == true) // Accept either result in test environment
   }
@@ -122,10 +122,10 @@ struct ReachabilityListenerTests {
   func isOnlineHandlesMissingReachabilityGracefully() async {
     let controller = TestReachabilityViewController()
     _ = controller.view // Trigger view loading
-    
+
     // Should handle missing reachability object gracefully
     let isOnline = controller.isOnline()
-    
+
     // Should not crash and return a boolean value
     #expect(isOnline == false || isOnline == true)
   }
@@ -136,12 +136,12 @@ struct ReachabilityListenerTests {
   func reachabilityListenerIntegrationWithBaseViewController() async {
     let controller = TestReachabilityViewController()
     _ = controller.view // Trigger view loading
-    
+
     // Test that the listener properly integrates with BaseViewController
     controller.registerListener()
     controller.reachabilityStatusChanged(true)
     controller.reachabilityStatusChanged(false)
-    
+
     #expect(controller.reachabilityChangedCalled == true)
     #expect(controller.lastOnlineStatus == false)
   }
@@ -150,13 +150,13 @@ struct ReachabilityListenerTests {
   func reachabilityStatusChangeAffectsSnackbarDisplay() async {
     let controller = TestReachabilityViewController()
     _ = controller.view // Trigger view loading
-    
+
     // Test offline status shows snackbar message
     controller.reachabilityStatusChanged(false)
-    
+
     // Test online status dismisses snackbar
     controller.reachabilityStatusChanged(true)
-    
+
     #expect(controller.reachabilityChangedCalled == true)
   }
 }

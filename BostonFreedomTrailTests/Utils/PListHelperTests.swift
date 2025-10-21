@@ -34,11 +34,6 @@ import Testing
 @Suite("PListHelper")
 struct PListHelperTests {
 
-  @Test("Gets Google Maps API key from plist")
-  func getsGoogleMapsApiKey() async {
-    #expect(PListHelper.googleMapsApiKey() == "AIzaSyAboFJaMbnKvTdFoxB4X3n5oG2n43Kaxkk")
-  }
-
   @Test("Gets default latitude from plist")
   func getsDefaultLatitude() async {
     #expect(PListHelper.defaultLatitude() == 42.355721486582)

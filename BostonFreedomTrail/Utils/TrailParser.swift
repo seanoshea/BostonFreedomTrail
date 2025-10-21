@@ -55,10 +55,10 @@ enum TrailParserConstants: String {
 
 /// Used to parse the trails from the kml file.
 final class TrailParser: NSObject, XMLParserDelegate {
-  
+
   var trail = Trail()
   var currentLocation: CLLocation?
-  
+
   var startFolder = false
   var startPlacemark = false
   var startName = false
@@ -73,7 +73,7 @@ final class TrailParser: NSObject, XMLParserDelegate {
   var startLongitude = false
   var startTilt = false
   var startHeading = false
-  
+
   var currentIdentifier: String?
   var currentName: String?
   var currentLineCoordinates: String?
@@ -82,7 +82,7 @@ final class TrailParser: NSObject, XMLParserDelegate {
   var currentLongitude: String?
   var currentTilt: String?
   var currentHeading: String?
-  
+
   func parseTrail() -> Trail {
     let path = Bundle.main.path(forResource: TrailParserConstants.trail.rawValue, ofType: TrailParserConstants.kml.rawValue)
     let parser = XMLParser(contentsOf: URL(fileURLWithPath: path!))!
@@ -90,8 +90,8 @@ final class TrailParser: NSObject, XMLParserDelegate {
     parser.parse()
     return trail
   }
-  
-  func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+
+  func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String]) {
     switch elementName {
     case TrailParserConstants.folder.rawValue:
       startFolder = true
@@ -127,7 +127,7 @@ final class TrailParser: NSObject, XMLParserDelegate {
       break
     }
   }
-  
+
   func parser(_ parser: XMLParser, foundCharacters string: String) {
     if startFolder {
       if startName {
@@ -136,7 +136,7 @@ final class TrailParser: NSObject, XMLParserDelegate {
         currentDescription = string
       } else if startCoordinates && !startLineCoordinates {
         let coordinates = string.components(separatedBy: ",")
-        currentLocation = CLLocation.init(latitude: Double(coordinates[1])!, longitude: Double(coordinates[0])!)
+        currentLocation = CLLocation(latitude: Double(coordinates[1])!, longitude: Double(coordinates[0])!)
       } else if startLineCoordinates {
         currentLineCoordinates = string
       }
@@ -154,7 +154,7 @@ final class TrailParser: NSObject, XMLParserDelegate {
       }
     }
   }
-  
+
   func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
     switch elementName {
     case TrailParserConstants.folder.rawValue:
@@ -176,7 +176,7 @@ final class TrailParser: NSObject, XMLParserDelegate {
     case TrailParserConstants.lineString.rawValue:
       startLine = false
       let lookAt = parseLookAt()
-      let placemark = Placemark(identifier:currentIdentifier!, name:currentName!, location:currentLocation!, coordinates:parseLineCoordinates(), placemarkDescription:currentDescription!, lookAt:lookAt)
+      let placemark = Placemark(identifier: currentIdentifier!, name: currentName!, location: currentLocation!, coordinates: parseLineCoordinates(), placemarkDescription: currentDescription!, lookAt: lookAt)
       trail.placemarks.append(placemark)
       hasLookAt = false
     case TrailParserConstants.lookAt.rawValue:
@@ -193,7 +193,7 @@ final class TrailParser: NSObject, XMLParserDelegate {
       break
     }
   }
-  
+
   func parseLineCoordinates() -> [CLLocation] {
     var path = [CLLocation]()
     guard currentLineCoordinates != nil else { return path }
@@ -201,17 +201,17 @@ final class TrailParser: NSObject, XMLParserDelegate {
     var coordinatesArray = currentLineCoordinates!.components(separatedBy: ",")
     coordinatesArray.removeLast()
     for index in stride(from: 0, to: coordinatesArray.count - 1, by: 2) {
-      path.append(CLLocation.init(latitude: Double(coordinatesArray[index + 1])!, longitude: Double(coordinatesArray[index])!))
+      path.append(CLLocation(latitude: Double(coordinatesArray[index + 1])!, longitude: Double(coordinatesArray[index])!))
     }
     return path
   }
-  
+
   func parseLookAt() -> LookAt? {
     guard hasLookAt else { return nil }
     let latitude: Double = Double(currentLatitude!)!
     let longitude: Double = Double(currentLongitude!)!
     let tilt = Double(currentTilt!)!
     let heading = Double(currentHeading!)!
-    return LookAt.init(latitude:latitude, longitude:longitude, tilt:tilt, heading:heading)
+    return LookAt(latitude: latitude, longitude: longitude, tilt: tilt, heading: heading)
   }
 }

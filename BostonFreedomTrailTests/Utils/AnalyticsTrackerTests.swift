@@ -41,9 +41,9 @@ struct AnalyticsTrackerTests {
 
   class TestViewController: UIViewController, AnalyticsTracker {
     var screenName: String = ""
-    
+
     func getScreenTrackingName() -> String {
-      return screenName
+      screenName
     }
   }
 
@@ -53,10 +53,10 @@ struct AnalyticsTrackerTests {
   func trackScreenNameWithValidName() async {
     let controller = TestViewController()
     controller.screenName = "test_screen"
-    
+
     // Should not crash when tracking screen
     controller.trackScreenName()
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
@@ -64,10 +64,10 @@ struct AnalyticsTrackerTests {
   func trackScreenNameWithEmptyName() async {
     let controller = TestViewController()
     controller.screenName = ""
-    
+
     // Should handle empty screen name gracefully
     controller.trackScreenName()
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
@@ -76,22 +76,22 @@ struct AnalyticsTrackerTests {
   @Test("Track tab bar button press with valid index")
   func trackTabBarButtonPressWithValidIndex() async {
     let controller = TestViewController()
-    
+
     // Should not crash when tracking tab bar press
     controller.trackTabBarButtonPress(index: 0)
     controller.trackTabBarButtonPress(index: 1)
     controller.trackTabBarButtonPress(index: 2)
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
   @Test("Track tab bar button press with negative index")
   func trackTabBarButtonPressWithNegativeIndex() async {
     let controller = TestViewController()
-    
+
     // Should handle negative index gracefully
     controller.trackTabBarButtonPress(index: -1)
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
@@ -101,10 +101,10 @@ struct AnalyticsTrackerTests {
   func trackButtonPressForPlacemarkWithValidData() async {
     let controller = TestViewController()
     let placemark = Placemark(identifier: "1", name: "Test Placemark", location: CLLocation(), coordinates: [], placemarkDescription: "Test Description", lookAt: nil)
-    
+
     // Should not crash when tracking placemark press
     controller.trackButtonPressForPlacemark(placemark, label: "info_window")
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
@@ -112,10 +112,10 @@ struct AnalyticsTrackerTests {
   func trackButtonPressForPlacemarkWithNilIdentifier() async {
     let controller = TestViewController()
     let placemark = Placemark(identifier: "", name: "Test Placemark", location: CLLocation(), coordinates: [], placemarkDescription: "Test Description", lookAt: nil)
-    
+
     // Should handle empty identifier gracefully
     controller.trackButtonPressForPlacemark(placemark, label: "info_window")
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
@@ -123,10 +123,10 @@ struct AnalyticsTrackerTests {
   func trackButtonPressForPlacemarkWithEmptyLabel() async {
     let controller = TestViewController()
     let placemark = Placemark(identifier: "1", name: "Test Placemark", location: CLLocation(), coordinates: [], placemarkDescription: "Test Description", lookAt: nil)
-    
+
     // Should handle empty label gracefully
     controller.trackButtonPressForPlacemark(placemark, label: "")
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
@@ -136,10 +136,10 @@ struct AnalyticsTrackerTests {
   func trackNonFatalErrorWithValidMessage() async {
     let controller = TestViewController()
     controller.screenName = "test_screen"
-    
+
     // Should not crash when tracking error
     controller.trackNonFatalErrorMessage("Test error occurred")
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
@@ -147,10 +147,10 @@ struct AnalyticsTrackerTests {
   func trackNonFatalErrorWithEmptyMessage() async {
     let controller = TestViewController()
     controller.screenName = "test_screen"
-    
+
     // Should handle empty error message gracefully
     controller.trackNonFatalErrorMessage("")
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 
@@ -159,10 +159,10 @@ struct AnalyticsTrackerTests {
     let controller = TestViewController()
     controller.screenName = "test_screen"
     let longMessage = String(repeating: "A", count: 1000)
-    
+
     // Should handle long error message gracefully
     controller.trackNonFatalErrorMessage(longMessage)
-    
+
     #expect(true) // Test passes if no crash occurs
   }
 

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Get current branch name
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Allow commits on main branches and feature/hotfix/release branches
+if [[ "$branch" =~ ^(main|develop|feature/.*|hotfix/.*|release/.*)$ ]]; then
+    exit 0
+fi
+
+echo "❌ Direct commits only allowed on:"
+echo "  - main, develop"
+echo "  - feature/*, hotfix/*, release/*"
+echo ""
+echo "Current branch: $branch"
+echo "Please create a proper branch or switch to an allowed branch."
+exit 1

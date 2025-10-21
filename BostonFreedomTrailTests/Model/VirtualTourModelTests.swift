@@ -14,7 +14,7 @@ struct VirtualTourModelTests {
   func edgeCaseEmptyTourHandling() async {
     let model = VirtualTourModel()
     model.tour = []
-    
+
     let currentLocation = model.getCurrentTourLocation()
     #expect(currentLocation == nil)
   }
@@ -23,7 +23,7 @@ struct VirtualTourModelTests {
   func edgeCaseInvalidTourPosition() async {
     let model = VirtualTourModel()
     model.currentTourPosition = -1
-    
+
     let currentLocation = model.getCurrentTourLocation()
     #expect(currentLocation == nil)
   }
@@ -32,7 +32,7 @@ struct VirtualTourModelTests {
   func edgeCaseTourPositionBeyondBounds() async {
     let model = VirtualTourModel()
     model.currentTourPosition = 1000
-    
+
     let currentLocation = model.getCurrentTourLocation()
     #expect(currentLocation == nil)
   }
@@ -41,7 +41,7 @@ struct VirtualTourModelTests {
   func lookAtLocationEdgeCases() async {
     let model = VirtualTourModel()
     model.setupTour()
-    
+
     let hasLookAt = model.atLookAtLocation()
     #expect(hasLookAt == true || hasLookAt == false)
   }

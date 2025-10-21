@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+echo "🧪 Running tests before push..."
+
+# Install dependencies if needed
+if ! bundle check > /dev/null 2>&1; then
+    echo "📦 Installing Ruby dependencies..."
+    bundle install
+fi
+
+if [ ! -d "Pods" ]; then
+    echo "📦 Installing CocoaPods dependencies..."
+    pod install
+fi
+
+# Run the full test suite
+echo "🏃 Running fastlane tests..."
+bundle exec fastlane test
+
+echo "✅ All tests passed! Proceeding with push..."

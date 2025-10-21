@@ -42,9 +42,9 @@ struct AboutTextViewTests {
   func textViewShouldBeginEditing() async {
     let aboutTextView = AboutTextView()
     let textView = UITextView()
-    
+
     let shouldBeginEditing = aboutTextView.textViewShouldBeginEditing(textView)
-    
+
     #expect(shouldBeginEditing == false) // Should not allow editing
   }
 
@@ -53,9 +53,9 @@ struct AboutTextViewTests {
     let aboutTextView = AboutTextView()
     let textView = UITextView()
     let range = NSRange(location: 0, length: 0)
-    
+
     let shouldChangeText = aboutTextView.textView(textView, shouldChangeTextIn: range, replacementText: "test")
-    
+
     #expect(shouldChangeText == false) // Should not allow text changes
   }
 
@@ -65,9 +65,9 @@ struct AboutTextViewTests {
     let textView = UITextView()
     let url = URL(string: "https://example.com")!
     let characterRange = NSRange(location: 0, length: 10)
-    
+
     let shouldInteract = aboutTextView.textView(textView, shouldInteractWith: url, in: characterRange, interaction: UITextItemInteraction.invokeDefaultAction)
-    
+
     #expect(shouldInteract == true) // Should allow URL interaction
   }
 
@@ -75,15 +75,15 @@ struct AboutTextViewTests {
   func textViewHandlesNilURLInteraction() async {
     let aboutTextView = AboutTextView()
     let textView = UITextView()
-    
+
     // Test with various interaction types
     let url = URL(string: "https://example.com")!
     let characterRange = NSRange(location: 0, length: 10)
-    
+
     let shouldInteractDefault = aboutTextView.textView(textView, shouldInteractWith: url, in: characterRange, interaction: UITextItemInteraction.invokeDefaultAction)
     let shouldInteractPreview = aboutTextView.textView(textView, shouldInteractWith: url, in: characterRange, interaction: UITextItemInteraction.preview)
     let shouldInteractPresentActions = aboutTextView.textView(textView, shouldInteractWith: url, in: characterRange, interaction: UITextItemInteraction.presentActions)
-    
+
     #expect(shouldInteractDefault == true)
     #expect(shouldInteractPreview == true)
     #expect(shouldInteractPresentActions == true)
@@ -94,7 +94,7 @@ struct AboutTextViewTests {
   @Test("About text view initializes correctly")
   func aboutTextViewInitializesCorrectly() async {
     let aboutTextView = AboutTextView()
-    
+
     #expect(aboutTextView != nil)
   }
 
@@ -102,7 +102,7 @@ struct AboutTextViewTests {
   func aboutTextViewFrameInitialization() async {
     let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
     let aboutTextView = AboutTextView(frame: frame, textContainer: nil)
-    
+
     #expect(aboutTextView.frame == frame)
   }
 
@@ -113,9 +113,9 @@ struct AboutTextViewTests {
     let aboutTextView = AboutTextView()
     let textView = UITextView()
     let emptyRange = NSRange(location: NSNotFound, length: 0)
-    
+
     let shouldChangeText = aboutTextView.textView(textView, shouldChangeTextIn: emptyRange, replacementText: "")
-    
+
     #expect(shouldChangeText == false)
   }
 
@@ -124,9 +124,9 @@ struct AboutTextViewTests {
     let aboutTextView = AboutTextView()
     let textView = UITextView()
     let largeRange = NSRange(location: 0, length: 10000)
-    
+
     let shouldChangeText = aboutTextView.textView(textView, shouldChangeTextIn: largeRange, replacementText: "large text")
-    
+
     #expect(shouldChangeText == false)
   }
 }

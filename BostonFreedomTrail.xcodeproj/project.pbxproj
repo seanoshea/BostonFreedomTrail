@@ -12,6 +12,7 @@
 		31D0C3C62EA7276F004D0E0F /* ReachabilityListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D0C3C42EA7276E004D0E0F /* ReachabilityListenerTests.swift */; };
 		31D0C3C72EA7276F004D0E0F /* ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D0C3C32EA7276E004D0E0F /* ExtensionsTests.swift */; };
 		31D0C3C92EA7277D004D0E0F /* AboutTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D0C3C82EA7277D004D0E0F /* AboutTextViewTests.swift */; };
+		31D0C3CB2EA7DC6F004D0E0F /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31D0C3CA2EA7DC6F004D0E0F /* APIKeys.plist */; };
 		31E3E80D2EA3246900FC4AAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */; };
 		31E3E80E2EA3246900FC4AAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */; };
 		41079D5F1C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */; };
@@ -76,6 +77,7 @@
 		31D0C3C32EA7276E004D0E0F /* ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTests.swift; sourceTree = "<group>"; };
 		31D0C3C42EA7276E004D0E0F /* ReachabilityListenerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityListenerTests.swift; sourceTree = "<group>"; };
 		31D0C3C82EA7277D004D0E0F /* AboutTextViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTextViewTests.swift; sourceTree = "<group>"; };
+		31D0C3CA2EA7DC6F004D0E0F /* APIKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTitleLabel.swift; sourceTree = "<group>"; };
 		41079D611C4FBAC300BF2CFF /* AboutViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewControllerTests.swift; sourceTree = "<group>"; };
@@ -242,8 +244,9 @@
 		41237C091C48719F0007F76B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */,
+				31D0C3CA2EA7DC6F004D0E0F /* APIKeys.plist */,
 				417757FE1CB9DA07008294C8 /* BostonFreedomTrail-Bridging-Header.h */,
+				31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */,
 				414A7AA61C6D728800385442 /* placemark.html */,
 				41237C0A1C4871FD0007F76B /* trail.kml */,
 			);
@@ -443,6 +446,7 @@
 				41237BF11C486CDF0007F76B /* Assets.xcassets in Resources */,
 				414A7AA71C6D728800385442 /* placemark.html in Resources */,
 				41237BEF1C486CDF0007F76B /* Main.storyboard in Resources */,
+				31D0C3CB2EA7DC6F004D0E0F /* APIKeys.plist in Resources */,
 				41237C0B1C4871FD0007F76B /* trail.kml in Resources */,
 				31E3E80E2EA3246900FC4AAF /* GoogleService-Info.plist in Resources */,
 			);

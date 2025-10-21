@@ -1,16 +1,23 @@
-Don't forget to check out [Stack  Overflow](http://stackoverflow.com/questions/tagged/BostonFreedomTrail) for common questions about BostonFreedomTrail. If you have a general question about app usage, it's probably best to ask there so that other people can find answers to similar questions.
+Please search existing issues before creating a new one.
 
-Having said that, here's some handy headings which could guide creating a new issue:
+## Issue Type
+- [ ] Bug report
+- [ ] Feature request
+- [ ] Documentation improvement
 
-## General Description
- - How did you run into this issue? Why is it important that it should get fixed?
- - If this is a feature request, outline why you'd like to see this happen.
+## Description
+**For bugs**: What happened vs. what you expected
+**For features**: What functionality you'd like and why it's useful
 
-## Reproduction steps
- - Can you reliably reproduce the issue? If so, how?
+## Steps to Reproduce (for bugs)
+1. 
+2. 
+3. 
 
-## Versions
- - What version of the application are you using?
+## Environment
+- App version: 
+- iOS version: 
+- Device model: 
 
-## Related issues
- - Have a look through the open issues and check to see if there are any similar ones which have been reported previously.
+## Additional Context
+Screenshots, logs, or other relevant information

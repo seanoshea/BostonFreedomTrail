@@ -44,7 +44,7 @@ class AboutTextView: UITextView, UITextViewDelegate {
   convenience init() {
     self.init(frame: .zero)
   }
-  
+
   /**
    Frame initializer for `AboutTextView`.
    
@@ -55,7 +55,7 @@ class AboutTextView: UITextView, UITextViewDelegate {
     super.init(frame: frame, textContainer: textContainer)
     applyStyles()
   }
-  
+
   /**
    Initializer for `AboutTextView`.
    
@@ -66,7 +66,7 @@ class AboutTextView: UITextView, UITextViewDelegate {
     super.init(coder: aDecoder)
     applyStyles()
   }
-  
+
   /// Ensures that the appropriate styles are set on the text view.
   func applyStyles() {
     textContainerInset = UIEdgeInsets.zero
@@ -75,31 +75,31 @@ class AboutTextView: UITextView, UITextViewDelegate {
     font = MDCTypography.body1Font()
     delegate = self
   }
-  
+
   // MARK: - UITextViewDelegate
-  
+
   func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-    return false
+    false
   }
-  
+
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    return false
+    false
   }
-  
+
   func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-    return true
+    true
   }
-  
+
   /// attributed text associated with `AboutTextView`.
   override var attributedText: NSAttributedString? {
     get {
-      return super.attributedText
+      super.attributedText
     }
     set(newAttributedText) {
-      let mutableAttributedString = NSMutableAttributedString.init(attributedString: newAttributedText!)
-      let range = NSRange.init(location: 0, length: mutableAttributedString.length)
-      mutableAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value:UIColor.bftDarkTextColor(), range:range)
-      mutableAttributedString.addAttribute(NSAttributedString.Key.font, value:MDCTypography.body1Font(), range:range)
+      let mutableAttributedString = NSMutableAttributedString(attributedString: newAttributedText!)
+      let range = NSRange(location: 0, length: mutableAttributedString.length)
+      mutableAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.bftDarkTextColor(), range: range)
+      mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: MDCTypography.body1Font(), range: range)
       super.attributedText = mutableAttributedString
     }
   }

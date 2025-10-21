@@ -43,7 +43,7 @@ extension CLLocationCoordinate2D {
 
 extension Int {
   func placemarkIndexFromIdentifier(_ placemarkIdentifier: String) -> Int {
-    let stringRepresentation = placemarkIdentifier.replacingOccurrences(of: "placemark", with:"")
+    let stringRepresentation = placemarkIdentifier.replacingOccurrences(of: "placemark", with: "")
     guard let integerRepresentation = Int(stringRepresentation) else { return 0 }
     return integerRepresentation - 1
   }
@@ -75,7 +75,7 @@ extension NSMutableAttributedString {
    - parameter textToFind: the text to make into a link
    - parameter linkURL: where to send the user should they press on the link
    */
-  public func linkify(_ textToFind:String, linkURL:String) {
+  public func linkify(_ textToFind: String, linkURL: String) {
     let foundRange = mutableString.range(of: textToFind)
     if foundRange.location != NSNotFound {
       addAttribute(NSAttributedString.Key.link, value: linkURL, range: foundRange)
