@@ -1,84 +1,98 @@
-fastlane_version "2.228.0"
+default_platform(:ios)
 
-default_platform :ios
+# Load environment variables from .env file for local development
+begin
+  require 'dotenv'
+  Dotenv.load
+rescue LoadError
+  # Dotenv not available, skip loading (CI environments provide env vars directly)
+end
 
-platform :ios do
-  before_all do
-    setup
-    cocoapods
-  end
+lane :test do
+  setup
+  scan(
+    scheme: "BostonFreedomTrail",
+    device: "iPhone 16 Pro",
+    code_coverage: true
+  )
+end
 
-  desc "Setup API keys from environment variables"
-  lane :setup do
-    inject_firebase_api_key
-    inject_google_maps_api_key
-  end
+lane :screenshots do
+  snapshot
+end
 
-  private_lane :inject_firebase_api_key do
-    firebase_key = ENV['FIREBASE_API_KEY']
-    UI.user_error!("FIREBASE_API_KEY environment variable is required") if firebase_key.nil? || firebase_key.empty?
-    
-    plist_path = "../BostonFreedomTrail/GoogleService-Info.plist"
-    sh "plutil -replace API_KEY -string '#{firebase_key}' '#{plist_path}'"
-    UI.success("Firebase API key injected successfully")
-  end
+lane :setup do
+  inject_firebase_api_key
+  inject_google_maps_api_key
+end
 
-  private_lane :inject_google_maps_api_key do
-    maps_key = ENV['GOOGLE_MAPS_API_KEY']
-    UI.user_error!("GOOGLE_MAPS_API_KEY environment variable is required") if maps_key.nil? || maps_key.empty?
-    
-    plist_path = "../BostonFreedomTrail/Resources/APIKeys.plist"
-    sh "plutil -replace GoogleMapsAPIKey -string '#{maps_key}' '#{plist_path}'"
-    UI.success("Google Maps API key injected successfully")
-  end
+private_lane :inject_firebase_api_key do
+  firebase_key = ENV['FIREBASE_API_KEY']
+  UI.user_error!("FIREBASE_API_KEY environment variable is required") if firebase_key.nil? || firebase_key.empty?
+  
+  plist_path = "../BostonFreedomTrail/GoogleService-Info.plist"
+  sh "plutil -replace API_KEY -string '#{firebase_key}' '#{plist_path}'"
+  UI.success("Firebase API key injected successfully")
+end
 
-  desc "Reset API keys to placeholders"
-  lane :cleanup do
-    sh "plutil -replace API_KEY -string 'FIREBASE_API_KEY_PLACEHOLDER' '../BostonFreedomTrail/GoogleService-Info.plist'"
-    sh "plutil -replace GoogleMapsAPIKey -string 'GOOGLE_MAPS_API_KEY_PLACEHOLDER' '../BostonFreedomTrail/Resources/APIKeys.plist'"
-    UI.success("API keys reset to placeholders")
-  end
+private_lane :inject_google_maps_api_key do
+  maps_key = ENV['GOOGLE_MAPS_API_KEY']
+  UI.user_error!("GOOGLE_MAPS_API_KEY environment variable is required") if maps_key.nil? || maps_key.empty?
+  
+  plist_path = "../BostonFreedomTrail/Resources/APIKeys.plist"
+  sh "plutil -replace GoogleMapsAPIKey -string '#{maps_key}' '#{plist_path}'"
+  UI.success("Google Maps API key injected successfully")
+end
 
-  desc "Runs all the tests"
-  lane :test do
-    scan(
-      scheme: "BostonFreedomTrail",
-      configuration: "Debug",
-      clean: true,
-      code_coverage: true
-    )
-  end
+lane :cleanup do
+  sh "plutil -replace API_KEY -string 'FIREBASE_API_KEY_PLACEHOLDER' '../BostonFreedomTrail/GoogleService-Info.plist'"
+  sh "plutil -replace GoogleMapsAPIKey -string 'GOOGLE_MAPS_API_KEY_PLACEHOLDER' '../BostonFreedomTrail/Resources/APIKeys.plist'"
+  UI.success("API keys reset to placeholders")
+end
 
-  desc "Generate code coverage report"
-  lane :coverage do
-    xcov(
-      workspace: "BostonFreedomTrail.xcworkspace",
-      scheme: "BostonFreedomTrail",
-      output_directory: "xcov_output",
-      minimum_coverage_percentage: 80.0,
-      include_test_targets: false,
-      include_targets: "BostonFreedomTrail.app"
-    )
-  end
+lane :build do
+  gym(
+    scheme: "BostonFreedomTrail",
+    export_method: "development",
+    xcargs: "-allowProvisioningUpdates"
+  )
+end
 
-  desc "Submit a new Beta Build to Apple TestFlight"
-  desc "This will also make sure the profile is up to date"
-  lane :beta do
-    gym(scheme: "BostonFreedomTrail")
-    pilot
-  end
+lane :beta do
+  setup
+  increment_build_number(xcodeproj: "BostonFreedomTrail.xcodeproj")
+  gym(
+    scheme: "BostonFreedomTrail",
+    export_method: "app-store",
+    xcargs: "-allowProvisioningUpdates"
+  )
+  upload_to_testflight(
+    api_key: app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"],
+      issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+      key_filepath: "fastlane/api_keys/AuthKey_#{ENV['APP_STORE_CONNECT_API_KEY_KEY_ID']}.p8"
+    ),
+    changelog: "Bug fixes and improvements",
+    skip_waiting_for_build_processing: true
+  )
+end
 
-  desc "Deploy a new version to the App Store"
-  lane :release do
-    gym(scheme: "BostonFreedomTrail")
-    deliver(force: true)
-  end
-
-  after_all do |lane|
-
-  end
-
-  error do |lane, exception|
-
-  end
+lane :release do
+  setup
+  increment_version_number(bump_type: "patch")
+  increment_build_number(xcodeproj: "BostonFreedomTrail.xcodeproj")
+  gym(
+    scheme: "BostonFreedomTrail",
+    export_method: "app-store",
+    xcargs: "-allowProvisioningUpdates"
+  )
+  upload_to_app_store(
+    api_key: app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"],
+      issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+      key_filepath: "fastlane/api_keys/AuthKey_#{ENV['APP_STORE_CONNECT_API_KEY_KEY_ID']}.p8"
+    ),
+    force: true,
+    submit_for_review: false
+  )
 end
