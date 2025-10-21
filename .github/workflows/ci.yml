@@ -51,14 +51,7 @@ jobs:
           echo "No xcresult bundle found, skipping coverage export"
         fi
     
-    - name: Upload coverage to Codecov
-      if: success() && hashFiles('./test_output/coverage.json') != ''
-      uses: codecov/codecov-action@v4
-      with:
-        files: ./test_output/coverage.json
-        token: ${{ secrets.CODECOV_TOKEN }}
-        fail_ci_if_error: false
-    
+
     - name: Upload test results
       uses: actions/upload-artifact@v4
       if: always()

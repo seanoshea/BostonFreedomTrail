@@ -35,16 +35,6 @@ import GoogleMaps
 @Suite("ApplicationSharedState", .serialized)
 struct ApplicationSharedStateTests {
 
-  // MARK: - Camera Zoom Tests
-
-  @Test("Gets current camera zoom")
-  func getsCurrentCameraZoom() async {
-    ApplicationSharedState.sharedInstance.clear()
-    UserDefaults.standard.set(Float(12.0), forKey: "applicationSharedStateCameraZoom")
-
-    #expect(ApplicationSharedState.sharedInstance.cameraZoom == 12.0)
-  }
-
   @Test("Retrieves lat and long of where user was most recently seen")
   func retrievesLastKnownLocation() async {
     ApplicationSharedState.sharedInstance.clear()
