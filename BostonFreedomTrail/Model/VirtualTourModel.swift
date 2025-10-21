@@ -114,7 +114,7 @@ final class VirtualTourModel: @unchecked Sendable {
             lookAts[index] = placemarkIndex
           }
         }
-        index = index + 1
+        index += 1
         tour.append(location)
       }
       placemarkDemarkations[index] = placemarkIndex
@@ -239,12 +239,12 @@ final class VirtualTourModel: @unchecked Sendable {
 
   /// Bumps the `currentTourPosition` by one.
   func advanceLocation() {
-    currentTourPosition = currentTourPosition + 1
+    currentTourPosition += 1
   }
 
   /// Decrements the `currentTourPosition` by one.
   func reverseLocation() {
-    currentTourPosition = currentTourPosition - 1
+    currentTourPosition -= 1
   }
 
   /**
