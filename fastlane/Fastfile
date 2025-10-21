@@ -12,9 +12,8 @@ lane :test do
   setup
   scan(
     scheme: "BostonFreedomTrail",
-    device: "iPhone 15 Pro",
+    destination: "platform=iOS Simulator,name=iPhone 16 Pro,OS=18.1",
     code_coverage: true,
-    skip_build: false,
     clean: true
   )
 end
