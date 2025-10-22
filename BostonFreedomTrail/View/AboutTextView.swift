@@ -86,8 +86,8 @@ class AboutTextView: UITextView, UITextViewDelegate {
     false
   }
 
-  func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-    true
+  func textView(_ textView: UITextView, primaryActionFor textItem: UITextItem, defaultAction: UIAction) -> UIAction? {
+    defaultAction
   }
 
   /// attributed text associated with `AboutTextView`.

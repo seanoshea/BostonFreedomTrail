@@ -88,7 +88,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   /// Sets up all generic styling in the app.
   func initializeStyling() {
-    UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: MDCTypography.captionFont()], for: UIControl.State.normal)
+    // Configure tab bar appearance for iOS 18+
+    let tabBarAppearance = UITabBarAppearance()
+    tabBarAppearance.configureWithDefaultBackground()
+    tabBarAppearance.backgroundColor = UIColor.systemBackground
+    
+    // Configure text attributes for both states
+    tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.font: MDCTypography.captionFont()]
+    tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.font: MDCTypography.captionFont()]
+    
+    UITabBar.appearance().standardAppearance = tabBarAppearance
+    UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+    
     // offset for the snack bar message view which is used to display LookAt information in the virtual tour
     guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }
@@ -121,7 +132,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
       case TabBarControllerIndex.aboutViewController.rawValue:
         title = NSLocalizedString("About", comment: "")
       default:
-        NSLog("Add a new index to TabBarControllerIndex for this new controller")
+        print("Add a new index to TabBarControllerIndex for this new controller")
       }
       item.title = title
     }
@@ -129,11 +140,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   /// Reachability is used in the app to understand whether the user is online or offline. This function is responsible for starting the notifier so that all elements in the app know when they are offline and when they are online.
   func initializeReachability() {
-    let reachability = try! Reachability()
     do {
+      let reachability = try Reachability()
       try reachability.startNotifier()
+      self.reachability = reachability
     } catch {
-      NSLog("Failed to start the reachability notifier")
+      print("Failed to start the reachability notifier: \(error)")
     }
   }
 }
