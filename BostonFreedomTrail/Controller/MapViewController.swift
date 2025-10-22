@@ -88,7 +88,7 @@ final class MapViewController: BaseViewController {
   func createMapView() {
     let lastKnownCoordinate = model.lastKnownCoordinate()
     let camera = GMSCameraPosition.camera(withLatitude: lastKnownCoordinate.latitude, longitude: lastKnownCoordinate.longitude, zoom: model.zoomForMap())
-    let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+    let mapView = GMSMapView(frame: CGRect.zero, camera: camera)
     mapView.padding = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 48.0, right: 0.0)
     mapView.isIndoorEnabled = false
     mapView.isMyLocationEnabled = true

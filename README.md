@@ -11,14 +11,6 @@ iOS Application for walking the Boston Freedom Trail.
 [![Closed Issues](https://img.shields.io/github/issues-closed/seanoshea/BostonFreedomTrail)](https://img.shields.io/github/issues-closed/seanoshea/BostonFreedomTrail)
 [![Twitter: @seanoshea](https://img.shields.io/badge/contact-@seanoshea-blue.svg?style=flat)](https://twitter.com/seanoshea)
 
-## Requirements
-
-- **iOS:** 18.0+
-- **Xcode:** 16.0+
-- **Swift:** 6.0
-- **Ruby:** 3.4.7
-- **CocoaPods:** 1.16.2+
-
 ## Features
 
 - 📍 Interactive map showing Freedom Trail locations across Boston
@@ -30,16 +22,6 @@ iOS Application for walking the Boston Freedom Trail.
 ## For Developers
 
 Interested in contributing or running the project locally? Check out our [Development Guide](DEVELOPMENT.md) for detailed setup instructions including API key configuration and security requirements.
-
-## Gitflow Workflow
-
-This project follows the Gitflow branching model:
-
-- `main` - Production releases only
-- `develop` - Active development branch
-- `feature/*` - New features
-- `release/*` - Release preparation
-- `hotfix/*` - Production hotfixes
 
 ## Contributing
 
