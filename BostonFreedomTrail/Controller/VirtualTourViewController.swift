@@ -93,8 +93,8 @@ final class VirtualTourViewController: BaseViewController {
 
   // MARK: Online/Offline
 
-  override func reachabilityStatusChanged(_ online: Bool) {
-    super.reachabilityStatusChanged(online)
+  func reachabilityStatusChanged(_ online: Bool) {
+    // Handle reachability status change
     if online {
       virtualTourButton?.isEnabled = true
       reloadCurrentLocation()
