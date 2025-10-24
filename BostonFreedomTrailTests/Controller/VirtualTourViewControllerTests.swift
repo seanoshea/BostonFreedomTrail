@@ -211,8 +211,15 @@ struct VirtualTourViewControllerTests {
     _ = subject.view
     ApplicationSharedState.sharedInstance.clear()
 
-    subject.model.setupTour()
+    subject.viewDidAppear(true) // This calls setupTour()
     _ = subject.model.startTour()
+
+    // Ensure tour has locations before proceeding
+    guard !subject.model.tour.isEmpty else {
+      #expect(Bool(false), "Tour should have locations after setup")
+      return
+    }
+
     let nextStop = subject.model.enqueueNextLocation()
 
     let newCamera = subject.cameraPositionForNextLocation(nextStop)

@@ -170,7 +170,7 @@ extension AnalyticsTracker where Self: UIViewController {
       "category": AnalyticsEventCategories.action.rawValue,
       "action": AnalyticsActions.buttonPress.rawValue,
       "label": AnalyticsLabels.infoWindowPress.rawValue,
-      "placemark_id": Int(placemark.identifier),
+      "placemark_id": Int(placemark.identifier) ?? 0,
       "placemark_label": label
     ])
   }

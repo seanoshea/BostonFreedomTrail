@@ -43,7 +43,10 @@ struct MapModelTests {
     let mapViewController = UIStoryboard.mapViewController()
     _ = mapViewController.view
 
-    let mapView = mapViewController.mapView!
+    guard let mapView = mapViewController.mapView else {
+      #expect(Bool(false), "MapView should be available")
+      return
+    }
     let placemarks = subject.addPlacemarksToMap(mapView)
     let marker = placemarks[0]
 
@@ -56,7 +59,10 @@ struct MapModelTests {
     let mapViewController = UIStoryboard.mapViewController()
     _ = mapViewController.view
 
-    let mapView = mapViewController.mapView!
+    guard let mapView = mapViewController.mapView else {
+      #expect(Bool(false), "MapView should be available")
+      return
+    }
     let markers = subject.addPlacemarksToMap(mapView)
 
     #expect(!markers.isEmpty)
@@ -75,7 +81,10 @@ struct MapModelTests {
     let mapViewController = UIStoryboard.mapViewController()
     _ = mapViewController.view
 
-    let mapView = mapViewController.mapView!
+    guard let mapView = mapViewController.mapView else {
+      #expect(Bool(false), "MapView should be available")
+      return
+    }
     let markers = subject.addPlacemarksToMap(mapView)
 
     #expect(markers.count == Trail.instance.placemarks.count)

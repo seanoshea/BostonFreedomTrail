@@ -128,6 +128,16 @@ final class VirtualTourModel: @unchecked Sendable {
    - returns: a `CLLocation` which represents the starting point on the virtual tour
    */
   func startTour() -> CLLocation {
+    // Ensure tour is set up before starting
+    if tourNotInitialized() {
+      setupTour()
+    }
+
+    guard !tour.isEmpty else {
+      // Return default location if tour is still empty
+      return CLLocation(latitude: 42.355721486582, longitude: -71.063303947449)
+    }
+
     currentTourPosition = 0
     currentTourState = VirtualTourState.inProgress
     return tour[currentTourPosition]
@@ -172,7 +182,24 @@ final class VirtualTourModel: @unchecked Sendable {
    - returns: a `Placemark` corresponding to the next tour location
    */
   func enqueueNextLocation() -> CLLocation {
+    // Ensure tour is set up before accessing array
+    if tourNotInitialized() {
+      setupTour()
+    }
+
+    guard !tour.isEmpty else {
+      // Return default location if tour is empty
+      return CLLocation(latitude: 42.355721486582, longitude: -71.063303947449)
+    }
+
     advanceLocation()
+
+    // Ensure we don't go beyond array bounds
+    guard currentTourPosition < tour.count else {
+      currentTourPosition = tour.count - 1
+      return tour[currentTourPosition]
+    }
+
     return tour[currentTourPosition]
   }
 
@@ -341,6 +368,16 @@ final class VirtualTourModel: @unchecked Sendable {
   // MARK: Calculating Camera Directions
 
   func locationDirectionForNextLocation(_ nextLocation: CLLocation) -> CLLocationDirection {
+    // Ensure tour is set up before accessing array
+    if tourNotInitialized() {
+      setupTour()
+    }
+
+    guard !tour.isEmpty else {
+      // Return default direction if tour is empty
+      return 0.0
+    }
+
     let next = currentTourPosition == tour.count || currentTourPosition == 0 ? 0 : currentTourPosition - 1
     let fromLocation = tour[next]
     let toLocation = CLLocation(latitude: nextLocation.coordinate.latitude, longitude: nextLocation.coordinate.longitude)

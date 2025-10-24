@@ -92,7 +92,14 @@ final class Placemark: @unchecked Sendable {
    * - Parameter placemarkDescription: HTML-formatted historical description
    * - Parameter lookAt: Optional camera positioning for street view (can be nil)
    */
-  init(identifier: String, name: String, location: CLLocation, coordinates: [CLLocation], placemarkDescription: String, lookAt: LookAt?) {
+  init(
+    identifier: String,
+    name: String,
+    location: CLLocation,
+    coordinates: [CLLocation],
+    placemarkDescription: String,
+    lookAt: LookAt?
+  ) {
     self.identifier = identifier
     self.name = name
     self.location = location

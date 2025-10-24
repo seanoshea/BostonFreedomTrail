@@ -64,7 +64,7 @@ struct AboutTextViewTests {
     let aboutTextView = AboutTextView()
 
     // Just verify the AboutTextView conforms to the delegate protocol
-    #expect(aboutTextView is UITextViewDelegate)
+    #expect(aboutTextView.responds(to: #selector(UITextViewDelegate.textViewShouldBeginEditing(_:))))
   }
 
   // MARK: - Initialization Tests
@@ -73,7 +73,8 @@ struct AboutTextViewTests {
   func aboutTextViewInitializesCorrectly() async {
     let aboutTextView = AboutTextView()
 
-    #expect(aboutTextView != nil)
+    // AboutTextView should initialize successfully
+    #expect(type(of: aboutTextView) == AboutTextView.self)
   }
 
   @Test("About text view frame initialization")
