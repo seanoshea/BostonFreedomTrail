@@ -92,14 +92,14 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     let tabBarAppearance = UITabBarAppearance()
     tabBarAppearance.configureWithDefaultBackground()
     tabBarAppearance.backgroundColor = UIColor.systemBackground
-    
+
     // Configure text attributes for both states
     tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.font: MDCTypography.captionFont()]
     tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.font: MDCTypography.captionFont()]
-    
+
     UITabBar.appearance().standardAppearance = tabBarAppearance
     UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-    
+
     // offset for the snack bar message view which is used to display LookAt information in the virtual tour
     guard let window = window else { return }
     guard let tabBarController = window.rootViewController as? UITabBarController else { return }

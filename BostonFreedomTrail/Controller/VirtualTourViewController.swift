@@ -93,7 +93,7 @@ final class VirtualTourViewController: BaseViewController {
 
   // MARK: Online/Offline
 
-  func reachabilityStatusChanged(_ online: Bool) {
+  override func reachabilityStatusChanged(_ online: Bool) {
     super.reachabilityStatusChanged(online)
     if online {
       virtualTourButton?.isEnabled = true
@@ -107,11 +107,24 @@ final class VirtualTourViewController: BaseViewController {
   // MARK: Private Functions
 
   func addPanoramaView(_ panoramaNear: CLLocationCoordinate2D) {
+    // Validate coordinate is within valid bounds
+    guard panoramaNear.latitude >= -90.0 && panoramaNear.latitude <= 90.0 &&
+          panoramaNear.longitude >= -180.0 && panoramaNear.longitude <= 180.0 else {
+      trackNonFatalErrorMessage("Invalid coordinate for panorama view: \(panoramaNear)")
+      return
+    }
+
     let panoView = GMSPanoramaView.panorama(withFrame: view.frame, nearCoordinate: panoramaNear)
     panoView.navigationLinksHidden = true
     panoView.delegate = self
     view.addSubview(panoView)
-    panoView.addSubview(virtualTourButton!)
+
+    guard let tourButton = virtualTourButton else {
+      trackNonFatalErrorMessage("Virtual tour button not available")
+      return
+    }
+
+    panoView.addSubview(tourButton)
     self.panoView = panoView
   }
 
@@ -127,15 +140,38 @@ final class VirtualTourViewController: BaseViewController {
 
   func cameraPositionForNextLocation(_ nextLocation: CLLocation) -> GMSPanoramaCamera {
     var pitch = 0.0
-    var heading: CLLocationDirection?
+    var heading: CLLocationDirection = 0.0
+
     if model.atLookAtLocation() {
-      let lookAt: LookAt = model.lookAtForCurrentLocation()!
-      pitch = lookAt.tilt
-      heading = lookAt.heading
+      guard let lookAt = model.lookAtForCurrentLocation() else {
+        trackNonFatalErrorMessage("Expected LookAt data but none available")
+        heading = model.locationDirectionForNextLocation(nextLocation)
+        return GMSPanoramaCamera(heading: heading, pitch: pitch, zoom: 1)
+      }
+
+      // Validate LookAt data
+      guard lookAt.tilt >= 0.0 && lookAt.tilt <= 90.0 else {
+        trackNonFatalErrorMessage("Invalid tilt value: \(lookAt.tilt)")
+        pitch = 0.0
+      }
+
+      guard lookAt.heading >= 0.0 && lookAt.heading <= 360.0 else {
+        trackNonFatalErrorMessage("Invalid heading value: \(lookAt.heading)")
+        heading = 0.0
+      }
+
+      if lookAt.tilt >= 0.0 && lookAt.tilt <= 90.0 {
+        pitch = lookAt.tilt
+      }
+
+      if lookAt.heading >= 0.0 && lookAt.heading <= 360.0 {
+        heading = lookAt.heading
+      }
     } else {
       heading = model.locationDirectionForNextLocation(nextLocation)
     }
-    return GMSPanoramaCamera(heading: heading!, pitch: pitch, zoom: 1)
+
+    return GMSPanoramaCamera(heading: heading, pitch: pitch, zoom: 1)
   }
 
   func shouldEnqueueNextLocationForPanorama(_ panorama: GMSPanorama?) -> Bool {
@@ -147,12 +183,26 @@ final class VirtualTourViewController: BaseViewController {
   }
 
   func postDispatchAction(_ nextLocation: CLLocation, force: Bool) {
+    // Validate location coordinates
+    let coordinate = nextLocation.coordinate
+    guard coordinate.latitude >= -90.0 && coordinate.latitude <= 90.0 &&
+          coordinate.longitude >= -180.0 && coordinate.longitude <= 180.0 else {
+      trackNonFatalErrorMessage("Invalid location coordinate: \(coordinate)")
+      return
+    }
+
     if model.tourIsRunning() || force {
       if isOnline() {
+        guard let panoView = panoView else {
+          trackNonFatalErrorMessage("Panorama view not available for location update")
+          return
+        }
+
         repositionPanoViewForNextLocation(nextLocation)
-        panoView?.moveNearCoordinate(CLLocationCoordinate2DMake(nextLocation.coordinate.latitude, nextLocation.coordinate.longitude))
+        panoView.moveNearCoordinate(coordinate)
       } else {
         model.pauseTour()
+        displaySnackbarMessage(NSLocalizedString("Tour paused - network connection required", comment: ""))
       }
     } else {
       // back up
@@ -161,14 +211,38 @@ final class VirtualTourViewController: BaseViewController {
   }
 
   func repositionPanoViewForNextLocation(_ nextLocation: CLLocation) {
+    guard let panoView = panoView else {
+      trackNonFatalErrorMessage("Panorama view not available for repositioning")
+      return
+    }
+
     if model.hasAdvancedPastFirstLocation() {
       let newCamera = cameraPositionForNextLocation(nextLocation)
-      panoView?.animate(to: newCamera, animationDuration: VirtualTourStopStopDuration.cameraRepositionAnimation.rawValue)
+      let animationDuration = VirtualTourStopStopDuration.cameraRepositionAnimation.rawValue
+
+      // Validate animation duration
+      guard animationDuration > 0 else {
+        trackNonFatalErrorMessage("Invalid animation duration: \(animationDuration)")
+        return
+      }
+
+      panoView.animate(to: newCamera, animationDuration: animationDuration)
+
       if model.atLookAtLocation() {
-        guard let placemark = model.placemarkForNextLocation() else { return }
+        guard let placemark = model.placemarkForNextLocation() else {
+          trackNonFatalErrorMessage("Expected placemark for LookAt location but none available")
+          return
+        }
+
+        guard !placemark.name.isEmpty else {
+          trackNonFatalErrorMessage("Placemark has empty name")
+          return
+        }
+
         displaySnackbarMessage(placemark.name)
       }
     }
+
     if model.isAtLastPosition() {
       model.finishTour()
     }

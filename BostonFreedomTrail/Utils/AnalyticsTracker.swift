@@ -31,15 +31,20 @@
 import Foundation
 import FirebaseAnalytics
 
-/// Screen name constants for analytics
+/**
+ * Screen name identifiers for Firebase Analytics tracking.
+ * 
+ * These constants ensure consistent screen naming across the app
+ * for analytics and user behavior tracking.
+ */
 enum AnalyticsScreenNames: String {
-  /// Used when the user taps on the about tab
+  /// About screen showing app information and credits
   case aboutScreen
-  /// Used when the user taps on the map tab
+  /// Main map screen displaying the Freedom Trail
   case mapScreen
-  /// Used when the user taps into more information on a placemark
+  /// Placemark detail screen with historical information
   case placemarkScreen
-  /// Used when the user taps on the virtual tour tab
+  /// Virtual tour screen with street view functionality
   case virtualTourScreen
 }
 
@@ -67,28 +72,65 @@ enum AnalyticsLabels: String {
   case streetViewPress = "street_view_press"
 }
 
-/// Protocol for analytics
+/**
+ * Protocol for implementing Firebase Analytics tracking in view controllers.
+ * 
+ * This protocol provides a standardized interface for tracking user interactions,
+ * screen views, and events throughout the Boston Freedom Trail app.
+ * 
+ * ## Implementation
+ * View controllers should conform to this protocol and implement the required methods:
+ * ```swift
+ * class MyViewController: BaseViewController, AnalyticsTracker {
+ *   func getScreenTrackingName() -> String {
+ *     return AnalyticsScreenNames.myScreen.rawValue
+ *   }
+ * }
+ * ```
+ * 
+ * - Note: All methods are marked @MainActor for thread safety
+ */
 @MainActor
 protocol AnalyticsTracker: AnyObject {
   /**
-   Retrieves the screen name.
-   
-   - returns: the screen name which will be used for any screen tracking in analytics
+   * Provides the unique screen identifier for analytics tracking.
+   * 
+   * - Returns: String identifier used for screen view tracking in Firebase Analytics
    */
   func getScreenTrackingName() -> String
 
   /**
-   Tracks a button press when the user requests information on a placemark.
-   
-   - parameter placemark: the placemark about which the user is requesting information.
-   - parameter label: additional label information about the placemark & where the user is requesting the info from.
+   * Tracks user interaction with Freedom Trail placemarks.
+   * 
+   * - Parameter placemark: The placemark the user interacted with
+   * - Parameter label: Context label describing the interaction type (e.g., "marker_press")
    */
   func trackButtonPressForPlacemark(_ placemark: Placemark, label: String)
 }
 
+/**
+ * Default implementation of AnalyticsTracker for UIViewController subclasses.
+ * 
+ * This extension provides ready-to-use analytics functionality for all view controllers
+ * that conform to the AnalyticsTracker protocol.
+ */
 extension AnalyticsTracker where Self: UIViewController {
 
-  /// Tracks the user viewing a screen in the app.
+  /**
+   * Tracks screen view events in Firebase Analytics.
+   * 
+   * This method automatically logs screen views with both the screen name
+   * and the view controller class name for comprehensive tracking.
+   * 
+   * ## Usage
+   * Call this method in viewDidAppear or similar lifecycle methods:
+   * ```swift
+   * override func viewDidAppear(_ animated: Bool) {
+   *   super.viewDidAppear(animated)
+   *   trackScreenName()
+   * }
+   * ```
+   */
   func trackScreenName() {
     let trackingName = getScreenTrackingName()
     guard !trackingName.isEmpty else { return }
@@ -101,9 +143,12 @@ extension AnalyticsTracker where Self: UIViewController {
   }
 
   /**
-   Tracks when a tab bar button is selected.
-
-   - parameter index: the index of the tab bar button which was just selected.
+   * Tracks tab bar navigation events.
+   * 
+   * This method logs when users switch between the main app tabs,
+   * helping understand navigation patterns and feature usage.
+   * 
+   * - Parameter index: Zero-based index of the selected tab (0=Map, 1=Virtual Tour, 2=About)
    */
   func trackTabBarButtonPress(index: Int) {
     Analytics.logEvent("tab_bar_press", parameters: [
@@ -131,9 +176,17 @@ extension AnalyticsTracker where Self: UIViewController {
   }
 
   /**
-   Tracks an error happening in the application.
-
-   - parameter errorMessage: information on where the error occured.
+   * Tracks non-fatal errors for debugging and monitoring.
+   * 
+   * This method logs recoverable errors that don't crash the app but may
+   * indicate issues that need attention. Useful for monitoring app health
+   * and identifying potential problems.
+   * 
+   * - Parameter errorMessage: Descriptive message about the error that occurred
+   * 
+   * ## Note
+   * For production apps, consider using Firebase Crashlytics for more
+   * comprehensive error tracking and reporting.
    */
   func trackNonFatalErrorMessage(_ errorMessage: String) {
     // Log non-fatal error to Firebase Analytics (Crashlytics would be better for this)

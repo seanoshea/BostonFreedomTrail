@@ -28,6 +28,14 @@ opt_in_rules:
   - unneeded_parentheses_in_closure_argument
   - vertical_parameter_alignment_on_call
   - yoda_condition
+  # Documentation and security rules
+  - missing_docs
+  - private_over_fileprivate
+  - strict_fileprivate
+  - unused_private_declaration
+  # Performance rules
+  - reduce_into
+  - contains_over_first_not_nil
 
 disabled_rules:
   - identifier_name  # Allow short names like 'i', 'x', 'y'

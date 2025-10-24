@@ -50,11 +50,55 @@ struct MapModelTests {
     #expect(marker.map != nil)
   }
 
+  @Test("Placemark markers have correct properties")
+  func placemarkMarkersHaveCorrectProperties() async {
+    let subject = MapModel()
+    let mapViewController = UIStoryboard.mapViewController()
+    _ = mapViewController.view
+
+    let mapView = mapViewController.mapView!
+    let markers = subject.addPlacemarksToMap(mapView)
+
+    #expect(!markers.isEmpty)
+
+    let firstMarker = markers[0]
+    #expect(firstMarker.userData != nil)
+    #expect(firstMarker.icon != nil)
+    #expect(firstMarker.title != nil)
+    #expect(firstMarker.position.latitude != 0.0)
+    #expect(firstMarker.position.longitude != 0.0)
+  }
+
+  @Test("Marker count matches trail placemark count")
+  func markerCountMatchesTrailPlacemarkCount() async {
+    let subject = MapModel()
+    let mapViewController = UIStoryboard.mapViewController()
+    _ = mapViewController.view
+
+    let mapView = mapViewController.mapView!
+    let markers = subject.addPlacemarksToMap(mapView)
+
+    #expect(markers.count == Trail.instance.placemarks.count)
+  }
+
   @Test("Allows reasonable zoom value")
   func allowsReasonableZoomValue() async {
     let subject = MapModel()
 
     #expect(subject.isViableZoom(14))
+  }
+
+  @Test("Zoom validation - boundary conditions")
+  func zoomValidationBoundaryConditions() async {
+    let subject = MapModel()
+
+    // Test exact boundaries
+    #expect(subject.isViableZoom(CameraZoomConstraints.minimum.rawValue))
+    #expect(subject.isViableZoom(CameraZoomConstraints.maximum.rawValue))
+
+    // Test just outside boundaries
+    #expect(!subject.isViableZoom(CameraZoomConstraints.minimum.rawValue - 0.1))
+    #expect(!subject.isViableZoom(CameraZoomConstraints.maximum.rawValue + 0.1))
   }
 
   @Test("Does not allow unreasonable zoom values")
@@ -63,5 +107,47 @@ struct MapModelTests {
 
     #expect(!subject.isViableZoom(-1))
     #expect(!subject.isViableZoom(400))
+    #expect(!subject.isViableZoom(Float.infinity))
+    #expect(!subject.isViableZoom(-Float.infinity))
+    #expect(!subject.isViableZoom(Float.nan))
+  }
+
+  @Test("Last known coordinate with no stored data")
+  func lastKnownCoordinateWithNoStoredData() async {
+    let subject = MapModel()
+    ApplicationSharedState.sharedInstance.clear()
+
+    let coordinate = subject.lastKnownCoordinate()
+
+    // Should return default coordinates when no data stored
+    #expect(coordinate.latitude != 0.0)
+    #expect(coordinate.longitude != 0.0)
+  }
+
+  @Test("Last known coordinate with stored data")
+  func lastKnownCoordinateWithStoredData() async {
+    let subject = MapModel()
+    ApplicationSharedState.sharedInstance.clear()
+
+    let testCoordinate = CLLocationCoordinate2D(latitude: 42.3601, longitude: -71.0589)
+    ApplicationSharedState.sharedInstance.lastKnownCoordinate = testCoordinate
+
+    let retrievedCoordinate = subject.lastKnownCoordinate()
+
+    #expect(retrievedCoordinate.latitude == testCoordinate.latitude)
+    #expect(retrievedCoordinate.longitude == testCoordinate.longitude)
+  }
+
+  @Test("Zoom for map with stored data")
+  func zoomForMapWithStoredData() async {
+    let subject = MapModel()
+    ApplicationSharedState.sharedInstance.clear()
+
+    let testZoom: Float = 15.0
+    ApplicationSharedState.sharedInstance.cameraZoom = testZoom
+
+    let retrievedZoom = subject.zoomForMap()
+
+    #expect(retrievedZoom == testZoom)
   }
 }

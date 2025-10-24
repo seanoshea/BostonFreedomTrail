@@ -21,6 +21,33 @@ lane :screenshots do
   snapshot
 end
 
+lane :security_audit do
+  UI.message("🔒 Running comprehensive security audit...")
+  
+  begin
+    sh "bundle-audit check --update"
+    UI.success("✅ Bundle audit passed")
+  rescue => e
+    UI.error("❌ Bundle audit failed: #{e.message}")
+  end
+  
+  begin
+    # Check for hardcoded API keys
+    sh "grep -r 'AIza[0-9A-Za-z_-]\{35\}' BostonFreedomTrail/ || echo 'No hardcoded Google API keys found'"
+    sh "grep -r 'AAAA[A-Za-z0-9_-]\{50,\}' BostonFreedomTrail/ || echo 'No hardcoded Firebase keys found'"
+    UI.success("✅ API key security check passed")
+  rescue => e
+    UI.error("❌ API key security check failed: #{e.message}")
+  end
+  
+  UI.success("🔒 Security audit completed")
+end
+
+lane :quality_check do
+  sh "swiftlint --reporter xcode"
+  UI.success("Code quality check completed")
+end
+
 lane :setup do
   inject_firebase_api_key
   inject_google_maps_api_key

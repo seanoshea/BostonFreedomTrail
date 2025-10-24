@@ -31,7 +31,31 @@
 import UIKit
 import MaterialComponents
 
-/// View controller which includes a few basic functions.
+/**
+ * Base view controller providing common functionality for all view controllers in the app.
+ * 
+ * This class serves as the foundation for all view controllers in the Boston Freedom Trail app,
+ * providing shared functionality including analytics tracking, network reachability monitoring,
+ * and user notification display via snackbar messages.
+ * 
+ * ## Features
+ * - Analytics tracking integration
+ * - Network reachability monitoring
+ * - Material Design snackbar message display
+ * - Automatic listener registration on view appearance
+ * 
+ * ## Usage
+ * ```swift
+ * class MyViewController: BaseViewController {
+ *   override func getScreenTrackingName() -> String {
+ *     return "MyScreen"
+ *   }
+ * }
+ * ```
+ * 
+ * - Author: Upwards Northwards Software Limited
+ * - Since: 1.0
+ */
 class BaseViewController: UIViewController, AnalyticsTracker, ReachabilityListener {
 
   // MARK: Lifecycle
@@ -43,6 +67,19 @@ class BaseViewController: UIViewController, AnalyticsTracker, ReachabilityListen
 
   // MARK: Snackbar Messages
 
+  /**
+   * Displays a snackbar message to the user using Material Design components.
+   * 
+   * This method safely displays messages on the main thread, making it suitable
+   * for showing user feedback, error messages, or status updates.
+   * 
+   * - Parameter text: The message text to display to the user
+   * 
+   * ## Example
+   * ```swift
+   * displaySnackbarMessage("Location updated successfully")
+   * ```
+   */
   func displaySnackbarMessage(_ text: String) {
     DispatchQueue.main.async {
       MDCSnackbarManager.default.show(MDCSnackbarMessage(text: text))
@@ -52,9 +89,22 @@ class BaseViewController: UIViewController, AnalyticsTracker, ReachabilityListen
   // MARK: Analytics
 
   /**
-   Base implementation of `AnalyticsTracker`
-   
-   - returns: a String which can be passed to analytics to uniquely identify this view controller.
+   * Provides the screen tracking name for analytics purposes.
+   * 
+   * This method should be overridden by subclasses to provide a unique identifier
+   * for analytics tracking. The returned string is used to track user navigation
+   * and screen usage patterns.
+   * 
+   * - Returns: A unique string identifier for this view controller's screen.
+   *           Base implementation returns an empty string.
+   * 
+   * ## Implementation Note
+   * Subclasses must override this method to provide meaningful analytics data:
+   * ```swift
+   * override func getScreenTrackingName() -> String {
+   *   return AnalyticsScreenNames.mapScreen.rawValue
+   * }
+   * ```
    */
   func getScreenTrackingName() -> String {
     ""

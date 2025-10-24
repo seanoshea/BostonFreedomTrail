@@ -62,7 +62,7 @@ struct AboutTextViewTests {
   @Test("Text view has modern delegate method")
   func textViewHasModernDelegateMethod() async {
     let aboutTextView = AboutTextView()
-    
+
     // Just verify the AboutTextView conforms to the delegate protocol
     #expect(aboutTextView is UITextViewDelegate)
   }

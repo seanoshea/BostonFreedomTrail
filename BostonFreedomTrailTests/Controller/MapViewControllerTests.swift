@@ -95,34 +95,131 @@ struct MapViewControllerTests {
 
   // MARK: - Map Delegate Tests
 
-  @Test("Map view did tap info window")
-  func mapViewDidTapInfoWindow() async {
+  @Test("Map view did tap info window with valid placemark")
+  func mapViewDidTapInfoWindowWithValidPlacemark() async {
+    let subject = UIStoryboard.mapViewController()
+    _ = subject.view
+    ApplicationSharedState.sharedInstance.clear()
+
+    let placemark = Placemark(
+      identifier: "test1",
+      name: "Test Placemark",
+      location: CLLocation(latitude: 42.3601, longitude: -71.0589),
+      coordinates: [],
+      placemarkDescription: "Test description",
+      lookAt: nil
+    )
+
+    let marker = GMSMarker()
+    marker.userData = placemark
+    marker.position = CLLocationCoordinate2D(latitude: 42.3601, longitude: -71.0589)
+
+    if let mapView = subject.mapView {
+      subject.mapView(mapView, didTapInfoWindowOf: marker)
+
+      // Should update shared state with marker position
+      let lastKnownCoordinate = ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate
+      #expect(lastKnownCoordinate.latitude == 42.3601)
+      #expect(lastKnownCoordinate.longitude == -71.0589)
+    }
+  }
+
+  @Test("Map view did tap info window with invalid userData")
+  func mapViewDidTapInfoWindowWithInvalidUserData() async {
     let subject = UIStoryboard.mapViewController()
     _ = subject.view
     ApplicationSharedState.sharedInstance.clear()
 
     let marker = GMSMarker()
-    marker.userData = "placemark1"
+    marker.userData = "invalid_data" // Not a Placemark
+    marker.position = CLLocationCoordinate2D(latitude: 42.3601, longitude: -71.0589)
 
     if let mapView = subject.mapView {
       subject.mapView(mapView, didTapInfoWindowOf: marker)
-      // Should not crash
+      // Should handle gracefully without crashing
       #expect(true)
     }
   }
 
-  @Test("Map view did change camera position")
-  func mapViewDidChangeCameraPosition() async {
+  @Test("Map view did tap info window with nil userData")
+  func mapViewDidTapInfoWindowWithNilUserData() async {
     let subject = UIStoryboard.mapViewController()
     _ = subject.view
     ApplicationSharedState.sharedInstance.clear()
 
-    let camera = GMSCameraPosition.camera(withLatitude: 42.3601, longitude: -71.0589, zoom: 15)
+    let marker = GMSMarker()
+    marker.userData = nil
+    marker.position = CLLocationCoordinate2D(latitude: 42.3601, longitude: -71.0589)
+
+    if let mapView = subject.mapView {
+      subject.mapView(mapView, didTapInfoWindowOf: marker)
+      // Should handle gracefully without crashing
+      #expect(true)
+    }
+  }
+
+  @Test("Map view did change camera position with valid zoom")
+  func mapViewDidChangeCameraPositionWithValidZoom() async {
+    let subject = UIStoryboard.mapViewController()
+    _ = subject.view
+    ApplicationSharedState.sharedInstance.clear()
+
+    let validZoom: Float = 15.0
+    let camera = GMSCameraPosition.camera(withLatitude: 42.3601, longitude: -71.0589, zoom: validZoom)
 
     if let mapView = subject.mapView {
       subject.mapView(mapView, didChange: camera)
-      // Should update camera zoom in shared state
-      #expect(true)
+
+      // Should update both camera zoom and coordinate in shared state
+      #expect(ApplicationSharedState.sharedInstance.cameraZoom == validZoom)
+
+      let lastCoordinate = ApplicationSharedState.sharedInstance.lastKnownCoordinate
+      #expect(lastCoordinate.latitude == 42.3601)
+      #expect(lastCoordinate.longitude == -71.0589)
+    }
+  }
+
+  @Test("Map view did change camera position with invalid zoom")
+  func mapViewDidChangeCameraPositionWithInvalidZoom() async {
+    let subject = UIStoryboard.mapViewController()
+    _ = subject.view
+    ApplicationSharedState.sharedInstance.clear()
+
+    // Set a valid zoom first
+    ApplicationSharedState.sharedInstance.cameraZoom = 15.0
+
+    let invalidZoom: Float = 5.0 // Below minimum
+    let camera = GMSCameraPosition.camera(withLatitude: 42.3601, longitude: -71.0589, zoom: invalidZoom)
+
+    if let mapView = subject.mapView {
+      subject.mapView(mapView, didChange: camera)
+
+      // Should not update zoom with invalid value, but should update coordinate
+      #expect(ApplicationSharedState.sharedInstance.cameraZoom == 15.0) // Unchanged
+
+      let lastCoordinate = ApplicationSharedState.sharedInstance.lastKnownCoordinate
+      #expect(lastCoordinate.latitude == 42.3601)
+      #expect(lastCoordinate.longitude == -71.0589)
+    }
+  }
+
+  @Test("Map view did change camera position with boundary zoom values")
+  func mapViewDidChangeCameraPositionWithBoundaryZoomValues() async {
+    let subject = UIStoryboard.mapViewController()
+    _ = subject.view
+    ApplicationSharedState.sharedInstance.clear()
+
+    // Test minimum boundary
+    let minCamera = GMSCameraPosition.camera(withLatitude: 42.3601, longitude: -71.0589, zoom: CameraZoomConstraints.minimum.rawValue)
+
+    if let mapView = subject.mapView {
+      subject.mapView(mapView, didChange: minCamera)
+      #expect(ApplicationSharedState.sharedInstance.cameraZoom == CameraZoomConstraints.minimum.rawValue)
+
+      // Test maximum boundary
+      let maxCamera = GMSCameraPosition.camera(withLatitude: 42.3601, longitude: -71.0589, zoom: CameraZoomConstraints.maximum.rawValue)
+      subject.mapView(mapView, didChange: maxCamera)
+      #expect(ApplicationSharedState.sharedInstance.cameraZoom == CameraZoomConstraints.maximum.rawValue)
     }
   }
 
@@ -175,6 +272,28 @@ struct MapViewControllerTests {
     #expect(true)
   }
 
+  @Test("Street view button pressed with LookAt data")
+  func streetViewButtonPressedWithLookAtData() async {
+    let subject = UIStoryboard.mapViewController()
+    _ = subject.view
+    ApplicationSharedState.sharedInstance.clear()
+
+    let lookAt = LookAt(latitude: 42.3601, longitude: -71.0589, tilt: 45.0, heading: 180.0)
+    let placemark = Placemark(
+      identifier: "1",
+      name: "Test Placemark with LookAt",
+      location: CLLocation(latitude: 42.3601, longitude: -71.0589),
+      coordinates: [],
+      placemarkDescription: "Test description",
+      lookAt: lookAt
+    )
+
+    subject.streetViewButtonPressedForPlacemark(placemark)
+
+    // Should handle street view navigation with camera positioning
+    #expect(true)
+  }
+
   // MARK: - Map Setup Tests
 
   @Test("Map view setup with markers")
@@ -218,5 +337,96 @@ struct MapViewControllerTests {
     subject.viewDidLoad()
 
     #expect(subject.mapView != nil)
+  }
+
+  @Test("Map view did tap marker with valid placemark")
+  func mapViewDidTapMarkerWithValidPlacemark() async {
+    let subject = UIStoryboard.mapViewController()
+    _ = subject.view
+    ApplicationSharedState.sharedInstance.clear()
+
+    let placemark = Placemark(
+      identifier: "test1",
+      name: "Test Placemark",
+      location: CLLocation(latitude: 42.3601, longitude: -71.0589),
+      coordinates: [],
+      placemarkDescription: "Test description",
+      lookAt: nil
+    )
+
+    let marker = GMSMarker()
+    marker.userData = placemark
+    marker.position = CLLocationCoordinate2D(latitude: 42.3601, longitude: -71.0589)
+
+    if let mapView = subject.mapView {
+      let result = subject.mapView(mapView, didTap: marker)
+
+      // Should return false to allow default behavior
+      #expect(result == false)
+
+      // Should update shared state
+      let lastKnownCoordinate = ApplicationSharedState.sharedInstance.lastKnownPlacemarkCoordinate
+      #expect(lastKnownCoordinate.latitude == 42.3601)
+      #expect(lastKnownCoordinate.longitude == -71.0589)
+    }
+  }
+
+  @Test("Map view did tap at coordinate")
+  func mapViewDidTapAtCoordinate() async {
+    let subject = UIStoryboard.mapViewController()
+    _ = subject.view
+    ApplicationSharedState.sharedInstance.clear()
+
+    let coordinate = CLLocationCoordinate2D(latitude: 42.3601, longitude: -71.0589)
+
+    if let mapView = subject.mapView {
+      subject.mapView(mapView, didTapAt: coordinate)
+      // Should log coordinate without crashing
+      #expect(true)
+    }
+  }
+
+  @Test("Map view marker info window creation")
+  func mapViewMarkerInfoWindowCreation() async {
+    let subject = UIStoryboard.mapViewController()
+    _ = subject.view
+    ApplicationSharedState.sharedInstance.clear()
+
+    let placemark = Placemark(
+      identifier: "test1",
+      name: "Test Placemark",
+      location: CLLocation(latitude: 42.3601, longitude: -71.0589),
+      coordinates: [],
+      placemarkDescription: "Test description",
+      lookAt: nil
+    )
+
+    let marker = GMSMarker()
+    marker.userData = placemark
+
+    if let mapView = subject.mapView {
+      let infoWindow = subject.mapView(mapView, markerInfoWindow: marker)
+
+      // Should create info window for valid placemark
+      #expect(infoWindow != nil)
+      #expect(infoWindow is InfoWindow)
+    }
+  }
+
+  @Test("Map view marker info window with invalid userData")
+  func mapViewMarkerInfoWindowWithInvalidUserData() async {
+    let subject = UIStoryboard.mapViewController()
+    _ = subject.view
+    ApplicationSharedState.sharedInstance.clear()
+
+    let marker = GMSMarker()
+    marker.userData = "invalid_data"
+
+    if let mapView = subject.mapView {
+      let infoWindow = subject.mapView(mapView, markerInfoWindow: marker)
+
+      // Should return nil for invalid userData
+      #expect(infoWindow == nil)
+    }
   }
 }

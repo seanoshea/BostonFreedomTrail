@@ -32,14 +32,47 @@ import Foundation
 
 import GoogleMaps
 
-/// Backing model for the `MapViewController`
+/**
+ * Business logic model for the MapViewController providing map-related functionality.
+ * 
+ * This model handles all map-related operations including placemark management,
+ * path drawing, camera positioning, and coordinate tracking for the Boston Freedom Trail.
+ * It serves as the data layer between the MapViewController and the underlying
+ * Google Maps SDK.
+ * 
+ * ## Responsibilities
+ * - Adding Freedom Trail placemarks to the map
+ * - Drawing the trail path between locations
+ * - Managing camera zoom and positioning
+ * - Coordinate validation and defaults
+ * 
+ * ## Usage
+ * ```swift
+ * let model = MapModel()
+ * let markers = model.addPlacemarksToMap(mapView)
+ * model.addPathToMap(mapView)
+ * ```
+ * 
+ * - Author: Upwards Northwards Software Limited
+ * - Since: 1.0
+ */
 final class MapModel {
 
   /**
-   Based on the details in the KML file, this function adds the placemark indicators to the `mapView`.
-   
-   - parameter mapView: the view associated with the `MapViewController`
-   - returns: an array of `GMSMarker`s which represent the Freedom Trail
+   * Adds Freedom Trail placemark markers to the specified map view.
+   * 
+   * This method creates and configures GMSMarker objects for each placemark in the
+   * Freedom Trail, using data parsed from the KML file. Each marker is positioned
+   * at the correct coordinates and configured with the appropriate icon and title.
+   * 
+   * - Parameter mapView: The Google Maps view to add the markers to
+   * - Returns: An array of configured GMSMarker objects representing all Freedom Trail locations
+   * 
+   * ## Implementation Details
+   * - Uses Trail.instance.placemarks as the data source
+   * - Sets custom orange/red icon for each marker
+   * - Associates Placemark object as userData for each marker
+   * - Automatically adds markers to the provided map view
    */
   func addPlacemarksToMap(_ mapView: GMSMapView) -> [GMSMarker] {
     var markers = [GMSMarker]()
@@ -56,9 +89,18 @@ final class MapModel {
   }
 
   /**
-   Responsible for drawing the path between all the placemarks which are created as a result of `addPlacemarksToMap`.
-   
-   - parameter mapView: the view associated with the `MapViewController`
+   * Draws the Freedom Trail path connecting all placemarks on the map.
+   * 
+   * This method creates a polyline path that connects all the Freedom Trail locations,
+   * providing a visual representation of the walking route. The path uses the app's
+   * signature orange-red color and appropriate stroke width for visibility.
+   * 
+   * - Parameter mapView: The Google Maps view to draw the path on
+   * 
+   * ## Visual Properties
+   * - Color: Orange-red (matching app theme)
+   * - Stroke width: 3.0 points
+   * - Path follows all placemark coordinates in sequence
    */
   func addPathToMap(_ mapView: GMSMapView) {
     let path = GMSMutablePath()
@@ -74,9 +116,18 @@ final class MapModel {
   }
 
   /**
-   Figures out the correct camera zoom for the map view. Falls back on defaults which can be configured in the .plist file if the user has never interacted with the map.
-   
-   - returns: float indicating how zoomed in or out the camera should be positioned
+   * Determines the appropriate camera zoom level for the map view.
+   * 
+   * This method retrieves the user's last known zoom preference from shared state,
+   * or falls back to default values from the app's configuration if no previous
+   * interaction has been recorded.
+   * 
+   * - Returns: Float value representing the camera zoom level (higher = more zoomed in)
+   * 
+   * ## Fallback Behavior
+   * - Primary: Uses ApplicationSharedState.sharedInstance.cameraZoom
+   * - Fallback: Uses PListHelper.defaultCameraZoom() from configuration
+   * - Ensures zoom level is within viable constraints (12.0 - 20.0)
    */
   func zoomForMap() -> Float {
     var zoom = ApplicationSharedState.sharedInstance.cameraZoom
@@ -87,9 +138,18 @@ final class MapModel {
   }
 
   /**
-   Figures out the correct last known coordinate for the map view so we know where to place the user in the map when they load up the `MapViewController`. Falls back to defaults which can be configured in the .plist file if the user has never tapped in the map view before.
-   
-   - returns: a `CLLocationCoordinate2D` object representing where the map should be positioned
+   * Determines the appropriate initial camera position for the map view.
+   * 
+   * This method retrieves the user's last known map position from shared state,
+   * ensuring the map opens to a familiar location. If no previous interaction
+   * exists, it falls back to default Boston coordinates from the app configuration.
+   * 
+   * - Returns: CLLocationCoordinate2D representing the map's initial center position
+   * 
+   * ## Coordinate Sources
+   * - Primary: ApplicationSharedState.sharedInstance.lastKnownCoordinate
+   * - Fallback: Default Boston coordinates from PListHelper configuration
+   * - Validation: Checks for zero coordinates (0.0, 0.0) to trigger fallback
    */
   func lastKnownCoordinate() -> CLLocationCoordinate2D {
     var lastKnownCoordinate = ApplicationSharedState.sharedInstance.lastKnownCoordinate
@@ -100,10 +160,19 @@ final class MapModel {
   }
 
   /**
-   Gives an understanding of whether the zoom parameter generally presented from the camera position is a viable zoom level for the application.
-   
-   - parameter zoom: the current zoom value for the map view's camera.
-   - returns: Bool indicating that the zoom parameter is worthwhile to save to user defaults to remember it for the next application load.
+   * Validates whether a zoom level is within acceptable bounds for the application.
+   * 
+   * This method ensures zoom levels are within the app's defined constraints,
+   * preventing extreme zoom values that could degrade user experience or
+   * performance. Only validated zoom levels are saved to user preferences.
+   * 
+   * - Parameter zoom: The zoom level to validate
+   * - Returns: true if the zoom level is within acceptable bounds (12.0 - 20.0), false otherwise
+   * 
+   * ## Constraints
+   * - Minimum zoom: 12.0 (city-level view)
+   * - Maximum zoom: 20.0 (street-level detail)
+   * - Used to filter zoom values before saving to ApplicationSharedState
    */
   func isViableZoom(_ zoom: Float) -> Bool {
     zoom >= CameraZoomConstraints.minimum.rawValue && zoom <= CameraZoomConstraints.maximum.rawValue

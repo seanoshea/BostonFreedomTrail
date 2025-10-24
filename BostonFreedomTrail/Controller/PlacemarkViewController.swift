@@ -81,16 +81,31 @@ final class PlacemarkViewController: BaseViewController {
    - parameter sender: a reference to the `streetViewButton`
    */
   @IBAction func streetViewButtonPressed(_ sender: UIButton) {
-    guard let delegate = delegate else { return }
-    guard let placemark = model?.placemark else {
+    guard let delegate = delegate else {
+      trackNonFatalErrorMessage("Street View Button Pressed, but no delegate available")
+      return
+    }
+
+    guard let model = model else {
+      trackNonFatalErrorMessage("Street View Button Pressed, but no model available")
+      return
+    }
+
+    guard let placemark = model.placemark else {
       trackNonFatalErrorMessage("Street View Button Pressed, but no placemark associated with model")
       return
     }
+
+    // Validate that the placemark has the necessary data for street view
+    guard placemark.lookAt != nil else {
+      trackNonFatalErrorMessage("Street View Button Pressed, but placemark has no LookAt data")
+      displaySnackbarMessage(NSLocalizedString("Street view not available for this location", comment: ""))
+      return
+    }
+
     trackButtonPressForPlacemark(placemark, label: AnalyticsLabels.streetViewPress.rawValue)
     delegate.streetViewButtonPressedForPlacemark(placemark)
-    dismiss(animated: true) {
-
-    }
+    dismiss(animated: true, completion: nil)
   }
 
   // MARK: Analytics
@@ -103,12 +118,46 @@ final class PlacemarkViewController: BaseViewController {
 
   /// Configures the view specific to the placemark associated with the `PlacemarkViewController`
   func configureView() {
-    // only bother showing the street view button if there is a LookAt associated with this placemark.
-    streetViewButton?.isHidden = model?.placemark?.lookAt == nil
+    guard let model = model else {
+      trackNonFatalErrorMessage("Cannot configure view - model not available")
+      streetViewButton?.isHidden = true
+      return
+    }
+
+    guard let placemark = model.placemark else {
+      trackNonFatalErrorMessage("Cannot configure view - placemark not available")
+      streetViewButton?.isHidden = true
+      return
+    }
+
+    // Only show the street view button if there is LookAt data for this placemark
+    let hasLookAtData = placemark.lookAt != nil
+    streetViewButton?.isHidden = !hasLookAtData
+
+    if !hasLookAtData {
+      print("Street view button hidden - no LookAt data for placemark: \(placemark.name)")
+    }
   }
 
-  /// Sets up the `UIWebViewDelegate` and loads the HTML into the web view.
+  /// Sets up the web view and loads the HTML content for the placemark.
   func loadPlacemarkInformation() {
-    webView?.loadHTMLString((model?.stringForWebView())!, baseURL: nil)
+    guard let webView = webView else {
+      trackNonFatalErrorMessage("WebView not available for loading placemark information")
+      return
+    }
+
+    guard let model = model else {
+      trackNonFatalErrorMessage("Model not available for loading placemark information")
+      return
+    }
+
+    let htmlString = model.stringForWebView()
+    guard !htmlString.isEmpty else {
+      trackNonFatalErrorMessage("Empty HTML string for placemark information")
+      webView.loadHTMLString("<p>No information available for this location.</p>", baseURL: nil)
+      return
+    }
+
+    webView.loadHTMLString(htmlString, baseURL: nil)
   }
 }

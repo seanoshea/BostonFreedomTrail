@@ -32,16 +32,43 @@ import Foundation
 import CoreLocation
 import GoogleMaps
 
-/// Extension for logging the coordinate of the `CLLocationCoordinate2D`
+/**
+ * Extension for CLLocationCoordinate2D providing debug logging functionality.
+ * 
+ * This extension adds coordinate logging capabilities for debugging map interactions
+ * and location tracking throughout the app.
+ */
 extension CLLocationCoordinate2D {
-  /// Debug logs the current lat and long
+  /**
+   * Logs the current latitude and longitude coordinates for debugging.
+   * 
+   * This method only logs in non-debug builds to avoid cluttering development logs.
+   * Useful for tracking user interactions with map locations.
+   */
   func logCoordinate() {
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
     debugPrint(longitude, latitude)
   }
 }
 
+/**
+ * Extension for Int providing placemark identifier parsing functionality.
+ */
 extension Int {
+  /**
+   * Converts a placemark identifier string to a zero-based array index.
+   * 
+   * This method parses placemark identifiers (e.g., "placemark1", "placemark2")
+   * and converts them to array indices for accessing the placemarks collection.
+   * 
+   * - Parameter placemarkIdentifier: String identifier in format "placemarkN"
+   * - Returns: Zero-based index for array access (N-1), or 0 if parsing fails
+   * 
+   * ## Example
+   * ```swift
+   * let index = 0.placemarkIndexFromIdentifier("placemark3") // Returns 2
+   * ```
+   */
   func placemarkIndexFromIdentifier(_ placemarkIdentifier: String) -> Int {
     let stringRepresentation = placemarkIdentifier.replacingOccurrences(of: "placemark", with: "")
     guard let integerRepresentation = Int(stringRepresentation) else { return 0 }
@@ -49,31 +76,63 @@ extension Int {
   }
 }
 
-/// Extension for logging the coordinate of the `GMSPanoramaView`
+/**
+ * Extension for GMSPanoramaView providing location logging functionality.
+ */
 extension GMSPanoramaView {
-  /// Logs the current coordinate of the `GMSPanoramaView`
+  /**
+   * Logs the current panorama location coordinates for debugging.
+   * 
+   * This method extracts the coordinate from the current panorama and logs it
+   * using the CLLocationCoordinate2D extension method.
+   */
   final func logLocation() {
     guard let pano = panorama else { return }
     pano.coordinate.logCoordinate()
   }
 }
 
-/// Extension for logging the coordinate of the `GMSPanoramaCamera`
+/**
+ * Extension for GMSPanoramaCamera providing camera orientation logging.
+ */
 extension GMSPanoramaCamera {
-  /// Logs the current coordinate of the `GMSPanoramaCamera`
+  /**
+   * Logs the current camera orientation (heading and pitch) for debugging.
+   * 
+   * This method logs camera orientation data to help debug street view
+   * positioning and user interactions with panorama views.
+   */
   final func logLocation() {
     guard !ApplicationSharedState.sharedInstance.isDebug() else { return }
     debugPrint(orientation.heading, orientation.pitch, separator: ",", terminator: "")
   }
 }
 
-/// Extension for creating links in the middle of `NSMutableAttributedString`
+/**
+ * Extension for NSMutableAttributedString providing link creation functionality.
+ * 
+ * This extension enables easy creation of clickable links within attributed text,
+ * commonly used in the About screen for external resource links.
+ */
 extension NSMutableAttributedString {
   /**
-   Allows parts of the text in the `NSMutableAttributedString` to be made into web links.
-   
-   - parameter textToFind: the text to make into a link
-   - parameter linkURL: where to send the user should they press on the link
+   * Converts specified text within the attributed string into a clickable web link.
+   * 
+   * This method searches for the specified text and applies link attributes,
+   * making it clickable and styled appropriately for web navigation.
+   * 
+   * - Parameter textToFind: The text to convert into a clickable link
+   * - Parameter linkURL: The URL to navigate to when the link is tapped
+   * 
+   * ## Usage
+   * ```swift
+   * let attributedText = NSMutableAttributedString(string: "Visit our website")
+   * attributedText.linkify("website", linkURL: "https://example.com")
+   * ```
+   * 
+   * ## Styling
+   * - Applies NSAttributedString.Key.link attribute for functionality
+   * - Sets system font at 14pt for consistent appearance
    */
   public func linkify(_ textToFind: String, linkURL: String) {
     let foundRange = mutableString.range(of: textToFind)
