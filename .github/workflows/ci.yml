@@ -46,10 +46,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
+    - name: Install SwiftLint
+      run: brew install swiftlint
+    
     - name: Run SwiftLint
-      uses: norio-nomura/action-swiftlint@3.2.1
-      with:
-        args: --reporter github-actions-logging
+      run: swiftlint lint --reporter github-actions-logging
 
   test:
     name: Build and Test
