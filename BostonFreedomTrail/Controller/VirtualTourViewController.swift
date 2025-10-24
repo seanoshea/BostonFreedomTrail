@@ -153,11 +153,13 @@ final class VirtualTourViewController: BaseViewController {
       guard lookAt.tilt >= 0.0 && lookAt.tilt <= 90.0 else {
         trackNonFatalErrorMessage("Invalid tilt value: \(lookAt.tilt)")
         pitch = 0.0
+        return GMSPanoramaCamera(heading: heading, pitch: pitch, zoom: 1)
       }
 
       guard lookAt.heading >= 0.0 && lookAt.heading <= 360.0 else {
         trackNonFatalErrorMessage("Invalid heading value: \(lookAt.heading)")
         heading = 0.0
+        return GMSPanoramaCamera(heading: heading, pitch: pitch, zoom: 1)
       }
 
       if lookAt.tilt >= 0.0 && lookAt.tilt <= 90.0 {

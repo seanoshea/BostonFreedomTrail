@@ -21,13 +21,14 @@ struct ConstantsTests {
     func analyticsLabelsNotEmpty() {
         #expect(!AnalyticsLabels.markerPress.rawValue.isEmpty)
         #expect(!AnalyticsLabels.infoWindowPress.rawValue.isEmpty)
-        #expect(!AnalyticsLabels.tabBarButtonPress.rawValue.isEmpty)
+        #expect(!AnalyticsLabels.tabBarPress.rawValue.isEmpty)
     }
 
     @Test("Resource constants are valid")
     func resourceConstantsValid() {
         #expect(!ResourceConstants.infoWindowXibName.rawValue.isEmpty)
-        #expect(!ResourceConstants.trailKmlFileName.rawValue.isEmpty)
+        #expect(!ResourceConstants.placemarkIdentifier.rawValue.isEmpty)
+        #expect(!ResourceConstants.placemarkResourceImage.rawValue.isEmpty)
     }
 
     @Test("Segue constants are valid")
