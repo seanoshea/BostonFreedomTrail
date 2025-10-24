@@ -1,19 +1,5 @@
 version: 2
 updates:
-  # CocoaPods dependencies
-  - package-ecosystem: "cocoapods"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    reviewers:
-      - "seanoshea"
-    commit-message:
-      prefix: "deps"
-      include: "scope"
-    open-pull-requests-limit: 5
-    
   # Ruby dependencies (Fastlane, etc.)
   - package-ecosystem: "bundler"
     directory: "/"

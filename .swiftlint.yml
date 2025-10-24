@@ -32,7 +32,6 @@ opt_in_rules:
   - missing_docs
   - private_over_fileprivate
   - strict_fileprivate
-  - unused_private_declaration
   # Performance rules
   - reduce_into
   - contains_over_first_not_nil

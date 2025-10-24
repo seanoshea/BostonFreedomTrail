@@ -77,7 +77,7 @@ struct PListHelper {
    - returns: the default latitude used in the map view
    */
   static func defaultLatitude() -> Double {
-    guard let value = plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultLatitude.rawValue] else {
+    guard let value = plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultLatitude.rawValue] as? NSNumber else {
       return 42.355721486582 // Boston Common default
     }
 
@@ -98,7 +98,7 @@ struct PListHelper {
    - returns: the default longitude used in the map view
    */
   static func defaultLongitude() -> Double {
-    guard let value = plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultLongitude.rawValue] else {
+    guard let value = plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultLongitude.rawValue] as? NSNumber else {
       return -71.063303947449 // Boston Common default
     }
 
@@ -119,7 +119,7 @@ struct PListHelper {
    - returns: the default camera zoom used in the map view
    */
   static func defaultCameraZoom() -> Float {
-    guard let value = plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultCameraZoom.rawValue] else {
+    guard let value = plistDictionary()[PListHelperConstants.bostonFreedomTrailDefaultCameraZoom.rawValue] as? NSNumber else {
       return 14.0
     }
 
