@@ -7,6 +7,13 @@ repos:
         language: system
         pass_filenames: false
         
+      - id: bundle-audit
+        name: Bundle Security Audit
+        entry: bundle-audit check
+        language: system
+        files: '^(Gemfile|Gemfile\.lock)$'
+        pass_filenames: false
+        
       - id: swiftlint
         name: SwiftLint
         entry: swiftlint lint --strict

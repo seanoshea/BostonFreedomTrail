@@ -15,6 +15,8 @@
 		31D0C3CB2EA7DC6F004D0E0F /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31D0C3CA2EA7DC6F004D0E0F /* APIKeys.plist */; };
 		31E3E80D2EA3246900FC4AAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */; };
 		31E3E80E2EA3246900FC4AAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */; };
+		31F6A45F2EAB1C7E00B0521B /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F6A45E2EAB1C7E00B0521B /* SceneDelegateTests.swift */; };
+		31F6A4612EAB1C8C00B0521B /* ConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F6A4602EAB1C8C00B0521B /* ConstantsTests.swift */; };
 		41079D5F1C4FB33B00BF2CFF /* AboutTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */; };
 		410AFEE71C4D9B0F007DF354 /* PListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410AFEE61C4D9B0F007DF354 /* PListHelper.swift */; };
 		410C23771C9EEF83001EF660 /* PlacemarkViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C23761C9EEF83001EF660 /* PlacemarkViewControllerTests.swift */; };
@@ -80,6 +82,8 @@
 		31D0C3C82EA7277D004D0E0F /* AboutTextViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTextViewTests.swift; sourceTree = "<group>"; };
 		31D0C3CA2EA7DC6F004D0E0F /* APIKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		31E3E80C2EA3246900FC4AAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		31F6A45E2EAB1C7E00B0521B /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
+		31F6A4602EAB1C8C00B0521B /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
 		41079D5E1C4FB33B00BF2CFF /* AboutTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTitleLabel.swift; sourceTree = "<group>"; };
 		41079D611C4FBAC300BF2CFF /* AboutViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewControllerTests.swift; sourceTree = "<group>"; };
 		41079D651C4FBBA000BF2CFF /* StoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardExtensions.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				410AFEE31C4D991A007DF354 /* Controller */,
 				41237C001C486CDF0007F76B /* Info.plist */,
 				410AFEE01C4D97F4007DF354 /* Model */,
+				31F6A45E2EAB1C7E00B0521B /* SceneDelegateTests.swift */,
 				41079D641C4FBB7300BF2CFF /* TestUtilities */,
 				41691D201C4C000C009A03B3 /* Utils */,
 				41DBB1181E197C91001EBA7F /* View */,
@@ -309,6 +314,7 @@
 		41691D201C4C000C009A03B3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				31F6A4602EAB1C8C00B0521B /* ConstantsTests.swift */,
 				31D0C3C22EA7276E004D0E0F /* AnalyticsTrackerTests.swift */,
 				41CB50E21C4EFFCB00FFBD9E /* ApplicationSharedStateTests.swift */,
 				31D0C3C32EA7276E004D0E0F /* ExtensionsTests.swift */,
@@ -666,12 +672,14 @@
 			files = (
 				41D0F4EE1C53E64A00FCAB17 /* ApplicationSharedStateTests.swift in Sources */,
 				4199CD7F1C98F5E60017919E /* TrailTests.swift in Sources */,
+				31F6A45F2EAB1C7E00B0521B /* SceneDelegateTests.swift in Sources */,
 				41D0F4EA1C53E64A00FCAB17 /* MapViewControllerTests.swift in Sources */,
 				41D0F4EB1C53E64A00FCAB17 /* AboutViewControllerTests.swift in Sources */,
 				41D0F4EF1C53E64A00FCAB17 /* PListHelperTests.swift in Sources */,
 				41DE05E41C552775008AFCA5 /* LocationTrackerTests.swift in Sources */,
 				412FBE6C1E180DD200CCF375 /* AppDelegateTests.swift in Sources */,
 				41D0F4ED1C53E64A00FCAB17 /* StoryboardExtensions.swift in Sources */,
+				31F6A4612EAB1C8C00B0521B /* ConstantsTests.swift in Sources */,
 				41DE05EC1C55CEC5008AFCA5 /* VirtualTourModelTests.swift in Sources */,
 				41D0F4F01C53E64A00FCAB17 /* TrailParserTests.swift in Sources */,
 				410C23771C9EEF83001EF660 /* PlacemarkViewControllerTests.swift in Sources */,

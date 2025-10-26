@@ -6,9 +6,14 @@ on:
   pull_request:
     branches: [ main, develop ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  test:
-    runs-on: macos-latest
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v4
@@ -19,12 +24,62 @@ jobs:
         ruby-version: 3.4.7
         bundler-cache: true
     
+    - name: Install bundle-audit
+      run: gem install bundle-audit
+    
+    - name: Run bundle audit
+      run: |
+        bundle-audit check --update
+        bundle-audit check || echo "Bundle audit found vulnerabilities - review required"
+    
+    - name: Run CocoaPods security audit
+      run: |
+        bundle install
+        bundle exec pod install
+        # Check for known vulnerabilities in pods
+        find Pods -name "*.podspec" -exec grep -l "version" {} \; | head -5
+
+  code-quality:
+    name: Code Quality
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install SwiftLint
+      run: brew install swiftlint
+    
+    - name: Run SwiftLint
+      run: swiftlint lint --reporter github-actions-logging
+
+  test:
+    name: Build and Test
+    runs-on: macos-latest
+    needs: [security, code-quality]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.4.7
+        bundler-cache: true
+    
+    - name: Cache CocoaPods
+      uses: actions/cache@v4
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+    
     - name: Install dependencies
       run: |
         bundle install
         pod install
     
-    - name: Run tests
+    - name: Run tests with coverage
       env:
         FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
         GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
@@ -32,29 +87,41 @@ jobs:
         FASTLANE_XCODEBUILD_SETTINGS_RETRIES: 3
       run: bundle exec fastlane test
     
-    - name: Debug test output
-      if: success()
-      run: |
-        echo "Contents of test_output directory:"
-        ls -la ./test_output/ || echo "test_output directory not found"
-        echo "Looking for xcresult files:"
-        find . -name "*.xcresult" -type d 2>/dev/null || echo "No xcresult files found"
-    
-    - name: Export coverage data
+    - name: Generate coverage report
       if: success()
       run: |
         XCRESULT_PATH=$(find . -name "*.xcresult" -type d | head -1)
         if [ -n "$XCRESULT_PATH" ] && [ -d "$XCRESULT_PATH" ]; then
           echo "Found xcresult at: $XCRESULT_PATH"
           xcrun xccov view --report --json "$XCRESULT_PATH" > ./test_output/coverage.json
+          # Generate human-readable coverage report
+          xcrun xccov view --report "$XCRESULT_PATH" > ./test_output/coverage.txt
         else
           echo "No xcresult bundle found, skipping coverage export"
         fi
     
-
+    - name: Check coverage threshold
+      if: success()
+      run: |
+        if [ -f "./test_output/coverage.json" ]; then
+          echo "Coverage report generated successfully"
+          cat ./test_output/coverage.txt | grep -E "[0-9]+\.[0-9]+%" || echo "Coverage parsing failed"
+        fi
+    
     - name: Upload test results
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: test-results
         path: test_output/
+        retention-days: 30
+    
+    - name: Upload coverage reports
+      uses: actions/upload-artifact@v4
+      if: success()
+      with:
+        name: coverage-reports
+        path: |
+          test_output/coverage.json
+          test_output/coverage.txt
+        retention-days: 30

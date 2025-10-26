@@ -32,22 +32,48 @@ import UIKit
 
 import GoogleMaps
 
-/// View Controller class for the About Screen.
+/**
+ * View controller for the About screen displaying app information and credits.
+ * 
+ * AboutViewController presents information about the app developer, Freedom Trail
+ * resources, and Google Maps licensing. It handles localization and creates
+ * interactive links to external resources.
+ * 
+ * ## Features
+ * - Developer information with GitHub link
+ * - Freedom Trail resource links
+ * - Google Maps open source license information
+ * - Fully localized content
+ * - Interactive attributed text with clickable links
+ * 
+ * ## Screen Content
+ * - Developer details section
+ * - Trail information with external links
+ * - Google Maps legal information
+ * 
+ * - Author: Upwards Northwards Software Limited
+ * - Since: 1.0
+ */
 final class AboutViewController: BaseViewController {
 
   // MARK: Properties
 
-  /// A title label for developer details
+  /// Title label for the developer information section
   @IBOutlet weak var developerLabel: AboutTitleLabel?
-  /// Information label for the developer details
+
+  /// Text view containing developer details with interactive GitHub link
   @IBOutlet weak var developerDetailsTextView: AboutTextView?
-  /// A title label for trail details
+
+  /// Title label for the Freedom Trail information section
   @IBOutlet weak var trailInformationLabel: AboutTitleLabel?
-  /// Information label for the trail details
+
+  /// Text view with Freedom Trail resources and external website links
   @IBOutlet weak var trailInformationDetailsTextView: AboutTextView?
-  /// A title label for Google Maps details
+
+  /// Title label for the Google Maps information section
   @IBOutlet weak var googleMapsLabel: AboutTitleLabel?
-  /// Information label for the Google Maps legalese
+
+  /// Text view displaying Google Maps open source license information
   @IBOutlet weak var googleMapsDetailsTextView: AboutTextView?
 
   // MARK: Lifecycle
@@ -65,7 +91,26 @@ final class AboutViewController: BaseViewController {
 
   // MARK: Private Functions
 
-  /// Ensures that the labels on this screen are localized and fully filled in.
+  /**
+   * Configures all labels and text views with localized content and interactive links.
+   * 
+   * This method sets up the About screen content including section titles,
+   * developer information with GitHub link, Freedom Trail resource links,
+   * and Google Maps licensing information.
+   * 
+   * ## Content Setup
+   * - Localizes all section titles
+   * - Creates attributed strings with clickable links
+   * - Links developer name to GitHub profile
+   * - Links trail resources to official websites
+   * - Displays Google Maps open source licenses
+   * 
+   * ## External Links
+   * - Developer: https://github.com/seanoshea
+   * - Official Trail: https://www.thefreedomtrail.org/
+   * - Wikipedia: https://en.wikipedia.org/wiki/Freedom_Trail/
+   * - City of Boston: http://www.cityofboston.gov/freedomtrail/
+   */
   func localizeLabelsAndTextViews() {
     // developer info
     developerLabel!.text = NSLocalizedString("Developer Details", comment: "")

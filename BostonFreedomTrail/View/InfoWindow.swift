@@ -31,8 +31,34 @@
 import Foundation
 import UIKit
 
-/// Custom information window which is presented to the user when they press on pins in the map view.
+/**
+ * Custom information window displayed when users tap map markers.
+ * 
+ * InfoWindow provides a styled popup view that appears above map markers
+ * when users tap on Freedom Trail location pins. It displays the location
+ * name in a custom-styled label.
+ * 
+ * ## Features
+ * - Custom UIView loaded from XIB file
+ * - Styled header label for location names
+ * - Integrated with Google Maps marker system
+ * - Consistent visual design with app theme
+ * 
+ * ## Usage
+ * This view is automatically loaded and configured by MapViewController
+ * when implementing the GMSMapViewDelegate markerInfoWindow method:
+ * ```swift
+ * func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+ *   let infoWindow = // load from XIB
+ *   infoWindow.header?.text = placemark.name
+ *   return infoWindow
+ * }
+ * ```
+ * 
+ * - Author: Upwards Northwards Software Limited
+ * - Since: 1.0
+ */
 class InfoWindow: UIView {
-  /// the title associated with the info window.
+  /// Header label displaying the Freedom Trail location name
   @IBOutlet weak var header: AboutTitleLabel?
 }

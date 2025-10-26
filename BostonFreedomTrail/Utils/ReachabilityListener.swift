@@ -42,14 +42,24 @@ protocol ReachabilityListener: AnyObject {
 extension ReachabilityListener where Self: BaseViewController {
 
   func registerListener() {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    appDelegate.reachability?.whenReachable = { _ in
-      DispatchQueue.main.async { [weak self] in
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+      print("Warning: Could not access AppDelegate for reachability setup")
+      return
+    }
+
+    guard let reachability = appDelegate.reachability else {
+      print("Warning: Reachability not initialized in AppDelegate")
+      return
+    }
+
+    reachability.whenReachable = { [weak self] _ in
+      DispatchQueue.main.async {
         self?.reachabilityStatusChanged(true)
       }
     }
-    appDelegate.reachability?.whenUnreachable = { _ in
-      DispatchQueue.main.async { [weak self] in
+
+    reachability.whenUnreachable = { [weak self] _ in
+      DispatchQueue.main.async {
         self?.reachabilityStatusChanged(false)
       }
     }
@@ -59,13 +69,22 @@ extension ReachabilityListener where Self: BaseViewController {
     if online {
       MDCSnackbarManager.default.dismissAndCallCompletionBlocks(withCategory: nil)
     } else {
-      displaySnackbarMessage(NSLocalizedString("Please check your network connection", comment: ""))
+      let message = NSLocalizedString("Please check your network connection", comment: "")
+      displaySnackbarMessage(message)
     }
   }
 
   func isOnline() -> Bool {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
-    guard let reachability = appDelegate.reachability else { return false }
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+      print("Warning: Could not access AppDelegate for connectivity check")
+      return false
+    }
+
+    guard let reachability = appDelegate.reachability else {
+      print("Warning: Reachability not available, assuming offline")
+      return false
+    }
+
     return reachability.connection != .unavailable
   }
 }

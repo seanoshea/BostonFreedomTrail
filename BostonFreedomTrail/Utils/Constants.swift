@@ -31,54 +31,96 @@
 import Foundation
 import UIKit
 
-/// Identifiers for segues in the app
+/**
+ * Identifiers for storyboard segues used throughout the app.
+ * 
+ * This enum provides type-safe access to segue identifiers, preventing
+ * runtime errors from typos in segue names.
+ */
 enum SegueConstants: String {
+  /// Segue from map view to placemark detail view
   case mapToPlacemarkSegueIdentifier
 }
 
-/// Identifiers for loading files from the resources bundle
+/**
+ * Identifiers for loading files and resources from the app bundle.
+ * 
+ * This enum provides type-safe access to resource names, preventing
+ * runtime errors from incorrect resource references.
+ */
 enum ResourceConstants: String {
-  /// identifier for the html file loaded for the placemark view
+  /// HTML template file for placemark detail view content
   case placemarkIdentifier = "placemark"
-  /// identifier for the map view icon
+  /// Image asset name for map placemark markers
   case placemarkResourceImage = "orange_red"
-  /// identifier for xib loaded for the info window which is used when the user taps on a marker in the map view
+  /// XIB file name for custom map marker info windows
   case infoWindowXibName = "InfoWindow"
 }
 
-/// Tags for the three tabs in the app
+/**
+ * Tag identifiers for the main tab bar controller tabs.
+ * 
+ * These integer tags are used to identify and programmatically
+ * access specific tabs in the main navigation interface.
+ */
 enum TabBarControllerTags: Int {
-  /// identifier for the map view tab
+  /// Map view tab showing the Freedom Trail route
   case mapViewTag = 0
-  /// identifier for the virtual tour tab
+  /// Virtual tour tab for street view exploration
   case virtualTourViewTag = 1
-  /// identifier for the about tab
+  /// About tab with app information and credits
   case aboutViewTag = 2
 }
 
-/// Zoom constants for the camera
+/**
+ * Camera zoom level constraints for the map view.
+ * 
+ * These values define the acceptable range of zoom levels to ensure
+ * optimal user experience and performance on the map.
+ */
 enum CameraZoomConstraints: Float {
-  /// the minimum possible camera zoom
+  /// Minimum zoom level (city-wide view of Boston)
   case minimum = 12.0
-  /// the maximum possible camera zoom
+  /// Maximum zoom level (detailed street-level view)
   case maximum = 20.0
 }
 
-/// Constants for displaying the snackbar at the top of the app
+/**
+ * Layout constants for snackbar message positioning.
+ * 
+ * These values ensure proper positioning of user notification messages
+ * relative to the app's navigation and status bar elements.
+ */
 enum SnackbarMessageViewOffsets: CGFloat {
-  /// y offset for where to position the snackbar message from the top of the app
+  /// Vertical offset from top of screen for snackbar messages
   case topOffset = 94.0
 }
 
-/// Extension on `UIColor` for colors specific to the app
+/**
+ * Extension providing Boston Freedom Trail specific color constants.
+ * 
+ * This extension adds branded colors to UIColor for consistent theming
+ * throughout the application interface.
+ */
 extension UIColor {
 
-  /// Text color for the app
+  /**
+   * Primary dark text color for the app interface.
+   * 
+   * - Returns: Dark gray color (RGB: 33, 33, 33) for readable text
+   */
   static func bftDarkTextColor() -> UIColor {
     UIColor(red: 33 / 255, green: 33 / 255, blue: 33 / 255, alpha: 1.0)
   }
 
-  /// Orange/Red color used throughout the app
+  /**
+   * Signature orange-red brand color used throughout the app.
+   * 
+   * This color represents the Freedom Trail's iconic red brick path
+   * and is used for markers, paths, and accent elements.
+   * 
+   * - Returns: Orange-red color (RGB: 216, 67, 21) matching the trail theme
+   */
   static func bftOrangeRedColor() -> UIColor {
     UIColor(red: 216 / 255, green: 67 / 255, blue: 21 / 255, alpha: 1.0)
   }

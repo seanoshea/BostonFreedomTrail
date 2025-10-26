@@ -32,17 +32,50 @@ import Foundation
 
 import CoreLocation
 
-/// Keeps track of where the user is in the map.
+/**
+ * Singleton class for tracking user location throughout the app.
+ * 
+ * LocationTracker manages Core Location functionality, providing centralized
+ * location services for the Boston Freedom Trail app. It handles location
+ * permissions, updates, and maintains the user's current position.
+ * 
+ * ## Features
+ * - Singleton pattern for app-wide location access
+ * - Automatic location permission requests
+ * - High-accuracy location tracking
+ * - Integration with ApplicationSharedState for persistence
+ * 
+ * ## Usage
+ * ```swift
+ * LocationTracker.sharedInstance.startUpdatingLocation()
+ * let currentLocation = LocationTracker.sharedInstance.currentLocation
+ * ```
+ * 
+ * - Author: Upwards Northwards Software Limited
+ * - Since: 1.0
+ */
 final class LocationTracker: NSObject, @unchecked Sendable {
 
   // MARK: Properties
 
-  /// Singleton accessor for the `LocationTracker`.
+  /// Shared singleton instance for app-wide location tracking
   static let sharedInstance = LocationTracker()
-  /// Where the user is in the map view.
+
+  /// The user's most recent location, updated automatically by Core Location
   var currentLocation: CLLocation?
 
-  /// Lazy initializer for the `CLLocationManager`.
+  /**
+   * Core Location manager configured for high-accuracy tracking.
+   * 
+   * This lazy property initializes the location manager with optimal settings
+   * for the Freedom Trail experience, including permission requests and
+   * accuracy configuration.
+   * 
+   * ## Configuration
+   * - Requests both "always" and "when in use" location permissions
+   * - No distance filter (updates on any movement)
+   * - Best accuracy setting for precise trail navigation
+   */
   lazy var locationManager: CLLocationManager = {
     var manager = CLLocationManager()
     manager.delegate = LocationTracker.sharedInstance
@@ -53,19 +86,45 @@ final class LocationTracker: NSObject, @unchecked Sendable {
     return manager
   }()
 
-  /// Allows client code to tell the locationManager to start updating where the user is located in the map view.
+  /**
+   * Begins location tracking for the user's position.
+   * 
+   * This method starts the Core Location services to track the user's movement
+   * along the Freedom Trail. Location updates are automatically handled by
+   * the CLLocationManagerDelegate methods.
+   * 
+   * ## Behavior
+   * - Starts continuous location updates
+   * - Updates are stored in currentLocation property
+   * - Integrates with ApplicationSharedState for persistence
+   * - Requires location permissions to function
+   */
   func startUpdatingLocation() {
     locationManager.startUpdatingLocation()
   }
 }
 
-/// Implmentation of `CLLocationManagerDelegate` which keeps track of where the user is in the map view.
+/**
+ * Core Location delegate implementation for handling location updates.
+ * 
+ * This extension implements the CLLocationManagerDelegate protocol to process
+ * location updates and maintain the user's current position throughout the app.
+ */
 extension LocationTracker: CLLocationManagerDelegate {
   /**
-   Executed when the CLLocationManager updates the user's location in the map view.
-   
-   - parameter manager: the `CLLocationManager`.
-   - parameter locations: collection of locations where the user has been in the map view.
+   * Processes location updates from Core Location services.
+   * 
+   * This delegate method is called whenever the user's location changes,
+   * updating both the local currentLocation property and the app's shared state
+   * for persistence across app launches.
+   * 
+   * - Parameter manager: The CLLocationManager instance providing the update
+   * - Parameter locations: Array of CLLocation objects, with the most recent location last
+   * 
+   * ## Implementation Details
+   * - Uses the most recent location from the locations array
+   * - Updates both local and shared state simultaneously
+   * - Provides location data for map positioning and trail navigation
    */
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     LocationTracker.sharedInstance.currentLocation = locations.last

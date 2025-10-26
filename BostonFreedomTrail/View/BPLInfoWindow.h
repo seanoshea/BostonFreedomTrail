@@ -32,9 +32,39 @@
 
 #import "BPLLabel.h"
 
+/**
+ * @brief Custom info window view for displaying placemark information on the map
+ * 
+ * BPLInfoWindow provides a customized info window that appears when users tap on
+ * map markers. It displays the placemark name and additional information in a
+ * styled container view.
+ * 
+ * @author Upwards Northwards Software Limited
+ * @since 1.0
+ * 
+ * Usage:
+ * @code
+ * BPLInfoWindow *infoWindow = [[BPLInfoWindow alloc] init];
+ * infoWindow.header.text = @"Placemark Name";
+ * infoWindow.runner.text = @"Additional Info";
+ * @endcode
+ */
 @interface BPLInfoWindow : UIView
 
+/**
+ * @brief Header label displaying the primary placemark information
+ * 
+ * This label typically shows the name or title of the Freedom Trail location.
+ * Connected via Interface Builder outlet.
+ */
 @property (nonatomic, weak) IBOutlet BPLLabel *header;
+
+/**
+ * @brief Secondary label for additional placemark details
+ * 
+ * This label can display supplementary information about the location.
+ * Connected via Interface Builder outlet.
+ */
 @property (nonatomic, weak) IBOutlet BPLLabel *runner;
 
 @end

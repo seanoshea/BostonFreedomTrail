@@ -66,6 +66,117 @@ struct LocationTrackerTests {
     #expect(UserDefaults.standard.float(forKey: "lastKnownLocationLongitude") == 42.35769)
   }
 
+  @Test("Location update with multiple locations uses last")
+  func locationUpdateWithMultipleLocationsUsesLast() async {
+    ApplicationSharedState.sharedInstance.clear()
+
+    let locations = [
+      CLLocation(latitude: 42.3601, longitude: -71.0589),
+      CLLocation(latitude: 42.3611, longitude: -71.0599),
+      CLLocation(latitude: 42.3621, longitude: -71.0609) // This should be used
+    ]
+
+    LocationTracker.sharedInstance.locationManager(
+      LocationTracker.sharedInstance.locationManager,
+      didUpdateLocations: locations
+    )
+
+    let currentLocation = LocationTracker.sharedInstance.currentLocation
+    #expect(currentLocation?.coordinate.latitude == 42.3621)
+    #expect(currentLocation?.coordinate.longitude == -71.0609)
+  }
+
+  @Test("Location update with empty array")
+  func locationUpdateWithEmptyArray() async {
+    // Set up a known location first
+    let knownLocation = CLLocation(latitude: 42.3601, longitude: -71.0589)
+    LocationTracker.sharedInstance.currentLocation = knownLocation
+    let beforeLocation = LocationTracker.sharedInstance.currentLocation
+
+    // Pass empty array - should not crash
+    LocationTracker.sharedInstance.locationManager(
+      LocationTracker.sharedInstance.locationManager,
+      didUpdateLocations: []
+    )
+
+    // Should not crash and should not change the location
+    let afterLocation = LocationTracker.sharedInstance.currentLocation
+    // Verify the location didn't change or both are nil (handled gracefully)
+    if beforeLocation != nil && afterLocation != nil {
+      #expect(afterLocation?.coordinate.latitude == beforeLocation?.coordinate.latitude)
+      #expect(afterLocation?.coordinate.longitude == beforeLocation?.coordinate.longitude)
+    }
+  }
+
+  @Test("Location update with high accuracy location")
+  func locationUpdateWithHighAccuracyLocation() async {
+    ApplicationSharedState.sharedInstance.clear()
+
+    let highAccuracyLocation = CLLocation(
+      coordinate: CLLocationCoordinate2D(latitude: 42.360123456, longitude: -71.058987654),
+      altitude: 10.0,
+      horizontalAccuracy: 5.0,
+      verticalAccuracy: 5.0,
+      timestamp: Date()
+    )
+
+    LocationTracker.sharedInstance.locationManager(
+      LocationTracker.sharedInstance.locationManager,
+      didUpdateLocations: [highAccuracyLocation]
+    )
+
+    let currentLocation = LocationTracker.sharedInstance.currentLocation
+    #expect(currentLocation?.horizontalAccuracy == 5.0)
+    guard let currentLocation = currentLocation else {
+      #expect(Bool(false), "Current location should not be nil")
+      return
+    }
+    #expect(abs(currentLocation.coordinate.latitude - 42.360123456) < 0.000001)
+  }
+
+  @Test("Location update with low accuracy location")
+  func locationUpdateWithLowAccuracyLocation() async {
+    ApplicationSharedState.sharedInstance.clear()
+
+    let lowAccuracyLocation = CLLocation(
+      coordinate: CLLocationCoordinate2D(latitude: 42.3601, longitude: -71.0589),
+      altitude: 0.0,
+      horizontalAccuracy: 100.0, // Low accuracy
+      verticalAccuracy: -1.0, // Invalid vertical accuracy
+      timestamp: Date()
+    )
+
+    LocationTracker.sharedInstance.locationManager(
+      LocationTracker.sharedInstance.locationManager,
+      didUpdateLocations: [lowAccuracyLocation]
+    )
+
+    let currentLocation = LocationTracker.sharedInstance.currentLocation
+    #expect(currentLocation?.horizontalAccuracy == 100.0)
+    #expect(currentLocation?.verticalAccuracy == -1.0)
+  }
+
+  @Test("Location update with old timestamp")
+  func locationUpdateWithOldTimestamp() async {
+    ApplicationSharedState.sharedInstance.clear()
+
+    let oldLocation = CLLocation(
+      coordinate: CLLocationCoordinate2D(latitude: 42.3601, longitude: -71.0589),
+      altitude: 0.0,
+      horizontalAccuracy: 5.0,
+      verticalAccuracy: 5.0,
+      timestamp: Date().addingTimeInterval(-3600) // 1 hour ago
+    )
+
+    LocationTracker.sharedInstance.locationManager(
+      LocationTracker.sharedInstance.locationManager,
+      didUpdateLocations: [oldLocation]
+    )
+
+    // Should still update even with old timestamp
+    #expect(LocationTracker.sharedInstance.currentLocation != nil)
+  }
+
   @Test("Start updating location executes")
   func startUpdatingLocationExecutes() async {
     LocationTracker.sharedInstance.startUpdatingLocation()
@@ -77,5 +188,41 @@ struct LocationTrackerTests {
     let manager = LocationTracker.sharedInstance.locationManager
     #expect(manager.distanceFilter == kCLDistanceFilterNone)
     #expect(manager.desiredAccuracy == kCLLocationAccuracyBest)
+  }
+
+  @Test("Location manager delegate is set correctly")
+  func locationManagerDelegateIsSetCorrectly() async {
+    let manager = LocationTracker.sharedInstance.locationManager
+    #expect(manager.delegate === LocationTracker.sharedInstance)
+  }
+
+  @Test("Singleton instance consistency")
+  func singletonInstanceConsistency() async {
+    let instance1 = LocationTracker.sharedInstance
+    let instance2 = LocationTracker.sharedInstance
+
+    #expect(instance1 === instance2)
+  }
+
+  @Test("Current location persistence across updates")
+  func currentLocationPersistenceAcrossUpdates() async {
+    ApplicationSharedState.sharedInstance.clear()
+
+    let location1 = CLLocation(latitude: 42.3601, longitude: -71.0589)
+    let location2 = CLLocation(latitude: 42.3611, longitude: -71.0599)
+
+    // First update
+    LocationTracker.sharedInstance.locationManager(
+      LocationTracker.sharedInstance.locationManager,
+      didUpdateLocations: [location1]
+    )
+    #expect(LocationTracker.sharedInstance.currentLocation?.coordinate.latitude == 42.3601)
+
+    // Second update should replace first
+    LocationTracker.sharedInstance.locationManager(
+      LocationTracker.sharedInstance.locationManager,
+      didUpdateLocations: [location2]
+    )
+    #expect(LocationTracker.sharedInstance.currentLocation?.coordinate.latitude == 42.3611)
   }
 }
