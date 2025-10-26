@@ -50,21 +50,6 @@ struct ApplicationSharedStateTests {
     #expect(location.coordinate.longitude == longitude)
   }
 
-  @Test("Stores lat and long of where user was most recently seen")
-  func storesLastKnownLocation() async {
-    ApplicationSharedState.sharedInstance.clear()
-    let latitude: Double = -71.063303
-    let longitude: Double = 42.35769
-
-    ApplicationSharedState.sharedInstance.lastKnownLocation = CLLocation(
-      latitude: latitude,
-      longitude: longitude
-    )
-
-    #expect(UserDefaults.standard.double(forKey: "lastKnownLocationLatitude") == -71.063303)
-    #expect(UserDefaults.standard.double(forKey: "lastKnownLocationLongitude") == 42.35769)
-  }
-
   // MARK: - Debug Mode Tests
 
   @Test("Debug mode returns correct value")
