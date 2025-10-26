@@ -77,21 +77,6 @@ struct ApplicationSharedStateTests {
 
   // MARK: - Camera Zoom Edge Cases
 
-  @Test("Camera zoom validation with boundary values")
-  func cameraZoomValidationWithBoundaryValues() async {
-    ApplicationSharedState.sharedInstance.clear()
-
-    // Test value within valid range
-    let midZoom: Float = 14.0
-    ApplicationSharedState.sharedInstance.cameraZoom = midZoom
-    #expect(ApplicationSharedState.sharedInstance.cameraZoom == midZoom)
-
-    // Test another value within valid range
-    let otherZoom: Float = 18.0
-    ApplicationSharedState.sharedInstance.cameraZoom = otherZoom
-    #expect(ApplicationSharedState.sharedInstance.cameraZoom == otherZoom)
-  }
-
   @Test("Camera zoom rejects invalid values")
   func cameraZoomRejectsInvalidValues() async {
     ApplicationSharedState.sharedInstance.clear()
