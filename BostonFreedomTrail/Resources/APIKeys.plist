@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>GoogleMapsAPIKey</key>
-	<string>AIzaSyAboFJaMbnKvTdFoxB4X3n5oG2n43Kaxkk</string>
+	<string>GOOGLE_MAPS_API_KEY_PLACEHOLDER</string>
 </dict>
 </plist>

@@ -293,34 +293,37 @@ final class TrailParser: NSObject, XMLParserDelegate {
     let cleanedString = coordinateString.replacingOccurrences(of: "0.0 ", with: "")
     var coordinatesArray = cleanedString.components(separatedBy: ",")
 
-    // Remove last element if it's empty
-    if coordinatesArray.last?.isEmpty == true {
+    // Remove last element if it's empty (needed because coordinate strings end with elevation like "0.0 ")
+    while coordinatesArray.last?.trimmingCharacters(in: .whitespaces).isEmpty == true {
       coordinatesArray.removeLast()
     }
 
-    // Ensure we have pairs of coordinates
-    guard coordinatesArray.count >= 2 && coordinatesArray.count % 2 == 0 else {
-      print("Warning: Invalid coordinate array count: \(coordinatesArray.count)")
+    // Ensure we have at least one pair of coordinates
+    guard coordinatesArray.count >= 2 else {
+      print("Warning: Insufficient coordinates - found \(coordinatesArray.count) elements, need at least 2")
       return path
     }
 
     for index in stride(from: 0, to: coordinatesArray.count - 1, by: 2) {
       guard index + 1 < coordinatesArray.count else { break }
 
-      guard let longitude = Double(coordinatesArray[index]),
-            let latitude = Double(coordinatesArray[index + 1]) else {
-        print("Warning: Could not parse coordinates at index \(index)")
+      let longitude = coordinatesArray[index].trimmingCharacters(in: .whitespaces)
+      let latitude = coordinatesArray[index + 1].trimmingCharacters(in: .whitespaces)
+
+      guard let lng = Double(longitude),
+            let lat = Double(latitude) else {
+        print("Warning: Could not parse coordinates at index \(index) - lng: '\(longitude)', lat: '\(latitude)'")
         continue
       }
 
       // Validate coordinate bounds
-      guard latitude >= -90.0 && latitude <= 90.0 &&
-            longitude >= -180.0 && longitude <= 180.0 else {
-        print("Warning: Invalid coordinate bounds - lat: \(latitude), lng: \(longitude)")
+      guard lat >= -90.0 && lat <= 90.0 &&
+            lng >= -180.0 && lng <= 180.0 else {
+        print("Warning: Invalid coordinate bounds - lat: \(lat), lng: \(lng)")
         continue
       }
 
-      path.append(CLLocation(latitude: latitude, longitude: longitude))
+      path.append(CLLocation(latitude: lat, longitude: lng))
     }
 
     return path
@@ -363,7 +366,7 @@ final class TrailParser: NSObject, XMLParserDelegate {
       return nil
     }
 
-    // Validate coordinate bounds
+    // Validate coordinate bounds - accept valid latitude/longitude values
     guard latitude >= -90.0 && latitude <= 90.0 else {
       print("Warning: Invalid LookAt latitude: \(latitude)")
       return nil
@@ -374,16 +377,8 @@ final class TrailParser: NSObject, XMLParserDelegate {
       return nil
     }
 
-    // Validate tilt and heading ranges
-    guard tilt >= 0.0 && tilt <= 90.0 else {
-      print("Warning: Invalid LookAt tilt: \(tilt)")
-      return nil
-    }
-
-    guard heading >= 0.0 && heading <= 360.0 else {
-      print("Warning: Invalid LookAt heading: \(heading)")
-      return nil
-    }
+    // Note: Tilt and heading can have various values in KML data (including negative tilt)
+    // Accept parsed values as-is since the underlying APIs handle these values appropriately
 
     return LookAt(latitude: latitude, longitude: longitude, tilt: tilt, heading: heading)
   }

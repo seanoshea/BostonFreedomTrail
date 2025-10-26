@@ -155,6 +155,10 @@ struct MapModelTests {
     let testZoom: Float = 15.0
     ApplicationSharedState.sharedInstance.cameraZoom = testZoom
 
+    // Verify the zoom was actually stored by checking directly
+    let storedZoom = UserDefaults.standard.float(forKey: "applicationSharedStateCameraZoom")
+    #expect(storedZoom == testZoom)
+
     let retrievedZoom = subject.zoomForMap()
 
     #expect(retrievedZoom == testZoom)
