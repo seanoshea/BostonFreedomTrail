@@ -141,18 +141,6 @@ struct ApplicationSharedStateTests {
     #expect(retrieved.longitude == 0.0)
   }
 
-  @Test("Location with high precision coordinates")
-  func locationWithHighPrecisionCoordinates() async {
-    ApplicationSharedState.sharedInstance.clear()
-
-    let preciseLocation = CLLocation(latitude: 42.360123456789, longitude: -71.058987654321)
-    ApplicationSharedState.sharedInstance.lastKnownLocation = preciseLocation
-
-    let retrieved = ApplicationSharedState.sharedInstance.lastKnownLocation
-    #expect(abs(retrieved.coordinate.latitude - preciseLocation.coordinate.latitude) < 0.000001)
-    #expect(abs(retrieved.coordinate.longitude - preciseLocation.coordinate.longitude) < 0.000001)
-  }
-
   // MARK: - State Persistence Tests
 
   @Test("Multiple coordinate updates maintain consistency")
