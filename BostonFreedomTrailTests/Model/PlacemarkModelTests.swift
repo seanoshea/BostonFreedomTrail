@@ -76,7 +76,7 @@ struct PlacemarkModelTests {
 
     let result = subject.stringForWebView()
 
-    #expect(result == "")
+    #expect(result.isEmpty)
   }
 
   @Test("Returns HTML template when placemark description is empty")

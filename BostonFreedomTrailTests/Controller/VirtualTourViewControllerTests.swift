@@ -175,7 +175,7 @@ struct VirtualTourViewControllerTests {
 
     subject.viewDidAppear(true)
     subject.startTour()
-    let initialPosition = subject.model.currentTourPosition
+    _ = subject.model.currentTourPosition
     subject.model.currentTourPosition = 14
 
     let location = CLLocation(latitude: 123, longitude: 312)
